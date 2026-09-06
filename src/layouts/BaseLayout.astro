@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import { t, type Locale } from '../i18n/ui';
+import { getLocaleFromUrl, getAlternatePath, localizePath } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Omit on pages that exist in one language only. */
+  hasAlternate?: boolean;
+  ogType?: 'website' | 'article';
+}
+
+const { title, description, hasAlternate = true, ogType = 'website' } = Astro.props;
+
+const locale: Locale = getLocaleFromUrl(Astro.url);
+const tr = t(locale);
+const alternate = getAlternatePath(Astro.url);
+
+const siteName = tr('site.name');
+const pageTitle = `${title} | ${siteName}`;
+const pageDescription = description ?? tr('site.description');
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const alternateUrl = new URL(alternate.path, Astro.site).href;
+const thaiUrl = new URL(localizePath(Astro.url.pathname.replace(/^\/en/, ''), 'th'), Astro.site).href;
+---
+
+<!doctype html>
+<html lang={locale === 'th' ? 'th' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+
+    {
+      hasAlternate && (
+        <>
+          <link rel="alternate" hreflang={alternate.locale} href={alternateUrl} />
+          <link rel="alternate" hreflang="x-default" href={thaiUrl} />
+        </>
+      )
+    }
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={locale === 'th' ? 'th_TH' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#f7f8f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1518" media="(prefers-color-scheme: dark)" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    />
+
+    <slot name="head" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">{tr('a11y.skipToContent')}</a>
+    <slot name="header" />
+    <main id="main">
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

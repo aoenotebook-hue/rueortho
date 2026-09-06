@@ -1,0 +1,36 @@
+{
+  "name": "easyortho",
+  "version": "0.1.0",
+  "description": "รู้เรื่องกระดูกและข้อ / Easyortho — patient education on common orthopaedic problems",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aoenotebook-hue/rueortho.git"
+  },
+  "author": "Sorawut Thamyongkit, MD",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/aoenotebook-hue/rueortho/issues"
+  },
+  "homepage": "https://github.com/aoenotebook-hue/rueortho#readme",
+  "dependencies": {
+    "@astrojs/mdx": "^8.0.0",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.1",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.5.4"
+  },
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3"
+  }
+}

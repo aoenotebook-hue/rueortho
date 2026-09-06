@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+import { getConditions } from '../lib/conditions';
+
+const locale = 'th' as const;
+const tr = t(locale);
+const conditions = await getConditions(locale);
+---
+
+<BaseLayout title={tr('site.tagline')} description={tr('site.description')}>
+  <div style="max-width: 68ch; margin: 0 auto; padding: 2rem 1.25rem;">
+    <h1>{tr('site.name')}</h1>
+    <p>{tr('site.tagline')}</p>
+
+    <h2>{tr('nav.conditions')}</h2>
+    <ul>
+      {
+        conditions.map((entry) => (
+          <li>
+            <a href={localizePath(`/conditions/${entry.data.slug}`, locale)}>{entry.data.title}</a>
+            <p>{entry.data.summary}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

@@ -1,18 +1,21 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# Dependencies
+node_modules/
 
-# Other files and folders
-.settings/
+# Build output
+dist/
+.astro/
+.vercel/
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# Reference clones of the author's own patient-care apps.
+# Read-only source material — never part of the built site.
+_sources/
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

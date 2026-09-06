@@ -1,0 +1,220 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   Palette. Light values on :root, dark swapped under prefers-color-scheme.
+   Every colour in the site must come from one of these tokens.
+   ========================================================================== */
+
+:root {
+  --ground: #f7f8f8;
+  --surface: #ffffff;
+  --ink: #16222a;
+  --muted: #5a6b73;
+  --accent: #1f6f80;
+  --accent-contrast: #ffffff;
+  --border: #dce3e5;
+
+  --warning-ink: #b3261e;
+  --warning-ground: #fdecea;
+  --warning-border: #f3c8c3;
+
+  --info-ink: #1f4e6b;
+  --info-ground: #e8f1f7;
+  --info-border: #c5dcea;
+
+  --radius-card: 10px;
+  --radius-control: 6px;
+
+  --shadow-header: 0 1px 3px rgb(22 34 42 / 0.08);
+  --shadow-card: 0 2px 10px -4px rgb(22 34 42 / 0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #0f1518;
+    --surface: #172025;
+    --ink: #e3eaec;
+    --muted: #92a3aa;
+    --accent: #5ec1d3;
+    --accent-contrast: #0f1518;
+    --border: #2a363c;
+
+    --warning-ink: #ffb4ab;
+    --warning-ground: #3b1512;
+    --warning-border: #5d2620;
+
+    --info-ink: #a9cde8;
+    --info-ground: #10283a;
+    --info-border: #1d3f57;
+
+    --shadow-header: 0 1px 3px rgb(0 0 0 / 0.5);
+    --shadow-card: 0 2px 10px -4px rgb(0 0 0 / 0.6);
+  }
+}
+
+/* Expose the tokens to Tailwind so utilities like bg-surface / text-muted work. */
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-border: var(--border);
+
+  --color-warning-ink: var(--warning-ink);
+  --color-warning-ground: var(--warning-ground);
+  --color-warning-border: var(--warning-border);
+
+  --color-info-ink: var(--info-ink);
+  --color-info-ground: var(--info-ground);
+  --color-info-border: var(--info-border);
+
+  --font-thai: 'IBM Plex Sans Thai Looped', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-latin: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+html {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-latin);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/*
+ * Thai needs more leading than Latin to stay readable, and must never be
+ * justified or letter-spaced — both break the way Thai glyphs cluster.
+ */
+html[lang='th'] body {
+  font-family: var(--font-thai);
+  line-height: 1.8;
+}
+
+html[lang='th'] * {
+  letter-spacing: normal !important;
+}
+
+body,
+p,
+li,
+dd,
+figcaption {
+  text-align: start;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  text-wrap: balance;
+  line-height: 1.35;
+  margin: 0 0 0.5em;
+}
+
+html[lang='th'] h1,
+html[lang='th'] h2,
+html[lang='th'] h3,
+html[lang='th'] h4 {
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Touch targets stay at least 44px tall (WCAG 2.5.5). */
+a.control,
+button,
+summary,
+input,
+select {
+  min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   Utilities used across layouts
+   ========================================================================== */
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-radius: 0 0 var(--radius-control) var(--radius-control);
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
