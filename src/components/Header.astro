@@ -1,0 +1,96 @@
+---
+import Container from './Container.astro';
+import { t, type Locale } from '../i18n/ui';
+import { getAlternatePath, localizePath, stripLocale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const tr = t(locale);
+const alternate = getAlternatePath(Astro.url);
+const here = stripLocale(Astro.url.pathname).replace(/\/$/, '') || '/';
+
+const navItems = [
+  { path: '/conditions', label: tr('nav.conditions') },
+  { path: '/about', label: tr('nav.about') },
+];
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-border bg-surface shadow-[var(--shadow-header)]"
+>
+  <Container>
+    <div class="flex flex-wrap items-center gap-3 py-3">
+      <a
+        href={localizePath('/', locale)}
+        class="mr-auto font-semibold text-ink no-underline"
+      >
+        {tr('site.name')}
+      </a>
+
+      <button
+        type="button"
+        class="rounded-[6px] border border-border bg-ground px-3 py-2 text-ink md:hidden"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        data-nav-toggle
+      >
+        {tr('nav.menu')}
+      </button>
+
+      <nav
+        id="primary-nav"
+        aria-label={tr('a11y.mainNav')}
+        class="hidden w-full md:block md:w-auto"
+        data-nav
+      >
+        <ul
+          class="m-0 flex list-none flex-col gap-1 p-0 pb-3 md:flex-row md:items-center md:gap-1 md:pb-0"
+        >
+          {
+            navItems.map((item) => {
+              const current = here === item.path;
+              return (
+                <li>
+                  <a
+                    href={localizePath(item.path, locale)}
+                    aria-current={current ? 'page' : undefined}
+                    class:list={[
+                      'block rounded-[6px] px-3 py-2 no-underline',
+                      current ? 'bg-info-ground text-info-ink' : 'text-muted hover:text-ink',
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+          <li>
+            <a
+              href={alternate.path}
+              hreflang={alternate.locale}
+              aria-label={tr('lang.switchLabel')}
+              class="block rounded-[6px] border border-border px-3 py-2 text-ink no-underline hover:border-accent"
+            >
+              {tr('lang.switch')}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </Container>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('hidden', open);
+  });
+</script>

@@ -1,0 +1,88 @@
+---
+import Container from './Container.astro';
+import Card from './Card.astro';
+import { t, type Locale } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+import { getAuthor } from '../data/authors';
+import { getConditions } from '../lib/conditions';
+
+interface Props {
+  locale: Locale;
+  authorId: string;
+}
+
+const { locale, authorId } = Astro.props;
+const tr = t(locale);
+const author = getAuthor(authorId);
+
+const all = await getConditions(locale);
+const written = all.filter(
+  (entry) => entry.data.author === authorId || entry.data.reviewedBy === authorId,
+);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: author.name[locale],
+  jobTitle: author.credentials[locale],
+  description: author.bio[locale].join(' '),
+};
+---
+
+<Container width="prose">
+  <div class="py-10">
+    <div class="flex flex-wrap items-start gap-6">
+      <img
+        src={author.photo}
+        alt=""
+        width="120"
+        height="120"
+        class="rounded-full border border-border"
+      />
+      <div>
+        <h1 class="mb-1">{author.name[locale]}</h1>
+        <p class="m-0 text-muted">{author.credentials[locale]}</p>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      {author.bio[locale].map((paragraph) => <p class="text-ink">{paragraph}</p>)}
+    </div>
+
+    {
+      author.links && author.links.length > 0 && (
+        <ul class="m-0 mt-6 flex list-none flex-wrap gap-4 p-0">
+          {author.links.map((link) => (
+            <li>
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      written.length > 0 && (
+        <section class="mt-12">
+          <h2>{tr('nav.conditions')}</h2>
+          <ul class="m-0 mt-5 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-4 p-0">
+            {written.map((entry) => (
+              <li>
+                <Card
+                  href={localizePath(`/conditions/${entry.data.slug}`, locale)}
+                  title={entry.data.title}
+                  region={entry.data.region}
+                  locale={locale}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+</Container>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />

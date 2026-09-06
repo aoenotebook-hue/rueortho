@@ -1,0 +1,24 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'tip';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+
+const styles = {
+  info: 'border-info-border bg-info-ground text-info-ink',
+  tip: 'border-border bg-surface text-ink',
+  warning: 'border-warning-border bg-warning-ground text-warning-ink',
+} as const;
+---
+
+<aside
+  class={`my-7 rounded-[10px] border border-s-4 p-5 ${styles[type]}`}
+  role={type === 'warning' ? 'note' : undefined}
+>
+  {title && <p class="mb-2 font-semibold">{title}</p>}
+  <div class="[&>*:last-child]:mb-0">
+    <slot />
+  </div>
+</aside>

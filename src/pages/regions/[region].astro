@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RegionPage from '../../components/RegionPage.astro';
+import { getRegion, orderedRegions, type RegionId } from '../../data/regions';
+import { getRegionCounts } from '../../lib/conditions';
+
+export async function getStaticPaths() {
+  const counts = await getRegionCounts('th');
+  return orderedRegions
+    .filter((region) => (counts[region.id] ?? 0) > 0)
+    .map((region) => ({ params: { region: region.id } }));
+}
+
+const locale = 'th' as const;
+const regionId = Astro.params.region as RegionId;
+const region = getRegion(regionId);
+---
+
+<BaseLayout title={region.label[locale]} description={region.intro?.[locale]}>
+  <RegionPage locale={locale} region={regionId} />
+</BaseLayout>
