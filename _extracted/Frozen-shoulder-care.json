@@ -1,0 +1,2760 @@
+[
+  {
+    "key": "appName",
+    "th": "การฟื้นฟูภาวะข้อไหล่ติด",
+    "en": "Frozen shoulder recovery",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "uclaLabel",
+    "th": "คะแนนไหล่ UCLA",
+    "en": "UCLA shoulder score",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "surgeonName",
+    "th": "นพ.สรวุฒิ ธรรมยงค์กิจ",
+    "en": "Dr. Sorawut Thamyongkit",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "durationLabel",
+    "th": "เดือน นับตั้งแต่เริ่มมีอาการ",
+    "en": "months since your symptoms started",
+    "uiContext": "Home — UCLA score card",
+    "class": "ui"
+  },
+  {
+    "key": "durationLabelOne",
+    "th": "เดือน นับตั้งแต่เริ่มมีอาการ",
+    "en": "month since your symptoms started",
+    "uiContext": "Home — UCLA score card",
+    "class": "ui"
+  },
+  {
+    "key": "durationUnknown",
+    "th": "ยังไม่ได้บันทึกระยะเวลาที่มีอาการ",
+    "en": "symptom duration not recorded",
+    "uiContext": "Home — UCLA score card",
+    "class": "ui"
+  },
+  {
+    "key": "onsetPrefix",
+    "th": "ตั้งแต่ ",
+    "en": "since ",
+    "uiContext": "Home — UCLA score card",
+    "class": "ui"
+  },
+  {
+    "key": "uclaCardTitle",
+    "th": "คะแนนไหล่ UCLA",
+    "en": "UCLA shoulder score",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaDomains.0",
+    "th": "ความปวด",
+    "en": "Pain",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaDomains.1",
+    "th": "การใช้งาน",
+    "en": "Function",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaDomains.2",
+    "th": "การยกแขน",
+    "en": "Elevation",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaDomains.3",
+    "th": "กำลัง",
+    "en": "Strength",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaDomains.4",
+    "th": "ความพึงพอใจ",
+    "en": "Satisfaction",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaCardFoot",
+    "th": "เต็ม 35 คะแนน มากกว่า 33 คือดีเยี่ยม 29 ถึง 33 คือดี บันทึกเดือนละครั้ง",
+    "en": "Out of 35. Above 33 is excellent, 29 to 33 is good. Recorded once a month.",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "gradeNames.excellent",
+    "th": "ดีเยี่ยม",
+    "en": "Excellent",
+    "uiContext": "Home — UCLA score card",
+    "class": "ui"
+  },
+  {
+    "key": "gradeNames.good",
+    "th": "ดี",
+    "en": "Good",
+    "uiContext": "Home — UCLA score card",
+    "class": "ui"
+  },
+  {
+    "key": "gradeNames.poor",
+    "th": "ต้องพัฒนา",
+    "en": "Needs work",
+    "uiContext": "Home — UCLA score card",
+    "class": "ui"
+  },
+  {
+    "key": "remeasureBtn",
+    "th": "อัปเดตการประเมินของฉัน",
+    "en": "Update my assessment",
+    "uiContext": "Home — UCLA score card",
+    "class": "ui"
+  },
+  {
+    "key": "roadmapTitle",
+    "th": "เส้นทางการฟื้นตัวของคุณ",
+    "en": "Your Recovery Roadmap",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "roadmapNote",
+    "th": "คุณจะเลื่อนไปยังระยะถัดไปเมื่ออาการของไหล่เปลี่ยนแปลง ไม่ใช่ตามตารางเวลาที่กำหนดไว้ตายตัว บางคนเร็วกว่า บางคนช้ากว่า ซึ่งเป็นเรื่องปกติทั้งคู่",
+    "en": "You move between stages when your shoulder changes, not on a fixed timetable. Some people move faster, some slower — both are normal.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "todayTitle",
+    "th": "สิ่งที่ต้องทำวันนี้",
+    "en": "Today's Reminders",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "goalsTitleByPhase.0",
+    "th": "เป้าหมายของคุณในระยะก่อนข้อติด",
+    "en": "Your goals in the pre-freezing stage",
+    "uiContext": "Home — Stage 1 — Pre-freezing goals",
+    "class": "ui"
+  },
+  {
+    "key": "goalsTitleByPhase.1",
+    "th": "เป้าหมายของคุณในระยะเริ่มติด",
+    "en": "Your goals in the freezing stage",
+    "uiContext": "Home — Stage 2 — Freezing goals",
+    "class": "ui"
+  },
+  {
+    "key": "goalsTitleByPhase.2",
+    "th": "เป้าหมายของคุณในระยะข้อติด",
+    "en": "Your goals in the frozen stage",
+    "uiContext": "Home — Stage 3 — Frozen goals",
+    "class": "ui"
+  },
+  {
+    "key": "goalsTitleByPhase.3",
+    "th": "เป้าหมายของคุณในระยะคลายตัว",
+    "en": "Your goals in the thawing stage",
+    "uiContext": "Home — Stage 4 — Thawing goals",
+    "class": "ui"
+  },
+  {
+    "key": "goalsSub",
+    "th": "เป้าหมายจะเปลี่ยนไปตามอาการของไหล่ ทำสี่ข้อนี้จนกว่าแอปจะเลื่อนคุณไประยะถัดไป",
+    "en": "These change as your shoulder changes. Work on these four until the app moves you on.",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "goalsByPhase.0.0",
+    "th": "ขยับไหล่ให้สุดพิสัยทุกวัน",
+    "en": "Keep moving the shoulder through its full range every day",
+    "uiContext": "Home — Stage 1 — Pre-freezing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.0.1",
+    "th": "อย่าหยุดใช้แขนเพียงเพราะรู้สึกไหล่ไว",
+    "en": "Do not let the arm go unused because it feels touchy",
+    "uiContext": "Home — Stage 1 — Pre-freezing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.0.2",
+    "th": "จัดการความปวดตอนกลางคืนตั้งแต่เนิ่น ๆ เพื่อไม่ให้กระทบการนอน",
+    "en": "Deal with night pain early so sleep does not suffer",
+    "uiContext": "Home — Stage 1 — Pre-freezing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.0.3",
+    "th": "ปรึกษาแพทย์ตั้งแต่ตอนนี้ ขณะที่พิสัยยังดีอยู่",
+    "en": "Tell your doctor now, while the range is still good",
+    "uiContext": "Home — Stage 1 — Pre-freezing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.1.0",
+    "th": "ควบคุมความปวดให้ได้ก่อน เพราะทุกอย่างขึ้นอยู่กับข้อนี้",
+    "en": "Get the pain under control — everything else depends on it",
+    "uiContext": "Home — Stage 2 — Freezing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.1.1",
+    "th": "รักษาพิสัยที่ยังมีอยู่ไว้ อย่าเพิ่งไล่ตามพิสัยที่เสียไป",
+    "en": "Hold on to the range you have; do not chase range you have lost",
+    "uiContext": "Home — Stage 2 — Freezing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.1.2",
+    "th": "ใช้แขนทำสิ่งที่ยังทำได้อย่างสบายต่อไป",
+    "en": "Keep using the arm for anything that is comfortable",
+    "uiContext": "Home — Stage 2 — Freezing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.1.3",
+    "th": "ดูแลการนอนด้วยการจัดท่าและใช้หมอนรอง",
+    "en": "Protect your sleep with position and support",
+    "uiContext": "Home — Stage 2 — Freezing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.2.0",
+    "th": "ยืดทุกวัน ครั้งละน้อยแต่บ่อย ๆ",
+    "en": "Stretch every day, little and often",
+    "uiContext": "Home — Stage 3 — Frozen goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.2.1",
+    "th": "ค้างไว้ที่ปลายพิสัย ดีกว่าดึงให้แรงขึ้น",
+    "en": "Hold at the end of range rather than pulling harder",
+    "uiContext": "Home — Stage 3 — Frozen goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.2.2",
+    "th": "เอาการเอื้อมที่เสียไปกลับมา ทั้งยกเหนือศีรษะ กางออกข้าง และไพล่หลัง",
+    "en": "Win back the reaches you have lost: overhead, out to the side, behind your back",
+    "uiContext": "Home — Stage 3 — Frozen goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.2.3",
+    "th": "ยอมรับว่าระยะนี้ช้า แล้วทำต่อไปอย่างสม่ำเสมอ",
+    "en": "Accept that this is the slow stage and keep going anyway",
+    "uiContext": "Home — Stage 3 — Frozen goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.3.0",
+    "th": "ยืดต่อไป พิสัยที่หยุดใช้จะหายไป",
+    "en": "Keep stretching — range you stop using, you lose",
+    "uiContext": "Home — Stage 4 — Thawing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.3.1",
+    "th": "เริ่มเพิ่มความแข็งแรงได้แล้ว เมื่อการเคลื่อนไหวเอื้ออำนวย",
+    "en": "Add strengthening now that movement allows it",
+    "uiContext": "Home — Stage 4 — Thawing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.3.2",
+    "th": "กลับไปทำงาน เล่นกีฬา และงานอดิเรกอย่างเป็นขั้นตอน",
+    "en": "Return to work, sport and hobbies step by step",
+    "uiContext": "Home — Stage 4 — Thawing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goalsByPhase.3.3",
+    "th": "คงท่าบริหารสั้น ๆ ไว้ เพื่อไม่ให้อาการติดกลับมา",
+    "en": "Keep a short maintenance routine so stiffness does not return",
+    "uiContext": "Home — Stage 4 — Thawing goals",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.0",
+    "th": "ขยับไหล่เบา ๆ ให้สุดพิสัยหลายครั้งต่อวัน",
+    "en": "Move the shoulder gently through its full range several times a day.",
+    "uiContext": "Home — Stage 1 — Pre-freezing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.1",
+    "th": "ช่วงนี้คือเวลาที่ดีที่สุดในการเริ่ม เพราะรักษาพิสัยไว้ง่ายกว่าเอากลับคืน",
+    "en": "This is the best time to act — range is easier to keep than to win back.",
+    "uiContext": "Home — Stage 1 — Pre-freezing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.2",
+    "th": "ยืดจนรู้สึกตึง ไม่ใช่จนปวดแปลบ",
+    "en": "Stretch to the point of tension, never through sharp pain.",
+    "uiContext": "Home — Stage 1 — Pre-freezing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.3",
+    "th": "แจ้งแพทย์เรื่องอาการปวดตอนกลางคืน อย่ารอให้หายเอง",
+    "en": "Mention the night pain to your doctor rather than waiting it out.",
+    "uiContext": "Home — Stage 1 — Pre-freezing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.0",
+    "th": "จัดการความปวดก่อนเป็นอันดับแรก การออกกำลังกายจะง่ายขึ้นเมื่อควบคุมความปวดได้",
+    "en": "Pain comes first. Exercise goes better once pain is controlled.",
+    "uiContext": "Home — Stage 2 — Freezing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.1",
+    "th": "อย่าฝืนไหล่ การฝืนในระยะนี้จะทำให้ปวดมากขึ้น",
+    "en": "Do not force the shoulder — forcing during this stage makes the pain worse.",
+    "uiContext": "Home — Stage 2 — Freezing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.2",
+    "th": "ทำครั้งละน้อยแต่บ่อย ๆ ดีกว่าทำครั้งเดียวนาน ๆ",
+    "en": "Little and often beats one long session.",
+    "uiContext": "Home — Stage 2 — Freezing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.3",
+    "th": "หนุนแขนด้วยหมอนตอนกลางคืน และหลีกเลี่ยงการนอนทับข้างนั้น",
+    "en": "Support the arm on a pillow at night and avoid lying on that side.",
+    "uiContext": "Home — Stage 2 — Freezing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.0",
+    "th": "ระยะนี้คือช่วงที่การยืดได้ผลมากที่สุด ทำครั้งละน้อยแต่บ่อย ๆ",
+    "en": "This is the stage where stretching earns its keep. Little and often.",
+    "uiContext": "Home — Stage 3 — Frozen daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.1",
+    "th": "ค้างท่ายืดให้นานขึ้น ดีกว่าดึงให้แรงขึ้น",
+    "en": "Hold each stretch longer rather than pulling harder.",
+    "uiContext": "Home — Stage 3 — Frozen daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.2",
+    "th": "จดความสูงที่ดีที่สุดของท่าไถผนัง เป็นสัญญาณความก้าวหน้าที่ชัดที่สุด",
+    "en": "Record your best wall-slide height — it is the clearest sign of progress.",
+    "uiContext": "Home — Stage 3 — Frozen daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.3",
+    "th": "ปวดเมื่อยที่หายภายในเช้าวันถัดไปถือว่าปกติ แต่ถ้ายังปวดค้างถือว่ามากเกินไป",
+    "en": "Soreness that settles by morning is fine. Soreness that lasts is not.",
+    "uiContext": "Home — Stage 3 — Frozen daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.0",
+    "th": "ยืดทุกวันต่อไป พิสัยที่ไม่ได้ใช้จะหายไป",
+    "en": "Keep stretching daily — range you don't use, you lose.",
+    "uiContext": "Home — Stage 4 — Thawing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.1",
+    "th": "เพิ่มแรงต้านทีละน้อย จากมีคนช่วย เป็นทำเอง แล้วจึงมีแรงต้าน",
+    "en": "Add resistance slowly: assisted, then active, then resisted.",
+    "uiContext": "Home — Stage 4 — Thawing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.2",
+    "th": "ความแข็งแรงเกิดจากการผ่อนกลับอย่างช้า ๆ",
+    "en": "Slow on the way back is where the strength comes from.",
+    "uiContext": "Home — Stage 4 — Thawing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.3",
+    "th": "ปวดเมื่อยกล้ามเนื้อหลังออกกำลังกายเป็นเรื่องปกติ แต่ปวดแปลบในข้อไม่ปกติ",
+    "en": "Muscle soreness after exercise is normal; sharp joint pain is not.",
+    "uiContext": "Home — Stage 4 — Thawing daily reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "weeklyDueKicker",
+    "th": "แบบประเมินประจำเดือน",
+    "en": "Monthly assessment",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyDueTitle",
+    "th": "ถึงเวลาทำแบบประเมินของเดือนนี้",
+    "en": "Time for this month's assessment",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyDueBody",
+    "th": "ทำเดือนละครั้งก็เพียงพอ ใช้เวลาประมาณ 2 นาที และเป็นสิ่งที่ทำให้โปรแกรมของคุณตรงกับอาการไหล่ในปัจจุบัน",
+    "en": "Once a month is enough. It takes about two minutes and it is what keeps your programme matched to your shoulder.",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyDueBtn",
+    "th": "เริ่มทำแบบประเมินของเดือนนี้",
+    "en": "Start this month's assessment",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyOverdueTitle",
+    "th": "เลยกำหนดแบบประเมินมาแล้ว {n} เดือน",
+    "en": "Your assessment is {n} months overdue",
+    "uiContext": "Home — monthly assessment card",
+    "class": "dynamic"
+  },
+  {
+    "key": "weeklyOverdueTitleOne",
+    "th": "เลยกำหนดแบบประเมินมาแล้ว 1 เดือน",
+    "en": "Your assessment is a month overdue",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyOverdueBody",
+    "th": "โปรแกรมที่แสดงอยู่ยังอ้างอิงผลประเมินครั้งล่าสุด จึงอาจไม่ตรงกับอาการไหล่ของคุณในตอนนี้",
+    "en": "Your programme is still showing results from your last assessment, so it may no longer match how your shoulder is now.",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyDoneKicker",
+    "th": "แบบประเมินประจำเดือน",
+    "en": "Monthly assessment",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyDoneTitle",
+    "th": "ทำครบแล้วสำหรับเดือนนี้",
+    "en": "Done for this month",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyDoneBody",
+    "th": "บันทึกเมื่อ {d} ครั้งถัดไปกำหนด {next} ระหว่างนี้ให้ทำท่าบริหารทุกวันตามปกติ",
+    "en": "Recorded {d}. Your next one is due {next}. Keep doing your exercises daily in the meantime.",
+    "uiContext": "Home — monthly assessment card",
+    "class": "dynamic"
+  },
+  {
+    "key": "weeklyDoneBtn",
+    "th": "แก้ไขผลประเมิน",
+    "en": "Update it anyway",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyNoneTitle",
+    "th": "เริ่มจากแบบประเมินครั้งแรก",
+    "en": "Start with your first assessment",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "weeklyNoneBody",
+    "th": "แอปต้องมีผลประเมินหนึ่งครั้งก่อน จึงจะแสดงโปรแกรมที่เหมาะกับคุณได้",
+    "en": "The app needs one assessment before it can show you the right programme.",
+    "uiContext": "Home — monthly assessment card",
+    "class": "ui"
+  },
+  {
+    "key": "measureValidation",
+    "th": "กรุณาตอบทั้งสองคำถามก่อนไปต่อ",
+    "en": "Please answer both questions before continuing.",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "privacyTitle",
+    "th": "ความเป็นส่วนตัวของคุณ",
+    "en": "Your privacy",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacyIntro",
+    "th": "แอปนี้เก็บข้อมูลอะไร และเก็บไว้ที่ไหน",
+    "en": "What this app stores, and where.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacyPoints.0.1",
+    "th": "คำตอบของคุณถูกเก็บไว้ในโทรศัพท์เครื่องนี้ หากล้างข้อมูลแอปหรือเปลี่ยนเครื่อง ข้อมูลจะหายไป",
+    "en": "Your answers are kept on this phone. Clearing the app data or changing device erases them.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacyPoints.1.1",
+    "th": "ข้อมูลของคุณใช้เพื่อแสดงความก้าวหน้าของอาการไหล่ และแนะนำการดูแลที่เหมาะสมกับคุณเท่านั้น ไม่ใช้เพื่อวัตถุประสงค์อื่น",
+    "en": "Your record is used only to show how your shoulder is progressing and to suggest the care that suits you. It is not used for anything else.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacyPoints.2.1",
+    "th": "ผลประเมินประจำเดือนจะถูกส่งไปยังทีมผู้ดูแลครั้งละหนึ่งครั้ง พร้อมกับ HN เพื่อให้จับคู่กับเวชระเบียนของคุณได้",
+    "en": "Each monthly assessment is sent once to your care team, together with your HN so it can be matched to your hospital record.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacyPoints.3.1",
+    "th": "ไม่มีการส่งข้อมูลใดก่อนที่คุณจะยินยอม และแอปไม่ส่งข้อมูลเองโดยอัตโนมัติเบื้องหลัง",
+    "en": "Nothing is sent until you have agreed, and the app never sends anything automatically in the background.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacyPoints.4.1",
+    "th": "หากคุณใช้โทรศัพท์ร่วมกับผู้อื่น โปรดทราบว่าผู้ที่เปิดแอปนี้จะเห็นข้อมูลของคุณได้",
+    "en": "If you share this phone, remember that anyone opening the app can see your record.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacyPoints.5.1",
+    "th": "คุณสามารถลบข้อมูลทั้งหมดบนเครื่องนี้ได้ทุกเมื่อ ด้วยปุ่ม “ล้างข้อมูลแอป” ที่ด้านล่างของแท็บหน้าแรก",
+    "en": "You can erase everything on this device at any time with Reset App Data, at the bottom of the Home tab.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "scopeNote",
+    "th": "แอปนี้ให้คำแนะนำทั่วไปสำหรับภาวะข้อไหล่ติด ผู้ป่วยแต่ละคนฟื้นตัวด้วยความเร็วต่างกัน และอาการของคุณอาจต่างจากที่อธิบายไว้ที่นี่ หากคำแนะนำของแพทย์ต่างจากในแอป ให้ยึดตามคำแนะนำของแพทย์เป็นหลัก",
+    "en": "This app gives general guidance for frozen shoulder. Every shoulder recovers at its own pace, and your own condition may differ from what is described here. Where your doctor's advice differs from this app, follow your doctor.",
+    "uiContext": "App shell — disclaimer",
+    "class": "ui"
+  },
+  {
+    "key": "surgeonLabel",
+    "th": "แพทย์ผู้ดูแล",
+    "en": "Your doctor",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "resetBtn",
+    "th": "ล้างข้อมูลแอป",
+    "en": "Reset App Data",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "resetConfirm",
+    "th": "การทำเช่นนี้จะลบ HN ผลการประเมิน ความก้าวหน้าการออกกำลังกาย และบันทึกประจำวันบนอุปกรณ์นี้ ไม่สามารถย้อนกลับได้ ต้องการดำเนินการต่อหรือไม่",
+    "en": "This will erase your HN, assessments, exercise progress and check-ins on this device. This can't be undone. Continue?",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "hnPrefix",
+    "th": "HN: ",
+    "en": "HN: ",
+    "uiContext": "Home — UCLA score card",
+    "class": "ui"
+  },
+  {
+    "key": "tabHome",
+    "th": "หน้าแรก",
+    "en": "Home",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabExercises",
+    "th": "ท่าบริหาร",
+    "en": "Exercises",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabProgress",
+    "th": "ความก้าวหน้า",
+    "en": "Progress",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabSleep",
+    "th": "การนอน",
+    "en": "Sleep",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabSelfCare",
+    "th": "ดูแลตัวเอง",
+    "en": "Self Care",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabResources",
+    "th": "แหล่งข้อมูล",
+    "en": "Resources",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabSOS",
+    "th": "สัญญาณเตือน",
+    "en": "Alert",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "resTitle",
+    "th": "ความรู้เพิ่มเติม",
+    "en": "Learn more",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resIntro",
+    "th": "แหล่งข้อมูลและวิดีโอที่เชื่อถือได้เกี่ยวกับภาวะข้อไหล่ติด ลิงก์เหล่านี้จะเปิดนอกแอป",
+    "en": "Trusted background reading and video on frozen shoulder. These open outside the app.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resNote",
+    "th": "ข้อมูลเหล่านี้ใช้เพื่อความเข้าใจทั่วไป",
+    "en": "These are for general understanding.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resGroupVideo",
+    "th": "วิดีโอ",
+    "en": "Video",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resGroupArticle",
+    "th": "บทความ",
+    "en": "Reading",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resLangEn",
+    "th": "English",
+    "en": "English",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resLangTh",
+    "th": "ไทย",
+    "en": "ไทย",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.0.title",
+    "th": "ทำความรู้จักภาวะข้อไหล่ติด — วิดีโอที่ 1",
+    "en": "Frozen shoulder explained — video 1",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.0.desc",
+    "th": "ข้อไหล่ติดคืออะไร เกิดจากอะไร และการฟื้นตัวมักเป็นอย่างไร",
+    "en": "What frozen shoulder is, why it happens, and what recovery usually looks like.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.1.title",
+    "th": "ทำความรู้จักภาวะข้อไหล่ติด — วิดีโอที่ 2",
+    "en": "Frozen shoulder explained — video 2",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.1.desc",
+    "th": "แนะนำท่าบริหารไหล่และวิธีทำอย่างปลอดภัย",
+    "en": "A walk-through of the shoulder exercises and how to do them safely.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.2.title",
+    "th": "ข้อไหล่ติด ทำอะไรก็ปวด",
+    "en": "Frozen shoulder: painful whatever you do",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.2.desc",
+    "th": "บทความสำหรับผู้ป่วยจากรามาธิบดี อธิบายอาการ สาเหตุ และแนวทางการรักษา",
+    "en": "Ramathibodi's own patient guide, in Thai — symptoms, causes and treatment.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.3.title",
+    "th": "ท่ายืดและเสริมความแข็งแรง 7 ท่า",
+    "en": "7 stretching and strengthening exercises",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.3.desc",
+    "th": "ท่าลูกตุ้ม ผ้าขนหนู ไต่นิ้ว ยืดข้ามลำตัว ยืดรักแร้ และหมุนแขนด้วยยางยืด",
+    "en": "Pendulum, towel, finger walk, cross-body and armpit stretches, plus band rotations.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "uclaPainQ",
+    "th": "ความปวด",
+    "en": "Pain",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaPainSub",
+    "th": "ข้อใดตรงกับอาการปวดไหล่ของคุณมากที่สุด",
+    "en": "Which best describes your shoulder pain?",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaPainOpts.0.t",
+    "th": "ปวดตลอดเวลาและทนไม่ไหว ต้องใช้ยาแก้ปวดชนิดแรงบ่อย ๆ",
+    "en": "Present all the time and unbearable; I need strong painkillers frequently",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaPainOpts.1.t",
+    "th": "ปวดตลอดเวลาแต่ยังทนได้ ใช้ยาแก้ปวดชนิดแรงเป็นครั้งคราว",
+    "en": "Present all the time but bearable; I need strong painkillers occasionally",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaPainOpts.2.t",
+    "th": "ขณะพักไม่ปวดหรือปวดเล็กน้อย แต่ปวดเมื่อทำกิจกรรมเบา ๆ ใช้ยาแก้ปวดทั่วไปบ่อย ๆ",
+    "en": "None or little at rest, but present with light activity; simple painkillers frequently",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaPainOpts.3.t",
+    "th": "ปวดเฉพาะเมื่อใช้งานหนักหรือท่าบางท่า ใช้ยาแก้ปวดทั่วไปเป็นครั้งคราว",
+    "en": "Present only with heavy or particular activities; simple painkillers occasionally",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaPainOpts.4.t",
+    "th": "ปวดเป็นครั้งคราวและเพียงเล็กน้อย",
+    "en": "Occasional and slight",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaPainOpts.5.t",
+    "th": "ไม่ปวดเลย",
+    "en": "None",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFuncQ",
+    "th": "การใช้งาน",
+    "en": "Function",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFuncSub",
+    "th": "คุณใช้ไหล่ทำอะไรได้มากน้อยเพียงใด",
+    "en": "How much can you do with the shoulder?",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFuncOpts.0.t",
+    "th": "ใช้แขนข้างนี้ไม่ได้เลย",
+    "en": "Unable to use the limb",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFuncOpts.1.t",
+    "th": "ทำได้เฉพาะกิจกรรมเบา ๆ เท่านั้น",
+    "en": "Only light activities are possible",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFuncOpts.2.t",
+    "th": "ทำงานบ้านเบา ๆ หรือกิจวัตรประจำวันส่วนใหญ่ได้",
+    "en": "Able to do light housework or most daily activities",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFuncOpts.3.t",
+    "th": "ทำงานบ้านส่วนใหญ่ ซื้อของ ขับรถได้ หวีผมและแต่งตัวเองได้",
+    "en": "Most housework, shopping and driving; able to do my hair and dress myself",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFuncOpts.4.t",
+    "th": "ติดขัดเพียงเล็กน้อย ทำงานเหนือระดับไหล่ได้",
+    "en": "Slight restriction only; able to work above shoulder level",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFuncOpts.5.t",
+    "th": "ทำกิจกรรมได้ตามปกติทุกอย่าง",
+    "en": "Normal activities",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaStrengthQ",
+    "th": "กำลังในการยกแขนไปข้างหน้า",
+    "en": "Strength of forward flexion",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaStrengthSub",
+    "th": "ยกแขนไปข้างหน้า รู้สึกว่ามีกำลังแค่ไหน หากนักกายภาพบำบัดเคยประเมินเกรดไว้ ให้ใช้เกรดนั้น",
+    "en": "Raise the arm forward. How strong does it feel? If your physiotherapist has graded it, use their grade.",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaStrengthOpts.0.t",
+    "th": "เกรด 0 — ไม่มีการหดตัวของกล้ามเนื้อเลย",
+    "en": "Grade 0 — no muscle contraction at all",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaStrengthOpts.1.t",
+    "th": "เกรด 1 — มีการหดตัวเล็กน้อย แต่ขยับไม่ได้",
+    "en": "Grade 1 — a flicker of contraction, no movement",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaStrengthOpts.2.t",
+    "th": "เกรด 2 — ขยับได้เมื่อไม่มีแรงโน้มถ่วงต้าน",
+    "en": "Grade 2 — can move only with gravity taken away",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaStrengthOpts.3.t",
+    "th": "เกรด 3 — ยกต้านแรงโน้มถ่วงได้ แต่ต้านแรงกดไม่ได้",
+    "en": "Grade 3 — can lift against gravity but not against resistance",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaStrengthOpts.4.t",
+    "th": "เกรด 4 — ยกต้านแรงกดได้บ้าง",
+    "en": "Grade 4 — can lift against some resistance",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaStrengthOpts.5.t",
+    "th": "เกรด 5 — กำลังปกติ",
+    "en": "Grade 5 — normal strength",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaSatQ",
+    "th": "ความพึงพอใจ",
+    "en": "Satisfaction",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaSatSub",
+    "th": "โดยรวมแล้ว คุณรู้สึกอย่างไรกับไหล่ของคุณ",
+    "en": "Overall, how do you feel about your shoulder?",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaSatOpts.0.t",
+    "th": "พอใจ และดีขึ้นกว่าเดิม",
+    "en": "Satisfied and better",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaSatOpts.1.t",
+    "th": "ไม่พอใจ และแย่ลงกว่าเดิม",
+    "en": "Not satisfied and worse",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFlexQ",
+    "th": "การยกแขนไปข้างหน้าด้วยตนเอง",
+    "en": "Active forward flexion",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "uclaFlexSub",
+    "th": "ยกแขนไปข้างหน้าและขึ้นบนให้สูงที่สุดเท่าที่ไม่ปวดแปลบ แล้วลากส่วนโค้งให้ตรงกับที่ทำได้",
+    "en": "Raise the arm forward and up as far as you can without sharp pain, then drag the arc to match.",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "ptsSuffix",
+    "th": " คะแนน",
+    "en": " pt",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.0",
+    "th": "ก่อนข้อติด",
+    "en": "Pre-freezing",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.1",
+    "th": "เริ่มติด",
+    "en": "Freezing",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.2",
+    "th": "ข้อติด",
+    "en": "Frozen",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.3",
+    "th": "คลายตัว",
+    "en": "Thawing",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.0",
+    "th": "ระยะที่ 1",
+    "en": "Stage 1",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.1",
+    "th": "ระยะที่ 2",
+    "en": "Stage 2",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.2",
+    "th": "ระยะที่ 3",
+    "en": "Stage 3",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.3",
+    "th": "ระยะที่ 4",
+    "en": "Stage 4",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.0",
+    "th": "ระยะก่อนข้อติด",
+    "en": "Pre-freezing",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.1",
+    "th": "ระยะเริ่มติด",
+    "en": "Freezing",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.2",
+    "th": "ระยะข้อติด",
+    "en": "Frozen",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.3",
+    "th": "ระยะคลายตัว",
+    "en": "Thawing",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseMonths.0",
+    "th": "โดยทั่วไปเดือนที่ 1–3",
+    "en": "Typically months 1–3",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseMonths.1",
+    "th": "โดยทั่วไปเดือนที่ 4–9",
+    "en": "Typically months 4–9",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseMonths.2",
+    "th": "โดยทั่วไปเดือนที่ 10–14",
+    "en": "Typically months 10–14",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseMonths.3",
+    "th": "โดยทั่วไปเดือนที่ 15–24",
+    "en": "Typically months 15–24",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseHeadline.0",
+    "th": "รักษาพิสัยการเคลื่อนไหวที่ยังมีอยู่",
+    "en": "Keep the range you still have",
+    "uiContext": "Home — Roadmap, Stage 1 — Pre-freezing",
+    "class": "education"
+  },
+  {
+    "key": "phaseHeadline.1",
+    "th": "ควบคุมความปวด และรักษาการเคลื่อนไหวไว้",
+    "en": "Control the pain, protect the movement",
+    "uiContext": "Home — Roadmap, Stage 2 — Freezing",
+    "class": "education"
+  },
+  {
+    "key": "phaseHeadline.2",
+    "th": "ความปวดเริ่มลดลง ถึงเวลาจัดการกับข้อที่ติด",
+    "en": "Pain is settling — now work on the stiffness",
+    "uiContext": "Home — Roadmap, Stage 3 — Frozen",
+    "class": "education"
+  },
+  {
+    "key": "phaseHeadline.3",
+    "th": "การเคลื่อนไหวกำลังกลับมา ถึงเวลาสร้างพิสัยและความแข็งแรง",
+    "en": "Movement is returning — rebuild range and strength",
+    "uiContext": "Home — Roadmap, Stage 4 — Thawing",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.0",
+    "th": "ไหล่เริ่มรู้สึกเมื่อย ปวดตื้อ ๆ และติดเล็กน้อย ความปวดอยู่ในระดับเล็กน้อยถึงปานกลาง มักปวดมากขึ้นตอนกลางคืนหรือเมื่อเอื้อมไปบางทิศทาง พิสัยการเคลื่อนไหวยังใกล้เคียงปกติ แต่รู้สึกไหล่ไวต่อการกระตุ้น การขยับเบา ๆ อย่างสม่ำเสมอในช่วงนี้คือสิ่งที่ดีที่สุดที่ทำได้",
+    "en": "The shoulder is sore, achy and a little stiff. Pain is mild to moderate and often worse at night or reaching in certain directions. Range of motion is still mostly normal, but the shoulder feels touchy. Moving it gently and often now is the best thing you can do.",
+    "uiContext": "Home — Roadmap, Stage 1 — Pre-freezing",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.1",
+    "th": "เยื่อหุ้มข้อกำลังอักเสบและเริ่มหนาตัวขึ้น ความปวดรุนแรงขึ้นมาก โดยเฉพาะเวลาขยับและตอนกลางคืน อาการติดเพิ่มขึ้นอย่างรวดเร็ว อย่าฝืนไหล่ในช่วงนี้ ให้ควบคุมความปวดก่อน และรักษาพิสัยที่ยังมีอยู่ไว้",
+    "en": "The capsule around the joint is inflamed and beginning to thicken. Pain is much more severe, especially on movement and at night, and stiffness is increasing quickly. Do not try to force the shoulder. Control the pain first, and keep the movement you have.",
+    "uiContext": "Home — Roadmap, Stage 2 — Freezing",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.2",
+    "th": "การอักเสบเริ่มสงบลง แต่เยื่อหุ้มข้อตึงมากและข้อรู้สึกเหมือนติดแน่น ความปวดมักลดลงและจะรู้สึกเมื่อพยายามฝืนไปจนสุดพิสัย อาการติดรุนแรงที่สุดในระยะนี้ โดยเฉพาะการกางแขน ยกขึ้น และเอื้อมไพล่หลัง ระยะนี้คือช่วงที่การยืดอย่างสม่ำเสมอและใจเย็นได้ผลมากที่สุด",
+    "en": "The inflammation is quietening down but the capsule is now tight, and the joint feels stuck. Pain often eases and is felt mainly when you push to the limit. Stiffness is at its worst, particularly reaching out, up, and behind your back. This is the stage where patient, regular stretching earns its keep.",
+    "uiContext": "Home — Roadmap, Stage 3 — Frozen",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.3",
+    "th": "เยื่อหุ้มข้อเริ่มคลายตัว การเคลื่อนไหวและความยืดหยุ่นค่อย ๆ กลับมา และความปวดลดลงเรื่อย ๆ ผู้ป่วยส่วนใหญ่ดีขึ้นมาก แม้บางคนอาจยังมีอาการติดเล็กน้อยหรือปวดเป็นครั้งคราว การฝึกอย่างสม่ำเสมอคือสิ่งที่ทำให้พิสัยที่ได้มากลายเป็นพิสัยที่อยู่กับเราถาวร",
+    "en": "The capsule is starting to loosen. Movement and flexibility come back gradually and pain continues to fade. Most people regain a great deal, though some keep a little stiffness or occasional ache. Regular practice is what turns range you have borrowed into range you keep.",
+    "uiContext": "Home — Roadmap, Stage 4 — Thawing",
+    "class": "education"
+  },
+  {
+    "key": "phaseWhatLabel",
+    "th": "เกิดอะไรขึ้นในระยะนี้",
+    "en": "What is happening",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseSymptomsLabel",
+    "th": "อาการที่อาจพบ",
+    "en": "What you may notice",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWhat.0",
+    "th": "ไหล่เริ่มรู้สึกเมื่อย ปวดตื้อ ๆ และติดเล็กน้อย",
+    "en": "The shoulder starts to feel sore, achy and slightly stiff.",
+    "uiContext": "Home — Roadmap, Stage 1 — Pre-freezing",
+    "class": "education"
+  },
+  {
+    "key": "phaseWhat.1",
+    "th": "เยื่อหุ้มข้ออักเสบมาก ระคายเคือง และเริ่มหนาตัวขึ้น",
+    "en": "The joint capsule becomes heavily inflamed, irritated, and starts to thicken.",
+    "uiContext": "Home — Roadmap, Stage 2 — Freezing",
+    "class": "education"
+  },
+  {
+    "key": "phaseWhat.2",
+    "th": "การอักเสบลดลง แต่เยื่อหุ้มข้อตึงมากที่สุด และข้อรู้สึกเหมือนติดแน่น",
+    "en": "Active inflammation decreases, but capsular stiffness peaks and the joint feels stuck.",
+    "uiContext": "Home — Roadmap, Stage 3 — Frozen",
+    "class": "education"
+  },
+  {
+    "key": "phaseWhat.3",
+    "th": "เยื่อหุ้มข้อที่ตึงเริ่มคลายตัวและผ่อนลง",
+    "en": "The tight joint capsule finally begins to relax and loosen.",
+    "uiContext": "Home — Roadmap, Stage 4 — Thawing",
+    "class": "education"
+  },
+  {
+    "key": "phaseSymptoms.0",
+    "th": "ปวดเล็กน้อยถึงปานกลาง มักปวดมากขึ้นตอนกลางคืนหรือเมื่อเอื้อมไปบางทิศทาง พิสัยการเคลื่อนไหวยังใกล้เคียงปกติแต่รู้สึกไว",
+    "en": "Mild to moderate pain, often worse at night or reaching in certain directions. Range of motion is still mostly normal but feels touchy.",
+    "uiContext": "Home — Roadmap, Stage 1 — Pre-freezing",
+    "class": "education"
+  },
+  {
+    "key": "phaseSymptoms.1",
+    "th": "ปวดรุนแรงขึ้นมาก โดยเฉพาะเวลาขยับและตอนกลางคืน อาการติดเพิ่มขึ้นเร็ว ทำให้กิจวัตรประจำวันลำบาก",
+    "en": "Pain is much more severe, especially with movement and at night. Stiffness increases rapidly and daily tasks become difficult.",
+    "uiContext": "Home — Roadmap, Stage 2 — Freezing",
+    "class": "education"
+  },
+  {
+    "key": "phaseSymptoms.2",
+    "th": "ความปวดมักลดลง และจะปวดเมื่อพยายามฝืนไปจนสุดพิสัย อาการติดรุนแรงที่สุด ทำให้กางแขน ยกขึ้น และเอื้อมไพล่หลังได้จำกัดมาก",
+    "en": "Pain often lessens and aches mainly when you push past your limit. Stiffness is at its maximum, restricting reaching out, up, and behind your back.",
+    "uiContext": "Home — Roadmap, Stage 3 — Frozen",
+    "class": "education"
+  },
+  {
+    "key": "phaseSymptoms.3",
+    "th": "การเคลื่อนไหวและความยืดหยุ่นค่อย ๆ กลับมา ความปวดลดลง ผู้ป่วยส่วนใหญ่ฟื้นตัวได้ดี แม้ส่วนน้อยอาจยังมีอาการติดหรือปวดเล็กน้อยในระยะยาว",
+    "en": "Movement and flexibility return gradually and pain fades. Most people recover well, though a minority keep some stiffness or mild ache long term.",
+    "uiContext": "Home — Roadmap, Stage 4 — Thawing",
+    "class": "education"
+  },
+  {
+    "key": "phaseTimingNote",
+    "th": "ระยะของคุณกำหนดจากช่วงเดือนเหล่านี้ นับจากวันที่เริ่มมีอาการ หากไม่ได้ระบุวันเริ่มมีอาการ จะใช้อาการของคุณเป็นตัวกำหนดแทน ระยะเวลาการฟื้นตัวของคุณอาจแตกต่างจากรูปแบบนี้และแตกต่างจากผู้ป่วยรายอื่น",
+    "en": "Your stage is set from these months, counted from when your symptoms started. Without an onset date, your symptoms decide it instead. Your own recovery time may differ from this pattern and from other patients.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "monthsTypicalPrefix",
+    "th": "คุณอยู่ในเดือนที่ ",
+    "en": "you are in month ",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "stagesCardTitle",
+    "th": "4 ระยะของภาวะข้อไหล่ติด",
+    "en": "The four stages of frozen shoulder",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "stagesCardIntro",
+    "th": "ภาวะข้อไหล่ติดมักดำเนินไปตามรูปแบบที่พอคาดเดาได้",
+    "en": "Frozen shoulder usually follows a recognisable course.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "stagesCardOutcome",
+    "th": "ผู้ป่วยส่วนใหญ่ดีขึ้นมาก ปัญหารุนแรงระยะยาวพบได้ไม่บ่อย บางรายอาจมีอาการติดเล็กน้อยหลงเหลือแต่มักไม่รบกวนชีวิตประจำวัน สอบถามแพทย์เพื่อทราบแนวโน้มของคุณ",
+    "en": "Most people improve a great deal; serious long-term problems are uncommon. A little stiffness sometimes remains but rarely limits daily life. Ask your doctor what to expect in your case.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "stageYouAreHere",
+    "th": "คุณอยู่ระยะนี้",
+    "en": "you are here",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "recoveredChip",
+    "th": "ฟื้นตัวแล้ว",
+    "en": "Recovered",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "recoveredDesc",
+    "th": "การเคลื่อนไหวของคุณกลับมาเป็นปกติและความปวดเหลือน้อยมาก ให้คงท่าบริหารสั้น ๆ ไว้อย่างสม่ำเสมอ เพื่อไม่ให้อาการติดกลับมาอีก",
+    "en": "Your movement is back to normal and your pain is minimal. Keep a short maintenance routine going so the stiffness does not creep back.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "noBaselineChip",
+    "th": "ทำแบบประเมินครั้งแรก",
+    "en": "Complete your first assessment",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "noBaselineDesc",
+    "th": "กด \"อัปเดตการประเมินของฉัน\" เพื่อให้แอปแสดงโปรแกรมที่เหมาะกับอาการของคุณในวันนี้",
+    "en": "Tap \"Update my assessment\" so the app can show the right programme for where you are today.",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "exPhaseDefTitle",
+    "th": "ระยะนี้มีไว้เพื่ออะไร",
+    "en": "What this stage is for",
+    "uiContext": "Exercises",
+    "class": "ui"
+  },
+  {
+    "key": "exCaution",
+    "th": "ยืดจนรู้สึกตึง ไม่ใช่จนปวด ถ้าเช้าวันถัดไปยังแย่กว่าเดิม แสดงว่าทำมากเกินไป",
+    "en": "Stretch to tension, not to pain. If it is still worse the next morning, you went too far.",
+    "uiContext": "Exercises",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_1.name",
+    "th": "แกว่งแขนแบบลูกตุ้ม",
+    "en": "Pendulum swing",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.p1_1.dose",
+    "th": "10 ครั้งต่อทิศทาง",
+    "en": "10 each direction",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_1.desc",
+    "th": "โน้มตัวไปข้างหน้าและปล่อยแขนห้อยให้ผ่อนคลายเต็มที่ แกว่งเป็นวงกลมเล็ก ๆ แล้วแกว่งหน้า-หลังเบา ๆ",
+    "en": "Lean forward and let the arm hang completely loose. Small circles, then small forward-and-back swings.",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_1.cue",
+    "th": "ถ้ารู้สึกว่าไหล่ต้องออกแรง แสดงว่าแกว่งกว้างเกินไป",
+    "en": "If your shoulder is working, you are doing it too big.",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_2.name",
+    "th": "ไต่นิ้วขึ้นผนัง",
+    "en": "Finger walk up the wall",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.p1_2.dose",
+    "th": "5 ครั้ง ช้า ๆ",
+    "en": "5 slow reps",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_2.desc",
+    "th": "หันหน้าเข้าผนัง ไต่นิ้วขึ้นไปจนรู้สึกตึง ค้างไว้ แล้วไต่กลับลงมา",
+    "en": "Face the wall and walk your fingers upward until you feel a stretch. Hold, then walk back down.",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_2.cue",
+    "th": "หยุดที่ความตึง ไม่ใช่ที่ความปวด",
+    "en": "Stop at a stretch, not at a sting.",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_3.name",
+    "th": "หมุนแขนออกโดยมีตัวช่วย",
+    "en": "Assisted outward rotation",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.p1_3.dose",
+    "th": "8 ครั้ง ค้าง 5 วินาที",
+    "en": "8 reps, hold 5 sec",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_3.desc",
+    "th": "หนีบข้อศอกไว้ข้างลำตัวและงอ 90 องศา ใช้ไม้หรือมือข้างที่ดีช่วยหมุนแขนออกด้านนอก",
+    "en": "Elbow tucked at your side and bent to 90°. Use a stick or your other hand to turn the forearm outward.",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_3.cue",
+    "th": "ข้อศอกต้องแนบชายโครงตลอดเวลา",
+    "en": "The elbow stays against your ribs the whole time.",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_4.name",
+    "th": "จัดตำแหน่งสะบัก",
+    "en": "Shoulder-blade setting",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.p1_4.dose",
+    "th": "10 ครั้ง",
+    "en": "10 reps",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_4.desc",
+    "th": "ค่อย ๆ ดึงสะบักไปด้านหลังและลงล่าง ขยับเล็กน้อย ไม่ยักไหล่",
+    "en": "Gently draw the shoulder blades back and down. Small movement, no shrugging.",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.p1_4.cue",
+    "th": "คอต้องผ่อนคลายอยู่ตลอด",
+    "en": "Your neck should stay relaxed.",
+    "uiContext": "Exercises — Stage 1 — Pre-freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_1.name",
+    "th": "ไถแขนขึ้นผนัง",
+    "en": "Wall slide",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p2_1.dose",
+    "th": "8 ครั้ง",
+    "en": "8 reps",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_1.desc",
+    "th": "วางท่อนแขนบนผนัง ไถขึ้นไปให้สูงที่สุดเท่าที่ยังสบาย จดจุดสูงสุดที่ทำได้",
+    "en": "Forearm on the wall, slide it upward as far as is comfortable. Note the highest point you reach.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_1.cue",
+    "th": "จดความสูงที่ดีที่สุด เป็นสัญญาณความก้าวหน้าที่ชัดที่สุด",
+    "en": "Log your best height — it is the clearest sign of progress.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_2.name",
+    "th": "ยกแขนเหนือศีรษะโดยมีตัวช่วย",
+    "en": "Assisted overhead reach",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p2_2.dose",
+    "th": "8 ครั้ง ค้าง 10 วินาที",
+    "en": "8 reps, hold 10 sec",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_2.desc",
+    "th": "จับไม้ด้วยมือทั้งสองข้าง ใช้แขนข้างที่ดีดันแขนข้างที่ติดขึ้นไป",
+    "en": "Hold a stick with both hands and use the good arm to push the stiff arm upward.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_2.cue",
+    "th": "หายใจออกขณะดันเข้าสู่ช่วงที่ตึง",
+    "en": "Breathe out as you move into the stretch.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_3.name",
+    "th": "ยืดหมุนแขนออก",
+    "en": "Outward rotation stretch",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p2_3.dose",
+    "th": "5 ครั้ง ค้าง 20 วินาที",
+    "en": "5 reps, hold 20 sec",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_3.desc",
+    "th": "ประคองข้อศอกไว้ข้างลำตัว หมุนแขนออกและค้างไว้ที่ปลายพิสัยที่ยังสบาย",
+    "en": "Elbow supported at your side, rotate outward and hold at the end of the comfortable range.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_3.cue",
+    "th": "ท่านี้มักติดนานที่สุด ต้องใจเย็น",
+    "en": "This is the movement that stays stuck longest. Be patient with it.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_4.name",
+    "th": "ยืดแขนข้ามลำตัว",
+    "en": "Cross-body stretch",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p2_4.dose",
+    "th": "5 ครั้ง ค้าง 20 วินาที",
+    "en": "5 reps, hold 20 sec",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_4.desc",
+    "th": "นำแขนพาดข้ามหน้าอก ใช้มืออีกข้างประคองเหนือข้อศอก",
+    "en": "Bring the arm across your chest, supporting it with the other hand above the elbow.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_4.cue",
+    "th": "ดึงที่ต้นแขน ห้ามดึงที่ข้อมือ",
+    "en": "Pull at the upper arm, never at the wrist.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_5.name",
+    "th": "ยืดด้วยผ้าขนหนูไพล่หลัง",
+    "en": "Towel stretch behind the back",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p2_5.dose",
+    "th": "6 ครั้ง ค้าง 10 วินาที",
+    "en": "6 reps, hold 10 sec",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_5.desc",
+    "th": "พาดผ้าขนหนูข้ามไหล่ข้างที่ดี ใช้แขนข้างที่ติดจับปลายล่างแล้วค่อย ๆ ดึงขึ้น",
+    "en": "Towel over the good shoulder. Grip the low end with the stiff arm and gently pull it upward.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p2_5.cue",
+    "th": "ท่านี้คือท่าที่ทำให้คุณกลับมาใส่เสื้อแขนยาวได้",
+    "en": "This is what gets you back into a jacket.",
+    "uiContext": "Exercises — Stage 2 — Freezing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_1.name",
+    "th": "หมุนแขนออกด้วยยางยืด",
+    "en": "Band outward rotation",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p3_1.dose",
+    "th": "2 เซต เซตละ 12 ครั้ง",
+    "en": "2 sets of 12",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_1.desc",
+    "th": "ยึดยางยืดระดับเอว ข้อศอกแนบลำตัว หมุนท่อนแขนออกต้านยางยืด",
+    "en": "Band anchored at waist height, elbow at your side, rotate the forearm outward against the band.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_1.cue",
+    "th": "ความแข็งแรงเกิดจากการผ่อนกลับอย่างช้า ๆ",
+    "en": "Slow on the way back is where the strength comes from.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_2.name",
+    "th": "หมุนแขนเข้าด้วยยางยืด",
+    "en": "Band inward rotation",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p3_2.dose",
+    "th": "2 เซต เซตละ 12 ครั้ง",
+    "en": "2 sets of 12",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_2.desc",
+    "th": "ท่าตั้งต้นเหมือนเดิม แต่หมุนท่อนแขนเข้าหาหน้าท้อง",
+    "en": "Same setup, rotating the forearm in toward your stomach.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_2.cue",
+    "th": "ถ้าข้อศอกเลื่อนออก ให้หนีบผ้าขนหนูม้วนไว้",
+    "en": "Keep a rolled towel under the elbow if it drifts.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_3.name",
+    "th": "ดึงยางยืดเข้าหาลำตัว",
+    "en": "Band row",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p3_3.dose",
+    "th": "2 เซต เซตละ 12 ครั้ง",
+    "en": "2 sets of 12",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_3.desc",
+    "th": "ดึงข้อศอกทั้งสองข้างไปด้านหลังเลยชายโครง พร้อมบีบสะบักเข้าหากัน",
+    "en": "Pull both elbows back past your ribs, squeezing the shoulder blades together.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_3.cue",
+    "th": "นำด้วยข้อศอก ไม่ใช่มือ",
+    "en": "Lead with the elbows, not the hands.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_4.name",
+    "th": "ยกแขนไปข้างหน้าแบบเบา",
+    "en": "Light forward raise",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p3_4.dose",
+    "th": "2 เซต เซตละ 10 ครั้ง",
+    "en": "2 sets of 10",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_4.desc",
+    "th": "ใช้น้ำหนักเบาหรือไม่ใช้เลย ยกแขนไปข้างหน้าถึงระดับไหล่แล้วค่อย ๆ ลดลง",
+    "en": "Light weight or no weight. Raise the arm forward to shoulder height and lower slowly.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_4.cue",
+    "th": "เพิ่มน้ำหนักเมื่อทำได้สบายโดยไม่ต้องยักไหล่",
+    "en": "Add weight only once this is easy without a shrug.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_5.name",
+    "th": "ถือของเดิน",
+    "en": "Loaded carry",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p3_5.dose",
+    "th": "3 ครั้ง ครั้งละ 30 วินาที",
+    "en": "3 x 30 sec",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_5.desc",
+    "th": "ถือกระเป๋าหรือน้ำหนักไว้ข้างลำตัว เดินตัวตรง",
+    "en": "Carry a bag or weight at your side, walking tall.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p3_5.cue",
+    "th": "เป็นท่าสร้างความแข็งแรงที่ใช้ได้จริงที่สุด",
+    "en": "The most useful strength exercise there is.",
+    "uiContext": "Exercises — Stage 3 — Frozen",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p4_1.name",
+    "th": "ระดับ 1 — ดูแลตัวเอง",
+    "en": "Level 1 — self-care",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p4_1.dose",
+    "th": "ทุกวัน",
+    "en": "Daily",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p4_1.desc",
+    "th": "ใส่เสื้อ ล้างหน้า หวีผม โดยไม่ต้องวางแผนหลบไหล่",
+    "en": "Put on a shirt, wash your face, comb your hair — without planning around the shoulder.",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p4_2.name",
+    "th": "ระดับ 2 — เอื้อมในชีวิตประจำวัน",
+    "en": "Level 2 — everyday reach",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p4_2.dose",
+    "th": "ทุกวัน",
+    "en": "Daily",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p4_2.desc",
+    "th": "หยิบของบนชั้นสูง คาดเข็มขัดนิรภัย เอื้อมไพล่หลัง",
+    "en": "Reach a shelf, put on a seatbelt, reach behind your back.",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p4_3.name",
+    "th": "ระดับ 3 — ลงน้ำหนัก",
+    "en": "Level 3 — load",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p4_3.dose",
+    "th": "สัปดาห์ละ 3 ครั้ง",
+    "en": "3 times a week",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p4_3.desc",
+    "th": "ถือกระเป๋าที่มีของเต็ม ยกของเหนือศีรษะ ออกกำลังกายแบบมีแรงต้าน",
+    "en": "Carry a full bag, lift overhead, do resistance work.",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p4_4.name",
+    "th": "ระดับ 4 — ชีวิตของคุณ",
+    "en": "Level 4 — your life",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p4_4.dose",
+    "th": "เหมือนเดิม",
+    "en": "As before",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p4_4.desc",
+    "th": "กลับไปเข้ายิม เล่นกีฬา หรือทำสิ่งที่งานของคุณต้องใช้ไหล่",
+    "en": "Back to the gym, the sport, or the specific thing your job asks of your shoulder.",
+    "uiContext": "Exercises — Stage 4 — Thawing",
+    "class": "instruction"
+  },
+  {
+    "key": "zoneTitle",
+    "th": "ควรรู้สึกหนักแค่ไหน",
+    "en": "How hard should it feel?",
+    "uiContext": "Exercises",
+    "class": "ui"
+  },
+  {
+    "key": "zones.0.0",
+    "th": "g",
+    "en": "g",
+    "uiContext": "Exercises — how hard should it feel",
+    "class": "instruction"
+  },
+  {
+    "key": "zones.0.1",
+    "th": "เขียว",
+    "en": "Green",
+    "uiContext": "Exercises — how hard should it feel",
+    "class": "instruction"
+  },
+  {
+    "key": "zones.0.2",
+    "th": "<b>รู้สึกตึงแบบถูกยืด</b> ทำต่อได้ นี่คือเป้าหมาย",
+    "en": "<b>A pulling stretch.</b> Keep going — this is the target.",
+    "uiContext": "Exercises — how hard should it feel",
+    "class": "instruction"
+  },
+  {
+    "key": "zones.1.0",
+    "th": "y",
+    "en": "y",
+    "uiContext": "Exercises — how hard should it feel",
+    "class": "instruction"
+  },
+  {
+    "key": "zones.1.1",
+    "th": "เหลือง",
+    "en": "Yellow",
+    "uiContext": "Exercises — how hard should it feel",
+    "class": "instruction"
+  },
+  {
+    "key": "zones.1.2",
+    "th": "<b>รู้สึกไม่สบายปานกลาง</b> ลดพิสัยหรือจำนวนครั้งลง แต่ยังขยับต่อ",
+    "en": "<b>Moderate discomfort.</b> Reduce the range or the number of repetitions, but keep moving.",
+    "uiContext": "Exercises — how hard should it feel",
+    "class": "instruction"
+  },
+  {
+    "key": "zones.2.0",
+    "th": "r",
+    "en": "r",
+    "uiContext": "Exercises — how hard should it feel",
+    "class": "instruction"
+  },
+  {
+    "key": "zones.2.1",
+    "th": "แดง",
+    "en": "Red",
+    "uiContext": "Exercises — how hard should it feel",
+    "class": "instruction"
+  },
+  {
+    "key": "zones.2.2",
+    "th": "<b>ปวดแปลบหรือปวดรุนแรง หรือปวดค้างแย่ลงมากหลังทำ</b> หยุดและปรับสิ่งที่กำลังทำอยู่",
+    "en": "<b>Sharp or severe pain, or pain that stays much worse afterwards.</b> Stop and change what you are doing.",
+    "uiContext": "Exercises — how hard should it feel",
+    "class": "instruction"
+  },
+  {
+    "key": "measureTitles.0",
+    "th": "ความปวดและการใช้งาน",
+    "en": "Pain and function",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "measureTitles.1",
+    "th": "การเคลื่อนไหว",
+    "en": "Movement",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "measureTitles.2",
+    "th": "กำลังและความพึงพอใจ",
+    "en": "Strength and satisfaction",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "measureLeads.0",
+    "th": "สองคำถามนี้มีน้ำหนักมากที่สุดในคะแนน UCLA เลือกข้อที่ตรงกับคุณมากที่สุด",
+    "en": "These two questions carry the most weight in the UCLA score. Pick the line that fits you best.",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "measureLeads.1",
+    "th": "ลากส่วนโค้งไปยังจุดไกลที่สุดที่คุณเอื้อมได้โดยไม่ปวดแปลบ ข้อที่นำไปคิดคะแนนคือการยกแขนไปข้างหน้า",
+    "en": "Drag each arc to the furthest point you can reach without sharp pain. Forward flexion is the one that scores.",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "measureLeads.2",
+    "th": "อีกสองคำถามก็จะได้คะแนนครบ",
+    "en": "Two last questions and your score is complete.",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "moves.flexion.name",
+    "th": "เอื้อมไปข้างหน้าและขึ้นบน",
+    "en": "Reach forward and up",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "moves.abduction.name",
+    "th": "กางแขนออกด้านข้าง",
+    "en": "Reach out to the side",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "moves.er.name",
+    "th": "หมุนแขนออกด้านนอก",
+    "en": "Rotate outward",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "moves.ir.name",
+    "th": "เอื้อมไพล่หลัง",
+    "en": "Reach behind your back",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "irLandmarks.0",
+    "th": "ต้นขาด้านนอก",
+    "en": "Outer thigh",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "irLandmarks.1",
+    "th": "สะโพก",
+    "en": "Buttock",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "irLandmarks.2",
+    "th": "กระเป๋ากางเกงหลัง",
+    "en": "Back pocket",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "irLandmarks.3",
+    "th": "กระเบนเหน็บ",
+    "en": "Sacrum",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "irLandmarks.4",
+    "th": "ขอบเอว",
+    "en": "Waistband",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "irLandmarks.5",
+    "th": "หลังส่วนล่าง",
+    "en": "Low back",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "irLandmarks.6",
+    "th": "กลางหลัง",
+    "en": "Mid back",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "irLandmarks.7",
+    "th": "สะบัก",
+    "en": "Shoulder blade",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "irLandmarks.8",
+    "th": "ระหว่างสะบัก",
+    "en": "Between blades",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "measureNext",
+    "th": "ถัดไป",
+    "en": "Next",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "measureFinish",
+    "th": "บันทึกผลการประเมิน",
+    "en": "Save my assessment",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "measureBack",
+    "th": "ย้อนกลับ",
+    "en": "Back",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "measureCancel",
+    "th": "ปิดโดยไม่บันทึก",
+    "en": "Close without saving",
+    "uiContext": "Monthly assessment (UCLA + ROM)",
+    "class": "ui"
+  },
+  {
+    "key": "progNoData",
+    "th": "ยังไม่มีผลการประเมิน",
+    "en": "No assessment yet",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "progNoDataBody",
+    "th": "ทำแบบประเมินครั้งแรก แล้วหน้านี้จะแสดงกราฟของแต่ละตัวชี้วัดตามการเปลี่ยนแปลง",
+    "en": "Complete your first assessment and this page will graph every parameter as it changes.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "progStartBtn",
+    "th": "เริ่มทำแบบประเมิน",
+    "en": "Start my assessment",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "progCount",
+    "th": "บันทึกผลการประเมินแล้ว {n} ครั้ง",
+    "en": "{n} assessments recorded",
+    "uiContext": "Progress",
+    "class": "dynamic"
+  },
+  {
+    "key": "progFooter",
+    "th": "ไหล่ของคุณจะไม่ดีขึ้นทุกวัน ให้มองความก้าวหน้าเป็นรายสัปดาห์",
+    "en": "Your shoulder will not improve every day. Look for progress across weeks.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "chartEmpty",
+    "th": "เมื่อมีข้อมูลอีกหนึ่งครั้ง กราฟนี้จะปรากฏขึ้น ภาวะข้อไหล่ติดเปลี่ยนแปลงเป็นรายสัปดาห์ ไม่ใช่รายวัน",
+    "en": "One more entry and this graph appears. Frozen shoulder moves week to week, not day to day.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.total.title",
+    "th": "คะแนน UCLA รวม",
+    "en": "UCLA total",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.total.sub",
+    "th": "เต็ม 35 — ตัวเลขหลัก",
+    "en": "out of 35 — the headline number",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.pain.title",
+    "th": "ความปวด",
+    "en": "Pain",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.pain.sub",
+    "th": "หมวดความปวดของ UCLA เต็ม 10 — ยิ่งสูงยิ่งดี",
+    "en": "0–10, higher is better",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.func.title",
+    "th": "การใช้งาน",
+    "en": "Function",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.func.sub",
+    "th": "หมวดการใช้งานของ UCLA เต็ม 10 — ยิ่งสูงยิ่งดี",
+    "en": "0–10, higher is better",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.flexdeg.title",
+    "th": "ยกแขนไปข้างหน้า",
+    "en": "Forward elevation",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.flexdeg.sub",
+    "th": "องศาที่ยกแขนขึ้นได้",
+    "en": "degrees you can raise the arm",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.abduction.title",
+    "th": "กางแขน",
+    "en": "Abduction",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.abduction.sub",
+    "th": "องศาที่กางออกด้านข้างได้",
+    "en": "degrees out to the side",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.er.title",
+    "th": "หมุนออก",
+    "en": "External rotation",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.er.sub",
+    "th": "องศา — มักเป็นทิศทางที่กลับมาช้าที่สุด",
+    "en": "degrees — usually the last to return",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.ir.title",
+    "th": "หมุนเข้า",
+    "en": "Internal rotation",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.ir.sub",
+    "th": "เอื้อมขึ้นหลังได้สูงแค่ไหน",
+    "en": "how far up your back you can reach",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.strength.title",
+    "th": "กำลัง",
+    "en": "Strength",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "charts.strength.sub",
+    "th": "เกรดกำลังกล้ามเนื้อ 0 ถึง 5",
+    "en": "manual muscle grade, 0 to 5",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "deltaSince",
+    "th": "ตั้งแต่เริ่ม",
+    "en": "since you started",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "chartUp",
+    "th": "เพิ่มขึ้น <b>{d}</b> จาก <b>{a}</b> เป็น <b>{b}</b> ถือว่าดีขึ้น",
+    "en": "Up <b>{d}</b> — from <b>{a}</b> to <b>{b}</b>. That is progress.",
+    "uiContext": "Progress",
+    "class": "dynamic"
+  },
+  {
+    "key": "chartDown",
+    "th": "ลดลงจาก <b>{a}</b> เหลือ <b>{b}</b> ควรแจ้งแพทย์ในการนัดถัดไป",
+    "en": "Down — from <b>{a}</b> to <b>{b}</b>. Mention this at your next visit.",
+    "uiContext": "Progress",
+    "class": "dynamic"
+  },
+  {
+    "key": "chartFlat",
+    "th": "คงที่ที่ <b>{b}</b>",
+    "en": "Unchanged at <b>{b}</b>.",
+    "uiContext": "Progress",
+    "class": "dynamic"
+  },
+  {
+    "key": "chartNeedTwo",
+    "th": "เมื่อมีผลประเมินสองครั้ง กราฟนี้จะปรากฏขึ้น",
+    "en": "Two assessments and this graph appears.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "mediaWatch",
+    "th": "ดูวิดีโอ",
+    "en": "Watch the video",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "sleepTitle",
+    "th": "การนอนเมื่อมีภาวะข้อไหล่ติด",
+    "en": "Sleeping With a Frozen Shoulder",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleepIntro",
+    "th": "สำหรับคนส่วนใหญ่ ความปวดตอนกลางคืนคือส่วนที่ยากที่สุดของระยะปวด ท่าเหล่านี้ช่วยได้ระหว่างรออาการสงบ",
+    "en": "Night pain is the hardest part of the painful stage for most people. These positions help while it settles.",
+    "uiContext": "Sleep",
+    "class": "education"
+  },
+  {
+    "key": "sleep.0.title",
+    "th": "นอนหงาย มีหมอนรองแขน",
+    "en": "On your back, arm supported",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.0.desc",
+    "th": "นอนหงายและวางหมอนรองใต้ท่อนแขนข้างที่มีอาการ เพื่อไม่ให้แขนห้อยหรือตกไปด้านหลัง",
+    "en": "Lie on your back with a pillow under the affected forearm so the arm is not hanging or dropping backwards.",
+    "uiContext": "Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "sleep.1.title",
+    "th": "นอนตะแคงข้างที่ดี กอดหมอน",
+    "en": "On the good side, hugging a pillow",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.1.desc",
+    "th": "นอนตะแคงทับข้างที่ไม่มีอาการ และวางแขนข้างที่ปวดไว้บนหมอนด้านหน้าระดับอก",
+    "en": "Lie on the unaffected side and rest the sore arm forward on a pillow at chest height.",
+    "uiContext": "Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "sleep.2.title",
+    "th": "นอนหนุนสูง",
+    "en": "Propped up",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.2.desc",
+    "th": "เก้าอี้ปรับเอนหรือหมอนหนุนเป็นชั้น ๆ มักปวดน้อยกว่านอนราบในระยะที่ปวดมาก",
+    "en": "A recliner or a wedge of pillows often hurts less than lying flat in the painful stage.",
+    "uiContext": "Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "sleep.3.title",
+    "th": "ถ้าอาการติดทำให้ตื่น",
+    "en": "If stiffness wakes you",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.3.desc",
+    "th": "ลองแกว่งแขนแบบลูกตุ้มเบา ๆ หรือขยับช้า ๆ ดีกว่านอนนิ่งรอให้หายเอง",
+    "en": "Do a few gentle pendulum swings or slow movements rather than lying still and waiting it out.",
+    "uiContext": "Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "sleep.4.title",
+    "th": "อย่านอนทับไหล่ข้างที่ปวด",
+    "en": "Do not lie on the painful shoulder",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.4.desc",
+    "th": "การกดทับไหล่ข้างที่มีอาการโดยตรงเป็นสาเหตุที่พบบ่อยที่สุดของการตื่นกลางดึก",
+    "en": "Direct pressure on the affected shoulder is the most common cause of night waking.",
+    "uiContext": "Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "selfcareTitle",
+    "th": "การดูแลตัวเองในชีวิตประจำวัน",
+    "en": "Everyday Self-Care",
+    "uiContext": "Self Care",
+    "class": "ui"
+  },
+  {
+    "key": "selfcareIntro",
+    "th": "วิธีง่าย ๆ ในการดูแลอาการและทำกิจวัตรประจำวันที่บ้าน",
+    "en": "Simple ways to manage daily tasks and symptoms at home.",
+    "uiContext": "Self Care",
+    "class": "education"
+  },
+  {
+    "key": "selfcare.0.title",
+    "th": "ประคบร้อนหรือเย็น",
+    "en": "Ice or Heat",
+    "uiContext": "Self Care",
+    "class": "ui"
+  },
+  {
+    "key": "selfcare.0.desc",
+    "th": "ใช้แผ่นประคบเย็นหรือแผ่นประคบร้อนห่อผ้าขนหนู นานไม่เกิน 20 นาที ช่วยลดอาการปวดเมื่อยกล้ามเนื้อ เลือกแบบที่รู้สึกสบายกว่าสำหรับคุณ",
+    "en": "An ice pack or a warm pad wrapped in a towel, up to 20 minutes, eases aching muscles — use whichever feels better for you.",
+    "uiContext": "Self Care",
+    "class": "instruction"
+  },
+  {
+    "key": "selfcare.1.title",
+    "th": "ขยับเบา ๆ อย่างสม่ำเสมอ",
+    "en": "Keep Moving, Gently",
+    "uiContext": "Self Care",
+    "class": "ui"
+  },
+  {
+    "key": "selfcare.1.desc",
+    "th": "การหยุดขยับแขนไปเลยจะทำให้ข้อติดมากขึ้น ยืดแค่พอตึงเบา ๆ หยุดทันทีถ้าปวดแปลบ และหลีกเลี่ยงการเอื้อมหรือกระตุกแขนแรง ๆ",
+    "en": "Stopping all movement makes stiffness worse. Stretch to a mild pull, stop at the first sign of sharp pain, and avoid sudden or jerky reaches.",
+    "uiContext": "Self Care",
+    "class": "instruction"
+  },
+  {
+    "key": "selfcare.2.title",
+    "th": "การแต่งตัว",
+    "en": "Getting Dressed",
+    "uiContext": "Self Care",
+    "class": "ui"
+  },
+  {
+    "key": "selfcare.2.desc",
+    "th": "ใส่เสื้อโดยสอดแขนข้างที่บาดเจ็บก่อน และถอดเสื้อโดยดึงแขนข้างที่บาดเจ็บออกเป็นลำดับสุดท้าย เลือกเสื้อหลวม ๆ เสื้อผ่าหน้า และรองเท้าแบบสวม จะช่วยให้ง่ายขึ้น",
+    "en": "Injured arm first when dressing, injured arm last when undressing. Loose tops, button-up shirts, and slip-on shoes make this easier.",
+    "uiContext": "Self Care",
+    "class": "instruction"
+  },
+  {
+    "key": "selfcare.3.title",
+    "th": "การอาบน้ำ",
+    "en": "Showering",
+    "uiContext": "Self Care",
+    "class": "ui"
+  },
+  {
+    "key": "selfcare.3.desc",
+    "th": "ใช้แขนข้างที่ดีในการฟอกและล้าง ปล่อยแขนข้างที่บาดเจ็บห้อยตามสบาย ใช้ฟองน้ำด้ามยาวช่วยเอื้อมถึงหลัง แล้วซับให้แห้งแทนการถู",
+    "en": "Wash and rinse with your good arm and let the injured one hang relaxed. A long-handled sponge reaches your back; pat dry rather than rubbing.",
+    "uiContext": "Self Care",
+    "class": "instruction"
+  },
+  {
+    "key": "sosTitle",
+    "th": "เมื่อไรควรขอความช่วยเหลือ",
+    "en": "When to Get Help",
+    "uiContext": "Alert",
+    "class": "ui"
+  },
+  {
+    "key": "sosSub",
+    "th": "หากคุณสังเกตเห็นอาการใดด้านล่างนี้ ให้ติดต่อทีมผู้ดูแลทันที",
+    "en": "If you notice any of the signs below, contact your care team right away.",
+    "uiContext": "Alert",
+    "class": "ui"
+  },
+  {
+    "key": "sosInfoNote",
+    "th": "ภาวะข้อไหล่ติดทำให้ปวดและใช้เวลานาน แต่ไม่ใช่ภาวะอันตราย อาการด้านล่างนี้ไม่ใช่รูปแบบปกติของโรค และอาจหมายถึงมีปัญหาอื่นเกิดขึ้น",
+    "en": "Frozen shoulder is painful and slow, but it is not dangerous. The signs below are not part of the usual pattern — they mean something else may be going on.",
+    "uiContext": "Alert",
+    "class": "education"
+  },
+  {
+    "key": "flagsHardLabel",
+    "th": "ควรมาพบแพทย์ก่อนนัด",
+    "en": "See your doctor before your next appointment",
+    "uiContext": "Alert — red flags",
+    "class": "ui"
+  },
+  {
+    "key": "flagsHard.0",
+    "th": "อ่อนแรงที่เพิ่งเกิดขึ้น แขนตกหรือยกไม่ขึ้น",
+    "en": "New weakness — the arm gives way or cannot lift",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "flagsHard.1",
+    "th": "มีไข้ ผิวแดง หรือบวมมากรอบข้อไหล่",
+    "en": "Fever, redness or marked swelling around the joint",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "flagsHard.2",
+    "th": "เพิ่งหกล้มหรือได้รับบาดเจ็บที่ไหล่",
+    "en": "A new fall or injury to the shoulder",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "escalateTitle",
+    "th": "สิ่งที่แพทย์อาจพิจารณาเพิ่มเติม",
+    "en": "What your doctor might add",
+    "uiContext": "Alert — what your doctor might add",
+    "class": "education"
+  },
+  {
+    "key": "escalateIntro",
+    "th": "การตัดสินใจของแพทย์ ไม่ใช่ตัวเลือกในแอป",
+    "en": "Decisions for your doctor, not choices made in the app.",
+    "uiContext": "Alert — what your doctor might add",
+    "class": "education"
+  },
+  {
+    "key": "escalate.0",
+    "th": "การฉีดยาเข้าข้อ เมื่อความปวดเป็นอุปสรรคต่อการทำกายภาพบำบัด",
+    "en": "An injection into the joint, when pain is the thing blocking rehabilitation",
+    "uiContext": "Alert — what your doctor might add",
+    "class": "education"
+  },
+  {
+    "key": "escalate.1",
+    "th": "การฉีดยาร่วมกับกายภาพบำบัด แทนการใช้อย่างใดอย่างหนึ่งเพียงอย่างเดียว",
+    "en": "Injection combined with physiotherapy rather than either on its own",
+    "uiContext": "Alert — what your doctor might add",
+    "class": "education"
+  },
+  {
+    "key": "escalate.2",
+    "th": "ทางเลือกยาฉีดชนิดอื่นในกรณีที่ไม่เหมาะกับสเตียรอยด์",
+    "en": "Other injectable options where a steroid is not suitable",
+    "uiContext": "Alert — what your doctor might add",
+    "class": "education"
+  },
+  {
+    "key": "escalateNoDose",
+    "th": "แอปนี้ไม่ให้คำแนะนำเรื่องยาหรือขนาดยา",
+    "en": "This app gives no medication or dosing advice.",
+    "uiContext": "Alert — what your doctor might add",
+    "class": "ui"
+  },
+  {
+    "key": "appDisclaimer",
+    "th": "แอปนี้ให้คำแนะนำทั่วไปเท่านั้น ไม่สามารถใช้แทนคำแนะนำจากแพทย์หรือนักกายภาพบำบัดของคุณได้ กรุณาปฏิบัติตามคำแนะนำของทีมผู้ดูแลเสมอ",
+    "en": "This app provides general guidance only and does not replace advice from your doctor or physiotherapist. Always follow the instructions given by your care team.",
+    "uiContext": "App shell — disclaimer",
+    "class": "ui"
+  },
+  {
+    "key": "callBtnPrefix",
+    "th": "โทร ",
+    "en": "Call ",
+    "uiContext": "Alert",
+    "class": "ui"
+  },
+  {
+    "key": "onboardTitle",
+    "th": "ยินดีต้อนรับ — มาตั้งค่าการฟื้นฟูของคุณกัน",
+    "en": "Welcome — let's set up your recovery",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardLead",
+    "th": "ภาวะข้อไหล่ติดดีขึ้นด้วยความเร็วที่ต่างกันในแต่ละคน แอปนี้จึงติดตามอาการของคุณ แทนที่จะใช้ตารางเวลาตายตัว",
+    "en": "Frozen shoulder improves at a different speed for everyone, so this app follows your symptoms rather than a fixed schedule.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardOnsetLabel",
+    "th": "อาการที่ไหล่เริ่มเมื่อไร",
+    "en": "When did the shoulder problem start?",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardOnsetHint",
+    "th": "ระบุเดือนและปีก็เพียงพอ ข้อมูลนี้ใช้เป็นบันทึกเท่านั้น ไม่ได้เป็นตัวกำหนดโปรแกรมของคุณ",
+    "en": "The month and year is enough. This is for your record only — it does not decide your programme.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardHNLabel",
+    "th": "เลขประจำตัวผู้ป่วย (HN)",
+    "en": "Hospital Number (HN)",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardHNHint",
+    "th": "ช่วยให้เจ้าหน้าที่ค้นหาเวชระเบียนของคุณได้เร็วขึ้น",
+    "en": "Helps hospital staff find your records quickly.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.0",
+    "th": "มกราคม",
+    "en": "January",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.1",
+    "th": "กุมภาพันธ์",
+    "en": "February",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.2",
+    "th": "มีนาคม",
+    "en": "March",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.3",
+    "th": "เมษายน",
+    "en": "April",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.4",
+    "th": "พฤษภาคม",
+    "en": "May",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.5",
+    "th": "มิถุนายน",
+    "en": "June",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.6",
+    "th": "กรกฎาคม",
+    "en": "July",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.7",
+    "th": "สิงหาคม",
+    "en": "August",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.8",
+    "th": "กันยายน",
+    "en": "September",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.9",
+    "th": "ตุลาคม",
+    "en": "October",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.10",
+    "th": "พฤศจิกายน",
+    "en": "November",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNames.11",
+    "th": "ธันวาคม",
+    "en": "December",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.0",
+    "th": "ม.ค.",
+    "en": "Jan",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.1",
+    "th": "ก.พ.",
+    "en": "Feb",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.2",
+    "th": "มี.ค.",
+    "en": "Mar",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.3",
+    "th": "เม.ย.",
+    "en": "Apr",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.4",
+    "th": "พ.ค.",
+    "en": "May",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.5",
+    "th": "มิ.ย.",
+    "en": "Jun",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.6",
+    "th": "ก.ค.",
+    "en": "Jul",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.7",
+    "th": "ส.ค.",
+    "en": "Aug",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.8",
+    "th": "ก.ย.",
+    "en": "Sep",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.9",
+    "th": "ต.ค.",
+    "en": "Oct",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.10",
+    "th": "พ.ย.",
+    "en": "Nov",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "monthNamesShort.11",
+    "th": "ธ.ค.",
+    "en": "Dec",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "selectMonth",
+    "th": "เดือน",
+    "en": "Month",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "selectYear",
+    "th": "ปี",
+    "en": "Year",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentTitle",
+    "th": "ความเป็นส่วนตัวของคุณ",
+    "en": "Your Privacy",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentText",
+    "th": "เมื่อดำเนินการต่อ ถือว่าคุณยินยอมให้บันทึก HN คะแนนไหล่ UCLA ประจำเดือน ผลการวัดการเคลื่อนไหว และความก้าวหน้าการออกกำลังกายของคุณ และแบ่งปันกับทีมผู้ดูแล ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล (PDPA) ข้อมูลนี้ใช้เพื่อแสดงความก้าวหน้าของอาการไหล่ และแนะนำการดูแลที่เหมาะสมกับคุณเท่านั้น ไม่ใช้เพื่อวัตถุประสงค์อื่น ข้อมูลถูกเก็บไว้ในเครื่องนี้ จึงควรใช้โทรศัพท์ของคุณเอง และกด “ล้างข้อมูลแอป” ก่อนให้ผู้อื่นใช้เครื่อง",
+    "en": "By continuing, you agree that your HN, monthly UCLA shoulder scores, movement measurements and exercise progress will be recorded and shared with your care team, in line with Thailand's Personal Data Protection Act (PDPA). This information is used only to show how your shoulder is progressing over time and to suggest the care that suits you — for nothing else. It is kept on this device, so please use your own phone and tap Reset App Data before letting anyone else use it.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentCheckboxLabel",
+    "th": "ฉันได้อ่านและยอมรับข้อความข้างต้นแล้ว",
+    "en": "I have read and agree to the above.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentValidation",
+    "th": "กรุณายืนยันเพื่อดำเนินการต่อ",
+    "en": "Please confirm to continue.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardSave",
+    "th": "บันทึกและดำเนินการต่อ",
+    "en": "Save & Continue",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeTitle",
+    "th": "เพิ่มลงหน้าจอหลักหรือไม่",
+    "en": "Add to Home Screen?",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeBody",
+    "th": "เพิ่มแอปนี้ลงหน้าจอหลักเพื่อเปิดใช้งานได้ในแตะเดียว เหมือนแอปทั่วไป",
+    "en": "Add this app to your home screen for one-tap access anytime, just like a regular app.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeAccept",
+    "th": "เพิ่มลงหน้าจอหลัก",
+    "en": "Add to Home Screen",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeDecline",
+    "th": "ไว้ภายหลัง",
+    "en": "Not Now",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeGotIt",
+    "th": "เข้าใจแล้ว",
+    "en": "Got it",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeIOSSteps",
+    "th": "แตะไอคอนแชร์ในเบราว์เซอร์ แล้วเลือก \"เพิ่มไปยังหน้าจอโฮม\"",
+    "en": "Tap the Share icon in your browser, then choose \"Add to Home Screen.\"",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeGenericSteps",
+    "th": "มองหา \"เพิ่มลงหน้าจอหลัก\" หรือ \"ติดตั้งแอป\" ในเมนูของเบราว์เซอร์",
+    "en": "Look for \"Add to Home Screen\" or \"Install App\" in your browser's menu.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  }
+]

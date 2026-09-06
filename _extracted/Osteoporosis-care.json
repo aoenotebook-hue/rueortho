@@ -1,0 +1,3989 @@
+[
+  {
+    "key": "appName",
+    "th": "ดูแลกระดูกพรุน",
+    "en": "Osteoporosis Care",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "navHome",
+    "th": "หน้าหลัก",
+    "en": "Home",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "navDrug",
+    "th": "ยา",
+    "en": "Medicine",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "navBone",
+    "th": "อาหาร",
+    "en": "Food",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "navMove",
+    "th": "ออกกำลัง",
+    "en": "Move",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "navSafety",
+    "th": "กันล้ม",
+    "en": "Safety",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "navTrack",
+    "th": "ติดตาม",
+    "en": "Track",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "navAlert",
+    "th": "ฉุกเฉิน",
+    "en": "Urgent",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabTitleBone",
+    "th": "อาหารเพื่อกระดูก",
+    "en": "Nutrition for Bone",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabTitleMove",
+    "th": "ออกกำลังกาย",
+    "en": "Exercise",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabTitleSafety",
+    "th": "ป้องกันการล้ม",
+    "en": "Fall Prevention",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "a2hsPrompt",
+    "th": "เพิ่มแอปนี้ไว้ที่หน้าจอหลัก เพื่อเปิดใช้ได้สะดวกขึ้น",
+    "en": "Add this app to your home screen for easier access",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "a2hsInstall",
+    "th": "เพิ่มลงหน้าจอหลัก",
+    "en": "Add to Home Screen",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "a2hsDismiss",
+    "th": "ไว้ภายหลัง",
+    "en": "Not now",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "pdpaTitle",
+    "th": "ความยินยอมให้ใช้ข้อมูลส่วนบุคคล (PDPA)",
+    "en": "Personal Data Consent (PDPA)",
+    "uiContext": "App shell — PDPA consent",
+    "class": "ui"
+  },
+  {
+    "key": "pdpaBody",
+    "th": "ข้อมูลของท่านใช้เพื่อการดูแลรักษาและติดตามอาการเท่านั้น ท่านขอถอนความยินยอมได้ทุกเมื่อ เพียงแจ้งที่โรงพยาบาล",
+    "en": "Your information is used only to care for you and follow your progress. You can withdraw your consent at any time by telling the hospital.",
+    "uiContext": "App shell — PDPA consent",
+    "class": "ui"
+  },
+  {
+    "key": "pdpaCheckbox",
+    "th": "ข้าพเจ้ายินยอมให้เก็บและใช้ข้อมูลตามรายละเอียดข้างต้น",
+    "en": "I consent to my data being collected and used as described above",
+    "uiContext": "App shell — PDPA consent",
+    "class": "ui"
+  },
+  {
+    "key": "registerTitle",
+    "th": "ลงทะเบียนครั้งแรก",
+    "en": "First-time Registration",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerIntro",
+    "th": "กรอกข้อมูลเพียง 3 อย่าง เพื่อเริ่มใช้งาน",
+    "en": "Just three details to get started",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerHN",
+    "th": "เลขประจำตัวผู้ป่วย (HN)",
+    "en": "Hospital Number (HN)",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerYearOfBirth",
+    "th": "ปีเกิด (พ.ศ.)",
+    "en": "Year of birth (Buddhist era)",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerSex",
+    "th": "เพศ",
+    "en": "Sex",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerAgeLabel",
+    "th": "อายุ",
+    "en": "Age",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerSexMale",
+    "th": "ชาย",
+    "en": "Male",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerSexFemale",
+    "th": "หญิง",
+    "en": "Female",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerSubmit",
+    "th": "เริ่มใช้งาน",
+    "en": "Start",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerSexRequired",
+    "th": "กรุณาเลือกเพศ",
+    "en": "Please choose your sex",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerConsentRequired",
+    "th": "กรุณายอมรับความยินยอมก่อนเริ่มใช้งาน",
+    "en": "Please accept the consent before starting",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "onboardingTitle",
+    "th": "ประเมินความเสี่ยงกระดูกหัก",
+    "en": "Fracture Risk Assessment",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "onboardingNext",
+    "th": "ถัดไป",
+    "en": "Next",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "onboardingBack",
+    "th": "ย้อนกลับ",
+    "en": "Back",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "onboardingFinish",
+    "th": "เริ่มใช้งาน",
+    "en": "Continue",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "onboardingProgress",
+    "th": "ข้อที่",
+    "en": "Question",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qPriorFracture",
+    "th": "ท่านเคยกระดูกหักจากการล้มหรือกระแทกเบา ๆ หรือไม่",
+    "en": "Have you ever broken a bone from a minor fall or bump?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qFractureSite",
+    "th": "กระดูกส่วนใดที่หัก",
+    "en": "Which bone was broken?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "siteHip",
+    "th": "สะโพก",
+    "en": "Hip",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "siteSpine",
+    "th": "กระดูกสันหลัง",
+    "en": "Spine",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "siteWrist",
+    "th": "ข้อมือ",
+    "en": "Wrist",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "siteHumerus",
+    "th": "ต้นแขน",
+    "en": "Upper arm",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "siteOther",
+    "th": "อื่น ๆ",
+    "en": "Others",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qTScoreKnown",
+    "th": "ท่านทราบผลตรวจความหนาแน่นกระดูก (DXA) หรือไม่",
+    "en": "Do you know your bone density (DXA) result?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qTScoreValue",
+    "th": "ค่า T-score ที่ต่ำที่สุดคือเท่าไร",
+    "en": "What is your lowest T-score?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qFalls",
+    "th": "ในช่วง 12 เดือนที่ผ่านมา ท่านล้มกี่ครั้ง",
+    "en": "How many times have you fallen in the past 12 months?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qFallWithInjury",
+    "th": "การล้มครั้งใดทำให้บาดเจ็บจนต้องไปพบแพทย์หรือไม่",
+    "en": "Did any of those falls injure you enough to need a doctor?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qFeelsUnsteady",
+    "th": "ท่านรู้สึกว่าเดินหรือยืนไม่ค่อยมั่นคงหรือไม่",
+    "en": "Do you feel unsteady when standing or walking?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qSteroid",
+    "th": "ท่านใช้ยาสเตียรอยด์ต่อเนื่องนานกว่า 3 เดือนหรือไม่",
+    "en": "Have you taken steroid medication continuously for more than 3 months?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qCurrentMed",
+    "th": "ขณะนี้ท่านใช้ยารักษากระดูกพรุนชนิดใด",
+    "en": "Which osteoporosis medication are you taking now?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qWalkAid",
+    "th": "ท่านใช้อุปกรณ์ช่วยเดินหรือไม่ (ไม้เท้า, วอล์คเกอร์)",
+    "en": "Do you use a walking aid (cane, walker)?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "qFearFalling",
+    "th": "ท่านกลัวการล้มจนต้องเลี่ยงกิจกรรมบางอย่างหรือไม่",
+    "en": "Does fear of falling make you avoid some activities?",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "yes",
+    "th": "ใช่",
+    "en": "Yes",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "no",
+    "th": "ไม่ใช่",
+    "en": "No",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "none",
+    "th": "ไม่ได้ใช้ยา",
+    "en": "Not taking any",
+    "uiContext": "Onboarding assessment",
+    "class": "ui"
+  },
+  {
+    "key": "assessmentResultTitle",
+    "th": "ผลการประเมินของท่าน",
+    "en": "Your assessment",
+    "uiContext": "Home — assessment result",
+    "class": "ui"
+  },
+  {
+    "key": "assessmentIntro",
+    "th": "แอปจะดู 2 เรื่อง คือ กระดูกของท่านเป็นอย่างไร และท่านมีโอกาสหกล้มมากแค่ไหน เพราะสองเรื่องนี้ดูแลคนละแบบ",
+    "en": "The app looks at two things: how your bones are, and how likely you are to fall. Each is looked after differently.",
+    "uiContext": "Home — assessment result",
+    "class": "education"
+  },
+  {
+    "key": "boneStatusLabel",
+    "th": "สภาพกระดูก",
+    "en": "Bone condition",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "ui"
+  },
+  {
+    "key": "boneStatusBasis",
+    "th": "ดูจาก 2 อย่างเท่านั้น คือ ผลตรวจความหนาแน่นกระดูก และเคยกระดูกหักจากการล้มเบา ๆ หรือไม่",
+    "en": "Based on two things only: your bone scan result, and whether you have broken a bone in a small fall.",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "education"
+  },
+  {
+    "key": "boneStatusUnknown_name",
+    "th": "ยังไม่ทราบ",
+    "en": "Not yet known",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "ui"
+  },
+  {
+    "key": "boneStatusUnknown_desc",
+    "th": "ท่านยังไม่เคยตรวจความหนาแน่นกระดูก และไม่เคยกระดูกหักจากการล้มเบา ๆ จึงยังบอกไม่ได้ ลองถามแพทย์ว่าถึงเวลาตรวจหรือยัง",
+    "en": "You have not had a bone scan, and you have not broken a bone in a small fall, so we cannot tell yet. Ask your doctor if it is time for a scan.",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "education"
+  },
+  {
+    "key": "boneStatusNormal_name",
+    "th": "กระดูกปกติ",
+    "en": "Normal bone",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "ui"
+  },
+  {
+    "key": "boneStatusNormal_desc",
+    "th": "กระดูกของท่านแข็งแรงดี ทำต่อไปแบบนี้ กินอาหารให้ครบและขยับตัวสม่ำเสมอ",
+    "en": "Your bones are in good shape. Keep going: eat well and keep moving.",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "education"
+  },
+  {
+    "key": "boneStatusOsteopenia_name",
+    "th": "กระดูกบาง",
+    "en": "Thinning bone",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "ui"
+  },
+  {
+    "key": "boneStatusOsteopenia_desc",
+    "th": "กระดูกของท่านเริ่มบางลงเล็กน้อย ยังไม่ถึงขั้นกระดูกพรุน แต่เป็นจังหวะดีที่จะเริ่มดูแลตั้งแต่ตอนนี้",
+    "en": "Your bones have started to thin a little. This is not osteoporosis yet, but it is a good time to start looking after them.",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "education"
+  },
+  {
+    "key": "boneStatusOsteoporosis_name",
+    "th": "กระดูกพรุน",
+    "en": "Osteoporosis",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "ui"
+  },
+  {
+    "key": "boneStatusOsteoporosis_desc",
+    "th": "กระดูกของท่านบางมากแล้ว หรือเคยหักจากการล้มเบา ๆ ส่วนใหญ่ต้องใช้ยาช่วย ร่วมกับการระวังไม่ให้ล้ม",
+    "en": "Your bones are quite thin now, or you have already broken one in a small fall. Most people need medicine for this, along with care not to fall.",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "education"
+  },
+  {
+    "key": "boneStatusSevereOsteoporosis_name",
+    "th": "กระดูกพรุนที่เคยหักแล้ว",
+    "en": "Osteoporosis with a fracture",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "ui"
+  },
+  {
+    "key": "boneStatusSevereOsteoporosis_desc",
+    "th": "ท่านเคยกระดูกสะโพกหรือกระดูกสันหลังหักจากการล้มเบา ๆ แบบนี้ถือว่ากระดูกพรุน แม้ผลตรวจจะดูไม่แย่ก็ตาม โอกาสหักซ้ำสูง จึงต้องใช้ยาต่อเนื่องและระวังการล้มเป็นพิเศษ",
+    "en": "You have broken a hip or a bone in your back from a small fall. That counts as osteoporosis even if the scan looks better. The chance of another break is high, so medicine and extra care not to fall both matter.",
+    "uiContext": "Home — assessment result (bone status)",
+    "class": "education"
+  },
+  {
+    "key": "fallRiskLabel",
+    "th": "โอกาสหกล้ม",
+    "en": "Chance of falling",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "ui"
+  },
+  {
+    "key": "fallRiskBasis",
+    "th": "ดูจากจำนวนครั้งที่ล้มในปีที่ผ่านมา ล้มแล้วเจ็บหรือไม่ รู้สึกเดินมั่นคงไหม และเวลาที่ใช้ในการทดสอบลุกเดิน",
+    "en": "Based on how often you fell in the past year, whether a fall hurt you, whether you feel steady, and your walking test time.",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "education"
+  },
+  {
+    "key": "fallRiskLow_name",
+    "th": "โอกาสหกล้มต่ำ",
+    "en": "Low chance of falling",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "ui"
+  },
+  {
+    "key": "fallRiskLow_desc",
+    "th": "ปีที่ผ่านมาท่านไม่ได้ล้ม และเดินได้มั่นคง",
+    "en": "You have not fallen in the past year, and you walk steadily.",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "education"
+  },
+  {
+    "key": "fallRiskLow_action",
+    "th": "ฝึกการทรงตัวสัปดาห์ละ 3 วัน เดินออกกำลังให้สม่ำเสมอ และตรวจความปลอดภัยในบ้านปีละครั้ง",
+    "en": "Do the balance exercises 3 days a week, walk regularly, and check your home for hazards once a year.",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "instruction"
+  },
+  {
+    "key": "fallRiskModerate_name",
+    "th": "โอกาสหกล้มปานกลาง",
+    "en": "Moderate chance of falling",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "ui"
+  },
+  {
+    "key": "fallRiskModerate_desc",
+    "th": "ท่านล้ม 1 ครั้งแต่ไม่เจ็บ หรือรู้สึกเดินไม่ค่อยมั่นคง หรือกลัวว่าจะล้ม",
+    "en": "You fell once without getting hurt, or you feel unsteady, or you worry about falling.",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "education"
+  },
+  {
+    "key": "fallRiskModerate_action",
+    "th": "ทำท่าฝึกทรงตัวและท่าเพิ่มความแข็งแรงในแอปให้สม่ำเสมอ ตรวจความปลอดภัยในบ้านทุก 6 เดือน เอายาทุกตัวที่กินไปให้แพทย์ดู และตรวจตาปีละครั้ง",
+    "en": "Do the balance and strength exercises in the app regularly. Check your home every 6 months. Show your doctor every medicine you take, and get your eyes tested once a year.",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "instruction"
+  },
+  {
+    "key": "fallRiskHigh_name",
+    "th": "โอกาสหกล้มสูง",
+    "en": "High chance of falling",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "ui"
+  },
+  {
+    "key": "fallRiskHigh_desc",
+    "th": "ท่านล้มตั้งแต่ 2 ครั้งขึ้นไป หรือล้มแล้วเจ็บ หรือทดสอบลุกเดินใช้เวลา 12 วินาทีขึ้นไป",
+    "en": "You have fallen twice or more, or a fall hurt you, or your walking test took 12 seconds or longer.",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "education"
+  },
+  {
+    "key": "fallRiskHigh_action",
+    "th": "บอกแพทย์ให้ตรวจการเดินและการทรงตัวอย่างละเอียด อาจต้องพบนักกายภาพบำบัด ใช้ไม้เท้าหรือวอล์คเกอร์ที่พอดีกับตัว รีบแก้จุดเสี่ยงในบ้าน และให้แพทย์ดูยาที่ทำให้ง่วงหรือหน้ามืด",
+    "en": "Ask your doctor to check your walking and balance properly. You may need a physiotherapist, or a cane or walker that fits you. Fix the risky spots at home soon, and ask your doctor about any medicine that makes you sleepy or dizzy.",
+    "uiContext": "Home — assessment result (fall risk)",
+    "class": "instruction"
+  },
+  {
+    "key": "homeStatusTitle",
+    "th": "ตอนนี้ท่านเป็นอย่างไร",
+    "en": "How you are right now",
+    "uiContext": "Home — assessment result",
+    "class": "ui"
+  },
+  {
+    "key": "homeWhatThisMeans",
+    "th": "แปลว่าอะไร",
+    "en": "What this means",
+    "uiContext": "Home — assessment result",
+    "class": "ui"
+  },
+  {
+    "key": "homeManagementLabel",
+    "th": "ควรทำอะไรบ้าง",
+    "en": "What to do",
+    "uiContext": "Home — assessment result",
+    "class": "ui"
+  },
+  {
+    "key": "fraxTitle",
+    "th": "โอกาสกระดูกหักใน 10 ปีข้างหน้า",
+    "en": "Chance of a broken bone in the next 10 years",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxIntro",
+    "th": "เครื่องมือมาตรฐานชื่อ FRAX ใช้ประวัติสุขภาพประเมินว่าใน 10 ปีข้างหน้ามีโอกาสกระดูกหักแค่ไหน",
+    "en": "The standard tool for this is called FRAX. It uses your health history to work out how likely a broken bone is over the next 10 years.",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "education"
+  },
+  {
+    "key": "fraxOfficialLabel",
+    "th": "ผลจากเครื่องคำนวณ FRAX อย่างเป็นทางการ",
+    "en": "Result from the official FRAX calculator",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxEstimateLabel",
+    "th": "ค่าประมาณจากแอป ไม่ใช่ผล FRAX อย่างเป็นทางการ",
+    "en": "The app's own estimate — not an official FRAX result",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxEstimateCaution",
+    "th": "ค่านี้เป็นเพียงการประมาณอย่างหยาบ ตัวเลขจริงอาจสูงหรือต่ำกว่านี้ ให้แพทย์คำนวณจากเว็บไซต์ FRAX เพื่อยืนยันเสมอ",
+    "en": "This is only a rough estimate, and the real figure may be higher or lower. Always have your doctor confirm it on the FRAX website.",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "education"
+  },
+  {
+    "key": "fraxHowCalculated",
+    "th": "คิดมาอย่างไร",
+    "en": "How this was worked out",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxBaselineLabel",
+    "th": "ค่าเริ่มต้นตามอายุและเพศ",
+    "en": "Starting point for your age and sex",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxMultiplierLabel",
+    "th": "คูณด้วยปัจจัยเสี่ยงของท่าน",
+    "en": "Multiplied by your risk factors",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxOverlapAdjust",
+    "th": "ลดลงเพราะปัจจัยเสี่ยงเหล่านี้ทับซ้อนกัน",
+    "en": "Reduced, because these risks overlap each other",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxSourceLabel",
+    "th": "ที่มาของตัวเลข",
+    "en": "Where these numbers come from",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxBaselineCaveat",
+    "th": "ค่าเริ่มต้นนี้เป็นค่าประมาณสำหรับประชากรเอเชีย ควรให้แพทย์ตรวจสอบให้ตรงกับคนไทยก่อนใช้จริง",
+    "en": "The starting figures are approximate for an Asian population, and a doctor should check them against Thai data before real use.",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "education"
+  },
+  {
+    "key": "fraxOpenCalculator",
+    "th": "เปิดเว็บไซต์ FRAX",
+    "en": "Open the FRAX website",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxFillData",
+    "th": "กรอกข้อมูลสุขภาพ",
+    "en": "Fill in your health details",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxEditData",
+    "th": "แก้ไขข้อมูลสุขภาพ",
+    "en": "Edit your health details",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxMajorRisk",
+    "th": "โอกาสกระดูกหักใน 10 ปี",
+    "en": "Broken bone within 10 years",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxHipRisk",
+    "th": "โอกาสกระดูกสะโพกหักใน 10 ปี",
+    "en": "Broken hip within 10 years",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxAboutRange",
+    "th": "ประมาณ",
+    "en": "about",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxNotRecorded",
+    "th": "ยังไม่มีผลจากแพทย์",
+    "en": "No result from your doctor yet",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxRecordedOn",
+    "th": "บันทึกเมื่อ",
+    "en": "Recorded on",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxNeedWeightHeight",
+    "th": "กรอกน้ำหนักและส่วนสูงก่อน",
+    "en": "Please fill in your weight and height first",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxReady",
+    "th": "ข้อมูลครบแล้ว พร้อมให้แพทย์คำนวณ",
+    "en": "Your details are complete and ready for your doctor",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxYourDetails",
+    "th": "ข้อมูลของท่าน",
+    "en": "Your details",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxWeight",
+    "th": "น้ำหนัก (กก.)",
+    "en": "Weight (kg)",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxHeight",
+    "th": "ส่วนสูง (ซม.)",
+    "en": "Height (cm)",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxBmi",
+    "th": "ดัชนีมวลกาย",
+    "en": "Body mass index",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxFemoralNeck",
+    "th": "T-score สะโพก",
+    "en": "Hip T-score",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxRecordResult",
+    "th": "บันทึกผลจากแพทย์",
+    "en": "Record the result from your doctor",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxTapWhatApplies",
+    "th": "แตะข้อที่ตรงกับท่าน",
+    "en": "Tap anything that is true for you",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxFromAssessment",
+    "th": "ตอบไว้แล้วในแบบประเมิน",
+    "en": "Already answered in your assessment",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxPreviousFracture",
+    "th": "เคยกระดูกหักจากการล้มเบา ๆ",
+    "en": "I have broken a bone in a small fall",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxParentHipFracture",
+    "th": "พ่อหรือแม่เคยกระดูกสะโพกหัก",
+    "en": "My mother or father broke a hip",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxSmoking",
+    "th": "สูบบุหรี่อยู่ตอนนี้",
+    "en": "I smoke at the moment",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxGlucocorticoids",
+    "th": "กินยาสเตียรอยด์เป็นประจำ",
+    "en": "I take steroid tablets regularly",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxRheumatoid",
+    "th": "เป็นโรคข้ออักเสบรูมาตอยด์",
+    "en": "I have rheumatoid arthritis",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxSecondary",
+    "th": "มีโรคอื่นที่ทำให้กระดูกบาง เช่น ไทรอยด์เป็นพิษ เบาหวานชนิดที่ 1 หรือลำไส้ดูดซึมอาหารไม่ดี",
+    "en": "I have another illness that thins bone, such as an overactive thyroid, type 1 diabetes, or a gut that does not absorb food well",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxAlcohol",
+    "th": "ดื่มเหล้าหรือเบียร์ตั้งแต่ 3 แก้วต่อวัน",
+    "en": "I drink 3 or more glasses of alcohol a day",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxLowBmi",
+    "th": "น้ำหนักตัวน้อย (ดัชนีมวลกายต่ำกว่า 20)",
+    "en": "Low body weight (body mass index under 20)",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "fraxBmdStep",
+    "th": "ผลตรวจความหนาแน่นกระดูกที่สะโพก",
+    "en": "Your hip bone density result",
+    "uiContext": "Home — FRAX fracture risk",
+    "class": "ui"
+  },
+  {
+    "key": "balanceLevel1",
+    "th": "ระดับ 1 — จับที่ยึดตลอด",
+    "en": "Level 1 — Always supported",
+    "uiContext": "Home — assessment result (balance level)",
+    "class": "ui"
+  },
+  {
+    "key": "balanceLevel2",
+    "th": "ระดับ 2 — แตะที่ยึดเบา ๆ",
+    "en": "Level 2 — Light support",
+    "uiContext": "Home — assessment result (balance level)",
+    "class": "ui"
+  },
+  {
+    "key": "balanceLevel3",
+    "th": "ระดับ 3 — ทำได้เอง",
+    "en": "Level 3 — Independent",
+    "uiContext": "Home — assessment result (balance level)",
+    "class": "ui"
+  },
+  {
+    "key": "balanceLevelLabel",
+    "th": "ระดับการทรงตัว",
+    "en": "Balance level",
+    "uiContext": "Home — assessment result (balance level)",
+    "class": "ui"
+  },
+  {
+    "key": "homeTodayTitle",
+    "th": "วันนี้",
+    "en": "Today",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeMedDue",
+    "th": "ยาของท่าน",
+    "en": "Your medication",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeMedNone",
+    "th": "ยังไม่ได้บันทึกยา แตะเพื่อเพิ่ม",
+    "en": "No medication recorded yet — tap to add",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeMedDueToday",
+    "th": "ถึงกำหนดวันนี้",
+    "en": "Due today",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeMedOverdue",
+    "th": "เลยกำหนดแล้ว",
+    "en": "Overdue",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeMedUpcoming",
+    "th": "ครั้งถัดไป",
+    "en": "Next dose",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeMedTakenToday",
+    "th": "บันทึกแล้ววันนี้",
+    "en": "Recorded today",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeSafetyTip",
+    "th": "เคล็ดลับความปลอดภัยวันนี้",
+    "en": "Today's safety tip",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeCheckinDue",
+    "th": "ถึงเวลาเช็คอินประจำเดือน",
+    "en": "Your monthly check-in is due",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeCheckinStart",
+    "th": "เริ่มเช็คอิน",
+    "en": "Start check-in",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeNutritionDue",
+    "th": "ถึงเวลาประเมินอาหารประจำปี",
+    "en": "Your yearly nutrition review is due",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "boneWhatIsBody",
+    "th": "กระดูกพรุนคือกระดูกที่บางและเปราะลง จึงหักง่ายแม้ล้มเบา ๆ มักไม่มีอาการเจ็บอะไรเลยจนกว่าจะหัก การกินอาหารให้ครบ ออกกำลังกาย และใช้ยาตามที่แพทย์สั่ง ช่วยลดโอกาสหักได้",
+    "en": "Osteoporosis means the bone has become thin and brittle, so it can break even in a light fall. It usually causes no pain at all until something breaks. Eating well, exercising, and taking the medicine your doctor prescribes all lower the chance of a break.",
+    "uiContext": "Learn — what is osteoporosis",
+    "class": "education"
+  },
+  {
+    "key": "boneNutritionTitle",
+    "th": "ประเมินอาหารประจำปี",
+    "en": "Yearly Nutrition Review",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "boneNutritionIntro",
+    "th": "ประเมินปีละครั้ง เพื่อคำนวณว่าท่านควรได้รับอาหารเสริมเท่าไร",
+    "en": "Done once a year to work out how much supplement you need",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionLastDone",
+    "th": "ประเมินครั้งล่าสุด",
+    "en": "Last reviewed",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionNextDue",
+    "th": "ครั้งถัดไป",
+    "en": "Next review",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionStart",
+    "th": "เริ่มประเมิน",
+    "en": "Start review",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionRedo",
+    "th": "ประเมินใหม่",
+    "en": "Review again",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionNeverDone",
+    "th": "ยังไม่เคยประเมิน",
+    "en": "Not yet reviewed",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionSectionCalcium",
+    "th": "แคลเซียม",
+    "en": "Calcium",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionSectionVitD",
+    "th": "วิตามินดี",
+    "en": "Vitamin D",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionSectionProtein",
+    "th": "โปรตีน",
+    "en": "Protein",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionFoodFrequencyIntro",
+    "th": "ในหนึ่งสัปดาห์ ท่านทานอาหารต่อไปนี้กี่ครั้ง",
+    "en": "In a typical week, how many servings of each do you eat?",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionServingsPerWeek",
+    "th": "ครั้ง/สัปดาห์",
+    "en": "servings/week",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionServingsPerDay",
+    "th": "ครั้ง/วัน",
+    "en": "servings/day",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionWeightQuestion",
+    "th": "น้ำหนักตัวของท่าน (กิโลกรัม)",
+    "en": "Your body weight (kg)",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionSunQuestion",
+    "th": "ในหนึ่งสัปดาห์ ท่านโดนแดดที่แขนหรือขา (ไม่ทาครีมกันแดด) รวมกี่นาที",
+    "en": "In a week, how many minutes of sun reaches your arms or legs (without sunscreen)?",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionResultTitle",
+    "th": "ผลการประเมินอาหาร",
+    "en": "Your nutrition result",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionEstimatedIntake",
+    "th": "ได้รับจากอาหารประมาณ",
+    "en": "Estimated from food",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionTarget",
+    "th": "เป้าหมายต่อวัน",
+    "en": "Daily target",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionGap",
+    "th": "ยังขาดอยู่ประมาณ",
+    "en": "Estimated shortfall",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionSupplementAdvice",
+    "th": "คำแนะนำอาหารเสริม",
+    "en": "Supplement suggestion",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionEnough",
+    "th": "ท่านได้รับเพียงพอจากอาหารแล้ว ไม่จำเป็นต้องเสริมเพิ่ม",
+    "en": "You are getting enough from food — no extra supplement needed",
+    "uiContext": "Food — yearly nutrition review result",
+    "class": "education"
+  },
+  {
+    "key": "nutritionConfirmDoctor",
+    "th": "ตัวเลขนี้เป็นเพียงการประมาณ กรุณายืนยันขนาดยาที่เหมาะสมกับแพทย์ของท่าน",
+    "en": "These figures are an estimate — please confirm the right dose with your doctor",
+    "uiContext": "Food — yearly nutrition review result",
+    "class": "education"
+  },
+  {
+    "key": "nutritionCalciumSupplementUnit",
+    "th": "มก. ต่อวัน (คิดเป็นแคลเซียมธาตุ)",
+    "en": "mg per day (as elemental calcium)",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionVitDSupplementUnit",
+    "th": "IU ต่อวัน",
+    "en": "IU per day",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionProteinGap",
+    "th": "กรัมต่อวัน",
+    "en": "grams per day",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionProteinIdea",
+    "th": "เพิ่มได้ง่าย ๆ เช่น",
+    "en": "Easy ways to add this",
+    "uiContext": "Food — yearly nutrition review",
+    "class": "ui"
+  },
+  {
+    "key": "nutritionSunLow",
+    "th": "ท่านโดนแดดน้อย จึงควรได้วิตามินดีเสริม",
+    "en": "You get little sun, so a vitamin D supplement is advised",
+    "uiContext": "Food — yearly nutrition review result",
+    "class": "education"
+  },
+  {
+    "key": "nutritionSunOk",
+    "th": "ท่านโดนแดดพอสมควร",
+    "en": "You get a reasonable amount of sun",
+    "uiContext": "Food — yearly nutrition review result",
+    "class": "education"
+  },
+  {
+    "key": "calciumMgUnit",
+    "th": "มก.",
+    "en": "mg",
+    "uiContext": "Food",
+    "class": "ui"
+  },
+  {
+    "key": "iuUnit",
+    "th": "IU",
+    "en": "IU",
+    "uiContext": "Food",
+    "class": "ui"
+  },
+  {
+    "key": "gramUnit",
+    "th": "กรัม",
+    "en": "g",
+    "uiContext": "Food",
+    "class": "ui"
+  },
+  {
+    "key": "drugTitle",
+    "th": "ยารักษากระดูกพรุนของฉัน",
+    "en": "My Osteoporosis Medication",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugNoneTitle",
+    "th": "ยังไม่ได้เลือกยา",
+    "en": "No medication selected yet",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugPickClass",
+    "th": "เลือกยาที่ท่านใช้อยู่",
+    "en": "Select the medication you are taking",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugStartDate",
+    "th": "วันที่เริ่มยา หรือวันที่ได้รับครั้งล่าสุด",
+    "en": "Start date, or date of your most recent dose",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugSave",
+    "th": "บันทึกยา",
+    "en": "Save medication",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugChange",
+    "th": "เปลี่ยนยา",
+    "en": "Change medication",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugNextDue",
+    "th": "ครั้งถัดไป",
+    "en": "Next dose due",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugMarkTaken",
+    "th": "บันทึกว่าได้รับยาแล้ว",
+    "en": "Record dose taken",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugAddCalendar",
+    "th": "เพิ่มลงปฏิทินโทรศัพท์",
+    "en": "Add to phone calendar",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugWhatItDoes",
+    "th": "ยานี้ช่วยอย่างไร",
+    "en": "What this medicine does",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugHowToTake",
+    "th": "วิธีใช้ยาให้ถูกต้อง",
+    "en": "How to take it correctly",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugMissedDose",
+    "th": "ถ้าลืมหรือพลาดนัด",
+    "en": "If you miss a dose",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugSideEffects",
+    "th": "อาการที่พบได้และวิธีดูแล",
+    "en": "Possible effects and what to do",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugDentalNote",
+    "th": "เรื่องฟันที่ต้องระวัง",
+    "en": "Important dental note",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugTellDoctor",
+    "th": "ต้องแจ้งแพทย์เมื่อ",
+    "en": "Tell your doctor if",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugDoNotStop",
+    "th": "ห้ามหยุดยาเอง",
+    "en": "Do not stop on your own",
+    "uiContext": "Medicine",
+    "class": "warning"
+  },
+  {
+    "key": "drugAdherenceLog",
+    "th": "ประวัติการได้รับยา",
+    "en": "Dose history",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugAdherenceEmpty",
+    "th": "ยังไม่มีประวัติ",
+    "en": "No doses recorded yet",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugSupplementNote",
+    "th": "แคลเซียมและวิตามินดีเป็นอาหารเสริม ไม่ใช่ยารักษากระดูกพรุน ดูปริมาณที่ท่านควรได้ที่แท็บอาหาร",
+    "en": "Calcium and vitamin D are supplements, not treatment for thin bones. The Food tab shows how much you need.",
+    "uiContext": "Medicine",
+    "class": "education"
+  },
+  {
+    "key": "moveIntro",
+    "th": "ท่าออกกำลังกายเหล่านี้คัดมาให้เหมาะกับระดับการทรงตัวของท่าน ทำช้า ๆ และหยุดทันทีหากเจ็บหรือเวียนศีรษะ",
+    "en": "These exercises are matched to your balance level. Go slowly, and stop at once if you feel pain or dizziness.",
+    "uiContext": "Move",
+    "class": "instruction"
+  },
+  {
+    "key": "moveGroupBalance",
+    "th": "ฝึกการทรงตัว",
+    "en": "Balance",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "moveGroupStrength",
+    "th": "ฝึกความแข็งแรง",
+    "en": "Strength",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "moveGroupPosture",
+    "th": "ท่าทางและถนอมหลัง",
+    "en": "Posture & Spine Care",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "moveHowOften",
+    "th": "ความถี่ที่แนะนำ",
+    "en": "How often",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "moveBalanceFrequency",
+    "th": "สัปดาห์ละ 3 วัน",
+    "en": "3 days a week",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "moveStrengthFrequency",
+    "th": "สัปดาห์ละ 2 วัน",
+    "en": "2 days a week",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "movePostureFrequency",
+    "th": "ทำได้ทุกวัน",
+    "en": "Every day",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "moveWalking",
+    "th": "เดินเร็วพอควรวันละ 30 นาที เกือบทุกวัน",
+    "en": "Brisk walking 30 minutes on most days",
+    "uiContext": "Move",
+    "class": "instruction"
+  },
+  {
+    "key": "moveHowTo",
+    "th": "วิธีทำ",
+    "en": "How to do it",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "moveNeverDo",
+    "th": "ท่าที่ต้องหลีกเลี่ยง",
+    "en": "Movements to avoid",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "moveNeverDoBody",
+    "th": "หลีกเลี่ยงท่าซิทอัพ ท่าก้มแตะปลายเท้าโดยขาตรง การบิดตัวแรง ๆ และการยกของหนักโดยก้มหลัง เพราะเพิ่มแรงกดที่กระดูกสันหลัง",
+    "en": "Avoid sit-ups, straight-leg toe touches, forceful twisting and lifting heavy things with a bent back — these load the spine.",
+    "uiContext": "Move — movements to avoid",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseAmount",
+    "th": "จำนวน",
+    "en": "Amount",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "reqChair",
+    "th": "เก้าอี้มั่นคง",
+    "en": "A sturdy chair",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "reqWall",
+    "th": "กำแพงหรือราวจับ",
+    "en": "A wall or rail",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "reqBand",
+    "th": "ยางยืด",
+    "en": "Resistance band",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "reqNone",
+    "th": "ไม่ต้องใช้อุปกรณ์",
+    "en": "No equipment",
+    "uiContext": "Move",
+    "class": "ui"
+  },
+  {
+    "key": "safetyIntro",
+    "th": "แตะรายการที่บ้านของท่านทำได้แล้ว รายการที่ยังไม่ได้ทำจะถูกเน้นไว้ให้แก้ไข",
+    "en": "Tap what your home already has. Anything still missing stays highlighted for you to fix.",
+    "uiContext": "Safety — home hazard audit",
+    "class": "instruction"
+  },
+  {
+    "key": "safetyScoreLabel",
+    "th": "คะแนนความปลอดภัย",
+    "en": "Safety score",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyDone",
+    "th": "ทำแล้ว",
+    "en": "Done",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyTodo",
+    "th": "ยังไม่ได้ทำ",
+    "en": "Not yet",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyPriorityTitle",
+    "th": "ควรแก้ไข 3 อย่างนี้ก่อน",
+    "en": "Fix these three first",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyAllDone",
+    "th": "เยี่ยมมาก บ้านของท่านผ่านครบทุกข้อ",
+    "en": "Excellent — your home passes every item",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyRoomBedroom",
+    "th": "ห้องนอน",
+    "en": "Bedroom",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyRoomBathroom",
+    "th": "ห้องน้ำ",
+    "en": "Bathroom",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyRoomStairs",
+    "th": "บันได",
+    "en": "Stairs",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyRoomKitchen",
+    "th": "ห้องครัว",
+    "en": "Kitchen",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyRoomOutdoors",
+    "th": "รอบบ้าน",
+    "en": "Around the house",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "footwearTitle",
+    "th": "รองเท้า",
+    "en": "Footwear",
+    "uiContext": "Safety — fall prevention advice",
+    "class": "ui"
+  },
+  {
+    "key": "footwearBody",
+    "th": "ใส่รองเท้าหุ้มส้น พื้นยางกันลื่น ขนาดพอดีเท้า ไม่ใส่รองเท้าแตะหลวม ๆ หรือเดินเท้าเปล่า/ใส่ถุงเท้าบนพื้นลื่น",
+    "en": "Wear closed-heel shoes with non-slip soles that fit well. Avoid loose sandals, and never walk on slippery floors in socks or bare feet.",
+    "uiContext": "Safety — fall prevention advice",
+    "class": "instruction"
+  },
+  {
+    "key": "visionTitle",
+    "th": "สายตา",
+    "en": "Vision",
+    "uiContext": "Safety — fall prevention advice",
+    "class": "ui"
+  },
+  {
+    "key": "visionBody",
+    "th": "ตรวจสายตาอย่างน้อยปีละครั้ง และถ้าใช้แว่นหลายระยะ ควรระวังเป็นพิเศษเวลาเดินลงบันได",
+    "en": "Have your eyes checked at least once a year. If you wear multifocal glasses, take extra care on stairs.",
+    "uiContext": "Safety — fall prevention advice",
+    "class": "instruction"
+  },
+  {
+    "key": "fallRiskMedsTitle",
+    "th": "ยาที่อาจทำให้ล้มง่าย",
+    "en": "Medicines that can make you fall",
+    "uiContext": "Safety — fall prevention advice",
+    "class": "ui"
+  },
+  {
+    "key": "fallRiskMedsBody",
+    "th": "ยานอนหลับ ยาคลายกังวล ยาลดความดันบางตัว ยาแก้แพ้ และเหล้า ทำให้ง่วงหรือหน้ามืดได้ ปีละครั้งให้เอายาทุกตัวที่กินไปให้แพทย์ดู",
+    "en": "Sleeping pills, medicine for worry, some blood pressure pills, allergy medicine and alcohol can all make you sleepy or dizzy. Once a year, show your doctor every medicine you take.",
+    "uiContext": "Safety — fall prevention advice",
+    "class": "instruction"
+  },
+  {
+    "key": "gettingUpTitle",
+    "th": "ถ้าล้มแล้วลุกไม่ขึ้น ทำอย่างไร",
+    "en": "If you fall and cannot get up",
+    "uiContext": "Safety — fall prevention advice",
+    "class": "ui"
+  },
+  {
+    "key": "gettingUpBody",
+    "th": "ถ้าล้ม อย่ารีบลุก ตั้งสติก่อน แล้วพลิกตัวตะแคง คลานไปหาเก้าอี้หรือโต๊ะที่มั่นคง คุกเข่าข้างหนึ่ง แล้วค่อย ๆ ดันตัวขึ้นนั่ง ถ้าลุกไม่ไหว ให้โทรขอความช่วยเหลือและห่มผ้าให้อุ่นไว้",
+    "en": "If you fall, do not rush to get up. Calm yourself first. Roll onto your side, crawl to a steady chair or table, kneel on one knee, and push yourself up to sit. If you cannot get up, phone for help and keep yourself warm.",
+    "uiContext": "Safety — fall prevention advice",
+    "class": "instruction"
+  },
+  {
+    "key": "reauditReminder",
+    "th": "ควรตรวจซ้ำทุก 6 เดือน",
+    "en": "Re-check every 6 months",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetyLastChecked",
+    "th": "ตรวจครั้งล่าสุด",
+    "en": "Last checked",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "safetySave",
+    "th": "บันทึกผลการตรวจ",
+    "en": "Save this check",
+    "uiContext": "Safety — home hazard audit",
+    "class": "ui"
+  },
+  {
+    "key": "trackTitle",
+    "th": "ติดตามผล",
+    "en": "Your Progress",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "trackNoData",
+    "th": "ยังไม่มีข้อมูลพอที่จะแสดงกราฟ บันทึกอย่างน้อย 2 ครั้งเพื่อดูแนวโน้ม",
+    "en": "Not enough data for a graph yet — record at least twice to see a trend",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "fallsLogTitle",
+    "th": "บันทึกการล้ม",
+    "en": "Falls",
+    "uiContext": "Track — falls log",
+    "class": "ui"
+  },
+  {
+    "key": "fallsChartTitle",
+    "th": "จำนวนครั้งที่ล้มในแต่ละเดือน",
+    "en": "Falls per month",
+    "uiContext": "Track — falls log",
+    "class": "ui"
+  },
+  {
+    "key": "fallsLogAdd",
+    "th": "บันทึกการล้ม",
+    "en": "Record a fall",
+    "uiContext": "Track — falls log",
+    "class": "ui"
+  },
+  {
+    "key": "fallsLogDate",
+    "th": "วันที่ล้ม",
+    "en": "Date of the fall",
+    "uiContext": "Track — falls log",
+    "class": "ui"
+  },
+  {
+    "key": "fallsLogInjured",
+    "th": "บาดเจ็บหรือไม่",
+    "en": "Were you injured?",
+    "uiContext": "Track — falls log",
+    "class": "ui"
+  },
+  {
+    "key": "fallsLogCause",
+    "th": "เกิดจากอะไร (ถ้าจำได้)",
+    "en": "What caused it (if you remember)",
+    "uiContext": "Track — falls log",
+    "class": "ui"
+  },
+  {
+    "key": "fallsNone",
+    "th": "ยังไม่มีบันทึกการล้ม ดีมาก",
+    "en": "No falls recorded — well done",
+    "uiContext": "Track — falls log",
+    "class": "ui"
+  },
+  {
+    "key": "fallsInjured",
+    "th": "บาดเจ็บ",
+    "en": "Injured",
+    "uiContext": "Track — falls log",
+    "class": "ui"
+  },
+  {
+    "key": "fallsNotInjured",
+    "th": "ไม่บาดเจ็บ",
+    "en": "Not injured",
+    "uiContext": "Track — falls log",
+    "class": "ui"
+  },
+  {
+    "key": "heightTitle",
+    "th": "ส่วนสูง",
+    "en": "Height",
+    "uiContext": "Track — height",
+    "class": "ui"
+  },
+  {
+    "key": "heightChartTitle",
+    "th": "ส่วนสูงที่เปลี่ยนไป",
+    "en": "Height over time",
+    "uiContext": "Track — height",
+    "class": "ui"
+  },
+  {
+    "key": "heightCurrent",
+    "th": "วัดส่วนสูงวันนี้ (ซม.)",
+    "en": "Today's height (cm)",
+    "uiContext": "Track — height",
+    "class": "ui"
+  },
+  {
+    "key": "heightEvery6Months",
+    "th": "วัดทุก 6 เดือน",
+    "en": "Measure every 6 months",
+    "uiContext": "Track — height",
+    "class": "ui"
+  },
+  {
+    "key": "heightLossWarning",
+    "th": "ส่วนสูงลดลง 2 เซนติเมตรขึ้นไป ควรบอกแพทย์ เพราะอาจมีกระดูกสันหลังยุบ",
+    "en": "You have lost 2 cm or more in height. Tell your doctor, as a bone in your back may have collapsed.",
+    "uiContext": "Track — height",
+    "class": "warning"
+  },
+  {
+    "key": "heightLossOk",
+    "th": "ส่วนสูงยังคงที่ดี",
+    "en": "Your height is holding steady",
+    "uiContext": "Track — height",
+    "class": "ui"
+  },
+  {
+    "key": "selfTestSafety",
+    "th": "ก่อนทดสอบ ต้องมีคนอยู่ด้วยเสมอ วางเก้าอี้ให้พิงกำแพง และหยุดทันทีถ้าเวียนหัวหรือเจ็บ",
+    "en": "Before you test: always have someone with you, put the chair against a wall, and stop at once if you feel dizzy or sore.",
+    "uiContext": "Track — self tests",
+    "class": "warning"
+  },
+  {
+    "key": "chairStandTitle",
+    "th": "ลุก-นั่งเก้าอี้ 30 วินาที",
+    "en": "30-Second Chair Stand",
+    "uiContext": "Track — 30-second chair stand",
+    "class": "ui"
+  },
+  {
+    "key": "chairStandChartTitle",
+    "th": "จำนวนครั้งที่ลุกได้ใน 30 วินาที",
+    "en": "Chair stands in 30 seconds",
+    "uiContext": "Track — 30-second chair stand",
+    "class": "ui"
+  },
+  {
+    "key": "chairStandInstructions",
+    "th": "นั่งกลางเก้าอี้ กอดอกไว้ ลุกขึ้นยืนให้สุดแล้วนั่งลง ทำซ้ำให้ได้มากที่สุดใน 30 วินาที",
+    "en": "Sit in the middle of the chair with arms crossed. Stand up fully, then sit back down, as many times as you can in 30 seconds.",
+    "uiContext": "Track — 30-second chair stand",
+    "class": "instruction"
+  },
+  {
+    "key": "chairStandNormLabel",
+    "th": "เกณฑ์ตามอายุและเพศของท่าน",
+    "en": "Your age and sex norm",
+    "uiContext": "Track — 30-second chair stand",
+    "class": "ui"
+  },
+  {
+    "key": "chairStandPass",
+    "th": "ผ่านเกณฑ์",
+    "en": "Meets the norm",
+    "uiContext": "Track — 30-second chair stand",
+    "class": "ui"
+  },
+  {
+    "key": "chairStandBelow",
+    "th": "ต่ำกว่าเกณฑ์ ควรฝึกท่าลุก-นั่งเพิ่ม",
+    "en": "Below the norm — practise sit-to-stand more",
+    "uiContext": "Track — 30-second chair stand",
+    "class": "ui"
+  },
+  {
+    "key": "tugTitle",
+    "th": "ลุกเดินจับเวลา (TUG)",
+    "en": "Timed Up and Go (TUG)",
+    "uiContext": "Track — Timed Up and Go",
+    "class": "ui"
+  },
+  {
+    "key": "tugChartTitle",
+    "th": "เวลาที่ใช้ในการลุกเดิน (วินาที)",
+    "en": "Timed Up and Go (seconds)",
+    "uiContext": "Track — Timed Up and Go",
+    "class": "ui"
+  },
+  {
+    "key": "tugInstructions",
+    "th": "ลุกจากเก้าอี้ เดินไปข้างหน้า 3 เมตร เลี้ยวกลับ เดินกลับมานั่ง จับเวลาตั้งแต่เริ่มลุกจนนั่งลง",
+    "en": "Stand up from the chair, walk 3 metres, turn around, walk back and sit down. Time it from standing to sitting.",
+    "uiContext": "Track — Timed Up and Go",
+    "class": "instruction"
+  },
+  {
+    "key": "tugPass",
+    "th": "อยู่ในเกณฑ์ปกติ",
+    "en": "Within the normal range",
+    "uiContext": "Track — Timed Up and Go",
+    "class": "ui"
+  },
+  {
+    "key": "tugSlow",
+    "th": "ใช้เวลา 12 วินาทีขึ้นไป แปลว่าเสี่ยงล้มมากขึ้น ควรบอกแพทย์",
+    "en": "Taking 12 seconds or more means falls are more likely. Tell your doctor.",
+    "uiContext": "Track — Timed Up and Go",
+    "class": "warning"
+  },
+  {
+    "key": "startTimer",
+    "th": "เริ่มจับเวลา",
+    "en": "Start",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "stopTimer",
+    "th": "หยุด",
+    "en": "Stop",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "recordResult",
+    "th": "บันทึกผล",
+    "en": "Save result",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "seconds",
+    "th": "วินาที",
+    "en": "seconds",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "reps",
+    "th": "ครั้ง",
+    "en": "times",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "adherenceTitle",
+    "th": "ความสม่ำเสมอในการใช้ยา",
+    "en": "Medication adherence",
+    "uiContext": "Track — medication adherence",
+    "class": "ui"
+  },
+  {
+    "key": "adherenceChartTitle",
+    "th": "จำนวนครั้งที่ได้รับยาในแต่ละเดือน",
+    "en": "Doses recorded per month",
+    "uiContext": "Track — medication adherence",
+    "class": "ui"
+  },
+  {
+    "key": "adherenceStreak",
+    "th": "ต่อเนื่อง",
+    "en": "Streak",
+    "uiContext": "Track — medication adherence",
+    "class": "ui"
+  },
+  {
+    "key": "days",
+    "th": "วัน",
+    "en": "days",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "monthlyCheckinTitle",
+    "th": "เช็คอินประจำเดือน",
+    "en": "Monthly Check-in",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinStepFalls",
+    "th": "เดือนนี้ท่านล้มหรือไม่",
+    "en": "Have you fallen this month?",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinStepFallsHelp",
+    "th": "นับรวมทุกครั้งที่เสียหลักจนล้มลงกับพื้น แม้ไม่บาดเจ็บ",
+    "en": "Count every time you ended up on the ground, even without injury",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinStepMed",
+    "th": "เดือนนี้ท่านใช้ยาได้ครบตามกำหนดหรือไม่",
+    "en": "Did you take your medication as scheduled this month?",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinStepMedMissed",
+    "th": "มีบางครั้งที่ลืม",
+    "en": "I missed some doses",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinStepMedOk",
+    "th": "ครบตามกำหนด",
+    "en": "Yes, all of them",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinStepHeight",
+    "th": "ถึงกำหนดวัดส่วนสูงแล้ว",
+    "en": "It is time to measure your height",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinStepHeightSkip",
+    "th": "ยังไม่ได้วัด ขอข้ามไปก่อน",
+    "en": "Skip for now",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinStepSelfTest",
+    "th": "ถึงกำหนดทดสอบความแข็งแรงแล้ว",
+    "en": "It is time for your self-tests",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinStepSelfTestGo",
+    "th": "ไปทำแบบทดสอบ",
+    "en": "Go to the tests",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinDone",
+    "th": "เช็คอินเรียบร้อย",
+    "en": "Check-in complete",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinDoneBody",
+    "th": "บันทึกของเดือนนี้ถูกเก็บไว้แล้ว แล้วพบกันเดือนหน้า",
+    "en": "This month is recorded. See you next month.",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinFallLogged",
+    "th": "บันทึกการล้มแล้ว และปรับระดับการออกกำลังกายให้ปลอดภัยขึ้น",
+    "en": "The fall is recorded, and your exercise level has been made safer",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinMissedAdvice",
+    "th": "การใช้ยาไม่ต่อเนื่องทำให้ยาได้ผลน้อยลง หากมีปัญหาเรื่องการใช้ยา กรุณาแจ้งแพทย์",
+    "en": "Missed doses make the medicine work less well. Please tell your doctor if you are having trouble taking it.",
+    "uiContext": "Monthly check-in",
+    "class": "education"
+  },
+  {
+    "key": "step",
+    "th": "ขั้นที่",
+    "en": "Step",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "of",
+    "th": "จาก",
+    "en": "of",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "skip",
+    "th": "ข้าม",
+    "en": "Skip",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "finish",
+    "th": "เสร็จสิ้น",
+    "en": "Finish",
+    "uiContext": "Monthly check-in",
+    "class": "ui"
+  },
+  {
+    "key": "alertTitle",
+    "th": "เมื่อไรต้องรีบพบแพทย์",
+    "en": "When to get help urgently",
+    "uiContext": "Urgent",
+    "class": "ui"
+  },
+  {
+    "key": "alertIntro",
+    "th": "หากมีอาการเหล่านี้ อย่ารอ ให้ติดต่อตามคำแนะนำในแต่ละข้อทันที",
+    "en": "If you have any of these, do not wait — follow the action shown for that item straight away.",
+    "uiContext": "Urgent",
+    "class": "ui"
+  },
+  {
+    "key": "alertSeverityCritical",
+    "th": "ฉุกเฉิน",
+    "en": "Emergency",
+    "uiContext": "Urgent",
+    "class": "ui"
+  },
+  {
+    "key": "alertSeveritySerious",
+    "th": "ด่วน",
+    "en": "Urgent",
+    "uiContext": "Urgent",
+    "class": "ui"
+  },
+  {
+    "key": "alertBackPain",
+    "th": "ปวดหลังรุนแรงทันทีทันใด โดยเฉพาะหลังล้ม ไอแรง ๆ หรือยกของ",
+    "en": "Sudden severe back pain, especially after a fall, a hard cough, or lifting",
+    "uiContext": "Urgent — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "alertBackPainAction",
+    "th": "อาจเป็นกระดูกสันหลังยุบ ให้นอนพักและติดต่อโรงพยาบาลภายในวันนี้",
+    "en": "This can be a spinal fracture — rest and contact the hospital today",
+    "uiContext": "Urgent — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "alertHipPain",
+    "th": "ปวดสะโพกหรือขาหนีบ ยืนหรือลงน้ำหนักไม่ได้หลังล้ม",
+    "en": "Hip or groin pain and you cannot stand or bear weight after a fall",
+    "uiContext": "Urgent — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "alertHipPainAction",
+    "th": "อาจเป็นกระดูกสะโพกหัก อย่าฝืนลุกเดิน โทร 1669 ทันที",
+    "en": "This can be a hip fracture — do not try to walk, call 1669 now",
+    "uiContext": "Urgent — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "alertHeadInjury",
+    "th": "ศีรษะกระแทก หรือล้มขณะใช้ยาละลายลิ่มเลือด/ยาต้านเกล็ดเลือด",
+    "en": "A knock to the head, or a fall while on blood thinners",
+    "uiContext": "Urgent — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "alertHeadInjuryAction",
+    "th": "เสี่ยงเลือดออกในสมอง โทร 1669 หรือไปห้องฉุกเฉินทันที",
+    "en": "Risk of bleeding in the brain — call 1669 or go to the emergency room now",
+    "uiContext": "Urgent — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "alertNeuro",
+    "th": "ขาชาหรืออ่อนแรง เดินเซผิดปกติ หรือกลั้นปัสสาวะ/อุจจาระไม่ได้",
+    "en": "Numb or weak legs, unsteady walking, or loss of bladder or bowel control",
+    "uiContext": "Urgent — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "alertNeuroAction",
+    "th": "อาจมีการกดทับเส้นประสาทไขสันหลัง โทร 1669 ทันที",
+    "en": "The spinal nerves may be compressed — call 1669 now",
+    "uiContext": "Urgent — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "alertCallClinic",
+    "th": "โทรโรงพยาบาล",
+    "en": "Call the hospital",
+    "uiContext": "Urgent",
+    "class": "ui"
+  },
+  {
+    "key": "alertCallEms",
+    "th": "โทร 1669 (ฉุกเฉิน)",
+    "en": "Call 1669 (emergency)",
+    "uiContext": "Urgent",
+    "class": "ui"
+  },
+  {
+    "key": "alertAfterFall",
+    "th": "ท่านเพิ่งบันทึกว่าล้มและบาดเจ็บ กรุณาอ่านรายการด้านล่างและติดต่อตามคำแนะนำ",
+    "en": "You have just recorded a fall with injury. Please read the list below and follow the action shown.",
+    "uiContext": "Urgent — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "learnWhatIsTitle",
+    "th": "โรคกระดูกพรุนคืออะไร",
+    "en": "What is osteoporosis?",
+    "uiContext": "Learn",
+    "class": "ui"
+  },
+  {
+    "key": "learnTScoreTitle",
+    "th": "ค่า T-score หมายถึงอะไร",
+    "en": "What does the T-score mean?",
+    "uiContext": "Learn",
+    "class": "ui"
+  },
+  {
+    "key": "learnTScoreBody",
+    "th": "T-score คือตัวเลขที่บอกว่ากระดูกของท่านแน่นแค่ไหน เทียบกับคนหนุ่มสาวที่กระดูกปกติ ตั้งแต่ -1 ขึ้นไปคือปกติ ระหว่าง -1 ถึง -2.5 คือเริ่มบาง และ -2.5 หรือต่ำกว่าคือกระดูกพรุน",
+    "en": "The T-score is a number that says how solid your bones are, compared with a healthy young adult. Above -1 is normal. Between -1 and -2.5 means thinning. Minus 2.5 or lower means osteoporosis.",
+    "uiContext": "Learn",
+    "class": "education"
+  },
+  {
+    "key": "learnMedMattersTitle",
+    "th": "ทำไมการใช้ยาต่อเนื่องจึงสำคัญ",
+    "en": "Why staying on your medication matters",
+    "uiContext": "Learn",
+    "class": "ui"
+  },
+  {
+    "key": "learnMedMattersBody",
+    "th": "ยารักษากระดูกพรุนช่วยลดโอกาสกระดูกหักได้จริง แต่ต้องใช้ต่อเนื่องจึงได้ผล ยาบางชนิดโดยเฉพาะยาฉีดเดโนซูแมบ ถ้าหยุดเองอาจทำให้กระดูกสันหลังหักหลายข้อพร้อมกัน ต้องปรึกษาแพทย์ก่อนหยุดยาเสมอ",
+    "en": "Medicine for thin bones really does lower the chance of a break, but only if you keep taking it. Stopping some medicines on your own, especially denosumab injections, can break several bones in the back at once. Always ask your doctor first.",
+    "uiContext": "Learn",
+    "class": "education"
+  },
+  {
+    "key": "learnExpectTitle",
+    "th": "ควรคาดหวังผลอย่างไร",
+    "en": "What to expect",
+    "uiContext": "Learn",
+    "class": "ui"
+  },
+  {
+    "key": "learnExpectBody",
+    "th": "การดูแลอย่างต่อเนื่องช่วยลดโอกาสล้มและกระดูกหักได้มาก แต่ไม่ได้แปลว่าจะไม่หักเลย และไม่ได้ทำให้กระดูกกลับไปแข็งแรงเหมือนตอนหนุ่มสาว เป้าหมายคือใช้ชีวิตได้ตามปกติและแข็งแรงที่สุดเท่าที่ทำได้",
+    "en": "Looking after yourself steadily lowers the chance of falls and breaks a great deal. It does not mean a break can never happen, and it does not make your bones young again. The aim is to stay as strong as you can and carry on with normal life.",
+    "uiContext": "Learn",
+    "class": "education"
+  },
+  {
+    "key": "resTopfTitle",
+    "th": "มูลนิธิโรคกระดูกพรุนแห่งประเทศไทย",
+    "en": "Thai Osteoporosis Foundation",
+    "uiContext": "Learn — external resources",
+    "class": "ui"
+  },
+  {
+    "key": "resTopfDesc",
+    "th": "แนวทางการดูแลรักษาโรคกระดูกพรุนฉบับภาษาไทย",
+    "en": "Thai-language guidance on osteoporosis care",
+    "uiContext": "Learn — external resources",
+    "class": "ui"
+  },
+  {
+    "key": "resOtagoTitle",
+    "th": "โปรแกรมออกกำลังกาย Otago",
+    "en": "Otago Exercise Programme",
+    "uiContext": "Learn — external resources",
+    "class": "ui"
+  },
+  {
+    "key": "resOtagoDesc",
+    "th": "โปรแกรมออกกำลังกายที่บ้านซึ่งมีหลักฐานว่าช่วยลดการล้มในผู้สูงอายุ",
+    "en": "Home exercise programme with strong evidence for reducing falls in older adults",
+    "uiContext": "Learn — external resources",
+    "class": "ui"
+  },
+  {
+    "key": "resSteadiTitle",
+    "th": "แนวทางประเมินความเสี่ยงล้ม STEADI",
+    "en": "STEADI Fall Risk Guidance",
+    "uiContext": "Learn — external resources",
+    "class": "ui"
+  },
+  {
+    "key": "resSteadiDesc",
+    "th": "เครื่องมือประเมินและลดความเสี่ยงการล้มจาก CDC",
+    "en": "Tools from the CDC for checking and reducing fall risk",
+    "uiContext": "Learn — external resources",
+    "class": "ui"
+  },
+  {
+    "key": "resWhoTitle",
+    "th": "องค์การอนามัยโลก",
+    "en": "World Health Organization",
+    "uiContext": "Learn — external resources",
+    "class": "ui"
+  },
+  {
+    "key": "resWhoDesc",
+    "th": "ข้อมูลสุขภาพกระดูกและการป้องกันการล้มระดับสากล",
+    "en": "International guidance on bone health and preventing falls",
+    "uiContext": "Learn — external resources",
+    "class": "ui"
+  },
+  {
+    "key": "navKnowledge",
+    "th": "ความรู้",
+    "en": "Learn",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabTitleKnowledge",
+    "th": "ความรู้เรื่องกระดูกพรุน",
+    "en": "Learn About Osteoporosis",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "reminderTitle",
+    "th": "ใกล้ถึงกำหนดยาแล้ว",
+    "en": "Your next dose is coming up",
+    "uiContext": "Medicine — dose reminder",
+    "class": "ui"
+  },
+  {
+    "key": "reminderDaysLeft",
+    "th": "อีก {n} วันถึงกำหนด",
+    "en": "{n} days to go",
+    "uiContext": "Medicine — dose reminder",
+    "class": "dynamic"
+  },
+  {
+    "key": "reminderDueToday",
+    "th": "ถึงกำหนดวันนี้",
+    "en": "Due today",
+    "uiContext": "Medicine — dose reminder",
+    "class": "ui"
+  },
+  {
+    "key": "reminderOverdue",
+    "th": "เลยกำหนดมาแล้ว {n} วัน",
+    "en": "Overdue by {n} days",
+    "uiContext": "Medicine — dose reminder",
+    "class": "dynamic"
+  },
+  {
+    "key": "reminderBody",
+    "th": "เตรียมนัดหมายหรือเตรียมยาให้พร้อม หากเป็นยาฉีดที่โรงพยาบาล ควรโทรยืนยันนัดล่วงหน้า",
+    "en": "Get your appointment or your medicine ready. If it is an injection at the hospital, phone ahead to confirm your appointment.",
+    "uiContext": "Medicine — dose reminder",
+    "class": "instruction"
+  },
+  {
+    "key": "reminderEnableNotifications",
+    "th": "เปิดแจ้งเตือนบนโทรศัพท์",
+    "en": "Turn on phone reminders",
+    "uiContext": "Medicine — dose reminder",
+    "class": "ui"
+  },
+  {
+    "key": "reminderNotificationsOn",
+    "th": "เปิดแจ้งเตือนบนโทรศัพท์แล้ว",
+    "en": "Phone reminders are on",
+    "uiContext": "Medicine — dose reminder",
+    "class": "ui"
+  },
+  {
+    "key": "reminderNotificationsBlocked",
+    "th": "โทรศัพท์ปิดการแจ้งเตือนไว้ ให้ใช้วิธีเพิ่มลงปฏิทินแทน",
+    "en": "Notifications are blocked on this phone — use the calendar reminder instead",
+    "uiContext": "Medicine — dose reminder",
+    "class": "ui"
+  },
+  {
+    "key": "reminderAddCalendar",
+    "th": "ตั้งเตือนในปฏิทินโทรศัพท์",
+    "en": "Set a calendar reminder",
+    "uiContext": "Medicine — dose reminder",
+    "class": "ui"
+  },
+  {
+    "key": "reminderCalendarNote",
+    "th": "ปฏิทินจะเตือนล่วงหน้า 7 วัน และเตือนซ้ำในวันนัด",
+    "en": "Your calendar will remind you 7 days ahead, and again on the day",
+    "uiContext": "Medicine — dose reminder",
+    "class": "ui"
+  },
+  {
+    "key": "reminderDismiss",
+    "th": "รับทราบแล้ว",
+    "en": "Got it",
+    "uiContext": "Medicine — dose reminder",
+    "class": "ui"
+  },
+  {
+    "key": "reminderNotificationBody",
+    "th": "ถึงกำหนดยารักษากระดูกพรุนของท่านในอีก 1 สัปดาห์",
+    "en": "Your osteoporosis medication is due in one week",
+    "uiContext": "Medicine — dose reminder",
+    "class": "ui"
+  },
+  {
+    "key": "homeCountdownTitle",
+    "th": "นับถอยหลังถึงยาครั้งถัดไป",
+    "en": "Countdown to your next dose",
+    "uiContext": "Home — dose countdown",
+    "class": "ui"
+  },
+  {
+    "key": "homeCountdownDays",
+    "th": "วัน",
+    "en": "days",
+    "uiContext": "Home — dose countdown",
+    "class": "ui"
+  },
+  {
+    "key": "homeCountdownToday",
+    "th": "วันนี้",
+    "en": "Today",
+    "uiContext": "Home — dose countdown",
+    "class": "ui"
+  },
+  {
+    "key": "homeCountdownOverdue",
+    "th": "เลยกำหนด",
+    "en": "Overdue",
+    "uiContext": "Home — dose countdown",
+    "class": "ui"
+  },
+  {
+    "key": "bmdTitle",
+    "th": "ค่าความหนาแน่นกระดูก (BMD)",
+    "en": "Bone Density (BMD)",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdIntro",
+    "th": "ทุกครั้งที่ไปตรวจความหนาแน่นกระดูก ให้จดค่า T-score จากใบผลมาใส่ไว้ที่นี่ จะได้เห็นว่าดีขึ้นหรือแย่ลง",
+    "en": "Each time you have a bone scan, copy the T-score from the report into here. Then you can see whether it is getting better or worse.",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "instruction"
+  },
+  {
+    "key": "bmdSpine",
+    "th": "กระดูกสันหลัง",
+    "en": "Spine",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdHip",
+    "th": "สะโพก",
+    "en": "Hip",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdTScoreLabel",
+    "th": "ค่า T-score",
+    "en": "T-score",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdScanDate",
+    "th": "วันที่ตรวจ",
+    "en": "Scan date",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdAdd",
+    "th": "บันทึกผลตรวจ",
+    "en": "Save this scan",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdChartTitle",
+    "th": "แนวโน้มค่าความหนาแน่นกระดูก",
+    "en": "Bone density over time",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdNoData",
+    "th": "ยังไม่มีผลตรวจที่บันทึกไว้",
+    "en": "No scan results recorded yet",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdHigherBetter",
+    "th": "ค่ายิ่งสูงยิ่งดี",
+    "en": "Higher is better",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdLatestScan",
+    "th": "ผลตรวจล่าสุด",
+    "en": "Latest scan",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "chartChangeSince",
+    "th": "เปลี่ยนแปลงจากครั้งแรก",
+    "en": "Change since the first record",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "chartTrendUp",
+    "th": "เพิ่มขึ้น",
+    "en": "increased",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "chartTrendDown",
+    "th": "ลดลง",
+    "en": "decreased",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "chartTrendFlat",
+    "th": "เท่าเดิม",
+    "en": "unchanged",
+    "uiContext": "Track",
+    "class": "ui"
+  },
+  {
+    "key": "syncTitle",
+    "th": "การส่งข้อมูลให้โรงพยาบาล",
+    "en": "Sending data to the hospital",
+    "uiContext": "Settings — sync",
+    "class": "ui"
+  },
+  {
+    "key": "syncPending",
+    "th": "ข้อมูลที่รอส่ง",
+    "en": "Waiting to send",
+    "uiContext": "Settings — sync",
+    "class": "ui"
+  },
+  {
+    "key": "syncItems",
+    "th": "รายการ",
+    "en": "records",
+    "uiContext": "Settings — sync",
+    "class": "ui"
+  },
+  {
+    "key": "syncAllSent",
+    "th": "ส่งข้อมูลครบแล้ว",
+    "en": "Everything has been sent",
+    "uiContext": "Settings — sync",
+    "class": "ui"
+  },
+  {
+    "key": "syncLastOk",
+    "th": "ส่งสำเร็จล่าสุด",
+    "en": "Last sent successfully",
+    "uiContext": "Settings — sync",
+    "class": "ui"
+  },
+  {
+    "key": "syncLastError",
+    "th": "ปัญหาล่าสุด",
+    "en": "Last problem",
+    "uiContext": "Settings — sync",
+    "class": "ui"
+  },
+  {
+    "key": "syncNever",
+    "th": "ยังไม่เคยส่งสำเร็จ",
+    "en": "Nothing has been sent yet",
+    "uiContext": "Settings — sync",
+    "class": "ui"
+  },
+  {
+    "key": "syncSendNow",
+    "th": "ลองส่งเดี๋ยวนี้",
+    "en": "Try sending now",
+    "uiContext": "Settings — sync",
+    "class": "ui"
+  },
+  {
+    "key": "syncSending",
+    "th": "กำลังส่ง...",
+    "en": "Sending...",
+    "uiContext": "Settings — sync",
+    "class": "ui"
+  },
+  {
+    "key": "resetTitle",
+    "th": "เริ่มกรอกข้อมูลใหม่",
+    "en": "Start over",
+    "uiContext": "Settings — reset",
+    "class": "ui"
+  },
+  {
+    "key": "resetBody",
+    "th": "ลบข้อมูลทั้งหมดในเครื่องนี้ แล้วเริ่มลงทะเบียนใหม่ตั้งแต่ต้น ข้อมูลที่ส่งให้โรงพยาบาลแล้วจะยังคงอยู่",
+    "en": "Erase everything stored on this phone and register again from the start. Data already sent to the hospital is not affected.",
+    "uiContext": "Settings — reset",
+    "class": "ui"
+  },
+  {
+    "key": "resetButton",
+    "th": "ล้างข้อมูลและเริ่มใหม่",
+    "en": "Erase and start over",
+    "uiContext": "Settings — reset",
+    "class": "ui"
+  },
+  {
+    "key": "resetConfirmQuestion",
+    "th": "ยืนยันลบข้อมูลทั้งหมดในเครื่องนี้หรือไม่",
+    "en": "Erase everything stored on this phone?",
+    "uiContext": "Settings — reset",
+    "class": "ui"
+  },
+  {
+    "key": "resetConfirmYes",
+    "th": "ใช่ ลบและเริ่มใหม่",
+    "en": "Yes, erase and start over",
+    "uiContext": "Settings — reset",
+    "class": "ui"
+  },
+  {
+    "key": "resetWarnUnsent",
+    "th": "ยังมีข้อมูลที่ยังไม่ได้ส่งให้โรงพยาบาล หากลบตอนนี้ข้อมูลนั้นจะหายไป",
+    "en": "Some records have not reached the hospital yet. Erasing now will lose them.",
+    "uiContext": "Settings — reset",
+    "class": "warning"
+  },
+  {
+    "key": "footerDoctorLabel",
+    "th": "แพทย์ผู้ดูแล",
+    "en": "Your doctor",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "drugDuration",
+    "th": "ใช้ยานี้มาแล้ว",
+    "en": "You have been on this medicine for",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugMonthsUnit",
+    "th": "เดือน",
+    "en": "months",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugLessThanMonth",
+    "th": "น้อยกว่า 1 เดือน",
+    "en": "less than a month",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugDosesReceived",
+    "th": "ได้รับยาแล้ว",
+    "en": "Doses received",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugDosesUnit",
+    "th": "ครั้ง",
+    "en": "doses",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugInjectionsUnit",
+    "th": "เข็ม",
+    "en": "injections",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugCourseProgress",
+    "th": "เข็มถัดไปคือเข็มที่ {n} จากทั้งหมด {total} เข็ม",
+    "en": "Your next injection is number {n} of {total}",
+    "uiContext": "Medicine",
+    "class": "dynamic"
+  },
+  {
+    "key": "drugCourseComplete",
+    "th": "ครบชุดการรักษา {total} เข็มแล้ว ควรปรึกษาแพทย์เรื่องยาที่จะใช้ต่อ เพื่อรักษาผลที่ได้ไว้",
+    "en": "You have completed all {total} injections. Ask your doctor which medicine follows, so the benefit is not lost.",
+    "uiContext": "Medicine",
+    "class": "dynamic"
+  },
+  {
+    "key": "drugHistoryTitle",
+    "th": "ยาที่เคยใช้มาก่อน",
+    "en": "Medicines you used before",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugHistoryEmpty",
+    "th": "ยังไม่เคยเปลี่ยนยา",
+    "en": "You have not changed medicine yet",
+    "uiContext": "Medicine",
+    "class": "ui"
+  },
+  {
+    "key": "drugHistoryPeriod",
+    "th": "รวม {n} เดือน",
+    "en": "{n} months in total",
+    "uiContext": "Medicine",
+    "class": "dynamic"
+  },
+  {
+    "key": "foodCalciumKnowledgeTitle",
+    "th": "แคลเซียมอยู่ในอาหารอะไรบ้าง",
+    "en": "Where calcium comes from",
+    "uiContext": "Food — knowledge cards",
+    "class": "ui"
+  },
+  {
+    "key": "foodCalciumKnowledgeBody",
+    "th": "ร่างกายต้องการแคลเซียมทุกวัน และอาหารไทยหลายอย่างก็มีแคลเซียมสูง",
+    "en": "Your body needs calcium every day, and many everyday Thai foods are rich in it.",
+    "uiContext": "Food — knowledge cards",
+    "class": "education"
+  },
+  {
+    "key": "foodVitDKnowledgeTitle",
+    "th": "วิตามินดีได้จากไหน",
+    "en": "Where vitamin D comes from",
+    "uiContext": "Food — knowledge cards",
+    "class": "ui"
+  },
+  {
+    "key": "foodVitDKnowledgeBody",
+    "th": "วิตามินดีเป็นตัวช่วยให้ร่างกายดูดซึมแคลเซียมได้ ถ้าขาดวิตามินดี กินแคลเซียมเท่าไรก็ไม่พอ",
+    "en": "Vitamin D is what lets your body take in calcium. Without it, no amount of calcium is enough.",
+    "uiContext": "Food — knowledge cards",
+    "class": "education"
+  },
+  {
+    "key": "foodAvoidTitle",
+    "th": "อาหารและเครื่องดื่มที่ควรเลี่ยง",
+    "en": "Food and drinks to cut down",
+    "uiContext": "Food — knowledge cards",
+    "class": "ui"
+  },
+  {
+    "key": "foodAvoidBody",
+    "th": "ของบางอย่างทำให้กระดูกบางเร็วขึ้น ควรลดหรือเลี่ยง",
+    "en": "Some things make bone thin out faster. It helps to cut down or avoid them.",
+    "uiContext": "Food — knowledge cards",
+    "class": "education"
+  },
+  {
+    "key": "learnScreeningTitle",
+    "th": "ใครควรตรวจความหนาแน่นกระดูก (DXA)",
+    "en": "Who should have a bone density scan",
+    "uiContext": "Learn",
+    "class": "ui"
+  },
+  {
+    "key": "learnScreeningBody",
+    "th": "โดยทั่วไปแนะนำให้ตรวจในกลุ่มต่อไปนี้ แต่แพทย์ผู้ดูแลจะเป็นผู้ตัดสินใจร่วมกับท่าน",
+    "en": "A scan is usually advised for the people below, though your own doctor decides this with you.",
+    "uiContext": "Learn",
+    "class": "education"
+  },
+  {
+    "key": "registerYearBEHint",
+    "th": "กรอกเป็น พ.ศ. เช่น 2495",
+    "en": "Enter the Buddhist-era year, for example 2495",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerYearInvalidBE",
+    "th": "กรุณากรอกปีเกิดเป็น พ.ศ. เช่น 2495",
+    "en": "Please enter the year of birth in the Buddhist era, for example 2495",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "registerHNRequiredOnly",
+    "th": "กรุณากรอกเลขประจำตัวผู้ป่วย (HN)",
+    "en": "Please enter your hospital number (HN)",
+    "uiContext": "Registration",
+    "class": "ui"
+  },
+  {
+    "key": "headerHnLabel",
+    "th": "HN",
+    "en": "HN",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "bmdPreviousResults",
+    "th": "ผลตรวจที่ผ่านมา",
+    "en": "Previous results",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdThresholdOsteoporosis",
+    "th": "กระดูกพรุน -2.5",
+    "en": "Osteoporosis -2.5",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdEnterTScores",
+    "th": "กรอกค่า T-score จากใบผลตรวจ DXA",
+    "en": "Enter the T-scores from your DXA report",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "bmdUpdatedStatus",
+    "th": "บันทึกแล้ว และปรับสถานะกระดูกให้ตามผลล่าสุด",
+    "en": "Saved, and your bone status has been updated from this result",
+    "uiContext": "Track — bone density (BMD)",
+    "class": "ui"
+  },
+  {
+    "key": "syncFooterPending",
+    "th": "มีข้อมูล {n} รายการรอส่งให้โรงพยาบาล",
+    "en": "{n} records are waiting to reach the hospital",
+    "uiContext": "App shell — sync",
+    "class": "dynamic"
+  },
+  {
+    "key": "syncFooterRetry",
+    "th": "ลองส่งเดี๋ยวนี้",
+    "en": "Try sending now",
+    "uiContext": "App shell — sync",
+    "class": "ui"
+  },
+  {
+    "key": "save",
+    "th": "บันทึก",
+    "en": "Save",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "cancel",
+    "th": "ยกเลิก",
+    "en": "Cancel",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "back",
+    "th": "ย้อนกลับ",
+    "en": "Back",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "offlineNotice",
+    "th": "ขณะนี้ไม่มีอินเทอร์เน็ต ข้อมูลจะถูกส่งให้อัตโนมัติเมื่อกลับมาออนไลน์",
+    "en": "You are offline — your data will be sent automatically when you reconnect",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "LISTS.learnScreening.0",
+    "th": "ผู้หญิงอายุ 65 ปีขึ้นไป และผู้ชายอายุ 70 ปีขึ้นไป ควรตรวจทุกคน",
+    "en": "Every woman aged 65 and over, and every man aged 70 and over",
+    "uiContext": "Learn — who should have a DXA scan",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.learnScreening.1",
+    "th": "ผู้หญิงที่หมดประจำเดือนแล้วแต่อายุยังไม่ถึง 65 ปี ถ้ามีน้ำหนักตัวน้อย สูบบุหรี่ ดื่มเหล้าจัด หรือพ่อแม่เคยสะโพกหัก",
+    "en": "Women past the menopause but under 65, if they are underweight, smoke, drink a lot, or a parent broke a hip",
+    "uiContext": "Learn — who should have a DXA scan",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.learnScreening.2",
+    "th": "ผู้ชายอายุ 50-69 ปี ที่มีปัจจัยเสี่ยงแบบเดียวกัน",
+    "en": "Men aged 50 to 69 with those same risks",
+    "uiContext": "Learn — who should have a DXA scan",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.learnScreening.3",
+    "th": "ใครก็ตามที่อายุเกิน 50 ปี แล้วกระดูกหักจากการล้มเบา ๆ",
+    "en": "Anyone over 50 who has broken a bone in a small fall",
+    "uiContext": "Learn — who should have a DXA scan",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.learnScreening.4",
+    "th": "คนที่กินยาสเตียรอยด์ติดต่อกันตั้งแต่ 3 เดือนขึ้นไป",
+    "en": "Anyone taking steroid tablets for 3 months or more",
+    "uiContext": "Learn — who should have a DXA scan",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.learnScreening.5",
+    "th": "คนที่ส่วนสูงลดลงตั้งแต่ 2 เซนติเมตร หรือหลังค่อมผิดปกติ",
+    "en": "Anyone who has lost 2 cm or more in height, or whose back has become rounded",
+    "uiContext": "Learn — who should have a DXA scan",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.learnScreening.6",
+    "th": "คนที่มีโรคที่ทำให้กระดูกบาง เช่น ไทรอยด์เป็นพิษ หรือลำไส้ดูดซึมอาหารไม่ดี",
+    "en": "Anyone with an illness that thins bone, such as an overactive thyroid or a gut that does not absorb food well",
+    "uiContext": "Learn — who should have a DXA scan",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodCalcium.0",
+    "th": "นมจืด 1 แก้ว หรือโยเกิร์ต 1 ถ้วย ให้แคลเซียมประมาณ 300 มก.",
+    "en": "A glass of milk or a pot of yoghurt gives about 300 mg",
+    "uiContext": "Food — where calcium comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodCalcium.1",
+    "th": "ปลาเล็กปลาน้อยหรือกุ้งแห้ง 2 ช้อนโต๊ะ ให้ประมาณ 220 มก. เพราะกินได้ทั้งก้าง",
+    "en": "Two tablespoons of small whole fish or dried shrimp gives about 220 mg, because you eat the bones",
+    "uiContext": "Food — where calcium comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodCalcium.2",
+    "th": "ปลากระป๋องที่ก้างนิ่ม ครึ่งกระป๋อง ให้ประมาณ 240 มก.",
+    "en": "Half a tin of fish with soft bones gives about 240 mg",
+    "uiContext": "Food — where calcium comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodCalcium.3",
+    "th": "เต้าหู้แข็งครึ่งถ้วย หรืองาดำ 1 ช้อนโต๊ะ ให้ประมาณ 130 มก.",
+    "en": "Half a cup of firm tofu, or a tablespoon of black sesame, gives about 130 mg",
+    "uiContext": "Food — where calcium comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodCalcium.4",
+    "th": "ผักใบเขียวเข้ม เช่น คะน้า ตำลึง ใบยอ 1 ถ้วยสุก ให้ประมาณ 150 มก.",
+    "en": "A cup of cooked dark greens such as Chinese kale, ivy gourd or noni leaf gives about 150 mg",
+    "uiContext": "Food — where calcium comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodCalcium.5",
+    "th": "กินทีละน้อยแต่บ่อยครั้งดีกว่ากินทีเดียวมาก ๆ เพราะร่างกายรับได้ครั้งละไม่เกิน 500 มก.",
+    "en": "Little and often works better than all at once, because the body takes in only about 500 mg at a time",
+    "uiContext": "Food — where calcium comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodVitD.0",
+    "th": "แสงแดดสำคัญที่สุด ให้แขนหรือขาโดนแดด 10-15 นาที สัปดาห์ละ 2-3 ครั้ง",
+    "en": "Sunlight matters most: let the sun reach your arms or legs for 10 to 15 minutes, 2 or 3 times a week",
+    "uiContext": "Food — where vitamin D comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodVitD.1",
+    "th": "เลือกแดดอ่อน ก่อน 9 โมงเช้า หรือหลัง 4 โมงเย็น",
+    "en": "Choose gentle sun, before 9 in the morning or after 4 in the afternoon",
+    "uiContext": "Food — where vitamin D comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodVitD.2",
+    "th": "อาหารที่มีวิตามินดี ได้แก่ ปลาทะเลตัวใหญ่อย่างแซลมอนและปลาทู ไข่แดง และเห็ดตากแดด",
+    "en": "Foods with vitamin D include oily sea fish such as salmon and mackerel, egg yolk, and sun-dried mushrooms",
+    "uiContext": "Food — where vitamin D comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodVitD.3",
+    "th": "ถ้าโดนแดดน้อย ควรกินวิตามินดีเสริมตามที่แพทย์แนะนำ",
+    "en": "If you get little sun, take a vitamin D supplement as your doctor advises",
+    "uiContext": "Food — where vitamin D comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodVitD.4",
+    "th": "ถ้าขาดวิตามินดี ร่างกายจะดูดซึมแคลเซียมไม่ได้ แม้กินแคลเซียมมากก็ไม่พอ",
+    "en": "Without vitamin D the body cannot take in calcium, however much calcium you eat",
+    "uiContext": "Food — where vitamin D comes from",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodAvoid.0",
+    "th": "อาหารเค็มจัด เช่น น้ำปลา ซีอิ๊ว ของหมักดอง บะหมี่ซอง เพราะเกลือทำให้แคลเซียมหลุดออกทางปัสสาวะ",
+    "en": "Very salty food such as fish sauce, soy sauce, pickles and instant noodles — salt washes calcium out in your urine",
+    "uiContext": "Food — food and drink to cut down",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodAvoid.1",
+    "th": "กาแฟ ไม่ควรเกินวันละ 2 แก้ว",
+    "en": "Coffee — no more than 2 cups a day",
+    "uiContext": "Food — food and drink to cut down",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodAvoid.2",
+    "th": "เหล้าเบียร์ ไม่ควรเกินวันละ 2 แก้ว เพราะทำให้กระดูกบางและเสี่ยงล้ม",
+    "en": "Alcohol — no more than 2 drinks a day, as it thins bone and makes falls more likely",
+    "uiContext": "Food — food and drink to cut down",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodAvoid.3",
+    "th": "น้ำอัดลม เพราะมักดื่มแทนนม และมีฟอสเฟตสูง",
+    "en": "Fizzy drinks — people often drink them instead of milk, and they are high in phosphate",
+    "uiContext": "Food — food and drink to cut down",
+    "class": "education"
+  },
+  {
+    "key": "LISTS.foodAvoid.4",
+    "th": "บุหรี่ ควรงดให้ได้ เพราะทำให้กระดูกบางลงโดยตรง",
+    "en": "Cigarettes — worth stopping altogether, as they thin bone directly",
+    "uiContext": "Food — food and drink to cut down",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.bisphosphonate_weekly.name",
+    "th": "ยาบิสฟอสโฟเนตชนิดรับประทาน (สัปดาห์ละครั้ง)",
+    "en": "Oral bisphosphonate (once a week)",
+    "uiContext": "Medicine — Oral bisphosphonate (once a week)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.bisphosphonate_weekly.cadenceLabel",
+    "th": "สัปดาห์ละครั้ง",
+    "en": "Once a week",
+    "uiContext": "Medicine — Oral bisphosphonate (once a week)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.bisphosphonate_weekly.route",
+    "th": "ยาเม็ด รับประทานเอง",
+    "en": "Tablet, taken at home",
+    "uiContext": "Medicine — Oral bisphosphonate (once a week)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.bisphosphonate_weekly.whatItDoes",
+    "th": "ชะลอการสลายของเนื้อกระดูก ทำให้กระดูกแข็งแรงขึ้นและลดโอกาสกระดูกหัก",
+    "en": "Slows down the breakdown of bone, making it stronger and less likely to break.",
+    "uiContext": "Medicine — Oral bisphosphonate (once a week)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.bisphosphonate_weekly.instructions",
+    "th": "ทานตอนเช้าขณะท้องว่างทันทีหลังตื่นนอน พร้อมน้ำเปล่า 1 แก้วเต็ม (ห้ามใช้ชา กาแฟ นม หรือน้ำผลไม้) หลังทานยาให้นั่งหรือยืนตัวตรงอย่างน้อย 30 นาที ห้ามนอนราบ และรออย่างน้อย 30 นาทีก่อนทานอาหาร ยาอื่น หรือแคลเซียม",
+    "en": "Take it first thing in the morning on an empty stomach with a full glass of plain water — not tea, coffee, milk or juice. Stay sitting or standing upright for at least 30 minutes, do not lie down, and wait at least 30 minutes before food, other medicines or calcium.",
+    "uiContext": "Medicine — Oral bisphosphonate (once a week)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.bisphosphonate_weekly.missedDose",
+    "th": "หากลืม ให้ทานในเช้าวันถัดไปเพียง 1 เม็ด แล้วกลับไปทานวันเดิมของสัปดาห์ถัดไป ห้ามทาน 2 เม็ดในวันเดียวกัน",
+    "en": "If you forget, take one tablet the next morning, then go back to your usual day the following week. Never take two tablets on the same day.",
+    "uiContext": "Medicine — Oral bisphosphonate (once a week)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.bisphosphonate_weekly.sideEffects",
+    "th": "อาจแสบร้อนกลางอก กลืนลำบาก หรือปวดท้องได้ มักดีขึ้นเมื่อทานยาถูกวิธีและไม่นอนราบหลังทานยา หากแสบมากหรือกลืนเจ็บ ให้แจ้งแพทย์",
+    "en": "It can cause heartburn, difficulty swallowing or stomach discomfort. This usually improves if you take it correctly and stay upright. Tell your doctor if it burns badly or hurts to swallow.",
+    "uiContext": "Medicine — Oral bisphosphonate (once a week)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.bisphosphonate_weekly.tellDoctor",
+    "th": "มีปัญหาโรคไต ระดับแคลเซียมในเลือดต่ำ กำลังจะทำฟันหรือผ่าตัดช่องปาก หรือมีอาการปวดต้นขาด้านนอกเรื้อรัง",
+    "en": "You have kidney problems or low blood calcium, you are about to have dental work or oral surgery, or you develop lasting pain in the outer thigh.",
+    "uiContext": "Medicine — Oral bisphosphonate (once a week)",
+    "class": "warning"
+  },
+  {
+    "key": "MED_CLASSES.denosumab.name",
+    "th": "ยาฉีดเดโนซูแมบ (ทุก 6 เดือน)",
+    "en": "Denosumab injection (every 6 months)",
+    "uiContext": "Medicine — Denosumab injection (every 6 months)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.denosumab.cadenceLabel",
+    "th": "ทุก 6 เดือน",
+    "en": "Every 6 months",
+    "uiContext": "Medicine — Denosumab injection (every 6 months)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.denosumab.route",
+    "th": "ยาฉีดใต้ผิวหนัง ที่โรงพยาบาล",
+    "en": "Injection under the skin, at hospital",
+    "uiContext": "Medicine — Denosumab injection (every 6 months)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.denosumab.whatItDoes",
+    "th": "ยับยั้งเซลล์ที่สลายกระดูก ช่วยเพิ่มความหนาแน่นกระดูกและลดโอกาสกระดูกหัก",
+    "en": "Blocks the cells that break down bone, increasing bone density and lowering fracture risk.",
+    "uiContext": "Medicine — Denosumab injection (every 6 months)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.denosumab.instructions",
+    "th": "พยาบาลหรือแพทย์จะฉีดเข้าใต้ผิวหนังที่โรงพยาบาลทุก 6 เดือน ควรนัดครั้งถัดไปทุกครั้งก่อนกลับบ้าน และควรได้รับแคลเซียมกับวิตามินดีเพียงพอร่วมด้วย",
+    "en": "A nurse or doctor injects it under the skin at the hospital every 6 months. Book your next appointment before you leave, and make sure you also get enough calcium and vitamin D.",
+    "uiContext": "Medicine — Denosumab injection (every 6 months)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.denosumab.missedDose",
+    "th": "หากไม่สามารถมาตามนัดได้ ต้องโทรแจ้งโรงพยาบาลทันทีเพื่อนัดใหม่โดยเร็วที่สุด ไม่ควรทิ้งช่วงเกินกำหนด",
+    "en": "If you cannot make your appointment, phone the hospital straight away to rebook as soon as possible. The gap should not be allowed to stretch out.",
+    "uiContext": "Medicine — Denosumab injection (every 6 months)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.denosumab.sideEffects",
+    "th": "อาจปวดเมื่อยกล้ามเนื้อหรือข้อ และเสี่ยงแคลเซียมในเลือดต่ำ หากมีอาการชารอบปาก ปลายมือปลายเท้า หรือกล้ามเนื้อเกร็งกระตุก ให้แจ้งแพทย์ทันที",
+    "en": "You may have muscle or joint aches, and blood calcium can drop. Tell your doctor at once if you get numbness around the mouth, tingling hands or feet, or muscle cramps and twitching.",
+    "uiContext": "Medicine — Denosumab injection (every 6 months)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.denosumab.tellDoctor",
+    "th": "กำลังจะถอนฟันหรือผ่าตัดช่องปาก มีปัญหาโรคไต หรือมีการติดเชื้อที่ผิวหนัง",
+    "en": "You are due to have a tooth out or oral surgery, you have kidney problems, or you develop a skin infection.",
+    "uiContext": "Medicine — Denosumab injection (every 6 months)",
+    "class": "warning"
+  },
+  {
+    "key": "MED_CLASSES.denosumab.doNotStop",
+    "th": "ห้ามหยุดยานี้เองโดยเด็ดขาด การหยุดยาเดโนซูแมบโดยไม่มียาอื่นทดแทน อาจทำให้กระดูกสันหลังยุบหลายระดับพร้อมกันภายใน 1-2 ปี หากต้องการหยุดยาต้องวางแผนกับแพทย์เสมอ",
+    "en": "Never stop this medicine on your own. Stopping denosumab without another medicine to follow it can cause several spinal fractures at once within a year or two. Any plan to stop must be made with your doctor.",
+    "uiContext": "Medicine — Denosumab injection (every 6 months)",
+    "class": "warning"
+  },
+  {
+    "key": "MED_CLASSES.zoledronate.name",
+    "th": "ยาฉีดเข้าหลอดเลือดดำ โซเลโดรเนต (ปีละครั้ง)",
+    "en": "Zoledronate infusion (once a year)",
+    "uiContext": "Medicine — Zoledronate infusion (once a year)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.zoledronate.cadenceLabel",
+    "th": "ปีละครั้ง",
+    "en": "Once a year",
+    "uiContext": "Medicine — Zoledronate infusion (once a year)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.zoledronate.route",
+    "th": "ยาฉีดเข้าหลอดเลือดดำ ที่โรงพยาบาล",
+    "en": "Drip into a vein, at hospital",
+    "uiContext": "Medicine — Zoledronate infusion (once a year)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.zoledronate.whatItDoes",
+    "th": "ยาในกลุ่มบิสฟอสโฟเนตชนิดฉีด ออกฤทธิ์นานทั้งปี ช่วยลดการสลายกระดูกและลดโอกาสกระดูกหัก",
+    "en": "A bisphosphonate given by drip that works for a whole year, reducing bone breakdown and fracture risk.",
+    "uiContext": "Medicine — Zoledronate infusion (once a year)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.zoledronate.instructions",
+    "th": "ให้ยาทางหลอดเลือดดำที่โรงพยาบาล ใช้เวลาประมาณ 15-30 นาที ปีละครั้ง ควรดื่มน้ำให้มากทั้งก่อนและหลังได้รับยา",
+    "en": "Given through a drip at the hospital, taking about 15-30 minutes, once a year. Drink plenty of water before and after.",
+    "uiContext": "Medicine — Zoledronate infusion (once a year)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.zoledronate.missedDose",
+    "th": "หากเลยกำหนดนัดประจำปี ให้ติดต่อโรงพยาบาลเพื่อนัดใหม่ ไม่ต้องเพิ่มขนาดยาเพื่อชดเชย",
+    "en": "If your yearly appointment has passed, contact the hospital to rebook. The dose is not increased to make up for it.",
+    "uiContext": "Medicine — Zoledronate infusion (once a year)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.zoledronate.sideEffects",
+    "th": "หลังได้รับยาครั้งแรก อาจมีไข้ ปวดเมื่อยตัวคล้ายเป็นไข้หวัด 1-3 วัน ให้ดื่มน้ำมาก ๆ และทานยาพาราเซตามอลได้ อาการมักไม่เกิดซ้ำในปีถัดไป",
+    "en": "After the first infusion you may feel feverish and achy like a mild flu for 1-3 days. Drink plenty of water and paracetamol is fine. This usually does not happen again in later years.",
+    "uiContext": "Medicine — Zoledronate infusion (once a year)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.zoledronate.tellDoctor",
+    "th": "มีปัญหาโรคไต ระดับแคลเซียมในเลือดต่ำ หรือกำลังจะทำฟัน/ผ่าตัดช่องปาก",
+    "en": "You have kidney problems or low blood calcium, or you are about to have dental work or oral surgery.",
+    "uiContext": "Medicine — Zoledronate infusion (once a year)",
+    "class": "warning"
+  },
+  {
+    "key": "MED_CLASSES.teriparatide.name",
+    "th": "ยาฉีดเทอริพาราไทด์ (ฉีดเองทุกวัน)",
+    "en": "Teriparatide (daily self-injection)",
+    "uiContext": "Medicine — Teriparatide (daily self-injection)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.teriparatide.cadenceLabel",
+    "th": "ทุกวัน",
+    "en": "Every day",
+    "uiContext": "Medicine — Teriparatide (daily self-injection)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.teriparatide.route",
+    "th": "ปากกาฉีดยา ฉีดเองที่บ้าน",
+    "en": "Injection pen, self-injected at home",
+    "uiContext": "Medicine — Teriparatide (daily self-injection)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.teriparatide.whatItDoes",
+    "th": "กระตุ้นการสร้างเนื้อกระดูกใหม่ ใช้ในผู้ที่มีความเสี่ยงกระดูกหักสูงมาก",
+    "en": "Stimulates the body to build new bone. It is used for people at very high risk of fracture.",
+    "uiContext": "Medicine — Teriparatide (daily self-injection)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.teriparatide.instructions",
+    "th": "ฉีดเข้าใต้ผิวหนังบริเวณหน้าท้องหรือต้นขาวันละครั้ง เวลาใกล้เคียงกันทุกวัน เก็บปากกายาไว้ในตู้เย็น (2-8 องศาเซลเซียส) ห้ามแช่ช่องแข็ง ครั้งแรกควรฉีดขณะนั่งหรือนอน เพราะอาจมีหน้ามืด",
+    "en": "Inject under the skin of the abdomen or thigh once a day, at about the same time each day. Keep the pen in the fridge (2-8°C) and never freeze it. For the first few doses, sit or lie down in case you feel light-headed.",
+    "uiContext": "Medicine — Teriparatide (daily self-injection)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.teriparatide.missedDose",
+    "th": "หากลืม ให้ฉีดทันทีที่นึกได้ภายในวันเดียวกัน หากข้ามไปทั้งวันแล้ว ให้ฉีดตามปกติในวันถัดไป ห้ามฉีด 2 เข็มในวันเดียว",
+    "en": "If you forget, inject as soon as you remember on the same day. If a whole day has passed, just take the next dose as usual — never inject twice in one day.",
+    "uiContext": "Medicine — Teriparatide (daily self-injection)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.teriparatide.sideEffects",
+    "th": "อาจมีคลื่นไส้ ปวดศีรษะ เวียนศีรษะ หรือปวดบริเวณที่ฉีด มักดีขึ้นเอง หากหน้ามืดเป็นลมบ่อยให้แจ้งแพทย์",
+    "en": "You may feel nauseated, have a headache or dizziness, or have soreness where you inject. This usually settles. Tell your doctor if you feel faint often.",
+    "uiContext": "Medicine — Teriparatide (daily self-injection)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.teriparatide.tellDoctor",
+    "th": "มีประวัติมะเร็งกระดูก เคยฉายรังสีที่กระดูก มีระดับแคลเซียมในเลือดสูง หรือมีนิ่วในไต และควรปรึกษาแพทย์เรื่องระยะเวลาการใช้ยาทั้งหมด",
+    "en": "You have had bone cancer or radiation to the bone, high blood calcium, or kidney stones. Also discuss with your doctor how long you should stay on it.",
+    "uiContext": "Medicine — Teriparatide (daily self-injection)",
+    "class": "warning"
+  },
+  {
+    "key": "MED_CLASSES.romosozumab.name",
+    "th": "ยาฉีดโรโมโซซูแมบ (เดือนละครั้ง)",
+    "en": "Romosozumab injection (once a month)",
+    "uiContext": "Medicine — Romosozumab injection (once a month)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.romosozumab.cadenceLabel",
+    "th": "เดือนละครั้ง",
+    "en": "Once a month",
+    "uiContext": "Medicine — Romosozumab injection (once a month)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.romosozumab.route",
+    "th": "ยาฉีดใต้ผิวหนัง ที่โรงพยาบาล",
+    "en": "Injection under the skin, at hospital",
+    "uiContext": "Medicine — Romosozumab injection (once a month)",
+    "class": "ui"
+  },
+  {
+    "key": "MED_CLASSES.romosozumab.whatItDoes",
+    "th": "ช่วยทั้งสร้างกระดูกใหม่และลดการสลายกระดูกไปพร้อมกัน ใช้เป็นชุดการรักษานาน 12 เดือน",
+    "en": "Both builds new bone and reduces bone breakdown at the same time. It is given as a 12-month course.",
+    "uiContext": "Medicine — Romosozumab injection (once a month)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.romosozumab.instructions",
+    "th": "ฉีดใต้ผิวหนังที่โรงพยาบาลเดือนละครั้ง (ครั้งละ 2 เข็ม) ต่อเนื่อง 12 เดือน หลังครบกำหนดแพทย์จะเปลี่ยนเป็นยาชนิดอื่นเพื่อรักษาผลที่ได้ไว้",
+    "en": "Given as an injection under the skin at the hospital once a month (two injections each time) for 12 months. After the course your doctor will move you to another medicine to keep the benefit.",
+    "uiContext": "Medicine — Romosozumab injection (once a month)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.romosozumab.missedDose",
+    "th": "หากพลาดนัด ให้ติดต่อโรงพยาบาลเพื่อฉีดโดยเร็วที่สุด แล้วนับรอบเดือนถัดไปจากวันที่ฉีดจริง",
+    "en": "If you miss an appointment, contact the hospital to have it as soon as possible, then count the next month from the date you actually received it.",
+    "uiContext": "Medicine — Romosozumab injection (once a month)",
+    "class": "instruction"
+  },
+  {
+    "key": "MED_CLASSES.romosozumab.sideEffects",
+    "th": "อาจปวดข้อ ปวดศีรษะ หรือมีปฏิกิริยาบริเวณที่ฉีด",
+    "en": "You may have joint pain, headache, or a reaction where you were injected.",
+    "uiContext": "Medicine — Romosozumab injection (once a month)",
+    "class": "education"
+  },
+  {
+    "key": "MED_CLASSES.romosozumab.tellDoctor",
+    "th": "เคยเป็นโรคหัวใจขาดเลือด กล้ามเนื้อหัวใจตาย หรือโรคหลอดเลือดสมอง ต้องแจ้งแพทย์ก่อนเริ่มยานี้เสมอ และหากมีอาการเจ็บแน่นหน้าอกหรืออ่อนแรงครึ่งซีกระหว่างใช้ยา ให้โทร 1669 ทันที",
+    "en": "You have had a heart attack, angina or a stroke — always tell your doctor before starting. If you get chest pain or one-sided weakness while on it, call 1669 immediately.",
+    "uiContext": "Medicine — Romosozumab injection (once a month)",
+    "class": "warning"
+  },
+  {
+    "key": "EXERCISE_LIST.sit_to_stand_hold.name",
+    "th": "ลุกยืนจากเก้าอี้โดยจับที่พยุง",
+    "en": "Sit-to-stand with support",
+    "uiContext": "Move — balance (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.sit_to_stand_hold.amount",
+    "th": "10 ครั้ง 2 รอบ",
+    "en": "10 times, 2 rounds",
+    "uiContext": "Move — balance (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.sit_to_stand_hold.howTo",
+    "th": "นั่งตรงขอบเก้าอี้ วางเท้าห่างกันเท่าช่วงสะโพก จับที่วางแขนหรือขอบโต๊ะ โน้มตัวไปข้างหน้าเล็กน้อยแล้วลุกขึ้นยืนช้า ๆ จากนั้นค่อย ๆ นั่งลงโดยไม่ทิ้งตัว",
+    "en": "Sit at the front of the chair with feet hip-width apart. Hold the armrests or a table, lean forward slightly, stand up slowly, then lower yourself back down under control.",
+    "uiContext": "Move — balance (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.standing_marching.name",
+    "th": "ยืนย่ำเท้าอยู่กับที่",
+    "en": "Standing marching",
+    "uiContext": "Move — balance (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.standing_marching.amount",
+    "th": "ข้างละ 10 ครั้ง",
+    "en": "10 times each side",
+    "uiContext": "Move — balance (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.standing_marching.howTo",
+    "th": "ยืนตรงหลังเก้าอี้ จับพนักไว้ทั้งสองมือ ยกเข่าขึ้นสลับซ้าย-ขวาช้า ๆ ให้สูงระดับสะโพกเท่าที่ทำได้ ยืนตัวตรงและหายใจตามปกติ",
+    "en": "Stand behind the chair holding the back with both hands. Slowly lift one knee then the other, as high as is comfortable. Keep your body upright and breathe normally.",
+    "uiContext": "Move — balance (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.weight_shifts.name",
+    "th": "โยกน้ำหนักตัวซ้าย-ขวา",
+    "en": "Side-to-side weight shifts",
+    "uiContext": "Move — balance (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.weight_shifts.amount",
+    "th": "ข้างละ 10 ครั้ง",
+    "en": "10 times each side",
+    "uiContext": "Move — balance (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.weight_shifts.howTo",
+    "th": "ยืนจับพนักเก้าอี้ เท้าห่างกันเท่าช่วงไหล่ ค่อย ๆ ถ่ายน้ำหนักไปที่ขาซ้ายจนขาขวาเบาลง ค้างไว้ 3 วินาที แล้วสลับข้าง",
+    "en": "Stand holding the chair with feet shoulder-width apart. Slowly shift your weight onto the left leg until the right foot feels light, hold for 3 seconds, then swap sides.",
+    "uiContext": "Move — balance (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.single_leg_stand_chair.name",
+    "th": "ยืนขาเดียวโดยมีเก้าอี้อยู่ใกล้",
+    "en": "Single-leg stance",
+    "uiContext": "Move — balance (levels 2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.single_leg_stand_chair.amount",
+    "th": "ข้างละ 10 วินาที 3 ครั้ง",
+    "en": "10 seconds each side, 3 times",
+    "uiContext": "Move — balance (levels 2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.single_leg_stand_chair.howTo",
+    "th": "ยืนข้างเก้าอี้ แตะพนักด้วยปลายนิ้วเบา ๆ ยกเท้าข้างหนึ่งขึ้นจากพื้นเล็กน้อย ยืนทรงตัวไว้ 10 วินาที แล้วสลับข้าง เมื่อมั่นใจขึ้นจึงลดการแตะลง",
+    "en": "Stand beside the chair with your fingertips resting lightly on it. Lift one foot just off the floor and hold your balance for 10 seconds, then swap. As you gain confidence, touch the chair less.",
+    "uiContext": "Move — balance (levels 2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.tandem_stand.name",
+    "th": "ยืนเท้าเรียงต่อกัน",
+    "en": "Heel-to-toe stand",
+    "uiContext": "Move — balance (levels 2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.tandem_stand.amount",
+    "th": "10 วินาที 3 ครั้ง",
+    "en": "10 seconds, 3 times",
+    "uiContext": "Move — balance (levels 2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.tandem_stand.howTo",
+    "th": "ยืนหันข้างเข้าหากำแพง วางส้นเท้าหน้าชิดปลายเท้าหลังให้เป็นเส้นตรง กางแขนเล็กน้อยเพื่อช่วยทรงตัว ยืนค้างไว้ 10 วินาที แล้วสลับเท้าหน้า",
+    "en": "Stand side-on to the wall and place one heel directly in front of the other toes, in a straight line. Hold your arms out slightly for balance, hold for 10 seconds, then change which foot is in front.",
+    "uiContext": "Move — balance (levels 2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.tandem_walk.name",
+    "th": "เดินต่อเท้าเป็นเส้นตรง",
+    "en": "Heel-to-toe walking",
+    "uiContext": "Move — balance (levels 3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.tandem_walk.amount",
+    "th": "10 ก้าว 2 เที่ยว",
+    "en": "10 steps, 2 passes",
+    "uiContext": "Move — balance (levels 3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.tandem_walk.howTo",
+    "th": "เดินไปข้างหน้าโดยวางส้นเท้าหน้าชิดปลายเท้าหลังทุกก้าว มองตรงไปข้างหน้าไม่ก้มมองเท้า เดินใกล้กำแพงเผื่อต้องใช้มือยัน",
+    "en": "Walk forward placing the heel of each step right in front of the toes of the other foot. Look ahead rather than down at your feet, and walk near a wall in case you need to steady yourself.",
+    "uiContext": "Move — balance (levels 3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.backward_walk.name",
+    "th": "เดินถอยหลัง",
+    "en": "Backward walking",
+    "uiContext": "Move — balance (levels 3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.backward_walk.amount",
+    "th": "10 ก้าว 2 เที่ยว",
+    "en": "10 steps, 2 passes",
+    "uiContext": "Move — balance (levels 3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.backward_walk.howTo",
+    "th": "เดินถอยหลังช้า ๆ ในทางเดินที่โล่งและไม่มีสิ่งกีดขวาง ก้าวสั้น ๆ วางปลายเท้าลงก่อน ควรมีคนอยู่ด้วยในครั้งแรก ๆ",
+    "en": "Walk slowly backwards along a clear hallway with nothing in the way. Take short steps, putting the toes down first. Have someone with you the first few times.",
+    "uiContext": "Move — balance (levels 3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.sit_to_stand.name",
+    "th": "ลุก-นั่งเก้าอี้",
+    "en": "Sit-to-stand",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.sit_to_stand.amount",
+    "th": "10 ครั้ง 2 รอบ",
+    "en": "10 times, 2 rounds",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.sit_to_stand.howTo",
+    "th": "นั่งตรงขอบเก้าอี้ กอดอกไว้ถ้าทำได้ ลุกขึ้นยืนให้สุดโดยไม่ใช้มือช่วย แล้วนั่งลงช้า ๆ ถ้ายังลุกเองไม่ไหวให้ดันที่วางแขนช่วยได้",
+    "en": "Sit at the front of the chair, arms crossed if you can. Stand up fully without using your hands, then sit down slowly. If that is too hard, push up from the armrests.",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.heel_raises.name",
+    "th": "เขย่งปลายเท้า",
+    "en": "Heel raises",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.heel_raises.amount",
+    "th": "15 ครั้ง 2 รอบ",
+    "en": "15 times, 2 rounds",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.heel_raises.howTo",
+    "th": "ยืนจับพนักเก้าอี้ ค่อย ๆ เขย่งส้นเท้าขึ้นให้สูงที่สุดเท่าที่ทำได้ ค้างไว้ 2 วินาที แล้วลดส้นลงช้า ๆ จนแตะพื้น",
+    "en": "Hold the chair back and slowly rise up onto your toes as high as you comfortably can. Hold for 2 seconds, then lower your heels back to the floor slowly.",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.wall_pushups.name",
+    "th": "ดันกำแพง",
+    "en": "Wall push-ups",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.wall_pushups.amount",
+    "th": "10 ครั้ง 2 รอบ",
+    "en": "10 times, 2 rounds",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.wall_pushups.howTo",
+    "th": "ยืนหันหน้าเข้ากำแพง ห่างประมาณหนึ่งช่วงแขน วางฝ่ามือบนกำแพงระดับไหล่ งอศอกให้ตัวเข้าใกล้กำแพงโดยลำตัวตรง แล้วดันกลับ",
+    "en": "Face the wall about an arm’s length away with palms on the wall at shoulder height. Bend your elbows to bring your body towards the wall, keeping it straight, then push back.",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.hip_abduction.name",
+    "th": "ยกขาออกด้านข้าง",
+    "en": "Standing hip abduction",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.hip_abduction.amount",
+    "th": "ข้างละ 10 ครั้ง 2 รอบ",
+    "en": "10 each side, 2 rounds",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.hip_abduction.howTo",
+    "th": "ยืนจับพนักเก้าอี้ ยืนตัวตรง ยกขาข้างหนึ่งออกไปด้านข้างช้า ๆ โดยเข่าเหยียดตรงและปลายเท้าชี้ไปข้างหน้า แล้วลดลงช้า ๆ อย่าเอนตัวตาม",
+    "en": "Hold the chair and stand tall. Slowly lift one leg out to the side with the knee straight and toes pointing forward, then lower it slowly. Keep your body upright rather than leaning.",
+    "uiContext": "Move — strength (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.step_ups.name",
+    "th": "ก้าวขึ้นขั้นบันได",
+    "en": "Step-ups",
+    "uiContext": "Move — strength (levels 2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.step_ups.amount",
+    "th": "ข้างละ 8 ครั้ง",
+    "en": "8 times each side",
+    "uiContext": "Move — strength (levels 2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.step_ups.howTo",
+    "th": "ยืนหน้าบันไดขั้นแรก จับราวบันไดไว้ ก้าวเท้าขวาขึ้นแล้วตามด้วยเท้าซ้าย จากนั้นถอยลงทีละเท้า ทำซ้ำโดยเริ่มด้วยเท้าขวาให้ครบ แล้วสลับเป็นเท้าซ้ายนำ",
+    "en": "Stand at the bottom step holding the rail. Step up with the right foot, bring the left up, then step down one foot at a time. Repeat leading with the right, then swap to leading with the left.",
+    "uiContext": "Move — strength (levels 2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.hip_hinge.name",
+    "th": "ก้มโดยพับสะโพก ไม่งอหลัง",
+    "en": "Hip hinge — bend at the hips, not the back",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.hip_hinge.amount",
+    "th": "10 ครั้ง",
+    "en": "10 times",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.hip_hinge.howTo",
+    "th": "ยืนเท้าห่างเท่าช่วงสะโพก แขม่วหน้าท้องเล็กน้อย ดันสะโพกไปด้านหลังพร้อมงอเข่าเล็กน้อย โดยรักษาหลังให้ตรงเหมือนไม้บรรทัด แล้วยืดตัวขึ้นโดยใช้กล้ามเนื้อสะโพก",
+    "en": "Stand with feet hip-width apart and gently tighten your stomach. Push your hips backwards and bend the knees slightly, keeping your back straight like a ruler, then stand up using your hip muscles.",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.chin_tuck.name",
+    "th": "เก็บคาง ยืดคอ",
+    "en": "Chin tuck",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.chin_tuck.amount",
+    "th": "10 ครั้ง 2 รอบ",
+    "en": "10 times, 2 rounds",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.chin_tuck.howTo",
+    "th": "นั่งหรือยืนตัวตรง มองตรงไปข้างหน้า เก็บคางเข้าหาลำคอเบา ๆ เหมือนทำคางสองชั้น ค้างไว้ 5 วินาที แล้วผ่อน ไม่ต้องก้มหรือเงยหน้า",
+    "en": "Sit or stand tall looking straight ahead. Gently draw your chin back towards your neck, making a double chin, hold for 5 seconds, then release. Do not tip your head up or down.",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.scapular_squeeze.name",
+    "th": "หนีบสะบัก",
+    "en": "Shoulder blade squeeze",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.scapular_squeeze.amount",
+    "th": "10 ครั้ง 2 รอบ",
+    "en": "10 times, 2 rounds",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.scapular_squeeze.howTo",
+    "th": "นั่งหรือยืนตัวตรง ปล่อยแขนข้างลำตัว บีบสะบักทั้งสองข้างเข้าหากันเหมือนหนีบดินสอไว้ตรงกลางหลัง ค้าง 5 วินาที แล้วผ่อน ไหล่ไม่ยกขึ้น",
+    "en": "Sit or stand tall with arms by your sides. Squeeze your shoulder blades together as if holding a pencil between them, hold 5 seconds, then release. Keep your shoulders down, not shrugged.",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.safe_pickup.name",
+    "th": "วิธีหยิบของจากพื้นอย่างปลอดภัย",
+    "en": "How to pick things up safely",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.safe_pickup.amount",
+    "th": "ฝึก 5 ครั้ง",
+    "en": "Practise 5 times",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.safe_pickup.howTo",
+    "th": "เข้าไปใกล้ของให้มากที่สุด ย่อเข่าลงหรือคุกเข่าข้างหนึ่ง โดยรักษาหลังให้ตรง ใช้มือข้างหนึ่งยันที่ต้นขาหรือเฟอร์นิเจอร์ หยิบของแล้วดันตัวขึ้นด้วยแรงขา ห้ามก้มหลังบิดตัวขณะยกของ",
+    "en": "Get as close to the object as you can. Bend your knees or kneel on one knee, keeping your back straight, and support yourself with a hand on your thigh or furniture. Pick the item up and push up with your legs. Never bend and twist your back while lifting.",
+    "uiContext": "Move — posture & spine care (levels 1/2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.seated_row_band.name",
+    "th": "ดึงยางยืดโดยหลังตรง",
+    "en": "Seated band row",
+    "uiContext": "Move — posture & spine care (levels 2/3)",
+    "class": "ui"
+  },
+  {
+    "key": "EXERCISE_LIST.seated_row_band.amount",
+    "th": "10 ครั้ง 2 รอบ",
+    "en": "10 times, 2 rounds",
+    "uiContext": "Move — posture & spine care (levels 2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "EXERCISE_LIST.seated_row_band.howTo",
+    "th": "นั่งหลังตรงบนเก้าอี้ คล้องยางยืดไว้กับที่ยึดมั่นคงระดับอก จับปลายยางทั้งสองข้าง ดึงศอกไปด้านหลังพร้อมหนีบสะบัก ค้าง 2 วินาที แล้วผ่อนกลับช้า ๆ โดยไม่โน้มตัวตาม",
+    "en": "Sit tall on the chair with the band anchored securely at chest height. Hold both ends and pull your elbows back, squeezing your shoulder blades. Hold 2 seconds, then release slowly without letting your body lean forward.",
+    "uiContext": "Move — posture & spine care (levels 2/3)",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.bedroom_nightlight.name",
+    "th": "มีไฟกลางคืนหรือไฟหัวเตียงที่เปิดได้ง่าย",
+    "en": "A night light or bedside lamp within easy reach",
+    "uiContext": "Safety — home hazard audit, bedroom",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.bedroom_clear_path.name",
+    "th": "ทางเดินจากเตียงไปห้องน้ำโล่ง ไม่มีของวางกีดขวาง",
+    "en": "A clear path from the bed to the bathroom",
+    "uiContext": "Safety — home hazard audit, bedroom",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.bedroom_phone_reach.name",
+    "th": "มีโทรศัพท์วางใกล้เตียง หยิบถึงขณะนอน",
+    "en": "A phone beside the bed you can reach lying down",
+    "uiContext": "Safety — home hazard audit, bedroom",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.bedroom_bed_height.name",
+    "th": "เตียงสูงพอดี นั่งแล้วเท้าแตะพื้น ลุกง่าย",
+    "en": "The bed is the right height — feet touch the floor when sitting",
+    "uiContext": "Safety — home hazard audit, bedroom",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.bathroom_grab_bar.name",
+    "th": "มีราวจับข้างโถส้วมและในที่อาบน้ำ",
+    "en": "Grab bars beside the toilet and in the shower",
+    "uiContext": "Safety — home hazard audit, bathroom",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.bathroom_nonslip_mat.name",
+    "th": "มีแผ่นกันลื่นในที่อาบน้ำ",
+    "en": "A non-slip mat in the shower area",
+    "uiContext": "Safety — home hazard audit, bathroom",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.bathroom_dry_floor.name",
+    "th": "พื้นห้องน้ำแห้งเสมอ ไม่มีน้ำขังหรือคราบสบู่",
+    "en": "The bathroom floor is kept dry, with no puddles or soap film",
+    "uiContext": "Safety — home hazard audit, bathroom",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.bathroom_raised_toilet.name",
+    "th": "โถส้วมแบบนั่งราบ สูงพอดี ลุกได้สะดวก",
+    "en": "A sitting toilet at a height you can get up from easily",
+    "uiContext": "Safety — home hazard audit, bathroom",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.bathroom_lighting.name",
+    "th": "ห้องน้ำสว่างเพียงพอทั้งกลางวันและกลางคืน",
+    "en": "The bathroom is bright enough day and night",
+    "uiContext": "Safety — home hazard audit, bathroom",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.stairs_handrail.name",
+    "th": "มีราวจับบันไดที่มั่นคง อย่างน้อยหนึ่งข้างตลอดแนว",
+    "en": "A firm handrail running the full length, on at least one side",
+    "uiContext": "Safety — home hazard audit, stairs",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.stairs_edge_marking.name",
+    "th": "ขอบขั้นบันไดเห็นชัด หรือมีแถบสีตัดกันติดไว้",
+    "en": "Step edges are easy to see, or marked with contrasting tape",
+    "uiContext": "Safety — home hazard audit, stairs",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.stairs_lighting.name",
+    "th": "บันไดมีแสงสว่างพอ และมีสวิตช์ไฟทั้งบนและล่าง",
+    "en": "The stairs are well lit, with a switch at the top and bottom",
+    "uiContext": "Safety — home hazard audit, stairs",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.stairs_no_clutter.name",
+    "th": "ไม่มีของวางบนขั้นบันได",
+    "en": "Nothing is left sitting on the steps",
+    "uiContext": "Safety — home hazard audit, stairs",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.kitchen_reachable_shelf.name",
+    "th": "ของที่ใช้บ่อยอยู่ในระดับเอวถึงไหล่ ไม่ต้องปีนหรือเขย่ง",
+    "en": "Everyday items sit between waist and shoulder height — no climbing or stretching",
+    "uiContext": "Safety — home hazard audit, kitchen",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.kitchen_nonslip_mat.name",
+    "th": "มีแผ่นกันลื่นหน้าอ่างล้างจาน",
+    "en": "A non-slip mat in front of the sink",
+    "uiContext": "Safety — home hazard audit, kitchen",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.kitchen_cord_clutter.name",
+    "th": "ไม่มีสายไฟหรือสายอุปกรณ์พาดผ่านทางเดิน",
+    "en": "No cords or cables run across the walkway",
+    "uiContext": "Safety — home hazard audit, kitchen",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.kitchen_spill_clean.name",
+    "th": "เช็ดน้ำหรือน้ำมันที่หกทันที",
+    "en": "Spills of water or oil are wiped up straight away",
+    "uiContext": "Safety — home hazard audit, kitchen",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.outdoors_no_rugs.name",
+    "th": "ไม่มีพรมเช็ดเท้าเลื่อนได้หรือของวางขวางทางเข้าบ้าน",
+    "en": "No sliding door mats or clutter at the entrance",
+    "uiContext": "Safety — home hazard audit, around the house",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.outdoors_stepedge.name",
+    "th": "ทางต่างระดับหรือธรณีประตูเห็นชัด หรือทำเครื่องหมายไว้",
+    "en": "Steps and door thresholds are easy to see, or marked",
+    "uiContext": "Safety — home hazard audit, around the house",
+    "class": "instruction"
+  },
+  {
+    "key": "SAFETY_ITEMS.outdoors_lighting.name",
+    "th": "ทางเข้าบ้านและบริเวณรอบบ้านมีไฟส่องสว่างตอนกลางคืน",
+    "en": "The entrance and surrounds are lit at night",
+    "uiContext": "Safety — home hazard audit, around the house",
+    "class": "instruction"
+  },
+  {
+    "key": "CALCIUM_FOODS.milk.name",
+    "th": "นมจืด",
+    "en": "Plain milk",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.milk.serving",
+    "th": "1 แก้ว (240 มล.)",
+    "en": "1 glass (240ml)",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.soy_milk_fortified.name",
+    "th": "นมถั่วเหลืองเสริมแคลเซียม",
+    "en": "Calcium-fortified soy milk",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.soy_milk_fortified.serving",
+    "th": "1 กล่อง (250 มล.)",
+    "en": "1 carton (250ml)",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.yogurt.name",
+    "th": "โยเกิร์ต",
+    "en": "Yoghurt",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.yogurt.serving",
+    "th": "1 ถ้วย",
+    "en": "1 cup",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.small_dried_fish.name",
+    "th": "ปลาเล็กปลาน้อย/ปลาข้าวสาร",
+    "en": "Small whole dried fish",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.small_dried_fish.serving",
+    "th": "2 ช้อนโต๊ะ",
+    "en": "2 tbsp",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.dried_shrimp.name",
+    "th": "กุ้งแห้งตัวเล็ก",
+    "en": "Small dried shrimp",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.dried_shrimp.serving",
+    "th": "2 ช้อนโต๊ะ",
+    "en": "2 tbsp",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.sardine.name",
+    "th": "ปลากระป๋องซาร์ดีน (ทานทั้งก้าง)",
+    "en": "Canned sardines (with bones)",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.sardine.serving",
+    "th": "ครึ่งกระป๋อง",
+    "en": "Half a can",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.tofu.name",
+    "th": "เต้าหู้แข็ง",
+    "en": "Firm tofu",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.tofu.serving",
+    "th": "ครึ่งถ้วย",
+    "en": "Half a cup",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.dark_greens.name",
+    "th": "ผักใบเขียวเข้ม (คะน้า ตำลึง ใบยอ)",
+    "en": "Dark leafy greens (Chinese kale, ivy gourd, noni leaf)",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.dark_greens.serving",
+    "th": "1 ถ้วยสุก",
+    "en": "1 cup cooked",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.sesame.name",
+    "th": "งาดำ",
+    "en": "Black sesame",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.sesame.serving",
+    "th": "1 ช้อนโต๊ะ",
+    "en": "1 tbsp",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.cheese.name",
+    "th": "ชีส",
+    "en": "Cheese",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "CALCIUM_FOODS.cheese.serving",
+    "th": "1 แผ่น",
+    "en": "1 slice",
+    "uiContext": "Food — calcium food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "VITAMIN_D_FOODS.oily_fish.name",
+    "th": "ปลาทะเลไขมันสูง (แซลมอน ทู่ ซาร์ดีน)",
+    "en": "Oily sea fish (salmon, mackerel, sardine)",
+    "uiContext": "Food — vitamin D food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "VITAMIN_D_FOODS.oily_fish.serving",
+    "th": "1 มื้อ",
+    "en": "1 serving",
+    "uiContext": "Food — vitamin D food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "VITAMIN_D_FOODS.egg_yolk.name",
+    "th": "ไข่แดง",
+    "en": "Egg yolk",
+    "uiContext": "Food — vitamin D food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "VITAMIN_D_FOODS.egg_yolk.serving",
+    "th": "1 ฟอง",
+    "en": "1 egg",
+    "uiContext": "Food — vitamin D food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "VITAMIN_D_FOODS.fortified_milk.name",
+    "th": "นมเสริมวิตามินดี",
+    "en": "Vitamin D fortified milk",
+    "uiContext": "Food — vitamin D food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "VITAMIN_D_FOODS.fortified_milk.serving",
+    "th": "1 แก้ว",
+    "en": "1 glass",
+    "uiContext": "Food — vitamin D food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "VITAMIN_D_FOODS.sun_mushroom.name",
+    "th": "เห็ดตากแดด",
+    "en": "Sun-dried mushrooms",
+    "uiContext": "Food — vitamin D food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "VITAMIN_D_FOODS.sun_mushroom.serving",
+    "th": "1 ถ้วย",
+    "en": "1 cup",
+    "uiContext": "Food — vitamin D food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.meat_fish.name",
+    "th": "เนื้อสัตว์หรือปลา",
+    "en": "Meat or fish",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.meat_fish.serving",
+    "th": "ขนาดเท่าฝ่ามือ",
+    "en": "Palm-sized piece",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.egg.name",
+    "th": "ไข่",
+    "en": "Egg",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.egg.serving",
+    "th": "1 ฟอง",
+    "en": "1 egg",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.tofu_soy.name",
+    "th": "เต้าหู้หรือถั่วเหลือง",
+    "en": "Tofu or soy",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.tofu_soy.serving",
+    "th": "ครึ่งถ้วย",
+    "en": "Half a cup",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.milk_protein.name",
+    "th": "นมหรือโยเกิร์ต",
+    "en": "Milk or yoghurt",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.milk_protein.serving",
+    "th": "1 แก้ว/ถ้วย",
+    "en": "1 glass or cup",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.beans.name",
+    "th": "ถั่วต้มหรือถั่วเมล็ดแห้ง",
+    "en": "Cooked beans or pulses",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "PROTEIN_FOODS.beans.serving",
+    "th": "ครึ่งถ้วย",
+    "en": "Half a cup",
+    "uiContext": "Food — protein food frequency questionnaire",
+    "class": "ui"
+  },
+  {
+    "key": "DOCTOR.name",
+    "th": "นพ.สรวุฒิ ธรรมยงค์กิจ",
+    "en": "Dr. Sorawut Thamyongkit",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "index.html.drugDentalNoteBody",
+    "th": "แจ้งทันตแพทย์ทุกครั้งว่าท่านใช้ยานี้ ควรตรวจและรักษาฟันที่มีปัญหาให้เรียบร้อยก่อนเริ่มยา และหลีกเลี่ยงการถอนฟันหรือผ่าตัดในช่องปากโดยไม่ปรึกษาแพทย์ผู้สั่งยา เพราะมีโอกาสเกิดภาวะกระดูกขากรรไกรตายได้แม้พบไม่บ่อย",
+    "en": "Always tell your dentist you take this medicine. Have any dental problems treated before starting, and avoid tooth extraction or oral surgery without checking with the doctor who prescribed it — jawbone problems are uncommon but possible.",
+    "uiContext": "Medicine — dental note",
+    "class": "warning",
+    "note": "Hard-coded inline in index.html line 1354, not in the CONTENT dictionary."
+  },
+  {
+    "key": "index.html.nutritionProteinEggExample",
+    "th": "ไข่ {n} ฟองต่อวัน",
+    "en": "{n} eggs a day",
+    "uiContext": "Food — yearly nutrition review result",
+    "class": "dynamic",
+    "note": "Built inline in index.html line 1526; {n} is recommendProtein().exampleEggs."
+  },
+  {
+    "key": "index.html.tableView",
+    "th": "ดูเป็นตาราง",
+    "en": "View as table",
+    "uiContext": "Track",
+    "class": "ui",
+    "note": "Inline in index.html line 722."
+  },
+  {
+    "key": "index.html.dateColumn",
+    "th": "วันที่",
+    "en": "Date",
+    "uiContext": "Track",
+    "class": "ui",
+    "note": "Inline in index.html lines 723/735."
+  }
+]
