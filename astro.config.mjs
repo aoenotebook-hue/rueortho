@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import pagefind from 'astro-pagefind';
 import tailwindcss from '@tailwindcss/vite';
 
 // TODO: replace with the real domain once it is registered at WordPress.com.
@@ -24,6 +25,10 @@ export default defineConfig({
 
   integrations: [
     mdx(),
+    // Builds the Pagefind index from dist/ after each build. Pagefind reads
+    // <html lang> and keeps a separate index per language, so a Thai search
+    // returns Thai pages and an English search returns English ones.
+    pagefind(),
     sitemap({
       i18n: {
         defaultLocale: 'th',

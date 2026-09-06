@@ -33,6 +33,13 @@ const ui = {
     'search.placeholder': 'ค้นหาอาการหรือชื่อโรค เช่น ปวดเข่า ไหล่ติด',
     'search.devNotice':
       'ระบบค้นหาทำงานเมื่อสร้างเว็บไซต์แล้วเท่านั้น ลองใช้คำสั่ง npm run build แล้วตามด้วย npm run preview',
+    'search.hint': 'พิมพ์อาการหรือชื่อโรคที่ต้องการค้นหา เช่น ปวดเข่า เข่าเสื่อม',
+    'search.searching': 'กำลังค้นหา…',
+    'search.results': 'พบ {n} รายการ',
+    'search.noResults': 'ไม่พบผลลัพธ์สำหรับ “{q}”',
+    'search.noResultsHint': 'ลองใช้คำที่สั้นลง หรือดูรายการโรคและภาวะทั้งหมด',
+    'search.browseAll': 'ดูโรคและภาวะทั้งหมด',
+    'search.unavailable': 'ขออภัย ระบบค้นหาขัดข้องชั่วคราว กรุณาดูรายการโรคและภาวะทั้งหมดแทน',
 
     'common.readMore': 'อ่านต่อ',
     'common.readingTime': 'อ่านประมาณ {n} นาที',
@@ -120,6 +127,13 @@ const ui = {
     'search.placeholder': 'Search a symptom or condition, e.g. knee pain',
     'search.devNotice':
       'Search only works on a built site. Run npm run build, then npm run preview.',
+    'search.hint': 'Type a symptom or the name of a condition, e.g. knee pain.',
+    'search.searching': 'Searching…',
+    'search.results': '{n} results',
+    'search.noResults': 'No results for “{q}”',
+    'search.noResultsHint': 'Try a shorter word, or browse all conditions.',
+    'search.browseAll': 'Browse all conditions',
+    'search.unavailable': 'Search is temporarily unavailable. Please browse all conditions instead.',
 
     'common.readMore': 'Read more',
     'common.readingTime': '{n} min read',

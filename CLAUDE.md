@@ -133,9 +133,43 @@ Also done: the MDX component set (`KeyFacts`, `RedFlags`, `Figure`, `Callout`,
 `src/components/mdx/index.ts` and documented with usage examples in
 `docs/ARTICLE_TEMPLATE.md`.
 
-Still to do: sticky table of contents, the body map, Pagefind search,
-per-article OG images and RSS, a 404 page, analytics and Vercel deployment, the
-content lint script, and the pre-launch QA pass.
+Also done: Pagefind search at `/search` and `/en/search`.
+
+Still to do: sticky table of contents, the body map, per-article OG images and
+RSS, a 404 page, analytics and Vercel deployment, the content lint script, and
+the pre-launch QA pass.
+
+### Search notes — read before touching search
+
+- **Test search with `npm run build && npm run preview`, never `npm run dev`.**
+  Pagefind indexes the built output, so the index does not exist in dev; the
+  search page renders an explanatory notice there instead of a broken box.
+- **Pagefind has no Thai analyser.** `pagefind-entry.json` shows
+  `"th": { "wasm": null }` — Thai falls back to the generic handler, which
+  **strips Thai tone marks**. เข่า (knee), เข้า (enter) and เขา all match each
+  other. This is not fixable from our side; design around it.
+- Two mitigations, both load-bearing, both tuned against measured scores:
+  1. Info pages carry `data-pagefind-weight="0.25"` so articles out-rank them,
+     while they stay findable by their own words (searching นโยบาย still
+     returns the privacy and editorial pages).
+  2. `public/search.js` drops results scoring below 30% of the top score. With
+     tone folding the noise sits far below a real match — for เข่า the article
+     scores 0.94 and the next page 0.26 — so the cutoff removes it without
+     touching genuinely multi-page matches.
+  If either is removed, a search for เข่า returns the privacy notice.
+- **The client script lives in `public/search.js`, not in a `<script>` in the
+  component, and must stay there.** Pagefind generates `/pagefind/pagefind.js`
+  *after* the Astro build, so Vite must never resolve that import. In a bundled
+  Astro script Vite rewrites the dynamic import into its preload helper and
+  leaves an undefined `__VITE_PRELOAD__` behind, which throws at runtime and
+  silently shows the "search unavailable" message. `@vite-ignore` does not
+  prevent this — Vite constant-folds the URL back to a literal. Files in
+  `public/` are copied verbatim, which is the only reliable escape.
+- Strings still come from `ui.ts`: the page serialises them into a
+  `application/json` script tag that `search.js` reads, so `public/search.js`
+  contains no user-facing text.
+- Only pages with `data-pagefind-body` are indexed (articles and info pages).
+  Listings, the home page and the search pages are excluded by construction.
 
 ### MDX component notes
 

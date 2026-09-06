@@ -1,0 +1,77 @@
+---
+import Container from './Container.astro';
+import { t, type Locale } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const tr = t(locale);
+
+/**
+ * Pagefind indexes the built site, so the index only exists after
+ * `npm run build`. In `npm run dev` there is nothing to query — say so plainly
+ * rather than letting the page throw.
+ */
+const isDev = import.meta.env.DEV;
+
+// Handed to the client script so every visible string still comes from ui.ts.
+const strings = {
+  searching: tr('search.searching'),
+  results: tr('search.results'),
+  noResults: tr('search.noResults'),
+  noResultsHint: tr('search.noResultsHint'),
+  unavailable: tr('search.unavailable'),
+  browseAll: tr('search.browseAll'),
+  conditionsPath: localizePath('/conditions', locale),
+};
+---
+
+<Container width="prose">
+  <div class="py-10">
+    <h1>{tr('search.label')}</h1>
+    <p class="text-muted">{tr('search.hint')}</p>
+
+    {
+      isDev ? (
+        <p class="mt-6 rounded-[10px] border border-info-border bg-info-ground p-5 text-info-ink">
+          {tr('search.devNotice')}
+        </p>
+      ) : (
+        <>
+          <form class="mt-6" role="search" data-search-form>
+            <label class="visually-hidden" for="search-input">
+              {tr('search.label')}
+            </label>
+            <input
+              id="search-input"
+              type="search"
+              name="q"
+              autocomplete="off"
+              autofocus
+              placeholder={tr('search.placeholder')}
+              class="w-full rounded-[6px] border border-border bg-surface px-4 py-3 text-ink"
+              data-search-input
+            />
+          </form>
+
+          <p class="mt-5 text-muted" aria-live="polite" data-search-status />
+
+          <ul class="m-0 mt-4 list-none p-0" data-search-results />
+
+          <script
+            type="application/json"
+            data-search-strings
+            set:html={JSON.stringify(strings)}
+            is:inline
+          />
+        </>
+      )
+    }
+  </div>
+</Container>
+
+{/* Loaded from public/ so Vite never rewrites its dynamic import of Pagefind. */}
+{!isDev && <script type="module" src="/search.js" is:inline />}

@@ -17,7 +17,19 @@ const { Content } = await render(entry);
 ---
 
 <Container width="prose">
-  <div class="py-10">
+  <!--
+    Info pages are searchable but deliberately out-ranked by articles. Pagefind
+    has no Thai wasm and its fallback strips Thai tone marks, so เข่า (knee)
+    collides with เข้า (enter) — which otherwise floats the privacy notice into
+    a search for knee pain. Down-weighting keeps these pages findable by their
+    own words without letting them crowd out the medical content.
+  -->
+  <div
+    class="py-10"
+    data-pagefind-body
+    data-pagefind-weight="0.25"
+    data-pagefind-meta={`summary:${entry.data.description}`}
+  >
     <h1>{entry.data.title}</h1>
 
     <Prose>
