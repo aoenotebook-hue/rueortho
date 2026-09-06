@@ -128,10 +128,26 @@ languages, design system, header/footer, home page, conditions index with
 filtering, region pages, the condition article page (red flags, FAQ, references,
 companion apps, related, JSON-LD), author page, and the info and legal pages.
 
-Still to do: MDX components for articles (`KeyFacts`, `Figure`, `ExerciseCard`,
-`Glossary`, `DoctorChecklist`), sticky table of contents, the body map, Pagefind
-search, per-article OG images and RSS, a 404 page, analytics and Vercel
-deployment, the content lint script, and the pre-launch QA pass.
+Also done: the MDX component set (`KeyFacts`, `RedFlags`, `Figure`, `Callout`,
+`Glossary`, `DoctorChecklist`, `ExerciseCard`), registered in
+`src/components/mdx/index.ts` and documented with usage examples in
+`docs/ARTICLE_TEMPLATE.md`.
+
+Still to do: sticky table of contents, the body map, Pagefind search,
+per-article OG images and RSS, a 404 page, analytics and Vercel deployment, the
+content lint script, and the pre-launch QA pass.
+
+### MDX component notes
+
+- `frontmatter` is available inside any MDX body, which is how
+  `<RedFlags flags={frontmatter.redFlags} />` avoids restating the list.
+- If an article declares `redFlags` but never places `<RedFlags />`,
+  `ConditionArticle` renders the box near the top instead — it detects the tag
+  by looking for `<RedFlags` in `entry.body`. Safety content must not vanish
+  because of an editing slip. Keep that fallback.
+- Prose's heading rules (`.prose h2 { margin-top: 2.2em }`) outrank a plain
+  Tailwind `m-0` on a component heading, so component headings use `mt-0!`.
+  Watch for this whenever a new component carries its own heading.
 
 **Deviation from the plan:** the legal texts went straight into
 `src/content/pages/<locale>/` rather than through an intermediate

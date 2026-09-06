@@ -5,6 +5,7 @@ import Prose from './Prose.astro';
 import Callout from './Callout.astro';
 import Card from './Card.astro';
 import RegionBadge from './RegionBadge.astro';
+import * as mdxComponents from './mdx';
 import { t, type Locale } from '../i18n/ui';
 import { localizePath, formatDate, isoDate, isReviewOverdue } from '../i18n/utils';
 import { getAuthor, byline } from '../data/authors';
@@ -26,6 +27,14 @@ const reviewer = getAuthor(entry.data.reviewedBy);
 const region = getRegion(entry.data.region);
 const companionApps = appsForCondition(entry.data.slug);
 const overdue = isReviewOverdue(entry.data.lastReviewed);
+
+/**
+ * Authors are meant to place <RedFlags /> inside "When to see a doctor", where
+ * it reads in context. If an article declares redFlags but never places the
+ * component, render the box up here instead — safety content must not go
+ * missing because of an editing slip.
+ */
+const authorPlacedRedFlags = (entry.body ?? '').includes('<RedFlags');
 
 const siblings = await getConditions(locale);
 const related = entry.data.related
@@ -103,7 +112,7 @@ const jsonLd = {
     {overdue && <Callout type="warning">{tr('article.reviewOverdue')}</Callout>}
 
     {
-      entry.data.redFlags.length > 0 && (
+      !authorPlacedRedFlags && entry.data.redFlags.length > 0 && (
         <Callout type="warning" title={tr('article.redFlagsTitle')}>
           <p>{tr('article.redFlagsUrgent')}</p>
           <ul class="m-0 list-disc ps-5">
@@ -116,7 +125,7 @@ const jsonLd = {
     }
 
     <Prose>
-      <Content />
+      <Content components={mdxComponents} />
     </Prose>
 
     {

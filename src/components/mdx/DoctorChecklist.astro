@@ -1,0 +1,49 @@
+---
+import { t } from '../../i18n/ui';
+import { getLocaleFromUrl } from '../../i18n/utils';
+
+/**
+ * A printable list of questions to take to an appointment. The checkboxes are
+ * for ticking on paper, so they are decorative and hidden from screen readers —
+ * the list itself carries the meaning.
+ */
+const tr = t(getLocaleFromUrl(Astro.url));
+---
+
+<section class="doctor-checklist my-7 rounded-[10px] border border-border bg-surface p-5">
+  <h3 class="mt-0! mb-3 text-[1.125rem]">{tr('article.doctorChecklist')}</h3>
+  <div class="checklist-body">
+    <slot />
+  </div>
+</section>
+
+<style is:global>
+  .checklist-body ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .checklist-body li {
+    position: relative;
+    padding-inline-start: 2em;
+    margin-top: 0.7em;
+  }
+
+  .checklist-body li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.25em;
+    width: 1.1em;
+    height: 1.1em;
+    border: 1.5px solid var(--muted);
+    border-radius: 3px;
+  }
+
+  @media print {
+    .doctor-checklist {
+      break-inside: avoid;
+    }
+  }
+</style>

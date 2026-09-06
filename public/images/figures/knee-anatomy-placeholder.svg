@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Placeholder knee anatomy diagram">
+  <rect width="480" height="320" fill="#eef3f5"/>
+  <g fill="#b7c8d0" stroke="#8fa5b0" stroke-width="2">
+    <path d="M190 20h60v110c0 14 10 20 10 30h-80c0-10 10-16 10-30z"/>
+    <path d="M180 210h80c6 0 10 5 10 12v78h-100v-78c0-7 4-12 10-12z"/>
+  </g>
+  <path d="M172 168c0-16 30-24 68-24s68 8 68 24-30 24-68 24-68-8-68-24z" fill="#f0a9a0" stroke="#d4837a" stroke-width="2"/>
+  <text x="240" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" fill="#5a6b73">
+    Placeholder — replace with a licensed anatomy figure
+  </text>
+</svg>

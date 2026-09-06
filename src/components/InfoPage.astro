@@ -2,6 +2,7 @@
 import { render, type CollectionEntry } from 'astro:content';
 import Container from './Container.astro';
 import Prose from './Prose.astro';
+import * as mdxComponents from './mdx';
 import { t, type Locale } from '../i18n/ui';
 import { formatDate, isoDate } from '../i18n/utils';
 
@@ -20,7 +21,7 @@ const { Content } = await render(entry);
     <h1>{entry.data.title}</h1>
 
     <Prose>
-      <Content />
+      <Content components={mdxComponents} />
     </Prose>
 
     <p class="mt-10 text-sm text-muted">

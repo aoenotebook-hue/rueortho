@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  /** An imported image (preferred, gets optimised) or a path under /public. */
+  src: ImageMetadata | string;
+  /** Required. Describe what the image shows, not that it is an image. */
+  alt: string;
+  caption?: string;
+  /** Where the image came from, e.g. "Servier Medical Art". */
+  attribution?: string;
+  /** Licence of the source, e.g. "CC BY 4.0". */
+  license?: string;
+  width?: number;
+}
+
+const { src, alt, caption, attribution, license, width } = Astro.props;
+
+if (!alt) {
+  throw new Error('<Figure> requires an alt description — it is not optional on this site.');
+}
+---
+
+<figure class="my-8">
+  {
+    typeof src === 'string' ? (
+      <img src={src} alt={alt} width={width} loading="lazy" decoding="async" class="rounded-[10px]" />
+    ) : (
+      <Image src={src} alt={alt} widths={[400, 800]} loading="lazy" class="rounded-[10px]" />
+    )
+  }
+
+  {
+    (caption || attribution) && (
+      <figcaption class="mt-3 text-sm text-muted">
+        {caption}
+        {attribution && (
+          <span class="block opacity-80">
+            {caption ? '' : null}
+            {attribution}
+            {license ? `, ${license}` : null}
+          </span>
+        )}
+      </figcaption>
+    )
+  }
+</figure>

@@ -78,21 +78,135 @@ them as body sections.
 
 ## Components
 
-Components are registered globally on the article page, so MDX files use them
-without importing anything.
+Every component below is registered globally on the article page, so MDX files
+use them **without importing anything**. Registration lives in
+`src/components/mdx/index.ts` — add a component there and document it here.
 
-> Note: the component set below is being built. Until then, write plain Markdown
-> headings and lists; the sample knee-osteoarthritis articles show the shape.
+Two rules that apply to all of them:
 
-| Component | Purpose |
-|---|---|
-| `<KeyFacts>` | 3–5 bullet summary shown above the article body |
-| `<RedFlags />` | Renders the `redFlags` frontmatter as the warning box. Place it inside "When to see a doctor". |
-| `<Callout type="info \| warning \| tip" title="…">` | An aside that should not be missed |
-| `<Figure src alt caption attribution />` | Image with caption and licence line. `alt` and `attribution` are mandatory. |
-| `<ExerciseCard>` | An exercise with reps/sets and optional media |
-| `<Glossary term="…">` | Inline term with an accessible definition |
-| `<DoctorChecklist>` | Printable checklist of questions to ask |
+- Leave a **blank line** between a component tag and the Markdown around it,
+  otherwise MDX treats the following text as raw JSX and the build fails.
+- Markdown inside a component works normally (`- ` lists, `**bold**`), as long
+  as the content starts on its own line.
+
+### `<KeyFacts>` — the summary box
+
+Place it immediately after the frontmatter, before the first heading. Three to
+five bullets, each one a complete thought a reader could take away on its own.
+
+```mdx
+<KeyFacts>
+- ข้อเข่าเสื่อมเกิดจากกระดูกอ่อนผิวข้อค่อย ๆ บางลง ไม่ใช่โรคที่เกิดขึ้นทันทีทันใด
+- คนส่วนใหญ่ควบคุมอาการได้ดีโดยไม่ต้องผ่าตัด
+</KeyFacts>
+```
+
+The heading ("สรุปสั้น ๆ" / "Key facts") comes from `ui.ts` and the locale is
+read from the URL, so you never pass either.
+
+### `<RedFlags />` — the urgent-symptoms box
+
+Put it inside the "When to see a doctor" section, after the opening sentence.
+It renders the `redFlags` frontmatter, so the list is never written twice:
+
+```mdx
+## เมื่อไหร่ควรไปพบแพทย์
+
+อาการปวดเข่าส่วนใหญ่ไม่ใช่เรื่องฉุกเฉิน แต่มีบางอาการที่ควรไปพบแพทย์ทันที
+
+<RedFlags flags={frontmatter.redFlags} />
+```
+
+`frontmatter` is available in any MDX body — no import needed.
+
+**If you leave `<RedFlags />` out**, the article page renders the box near the
+top of the article instead. Safety content is never silently dropped because of
+an editing slip. The consequence is that placing it *twice* would show it twice,
+so place it once.
+
+### `<Figure>` — an image with attribution
+
+`alt` is required and the build fails without it. Describe what the figure
+shows, not that it is a figure.
+
+```mdx
+<Figure
+  src="/images/figures/knee-anatomy.svg"
+  alt="แผนภาพข้อเข่า แสดงปลายกระดูกต้นขาและกระดูกหน้าแข้งที่มีกระดูกอ่อนผิวข้อคั่นอยู่"
+  caption="กระดูกอ่อนผิวข้อคั่นอยู่ระหว่างปลายกระดูกทั้งสอง"
+  attribution="Servier Medical Art"
+  license="CC BY 4.0"
+/>
+```
+
+`src` takes either a path under `public/` (as above) or an imported image, which
+gets optimised and responsive `widths`:
+
+```mdx
+import kneeAnatomy from './images/knee-anatomy.png';
+
+<Figure src={kneeAnatomy} alt="…" attribution="…" />
+```
+
+### `<Callout>` — an aside worth stopping for
+
+`type` is `info`, `warning` or `tip`. Use `warning` sparingly — it competes with
+the red-flag box for the reader's alarm.
+
+```mdx
+<Callout type="tip" title="ปวดขึ้นเล็กน้อยหลังออกกำลังกาย ผิดปกติหรือไม่">
+อาการปวดเพิ่มขึ้นเล็กน้อยและหายไปภายในหนึ่งวัน ถือว่ายอมรับได้
+</Callout>
+```
+
+### `<Glossary>` — explain a term in place
+
+The term stays in the sentence with a dotted underline; tapping or focusing it
+reveals the definition inline. Keyboard- and touch-accessible.
+
+```mdx
+เรียกว่า <Glossary definition="ผิวเรียบลื่นที่หุ้มปลายกระดูกในข้อ ช่วยให้ข้อเคลื่อนไหวได้ลื่น">**กระดูกอ่อนผิวข้อ**</Glossary> (articular cartilage)
+```
+
+Use it for a term you mention once in passing. For a term the whole article
+rests on, explain it in a sentence of body text instead — a reader should not
+have to tap anything to follow the argument.
+
+### `<DoctorChecklist>` — questions to take to an appointment
+
+Renders as a printable checklist. The checkboxes are drawn in CSS and hidden
+from screen readers; the list itself carries the meaning.
+
+```mdx
+## คำถามที่ควรถามแพทย์
+
+<DoctorChecklist>
+- อาการปวดเข่าของฉันน่าจะเกิดจากสาเหตุใด
+- ฉันควรเริ่มออกกำลังกายแบบใด และควรทำบ่อยแค่ไหน
+</DoctorChecklist>
+```
+
+### `<ExerciseCard>` — one exercise
+
+```mdx
+<ExerciseCard
+  title="เหยียดเข่าตรงในท่านั่ง"
+  sets="2 เซ็ต"
+  reps="10 ครั้ง"
+  hold="ค้างไว้ 5 วินาที"
+  image="/images/exercises/seated-knee-extension.jpg"
+  imageAlt="ผู้ป่วยนั่งบนเก้าอี้และเหยียดเข่าข้างหนึ่งให้ตรง"
+>
+นั่งหลังตรงบนเก้าอี้ เหยียดเข่าข้างหนึ่งขึ้นจนตรง ค้างไว้ แล้วค่อย ๆ ลดลง หากปวดมากขึ้นให้หยุด
+</ExerciseCard>
+```
+
+`imageAlt` is required whenever `image` is set. A `youtube="<video id>"` prop is
+also available: it renders a click-to-load facade, so nothing loads from Google
+until the reader presses play. Add `poster="…"` for the still image.
+
+Keep day-by-day rehab programmes in the companion apps and link to them — the
+article is for someone who does not yet know what is wrong.
 
 ## Before you publish
 
