@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InfoPage from '../../components/InfoPage.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages
+    .filter((entry) => entry.id.startsWith('en/'))
+    .map((entry) => ({
+      params: { page: entry.id.replace(/^en\//, '') },
+      props: { entry },
+    }));
+}
+
+const locale = 'en' as const;
+const { entry } = Astro.props;
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <InfoPage locale={locale} entry={entry} />
+</BaseLayout>

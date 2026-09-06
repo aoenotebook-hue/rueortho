@@ -12,12 +12,13 @@ const tr = t(locale);
 const year = new Date().getFullYear();
 const builtAt = formatDate(new Date(), locale);
 
-// The legal pages are built once the contact e-mail and domain are settled;
-// until they exist, linking to them would only produce 404s.
 const links = [
   { path: '/about', label: tr('footer.about') },
   { path: '/about/author/sorawut', label: tr('footer.author') },
-  { path: '/conditions', label: tr('nav.conditions') },
+  { path: '/disclaimer', label: tr('footer.disclaimerLink') },
+  { path: '/privacy', label: tr('footer.privacy') },
+  { path: '/editorial-policy', label: tr('footer.editorial') },
+  { path: '/contact', label: tr('footer.contact') },
 ];
 ---
 

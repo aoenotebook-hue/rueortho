@@ -62,6 +62,23 @@ consult it when drafting or fact-checking content. Never copy an image out of
   skip link, one `h1` per page, touch targets ≥ 44px.
 - Drafts (`draft: true`) appear in `npm run dev` and never in a build.
 
+## Decisions the author has made
+
+- **The reader is addressed as `คุณ`, never `ท่าน`.** Three of the four source
+  apps (osteoporosis, rotator cuff, ACL) use `ท่าน`; only frozen shoulder uses
+  `คุณ`. When reusing extracted text from `_extracted/`, convert the pronoun —
+  and check the surrounding register still reads naturally, since `ท่าน` text
+  tends to carry other formal markers with it.
+- **The author has confirmed he knows the provenance of all media** in his four
+  apps, including the five rotator cuff images that carry no C2PA credential
+  and have stripped metadata (`p2_2`, `p2_3`, `p3_3`, `p4_3`, `p4_4`). Most of
+  the rest is AI-generated and carries a Google C2PA credential.
+  **Still outstanding: the exact attribution wording to put in the `Figure`
+  caption.** Ask for it before putting any app image on a page.
+- **Contact address and domain live in `src/data/site.ts`**, and the legal pages
+  read them through an MDX import, so there is one place to change. Both are
+  still placeholders (`easyortho.com`).
+
 ## Medical content rules
 
 These are not style preferences — they are what makes the site safe to publish.
@@ -104,8 +121,28 @@ _sources/                       read-only clones of the author's apps (git-ignor
 
 ## Build-plan progress
 
-The full build plan lives outside the repo. Completed so far: project scaffold,
-i18n, content collections, data files, sample article in both languages.
-Still to do: design system and real layouts, the full condition article page with
-MDX components, browse/region pages and body map, Pagefind search, info and legal
-pages, SEO/OG/RSS, analytics and deployment, pre-launch QA.
+The full build plan lives outside the repo.
+
+Done: scaffold, i18n, content collections, data files, sample article in both
+languages, design system, header/footer, home page, conditions index with
+filtering, region pages, the condition article page (red flags, FAQ, references,
+companion apps, related, JSON-LD), author page, and the info and legal pages.
+
+Still to do: MDX components for articles (`KeyFacts`, `Figure`, `ExerciseCard`,
+`Glossary`, `DoctorChecklist`), sticky table of contents, the body map, Pagefind
+search, per-article OG images and RSS, a 404 page, analytics and Vercel
+deployment, the content lint script, and the pre-launch QA pass.
+
+**Deviation from the plan:** the legal texts went straight into
+`src/content/pages/<locale>/` rather than through an intermediate
+`docs/legal/*.md`. Keeping two copies of legal wording invites drift; the MDX
+files are markdown in git and are just as reviewable.
+
+## Verifying UI changes
+
+`npm run build && npx astro preview`, then drive it with Playwright
+(`executablePath: '/opt/pw-browsers/chromium'`). Check at 390px and 1280px:
+no horizontal overflow, exactly one `h1`, mobile nav opens, and every internal
+link returns 200. Google Fonts is blocked in the sandbox, so abort
+`**://fonts.{googleapis,gstatic}.com/**` in the test or the load event never
+fires — and remember Thai renders in a fallback font there, not Plex Looped.
