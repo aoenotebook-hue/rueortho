@@ -116,6 +116,23 @@ const ui = {
     'home.viewAllArticles': 'ดูบทความทั้งหมด',
     'home.emptyConditions': 'บทความชุดแรกกำลังอยู่ระหว่างการตรวจทาน และจะเผยแพร่เร็ว ๆ นี้',
 
+    'section.inProgress': 'กำลังจัดทำ',
+    'section.plannedBody':
+      'ส่วนนี้กำลังอยู่ระหว่างการเขียนและตรวจทาน เราจะเผยแพร่เมื่อเนื้อหาผ่านการตรวจทานเรียบร้อยแล้ว ระหว่างนี้ลองดูช่องทางด้านล่าง',
+
+    'triage.title': 'อาการแบบไหนควรพบแพทย์?',
+    'triage.sub': 'แนวทางประเมินเบื้องต้น ไม่ใช่การวินิจฉัย หากไม่แน่ใจ ควรปรึกษาแพทย์เสมอ',
+    'triage.greenLabel': 'มักดูแลเบื้องต้นได้',
+    'triage.greenBody':
+      'อาการไม่รุนแรง ค่อย ๆ ดีขึ้นเอง ยังเดินและใช้งานได้ตามปกติ ไม่มีสัญญาณเตือนด้านล่าง',
+    'triage.amberLabel': 'ควรนัดพบแพทย์',
+    'triage.amberBody':
+      'ปวดต่อเนื่องเกินสองถึงสามสัปดาห์ รบกวนการนอนหรือการทำงาน หรือดูแลตนเองแล้วยังไม่ดีขึ้น',
+    'triage.redLabel': 'ควรพบแพทย์ทันที',
+    'triage.redBody':
+      'บาดเจ็บรุนแรง ลงน้ำหนักไม่ได้ ข้อบวมแดงร้อนร่วมกับมีไข้ ชาหรืออ่อนแรงเฉียบพลัน หรือควบคุมการขับถ่ายไม่ได้',
+    'triage.emergency': 'กรณีฉุกเฉิน โทร 1669 หรือไปห้องฉุกเฉินที่ใกล้ที่สุด',
+
     'trust.evidence': 'เนื้อหาอ้างอิงจากหลักฐานทางการแพทย์',
     'trust.reviewed': 'ตรวจสอบโดยแพทย์ผู้เชี่ยวชาญ',
     'trust.plain': 'เข้าใจง่ายสำหรับทุกคน',
@@ -248,6 +265,24 @@ const ui = {
     'home.latestTitle': 'Latest articles',
     'home.viewAllArticles': 'All articles',
     'home.emptyConditions': 'The first articles are being reviewed and will be published shortly.',
+
+    'section.inProgress': 'In preparation',
+    'section.plannedBody':
+      'This section is being written and reviewed, and will be published once it has been checked. In the meantime, try one of these.',
+
+    'triage.title': 'Which symptoms need a doctor?',
+    'triage.sub':
+      'A general guide, not a diagnosis. If you are unsure, always ask a doctor.',
+    'triage.greenLabel': 'Usually safe to manage yourself',
+    'triage.greenBody':
+      'Mild symptoms that are slowly improving, you can still walk and use the limb normally, and none of the warning signs below.',
+    'triage.amberLabel': 'Arrange to see a doctor',
+    'triage.amberBody':
+      'Pain lasting more than two to three weeks, disturbing your sleep or work, or not improving with self-care.',
+    'triage.redLabel': 'See a doctor straight away',
+    'triage.redBody':
+      'A serious injury, being unable to bear weight, a joint that is swollen, red and hot with a fever, sudden numbness or weakness, or loss of bladder or bowel control.',
+    'triage.emergency': 'In an emergency call 1669 or go to the nearest emergency department.',
 
     'trust.evidence': 'Grounded in medical evidence',
     'trust.reviewed': 'Reviewed by a specialist',
