@@ -11,17 +11,25 @@ export type Condition = CollectionEntry<'conditions'>;
  * The author cannot review what he cannot open, and every condition article is
  * `draft: true` until he has read it — so with dev-only visibility the deployed
  * site had a conditions index listing nothing and a search index containing no
- * articles. A preview deployment is the place to read them: Vercel sets
- * VERCEL_ENV=preview on every branch and PR deployment and serves those URLs
- * with `X-Robots-Tag: noindex`, and each draft page also carries its own
- * noindex tag and an unreviewed banner. Production is unchanged.
+ * articles. A preview deployment is the place to read them: Vercel serves
+ * preview URLs with `X-Robots-Tag: noindex`, and each draft page also carries
+ * its own noindex tag and an unreviewed banner. Production is unchanged.
  *
  * `PUBLIC_INCLUDE_DRAFTS=1 npm run build` does the same thing locally.
+ *
+ * The Vercel test is written as "on Vercel, and not the production
+ * environment" rather than "VERCEL_ENV is exactly preview". Both are true of a
+ * branch deployment, but the negative form still works if Vercel ever labels a
+ * deployment something other than `preview`, and the whole point of the change
+ * is that the author can open his drafts. Requiring VERCEL=1 as well is what
+ * keeps it precise: off Vercel — a local `npm run build`, or CI — VERCEL_ENV is
+ * undefined, and without that guard `!== 'production'` would be true and every
+ * ordinary build would quietly start including drafts.
  */
 export const draftsIncluded =
   import.meta.env.DEV ||
   process.env.PUBLIC_INCLUDE_DRAFTS === '1' ||
-  process.env.VERCEL_ENV === 'preview';
+  (process.env.VERCEL === '1' && process.env.VERCEL_ENV !== 'production');
 
 const includeDrafts = draftsIncluded;
 
