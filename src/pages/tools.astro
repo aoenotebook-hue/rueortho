@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ToolsPage from '../components/ToolsPage.astro';
+import { getSection } from '../data/sections';
+
+const locale = 'th' as const;
+const section = getSection('tools');
+---
+
+<BaseLayout title={section.title[locale]} description={section.intro[locale]}>
+  <ToolsPage locale={locale} />
+</BaseLayout>

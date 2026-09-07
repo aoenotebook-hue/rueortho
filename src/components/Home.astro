@@ -67,6 +67,35 @@ const wantCards = [
   },
 ];
 
+/**
+ * Three levels of urgency. Each carries a distinct shape and a written label as
+ * well as colour, because the plan's accessibility rule — and WCAG — forbid
+ * conveying this by colour alone. Framed as guidance, never as a diagnosis.
+ */
+const triage = [
+  {
+    label: tr('triage.greenLabel'),
+    body: tr('triage.greenBody'),
+    bg: 'bg-card-green-bg',
+    ink: 'text-card-green-ink',
+    shape: 'check',
+  },
+  {
+    label: tr('triage.amberLabel'),
+    body: tr('triage.amberBody'),
+    bg: 'bg-card-orange-bg',
+    ink: 'text-card-orange-ink',
+    shape: 'warn',
+  },
+  {
+    label: tr('triage.redLabel'),
+    body: tr('triage.redBody'),
+    bg: 'bg-warning-ground',
+    ink: 'text-warning-ink',
+    shape: 'urgent',
+  },
+];
+
 const trust = [
   { label: tr('trust.evidence'), icon: 'book' },
   { label: tr('trust.reviewed'), icon: 'shield' },
@@ -358,6 +387,62 @@ const trust = [
           </ul>
         )
       }
+    </div>
+  </Container>
+</section>
+
+<!-- When should I see a doctor? Guidance, explicitly not diagnosis. -->
+<section class="pb-10">
+  <Container>
+    <div class="rounded-[var(--radius-panel)] border border-border bg-surface p-6 md:p-8">
+      <h2 class="m-0">{tr('triage.title')}</h2>
+      <p class="m-0 mt-1 text-muted">{tr('triage.sub')}</p>
+
+      <ol class="m-0 mt-6 grid list-none grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 p-0">
+        {
+          triage.map((level) => (
+            <li class:list={['rounded-[10px] p-5', level.bg, level.ink]}>
+              <p class="m-0 mb-2 flex items-center gap-2 font-semibold">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  class="shrink-0"
+                >
+                  {level.shape === 'check' && (
+                    <>
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M8 12.5l2.5 2.5L16 9" />
+                    </>
+                  )}
+                  {level.shape === 'warn' && (
+                    <>
+                      <path d="M12 3.5L22 20H2z" />
+                      <path d="M12 10v4M12 17h.01" />
+                    </>
+                  )}
+                  {level.shape === 'urgent' && (
+                    <>
+                      <path d="M8.5 2.5h7L21.5 8.5v7L15.5 21.5h-7L2.5 15.5v-7z" />
+                      <path d="M12 8v5M12 16h.01" />
+                    </>
+                  )}
+                </svg>
+                {level.label}
+              </p>
+              <p class="m-0 text-[0.95em] opacity-90">{level.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p class="m-0 mt-5 font-semibold text-warning-ink">{tr('triage.emergency')}</p>
     </div>
   </Container>
 </section>

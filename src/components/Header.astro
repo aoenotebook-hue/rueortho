@@ -3,6 +3,7 @@ import Container from './Container.astro';
 import Logo from './Logo.astro';
 import { t, type Locale } from '../i18n/ui';
 import { getAlternatePath, localizePath, stripLocale } from '../i18n/utils';
+import { sections } from '../data/sections';
 
 interface Props {
   locale: Locale;
@@ -19,14 +20,13 @@ const alternate = getAlternatePath(Astro.url);
 const here = stripLocale(Astro.url.pathname).replace(/\/$/, '') || '/';
 
 /**
- * Only destinations that exist. The mockup's wider menu (การตรวจ, การรักษา,
- * เครื่องมือผู้ป่วย, บทความ & วิดีโอ) needs those sections built first —
- * shipping them now would put 404s in the main navigation.
+ * The full menu from the plan. Every entry resolves: sections still being
+ * written render a stub that says so and points the reader somewhere useful,
+ * which is better than a menu item that 404s or one that is missing entirely.
  */
 const navItems = [
   { path: '/', label: tr('nav.home') },
-  { path: '/conditions', label: tr('nav.conditions') },
-  { path: '/about', label: tr('nav.about') },
+  ...sections.map((section) => ({ path: section.path, label: section.nav[locale] })),
 ];
 ---
 

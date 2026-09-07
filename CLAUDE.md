@@ -58,8 +58,11 @@ consult it when drafting or fact-checking content. Never copy an image out of
 - Thai typography: line-height 1.8, base 17px (18px ≥768px), never justified,
   never letter-spaced, `overflow-wrap: break-word`. Re-check Thai line wrapping
   after any typography change — Thai has no spaces between words.
-- Accessibility target is WCAG 2.1 AA: contrast ≥ 4.5:1, visible focus rings,
-  skip link, one `h1` per page, touch targets ≥ 44px.
+- Accessibility target is WCAG 2.2 AA: contrast ≥ 4.5:1, visible focus rings,
+  skip link, one `h1` per page, touch targets ≥ 44px, reduced-motion respected.
+- **Never convey meaning by colour alone.** The homepage triage levels carry a
+  distinct shape and a written label as well as a colour, and any future
+  status indicator must do the same.
 - Drafts (`draft: true`) appear in `npm run dev` and never in a build.
 
 ## Decisions the author has made
@@ -75,6 +78,12 @@ consult it when drafting or fact-checking content. Never copy an image out of
   the rest is AI-generated and carries a Google C2PA credential.
   **Still outstanding: the exact attribution wording to put in the `Figure`
   caption.** Ask for it before putting any app image on a page.
+- **The Thai font stays IBM Plex Sans Thai Looped.** The later master plan
+  specifies Noto Sans Thai; the author was asked and chose to keep Plex Looped.
+  Looped Thai carries the heads on the glyphs and reads more easily for older
+  readers and anyone with reduced vision, which is much of the audience for a
+  site about arthritis and osteoporosis. Do not switch on the master plan's
+  say-so.
 - **Contact address and domain live in `src/data/site.ts`**, and the legal pages
   read them through an MDX import, so there is one place to change. Both are
   still placeholders (`easyortho.com`).
@@ -89,7 +98,16 @@ These are not style preferences — they are what makes the site safe to publish
 - Explain every medical term in plain language the first time, with the English
   term in parentheses once.
 - **Never tell the reader they have the condition.** Use "อาจเป็นสัญญาณของ…" /
-  "this may be a sign of…" and defer diagnosis to a doctor.
+  "this may be a sign of…" and defer diagnosis to a doctor. Never
+  "คุณเป็นโรค…"; write "อาการลักษณะนี้อาจเกี่ยวข้องกับ…".
+- **Never tell a reader they do not need a doctor.** Not
+  "คุณไม่จำเป็นต้องพบแพทย์" but "ในกรณีที่ไม่มีสัญญาณเตือน อาการบางลักษณะอาจเริ่ม
+  ดูแลเบื้องต้นได้ แต่ควรพบแพทย์หาก…". The site cannot see the reader, so it can
+  never rule anything out.
+- **Claude does not make medical editorial decisions.** Layout, structure,
+  routing, components, accessibility and performance are Claude's; what is
+  medically true is the author's, through research, writing and review. Draft
+  copy stays `draft: true` until he has read it.
 - No drug doses. Drug classes are fine, with a "ask a doctor or pharmacist" note.
 - No promotion of any clinic, product, brand or supplement.
 - Be honest about uncertainty and about what the evidence does and does not
@@ -145,12 +163,26 @@ pre-launch QA pass — and the real articles.
 
 ### Publishing safety
 
-`npm run lint:content` fails the build when an article still containing the
-`SAMPLE` marker has `draft: false`, because that would publish it under the
-author's name with `reviewedBy` set. The sample knee-osteoarthritis article is
-`draft: true` for that reason: it was written by Claude and the author has not
-reviewed it. Do not flip it without him reading it first. The linter also fails
-on a published article with no `sources` and on a `<Figure>` with no `alt`.
+`npm run lint:content` fails the build when an article carrying a `SAMPLE` or
+`SEED` marker has `draft: false`, because that would publish it under the
+author's name with `reviewedBy` set — a false claim of medical review. `SAMPLE`
+marks copy Claude drafted; `SEED` marks a roadmap skeleton nobody has written.
+Both are `draft: true` and must stay that way until the author has written and
+read the article himself. The linter also fails on a published article with no
+`sources` and on a `<Figure>` with no `alt`.
+
+### Seed content
+
+The nineteen condition seeds from the master plan's §33 live in
+`src/content/conditions/th/`, tracked in `docs/CONTENT-ROADMAP.md`. They are
+**structure, not medicine**: real slug, region, summary, keywords and related
+links, plus the canonical section skeleton with every body section left as
+`(ยังไม่ได้เขียน)` and `redFlags`, `faq` and `sources` empty. Filling them in is
+editorial work for the author, not Claude's — see the medical content rules.
+
+Visible in `npm run dev`, excluded from every build. Topic 20 (MRI เข่า) has no
+file: it is an imaging topic, and forcing it into the conditions schema would be
+wrong. It belongs to `/examinations` once that section has its own collection.
 
 ### Deployment notes
 
@@ -237,6 +269,50 @@ Deliberate departures from that mockup, each with a reason:
 - **No social icons in the footer**, because no accounts exist yet.
 - The hero search is a plain GET form to `/search`, so it works without
   JavaScript, and the example chips are real `?q=` searches.
+
+### Sections and routes
+
+`src/data/sections.ts` is the single source for the main navigation and the
+section landing pages. A section is `live` or `planned`; a planned one still
+gets a real page (`SectionStub.astro`) that says it is being prepared and points
+the reader at search or the conditions index. That is why the navigation can
+carry the plan's full eight entries without shipping a single 404 — add a
+section there and both the nav and its page follow.
+
+`/terms` from the plan's route list is **not** built: it needs legal wording the
+author has to supply, and inventing terms of use would be worse than not having
+the page. The footer links to the disclaimer, privacy notice and editorial
+policy, which do exist.
+
+### Images
+
+`docs/IMAGE-SOURCES.md` is a register: an image may not go on the site unless
+its source and licence can be stated truthfully there. This is not bureaucracy —
+five images in the author's own apps have stripped metadata and unknown origin,
+and this site carries a named doctor's byline.
+
+### QR codes
+
+`QrCode.astro` generates each code as inline SVG **at build time** from the live
+URL, so a code cannot drift out of date the way an exported PNG would — change
+`site` in `astro.config.mjs` or a URL in `src/data/apps.ts` and every code
+regenerates. `/tools` carries one per companion app plus one for the site
+itself.
+
+Two things that are deliberate and should not be "fixed":
+
+- **The code panel stays white in dark mode.** A QR needs dark modules on a
+  light ground to scan reliably, so it does not invert with the theme.
+- **`margin: 2`** keeps the quiet zone the QR spec requires. Without it many
+  scanners fail on a code that sits flush against other content.
+
+The site code encodes whatever `site` is set to, which is still the
+`easyortho.com` placeholder — it becomes correct the moment the real domain is
+configured, but until then it points nowhere. Do not print it.
+
+`/tools` (เครื่องมือผู้ป่วย) is `live` rather than a stub because the companion
+apps *are* the patient tools. A grid whose `minmax` minimum exceeds the viewport
+overflows, so it uses `minmax(min(23rem,100%),1fr)`.
 
 ### MDX component notes
 

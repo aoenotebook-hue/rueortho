@@ -68,10 +68,16 @@ for (const article of [...th, ...en]) {
    */
   const published = data.draft !== true;
 
-  // A sample must never go out under a real doctor's byline claiming review.
-  if (published && /SAMPLE/i.test(content)) {
+  /*
+   * Unreviewed copy must never go out under a real doctor's byline claiming
+   * review. SAMPLE marks text Claude drafted; SEED marks a skeleton from the
+   * content roadmap that nobody has written yet. Either one published would be
+   * a false claim of medical review, so both are errors.
+   */
+  const marker = content.match(/\b(SAMPLE|SEED)\b/);
+  if (published && marker) {
     errors.push(
-      `${path}: still marked SAMPLE but not draft — it would publish as reviewed by ${data.reviewedBy}.`,
+      `${path}: still marked ${marker[1]} but not draft — it would publish as reviewed by ${data.reviewedBy}.`,
     );
   }
 
