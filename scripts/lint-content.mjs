@@ -60,12 +60,18 @@ const enSlugs = new Set(en.map((a) => a.data.slug));
 
 for (const article of [...th, ...en]) {
   const { path, data, content, locale } = article;
-  const published = data.draft === false;
+  /*
+   * The schema declares `draft: z.boolean().default(false)`, so an article that
+   * omits the field is PUBLISHED. Testing `=== false` would treat an omitted
+   * field as a draft and skip every check below — the exact hole these checks
+   * exist to close. Only an explicit `draft: true` counts as unpublished.
+   */
+  const published = data.draft !== true;
 
   // A sample must never go out under a real doctor's byline claiming review.
   if (published && /SAMPLE/i.test(content)) {
     errors.push(
-      `${path}: still marked SAMPLE but draft is false — it would publish as reviewed by ${data.reviewedBy}.`,
+      `${path}: still marked SAMPLE but not draft — it would publish as reviewed by ${data.reviewedBy}.`,
     );
   }
 
