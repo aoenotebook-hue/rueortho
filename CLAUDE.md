@@ -291,6 +291,29 @@ its source and licence can be stated truthfully there. This is not bureaucracy �
 five images in the author's own apps have stripped metadata and unknown origin,
 and this site carries a named doctor's byline.
 
+### QR codes
+
+`QrCode.astro` generates each code as inline SVG **at build time** from the live
+URL, so a code cannot drift out of date the way an exported PNG would — change
+`site` in `astro.config.mjs` or a URL in `src/data/apps.ts` and every code
+regenerates. `/tools` carries one per companion app plus one for the site
+itself.
+
+Two things that are deliberate and should not be "fixed":
+
+- **The code panel stays white in dark mode.** A QR needs dark modules on a
+  light ground to scan reliably, so it does not invert with the theme.
+- **`margin: 2`** keeps the quiet zone the QR spec requires. Without it many
+  scanners fail on a code that sits flush against other content.
+
+The site code encodes whatever `site` is set to, which is still the
+`easyortho.com` placeholder — it becomes correct the moment the real domain is
+configured, but until then it points nowhere. Do not print it.
+
+`/tools` (เครื่องมือผู้ป่วย) is `live` rather than a stub because the companion
+apps *are* the patient tools. A grid whose `minmax` minimum exceeds the viewport
+overflows, so it uses `minmax(min(23rem,100%),1fr)`.
+
 ### MDX component notes
 
 - `frontmatter` is available inside any MDX body, which is how

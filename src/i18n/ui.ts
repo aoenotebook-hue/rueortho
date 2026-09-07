@@ -133,6 +133,16 @@ const ui = {
       'บาดเจ็บรุนแรง ลงน้ำหนักไม่ได้ ข้อบวมแดงร้อนร่วมกับมีไข้ ชาหรืออ่อนแรงเฉียบพลัน หรือควบคุมการขับถ่ายไม่ได้',
     'triage.emergency': 'กรณีฉุกเฉิน โทร 1669 หรือไปห้องฉุกเฉินที่ใกล้ที่สุด',
 
+    'tools.appsTitle': 'แอปดูแลตัวเอง',
+    'tools.appsIntro':
+      'แอปเหล่านี้ใช้งานฟรี ไม่ต้องสมัครสมาชิก จัดทำโดยผู้เขียนเว็บไซต์นี้ สแกนคิวอาร์โค้ดด้วยกล้องมือถือ หรือกดปุ่มเพื่อเปิด',
+    'tools.scanToOpen': 'สแกนเพื่อเปิดแอป',
+    'tools.shareTitle': 'แชร์เว็บไซต์นี้',
+    'tools.shareIntro':
+      'สแกนหรือส่งลิงก์นี้ให้ผู้ที่อยากอ่านข้อมูลเพิ่มเติม เหมาะสำหรับพิมพ์ติดไว้ที่ห้องตรวจหรือส่งต่อให้ผู้ป่วย',
+    'tools.scanSite': 'สแกนเพื่อเปิดเว็บไซต์',
+    'tools.qrFor': 'คิวอาร์โค้ดสำหรับ {name}',
+
     'trust.evidence': 'เนื้อหาอ้างอิงจากหลักฐานทางการแพทย์',
     'trust.reviewed': 'ตรวจสอบโดยแพทย์ผู้เชี่ยวชาญ',
     'trust.plain': 'เข้าใจง่ายสำหรับทุกคน',
@@ -283,6 +293,16 @@ const ui = {
     'triage.redBody':
       'A serious injury, being unable to bear weight, a joint that is swollen, red and hot with a fever, sudden numbness or weakness, or loss of bladder or bowel control.',
     'triage.emergency': 'In an emergency call 1669 or go to the nearest emergency department.',
+
+    'tools.appsTitle': 'Self-care apps',
+    'tools.appsIntro':
+      'These apps are free and need no account. They are made by the author of this site. Scan a code with your phone camera, or use the button.',
+    'tools.scanToOpen': 'Scan to open the app',
+    'tools.shareTitle': 'Share this site',
+    'tools.shareIntro':
+      'Scan or pass on this link. Handy to print for a clinic room, or to send to someone who wants to read more.',
+    'tools.scanSite': 'Scan to open the site',
+    'tools.qrFor': 'QR code for {name}',
 
     'trust.evidence': 'Grounded in medical evidence',
     'trust.reviewed': 'Reviewed by a specialist',

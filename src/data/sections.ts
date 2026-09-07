@@ -80,11 +80,10 @@ export const sections: Section[] = [
     nav: { th: 'เครื่องมือผู้ป่วย', en: 'Patient tools' },
     title: { th: 'เครื่องมือสำหรับผู้ป่วย', en: 'Tools for patients' },
     intro: {
-      th: 'เครื่องมือช่วยทำความเข้าใจอาการ ศัพท์ในผลตรวจ ทางเลือกการรักษา และท่าออกกำลังกาย เป็นสื่อการเรียนรู้ ไม่ใช่การวินิจฉัย',
-      en: 'Aids for understanding symptoms, report terminology, treatment options and exercises. Educational, never diagnostic.',
+      th: 'แอปดูแลตัวเองที่ใช้งานได้ฟรี พร้อมคิวอาร์โค้ดสำหรับเปิดบนมือถือ เป็นสื่อการเรียนรู้ ไม่ใช่การวินิจฉัย',
+      en: 'Free self-care apps with QR codes to open them on a phone. Educational, never diagnostic.',
     },
-    status: 'planned',
-    fallback: 'search',
+    status: 'live',
   },
   {
     id: 'articles',

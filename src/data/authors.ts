@@ -20,22 +20,18 @@ export const authors: Record<string, Author> = {
     id: 'sorawut',
     name: {
       th: 'นพ.สรวุฒิ ธรรมยงค์กิจ',
-      en: 'Sorawut Thamyongkit, MD',
+      en: 'Sorawut Thamyongkit',
     },
     credentials: {
-      th: 'ศัลยแพทย์ออร์โธปิดิกส์',
-      en: 'Orthopaedic surgeon',
+      th: 'พ.บ. · ศัลยแพทย์ออร์โธปิดิกส์',
+      en: 'MD · Orthopaedic surgeon',
     },
     bio: {
       th: [
-        'นพ.สรวุฒิ ธรรมยงค์กิจ เป็นศัลยแพทย์ออร์โธปิดิกส์ ผ่านการฝึกอบรมด้านเวชศาสตร์การกีฬาและการผ่าตัดกระดูกหักและข้อ สนใจปัญหาของข้อไหล่และข้อเข่าเป็นพิเศษ',
-        'นอกจากงานดูแลผู้ป่วย ยังสอนแพทย์ประจำบ้านออร์โธปิดิกส์ และทำงานวิจัยอย่างต่อเนื่อง',
-        'จัดทำเว็บไซต์นี้และแอปดูแลผู้ป่วยที่ลิงก์ไว้ในบทความ ด้วยความตั้งใจอย่างเดียว คือ อยากให้ผู้ป่วยเข้าใจภาวะของตนเองมากขึ้น และพูดคุยกับแพทย์ผู้ดูแลได้อย่างมั่นใจ',
+        'จัดทำเว็บไซต์นี้และแอปดูแลผู้ป่วยทั้งหมดโดยไม่มีค่าใช้จ่าย เพื่อให้ผู้ป่วยเข้าใจภาวะของตนเอง และพูดคุยกับแพทย์ผู้ดูแลได้อย่างมั่นใจ',
       ],
       en: [
-        'Sorawut Thamyongkit is an orthopaedic surgeon trained in sports medicine and trauma surgery, with a particular interest in shoulder and knee problems.',
-        'Alongside caring for patients, he teaches orthopaedic residents and takes part in research.',
-        'He writes this site, and the free patient apps linked from its articles, for one reason: patients who understand their own condition can talk to their doctor with more confidence.',
+        'He builds this site and the patient apps free of charge, so that patients can understand their own condition and talk to their doctor with more confidence.',
       ],
     },
     // TODO: add the real photo at src/assets/authors/sorawut.jpg (≥800px square).

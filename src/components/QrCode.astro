@@ -1,0 +1,60 @@
+---
+import QRCode from 'qrcode';
+
+interface Props {
+  /** The URL the code encodes. Shown beneath it so it can be typed by hand too. */
+  url: string;
+  /** Accessible name, e.g. the app this code opens. */
+  label: string;
+}
+
+const { url, label } = Astro.props;
+
+/**
+ * Generated at build time from the live URL, so a code can never drift out of
+ * date the way an exported PNG would — change the domain in astro.config.mjs or
+ * src/data/site.ts and every code here regenerates.
+ *
+ * `margin: 2` keeps the quiet zone the QR spec requires; without it many
+ * scanners fail on a code that sits flush against other content.
+ */
+const svg = await QRCode.toString(url, {
+  type: 'svg',
+  margin: 2,
+  errorCorrectionLevel: 'M',
+  color: { dark: '#000000', light: '#ffffff' },
+});
+
+// Strip the fixed width/height so the SVG scales to its container.
+const scalable = svg.replace(/<svg([^>]*?)width="[^"]*"\s*height="[^"]*"/, '<svg$1');
+---
+
+{/*
+  Deliberately NOT theme-aware. A QR code needs dark modules on a light ground
+  to scan reliably, so the panel stays white in dark mode rather than inverting.
+*/}
+<figure class="m-0 flex w-[9.5rem] flex-col items-center gap-2">
+  <div
+    class="rounded-[10px] border border-border bg-white p-2"
+    role="img"
+    aria-label={label}
+    set:html={scalable}
+    data-qr
+  />
+  <figcaption class="w-full break-all text-center text-xs leading-snug text-muted">
+    {url.replace(/^https?:\/\//, '')}
+  </figcaption>
+</figure>
+
+<style>
+  [data-qr] {
+    width: 100%;
+    max-width: 9rem;
+  }
+
+  [data-qr] :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

@@ -28,6 +28,7 @@
     "astro": "^7.3.1",
     "astro-pagefind": "^2.0.1",
     "pagefind": "^1.5.2",
+    "qrcode": "^1.5.4",
     "tailwindcss": "^4.3.3",
     "zod": "^4.5.4"
   },
@@ -35,6 +36,7 @@
   "private": true,
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@types/qrcode": "^1.5.6",
     "gray-matter": "^4.0.3",
     "playwright": "^1.63.0",
     "typescript": "^6.0.3"
