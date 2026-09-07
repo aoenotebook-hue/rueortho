@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Type and template checking. Kept at zero errors, warnings and hints.
+      - run: npm run check
+
+      # Editorial rules the schema cannot express — a SAMPLE article published
+      # as reviewed, a published article with no sources, a Figure with no alt.
+      - run: npm run lint:content
+
+      - run: npm run build
+
+      # Internal links must resolve. Offline mode resolves hrefs against the
+      # built output and never touches the network, so this step fails only on
+      # a genuinely broken internal link.
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --offline
+            --no-progress
+            --include-fragments
+            --base dist
+            'dist/**/*.html'
+          fail: true
+
+      # External links are reported but never block: a third-party outage is
+      # not a reason to fail our build.
+      - name: Check external links
+        continue-on-error: true
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --exclude-all-private
+            --accept 200,206,429
+            'dist/**/*.html'
+          fail: true
+          output: lychee-external.md

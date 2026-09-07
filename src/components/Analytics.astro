@@ -1,0 +1,21 @@
+---
+/**
+ * Cloudflare Web Analytics. Cookie-less, so it needs no consent banner and
+ * keeps the PDPA footprint light — which is what the privacy notice promises.
+ *
+ * Renders nothing when the token is absent, so local builds and preview
+ * deployments send no data. Set PUBLIC_CF_ANALYTICS_TOKEN in Vercel only.
+ */
+const token = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
+---
+
+{
+  token && (
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={`{"token": "${token}"}`}
+      is:inline
+    />
+  )
+}
