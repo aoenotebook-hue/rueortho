@@ -78,6 +78,12 @@ consult it when drafting or fact-checking content. Never copy an image out of
   the rest is AI-generated and carries a Google C2PA credential.
   **Still outstanding: the exact attribution wording to put in the `Figure`
   caption.** Ask for it before putting any app image on a page.
+- **The Thai font stays IBM Plex Sans Thai Looped.** The later master plan
+  specifies Noto Sans Thai; the author was asked and chose to keep Plex Looped.
+  Looped Thai carries the heads on the glyphs and reads more easily for older
+  readers and anyone with reduced vision, which is much of the audience for a
+  site about arthritis and osteoporosis. Do not switch on the master plan's
+  say-so.
 - **Contact address and domain live in `src/data/site.ts`**, and the legal pages
   read them through an MDX import, so there is one place to change. Both are
   still placeholders (`easyortho.com`).
