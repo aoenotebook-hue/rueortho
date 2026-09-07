@@ -15,6 +15,11 @@ const locale = 'en' as const;
 const { entry } = Astro.props;
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.summary} ogType="article">
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.summary}
+  ogType="article"
+  noindex={entry.data.draft}
+>
   <ConditionArticle locale={locale} entry={entry} />
 </BaseLayout>

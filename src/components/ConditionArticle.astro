@@ -92,6 +92,21 @@ const jsonLd = {
       </a>
     </nav>
 
+    {
+      /*
+        Drafts reach a page only in dev and preview builds. Whoever is looking
+        at one must be told, at the top and before anything else, that no doctor
+        has read it.
+      */
+      entry.data.draft && (
+        <div data-pagefind-ignore>
+          <Callout type="warning" title={tr('article.draftTitle')}>
+            <p>{tr('article.draftBody')}</p>
+          </Callout>
+        </div>
+      )
+    }
+
     <RegionBadge region={entry.data.region} locale={locale} />
 
     <h1 class="mt-4">{entry.data.title}</h1>
@@ -99,12 +114,24 @@ const jsonLd = {
 
     <div class="my-7 rounded-[10px] border border-border bg-surface p-4 text-sm" data-pagefind-ignore>
       <p class="m-0 font-semibold text-ink">{byline(author, locale)}</p>
-      <p class="m-0 mt-1 text-muted">
-        {tr('article.reviewedBy')} {reviewer.name[locale]} · {tr('article.lastReviewed')}{' '}
-        <time datetime={isoDate(entry.data.lastReviewed)}>
-          {formatDate(entry.data.lastReviewed, locale)}
-        </time>
-      </p>
+      {
+        /*
+          `reviewedBy` is set in the frontmatter from the day the file is
+          created, so printing it on a draft would assert a medical review that
+          has not happened — the exact false claim `npm run lint:content`
+          exists to prevent at publish time.
+        */
+        entry.data.draft ? (
+          <p class="m-0 mt-1 font-semibold text-warning-ink">{tr('article.notReviewed')}</p>
+        ) : (
+          <p class="m-0 mt-1 text-muted">
+            {tr('article.reviewedBy')} {reviewer.name[locale]} · {tr('article.lastReviewed')}{' '}
+            <time datetime={isoDate(entry.data.lastReviewed)}>
+              {formatDate(entry.data.lastReviewed, locale)}
+            </time>
+          </p>
+        )
+      }
       <p class="m-0 mt-1 text-muted">
         {tr('article.published')}{' '}
         <time datetime={isoDate(entry.data.publishedDate)}>

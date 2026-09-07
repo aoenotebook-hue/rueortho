@@ -4,8 +4,26 @@ import type { RegionId } from '../data/regions';
 
 export type Condition = CollectionEntry<'conditions'>;
 
-/** Drafts stay visible while running `npm run dev`, never in a built site. */
-const includeDrafts = import.meta.env.DEV;
+/**
+ * Drafts are visible in `npm run dev`, and in a **preview** deployment, and
+ * never in a production build.
+ *
+ * The author cannot review what he cannot open, and every condition article is
+ * `draft: true` until he has read it — so with dev-only visibility the deployed
+ * site had a conditions index listing nothing and a search index containing no
+ * articles. A preview deployment is the place to read them: Vercel sets
+ * VERCEL_ENV=preview on every branch and PR deployment and serves those URLs
+ * with `X-Robots-Tag: noindex`, and each draft page also carries its own
+ * noindex tag and an unreviewed banner. Production is unchanged.
+ *
+ * `PUBLIC_INCLUDE_DRAFTS=1 npm run build` does the same thing locally.
+ */
+export const draftsIncluded =
+  import.meta.env.DEV ||
+  process.env.PUBLIC_INCLUDE_DRAFTS === '1' ||
+  process.env.VERCEL_ENV === 'preview';
+
+const includeDrafts = draftsIncluded;
 
 /** Entry ids look like "th/knee-osteoarthritis". */
 function localeOf(entry: Condition): string {
@@ -41,6 +59,17 @@ export async function getConditionBySlug(
 ): Promise<Condition | undefined> {
   const conditions = await getConditions(locale);
   return conditions.find((entry) => entry.data.slug === slug);
+}
+
+/**
+ * Articles that are published outright, whatever `draftsIncluded` says. Feeds
+ * and anything else that syndicates beyond the site must use this: a preview
+ * deployment showing a draft to its author is one thing, an RSS reader pulling
+ * unreviewed medical copy into someone else's app is another.
+ */
+export async function getPublishedConditions(locale: Locale): Promise<Condition[]> {
+  const conditions = await getConditions(locale);
+  return conditions.filter((entry) => !entry.data.draft);
 }
 
 /** Counts per region, used to grey out regions that have nothing published yet. */

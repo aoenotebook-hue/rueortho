@@ -1,12 +1,16 @@
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
 import { t } from '../../i18n/ui';
-import { getRecentlyReviewed } from '../../lib/conditions';
+import { getPublishedConditions } from '../../lib/conditions';
 
 /** English feed. */
 export async function GET(context: APIContext) {
   const tr = t('en');
-  const items = await getRecentlyReviewed('en', 50);
+  // Published only — a preview build shows drafts on the site, but a feed
+  // leaves the site, so it carries reviewed articles or nothing.
+  const items = (await getPublishedConditions('en'))
+    .sort((a, b) => b.data.lastReviewed.getTime() - a.data.lastReviewed.getTime())
+    .slice(0, 50);
 
   return rss({
     title: tr('site.name'),
