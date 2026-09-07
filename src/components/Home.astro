@@ -1,10 +1,10 @@
 ---
 import Container from './Container.astro';
-import Card from './Card.astro';
+import BodyIcon from './BodyIcon.astro';
 import { t, type Locale } from '../i18n/ui';
-import { localizePath } from '../i18n/utils';
-import { orderedRegions } from '../data/regions';
-import { getRecentlyReviewed, getRegionCounts } from '../lib/conditions';
+import { localizePath, formatDate } from '../i18n/utils';
+import { bodyMapRegions } from '../data/regions';
+import { getConditions, getRecentlyReviewed, getRegionCounts } from '../lib/conditions';
 import { getAuthor, byline } from '../data/authors';
 
 interface Props {
@@ -15,91 +15,449 @@ const { locale } = Astro.props;
 const tr = t(locale);
 
 const counts = await getRegionCounts(locale);
-const recent = await getRecentlyReviewed(locale, 6);
+const published = await getConditions(locale);
+const recent = await getRecentlyReviewed(locale, 3);
 const author = getAuthor('sorawut');
+
+const searchPath = localizePath('/search', locale);
+
+/** Symptom words a reader would actually type, wired to real searches. */
+const examples =
+  locale === 'th'
+    ? ['ปวดเข่า', 'ไหล่ติด', 'ปวดหลัง', 'มือชา', 'รองช้ำ']
+    : ['knee pain', 'frozen shoulder', 'back pain', 'numb hand', 'heel pain'];
+
+/**
+ * The four entry points from the design. Each one points at a real page: until
+ * the dedicated sections exist, they run a search that returns something
+ * useful rather than a 404.
+ */
+const wantCards = [
+  {
+    title: tr('home.want1Title'),
+    body: tr('home.want1Body'),
+    href: localizePath('/conditions', locale),
+    bg: 'bg-card-blue-bg',
+    ink: 'text-card-blue-ink',
+    icon: 'stethoscope',
+  },
+  {
+    title: tr('home.want2Title'),
+    body: tr('home.want2Body'),
+    href: `${searchPath}?q=${encodeURIComponent(locale === 'th' ? 'เอกซเรย์' : 'x-ray')}`,
+    bg: 'bg-card-green-bg',
+    ink: 'text-card-green-ink',
+    icon: 'scan',
+  },
+  {
+    title: tr('home.want3Title'),
+    body: tr('home.want3Body'),
+    href: `${searchPath}?q=${encodeURIComponent(locale === 'th' ? 'การรักษา' : 'treatment')}`,
+    bg: 'bg-card-orange-bg',
+    ink: 'text-card-orange-ink',
+    icon: 'pill',
+  },
+  {
+    title: tr('home.want4Title'),
+    body: tr('home.want4Body'),
+    href: `${searchPath}?q=${encodeURIComponent(locale === 'th' ? 'ออกกำลังกาย' : 'exercise')}`,
+    bg: 'bg-card-purple-bg',
+    ink: 'text-card-purple-ink',
+    icon: 'move',
+  },
+];
+
+const trust = [
+  { label: tr('trust.evidence'), icon: 'book' },
+  { label: tr('trust.reviewed'), icon: 'shield' },
+  { label: tr('trust.plain'), icon: 'people' },
+  { label: tr('trust.life'), icon: 'pulse' },
+];
 ---
 
-<section class="border-b border-border bg-surface py-12">
+<!-- Hero -->
+<section class="hero-surface border-b border-border">
   <Container>
-    <h1 class="max-w-[20ch]">{tr('site.name')}</h1>
-    <p class="max-w-[52ch] text-lg text-muted">{tr('site.tagline')}</p>
+    <div class="grid items-center gap-8 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
+      <!-- min-w-0: a grid item defaults to min-width:auto, and `overflow-wrap:
+           break-word` does not reduce min-content contribution. A Thai heading
+           is a single unbreakable token, so without this the column is sized to
+           the full width of the site name and the page scrolls sideways. -->
+      <div class="min-w-0">
+        <h1 class="text-[2rem] leading-tight md:text-[2.6rem]">{tr('site.name')}</h1>
+        <p class="mt-2 text-xl font-medium text-accent md:text-2xl">{tr('brand.promise')}</p>
+        <p class="mt-4 max-w-[46ch] text-muted">{tr('hero.body')}</p>
+
+        <!-- Works without JavaScript: a plain GET to the search page. -->
+        <form action={searchPath} method="get" role="search" class="mt-7 max-w-[34rem]">
+          <label class="visually-hidden" for="hero-search">{tr('search.label')}</label>
+          <div
+            class="flex items-center gap-2 rounded-full border border-border bg-surface p-1.5 shadow-[var(--shadow-card)]"
+          >
+            <svg
+              class="ms-3 shrink-0 text-muted"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M20 20l-3.5-3.5" stroke-linecap="round"></path>
+            </svg>
+            <input
+              id="hero-search"
+              type="search"
+              name="q"
+              autocomplete="off"
+              placeholder={tr('hero.searchPlaceholder')}
+              class="min-w-0 flex-1 border-0 bg-transparent px-1 py-2 text-ink outline-none"
+            />
+            <button
+              type="submit"
+              class="shrink-0 rounded-full bg-accent px-6 py-2.5 font-medium text-accent-contrast"
+            >
+              {tr('search.label')}
+            </button>
+          </div>
+        </form>
+
+        <div class="mt-4 flex flex-wrap items-center gap-2">
+          <span class="text-sm text-muted">{tr('hero.examplesLabel')}</span>
+          {
+            examples.map((example) => (
+              <a
+                href={`${searchPath}?q=${encodeURIComponent(example)}`}
+                class="rounded-full border border-border bg-surface px-4 py-1.5 text-sm text-ink no-underline hover:border-accent"
+              >
+                {example}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="relative hidden lg:block">
+        <!-- Placeholder for the hero photograph in the design. Drawn rather
+             than photographed so it needs no licence and works in dark mode. -->
+        <div
+          class="grid aspect-[4/3] place-items-center rounded-[var(--radius-panel)] border border-border bg-surface"
+        >
+          <svg
+            width="150"
+            height="220"
+            viewBox="0 0 100 150"
+            fill="none"
+            stroke="var(--accent)"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            aria-hidden="true"
+            class="opacity-70"
+          >
+            <path d="M50 8c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
+            <path d="M50 27c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
+            <path d="M50 46c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
+            <path d="M50 65c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
+            <path d="M50 84c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
+            <path d="M38 15H26M38 34H24M38 53H22M38 72H24M38 91H26" />
+            <path d="M62 15h12M62 34h14M62 53h16M62 72h14M62 91h12" />
+            <path d="M42 105c-3 12-4 24-3 37M58 105c3 12 4 24 3 37" />
+          </svg>
+        </div>
+
+        <p
+          class="absolute -top-2 end-2 max-w-[13rem] text-end text-[1.05rem] italic leading-snug text-accent"
+        >
+          {tr('hero.note')}
+        </p>
+
+        <p
+          class="absolute -bottom-3 end-4 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted shadow-[var(--shadow-card)]"
+        >
+          {tr('hero.badge')}
+        </p>
+      </div>
+    </div>
   </Container>
 </section>
 
-<section class="py-12">
+<!-- Where does it hurt? -->
+<section class="py-10">
   <Container>
-    <h2>{tr('region.browseTitle')}</h2>
-    <p class="mb-7 max-w-[60ch] text-muted">{tr('region.browseIntro')}</p>
+    <div class="rounded-[var(--radius-panel)] border border-border bg-surface p-6 md:p-8">
+      <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 class="m-0">{tr('home.whereTitle')}</h2>
+          <p class="m-0 mt-1 text-muted">{tr('home.whereSub')}</p>
+        </div>
+        <a href={localizePath('/conditions', locale)} class="text-[0.95em]">
+          {tr('common.viewAll')} →
+        </a>
+      </div>
 
-    <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-4 p-0">
-      {
-        orderedRegions.map((region) => {
-          const count = counts[region.id] ?? 0;
-          const label = region.label[locale];
+      <ul
+        class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(5.5rem,1fr))] gap-4 p-0 text-center"
+      >
+        {
+          bodyMapRegions.map((region) => {
+            const count = counts[region.id] ?? 0;
+            const label = region.label[locale];
+            const inner = (
+              <>
+                <span
+                  class:list={[
+                    'mx-auto grid h-16 w-16 place-items-center rounded-full border',
+                    count > 0
+                      ? 'border-border bg-ground text-accent'
+                      : 'border-dashed border-border text-muted opacity-60',
+                  ]}
+                >
+                  <BodyIcon region={region.id} />
+                </span>
+                <span class="mt-2 block text-[0.9em]">{label}</span>
+              </>
+            );
 
-          if (count === 0) {
             return (
-              <li
-                class="rounded-[10px] border border-dashed border-border p-5 text-muted"
-                aria-disabled="true"
-              >
-                <span class="block text-ink opacity-60">{label}</span>
-                <span class="text-sm">{tr('common.comingSoon')}</span>
+              <li>
+                {count > 0 ? (
+                  <a
+                    href={localizePath(`/regions/${region.id}`, locale)}
+                    class="block text-ink no-underline hover:text-accent"
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <span class="block text-muted" title={tr('common.comingSoon')}>
+                    {inner}
+                  </span>
+                )}
               </li>
             );
-          }
+          })
+        }
+      </ul>
+    </div>
+  </Container>
+</section>
 
-          return (
-            <li>
-              <Card
-                href={localizePath(`/regions/${region.id}`, locale)}
-                title={label}
-                summary={tr('common.articleCount', { n: count })}
-                locale={locale}
-              />
-            </li>
-          );
-        })
+<!-- What would you like to know? -->
+<section class="pb-10">
+  <Container>
+    <h2 class="m-0">{tr('home.wantTitle')}</h2>
+    <p class="m-0 mt-1 text-muted">{tr('home.wantSub')}</p>
+
+    <ul class="m-0 mt-6 grid list-none grid-cols-[repeat(auto-fit,minmax(15rem,1fr))] gap-4 p-0">
+      {
+        wantCards.map((card) => (
+          <li>
+            <a
+              href={card.href}
+              class:list={[
+                'group flex h-full flex-col rounded-[var(--radius-panel)] p-6 no-underline',
+                card.bg,
+                card.ink,
+              ]}
+            >
+              <span class="mb-4 grid h-11 w-11 place-items-center rounded-[10px] bg-surface">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  {card.icon === 'stethoscope' && (
+                    <>
+                      <path d="M6 3v6a5 5 0 0 0 10 0V3" />
+                      <path d="M11 14v2a5 5 0 0 0 10 0v-2" />
+                      <circle cx="20" cy="11" r="2" />
+                    </>
+                  )}
+                  {card.icon === 'scan' && (
+                    <>
+                      <path d="M4 8V5a1 1 0 0 1 1-1h3M20 8V5a1 1 0 0 0-1-1h-3M4 16v3a1 1 0 0 0 1 1h3M20 16v3a1 1 0 0 1-1 1h-3" />
+                      <path d="M9 8v8M15 8v8M9 12h6" />
+                    </>
+                  )}
+                  {card.icon === 'pill' && (
+                    <>
+                      <rect x="3" y="9" width="18" height="6" rx="3" />
+                      <path d="M12 9v6" />
+                    </>
+                  )}
+                  {card.icon === 'move' && (
+                    <>
+                      <circle cx="13" cy="4" r="2" />
+                      <path d="M11 8l-3 4 3 3 1 5M11 8l5 2 2 4M8 12l-4 1" />
+                    </>
+                  )}
+                </svg>
+              </span>
+
+              <h3 class="mb-2 text-[1.05rem] leading-snug">{card.title}</h3>
+              <p class="m-0 text-[0.92em] opacity-90">{card.body}</p>
+
+              <span
+                class="mt-4 grid h-8 w-8 place-items-center self-end rounded-full bg-surface"
+                aria-hidden="true"
+              >
+                →
+              </span>
+            </a>
+          </li>
+        ))
       }
     </ul>
   </Container>
 </section>
 
+<!-- Common conditions -->
+<section class="pb-10">
+  <Container>
+    <div class="rounded-[var(--radius-panel)] border border-border bg-surface p-6 md:p-8">
+      <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 class="m-0">{tr('home.popularTitle')}</h2>
+          <p class="m-0 mt-1 text-muted">{tr('home.popularSub')}</p>
+        </div>
+        <a href={localizePath('/conditions', locale)} class="text-[0.95em]">
+          {tr('home.viewAllConditions')} →
+        </a>
+      </div>
+
+      {
+        published.length === 0 ? (
+          <p class="m-0 rounded-[10px] border border-dashed border-border p-6 text-center text-muted">
+            {tr('home.emptyConditions')}
+          </p>
+        ) : (
+          <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(13rem,1fr))] gap-5 p-0">
+            {published.slice(0, 6).map((entry) => (
+              <li>
+                <a
+                  href={localizePath(`/conditions/${entry.data.slug}`, locale)}
+                  class="group block no-underline"
+                >
+                  <span class="mb-3 block aspect-[4/3] rounded-[10px] border border-border bg-ground" />
+                  <span class="block font-semibold text-ink group-hover:text-accent">
+                    {entry.data.title}
+                  </span>
+                  <span class="mt-1 line-clamp-2 block text-[0.9em] text-muted">
+                    {entry.data.summary}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </Container>
+</section>
+
+<!-- Latest articles -->
 {
   recent.length > 0 && (
-    <section class="border-t border-border py-12">
+    <section class="pb-10">
       <Container>
-        <h2>{tr('home.recentlyReviewed')}</h2>
-        <ul class="m-0 mt-6 grid list-none grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-4 p-0">
-          {recent.map((entry) => (
-            <li>
-              <Card
-                href={localizePath(`/conditions/${entry.data.slug}`, locale)}
-                title={entry.data.title}
-                summary={entry.data.summary}
-                region={entry.data.region}
-                locale={locale}
-              />
-            </li>
-          ))}
-        </ul>
-        <p class="mt-6">
-          <a href={localizePath('/conditions', locale)}>{tr('common.viewAll')}</a>
-        </p>
+        <div class="rounded-[var(--radius-panel)] border border-border bg-surface p-6 md:p-8">
+          <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <h2 class="m-0">{tr('home.latestTitle')}</h2>
+            <a href={localizePath('/conditions', locale)} class="text-[0.95em]">
+              {tr('home.viewAllArticles')} →
+            </a>
+          </div>
+
+          <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-5 p-0">
+            {recent.map((entry) => (
+              <li>
+                <a
+                  href={localizePath(`/conditions/${entry.data.slug}`, locale)}
+                  class="group block no-underline"
+                >
+                  <span class="mb-3 block aspect-[16/9] rounded-[10px] border border-border bg-ground" />
+                  <span class="block font-semibold text-ink group-hover:text-accent">
+                    {entry.data.title}
+                  </span>
+                  <span class="mt-1 block text-sm text-muted">
+                    {formatDate(entry.data.lastReviewed, locale)}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </section>
   )
 }
 
-<section class="border-t border-border bg-surface py-12">
+<!-- Trust marks -->
+<section class="border-y border-border bg-surface py-8">
   <Container>
-    <h2>{tr('home.aboutAuthor')}</h2>
-    <div class="mt-5 flex flex-wrap items-start gap-5">
+    <ul
+      class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-6 p-0 text-[0.95em]"
+    >
+      {
+        trust.map((item) => (
+          <li class="flex items-start gap-3">
+            <svg
+              class="mt-0.5 shrink-0 text-brand"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.9"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              {item.icon === 'book' && (
+                <>
+                  <path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2z" />
+                  <path d="M20 5a2 2 0 0 0-2-2h-5v18h5a2 2 0 0 0 2-2z" />
+                </>
+              )}
+              {item.icon === 'shield' && (
+                <>
+                  <path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z" />
+                  <path d="M9 12l2 2 4-4" />
+                </>
+              )}
+              {item.icon === 'people' && (
+                <>
+                  <circle cx="9" cy="8" r="3" />
+                  <path d="M3 20c0-3 3-5 6-5s6 2 6 5" />
+                  <path d="M16 6a3 3 0 0 1 0 6M17 15c2 1 4 2 4 5" />
+                </>
+              )}
+              {item.icon === 'pulse' && <path d="M3 12h4l2-5 4 10 2-5h6" />}
+            </svg>
+            <span class="text-ink">{item.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Container>
+</section>
+
+<!-- About the author -->
+<section class="py-10">
+  <Container>
+    <div class="flex flex-wrap items-start gap-5">
       <img
         src={author.photo}
         alt=""
-        width="88"
-        height="88"
+        width="72"
+        height="72"
         class="rounded-full border border-border"
       />
       <div class="max-w-[52ch]">

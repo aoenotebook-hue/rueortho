@@ -85,6 +85,45 @@ const ui = {
     'home.aboutAuthor': 'เกี่ยวกับผู้เขียน',
     'home.readAuthor': 'อ่านประวัติผู้เขียน',
 
+    'brand.sub': 'Easy Orthopaedic Knowledge for Everyone',
+    'brand.promise': 'เข้าใจอาการ รู้ทางเลือก ดูแลตัวเองได้',
+
+    'hero.body':
+      'ความรู้เรื่องกระดูก ข้อ กล้ามเนื้อ และเส้นเอ็น อธิบายให้เข้าใจง่าย อ้างอิงหลักฐานทางการแพทย์',
+    'hero.searchPlaceholder': 'คุณกำลังมีอาการอะไร?',
+    'hero.examplesLabel': 'ตัวอย่าง:',
+    'hero.note': 'ความรู้ที่ดี ช่วยให้คุณกลับมาใช้ชีวิตได้อีกครั้ง',
+    'hero.badge': 'สุขภาพข้อดี เริ่มได้จากความเข้าใจ',
+
+    'home.whereTitle': 'ปวดตรงไหน?',
+    'home.whereSub': 'เลือกบริเวณที่มีอาการ เพื่อดูข้อมูลที่เกี่ยวข้อง',
+
+    'home.wantTitle': 'คุณอยากรู้อะไร?',
+    'home.wantSub': 'เลือกเมนูที่ตรงกับสิ่งที่คุณต้องการ',
+    'home.want1Title': 'ฉันเป็นอะไร?',
+    'home.want1Body': 'ประเมินอาการเบื้องต้น และทำความเข้าใจโรคที่พบบ่อย',
+    'home.want2Title': 'ผล X-ray / MRI หมายความว่าอะไร?',
+    'home.want2Body': 'แปลศัพท์ทางการแพทย์ให้เข้าใจง่าย',
+    'home.want3Title': 'ต้องรักษาอย่างไร?',
+    'home.want3Body': 'รู้จักทางเลือกการรักษา ข้อดี ข้อเสีย และสิ่งที่ควรพิจารณา',
+    'home.want4Title': 'ฉันควรทำอะไรตอนนี้?',
+    'home.want4Body': 'คำแนะนำเบื้องต้น การออกกำลังกาย และการฟื้นฟู',
+
+    'home.popularTitle': 'โรคและอาการยอดนิยม',
+    'home.popularSub': 'เรื่องที่คนค้นหามากที่สุด',
+    'home.viewAllConditions': 'ดูโรคทั้งหมด',
+    'home.latestTitle': 'บทความล่าสุด',
+    'home.viewAllArticles': 'ดูบทความทั้งหมด',
+    'home.emptyConditions': 'บทความชุดแรกกำลังอยู่ระหว่างการตรวจทาน และจะเผยแพร่เร็ว ๆ นี้',
+
+    'trust.evidence': 'เนื้อหาอ้างอิงจากหลักฐานทางการแพทย์',
+    'trust.reviewed': 'ตรวจสอบโดยแพทย์ผู้เชี่ยวชาญ',
+    'trust.plain': 'เข้าใจง่ายสำหรับทุกคน',
+    'trust.life': 'เพื่อสุขภาพที่ดีขึ้นในทุกช่วงชีวิต',
+
+    'footer.motto': 'ความรู้วันนี้ เพื่อการเคลื่อนไหวที่ดีในวันพรุ่งนี้',
+    'footer.slogan': 'Move Better. Live Better.',
+
     'footer.disclaimer':
       'เนื้อหาบนเว็บไซต์นี้เป็นความรู้ทั่วไป ไม่ใช่คำแนะนำทางการแพทย์เฉพาะบุคคล และไม่สามารถใช้แทนการตรวจและปรึกษาแพทย์ได้',
     'footer.about': 'เกี่ยวกับเว็บไซต์',
@@ -178,6 +217,45 @@ const ui = {
     'home.recentlyReviewed': 'Recently reviewed',
     'home.aboutAuthor': 'About the author',
     'home.readAuthor': 'Read the author’s background',
+
+    'brand.sub': 'Easy Orthopaedic Knowledge for Everyone',
+    'brand.promise': 'Understand your symptoms, know your options, look after yourself',
+
+    'hero.body':
+      'Bone, joint, muscle and tendon problems explained in plain language, grounded in medical evidence.',
+    'hero.searchPlaceholder': 'What symptoms do you have?',
+    'hero.examplesLabel': 'For example:',
+    'hero.note': 'Understanding your condition helps you get your life back.',
+    'hero.badge': 'Healthy joints start with understanding',
+
+    'home.whereTitle': 'Where does it hurt?',
+    'home.whereSub': 'Choose the area with symptoms to see what is relevant.',
+
+    'home.wantTitle': 'What would you like to know?',
+    'home.wantSub': 'Pick whichever matches what you need.',
+    'home.want1Title': 'What is wrong with me?',
+    'home.want1Body': 'Make sense of your symptoms and the conditions that cause them.',
+    'home.want2Title': 'What does my X-ray or MRI mean?',
+    'home.want2Body': 'Medical terms translated into plain language.',
+    'home.want3Title': 'How is it treated?',
+    'home.want3Body': 'The treatment options, their trade-offs, and what to weigh up.',
+    'home.want4Title': 'What should I do now?',
+    'home.want4Body': 'Practical first steps, exercise and rehabilitation.',
+
+    'home.popularTitle': 'Common conditions',
+    'home.popularSub': 'What people look for most',
+    'home.viewAllConditions': 'All conditions',
+    'home.latestTitle': 'Latest articles',
+    'home.viewAllArticles': 'All articles',
+    'home.emptyConditions': 'The first articles are being reviewed and will be published shortly.',
+
+    'trust.evidence': 'Grounded in medical evidence',
+    'trust.reviewed': 'Reviewed by a specialist',
+    'trust.plain': 'Written to be understood',
+    'trust.life': 'For better health at every stage of life',
+
+    'footer.motto': 'What you learn today is how well you move tomorrow.',
+    'footer.slogan': 'Move Better. Live Better.',
 
     'footer.disclaimer':
       'Everything here is general information. It is not personal medical advice and cannot replace being examined by a doctor.',

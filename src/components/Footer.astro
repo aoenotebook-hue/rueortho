@@ -1,5 +1,6 @@
 ---
 import Container from './Container.astro';
+import Logo from './Logo.astro';
 import { t, type Locale } from '../i18n/ui';
 import { localizePath, formatDate } from '../i18n/utils';
 
@@ -15,34 +16,57 @@ const builtAt = formatDate(new Date(), locale);
 const links = [
   { path: '/about', label: tr('footer.about') },
   { path: '/about/author/sorawut', label: tr('footer.author') },
-  { path: '/disclaimer', label: tr('footer.disclaimerLink') },
+  { path: '/contact', label: tr('footer.contact') },
   { path: '/privacy', label: tr('footer.privacy') },
   { path: '/editorial-policy', label: tr('footer.editorial') },
-  { path: '/contact', label: tr('footer.contact') },
+  { path: '/disclaimer', label: tr('footer.disclaimerLink') },
 ];
+
+/*
+ * The design has Facebook, YouTube, Instagram and LINE icons. They are left
+ * out until those accounts exist — a social row that links nowhere is worse
+ * than no social row.
+ */
 ---
 
 <footer class="border-t border-border bg-surface py-10">
   <Container>
-    <p class="mb-6 max-w-[68ch] text-[0.95em] text-muted">
-      {tr('footer.disclaimer')}
-    </p>
+    <div class="flex flex-wrap items-start justify-between gap-6">
+      <a
+        href={localizePath('/', locale)}
+        class="flex items-center gap-2.5 no-underline"
+        aria-label={tr('site.name')}
+      >
+        <Logo size={30} />
+        <span class="leading-tight">
+          <span class="block font-semibold text-ink">{tr('site.name')}</span>
+          <span class="block text-[0.7rem] text-muted">{tr('brand.sub')}</span>
+        </span>
+      </a>
 
-    <nav aria-label={tr('nav.about')}>
-      <ul class="m-0 mb-6 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-[0.95em]">
-        {
-          links.map((link) => (
-            <li>
-              <a href={localizePath(link.path, locale)} class="text-ink no-underline hover:underline">
-                {link.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+      <nav aria-label={tr('nav.about')}>
+        <ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-[0.95em]">
+          {
+            links.map((link) => (
+              <li>
+                <a href={localizePath(link.path, locale)} class="text-ink no-underline hover:underline">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
 
-    <p class="m-0 text-sm text-muted">
+    <p class="mt-8 max-w-[68ch] text-[0.95em] text-muted">{tr('footer.disclaimer')}</p>
+
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6">
+      <p class="m-0 text-[0.95em] text-muted">{tr('footer.motto')}</p>
+      <p class="m-0 text-[0.95em] font-medium text-accent">{tr('footer.slogan')}</p>
+    </div>
+
+    <p class="m-0 mt-4 text-sm">
       <strong class="font-semibold text-warning-ink">{tr('footer.emergency')}</strong>
     </p>
     <p class="m-0 mt-2 text-sm text-muted">
