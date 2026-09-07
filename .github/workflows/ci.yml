@@ -37,7 +37,7 @@ jobs:
             --offline
             --no-progress
             --include-fragments
-            --base dist
+            --root-dir ${{ github.workspace }}/dist
             'dist/**/*.html'
           fail: true
 
@@ -51,6 +51,7 @@ jobs:
             --no-progress
             --exclude-all-private
             --accept 200,206,429
+            --root-dir ${{ github.workspace }}/dist
             'dist/**/*.html'
           fail: true
           output: lychee-external.md

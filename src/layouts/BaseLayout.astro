@@ -74,7 +74,10 @@ const thaiUrl = new URL(localizePath(Astro.url.pathname.replace(/^\/en/, ''), 't
 
   <body>
     <a class="skip-link" href="#main">{tr('a11y.skipToContent')}</a>
-    <Header locale={locale} />
+    <Header
+      locale={locale}
+      alternateHref={hasAlternate ? undefined : localizePath('/', locale === 'th' ? 'en' : 'th')}
+    />
     <main id="main">
       <slot />
     </main>
