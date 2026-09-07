@@ -1,0 +1,46 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Container from './Container.astro';
+import Prose from './Prose.astro';
+import * as mdxComponents from './mdx';
+import { t, type Locale } from '../i18n/ui';
+import { formatDate, isoDate } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  entry: CollectionEntry<'pages'>;
+}
+
+const { locale, entry } = Astro.props;
+const tr = t(locale);
+const { Content } = await render(entry);
+---
+
+<Container width="prose">
+  <!--
+    Info pages are searchable but deliberately out-ranked by articles. Pagefind
+    has no Thai wasm and its fallback strips Thai tone marks, so เข่า (knee)
+    collides with เข้า (enter) — which otherwise floats the privacy notice into
+    a search for knee pain. Down-weighting keeps these pages findable by their
+    own words without letting them crowd out the medical content.
+  -->
+  <div
+    class="py-10"
+    data-pagefind-body
+    data-pagefind-weight="0.25"
+    data-pagefind-meta={`summary:${entry.data.description}`}
+  >
+    <h1>{entry.data.title}</h1>
+
+    <Prose>
+      <Content components={mdxComponents} />
+    </Prose>
+
+    <p class="mt-10 text-sm text-muted">
+      {tr('article.lastReviewed')}{' '}
+      <time datetime={isoDate(entry.data.lastUpdated)}>
+        {formatDate(entry.data.lastUpdated, locale)}
+      </time>
+    </p>
+  </div>
+</Container>

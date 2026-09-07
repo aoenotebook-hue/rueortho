@@ -1,0 +1,14 @@
+---
+interface Props {
+  /** `prose` keeps the reading column at 68ch; `wide` is for card grids. */
+  width?: 'prose' | 'wide';
+  class?: string;
+}
+
+const { width = 'wide', class: className = '' } = Astro.props;
+const max = width === 'prose' ? 'max-w-[68ch]' : 'max-w-[72rem]';
+---
+
+<div class={`mx-auto w-full ${max} px-5 ${className}`}>
+  <slot />
+</div>

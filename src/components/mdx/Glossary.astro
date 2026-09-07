@@ -1,0 +1,64 @@
+---
+interface Props {
+  /** The plain-language definition shown when the reader opens the term. */
+  definition: string;
+}
+
+const { definition } = Astro.props;
+const id = `gloss-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<span class="glossary">
+  <button
+    type="button"
+    class="glossary-term"
+    aria-expanded="false"
+    aria-controls={id}
+    data-glossary-toggle
+  >
+    <slot />
+  </button><span id={id} class="glossary-definition" role="note" hidden>{definition}</span>
+</span>
+
+<style is:global>
+  .glossary-term {
+    all: unset;
+    cursor: pointer;
+    color: var(--ink);
+    border-bottom: 1.5px dotted var(--accent);
+    /* The 44px touch-target rule does not apply to inline text; keep the
+       baseline intact so Thai line-height is not disturbed. */
+    min-height: 0;
+  }
+
+  .glossary-term:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .glossary-definition {
+    display: inline;
+    margin-inline-start: 0.35em;
+    padding: 0.1em 0.5em;
+    border-radius: 4px;
+    background: var(--info-ground);
+    color: var(--info-ink);
+    font-size: 0.95em;
+  }
+</style>
+
+<script>
+  document.addEventListener('click', (event) => {
+    const toggle = (event.target as HTMLElement)?.closest<HTMLButtonElement>(
+      '[data-glossary-toggle]',
+    );
+    if (!toggle) return;
+
+    const target = document.getElementById(toggle.getAttribute('aria-controls') ?? '');
+    if (!target) return;
+
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    target.hidden = open;
+  });
+</script>

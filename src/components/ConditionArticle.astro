@@ -1,0 +1,214 @@
+---
+import { render } from 'astro:content';
+import Container from './Container.astro';
+import Prose from './Prose.astro';
+import Callout from './Callout.astro';
+import Card from './Card.astro';
+import RegionBadge from './RegionBadge.astro';
+import * as mdxComponents from './mdx';
+import { t, type Locale } from '../i18n/ui';
+import { localizePath, formatDate, isoDate, isReviewOverdue } from '../i18n/utils';
+import { getAuthor, byline } from '../data/authors';
+import { getRegion } from '../data/regions';
+import { appsForCondition } from '../data/apps';
+import { getConditions, type Condition } from '../lib/conditions';
+
+interface Props {
+  locale: Locale;
+  entry: Condition;
+}
+
+const { locale, entry } = Astro.props;
+const tr = t(locale);
+const { Content } = await render(entry);
+
+const author = getAuthor(entry.data.author);
+const reviewer = getAuthor(entry.data.reviewedBy);
+const region = getRegion(entry.data.region);
+const companionApps = appsForCondition(entry.data.slug);
+const overdue = isReviewOverdue(entry.data.lastReviewed);
+
+/**
+ * Authors are meant to place <RedFlags /> inside "When to see a doctor", where
+ * it reads in context. If an article declares redFlags but never places the
+ * component, render the box up here instead — safety content must not go
+ * missing because of an editing slip.
+ */
+const authorPlacedRedFlags = (entry.body ?? '').includes('<RedFlags');
+
+const siblings = await getConditions(locale);
+const related = entry.data.related
+  .map((slug) => siblings.find((c) => c.data.slug === slug))
+  .filter((c): c is Condition => Boolean(c));
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'MedicalWebPage',
+      '@id': pageUrl,
+      name: entry.data.title,
+      description: entry.data.summary,
+      inLanguage: locale === 'th' ? 'th-TH' : 'en',
+      datePublished: isoDate(entry.data.publishedDate),
+      dateModified: isoDate(entry.data.lastReviewed),
+      about: { '@type': 'MedicalCondition', name: entry.data.title },
+      author: { '@type': 'Person', name: author.name[locale], jobTitle: author.credentials[locale] },
+      reviewedBy: {
+        '@type': 'Person',
+        name: reviewer.name[locale],
+        jobTitle: reviewer.credentials[locale],
+      },
+    },
+    ...(entry.data.faq.length > 0
+      ? [
+          {
+            '@type': 'FAQPage',
+            mainEntity: entry.data.faq.map((item) => ({
+              '@type': 'Question',
+              name: item.q,
+              acceptedAnswer: { '@type': 'Answer', text: item.a },
+            })),
+          },
+        ]
+      : []),
+  ],
+};
+---
+
+<Container width="prose">
+  <article
+    class="py-8"
+    data-pagefind-body
+    data-pagefind-meta={`summary:${entry.data.summary},region:${region.label[locale]}`}
+  >
+    <nav aria-label={tr('a11y.breadcrumb')} class="mb-6 text-sm text-muted" data-pagefind-ignore>
+      <a href={localizePath('/', locale)} class="text-muted">{tr('nav.home')}</a>
+      <span aria-hidden="true"> / </span>
+      <a href={localizePath(`/regions/${region.id}`, locale)} class="text-muted">
+        {region.label[locale]}
+      </a>
+    </nav>
+
+    <RegionBadge region={entry.data.region} locale={locale} />
+
+    <h1 class="mt-4">{entry.data.title}</h1>
+    <p class="text-lg text-muted">{entry.data.summary}</p>
+
+    <div class="my-7 rounded-[10px] border border-border bg-surface p-4 text-sm" data-pagefind-ignore>
+      <p class="m-0 font-semibold text-ink">{byline(author, locale)}</p>
+      <p class="m-0 mt-1 text-muted">
+        {tr('article.reviewedBy')} {reviewer.name[locale]} · {tr('article.lastReviewed')}{' '}
+        <time datetime={isoDate(entry.data.lastReviewed)}>
+          {formatDate(entry.data.lastReviewed, locale)}
+        </time>
+      </p>
+      <p class="m-0 mt-1 text-muted">
+        {tr('article.published')}{' '}
+        <time datetime={isoDate(entry.data.publishedDate)}>
+          {formatDate(entry.data.publishedDate, locale)}
+        </time>
+      </p>
+    </div>
+
+    {overdue && <Callout type="warning">{tr('article.reviewOverdue')}</Callout>}
+
+    {
+      !authorPlacedRedFlags && entry.data.redFlags.length > 0 && (
+        <Callout type="warning" title={tr('article.redFlagsTitle')}>
+          <p>{tr('article.redFlagsUrgent')}</p>
+          <ul class="m-0 list-disc ps-5">
+            {entry.data.redFlags.map((flag) => (
+              <li class="mt-1">{flag}</li>
+            ))}
+          </ul>
+        </Callout>
+      )
+    }
+
+    <Prose>
+      <Content components={mdxComponents} />
+    </Prose>
+
+    {
+      entry.data.faq.length > 0 && (
+        <section class="mt-12">
+          <h2>{tr('article.faq')}</h2>
+          {entry.data.faq.map((item) => (
+            <details class="mt-3 rounded-[10px] border border-border bg-surface p-4">
+              <summary class="cursor-pointer font-medium">{item.q}</summary>
+              <p class="mt-3 mb-0 text-muted">{item.a}</p>
+            </details>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      entry.data.sources.length > 0 && (
+        <section class="mt-12">
+          <h2>{tr('article.references')}</h2>
+          <ol class="list-decimal ps-5 text-[0.95em]">
+            {entry.data.sources.map((source) => (
+              <li class="mt-2">
+                <a href={source.url} target="_blank" rel="noopener noreferrer">
+                  {source.title}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+
+    {
+      companionApps.length > 0 && (
+        <section class="mt-12" data-pagefind-ignore>
+          <h2>{tr('apps.sectionTitle')}</h2>
+          <p class="text-muted">{tr('apps.free')}</p>
+          {companionApps.map((app) => (
+            <div class="mt-4 rounded-[10px] border border-border bg-surface p-5">
+              <h3 class="mb-2">{app.name[locale]}</h3>
+              <p class="text-muted">{app.description[locale]}</p>
+              <a
+                href={app.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block rounded-[6px] border border-accent px-4 py-2 no-underline"
+              >
+                {tr('apps.open')}
+              </a>
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      related.length > 0 && (
+        <section class="mt-12" data-pagefind-ignore>
+          <h2>{tr('article.related')}</h2>
+          <ul class="m-0 mt-5 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-4 p-0">
+            {related.map((item) => (
+              <li>
+                <Card
+                  href={localizePath(`/conditions/${item.data.slug}`, locale)}
+                  title={item.data.title}
+                  locale={locale}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    <div data-pagefind-ignore>
+      <Callout type="info">{tr('footer.disclaimer')}</Callout>
+    </div>
+  </article>
+</Container>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />

@@ -1,0 +1,120 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  /** e.g. "10 ครั้ง" / "10 repetitions" */
+  reps?: string;
+  /** e.g. "2 เซ็ต" / "2 sets" */
+  sets?: string;
+  /** e.g. "ค้างไว้ 20 วินาที" / "hold 20 seconds" */
+  hold?: string;
+  image?: ImageMetadata | string;
+  imageAlt?: string;
+  /** YouTube video id. Nothing from Google loads until the reader presses play. */
+  youtube?: string;
+  /** Still image shown in place of the video before it is loaded. */
+  poster?: string;
+}
+
+const { title, reps, sets, hold, image, imageAlt, youtube, poster } = Astro.props;
+
+if (image && !imageAlt) {
+  throw new Error(`<ExerciseCard title="${title}"> has an image but no imageAlt.`);
+}
+
+const meta = [sets, reps, hold].filter(Boolean);
+---
+
+<article class="exercise-card my-6 rounded-[10px] border border-border bg-surface p-5">
+  <h3 class="mt-0! mb-2 text-[1.125rem]">{title}</h3>
+
+  {
+    meta.length > 0 && (
+      <p class="m-0 mb-3 text-sm text-muted">{meta.join(' · ')}</p>
+    )
+  }
+
+  <div class="exercise-body">
+    <slot />
+  </div>
+
+  {
+    image && (
+      <div class="mt-4">
+        {typeof image === 'string' ? (
+          <img src={image} alt={imageAlt} loading="lazy" decoding="async" class="rounded-[10px]" />
+        ) : (
+          <Image src={image} alt={imageAlt!} widths={[400, 800]} loading="lazy" class="rounded-[10px]" />
+        )}
+      </div>
+    )
+  }
+
+  {
+    youtube && (
+      <div class="mt-4">
+        <button
+          type="button"
+          class="video-facade relative w-full overflow-hidden rounded-[10px] border border-border"
+          data-youtube={youtube}
+          aria-label={`${title} — play video`}
+        >
+          {poster ? (
+            <img src={poster} alt="" loading="lazy" class="block w-full" />
+          ) : (
+            <span class="block bg-ground py-12" />
+          )}
+          <span
+            class="pointer-events-none absolute inset-0 grid place-items-center text-3xl text-accent-contrast"
+            aria-hidden="true"
+          >
+            <span class="rounded-full bg-accent px-5 py-3">▶</span>
+          </span>
+        </button>
+      </div>
+    )
+  }
+</article>
+
+<style is:global>
+  .exercise-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .exercise-body ul,
+  .exercise-body ol {
+    padding-inline-start: 1.3em;
+  }
+
+  .exercise-body ul {
+    list-style: disc;
+  }
+
+  .exercise-body ol {
+    list-style: decimal;
+  }
+</style>
+
+<script>
+  // Click-to-load: no request reaches Google until the reader asks for the video.
+  document.addEventListener('click', (event) => {
+    const facade = (event.target as HTMLElement)?.closest<HTMLElement>('[data-youtube]');
+    if (!facade) return;
+
+    const id = facade.dataset.youtube;
+    if (!id) return;
+
+    const frame = document.createElement('iframe');
+    frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    frame.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
+    frame.allowFullscreen = true;
+    frame.loading = 'lazy';
+    frame.title = facade.getAttribute('aria-label') ?? 'Video';
+    frame.className = 'aspect-video w-full rounded-[10px] border border-border';
+
+    facade.replaceWith(frame);
+    frame.focus();
+  });
+</script>

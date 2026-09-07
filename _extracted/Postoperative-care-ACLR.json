@@ -1,0 +1,3474 @@
+[
+  {
+    "key": "appName",
+    "th": "การดูแลหลังผ่าตัดสร้างเอ็นไขว้หน้า",
+    "en": "Post-operative care for ACL reconstruction",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "dayLabel",
+    "th": "วันหลังผ่าตัด",
+    "en": "days since surgery",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "untilLabel",
+    "th": "วันก่อนถึงวันผ่าตัด",
+    "en": "days until surgery",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "editDate",
+    "th": "แก้ไขข้อมูลการผ่าตัดของท่าน",
+    "en": "Edit your surgery details",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "homeDisclaimer",
+    "th": "แอปนี้เป็นเพียงคำแนะนำทั่วไป กรุณาปรึกษาแพทย์ของท่านก่อนเริ่มกิจกรรมหรือการออกกำลังกายใด ๆ",
+    "en": "This app is a general guide only. Please confirm with your physician before starting any activity or exercise.",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "roadmapTitle",
+    "th": "เส้นทางการฟื้นตัวของท่าน",
+    "en": "Your Recovery Roadmap",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "todayTitle",
+    "th": "สิ่งที่ควรทำวันนี้",
+    "en": "Today's Reminders",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "goalsTitle",
+    "th": "เป้าหมายหลังผ่าตัด",
+    "en": "Goals After Surgery",
+    "uiContext": "Home — goals",
+    "class": "ui"
+  },
+  {
+    "key": "goals.0.0",
+    "th": "ลดอาการบวม",
+    "en": "Settle the swelling",
+    "uiContext": "Home — Get Ready — Before surgery (Preoperative Preparation) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.0.1",
+    "th": "เหยียดเข่าให้สุด",
+    "en": "Get the knee fully straight",
+    "uiContext": "Home — Get Ready — Before surgery (Preoperative Preparation) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.0.2",
+    "th": "เดินโดยไม่กะเผลก",
+    "en": "Walk without a limp",
+    "uiContext": "Home — Get Ready — Before surgery (Preoperative Preparation) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.1.0",
+    "th": "เหยียดเข่าให้สุด",
+    "en": "Get the knee fully straight",
+    "uiContext": "Home — Protect — Weeks 0–2 (Protect & Recover) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.1.1",
+    "th": "กระตุ้นกล้ามเนื้อต้นขาด้านหน้า",
+    "en": "Wake up your thigh muscle",
+    "uiContext": "Home — Protect — Weeks 0–2 (Protect & Recover) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.1.2",
+    "th": "ควบคุมความปวดและอาการบวม",
+    "en": "Control pain and swelling",
+    "uiContext": "Home — Protect — Weeks 0–2 (Protect & Recover) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.2.0",
+    "th": "เดินโดยไม่กะเผลก",
+    "en": "Walk without a limp",
+    "uiContext": "Home — Move — Weeks 2–6 (Move & Activate) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.2.1",
+    "th": "งอเข่าให้ได้มากขึ้น",
+    "en": "Bend the knee further",
+    "uiContext": "Home — Move — Weeks 2–6 (Move & Activate) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.2.2",
+    "th": "เริ่มลงน้ำหนักขาอีกครั้ง",
+    "en": "Start loading the leg again",
+    "uiContext": "Home — Move — Weeks 2–6 (Move & Activate) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.3.0",
+    "th": "ให้พิสัยการเคลื่อนไหวกลับมาเต็มที่",
+    "en": "Reach full range of motion",
+    "uiContext": "Home — Build — Weeks 6–12 (Build Strength) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.3.1",
+    "th": "สร้างความแข็งแรงของขาข้างเดียว",
+    "en": "Build single-leg strength",
+    "uiContext": "Home — Build — Weeks 6–12 (Build Strength) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.3.2",
+    "th": "ปกป้องเอ็นขณะเพิ่มการลงน้ำหนัก",
+    "en": "Protect the graft while you load it",
+    "uiContext": "Home — Build — Weeks 6–12 (Build Strength) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.4.0",
+    "th": "ผ่านเกณฑ์การเริ่มวิ่ง",
+    "en": "Pass the running checks",
+    "uiContext": "Home — Run — Months 3–5 (Run & Control) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.4.1",
+    "th": "วิ่งในแนวตรงได้",
+    "en": "Run in a straight line",
+    "uiContext": "Home — Run — Months 3–5 (Run & Control) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.4.2",
+    "th": "ลงน้ำหนักได้นุ่มนวลและควบคุมได้",
+    "en": "Land softly and in control",
+    "uiContext": "Home — Run — Months 3–5 (Run & Control) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.5.0",
+    "th": "ฟื้นกำลังและความเร็ว",
+    "en": "Restore power and speed",
+    "uiContext": "Home — Train — Months 5–9+ (Train for Sport) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.5.1",
+    "th": "เปลี่ยนทิศทางได้อย่างมั่นใจ",
+    "en": "Change direction with confidence",
+    "uiContext": "Home — Train — Months 5–9+ (Train for Sport) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.5.2",
+    "th": "ผ่านโปรแกรมเฉพาะกีฬาครบถ้วน",
+    "en": "Complete your sport programme",
+    "uiContext": "Home — Train — Months 5–9+ (Train for Sport) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.6.0",
+    "th": "ฝึกต่อเนื่องสัปดาห์ละ 2 ครั้ง",
+    "en": "Keep training twice a week",
+    "uiContext": "Home — Stay Strong — After return to sport (Long-term Knee Health) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.6.1",
+    "th": "ป้องกันการบาดเจ็บซ้ำ",
+    "en": "Protect against re-injury",
+    "uiContext": "Home — Stay Strong — After return to sport (Long-term Knee Health) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.6.2",
+    "th": "คงความมั่นใจในเข่า",
+    "en": "Stay confident in the knee",
+    "uiContext": "Home — Stay Strong — After return to sport (Long-term Knee Health) goals",
+    "class": "instruction"
+  },
+  {
+    "key": "surgeonLabel",
+    "th": "ศัลยแพทย์ของท่าน",
+    "en": "Your surgeon",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "resetBtn",
+    "th": "รีเซ็ตข้อมูลแอป",
+    "en": "Reset App Data",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "resetConfirm",
+    "th": "การดำเนินการนี้จะลบข้อมูลการผ่าตัด ความคืบหน้าท่าบริหาร ผลการวัด และแบบสำรวจการฟื้นตัวทั้งหมดบนอุปกรณ์นี้ และไม่สามารถย้อนกลับได้ ต้องการดำเนินการต่อหรือไม่?",
+    "en": "This will erase your surgery details, exercise progress, measurements, and recovery surveys on this device. This can't be undone. Continue?",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "hnPrefix",
+    "th": "HN: ",
+    "en": "HN: ",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "tabHome",
+    "th": "หน้าแรก",
+    "en": "Home",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabCare",
+    "th": "การดูแล",
+    "en": "Care",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabExercises",
+    "th": "ท่าบริหาร",
+    "en": "Exercises",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabProgress",
+    "th": "ความก้าวหน้า",
+    "en": "Progress",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabResources",
+    "th": "แหล่งข้อมูล",
+    "en": "Resources",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabSOS",
+    "th": "แจ้งเตือน",
+    "en": "Alert",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "sosTitle",
+    "th": "เมื่อใดควรขอความช่วยเหลือ",
+    "en": "When to Get Help",
+    "uiContext": "Alert",
+    "class": "ui"
+  },
+  {
+    "key": "sosSub",
+    "th": "หากพบอาการต่อไปนี้ ให้ติดต่อทีมผู้ดูแลทันที",
+    "en": "If you notice any of the signs below, contact your care team right away.",
+    "uiContext": "Alert",
+    "class": "ui"
+  },
+  {
+    "key": "emergencyNote",
+    "th": "หากเป็นเหตุฉุกเฉินที่อาจเป็นอันตรายถึงชีวิต โปรดโทร 1669 (สายด่วนการแพทย์ฉุกเฉิน) ทันที",
+    "en": "For a life-threatening emergency, call 1669 (Thailand emergency medical services) immediately.",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyCallBtn",
+    "th": "ฉุกเฉิน — โทร 1669",
+    "en": "Emergency — Call 1669",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "appDisclaimer",
+    "th": "แอปนี้ให้ข้อมูลทั่วไปเท่านั้น ไม่สามารถใช้แทนคำแนะนำจากแพทย์ผู้ผ่าตัดหรือนักกายภาพบำบัดของท่าน กรุณาปฏิบัติตามคำแนะนำของทีมผู้ดูแลเสมอ",
+    "en": "This app provides general guidance only and does not replace advice from your surgeon or physiotherapist. Always follow the instructions given by your care team.",
+    "uiContext": "App shell — disclaimer",
+    "class": "ui"
+  },
+  {
+    "key": "onboardTitle",
+    "th": "ยินดีต้อนรับ — มาตั้งค่าการฟื้นตัวของท่านกัน",
+    "en": "Welcome — let's set up your recovery",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardLead",
+    "th": "ข้อมูลนี้จะช่วยให้แอปแสดงระยะการฟื้นตัว ท่าบริหาร และข้อควรระวังเพิ่มเติมที่เหมาะกับการผ่าตัดของท่าน",
+    "en": "This helps the app show you the right recovery phase, the right exercises, and any extra protection your surgery needs.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardDateLabel",
+    "th": "วันที่ท่านผ่าตัดเข่า",
+    "en": "Date of your knee surgery",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardHNLabel",
+    "th": "หมายเลขประจำตัวผู้ป่วย (HN)",
+    "en": "Hospital Number (HN)",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardHNHint",
+    "th": "ช่วยให้เจ้าหน้าที่โรงพยาบาลค้นหาประวัติของท่านได้รวดเร็วขึ้น",
+    "en": "Helps hospital staff find your records quickly.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardGraftLabel",
+    "th": "ใช้เอ็นชนิดใดในการสร้างเอ็นไขว้หน้า?",
+    "en": "Which graft was used?",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardGraftHint",
+    "th": "หากไม่แน่ใจ ให้เลือก \"ไม่แน่ใจ\" แล้วสอบถามในวันนัดครั้งถัดไป",
+    "en": "If you are not sure, choose \"Not sure\" and ask at your next visit.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "graftOptions.unsure",
+    "th": "ไม่แน่ใจ / ตามที่แพทย์แจ้ง",
+    "en": "Not sure / as advised",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "graftOptions.hamstring",
+    "th": "เอ็นกล้ามเนื้อต้นขาด้านหลัง (Hamstring)",
+    "en": "Hamstring tendon",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "graftOptions.bpb",
+    "th": "เอ็นสะบ้า (Patellar tendon / BTB)",
+    "en": "Patellar tendon (BTB)",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "graftOptions.quad",
+    "th": "เอ็นกล้ามเนื้อต้นขาด้านหน้า (Quadriceps tendon)",
+    "en": "Quadriceps tendon",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "graftOptions.allograft",
+    "th": "เอ็นจากผู้บริจาค (Allograft)",
+    "en": "Donor graft (allograft)",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardMeniscusLabel",
+    "th": "ท่าได้รับการเย็บซ่อมหมอนรองกระดูกเข่าด้วยหรือไม่?",
+    "en": "Did you also have a meniscus repair?",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "meniscusOptions.none",
+    "th": "ไม่ได้เย็บ — ผ่าตัดเอ็นไขว้หน้าอย่างเดียว",
+    "en": "No — ACL only",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "meniscusOptions.yes",
+    "th": "ใช่ — มีการเย็บซ่อมหมอนรองกระดูก",
+    "en": "Yes — my meniscus was repaired",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardSave",
+    "th": "บันทึกและดำเนินการต่อ",
+    "en": "Save & Continue",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentTitle",
+    "th": "ความเป็นส่วนตัวของท่าน",
+    "en": "Your Privacy",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentText",
+    "th": "เมื่อดำเนินการต่อ ท่านยินยอมให้บันทึกและส่งข้อมูลหมายเลข HN วันที่ผ่าตัด ระดับความปวดและอาการบวม รวมถึงความคืบหน้าการทำท่าบริหารของท่าน ให้แก่ทีมผู้ดูแลเพื่อติดตามการฟื้นตัว ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)",
+    "en": "By continuing, you agree that your HN, surgery date, pain and swelling scores, and exercise progress will be recorded and shared with your care team to support your recovery, in line with Thailand's Personal Data Protection Act (PDPA).",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentCheckboxLabel",
+    "th": "ข้าพเจ้าได้อ่านและยินยอมตามข้อความข้างต้น",
+    "en": "I have read and agree to the above.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentValidation",
+    "th": "กรุณายืนยันเพื่อดำเนินการต่อ",
+    "en": "Please confirm to continue.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "dateRequiredValidation",
+    "th": "กรุณาระบุวันที่ผ่าตัดเพื่อดำเนินการต่อ",
+    "en": "Please enter your surgery date to continue.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "dateRangeValidation",
+    "th": "กรุณาตรวจสอบวันที่อีกครั้ง ควรอยู่ภายใน 5 ปีที่ผ่านมา และไม่เกิน 1 ปีข้างหน้า",
+    "en": "Please check that date — it should be within the last 5 years and no more than a year from now.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeTitle",
+    "th": "เพิ่มลงหน้าจอหลักหรือไม่?",
+    "en": "Add to Home Screen?",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeBody",
+    "th": "เพิ่มแอปนี้ลงหน้าจอหลักของท่าน เพื่อเปิดใช้งานได้ทันทีเหมือนแอปทั่วไป",
+    "en": "Add this app to your home screen for one-tap access anytime, just like a regular app.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeAccept",
+    "th": "เพิ่มลงหน้าจอหลัก",
+    "en": "Add to Home Screen",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeDecline",
+    "th": "ไว้ภายหลัง",
+    "en": "Not Now",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeGotIt",
+    "th": "รับทราบ",
+    "en": "Got it",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeIOSSteps",
+    "th": "แตะไอคอนแชร์ในเบราว์เซอร์ แล้วเลือก \"เพิ่มไปยังหน้าจอโฮม\"",
+    "en": "Tap the Share icon in your browser, then choose \"Add to Home Screen.\"",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeGenericSteps",
+    "th": "มองหาเมนู \"เพิ่มลงหน้าจอหลัก\" หรือ \"ติดตั้งแอป\" ในเบราว์เซอร์ของท่าน",
+    "en": "Look for \"Add to Home Screen\" or \"Install App\" in your browser's menu.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "noDateChip",
+    "th": "กรุณาระบุวันที่ผ่าตัด",
+    "en": "Set your surgery date",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "noDateDesc",
+    "th": "แตะ \"แก้ไขข้อมูลการผ่าตัดของท่าน\" ด้านบน เพื่อให้แอปแสดงระยะการฟื้นตัวปัจจุบันของท่าน",
+    "en": "Tap \"Edit your surgery details\" above so we can show your current recovery phase.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "callBtnPrefix",
+    "th": "สำหรับนัดหมาย — โทร ",
+    "en": "For appointment — Call ",
+    "uiContext": "Alert",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.0",
+    "th": "เตรียมพร้อม",
+    "en": "Get Ready",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.1",
+    "th": "ปกป้อง",
+    "en": "Protect",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.2",
+    "th": "เคลื่อนไหว",
+    "en": "Move",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.3",
+    "th": "สร้างกำลัง",
+    "en": "Build",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.4",
+    "th": "เริ่มวิ่ง",
+    "en": "Run",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.5",
+    "th": "ฝึกเพื่อกีฬา",
+    "en": "Train",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.6",
+    "th": "คงความแข็งแรง",
+    "en": "Stay Strong",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.0",
+    "th": "เตรียม",
+    "en": "Prep",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.1",
+    "th": "ปกป้อง",
+    "en": "Protect",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.2",
+    "th": "เคลื่อนไหว",
+    "en": "Move",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.3",
+    "th": "สร้างกำลัง",
+    "en": "Build",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.4",
+    "th": "วิ่ง",
+    "en": "Run",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.5",
+    "th": "ฝึกกีฬา",
+    "en": "Train",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.6",
+    "th": "คงสภาพ",
+    "en": "Maintain",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.0",
+    "th": "ก่อนผ่าตัด",
+    "en": "Before surgery",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.1",
+    "th": "สัปดาห์ที่ 0–2",
+    "en": "Weeks 0–2",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.2",
+    "th": "สัปดาห์ที่ 2–6",
+    "en": "Weeks 2–6",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.3",
+    "th": "สัปดาห์ที่ 6–12",
+    "en": "Weeks 6–12",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.4",
+    "th": "เดือนที่ 3–5",
+    "en": "Months 3–5",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.5",
+    "th": "เดือนที่ 5–9 ขึ้นไป",
+    "en": "Months 5–9+",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.6",
+    "th": "หลังกลับไปเล่นกีฬา",
+    "en": "After return to sport",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.0",
+    "th": "การเตรียมตัวก่อนผ่าตัด",
+    "en": "Preoperative Preparation",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.1",
+    "th": "ปกป้องและฟื้นตัว",
+    "en": "Protect & Recover",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.2",
+    "th": "เคลื่อนไหวและกระตุ้นกล้ามเนื้อ",
+    "en": "Move & Activate",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.3",
+    "th": "สร้างความแข็งแรง",
+    "en": "Build Strength",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.4",
+    "th": "เริ่มวิ่งและควบคุมการเคลื่อนไหว",
+    "en": "Run & Control",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.5",
+    "th": "ฝึกซ้อมเพื่อกลับสู่กีฬา",
+    "en": "Train for Sport",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.6",
+    "th": "สุขภาพเข่าระยะยาว",
+    "en": "Long-term Knee Health",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseDesc.0",
+    "th": "ลดอาการบวม เหยียดเข่าให้สุด และกระตุ้นกล้ามเนื้อต้นขาก่อนเข้ารับการผ่าตัด",
+    "en": "Settle the swelling, get the knee fully straight, and wake up your thigh muscle before surgery.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.1",
+    "th": "ควบคุมความปวดและอาการบวม เหยียดเข่าให้สุด และเริ่มกระตุ้นกล้ามเนื้อต้นขาด้านหน้า",
+    "en": "Control pain and swelling, get the knee fully straight, and start switching the quadriceps back on.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.2",
+    "th": "ปรับการเดินให้เป็นปกติ ฟื้นการงอเข่า และเริ่มลงน้ำหนักขาอีกครั้ง",
+    "en": "Normalise your walking, restore bending, and begin loading the leg again.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.3",
+    "th": "พิสัยการเคลื่อนไหวเต็มที่ ควบคุมขาข้างเดียวได้ และสร้างความแข็งแรงจริง ในช่วงที่เอ็นกำลังปรับสภาพ",
+    "en": "Full range of motion, single-leg control, and real strength — while the graft is remodelling.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.4",
+    "th": "เพิ่มการวิ่ง การกระโดดและการลงน้ำหนัก เมื่อเข่าผ่านเกณฑ์การเริ่มวิ่งแล้ว",
+    "en": "Add running, jumping and landing once your knee passes the running checks.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.5",
+    "th": "ฟื้นกำลัง ความสามารถในการเปลี่ยนทิศทาง และความมั่นใจ โดยค่อย ๆ เพิ่มความเข้มข้นของกีฬา",
+    "en": "Restore power, change of direction, and confidence, with graded exposure to your sport.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.6",
+    "th": "ฝึกต่อเนื่อง ความเสี่ยงบาดเจ็บซ้ำยังสูงกว่าปกติในช่วง 2 ปีแรกหลังกลับไปเล่นกีฬา",
+    "en": "Keep training. Re-injury risk stays higher for the first two years after returning.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "completeChip",
+    "th": "ครบระยะการฟื้นตัว 1 ปีแล้ว",
+    "en": "1-Year Recovery Timeline Complete",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "completeDesc",
+    "th": "ท่าเดินทางครบตามไทม์ไลน์ที่แนะนำแล้ว กรุณาฝึกต่อเนื่องเพื่อคงความแข็งแรงและป้องกันการบาดเจ็บซ้ำ",
+    "en": "You've reached the end of the guided timeline. Keep up your maintenance and prevention work — see the Stay Strong phase.",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "todayReminders.0.0",
+    "th": "ประคบเย็นและยกขาสูงเพื่อลดอาการบวมก่อนผ่าตัด",
+    "en": "Ice and elevate to settle the swelling before surgery.",
+    "uiContext": "Home — Get Ready — Before surgery (Preoperative Preparation) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.1",
+    "th": "ฝึกเหยียดเข่าให้สุด โดยเทียบกับขาอีกข้างเป็นเป้าหมาย",
+    "en": "Practise straightening the knee fully — compare it with your other leg.",
+    "uiContext": "Home — Get Ready — Before surgery (Preoperative Preparation) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.2",
+    "th": "ฝึกเดินให้ไม่กะเผลก",
+    "en": "Work on walking without a limp.",
+    "uiContext": "Home — Get Ready — Before surgery (Preoperative Preparation) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.3",
+    "th": "จัดเตรียมผู้ช่วยที่บ้าน และนำบัตรประชาชนกับหมายเลข HN ไปโรงพยาบาล",
+    "en": "Arrange help at home and bring your HN and ID to hospital.",
+    "uiContext": "Home — Get Ready — Before surgery (Preoperative Preparation) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.0",
+    "th": "การเหยียดเข่าให้สุดคือเป้าหมายสำคัญที่สุดในขณะนี้",
+    "en": "Getting the knee fully straight is the single most important goal right now.",
+    "uiContext": "Home — Protect — Weeks 0–2 (Protect & Recover) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.1",
+    "th": "ห้ามวางหมอนไว้ใต้เข่า ให้วางไว้ใต้ส้นเท้าแทน",
+    "en": "Never put a pillow under your knee — put it under your heel instead.",
+    "uiContext": "Home — Protect — Weeks 0–2 (Protect & Recover) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.2",
+    "th": "ประคบเย็นและยกขาสูงหลายครั้งต่อวัน",
+    "en": "Ice and elevate several times a day.",
+    "uiContext": "Home — Protect — Weeks 0–2 (Protect & Recover) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.3",
+    "th": "ใช้ไม้ค้ำยันและอุปกรณ์พยุงเข่าตามที่แพทย์สั่งอย่างเคร่งครัด ห้ามบิดหมุนเข่า",
+    "en": "Use your crutches and brace exactly as instructed. No twisting or pivoting.",
+    "uiContext": "Home — Protect — Weeks 0–2 (Protect & Recover) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.0",
+    "th": "ฝึกเหยียดเข่าให้สุดทุกวันอย่างต่อเนื่อง",
+    "en": "Keep working on full straightening every day.",
+    "uiContext": "Home — Move — Weeks 2–6 (Move & Activate) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.1",
+    "th": "ควรเดินได้เรียบไม่กะเผลกก่อนเลิกใช้ไม้ค้ำยัน",
+    "en": "Aim to walk smoothly without a limp before you leave the crutches behind.",
+    "uiContext": "Home — Move — Weeks 2–6 (Move & Activate) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.2",
+    "th": "หากเช้าวันถัดมาเข่าบวมมากขึ้น แสดงว่าเมื่อวานออกกำลังมากเกินไป",
+    "en": "If the knee is more swollen the morning after exercise, you did too much.",
+    "uiContext": "Home — Move — Weeks 2–6 (Move & Activate) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.3",
+    "th": "ดูท่าบริหารของวันนี้ได้ที่แท็บท่าบริหาร",
+    "en": "Check the Exercises tab for today's movements.",
+    "uiContext": "Home — Move — Weeks 2–6 (Move & Activate) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.0",
+    "th": "เอ็นที่สร้างใหม่กำลังปรับสภาพ ให้ออกแรงในแนวตรง หลีกเลี่ยงการบิดหมุน",
+    "en": "Your graft is remodelling — load it in straight lines, not with twisting.",
+    "uiContext": "Home — Build — Weeks 6–12 (Build Strength) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.1",
+    "th": "อาการบวมและร้อนหลังฝึกเป็นสัญญาณให้ลดลง ไม่ใช่ให้ฝืนต่อ",
+    "en": "Swelling and warmth after training are signals to back off, not to push on.",
+    "uiContext": "Home — Build — Weeks 6–12 (Build Strength) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.2",
+    "th": "สร้างความแข็งแรงของขาข้างเดียว เพราะเป็นพื้นฐานของการวิ่ง",
+    "en": "Build single-leg strength — this is what running will be built on.",
+    "uiContext": "Home — Build — Weeks 6–12 (Build Strength) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.3",
+    "th": "ยังไม่ควรบิดหมุน เปลี่ยนทิศทางกะทันหัน หรือเล่นกีฬาปะทะ",
+    "en": "No pivoting, cutting or contact sport yet.",
+    "uiContext": "Home — Build — Weeks 6–12 (Build Strength) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.4.0",
+    "th": "อย่าเริ่มวิ่งเพียงเพราะครบกำหนดเวลา ให้ตรวจสอบที่แท็บความก้าวหน้าก่อน",
+    "en": "Do not start running because a date arrived — check the Progress tab first.",
+    "uiContext": "Home — Run — Months 3–5 (Run & Control) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.4.1",
+    "th": "ลงน้ำหนักให้นุ่มนวล เข่าอยู่ในแนวเดียวกับเท้า ไม่บิดเข้าด้านใน",
+    "en": "Land softly, with the knee over the foot, not falling inwards.",
+    "uiContext": "Home — Run — Months 3–5 (Run & Control) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.4.2",
+    "th": "ฝึกกล้ามเนื้อให้แข็งแรงควบคู่ไปกับการวิ่งเสมอ",
+    "en": "Keep your heavy strength work going alongside the running.",
+    "uiContext": "Home — Run — Months 3–5 (Run & Control) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.4.3",
+    "th": "เพิ่มทีละอย่าง: ระยะทาง หรือความเร็ว หรือการเปลี่ยนทิศทาง",
+    "en": "Increase one thing at a time: distance, or speed, or direction changes.",
+    "uiContext": "Home — Run — Months 3–5 (Run & Control) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.5.0",
+    "th": "การกลับไปเล่นกีฬาเป็นบันได ไม่ใช่ประตู ให้ขึ้นทีละขั้น",
+    "en": "Return to sport is a staircase, not a door — go one level at a time.",
+    "uiContext": "Home — Train — Months 5–9+ (Train for Sport) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.5.1",
+    "th": "ความมั่นใจสำคัญไม่แพ้ความแข็งแรง หากรู้สึกว่าเข่าไม่มั่นคง ให้แจ้งทีมผู้ดูแล",
+    "en": "Confidence matters as much as strength. Tell your team if the knee feels unreliable.",
+    "uiContext": "Home — Train — Months 5–9+ (Train for Sport) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.5.2",
+    "th": "ควรตรวจวัดทั้งสองขา ไม่ใช่เฉพาะขาที่ผ่าตัด",
+    "en": "Keep testing both legs, not just the operated one.",
+    "uiContext": "Home — Train — Months 5–9+ (Train for Sport) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.5.3",
+    "th": "ตรวจสอบแท็บความก้าวหน้าก่อนเข้าสู่การฝึกแบบปะทะหรือการแข่งขัน",
+    "en": "Check the Progress tab before moving to contact or competition.",
+    "uiContext": "Home — Train — Months 5–9+ (Train for Sport) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.6.0",
+    "th": "ฝึกความแข็งแรงต่อเนื่องอย่างน้อยสัปดาห์ละ 2 ครั้ง",
+    "en": "Keep your strength work going at least twice a week.",
+    "uiContext": "Home — Stay Strong — After return to sport (Long-term Knee Health) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.6.1",
+    "th": "ฝึกเทคนิคการลงน้ำหนักและการเปลี่ยนทิศทางอย่างสม่ำเสมอ",
+    "en": "Continue your landing and change-of-direction technique work.",
+    "uiContext": "Home — Stay Strong — After return to sport (Long-term Knee Health) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.6.2",
+    "th": "อบอุ่นร่างกายด้วยโปรแกรมป้องกันการบาดเจ็บก่อนซ้อมและก่อนแข่งทุกครั้ง",
+    "en": "Warm up with an injury-prevention routine before every session.",
+    "uiContext": "Home — Stay Strong — After return to sport (Long-term Knee Health) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.6.3",
+    "th": "หากมีอาการบวมใหม่ เข่าทรุด หรือเข่าล็อก ควรเข้ารับการตรวจ",
+    "en": "New swelling, giving way, or locking means get it checked.",
+    "uiContext": "Home — Stay Strong — After return to sport (Long-term Knee Health) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.0",
+    "th": "ระยะนี้เป็นการเตรียมตัว เข่าที่เหยียดสุด บวมน้อย และเดินไม่กะเผลก จะทำให้ท่าเริ่มต้นหลังผ่าตัดได้ดีกว่ามาก",
+    "en": "This is preparation. A knee that is fully straight, barely swollen, and walking without a limp gives you a much better starting point after surgery.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.1",
+    "th": "การเหยียดเข่าให้สุดสำคัญเป็นอันดับแรก ห้ามวางหมอนใต้เข่า ห้ามบิดหมุนเข่าและห้ามคุกเข่า",
+    "en": "Full straightening comes before everything else. Do not place a pillow under the knee. No twisting, pivoting or kneeling.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.2",
+    "th": "เพิ่มการลงน้ำหนักอย่างค่อยเป็นค่อยไป หากเช้าวันถัดมาบวมมากขึ้น แสดงว่าฝึกหนักเกินไป",
+    "en": "Increase load gradually. Swelling that is worse the next morning means the last session was too much.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.3",
+    "th": "เอ็นที่สร้างใหม่อ่อนแรงที่สุดในเชิงชีวภาพในช่วงนี้ ให้ออกแรงในแนวตรงได้เต็มที่ แต่ห้ามบิดหมุน เปลี่ยนทิศทางกะทันหัน หรือปะทะ",
+    "en": "Your graft is at its biologically weakest around this time. Load it hard in straight lines — but no pivoting, cutting or contact.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.4",
+    "th": "การเริ่มวิ่งขึ้นอยู่กับสภาพเข่า ไม่ใช่ปฏิทิน กรุณาตรวจสอบแท็บความก้าวหน้าก่อนเริ่ม",
+    "en": "Running is unlocked by your knee, not by the calendar. Check the Progress tab before you start.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.5",
+    "th": "เพิ่มระดับการฝึกทีละขั้น: ฝึกเดี่ยว จากนั้นซ้อมแบบไม่ปะทะ ซ้อมเต็มรูปแบบ แล้วจึงแข่งขัน",
+    "en": "Progress through sport exposure one level at a time: individual drills, then non-contact practice, then full practice, then competition.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.6",
+    "th": "การผ่านเกณฑ์ไม่ได้แปลว่าเข่าจะไม่บาดเจ็บอีก ควรฝึกต่อเนื่องและคงโปรแกรมป้องกันการบาดเจ็บไว้",
+    "en": "Passing a test does not make the knee invincible. Keep training, and keep your prevention routine.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_1.name",
+    "th": "เกร็งกล้ามเนื้อต้นขาด้านหน้า",
+    "en": "Quadriceps setting",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_1.desc",
+    "th": "เกร็งต้นขาและกดด้านหลังเข่าลงกับที่นอน ค้างไว้ 5 วินาที",
+    "en": "Tighten the thigh and press the back of the knee down into the bed. Hold 5 seconds.",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_2.name",
+    "th": "หนุนส้นเท้าเพื่อเหยียดเข่าให้สุด",
+    "en": "Heel prop for full straightening",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_2.desc",
+    "th": "วางส้นเท้าบนผ้าม้วน โดยไม่มีอะไรรองใต้เข่า ปล่อยให้เข่าเหยียดตรง",
+    "en": "Rest the heel on a rolled towel with nothing under the knee, and let it hang straight.",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_3.name",
+    "th": "ไถส้นเท้า",
+    "en": "Heel slides",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_3.desc",
+    "th": "ไถส้นเท้าเข้าหาก้นเพื่องอเข่า แล้วไถกลับออกมาจนเหยียดสุด",
+    "en": "Slide the heel towards your buttock to bend the knee, then slide it back out.",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_4.name",
+    "th": "ยกขาเหยียดตรง",
+    "en": "Straight-leg raise",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_4.desc",
+    "th": "เกร็งต้นขา ล็อกเข่าให้ตรง แล้วยกขาขึ้น",
+    "en": "Tighten the thigh, keep the knee locked straight, and lift the leg.",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_5.name",
+    "th": "ฝึกเดินไม่ให้กะเผลก",
+    "en": "Walking practice without a limp",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_5.desc",
+    "th": "ก้าวสั้นและสม่ำเสมอ ตั้งเป้าให้เดินได้เรียบและสมมาตรก่อนผ่าตัด",
+    "en": "Short, even steps. Aim for a smooth, symmetrical walking pattern before surgery.",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_6.name",
+    "th": "ฝึกใช้ไม้ค้ำยัน",
+    "en": "Practise using your crutches",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_6.desc",
+    "th": "ลองขึ้นลงบันไดและลุกนั่งจากเก้าอี้ก่อนถึงเวลาที่ต้องใช้จริง",
+    "en": "Try stairs and getting in and out of a chair before you actually need to.",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_7.name",
+    "th": "เตรียมบ้านและจัดหาผู้ช่วย",
+    "en": "Prepare home and arrange help",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_7.desc",
+    "th": "เก็บทางเดินให้โล่ง วางของใช้ในระดับที่หยิบง่าย และจัดผู้ช่วยในช่วงแรก",
+    "en": "Clear walkways, set essentials within reach, and arrange help for the first few days.",
+    "uiContext": "Exercises — Get Ready — Before surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_1.name",
+    "th": "หนุนส้นเท้า (เหยียดเข่าแบบไม่ออกแรง)",
+    "en": "Heel prop (passive straightening)",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_1.desc",
+    "th": "วางส้นเท้าบนที่รอง ไม่มีอะไรใต้เข่า ครั้งละ 10 นาที หลายครั้งต่อวัน ท่านี้สำคัญที่สุด",
+    "en": "Heel on a support, nothing under the knee, 10 minutes several times a day. This is your priority exercise.",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_2.name",
+    "th": "เกร็งกล้ามเนื้อต้นขาด้านหน้า",
+    "en": "Quadriceps setting",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_2.desc",
+    "th": "เกร็งต้นขาและกดเข่าให้แนบพื้น สังเกตให้ลูกสะบ้าเลื่อนขึ้น",
+    "en": "Tighten the thigh and press the knee flat. Watch the kneecap slide upwards.",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_3.name",
+    "th": "กระดกข้อเท้าขึ้นลง",
+    "en": "Ankle pumps",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_3.desc",
+    "th": "กระดกปลายเท้าขึ้นลงบ่อย ๆ ตลอดวัน เพื่อช่วยการไหลเวียนเลือด",
+    "en": "Point and flex the foot regularly through the day to keep the circulation moving.",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_4.name",
+    "th": "ไถส้นเท้า",
+    "en": "Heel slides",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_4.desc",
+    "th": "งอเข่าเบา ๆ ภายในองศาที่อนุญาต แล้วเหยียดกลับให้สุด",
+    "en": "Bend the knee gently within your allowed range, then straighten fully.",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_4.req.0",
+    "th": "flex",
+    "en": "flex",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_5.name",
+    "th": "ยกขาเหยียดตรง",
+    "en": "Straight-leg raise",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_5.desc",
+    "th": "เริ่มเมื่อยกขาได้โดยเข่าไม่ตก ล็อกเข่าให้ตรงตลอดการยก",
+    "en": "Only once you can lift without the knee sagging. Keep the knee locked straight.",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_6.name",
+    "th": "ขยับลูกสะบ้า",
+    "en": "Kneecap mobilisation",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_6.desc",
+    "th": "ใช้นิ้วขยับลูกสะบ้าขึ้น ลง และไปด้านข้างเบา ๆ ขณะเข่าเหยียดและผ่อนคลาย",
+    "en": "Move the kneecap gently up, down and sideways with your fingers, knee relaxed and straight.",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_7.name",
+    "th": "ฝึกเดิน",
+    "en": "Walking practice",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_7.desc",
+    "th": "ลงน้ำหนักตามที่แพทย์กำหนด ก้าวให้สม่ำเสมอ และปล่อยให้เข่าเหยียดสุดขณะลงส้นเท้า",
+    "en": "Follow your weight-bearing instruction, take even steps, and let the knee straighten fully as you step.",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_8.name",
+    "th": "ประคบเย็นและยกขาสูง",
+    "en": "Ice and elevate",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_8.desc",
+    "th": "ประคบเย็น 15–20 นาที ยกขาสูงกว่าระดับหัวใจ ทำหลายครั้งต่อวันขณะยังบวม",
+    "en": "Ice 15–20 minutes, leg raised above the heart. Several times a day while swollen.",
+    "uiContext": "Exercises — Protect — Weeks 0–2 (Protect & Recover)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_1.name",
+    "th": "นอนคว่ำห้อยเข่า",
+    "en": "Prone hang",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_1.desc",
+    "th": "นอนคว่ำให้เข่าพ้นขอบเตียง ปล่อยให้แรงโน้มถ่วงช่วยเหยียดเข่า",
+    "en": "Lie face down with the knee off the edge of the bed and let gravity straighten it.",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_2.name",
+    "th": "ปั่นจักรยานอยู่กับที่",
+    "en": "Stationary bike",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_2.desc",
+    "th": "เริ่มจากปั่นครึ่งรอบ แล้วจึงปั่นครบรอบ ตั้งเบาะสูงและไม่ใส่แรงต้าน",
+    "en": "Start with partial turns, then full revolutions with the seat high and no resistance.",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_2.req.0",
+    "th": "flex110",
+    "en": "flex110",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_3.name",
+    "th": "ย่อเข่าตื้น (0–60°)",
+    "en": "Mini squats (0–60°)",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_3.desc",
+    "th": "ย่อเข่าตื้น ลงน้ำหนักสองขาเท่ากัน เข่าอยู่ในแนวเดียวกับปลายเท้า",
+    "en": "Shallow squat with even weight through both legs, knees tracking over the toes.",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_3.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_4.name",
+    "th": "เหยียดเข่าด้วยยางยืด",
+    "en": "Terminal knee extension with band",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_4.desc",
+    "th": "คล้องยางยืดหลังเข่า แล้วดันเข่าไปด้านหลังจนเหยียดสุด",
+    "en": "Band behind the knee, push the knee back into full straightening.",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_4.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_5.name",
+    "th": "ก้าวขึ้นกล่องเตี้ย",
+    "en": "Step-ups (low step)",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_5.desc",
+    "th": "ก้าวขึ้นช้า ๆ และควบคุมจังหวะลง ระวังไม่ให้เข่าบิดเข้าด้านใน",
+    "en": "Step up slowly and control the way down. Keep the knee from falling inwards.",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_5.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_6.name",
+    "th": "เขย่งปลายเท้าสองข้าง",
+    "en": "Calf raises (both legs)",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_6.desc",
+    "th": "เขย่งขึ้นแล้วลดลงช้า ๆ",
+    "en": "Rise onto the toes and lower slowly.",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_7.name",
+    "th": "ฝึกการทรงตัว",
+    "en": "Balance work",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_7.desc",
+    "th": "เริ่มจากยืนสองขา แล้วค่อยพัฒนาเป็นยืนขาเดียวเมื่อควบคุมได้ดีขึ้น",
+    "en": "Double-leg balance, then progress to single-leg standing as control improves.",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_7.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_8.name",
+    "th": "งอเข่าต้านแรง",
+    "en": "Hamstring curls",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_8.desc",
+    "th": "นอนคว่ำ งอเข่าต้านแรงต้านเบา ๆ",
+    "en": "Lying on your front, bend the knee against light resistance.",
+    "uiContext": "Exercises — Move — Weeks 2–6 (Move & Activate)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_8.req.0",
+    "th": "ham",
+    "en": "ham",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_1.name",
+    "th": "ดันน้ำหนักด้วยขาข้างเดียว",
+    "en": "Single-leg press",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_1.desc",
+    "th": "ดันด้วยขาข้างที่ผ่าตัดอย่างควบคุม ไม่ล็อกเข่าขณะรับน้ำหนัก",
+    "en": "Press through the operated leg alone, controlled, with no locking out under load.",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p3_1.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_2.name",
+    "th": "ย่อเข่าท่าก้าวขา",
+    "en": "Split squats",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_2.desc",
+    "th": "ยืนก้าวขาหน้าหลัง ย่อตัวลงตรง ๆ เข่าหน้าอยู่ในแนวเดียวกับเท้า",
+    "en": "Split stance, lower straight down, keep the front knee over the foot.",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p3_2.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_2.req.1",
+    "th": "flex110",
+    "en": "flex110",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_3.name",
+    "th": "ก้าวลงจากกล่อง",
+    "en": "Step-downs",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_3.desc",
+    "th": "ยืนขาข้างที่ผ่าตัดแล้วค่อย ๆ ก้าวลง เน้นการควบคุมมากกว่าความสูง",
+    "en": "Stand on the operated leg and lower slowly off a step. Control matters more than depth.",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p3_3.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_4.name",
+    "th": "เหยียดเข่าในช่วง 90°–40°",
+    "en": "Knee extension (90° to 40°)",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_4.desc",
+    "th": "นั่งเหยียดเข่าในพิสัยจำกัด ยังไม่เหยียดถึง 40 องศาสุดท้าย",
+    "en": "Seated knee extension through a limited arc, avoiding the last 40 degrees for now.",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p3_4.req.0",
+    "th": "okc",
+    "en": "okc",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_5.name",
+    "th": "ยกสะโพกด้วยกล้ามเนื้อต้นขาหลัง",
+    "en": "Hamstring bridges",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_5.desc",
+    "th": "วางส้นเท้าบนม้านั่งหรือลูกบอล ยกสะโพกขึ้นค้างไว้ แล้วพัฒนาเป็นขาเดียว",
+    "en": "Heels on a bench or ball, lift the hips and hold. Progress to single-leg.",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p3_5.req.0",
+    "th": "ham",
+    "en": "ham",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_6.name",
+    "th": "เขย่งปลายเท้าขาเดียว",
+    "en": "Single-leg calf raises",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_6.desc",
+    "th": "เขย่งขึ้นลงด้วยขาข้างเดียว โดยมีที่จับช่วยทรงตัว",
+    "en": "Rise and lower on one leg, holding a support for balance.",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p3_7.name",
+    "th": "ฝึกทรงตัวขณะถูกรบกวน",
+    "en": "Balance with perturbation",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_7.desc",
+    "th": "ยืนขาเดียวพร้อมรับส่งลูกบอล หรือยืนบนพื้นที่ไม่มั่นคง",
+    "en": "Single-leg stand while catching a ball or on an unstable surface.",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p3_7.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_8.name",
+    "th": "จักรยาน ว่ายน้ำ หรือเครื่องเดินวงรี",
+    "en": "Bike, swimming or elliptical",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_8.desc",
+    "th": "ออกกำลังแบบแรงกระแทกต่ำเพื่อสร้างความฟิตระหว่างที่เอ็นกำลังปรับสภาพ",
+    "en": "Low-impact conditioning to build fitness while the graft remodels.",
+    "uiContext": "Exercises — Build — Weeks 6–12 (Build Strength)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_1.name",
+    "th": "สลับเดิน–วิ่งเหยาะ",
+    "en": "Walk–jog progression",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_1.desc",
+    "th": "สลับเดินและวิ่งเหยาะในแนวตรงบนพื้นเรียบสม่ำเสมอ",
+    "en": "Alternate walking and jogging in a straight line on a flat, even surface.",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_1.req.0",
+    "th": "run",
+    "en": "run",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_2.name",
+    "th": "วิ่งต่อเนื่องในแนวตรง",
+    "en": "Continuous straight-line running",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_2.desc",
+    "th": "เพิ่มระยะเวลาก่อน แล้วจึงค่อยเพิ่มความเร็ว",
+    "en": "Build up time before you build up speed.",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_2.req.0",
+    "th": "run",
+    "en": "run",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_3.name",
+    "th": "กระโดดและลงน้ำหนักสองขา",
+    "en": "Double-leg jump and land",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_3.desc",
+    "th": "กระโดดและลงพื้นด้วยสองเท้าอย่างนุ่มนวล ซับแรงที่สะโพกและเข่า",
+    "en": "Jump and land softly on both feet, absorbing through hips and knees.",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_3.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_4.name",
+    "th": "กระโดดขาเดียวและควบคุมการลง",
+    "en": "Single-leg hop with controlled landing",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_4.desc",
+    "th": "กระโดดขาเดียวแล้วค้างท่าลงพื้น 3 วินาทีโดยไม่เซ",
+    "en": "Hop and hold the landing for three seconds without wobbling.",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_4.req.0",
+    "th": "run",
+    "en": "run",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_5.name",
+    "th": "ย่อเข่าและดันน้ำหนักแบบหนัก",
+    "en": "Heavy squats and leg press",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_5.desc",
+    "th": "เพิ่มน้ำหนักอย่างต่อเนื่องในพิสัยที่ไม่เจ็บ",
+    "en": "Progressive heavy strength work through a comfortable range.",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_5.req.0",
+    "th": "fwb",
+    "en": "fwb",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_5.req.1",
+    "th": "flex110",
+    "en": "flex110",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_6.name",
+    "th": "ฝึกชะลอและหยุด",
+    "en": "Deceleration drills",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_6.desc",
+    "th": "วิ่งแล้วหยุดอย่างควบคุม ซับแรงด้วยทั้งขา",
+    "en": "Run and stop under control, absorbing the stop through the whole leg.",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_6.req.0",
+    "th": "run",
+    "en": "run",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_7.name",
+    "th": "Nordic hamstring",
+    "en": "Nordic hamstring curls",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_7.desc",
+    "th": "คุกเข่าโดยมีคนจับข้อเท้า แล้วค่อย ๆ ลดตัวลงช้า ๆ เพิ่มระดับทีละน้อย",
+    "en": "Lower slowly from kneeling with the ankles held. Build up gradually.",
+    "uiContext": "Exercises — Run — Months 3–5 (Run & Control)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_7.req.0",
+    "th": "ham",
+    "en": "ham",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_7.req.1",
+    "th": "kneel",
+    "en": "kneel",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_1.name",
+    "th": "ฝึกพลัยโอเมตริก",
+    "en": "Plyometric progression",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_1.desc",
+    "th": "กระโดดต่อเนื่อง กระโดดไกล และกระโดดขาเดียว โดยลงพื้นเบาและควบคุมได้",
+    "en": "Bounding, hopping and repeated jumps with quiet, controlled landings.",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.5.p5_1.req.0",
+    "th": "run",
+    "en": "run",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_2.name",
+    "th": "ฝึกเทคนิคการวิ่งเร็ว",
+    "en": "Sprint mechanics and acceleration",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_2.desc",
+    "th": "เพิ่มความเร็วในแนวตรงจนใกล้เต็มความสามารถ",
+    "en": "Build up to near-maximum straight-line speed.",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.5.p5_2.req.0",
+    "th": "run",
+    "en": "run",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_3.name",
+    "th": "ฝึกเปลี่ยนทิศทาง",
+    "en": "Change-of-direction drills",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_3.desc",
+    "th": "เปลี่ยนทิศทางตามแบบแผนที่กำหนดไว้ เริ่มจากมุมกว้างแล้วค่อยแคบลง",
+    "en": "Planned direction changes, starting wide and gradually getting sharper.",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.5.p5_3.req.0",
+    "th": "pivot",
+    "en": "pivot",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_4.name",
+    "th": "ฝึกความคล่องตัวและการตัดตัว",
+    "en": "Cutting and agility drills",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_4.desc",
+    "th": "ฝึกตอบสนองต่อสัญญาณ แทนการเคลื่อนไหวตามรูปแบบที่รู้ล่วงหน้า",
+    "en": "Reactive agility where you respond to a signal rather than a planned pattern.",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.5.p5_4.req.0",
+    "th": "pivot",
+    "en": "pivot",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_5.name",
+    "th": "ฝึกทักษะเฉพาะกีฬา",
+    "en": "Sport-specific individual drills",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_5.desc",
+    "th": "ฝึกท่าเฉพาะของกีฬาที่ท่าเล่น โดยฝึกคนเดียวในความเข้มข้นที่ควบคุมได้",
+    "en": "The specific movements of your sport, practised alone at controlled intensity.",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.5.p5_5.req.0",
+    "th": "pivot",
+    "en": "pivot",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_6.name",
+    "th": "ซ้อมกับทีมแบบไม่ปะทะ",
+    "en": "Non-contact team practice",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_6.desc",
+    "th": "ซ้อมร่วมกับทีมได้ แต่ยังไม่เข้าปะทะหรือแย่งบอล",
+    "en": "Train with the team, but stay out of contact and contested situations.",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.5.p5_6.req.0",
+    "th": "pivot",
+    "en": "pivot",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_7.name",
+    "th": "ซ้อมเต็มรูปแบบ",
+    "en": "Controlled full practice",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.5.p5_7.desc",
+    "th": "ซ้อมเต็มรูปแบบรวมการปะทะ ก่อนลงแข่งขันจริง",
+    "en": "Full practice including contact, before any competitive match.",
+    "uiContext": "Exercises — Train — Months 5–9+ (Train for Sport)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.5.p5_7.req.0",
+    "th": "pivot",
+    "en": "pivot",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.6.p6_1.name",
+    "th": "ฝึกความแข็งแรงสัปดาห์ละ 2 ครั้ง",
+    "en": "Strength maintenance, twice weekly",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.6.p6_1.desc",
+    "th": "ฝึกย่อเข่า ดันน้ำหนัก และงอสะโพกต่อเนื่อง ความแข็งแรงที่หายไปคือความเสี่ยงที่เพิ่มขึ้น",
+    "en": "Keep squatting, pressing and hinging. Strength lost is re-injury risk gained.",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.6.p6_2.name",
+    "th": "ฝึกควบคุมขาข้างเดียว",
+    "en": "Single-leg control work",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.6.p6_2.desc",
+    "th": "ย่อเข่าขาเดียว ก้าวลงจากกล่อง และฝึกทรงตัว ตรวจทั้งสองขา ไม่ใช่เฉพาะข้างที่ผ่าตัด",
+    "en": "Single-leg squats, step-downs and balance. Check both legs, not just the operated one.",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.6.p6_3.name",
+    "th": "ฝึกเทคนิคการกระโดดและลงน้ำหนัก",
+    "en": "Jump and landing technique",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.6.p6_3.desc",
+    "th": "ฝึกลงพื้นให้นุ่มนวล เข่าอยู่ในแนวเดียวกับเท้า ไม่บิดเข้าด้านใน",
+    "en": "Practise landing softly with the knee over the foot rather than falling inwards.",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.6.p6_4.name",
+    "th": "ฝึกกล้ามเนื้อต้นขาหลังแบบยืดต้าน",
+    "en": "Nordic hamstring / eccentric work",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.6.p6_4.desc",
+    "th": "กล้ามเนื้อต้นขาหลังที่แข็งแรงช่วยปกป้องเอ็นที่สร้างใหม่ ควรฝึกต่อเนื่อง",
+    "en": "Strong hamstrings protect the graft. Keep this in your programme.",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.6.p6_5.name",
+    "th": "อบอุ่นร่างกายเพื่อป้องกันการบาดเจ็บ",
+    "en": "Injury-prevention warm-up",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.6.p6_5.desc",
+    "th": "ใช้โปรแกรมอบอุ่นร่างกายที่เป็นระบบก่อนซ้อมและก่อนแข่งทุกครั้ง",
+    "en": "Use a structured neuromuscular warm-up before every training session and match.",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.6.p6_6.name",
+    "th": "ฝึกความฟิตเฉพาะกีฬา",
+    "en": "Sport conditioning",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.6.p6_6.desc",
+    "th": "รักษาระดับความฟิตให้เพียงพอกับความต้องการของกีฬาที่ท่าเล่น",
+    "en": "Keep your fitness at the level your sport actually demands.",
+    "uiContext": "Exercises — Stay Strong — After return to sport (Long-term Knee Health)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercisePhaseReadonly",
+    "th": "ท่านกำลังดูระยะอื่นเพื่อเป็นข้อมูลอ้างอิง การติดตามท่าออกกำลังกายทำได้เฉพาะในระยะปัจจุบันของท่านเท่านั้น",
+    "en": "You're viewing a different phase for reference. Exercises are only tracked in your current phase.",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "restrictWB",
+    "th": "การลงน้ำหนักขาข้างที่ผ่าตัด",
+    "en": "Weight on the operated leg",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "restrictFlex",
+    "th": "ขีดจำกัดการงอเข่า",
+    "en": "Bending limit",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "restrictBrace",
+    "th": "อุปกรณ์พยุงเข่า",
+    "en": "Brace",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "restrictPivot",
+    "th": "การบิดหมุนเข่า",
+    "en": "Twisting and pivoting",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "restrictKneel",
+    "th": "การคุกเข่า",
+    "en": "Kneeling",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "restrictHam",
+    "th": "การฝึกกล้ามเนื้อต้นขาหลังแบบต้านแรง",
+    "en": "Resisted hamstring work",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "wbValues.NWB",
+    "th": "ห้ามลงน้ำหนัก — ใช้ไม้ค้ำยันเท่านั้น",
+    "en": "No weight — crutches only",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "wbValues.TTWB",
+    "th": "แตะปลายเท้าได้เท่านั้น",
+    "en": "Toe-touch only",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "wbValues.PWB",
+    "th": "ลงน้ำหนักได้บางส่วน",
+    "en": "Partial weight",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "wbValues.FWB",
+    "th": "ลงน้ำหนักได้เต็มที่เท่าที่สบาย",
+    "en": "Full weight as comfortable",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "braceValue",
+    "th": "สวมตามที่แพทย์สั่ง",
+    "en": "Wear as instructed",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "pivotValue",
+    "th": "ยังไม่อนุญาต",
+    "en": "Not yet",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "kneelValue",
+    "th": "หลีกเลี่ยงการคุกเข่าโดยตรง",
+    "en": "Avoid direct kneeling",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "hamValue",
+    "th": "ชะลอไว้ก่อน",
+    "en": "Delayed for now",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "untilCleared",
+    "th": "จนกว่าแพทย์จะอนุญาต",
+    "en": "until your surgeon clears it",
+    "uiContext": "Exercises — current restrictions",
+    "class": "ui"
+  },
+  {
+    "key": "lockReason.fwb",
+    "th": "จะปลดล็อกเมื่อท่าลงน้ำหนักขาได้เต็มที่",
+    "en": "Unlocks when you are allowed full weight on the leg.",
+    "uiContext": "Exercises — restriction lock",
+    "class": "instruction"
+  },
+  {
+    "key": "lockReason.flex",
+    "th": "กรุณาอยู่ในขีดจำกัดการงอเข่าปัจจุบันของท่าน",
+    "en": "Stay within your current bending limit.",
+    "uiContext": "Exercises — restriction lock",
+    "class": "instruction"
+  },
+  {
+    "key": "lockReason.flex110",
+    "th": "จะปลดล็อกเมื่อท่างอเข่าได้เกิน 110 องศา",
+    "en": "Unlocks when you are allowed to bend past 110°.",
+    "uiContext": "Exercises — restriction lock",
+    "class": "instruction"
+  },
+  {
+    "key": "lockReason.ham",
+    "th": "ชะลอไว้ระหว่างที่ตำแหน่งเก็บเอ็นต้นขาด้านหลังกำลังหาย",
+    "en": "Delayed while your hamstring graft site heals.",
+    "uiContext": "Exercises — restriction lock",
+    "class": "instruction"
+  },
+  {
+    "key": "lockReason.kneel",
+    "th": "หลีกเลี่ยงการคุกเข่าขณะที่ตำแหน่งเก็บเอ็นยังเจ็บ",
+    "en": "Avoid direct kneeling while the graft site is tender.",
+    "uiContext": "Exercises — restriction lock",
+    "class": "instruction"
+  },
+  {
+    "key": "lockReason.okc",
+    "th": "ชะลอไว้ระหว่างที่ตำแหน่งเก็บเอ็นกำลังหาย",
+    "en": "Delayed while your graft site heals.",
+    "uiContext": "Exercises — restriction lock",
+    "class": "instruction"
+  },
+  {
+    "key": "lockReason.pivot",
+    "th": "ยังไม่อนุญาตให้บิดหมุนเข่าในระยะนี้",
+    "en": "Twisting and pivoting are not allowed yet.",
+    "uiContext": "Exercises — restriction lock",
+    "class": "instruction"
+  },
+  {
+    "key": "lockReason.run",
+    "th": "จะปลดล็อกเมื่อท่าผ่านเกณฑ์การเริ่มวิ่งในแท็บความก้าวหน้า",
+    "en": "Unlocks when you pass the running checks in the Progress tab.",
+    "uiContext": "Exercises — restriction lock",
+    "class": "instruction"
+  },
+  {
+    "key": "progressTitle",
+    "th": "ฉันพร้อมหรือยัง?",
+    "en": "Am I Ready?",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "progressIntro",
+    "th": "ปฏิทินบอกว่าเมื่อไรควรตรวจ แต่สภาพเข่าของท่านเป็นตัวบอกว่าเมื่อไรควรก้าวต่อ",
+    "en": "The calendar tells us when to check. Your knee tells us when to progress.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "progressDisclaimer",
+    "th": "เกณฑ์เหล่านี้ใช้ประกอบการปรึกษากับแพทย์ผู้ผ่าตัดและนักกายภาพบำบัด ไม่ใช่การประเมินแทน และการผ่านเกณฑ์เพียงอย่างเดียวไม่ถือเป็นการอนุญาตให้กลับไปเล่นกีฬา",
+    "en": "These checks support the conversation with your surgeon and physiotherapist. They do not replace their assessment, and passing them is not by itself permission to return to sport.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcTitle",
+    "th": "แบบสำรวจการฟื้นตัวของเข่า",
+    "en": "Knee Recovery Survey",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcIntro",
+    "th": "แบบสอบถามสั้น ๆ ที่ทีมผู้ดูแลใช้ติดตามการฟื้นตัวของเข่าท่าน โดยจะให้ทำที่ 2, 6, 12, 25 และ 52 สัปดาห์หลังผ่าตัด",
+    "en": "A short questionnaire your care team uses to track your knee's recovery. It's asked at 2, 6, 12, 25 and 52 weeks after surgery.",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcOverdueNote",
+    "th": "แบบประเมินนี้เลยกำหนดแล้ว กรุณาทำเมื่อสะดวก",
+    "en": "This survey is overdue — please complete it when you can.",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcOpenBtn",
+    "th": "เริ่มทำแบบประเมิน",
+    "en": "Start Survey",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcSubmitBtn",
+    "th": "ส่งแบบประเมิน",
+    "en": "Submit Survey",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcCancelBtn",
+    "th": "ยกเลิก",
+    "en": "Cancel",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcHistoryTitle",
+    "th": "คะแนนการฟื้นตัวของเข่าตามช่วงเวลา",
+    "en": "Your Knee Recovery Score Over Time",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcValidation",
+    "th": "กรุณาตอบทุกข้อก่อนส่งแบบประเมิน",
+    "en": "Please answer every question before submitting.",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcTimepointLabels.w2",
+    "th": "2 สัปดาห์",
+    "en": "2-week",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcTimepointLabels.w6",
+    "th": "6 สัปดาห์",
+    "en": "6-week",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcTimepointLabels.w12",
+    "th": "12 สัปดาห์",
+    "en": "12-week",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcTimepointLabels.w25",
+    "th": "25 สัปดาห์",
+    "en": "25-week",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcTimepointLabels.w52",
+    "th": "52 สัปดาห์ (1 ปี)",
+    "en": "52-week (1-year)",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcSectionSymptoms",
+    "th": "อาการ",
+    "en": "Symptoms",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcSectionSports",
+    "th": "กิจกรรมกีฬา",
+    "en": "Sports Activity",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcSectionFunction",
+    "th": "การใช้งาน",
+    "en": "Function",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcInstructionActivity",
+    "th": "ให้ประเมินอาการที่ระดับกิจกรรมสูงสุดที่ท่านคิดว่าตนเองทำได้ แม้จะไม่ได้ทำกิจกรรมระดับนั้นจริงในขณะนี้",
+    "en": "Grade your symptoms at the highest level of activity you could function at, even if you are not actually performing activities at this level.",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcInstructionQ9",
+    "th": "สำหรับแต่ละกิจกรรมด้านล่าง ให้ระบุระดับความยากลำบากที่ท่านพบใน 4 สัปดาห์ที่ผ่านมาเนื่องจากเข่าของท่าน",
+    "en": "For each activity below, indicate the degree of difficulty you have experienced in the last 4 weeks because of your knee.",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcActivityOptions.hi4",
+    "th": "กิจกรรมที่หนักมาก เช่น กระโดดหรือบิดหมุนตัว อย่างบาสเกตบอลหรือฟุตบอล",
+    "en": "Very strenuous activities like jumping or pivoting, as in basketball or soccer",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcActivityOptions.hi3",
+    "th": "กิจกรรมที่หนัก เช่น งานที่ใช้แรงมาก สกี หรือเทนนิส",
+    "en": "Strenuous activities like heavy physical work, skiing or tennis",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcActivityOptions.hi2",
+    "th": "กิจกรรมปานกลาง เช่น งานที่ใช้แรงปานกลาง วิ่ง หรือจ๊อกกิ้ง",
+    "en": "Moderate activities like moderate physical work, running or jogging",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcActivityOptions.hi1",
+    "th": "กิจกรรมเบา เช่น เดิน งานบ้าน หรืองานสวน",
+    "en": "Light activities like walking, housework or yard work",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcActivityZero.q1",
+    "th": "ไม่สามารถทำกิจกรรมข้างต้นได้เลยเนื่องจากปวดเข่า",
+    "en": "Unable to perform any of the above activities due to knee pain",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcActivityZero.q5",
+    "th": "ไม่สามารถทำกิจกรรมข้างต้นได้เลยเนื่องจากเข่าบวม",
+    "en": "Unable to perform any of the above activities due to knee swelling",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcActivityZero.q7",
+    "th": "ไม่สามารถทำกิจกรรมข้างต้นได้เลยเนื่องจากเข่าทรุด",
+    "en": "Unable to perform any of the above activities due to your knee giving way",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcActivityZero.q8",
+    "th": "ไม่สามารถทำกิจกรรมข้างต้นได้เลยเนื่องจากปัญหาที่เข่า",
+    "en": "Unable to perform any of the above activities due to your knee",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcStiffOptions.0",
+    "th": "ไม่เลย",
+    "en": "Not at all",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcStiffOptions.1",
+    "th": "เล็กน้อย",
+    "en": "Mildly",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcStiffOptions.2",
+    "th": "ปานกลาง",
+    "en": "Moderately",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcStiffOptions.3",
+    "th": "มาก",
+    "en": "Very",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcStiffOptions.4",
+    "th": "มากที่สุด",
+    "en": "Extremely",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcDiffOptions.0",
+    "th": "ไม่ลำบากเลย",
+    "en": "No difficulty at all",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcDiffOptions.1",
+    "th": "ลำบากเล็กน้อย",
+    "en": "Minimal difficulty",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcDiffOptions.2",
+    "th": "ลำบากปานกลาง",
+    "en": "Moderate difficulty",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcDiffOptions.3",
+    "th": "ลำบากมาก",
+    "en": "Extreme difficulty",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcDiffOptions.4",
+    "th": "ทำไม่ได้",
+    "en": "Unable to do",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLockOptions.0",
+    "th": "ไม่มี",
+    "en": "No",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLockOptions.1",
+    "th": "มี",
+    "en": "Yes",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcVasLabels.q2.0",
+    "th": "ปวดตลอดเวลา",
+    "en": "Constant pain",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcVasLabels.q2.1",
+    "th": "ไม่เคยปวดเลย",
+    "en": "Never",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcVasLabels.q3.0",
+    "th": "ปวดมากที่สุดเท่าที่เคยเป็น",
+    "en": "Worst pain imaginable",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcVasLabels.q3.1",
+    "th": "ไม่ปวดเลย",
+    "en": "No pain",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcVasLabels.q10a.0",
+    "th": "ทำกิจวัตรประจำวันไม่ได้เลย",
+    "en": "Unable to perform daily activities",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcVasLabels.q10a.1",
+    "th": "ปกติ ใช้งานได้ดีเยี่ยม",
+    "en": "Normal, excellent function",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcVasLabels.q10b.0",
+    "th": "ทำกิจวัตรประจำวันไม่ได้เลย",
+    "en": "Unable to perform daily activities",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcVasLabels.q10b.1",
+    "th": "ปกติ ใช้งานได้ดีเยี่ยม",
+    "en": "Normal, excellent function",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q1",
+    "th": "ระดับกิจกรรมสูงสุดที่ท่านทำได้โดยไม่ปวดเข่ามากคือระดับใด?",
+    "en": "What is the highest level of activity you can perform without significant knee pain?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q2",
+    "th": "ใน 4 สัปดาห์ที่ผ่านมา หรือตั้งแต่บาดเจ็บ ท่านมีอาการปวดบ่อยเพียงใด?",
+    "en": "During the past 4 weeks, or since your injury, how often have you had pain?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q3",
+    "th": "หากมีอาการปวด ปวดรุนแรงเพียงใด?",
+    "en": "If you have pain, how severe is it?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q4",
+    "th": "ใน 4 สัปดาห์ที่ผ่านมา หรือตั้งแต่บาดเจ็บ เข่าของท่านตึงหรือบวมเพียงใด?",
+    "en": "During the past 4 weeks, or since your injury, how stiff or swollen was your knee?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q5",
+    "th": "ระดับกิจกรรมสูงสุดที่ท่านทำได้โดยไม่บวมเข่ามากคือระดับใด?",
+    "en": "What is the highest level of activity you can perform without significant swelling in your knee?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q6",
+    "th": "ใน 4 สัปดาห์ที่ผ่านมา หรือตั้งแต่บาดเจ็บ เข่าของท่านล็อกหรือติดขัดหรือไม่?",
+    "en": "During the past 4 weeks, or since your injury, did your knee lock or catch?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q7",
+    "th": "ระดับกิจกรรมสูงสุดที่ท่านทำได้โดยเข่าไม่ทรุดมากคือระดับใด?",
+    "en": "What is the highest level of activity you can perform without significant giving way in your knee?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q8",
+    "th": "ระดับกิจกรรมสูงสุดที่ท่านทำเป็นประจำได้คือระดับใด?",
+    "en": "What is the highest level of activity you can participate in on a regular basis?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q9a",
+    "th": "การขึ้นบันได",
+    "en": "Going up stairs",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q9b",
+    "th": "การลงบันได",
+    "en": "Going down stairs",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q9c",
+    "th": "การคุกเข่าลงน้ำหนักด้านหน้าเข่า",
+    "en": "Kneeling on the front of your knee",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q9d",
+    "th": "การนั่งยอง",
+    "en": "Squatting",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q9e",
+    "th": "การนั่งงอเข่า",
+    "en": "Sitting with your knee bent",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q9f",
+    "th": "การลุกจากเก้าอี้",
+    "en": "Rising from a chair",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q9g",
+    "th": "การวิ่งเส้นตรง",
+    "en": "Running straight ahead",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q9h",
+    "th": "การกระโดดและลงน้ำหนักด้วยขาข้างที่บาดเจ็บ",
+    "en": "Jumping and landing on your involved leg",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q9i",
+    "th": "การหยุดและออกตัวอย่างรวดเร็ว",
+    "en": "Stopping and starting quickly",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q10a",
+    "th": "ท่านให้คะแนนการใช้งานเข่าในปัจจุบันเท่าใด?",
+    "en": "How would you rate the current function of your knee?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "ikdcLabels.q10b",
+    "th": "ท่านให้คะแนนการใช้งานเข่าก่อนบาดเจ็บเท่าใด?",
+    "en": "How would you rate the function of your knee prior to your injury?",
+    "uiContext": "Progress — IKDC subjective knee form",
+    "class": "ui"
+  },
+  {
+    "key": "runGateTitle",
+    "th": "พร้อมเริ่มวิ่งหรือยัง?",
+    "en": "Ready to run?",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "runGateSub",
+    "th": "โดยทั่วไปจะพิจารณาเริ่มวิ่งได้ตั้งแต่ประมาณ 3 เดือน แต่ต้องผ่านเกณฑ์เหล่านี้ก่อน",
+    "en": "Running is usually considered from about 3 months, but only once these are met.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "rtsGateTitle",
+    "th": "พร้อมกลับไปเล่นกีฬาหรือยัง?",
+    "en": "Ready to return to sport?",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "rtsGateSub",
+    "th": "การผ่านเกณฑ์เหล่านี้คือจุดเริ่มต้นของการกลับไปเล่นแบบค่อยเป็นค่อยไป ไม่ใช่ไฟเขียวให้ลงแข่งเต็มรูปแบบทันที",
+    "en": "Meeting these is the start of a graded return, not a green light for full competition.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "gatePass",
+    "th": "ผ่านเกณฑ์ครบทุกข้อ",
+    "en": "All checks met",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "gateFail",
+    "th": "ยังไม่ผ่าน",
+    "en": "Not yet",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "gateUnknown",
+    "th": "ยังขาดผลการวัดบางรายการ",
+    "en": "Some measurements are missing",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "gateNotYet",
+    "th": "เกณฑ์นี้จะเปิดในระยะถัดไปของการฟื้นตัว",
+    "en": "This check opens later in your recovery.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "crit.ext",
+    "th": "เหยียดเข่าได้สุด",
+    "en": "Knee straightens fully",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.flex",
+    "th": "งอเข่าได้อย่างน้อย 125 องศา",
+    "en": "Bending at least 125°",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.quad80",
+    "th": "กำลังกล้ามเนื้อต้นขาหน้าอย่างน้อย 80% ของขาอีกข้าง",
+    "en": "Thigh strength at least 80% of the other leg",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.quad90",
+    "th": "กำลังกล้ามเนื้อต้นขาหน้าอย่างน้อย 90% ของขาอีกข้าง",
+    "en": "Thigh strength at least 90% of the other leg",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.ham80",
+    "th": "กำลังกล้ามเนื้อต้นขาหลังอย่างน้อย 80% ของขาอีกข้าง",
+    "en": "Hamstring strength at least 80% of the other leg",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.ham90",
+    "th": "กำลังกล้ามเนื้อต้นขาหลังอย่างน้อย 90% ของขาอีกข้าง",
+    "en": "Hamstring strength at least 90% of the other leg",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.hop90",
+    "th": "ผลทดสอบกระโดดอย่างน้อย 90% ของขาอีกข้าง",
+    "en": "Hop tests at least 90% of the other leg",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.noRestrict",
+    "th": "ไม่มีข้อจำกัดการลงน้ำหนักหรือการงอเข่าเหลืออยู่",
+    "en": "No weight-bearing or bending restrictions left",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.week12",
+    "th": "ผ่านไปอย่างน้อย 12 สัปดาห์หลังผ่าตัด",
+    "en": "At least 12 weeks since surgery",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.month9",
+    "th": "ผ่านไปอย่างน้อย 9 เดือนหลังผ่าตัด",
+    "en": "At least 9 months since surgery",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "crit.runCleared",
+    "th": "ได้รับอนุญาตให้เริ่มวิ่งจากทีมผู้ดูแล",
+    "en": "Cleared for running by your care team",
+    "uiContext": "Progress — return-to-run / return-to-sport criteria",
+    "class": "education"
+  },
+  {
+    "key": "metrics.extDeficit",
+    "th": "เหยียดเข่าได้ไม่สุดกี่องศา?",
+    "en": "How far short of fully straight?",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metrics.flexion",
+    "th": "งอเข่าได้กี่องศา?",
+    "en": "How far can you bend the knee?",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metrics.quadLSI",
+    "th": "กำลังกล้ามเนื้อต้นขาหน้าเทียบกับขาอีกข้าง",
+    "en": "Thigh strength vs your other leg",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metrics.hamLSI",
+    "th": "กำลังกล้ามเนื้อต้นขาหลังเทียบกับขาอีกข้าง",
+    "en": "Hamstring strength vs your other leg",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metrics.hopLSI",
+    "th": "ระยะกระโดดเทียบกับขาอีกข้าง",
+    "en": "Hop distance vs your other leg",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metrics.noLimp",
+    "th": "ท่าเดินได้โดยไม่กะเผลกหรือไม่?",
+    "en": "Can you walk without a limp?",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metrics.offCrutches",
+    "th": "ท่าเลิกใช้ไม้ค้ำยันแล้วหรือยัง?",
+    "en": "Are you off your crutches?",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metrics.runCleared",
+    "th": "ทีมผู้ดูแลอนุญาตให้เริ่มวิ่งแล้ว",
+    "en": "Cleared for running by your care team",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricUnits.extDeficit",
+    "th": "°",
+    "en": "°",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricUnits.flexion",
+    "th": "°",
+    "en": "°",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricUnits.quadLSI",
+    "th": "%",
+    "en": "%",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricUnits.hamLSI",
+    "th": "%",
+    "en": "%",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricUnits.hopLSI",
+    "th": "%",
+    "en": "%",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricHints.extDeficit",
+    "th": "นอนหงายและหนุนส้นเท้า ค่า 0 หมายถึงเหยียดได้สุดเท่ากับขาอีกข้าง",
+    "en": "Lie on your back with the heel propped. 0 means it straightens as far as the other leg.",
+    "uiContext": "Progress — how to measure",
+    "class": "instruction"
+  },
+  {
+    "key": "metricHints.flexion",
+    "th": "องศาการงอเข่า โดยทั่วไปเข่าข้างปกติจะงอได้ประมาณ 135°",
+    "en": "Degrees of bend. Your other knee is usually around 135°.",
+    "uiContext": "Progress — how to measure",
+    "class": "instruction"
+  },
+  {
+    "key": "metricHints.quadLSI",
+    "th": "วัดที่คลินิก ขาอีกข้างก็อ่อนแรงลงหลังผ่าตัดเช่นกัน ค่านี้จึงอาจสูงกว่ากำลังจริงของท่าน",
+    "en": "Measured at your clinic. The other leg also gets weaker after surgery, so this can read higher than your true strength.",
+    "uiContext": "Progress — how to measure",
+    "class": "instruction"
+  },
+  {
+    "key": "metricHints.hamLSI",
+    "th": "วัดที่คลินิก",
+    "en": "Measured at your clinic.",
+    "uiContext": "Progress — how to measure",
+    "class": "instruction"
+  },
+  {
+    "key": "metricHints.hopLSI",
+    "th": "วัดที่คลินิก",
+    "en": "Measured at your clinic.",
+    "uiContext": "Progress — how to measure",
+    "class": "instruction"
+  },
+  {
+    "key": "yes",
+    "th": "ใช่",
+    "en": "Yes",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "no",
+    "th": "ไม่",
+    "en": "No",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "notSet",
+    "th": "—",
+    "en": "—",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricsIntro",
+    "th": "บันทึกค่าต่าง ๆ ของท่านได้ที่นี่ กรุณาสอบถามค่ากำลังกล้ามเนื้อและผลทดสอบกระโดดจากนักกายภาพบำบัดในวันนัด แล้วนำมาบันทึกเพื่อดูแนวโน้ม",
+    "en": "Track your own numbers here. Ask your physiotherapist for the strength and hop figures at each visit, then enter them so you can see the trend.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricAdd",
+    "th": "บันทึก",
+    "en": "Add",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricPlaceholder",
+    "th": "ค่า",
+    "en": "Value",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricNoReadings",
+    "th": "ยังไม่มีข้อมูล",
+    "en": "No readings yet.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricNeedMore",
+    "th": "บันทึกอีก 1 ครั้งเพื่อดูแนวโน้ม",
+    "en": "Add one more reading to see the trend.",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricUndo",
+    "th": "ลบค่าล่าสุด",
+    "en": "Remove last reading",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "metricToday",
+    "th": "บันทึกของวันนี้แล้ว",
+    "en": "Saved for today",
+    "uiContext": "Progress",
+    "class": "ui"
+  },
+  {
+    "key": "healingTitle",
+    "th": "ทำความเข้าใจการหายของเอ็น",
+    "en": "Understanding Your Healing",
+    "uiContext": "Care — understanding graft healing",
+    "class": "ui"
+  },
+  {
+    "key": "healingItems.0",
+    "th": "เอ็นที่สร้างใหม่แข็งแรงที่สุดในวันที่ยึดเสร็จ หลังจากนั้นร่างกายจะค่อย ๆ ปรับให้กลายเป็นเอ็นที่มีชีวิต และระหว่างกระบวนการนี้จะผ่านช่วงที่อ่อนแรงลง",
+    "en": "Your new graft is strongest on the day it is fixed. Over the following months your body remodels it into a living ligament, and during that process it passes through a weaker phase.",
+    "uiContext": "Care — understanding graft healing",
+    "class": "education"
+  },
+  {
+    "key": "healingItems.1",
+    "th": "นี่คือเหตุผลที่ช่วงกลางของการฟื้นตัวหลอกความรู้สึก: ท่ารู้สึกดี อาการบวมหายไปแล้ว แต่เอ็นยังปรับสภาพอยู่ภายใน",
+    "en": "This is why the middle months feel deceptive: you feel well, the swelling has settled, and the graft is still maturing underneath.",
+    "uiContext": "Care — understanding graft healing",
+    "class": "education"
+  },
+  {
+    "key": "healingItems.2",
+    "th": "และเป็นเหตุผลที่แนะนำให้ออกแรงในแนวตรงได้เร็ว ขณะที่การบิดหมุน การเปลี่ยนทิศทาง และการปะทะต้องรอนานกว่ามาก",
+    "en": "It is also why straight-line loading is encouraged early, while twisting, pivoting and contact are held back much longer.",
+    "uiContext": "Care — understanding graft healing",
+    "class": "education"
+  },
+  {
+    "key": "healingItems.3",
+    "th": "อาการเมื่อยกล้ามเนื้อหลังฝึกเป็นเรื่องปกติ แต่อาการปวดแปลบ เข่าทรุด หรือบวมใหม่ ไม่ใช่ — กรุณาแจ้งทีมผู้ดูแล",
+    "en": "Muscle soreness after training is expected. Sharp pain, a giving-way sensation, or new swelling are not — report them.",
+    "uiContext": "Care — understanding graft healing",
+    "class": "education"
+  },
+  {
+    "key": "healingItems.4",
+    "th": "เข่าที่บาดเจ็บซ้ำมักเป็นเข่าของคนที่หยุดฝึกหลังกลับไปเล่นกีฬาแล้ว",
+    "en": "The knee that lets you down twice is usually the one that stopped training after returning to sport.",
+    "uiContext": "Care — understanding graft healing",
+    "class": "education"
+  },
+  {
+    "key": "care.0.title",
+    "th": "ก่อนเข้ารับการผ่าตัด",
+    "en": "Before Your Surgery",
+    "uiContext": "Care — Before Your Surgery",
+    "class": "ui"
+  },
+  {
+    "key": "care.0.items.0",
+    "th": "ปฏิบัติตามคำแนะนำเรื่องการงดน้ำงดอาหารและการหยุดยาจากทีมผ่าตัด และนำบัตรประชาชนกับหมายเลข HN ไปด้วย",
+    "en": "Follow the fasting and medication instructions from your surgical team, and bring your HN and ID.",
+    "uiContext": "Care — Before Your Surgery",
+    "class": "instruction"
+  },
+  {
+    "key": "care.0.items.1",
+    "th": "เข้ารับการผ่าตัดด้วยเข่าที่เหยียดสุด บวมน้อย และแข็งแรงที่สุดเท่าที่ทำได้ ซึ่งเป็นปัจจัยทำนายการฟื้นตัวที่ดีที่สุดอย่างหนึ่ง",
+    "en": "Go into surgery with the knee as straight, as un-swollen, and as strong as you can get it — this is one of the strongest predictors of a smooth recovery.",
+    "uiContext": "Care — Before Your Surgery",
+    "class": "instruction"
+  },
+  {
+    "key": "care.0.items.2",
+    "th": "จัดหาผู้ช่วยที่บ้านในช่วงไม่กี่วันแรก และเก็บทางเดินจากเตียงไปห้องน้ำให้โล่ง",
+    "en": "Arrange help at home for the first few days, and clear a path from your bed to the bathroom.",
+    "uiContext": "Care — Before Your Surgery",
+    "class": "instruction"
+  },
+  {
+    "key": "care.1.title",
+    "th": "การเหยียดเข่าให้สุด",
+    "en": "Getting Your Knee Fully Straight",
+    "uiContext": "Care — Getting Your Knee Fully Straight",
+    "class": "ui"
+  },
+  {
+    "key": "care.1.items.0",
+    "th": "นี่คือสิ่งสำคัญที่สุดในช่วงสัปดาห์แรก เข่าที่เหยียดไม่สุดจะทำให้เดินกะเผลก กล้ามเนื้อต้นขาอ่อนแรง และปวดด้านหน้าเข่า",
+    "en": "This is the single most important thing in the first weeks. A knee that does not fully straighten leads to a limp, thigh weakness, and pain at the front of the knee.",
+    "uiContext": "Care — Getting Your Knee Fully Straight",
+    "class": "instruction"
+  },
+  {
+    "key": "care.1.items.1",
+    "th": "วางส้นเท้าบนผ้าม้วนโดยไม่มีอะไรรองใต้เข่า ปล่อยให้เข่าเหยียดตรงครั้งละ 10 นาที หลายครั้งต่อวัน",
+    "en": "Rest your heel on a rolled towel with nothing under the knee, and let the knee hang straight for 10 minutes at a time, several times a day.",
+    "uiContext": "Care — Getting Your Knee Fully Straight",
+    "class": "instruction"
+  },
+  {
+    "key": "care.1.items.2",
+    "th": "ห้ามนอนหรือพักโดยมีหมอนรองใต้เข่า ให้วางหมอนไว้ใต้ส้นเท้าแทน",
+    "en": "Never sleep or rest with a pillow under the knee. Put the pillow under your heel instead.",
+    "uiContext": "Care — Getting Your Knee Fully Straight",
+    "class": "instruction"
+  },
+  {
+    "key": "care.1.items.3",
+    "th": "เทียบกับขาอีกข้างเป็นระยะ เพราะนั่นคือเป้าหมาย ไม่ใช่แค่ \"เกือบตรง\"",
+    "en": "Compare with your other leg regularly — that is your target, not just 'nearly straight'.",
+    "uiContext": "Care — Getting Your Knee Fully Straight",
+    "class": "instruction"
+  },
+  {
+    "key": "care.2.title",
+    "th": "ไม้ค้ำยันและการลงน้ำหนัก",
+    "en": "Crutches & Weight Bearing",
+    "uiContext": "Care — Crutches & Weight Bearing",
+    "class": "ui"
+  },
+  {
+    "key": "care.2.items.0",
+    "th": "ปฏิบัติตามคำแนะนำการลงน้ำหนักที่แสดงในหน้าแรก หากท่าได้รับการเย็บซ่อมหมอนรองกระดูกด้วย ข้อจำกัดอาจเข้มงวดกว่าการผ่าตัดเอ็นไขว้หน้าอย่างเดียว",
+    "en": "Follow the weight-bearing instruction shown on your Home screen. If you had a meniscus repair, this may be more restrictive than for an ACL alone.",
+    "uiContext": "Care — Crutches & Weight Bearing",
+    "class": "instruction"
+  },
+  {
+    "key": "care.2.items.1",
+    "th": "ก้าวเดินสม่ำเสมอ ไม่รีบ และปล่อยให้เข่าเหยียดสุดขณะลงส้นเท้า",
+    "en": "Take even, unhurried steps and let the knee straighten fully as your heel lands.",
+    "uiContext": "Care — Crutches & Weight Bearing",
+    "class": "instruction"
+  },
+  {
+    "key": "care.2.items.2",
+    "th": "เลิกใช้ไม้ค้ำยันเมื่อเดินได้โดยไม่กะเผลก ไม่ใช่เพียงเพราะหายปวด",
+    "en": "Leave the crutches behind only when you can walk without a limp, not simply when the pain settles.",
+    "uiContext": "Care — Crutches & Weight Bearing",
+    "class": "instruction"
+  },
+  {
+    "key": "care.2.items.3",
+    "th": "ขึ้นบันได: ก้าวขาข้างดีขึ้นก่อน ลงบันได: ก้าวขาข้างที่ผ่าตัดลงก่อน",
+    "en": "On stairs: good leg up first, operated leg down first.",
+    "uiContext": "Care — Crutches & Weight Bearing",
+    "class": "instruction"
+  },
+  {
+    "key": "care.3.title",
+    "th": "อุปกรณ์พยุงเข่า",
+    "en": "Your Brace",
+    "uiContext": "Care — Your Brace",
+    "class": "ui"
+  },
+  {
+    "key": "care.3.items.0",
+    "th": "สวมอุปกรณ์พยุงเข่าตามที่แพทย์กำหนดอย่างเคร่งครัด รวมถึงองศาที่ตั้งไว้ ห้ามปรับองศาเอง",
+    "en": "Wear the brace exactly as instructed, including the setting your surgeon chose. Do not change the range settings yourself.",
+    "uiContext": "Care — Your Brace",
+    "class": "instruction"
+  },
+  {
+    "key": "care.3.items.1",
+    "th": "ตรวจผิวหนังใต้สายรัดทุกวันว่ามีรอยแดงหรือการเสียดสีหรือไม่",
+    "en": "Check the skin under the straps daily for redness or rubbing.",
+    "uiContext": "Care — Your Brace",
+    "class": "instruction"
+  },
+  {
+    "key": "care.3.items.2",
+    "th": "หากอุปกรณ์เลื่อนหลุดบ่อย ควรให้ทีมผู้ดูแลปรับให้ ไม่ควรรัดแน่นจนเจ็บ",
+    "en": "If the brace slips down repeatedly, it needs adjusting — ask your team rather than tightening it painfully.",
+    "uiContext": "Care — Your Brace",
+    "class": "instruction"
+  },
+  {
+    "key": "care.4.title",
+    "th": "อาการบวมและการประคบเย็น",
+    "en": "Swelling & Ice",
+    "uiContext": "Care — Swelling & Ice",
+    "class": "ui"
+  },
+  {
+    "key": "care.4.items.0",
+    "th": "ประคบเย็น 15–20 นาที โดยยกขาสูงกว่าระดับหัวใจ ทำหลายครั้งต่อวันในช่วงสัปดาห์แรก",
+    "en": "Ice for 15–20 minutes with the leg raised above the level of your heart, several times a day in the first weeks.",
+    "uiContext": "Care — Swelling & Ice",
+    "class": "instruction"
+  },
+  {
+    "key": "care.4.items.1",
+    "th": "น้ำในข้อเข่าจะยับยั้งการทำงานของกล้ามเนื้อต้นขา การควบคุมอาการบวมจึงไม่ใช่แค่เรื่องความสบาย แต่เป็นการรักษาความแข็งแรงไว้",
+    "en": "Swelling inside the knee switches the thigh muscle off. Controlling it is not just about comfort — it is how you protect your strength.",
+    "uiContext": "Care — Swelling & Ice",
+    "class": "instruction"
+  },
+  {
+    "key": "care.4.items.2",
+    "th": "หากเช้าวันถัดมาเข่าบวมมากขึ้น แสดงว่าการฝึกครั้งที่ผ่านมาหนักเกินไป",
+    "en": "A knee that is more swollen the morning after exercise is telling you the last session was too much.",
+    "uiContext": "Care — Swelling & Ice",
+    "class": "instruction"
+  },
+  {
+    "key": "care.5.title",
+    "th": "การดูแลแผลผ่าตัด",
+    "en": "Wound Care",
+    "uiContext": "Care — Wound Care",
+    "class": "ui"
+  },
+  {
+    "key": "care.5.items.0",
+    "th": "รักษาแผลให้สะอาดและแห้ง และคงผ้าปิดแผลไว้จนถึงวันนัดตรวจ เว้นแต่แพทย์แนะนำเป็นอย่างอื่น",
+    "en": "Keep the dressing clean, dry and in place until your follow-up visit unless told otherwise.",
+    "uiContext": "Care — Wound Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.5.items.1",
+    "th": "การมีเลือดซึมเล็กน้อยใน 24–48 ชั่วโมงแรกถือเป็นเรื่องปกติ",
+    "en": "A small amount of blood-tinged ooze in the first 24–48 hours is normal.",
+    "uiContext": "Care — Wound Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.5.items.2",
+    "th": "ห้ามทาโลชั่น ครีม หรือแป้งบริเวณแผล เว้นแต่ได้รับคำแนะนำ",
+    "en": "Do not put lotion, ointment or powder near the wounds unless instructed.",
+    "uiContext": "Care — Wound Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.6.title",
+    "th": "การอาบน้ำ",
+    "en": "Showering",
+    "uiContext": "Care — Showering",
+    "class": "ui"
+  },
+  {
+    "key": "care.6.items.0",
+    "th": "โดยทั่วไปอาบน้ำได้ แต่อย่าให้น้ำไหลลงบนแผลโดยตรงจนกว่าแผลจะปิดสนิท",
+    "en": "Showering is usually allowed, but do not let water run directly onto the wounds until they are sealed.",
+    "uiContext": "Care — Showering",
+    "class": "instruction"
+  },
+  {
+    "key": "care.6.items.1",
+    "th": "หลีกเลี่ยงการแช่อ่าง สระว่ายน้ำ และทะเล จนกว่าทีมผู้ดูแลจะยืนยันว่าแผลหายดีแล้ว",
+    "en": "Avoid baths, pools and the sea until your team confirms the wounds are fully healed.",
+    "uiContext": "Care — Showering",
+    "class": "instruction"
+  },
+  {
+    "key": "care.6.items.2",
+    "th": "โดยทั่วไปตัดไหมที่ 10–14 วัน",
+    "en": "Stitches are usually removed at 10–14 days.",
+    "uiContext": "Care — Showering",
+    "class": "instruction"
+  },
+  {
+    "key": "care.7.title",
+    "th": "ท่านอนและการจัดท่า",
+    "en": "Positioning & Sleep",
+    "uiContext": "Care — Positioning & Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "care.7.items.0",
+    "th": "นอนโดยให้เข่าเหยียดตรง วางหมอนไว้ใต้ส้นเท้า ไม่ใช่ใต้เข่า",
+    "en": "Sleep with the knee straight, with the pillow under your heel and not under your knee.",
+    "uiContext": "Care — Positioning & Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "care.7.items.1",
+    "th": "บางท่านสบายขึ้นเมื่อยกขาข้างที่ผ่าตัดสูงเล็กน้อยด้วยผ้าห่มพับ ตราบใดที่เข่ายังเหยียดตรง",
+    "en": "Some people are more comfortable with the operated leg slightly raised on a folded blanket — as long as the knee itself stays straight.",
+    "uiContext": "Care — Positioning & Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "care.7.items.2",
+    "th": "ขยับข้อเท้าเป็นระยะและเปลี่ยนท่าระหว่างคืน เพื่อช่วยการไหลเวียนเลือด",
+    "en": "Move your ankle regularly and change position through the night to keep the circulation moving.",
+    "uiContext": "Care — Positioning & Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "care.8.title",
+    "th": "การป้องกันลิ่มเลือด",
+    "en": "Preventing Blood Clots",
+    "uiContext": "Care — Preventing Blood Clots",
+    "class": "ui"
+  },
+  {
+    "key": "care.8.items.0",
+    "th": "กระดกข้อเท้าขึ้นลงบ่อย ๆ ตลอดวัน และลุกขยับบ่อยครั้งแทนการนั่งนานหลายชั่วโมง",
+    "en": "Do ankle pumps regularly through the day, and get up to move little and often rather than sitting for hours.",
+    "uiContext": "Care — Preventing Blood Clots",
+    "class": "instruction"
+  },
+  {
+    "key": "care.9.title",
+    "th": "การขับรถและกิจกรรม",
+    "en": "Driving & Activity",
+    "uiContext": "Care — Driving & Activity",
+    "class": "ui"
+  },
+  {
+    "key": "care.9.items.0",
+    "th": "ห้ามขับรถขณะใช้ไม้ค้ำยัน ขณะใส่อุปกรณ์พยุงเข่าแบบล็อก หรือขณะรับประทานยาแก้ปวดที่แพทย์สั่ง",
+    "en": "Do not drive while on crutches, in a locked brace, or taking prescription pain medication.",
+    "uiContext": "Care — Driving & Activity",
+    "class": "instruction"
+  },
+  {
+    "key": "care.9.items.1",
+    "th": "ส่วนใหญ่กลับไปทำงานนั่งโต๊ะได้ภายในไม่กี่สัปดาห์ ส่วนงานที่ใช้แรงจะช้ากว่านั้นมาก กรุณาสอบถามแพทย์สำหรับกรณีของท่านเอง",
+    "en": "Most people return to desk work within a few weeks, and to physical work considerably later — ask your surgeon for your own timeline.",
+    "uiContext": "Care — Driving & Activity",
+    "class": "instruction"
+  },
+  {
+    "key": "care.10.title",
+    "th": "บุหรี่และนิโคติน",
+    "en": "Smoking & Nicotine",
+    "uiContext": "Care — Smoking & Nicotine",
+    "class": "ui"
+  },
+  {
+    "key": "care.10.items.0",
+    "th": "หลีกเลี่ยงการสูบบุหรี่และผลิตภัณฑ์นิโคติน เพราะลดเลือดที่ไปเลี้ยงเอ็นที่กำลังหาย",
+    "en": "Avoid smoking and nicotine products. They reduce blood supply to the healing graft.",
+    "uiContext": "Care — Smoking & Nicotine",
+    "class": "instruction"
+  },
+  {
+    "key": "care.11.title",
+    "th": "หากท่าได้รับการเย็บซ่อมหมอนรองกระดูกด้วย",
+    "en": "If You Also Had a Meniscus Repair",
+    "uiContext": "Care — If You Also Had a Meniscus Repair",
+    "class": "ui"
+  },
+  {
+    "key": "care.11.items.0",
+    "th": "หมอนรองกระดูกที่เย็บซ่อมต้องการการปกป้องการงอเข่าลึกนานกว่าการผ่าตัดเอ็นไขว้หน้าอย่างเดียว โดยทั่วไปประมาณ 6 สัปดาห์",
+    "en": "A repaired meniscus needs longer protection of deep knee bending than an ACL reconstruction alone — usually 6 weeks.",
+    "uiContext": "Care — If You Also Had a Meniscus Repair",
+    "class": "instruction"
+  },
+  {
+    "key": "care.11.items.1",
+    "th": "การนั่งยอง การงอเข่าลึกขณะรับน้ำหนัก และการบิดหมุน มักถูกชะลอไว้นานกว่า",
+    "en": "Deep squatting, deep bending under load, and twisting are usually held back longer.",
+    "uiContext": "Care — If You Also Had a Meniscus Repair",
+    "class": "instruction"
+  },
+  {
+    "key": "care.11.items.2",
+    "th": "หากโปรแกรมเอ็นไขว้หน้ากับคำสั่งเรื่องหมอนรองกระดูกขัดกัน ให้ยึดข้อที่ระมัดระวังมากกว่า และสอบถามแพทย์ผู้ผ่าตัด",
+    "en": "Where the ACL programme and your meniscus instructions disagree, follow the more protective one — and ask your surgeon.",
+    "uiContext": "Care — If You Also Had a Meniscus Repair",
+    "class": "instruction"
+  },
+  {
+    "key": "care.11.items.3",
+    "th": "อาการสะดุด เข่าล็อก หรือเหยียดเข่าไม่สุดที่เกิดซ้ำ ควรได้รับการตรวจ ไม่ควรฝืนทำต่อ",
+    "en": "Repeated catching, locking, or a knee that will not fully straighten needs to be assessed rather than pushed through.",
+    "uiContext": "Care — If You Also Had a Meniscus Repair",
+    "class": "instruction"
+  },
+  {
+    "key": "care.12.title",
+    "th": "การนัดตรวจติดตาม",
+    "en": "Follow-up Visits",
+    "uiContext": "Care — Follow-up Visits",
+    "class": "ui"
+  },
+  {
+    "key": "care.12.items.0",
+    "th": "โดยทั่วไปนัดตรวจแผลที่ประมาณ 10–14 วัน จากนั้นตามระยะที่แพทย์กำหนด",
+    "en": "Usually around 10–14 days for wound review, then at intervals your surgeon will set.",
+    "uiContext": "Care — Follow-up Visits",
+    "class": "instruction"
+  },
+  {
+    "key": "care.12.items.1",
+    "th": "นำแอปมาด้วยในวันนัด เพราะแบบสำรวจการฟื้นตัวและผลการวัดมีประโยชน์ต่อการประเมิน",
+    "en": "Bring the app with you — your recovery surveys and measurements are useful at each visit.",
+    "uiContext": "Care — Follow-up Visits",
+    "class": "instruction"
+  },
+  {
+    "key": "care.12.items.2",
+    "th": "รวบรวมคำถามเรื่องการทำงาน การขับรถ การเดินทาง หรือกีฬา มาถามในวันนัด แทนการคาดเดาเอง",
+    "en": "Bring any questions about work, driving, travel or sport with you rather than guessing between visits.",
+    "uiContext": "Care — Follow-up Visits",
+    "class": "instruction"
+  },
+  {
+    "key": "normalNote",
+    "th": "อาการที่พบได้ในช่วงแรก: บวมปานกลาง รอยช้ำที่ลามลงน่องหรือขึ้นต้นขา ไข้ต่ำไม่เกิน 38.0°C และอาการชารอบแผลหรือบริเวณด้านนอกของหน้าแข้ง",
+    "en": "Normal in the first days: moderate swelling, bruising that spreads down the calf or into the thigh, a mild temperature under 38.0°C (100.4°F), and numbness around the wounds or the outer part of the shin.",
+    "uiContext": "Alert — what is normal",
+    "class": "education"
+  },
+  {
+    "key": "emergencyLabel",
+    "th": "ฉุกเฉิน — ติดต่อคลินิกหรือห้องฉุกเฉินทันที",
+    "en": "Emergency — Contact Clinic or ER Immediately",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.0",
+    "th": "ปวดน่อง น่องตึง หรือน่องบวมมากขึ้นเรื่อย ๆ",
+    "en": "Calf pain, tightness or swelling that is getting worse",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.1",
+    "th": "เจ็บหน้าอก หายใจลำบากเฉียบพลัน หรือไอเป็นเลือด — ให้ไปห้องฉุกเฉินทันที",
+    "en": "Chest pain, sudden breathlessness, or coughing up blood — seek emergency care immediately",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.2",
+    "th": "ไข้สูงกว่า 38.3°C หนาวสั่นต่อเนื่อง หรือรู้สึกไม่สบายทั้งตัว",
+    "en": "Fever above 38.3°C (101°F), persistent chills, or feeling generally unwell",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.3",
+    "th": "รอยแดง ร้อน หรือรอยแดงเป็นทางลามออกจากแผลผ่าตัด",
+    "en": "Spreading redness, warmth or red streaks around the wounds",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.4",
+    "th": "มีหนอง สารคัดหลั่งขุ่น หรือมีกลิ่นเหม็นจากแผล",
+    "en": "Pus-like, foul-smelling or cloudy discharge from a wound",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.5",
+    "th": "เข่าล็อกกะทันหันจนเหยียดไม่ได้ หรือเข่าทรุดพร้อมปวดรุนแรงเฉียบพลัน",
+    "en": "The knee suddenly locks and will not straighten, or gives way with sudden severe pain",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.6",
+    "th": "ปวดรุนแรงต่อเนื่องที่ไม่ทุเลาด้วยยาแก้ปวดและการพัก",
+    "en": "Severe, unrelenting pain that is not helped by your pain medication and rest",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "resourcesTitle",
+    "th": "แหล่งข้อมูลเพิ่มเติม",
+    "en": "Additional Resources",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resourcesIntro",
+    "th": "แหล่งข้อมูลภายนอกที่อาจเป็นประโยชน์ระหว่างการฟื้นตัวของท่าน",
+    "en": "A few outside resources you may find helpful during your recovery.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resourcesEmpty",
+    "th": "ยังไม่มีการเพิ่มแหล่งข้อมูล",
+    "en": "No resources have been added yet.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.0.title",
+    "th": "วิดีโอท่าบริหาร 1 — รอยืนยันชื่อเรื่อง",
+    "en": "Exercise video 1 — TITLE TO CONFIRM",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.0.desc",
+    "th": "รอยืนยันคำอธิบายสั้น ๆ",
+    "en": "One-line description to be confirmed.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.0.source",
+    "th": "YouTube",
+    "en": "YouTube",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.1.title",
+    "th": "วิดีโอท่าบริหาร 2 — รอยืนยันชื่อเรื่อง",
+    "en": "Exercise video 2 — TITLE TO CONFIRM",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.1.desc",
+    "th": "รอยืนยันคำอธิบายสั้น ๆ",
+    "en": "One-line description to be confirmed.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.1.source",
+    "th": "YouTube",
+    "en": "YouTube",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.2.title",
+    "th": "ออกกำลังกายป้องกันเอ็นไขว้หน้าเข่าบาดเจ็บทำได้…อย่างไร",
+    "en": "Exercises to prevent ACL injury",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.2.desc",
+    "th": "โปรแกรมอบอุ่นร่างกาย ฝึกความแข็งแรง และผ่อนคลายกล้ามเนื้อ เพื่อลดโอกาสเกิดเข่าฉิ่ง (knee valgus) ประกอบด้วยสควอทและงอเข่าด้วยยางยืด ลันจ์ Y balance และการฝึกกระโดดลงพื้น เหมาะกับระยะคงความแข็งแรง",
+    "en": "A warm-up, strengthening and cool-down programme built around stopping the knee collapsing inwards — band squats, band hamstring curls, lunges, Y-balance and jump landing. Good material for your Stay Strong phase.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.2.source",
+    "th": "ศูนย์กายภาพบำบัด คณะกายภาพบำบัด มหาวิทยาลัยมหิดล",
+    "en": "Faculty of Physical Therapy, Mahidol University",
+    "uiContext": "Resources",
+    "class": "ui"
+  }
+]

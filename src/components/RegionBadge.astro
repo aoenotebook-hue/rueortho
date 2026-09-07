@@ -1,0 +1,18 @@
+---
+import { getRegion, type RegionId } from '../data/regions';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  region: RegionId;
+  locale: Locale;
+}
+
+const { region, locale } = Astro.props;
+const label = getRegion(region).label[locale];
+---
+
+<span
+  class="inline-block rounded-full bg-info-ground px-3 py-1 text-sm text-info-ink"
+>
+  {label}
+</span>

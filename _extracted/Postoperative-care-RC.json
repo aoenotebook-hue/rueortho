@@ -1,0 +1,1549 @@
+[
+  {
+    "key": "appName",
+    "th": "การดูแลหลังผ่าตัดซ่อมเอ็นหมุนไหล่",
+    "en": "Post-operative care for rotator cuff repair",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "dayLabel",
+    "th": "วันหลังผ่าตัด",
+    "en": "days since surgery",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "untilLabel",
+    "th": "วันก่อนถึงวันผ่าตัด",
+    "en": "days until surgery",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "editDate",
+    "th": "แก้ไขวันที่ผ่าตัดและ HN",
+    "en": "Edit surgery date & HN",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "roadmapTitle",
+    "th": "เส้นทางการฟื้นตัวของท่าน",
+    "en": "Your Recovery Roadmap",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "todayTitle",
+    "th": "สิ่งที่ควรทำวันนี้",
+    "en": "Today's Reminders",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "goalsTitle",
+    "th": "เป้าหมายหลังผ่าตัด",
+    "en": "Goals After Surgery",
+    "uiContext": "Home — goals after surgery",
+    "class": "ui"
+  },
+  {
+    "key": "goals.0",
+    "th": "ปกป้องเอ็นที่ซ่อมแซม",
+    "en": "Protect the repaired tendon",
+    "uiContext": "Home — goals after surgery",
+    "class": "instruction"
+  },
+  {
+    "key": "goals.1",
+    "th": "ลดข้อติดแข็ง",
+    "en": "Minimize stiffness",
+    "uiContext": "Home — goals after surgery",
+    "class": "instruction"
+  },
+  {
+    "key": "checkinTitle",
+    "th": "บันทึกประจำวัน",
+    "en": "Daily Check-in",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinPainLabel",
+    "th": "ระดับความปวดวันนี้",
+    "en": "Pain level today",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinNoPain",
+    "th": "ไม่ปวด",
+    "en": "No pain",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinWorstPain",
+    "th": "ปวดมากที่สุด",
+    "en": "Worst pain",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinSubmitBtn",
+    "th": "ส่งบันทึกวันนี้",
+    "en": "Submit Today's Check-in",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinLockedNote",
+    "th": "พรุ่งนี้สามารถบันทึกได้อีกครั้ง",
+    "en": "you can check in again tomorrow",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinSubmittedPrefix",
+    "th": "ส่งแล้วเมื่อ ",
+    "en": "Submitted today at ",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinNotSubmitted",
+    "th": "ยังไม่ได้ส่งบันทึกวันนี้",
+    "en": "Not yet submitted today",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinValidation",
+    "th": "กรุณาเลือกระดับความปวดก่อนส่งบันทึก",
+    "en": "Please select a pain level before submitting.",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "checkinPrivacyNote",
+    "th": "คำตอบของท่านช่วยให้ทีมผู้ดูแลติดตามการฟื้นตัวของท่านได้",
+    "en": "Your responses help your care team follow your recovery.",
+    "uiContext": "Home — daily check-in",
+    "class": "ui"
+  },
+  {
+    "key": "surgeonLabel",
+    "th": "ศัลยแพทย์ของท่าน",
+    "en": "Your surgeon",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "surgeonName",
+    "th": "นพ.สรวุฒิ ธรรมยงค์กิจ",
+    "en": "Dr. Sorawut Thamyongkit",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "resetBtn",
+    "th": "รีเซ็ตข้อมูลแอป",
+    "en": "Reset App Data",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "resetConfirm",
+    "th": "การดำเนินการนี้จะลบวันที่ผ่าตัด หมายเลข HN ความคืบหน้าท่าบริหาร และบันทึกประจำวันทั้งหมดบนอุปกรณ์นี้ และไม่สามารถย้อนกลับได้ ต้องการดำเนินการต่อหรือไม่?",
+    "en": "This will erase your surgery date, HN, exercise progress, and check-ins on this device. This can't be undone. Continue?",
+    "uiContext": "App shell",
+    "class": "ui"
+  },
+  {
+    "key": "hnPrefix",
+    "th": "HN: ",
+    "en": "HN: ",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "hnAdd",
+    "th": "เพิ่มหมายเลข HN ของท่าน",
+    "en": "Add your Hospital Number (HN)",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "tabHome",
+    "th": "หน้าแรก",
+    "en": "Home",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabCare",
+    "th": "การดูแล",
+    "en": "Care",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabExercises",
+    "th": "ท่าบริหาร",
+    "en": "Exercises",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabSleep",
+    "th": "การนอน",
+    "en": "Sleep",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "tabSOS",
+    "th": "แจ้งเตือน",
+    "en": "Alert",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "sosTitle",
+    "th": "เมื่อใดควรขอความช่วยเหลือ",
+    "en": "When to Get Help",
+    "uiContext": "Alert",
+    "class": "ui"
+  },
+  {
+    "key": "sosSub",
+    "th": "หากพบอาการต่อไปนี้ ให้ติดต่อทีมผู้ดูแลทันที",
+    "en": "If you notice any of the signs below, contact your care team right away.",
+    "uiContext": "Alert",
+    "class": "ui"
+  },
+  {
+    "key": "emergencyNote",
+    "th": "หากเป็นเหตุฉุกเฉินที่อาจเป็นอันตรายถึงชีวิต โปรดโทร 1669 (สายด่วนการแพทย์ฉุกเฉิน) ทันที",
+    "en": "For a life-threatening emergency, call 1669 (Thailand emergency medical services) immediately.",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "appDisclaimer",
+    "th": "แอปนี้ให้ข้อมูลทั่วไปเท่านั้น ไม่สามารถใช้แทนคำแนะนำจากแพทย์ผู้ผ่าตัดหรือนักกายภาพบำบัดของท่าน กรุณาปฏิบัติตามคำแนะนำของทีมผู้ดูแลเสมอ",
+    "en": "This app provides general guidance only and does not replace advice from your surgeon or physiotherapist. Always follow the instructions given by your care team.",
+    "uiContext": "App shell — disclaimer",
+    "class": "ui"
+  },
+  {
+    "key": "onboardTitle",
+    "th": "ยินดีต้อนรับ — มาตั้งค่าการฟื้นตัวของท่านกัน",
+    "en": "Welcome — let's set up your recovery",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardLead",
+    "th": "ข้อมูลนี้จะช่วยให้แอปแสดงระยะการฟื้นตัวและท่าบริหารที่เหมาะกับท่านในตอนนี้",
+    "en": "This helps the app show you the right recovery phase and exercises for where you are today.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardDateLabel",
+    "th": "วันที่ท่านผ่าตัดหัวไหล่",
+    "en": "Date of your shoulder surgery",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardHNLabel",
+    "th": "หมายเลขประจำตัวผู้ป่วย (HN)",
+    "en": "Hospital Number (HN)",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardHNHint",
+    "th": "ช่วยให้เจ้าหน้าที่โรงพยาบาลค้นหาประวัติของท่านได้รวดเร็วขึ้น",
+    "en": "Helps hospital staff find your records quickly.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentTitle",
+    "th": "ความเป็นส่วนตัวของท่าน",
+    "en": "Your Privacy",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentText",
+    "th": "เมื่อดำเนินการต่อ ท่านยินยอมให้บันทึกและส่งข้อมูลหมายเลข HN วันที่ผ่าตัด ระดับความปวด และความคืบหน้าการทำท่าบริหารของท่าน ให้แก่ทีมผู้ดูแลเพื่อติดตามการฟื้นตัวของท่าน ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)",
+    "en": "By continuing, you agree that your HN, surgery date, pain scores, and exercise progress will be recorded and shared with your care team to support your recovery, in line with Thailand's Personal Data Protection Act (PDPA).",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentCheckboxLabel",
+    "th": "ข้าพเจ้าได้อ่านและยินยอมตามข้อความข้างต้น",
+    "en": "I have read and agree to the above.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "consentValidation",
+    "th": "กรุณายืนยันเพื่อดำเนินการต่อ",
+    "en": "Please confirm to continue.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "dateRequiredValidation",
+    "th": "กรุณาระบุวันที่ผ่าตัดเพื่อดำเนินการต่อ",
+    "en": "Please enter your surgery date to continue.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "dateRangeValidation",
+    "th": "กรุณาตรวจสอบวันที่อีกครั้ง — วันที่นี้ห่างจากปัจจุบันมากเกินไป โปรดตรวจสอบปี พ.ศ./ค.ศ. ที่กรอก",
+    "en": "Please double-check the date — it looks too far in the past or future. Check the year.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeTitle",
+    "th": "เพิ่มลงหน้าจอโฮมหรือไม่?",
+    "en": "Add to Home Screen?",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeBody",
+    "th": "เพิ่มแอปนี้ลงในหน้าจอโฮมของท่าน เพื่อเข้าใช้งานได้ทันทีเหมือนแอปทั่วไป",
+    "en": "Add this app to your home screen for one-tap access anytime, just like a regular app.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeAccept",
+    "th": "เพิ่มลงหน้าจอโฮม",
+    "en": "Add to Home Screen",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeDecline",
+    "th": "ไว้ภายหลัง",
+    "en": "Not Now",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeGotIt",
+    "th": "เข้าใจแล้ว",
+    "en": "Got it",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeIOSSteps",
+    "th": "แตะไอคอนแชร์ (Share) แล้วเลือก \"เพิ่มลงในหน้าจอโฮม\" (Add to Home Screen)",
+    "en": "Tap the Share icon in your browser, then choose \"Add to Home Screen.\"",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "addHomeGenericSteps",
+    "th": "มองหาเมนู \"เพิ่มลงหน้าจอโฮม\" หรือ \"ติดตั้งแอป\" ในเมนูเบราว์เซอร์ของท่าน",
+    "en": "Look for \"Add to Home Screen\" or \"Install App\" in your browser's menu.",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardSave",
+    "th": "บันทึกและดำเนินการต่อ",
+    "en": "Save & Continue",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "onboardSkip",
+    "th": "ข้ามไปก่อน",
+    "en": "Skip for now",
+    "uiContext": "Onboarding",
+    "class": "ui"
+  },
+  {
+    "key": "noDateChip",
+    "th": "กรุณาระบุวันที่ผ่าตัด",
+    "en": "Set your surgery date",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "noDateDesc",
+    "th": "แตะ \"แก้ไขวันที่ผ่าตัด\" ด้านบน เพื่อให้เราแสดงระยะการฟื้นตัวปัจจุบันของท่าน",
+    "en": "Tap \"Edit surgery date\" above so we can show your current recovery phase.",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "callBtnPrefix",
+    "th": "โทร ",
+    "en": "Call ",
+    "uiContext": "Alert",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.0",
+    "th": "ระยะที่ 1",
+    "en": "Phase 1",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.1",
+    "th": "ระยะที่ 2",
+    "en": "Phase 2",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.2",
+    "th": "ระยะที่ 3",
+    "en": "Phase 3",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.3",
+    "th": "ระยะที่ 4",
+    "en": "Phase 4",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseNames.4",
+    "th": "ระยะที่ 5",
+    "en": "Phase 5",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.0",
+    "th": "ระยะที่ 1",
+    "en": "Phase 1",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.1",
+    "th": "ระยะที่ 2",
+    "en": "Phase 2",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.2",
+    "th": "ระยะที่ 3",
+    "en": "Phase 3",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.3",
+    "th": "ระยะที่ 4",
+    "en": "Phase 4",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseShort.4",
+    "th": "ระยะที่ 5",
+    "en": "Phase 5",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.0",
+    "th": "ก่อนผ่าตัด",
+    "en": "Before Surgery",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.1",
+    "th": "สัปดาห์ที่ 0–6",
+    "en": "Weeks 0–6",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.2",
+    "th": "สัปดาห์ที่ 6–12",
+    "en": "Weeks 6–12",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.3",
+    "th": "เดือนที่ 3–6",
+    "en": "Months 3–6",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseWeeks.4",
+    "th": "เดือนที่ 6–12",
+    "en": "Months 6–12",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.0",
+    "th": "การเตรียมตัวก่อนผ่าตัด",
+    "en": "Preoperative Preparation",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.1",
+    "th": "ปกป้องแบบพาสซีฟ",
+    "en": "Passive Protection",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.2",
+    "th": "เคลื่อนไหวแบบมีผู้ช่วย/ออกแรงเอง",
+    "en": "Active-Assisted / Active Motion",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.3",
+    "th": "เสริมแรงต้านแบบค่อยเป็นค่อยไป",
+    "en": "Progressive Resistance",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseTitles.4",
+    "th": "ฝึกความฟิตขั้นสูง",
+    "en": "Advanced Conditioning",
+    "uiContext": "Home — Roadmap",
+    "class": "ui"
+  },
+  {
+    "key": "phaseDesc.0",
+    "th": "เตรียมร่างกาย บ้าน และความพร้อมทางใจก่อนผ่าตัด เพื่อให้การฟื้นตัวราบรื่นที่สุด",
+    "en": "Prepare your body, home, and mindset before surgery for the smoothest possible recovery.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.1",
+    "th": "รักษาการเคลื่อนไหวของข้อต่อส่วนปลายและผ่อนคลายหัวไหล่แบบพาสซีฟ ระหว่างที่จุดซ่อมกำลังหาย",
+    "en": "Maintain distal mobility and passive shoulder relaxation while your repair heals.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.2",
+    "th": "ฟื้นฟูช่วงการเคลื่อนไหวแบบออกแรงเอง และปรับจังหวะการเคลื่อนไหวของสะบักให้กลับสู่ปกติ",
+    "en": "Restore active range of motion and re-establish normal scapular rhythm.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.3",
+    "th": "เสริมความทนทานและความแข็งแรงเบาๆ ของกล้ามเนื้อหัวไหล่ พร้อมฝึกควบคุมสะบัก",
+    "en": "Build rotator cuff endurance and light strength with scapular stabilization.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "phaseDesc.4",
+    "th": "เสริมสร้างความแข็งแรงตามการใช้งานจริง ความมั่นคงแบบเคลื่อนไหว และกลับสู่กีฬาหรืองานหนัก",
+    "en": "Functional strength, dynamic stability, and return to sport or heavy work.",
+    "uiContext": "Home — Roadmap",
+    "class": "education"
+  },
+  {
+    "key": "completeChip",
+    "th": "ครบกำหนดเส้นทางการฟื้นตัว 1 ปี",
+    "en": "1-Year Recovery Timeline Complete",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "completeDesc",
+    "th": "ท่านฟื้นตัวครบตามเส้นทางทั้งหมดแล้ว ควรทำท่าบริหารดูแลรักษาต่อเนื่องตามที่ทีมผู้ดูแลแนะนำ",
+    "en": "You've completed the full recovery timeline. Keep up any maintenance exercises your team recommends.",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "todayReminders.0.0",
+    "th": "ปฏิบัติตามคำแนะนำการงดอาหารและการปรับยาก่อนผ่าตัด",
+    "en": "Follow your fasting and medication instructions before surgery.",
+    "uiContext": "Home — Phase 1 — Before Surgery (Preoperative Preparation) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.1",
+    "th": "จัดหาผู้ช่วยดูแลท่านที่บ้านในช่วงวันแรกๆ หลังผ่าตัด",
+    "en": "Arrange for someone to help you at home for the first few days.",
+    "uiContext": "Home — Phase 1 — Before Surgery (Preoperative Preparation) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.2",
+    "th": "เตรียมเสื้อผ้าแบบกระดุมหน้าและจัดพื้นที่พักฟื้น (เก้าอี้เอนหรือหมอนรูปลิ่ม)",
+    "en": "Prepare button-up shirts and set up your recovery space (recliner or wedge pillow).",
+    "uiContext": "Home — Phase 1 — Before Surgery (Preoperative Preparation) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.0.3",
+    "th": "นำหมายเลข HN และบัตรประชาชนติดตัวไปโรงพยาบาล",
+    "en": "Bring your HN and ID with you to the hospital.",
+    "uiContext": "Home — Phase 1 — Before Surgery (Preoperative Preparation) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.0",
+    "th": "ใส่สลิงตามคำแนะนำ แม้ขณะนอนหลับ เว้นแต่จะได้รับคำแนะนำเป็นอย่างอื่น",
+    "en": "Wear your sling as instructed — even while sleeping, unless told otherwise.",
+    "uiContext": "Home — Phase 2 — Weeks 0–6 (Passive Protection) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.1",
+    "th": "หากยังอยู่ในช่วงวันแรกๆ ให้ประคบเย็น 15-20 นาที ทุก 1-2 ชั่วโมง",
+    "en": "Ice the shoulder 15–20 min every 1–2 hours if you're still in the first few days.",
+    "uiContext": "Home — Phase 2 — Weeks 0–6 (Passive Protection) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.2",
+    "th": "รับประทานยาแก้ปวดก่อนที่จะปวดมาก ไม่ใช่หลังจากปวดแล้ว",
+    "en": "Take pain medication before pain becomes severe, not after.",
+    "uiContext": "Home — Phase 2 — Weeks 0–6 (Passive Protection) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.1.3",
+    "th": "ห้ามยกไหล่โดยออกแรงเอง — ปกป้องจุดที่ซ่อมแซม",
+    "en": "Do NOT actively lift your arm — protect the repair.",
+    "uiContext": "Home — Phase 2 — Weeks 0–6 (Passive Protection) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.0",
+    "th": "ใส่สลิงต่อไปตามที่ค่อยๆ ลดลง ตามคำแนะนำของนักกายภาพบำบัด",
+    "en": "Continue wearing the sling as it's gradually weaned, per your therapist's guidance.",
+    "uiContext": "Home — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.1",
+    "th": "เน้นการเคลื่อนไหวแบบมีผู้ช่วยและหลีกเลี่ยงการยกไหล่ชดเชย",
+    "en": "Focus on active-assisted motion and avoid shrugging.",
+    "uiContext": "Home — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.2",
+    "th": "ห้ามยกของหนักเกิน 0.5-1 กก.",
+    "en": "No lifting objects over 1–2 lbs.",
+    "uiContext": "Home — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.2.3",
+    "th": "ดูท่าบริหารประจำวันได้ที่แท็บ \"ท่าบริหาร\"",
+    "en": "Check the Exercises tab for today's movements.",
+    "uiContext": "Home — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.0",
+    "th": "ใช้น้ำหนักเบาและทำซ้ำมากๆ (15-20 ครั้ง)",
+    "en": "Keep resistance light and repetitions high (15–20).",
+    "uiContext": "Home — Phase 4 — Months 3–6 (Progressive Resistance) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.1",
+    "th": "หลีกเลี่ยงแรงต้านเหนือศีรษะหนักๆ หรือการเคลื่อนไหวที่รวดเร็วรุนแรง",
+    "en": "Avoid heavy overhead resistance or explosive movements.",
+    "uiContext": "Home — Phase 4 — Months 3–6 (Progressive Resistance) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.2",
+    "th": "กล้ามเนื้อล้าและปวดเมื่อยหลังบริหารถือเป็นเรื่องปกติ แต่ปวดแปลบไม่ใช่เรื่องปกติ",
+    "en": "Muscle soreness after exercise is normal; sharp pain is not.",
+    "uiContext": "Home — Phase 4 — Months 3–6 (Progressive Resistance) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.3.3",
+    "th": "ดูท่าบริหารประจำวันได้ที่แท็บ \"ท่าบริหาร\"",
+    "en": "Check the Exercises tab for today's movements.",
+    "uiContext": "Home — Phase 4 — Months 3–6 (Progressive Resistance) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.4.0",
+    "th": "วอร์มอัพให้เพียงพอก่อนเริ่มบริหาร",
+    "en": "Warm up thoroughly before loading.",
+    "uiContext": "Home — Phase 5 — Months 6–12 (Advanced Conditioning) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.4.1",
+    "th": "ตรวจสอบว่าควบคุมสะบักได้ดีก่อนเพิ่มแรงต้านหรือความเร็ว",
+    "en": "Confirm scapular control before increasing resistance or speed.",
+    "uiContext": "Home — Phase 5 — Months 6–12 (Advanced Conditioning) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.4.2",
+    "th": "ทำท่าบริหารดูแลรักษาต่อเนื่องตามที่ทีมผู้ดูแลแนะนำ",
+    "en": "Continue any maintenance exercises your team recommends.",
+    "uiContext": "Home — Phase 5 — Months 6–12 (Advanced Conditioning) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "todayReminders.4.3",
+    "th": "ค่อยๆ กลับไปทำกิจกรรมเฉพาะกีฬาหรืองานภายใต้การดูแล",
+    "en": "Gradually resume sport- or job-specific tasks under guidance.",
+    "uiContext": "Home — Phase 5 — Months 6–12 (Advanced Conditioning) reminders",
+    "class": "instruction"
+  },
+  {
+    "key": "care.0.title",
+    "th": "ก่อนการผ่าตัด",
+    "en": "Before Your Surgery",
+    "uiContext": "Care — Before Your Surgery",
+    "class": "ui"
+  },
+  {
+    "key": "care.0.items.0",
+    "th": "ปฏิบัติตามรายการเตรียมตัวก่อนผ่าตัดจากทีมศัลยแพทย์ (การงดอาหาร ยาที่ต้องงด และสิ่งที่ต้องเตรียมมา)",
+    "en": "Follow your pre-op checklist from your surgical team (fasting instructions, medications to pause, what to bring).",
+    "uiContext": "Care — Before Your Surgery",
+    "class": "instruction"
+  },
+  {
+    "key": "care.0.items.1",
+    "th": "ยาชาเฉพาะที่จะทำให้แขนชาไปหลายชั่วโมงหลังผ่าตัด ควรวางแผนรับประทานยาแก้ปวดมื้อแรกก่อนที่ยาชาจะหมดฤทธิ์",
+    "en": "Your nerve block will numb the arm for several hours after surgery — plan your first dose of oral pain medication before the block fully wears off.",
+    "uiContext": "Care — Before Your Surgery",
+    "class": "instruction"
+  },
+  {
+    "key": "care.0.items.2",
+    "th": "จัดเตรียมหมอนรูปลิ่มหรือเก้าอี้เอนสำหรับนอน และจัดวางของใช้ประจำวัน (โทรศัพท์ น้ำดื่ม รีโมท ของว่าง) ให้อยู่ในระดับเอวก่อนเข้ารับการผ่าตัด",
+    "en": "Set up a wedge pillow or recliner for sleeping, and stage daily essentials (phone, water, remote, snacks) within reach at waist height before you go in.",
+    "uiContext": "Care — Before Your Surgery",
+    "class": "instruction"
+  },
+  {
+    "key": "care.1.title",
+    "th": "การแต่งกาย (เสื้อผ้า)",
+    "en": "Dressing (Shirts)",
+    "uiContext": "Care — Dressing (Shirts)",
+    "class": "ui"
+  },
+  {
+    "key": "care.1.videoLabel",
+    "th": "วิธีสวมเสื้อขณะใส่สลิง",
+    "en": "How to dress with your sling",
+    "uiContext": "Care — Dressing (Shirts)",
+    "class": "ui"
+  },
+  {
+    "key": "care.1.items.0",
+    "th": "ใช้เสื้อแบบกระดุมหน้าหรือเสื้อกล้ามแบบหลวม",
+    "en": "Use button-up shirts or loose tank tops.",
+    "uiContext": "Care — Dressing (Shirts)",
+    "class": "instruction"
+  },
+  {
+    "key": "care.1.items.1",
+    "th": "ก้มตัวไปข้างหน้าเพื่อให้แขนข้างที่ผ่าตัดห้อยลงตามธรรมชาติ",
+    "en": "Lean forward to let the surgical arm hang.",
+    "uiContext": "Care — Dressing (Shirts)",
+    "class": "instruction"
+  },
+  {
+    "key": "care.1.items.2",
+    "th": "สวมแขนข้างที่ผ่าตัดเข้าไปในแขนเสื้อก่อน จากนั้นคลุมเสื้อรอบตัวและสวมแขนข้างที่ไม่ได้ผ่าตัดเข้าแขนเสื้ออีกข้าง",
+    "en": "Insert the surgical arm into the sleeve first, then wrap the shirt around and put the unaffected arm into the other sleeve.",
+    "uiContext": "Care — Dressing (Shirts)",
+    "class": "instruction"
+  },
+  {
+    "key": "care.2.title",
+    "th": "การดูแลแผลผ่าตัด",
+    "en": "Wound / Incision Care",
+    "uiContext": "Care — Wound / Incision Care",
+    "class": "ui"
+  },
+  {
+    "key": "care.2.items.0",
+    "th": "รักษาแผลให้สะอาด แห้ง และปิดผ้าปิดแผลไว้จนถึงวันนัดตรวจ เว้นแต่จะได้รับคำแนะนำเป็นอย่างอื่น",
+    "en": "Keep the dressing clean, dry, and in place until your follow-up visit, unless told otherwise.",
+    "uiContext": "Care — Wound / Incision Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.2.items.1",
+    "th": "การมีสารคัดหลั่งปนเลือดเล็กน้อยในช่วง 24–48 ชั่วโมงแรกถือเป็นเรื่องปกติ",
+    "en": "A small amount of blood-tinged drainage in the first 24–48 hours is normal.",
+    "uiContext": "Care — Wound / Incision Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.2.items.2",
+    "th": "ห้ามทาโลชั่น ขี้ผึ้ง หรือแป้งใกล้แผลผ่าตัด เว้นแต่จะได้รับคำแนะนำ",
+    "en": "Do not apply lotion, ointment, or powder near the incision unless instructed.",
+    "uiContext": "Care — Wound / Incision Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.3.title",
+    "th": "การอาบน้ำและการดูแลแผล",
+    "en": "Showering & Wound Care",
+    "uiContext": "Care — Showering & Wound Care",
+    "class": "ui"
+  },
+  {
+    "key": "care.3.items.0",
+    "th": "การอาบน้ำ: ทำได้ แต่ไม่ควรให้น้ำไหลผ่านแผลโดยตรง หากต้องการล้างใต้วงแขน ให้ก้มตัวและปล่อยแขนห้อยตามธรรมชาติ",
+    "en": "Showering: allowed, but do not let water run directly onto the incision. To wash underarms, lean forward and let the arm hang naturally.",
+    "uiContext": "Care — Showering & Wound Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.3.items.1",
+    "th": "การแช่น้ำ/ว่ายน้ำ: หลีกเลี่ยงการแช่แผลในน้ำ",
+    "en": "Bathing/swimming: avoid submerging the incision in water.",
+    "uiContext": "Care — Showering & Wound Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.3.items.2",
+    "th": "ไหมเย็บ/เทปปิดแผล: จะตัดไหมในวันที่ 7–10 หลังผ่าตัด แล้วปิดด้วยเทปกาวสีขาว (Steri-Strips) ซึ่งจะค่อยๆ ลอกหลุดเองภายใน 1–3 สัปดาห์",
+    "en": "Sutures/strips: stitches are removed at 7–10 days and replaced with white Steri-Strips, which peel off naturally over 1–3 weeks.",
+    "uiContext": "Care — Showering & Wound Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.4.title",
+    "th": "การควบคุมความเจ็บปวดและบวม",
+    "en": "Pain & Swelling Control",
+    "uiContext": "Care — Pain & Swelling Control",
+    "class": "ui"
+  },
+  {
+    "key": "care.4.videoLabel",
+    "th": "การจัดการความปวดและบวม",
+    "en": "Managing pain and swelling",
+    "uiContext": "Care — Pain & Swelling Control",
+    "class": "ui"
+  },
+  {
+    "key": "care.4.items.0",
+    "th": "ยาชาเฉพาะที่จะค่อยๆ หมดฤทธิ์ภายในไม่กี่ชั่วโมง ควรรับประทานยาแก้ปวดมื้อแรกก่อนที่ยาชาจะหมดฤทธิ์ ไม่ใช่หลังจากนั้น",
+    "en": "Your nerve block will wear off gradually over several hours — take your first dose of prescribed pain medication before it fully fades, not after.",
+    "uiContext": "Care — Pain & Swelling Control",
+    "class": "instruction"
+  },
+  {
+    "key": "care.4.items.1",
+    "th": "รับประทานยาแก้ปวดตามที่แพทย์สั่ง — ได้ผลดีที่สุดเมื่อรับประทานก่อนที่จะปวดมาก",
+    "en": "Take pain medication as prescribed — it works best before pain becomes severe.",
+    "uiContext": "Care — Pain & Swelling Control",
+    "class": "instruction"
+  },
+  {
+    "key": "care.4.items.2",
+    "th": "ประคบเย็นครั้งละ 15–20 นาที ทุก 1–2 ชั่วโมงในช่วงวันแรกๆ จากนั้นตามความสบาย",
+    "en": "Ice the shoulder 15–20 minutes every 1–2 hours for the first few days, then as needed.",
+    "uiContext": "Care — Pain & Swelling Control",
+    "class": "instruction"
+  },
+  {
+    "key": "care.4.items.3",
+    "th": "พักโดยมีหมอนรองรับแขนเพื่อช่วยลดอาการบวม",
+    "en": "Rest with the arm supported on pillows to help reduce swelling.",
+    "uiContext": "Care — Pain & Swelling Control",
+    "class": "instruction"
+  },
+  {
+    "key": "care.5.title",
+    "th": "การดูแลสลิงพยุงแขน",
+    "en": "Sling Care",
+    "uiContext": "Care — Sling Care",
+    "class": "ui"
+  },
+  {
+    "key": "care.5.videoLabel",
+    "th": "วิธีใส่สลิงพยุงแขนอย่างถูกต้อง",
+    "en": "How to wear your sling correctly",
+    "uiContext": "Care — Sling Care",
+    "class": "ui"
+  },
+  {
+    "key": "care.5.items.0",
+    "th": "ใส่สลิงตามคำแนะนำอย่างเคร่งครัด ถอดออกเฉพาะเพื่อทำความสะอาด ประคบเย็น หรือทำท่าบริหารที่ได้รับอนุญาต",
+    "en": "Wear the sling exactly as instructed; remove only for hygiene, icing, or approved exercises.",
+    "uiContext": "Care — Sling Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.5.items.1",
+    "th": "ทำความสะอาดและเช็ดรักแร้กับผิวหนังใต้สายสลิงให้แห้งทุกวัน เพื่อป้องกันการระคายเคืองและกลิ่น",
+    "en": "Clean and dry the armpit and skin under the strap daily to prevent irritation and odor.",
+    "uiContext": "Care — Sling Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.5.items.2",
+    "th": "ตรวจดูผิวหนังใต้สายสลิงและรักแร้ทุกวัน ว่ามีรอยแดง ผื่น หรือระคายเคืองหรือไม่",
+    "en": "Check the skin under the strap and armpit daily for redness, rash, or irritation.",
+    "uiContext": "Care — Sling Care",
+    "class": "instruction"
+  },
+  {
+    "key": "care.6.title",
+    "th": "ข้อควรระวังด้านกิจกรรม",
+    "en": "Activity Precautions",
+    "uiContext": "Care — Activity Precautions",
+    "class": "ui"
+  },
+  {
+    "key": "care.6.videoLabel",
+    "th": "ข้อควรระวังด้านกิจกรรม",
+    "en": "Activity precautions to follow",
+    "uiContext": "Care — Activity Precautions",
+    "class": "ui"
+  },
+  {
+    "key": "care.6.items.0",
+    "th": "ห้ามขับรถขณะที่ยังใส่สลิงหรือขณะรับประทานยาแก้ปวดตามใบสั่งแพทย์",
+    "en": "No driving while wearing the sling or taking prescription pain medication.",
+    "uiContext": "Care — Activity Precautions",
+    "class": "instruction"
+  },
+  {
+    "key": "care.6.items.1",
+    "th": "ห้ามยก ผลัก หรือดึงสิ่งของด้วยแขนข้างที่ผ่าตัด",
+    "en": "No lifting, pushing, or pulling with the operated arm.",
+    "uiContext": "Care — Activity Precautions",
+    "class": "instruction"
+  },
+  {
+    "key": "care.6.items.2",
+    "th": "หลีกเลี่ยงการสูบบุหรี่หรือผลิตภัณฑ์นิโคติน เนื่องจากจะทำให้เอ็นและกระดูกหายช้าลง",
+    "en": "Avoid smoking or nicotine products — they slow tendon and bone healing.",
+    "uiContext": "Care — Activity Precautions",
+    "class": "instruction"
+  },
+  {
+    "key": "care.7.title",
+    "th": "ทำความเข้าใจการหายของร่างกาย",
+    "en": "Understanding Your Healing",
+    "uiContext": "Care — Understanding Your Healing",
+    "class": "ui"
+  },
+  {
+    "key": "care.7.items.0",
+    "th": "เอ็นต้องใช้เวลายึดติดกับกระดูกใหม่ นี่คือเหตุผลที่ต้องจำกัดการเคลื่อนไหวอย่างเคร่งครัดในช่วงแรก แม้ว่าแผลภายนอกจะหายเร็วกว่าก็ตาม",
+    "en": "Your tendon needs time to anchor back onto bone — this is why movement is strictly limited in the first weeks, even though the incision itself heals faster.",
+    "uiContext": "Care — Understanding Your Healing",
+    "class": "education"
+  },
+  {
+    "key": "care.7.items.1",
+    "th": "กล้ามเนื้อล้าและปวดเมื่อยเล็กน้อยหลังบริหารถือเป็นเรื่องปกติ แต่หากปวดแปลบทันทีหรือรู้สึกเหมือนมีอะไรฉีกขาด ควรหยุดและติดต่อทีมผู้ดูแลทันที",
+    "en": "Muscle fatigue and mild soreness after exercise is normal; a sharp, sudden, or tearing pain is not — stop and contact your team if that happens.",
+    "uiContext": "Care — Understanding Your Healing",
+    "class": "education"
+  },
+  {
+    "key": "care.7.items.2",
+    "th": "พยายามผ่อนคลายสะบักและไม่ยกไหล่ขณะบริหาร การยกไหล่ชดเชยเป็นรูปแบบที่พบบ่อยและควรหลีกเลี่ยง",
+    "en": "Keep your shoulder blade relaxed and down during exercises — shrugging or hiking your shoulder is a common compensation pattern to avoid.",
+    "uiContext": "Care — Understanding Your Healing",
+    "class": "education"
+  },
+  {
+    "key": "care.7.items.3",
+    "th": "การขับรถ งานบ้านเบาๆ และงานโต๊ะทำงาน มักกลับมาทำได้ในช่วงเดือนที่ 3–6 เมื่อแพทย์ยืนยันว่าท่านพร้อมแล้ว",
+    "en": "Driving, light chores, and desk work are typically reintroduced around months 3–6, once your surgeon confirms you're ready.",
+    "uiContext": "Care — Understanding Your Healing",
+    "class": "education"
+  },
+  {
+    "key": "care.7.items.4",
+    "th": "เมื่อฟื้นตัวเต็มที่แล้ว การทำท่าบริหารดูแลรักษาอย่างสม่ำเสมอที่บ้านจะช่วยรักษาสมดุลกล้ามเนื้อหัวไหล่และลดความเสี่ยงการบาดเจ็บซ้ำในระยะยาว",
+    "en": "Once fully recovered, a simple home maintenance routine helps keep your rotator cuff balanced and lowers the risk of re-injury long-term.",
+    "uiContext": "Care — Understanding Your Healing",
+    "class": "education"
+  },
+  {
+    "key": "care.8.title",
+    "th": "การนัดตรวจครั้งแรก",
+    "en": "First Follow-up Visit",
+    "uiContext": "Care — First Follow-up Visit",
+    "class": "ui"
+  },
+  {
+    "key": "care.8.items.0",
+    "th": "โดยทั่วไปจะนัด 1–2 สัปดาห์หลังผ่าตัด เพื่อตรวจแผลและยืนยันระยะการฟื้นฟูของท่าน",
+    "en": "Usually scheduled 1–2 weeks after surgery, to check the wound and confirm your rehab phase.",
+    "uiContext": "Care — First Follow-up Visit",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_1.name",
+    "th": "ยืนยันคำแนะนำก่อนผ่าตัด",
+    "en": "Confirm pre-op instructions",
+    "uiContext": "Exercises — Phase 1 — Before Surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_1.desc",
+    "th": "ปฏิบัติตามคำแนะนำการงดอาหารและการปรับยาจากทีมศัลยแพทย์",
+    "en": "Follow the fasting and medication-pause instructions from your surgical team.",
+    "uiContext": "Exercises — Phase 1 — Before Surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_2.name",
+    "th": "จัดหาผู้ช่วยดูแลที่บ้าน",
+    "en": "Arrange help at home",
+    "uiContext": "Exercises — Phase 1 — Before Surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_2.desc",
+    "th": "จัดหาผู้ช่วยดูแลท่านในช่วงวันแรกๆ หลังผ่าตัด",
+    "en": "Arrange for someone to assist you for the first few days after surgery.",
+    "uiContext": "Exercises — Phase 1 — Before Surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_3.name",
+    "th": "เตรียมเสื้อผ้าแบบกระดุมหน้า",
+    "en": "Prepare button-up shirts",
+    "uiContext": "Exercises — Phase 1 — Before Surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_3.desc",
+    "th": "เตรียมเสื้อแบบกระดุมหน้าหรือซิปที่ใส่ได้ด้วยแขนข้างเดียว — ดูวิธีสวมใส่ได้ที่แท็บการดูแล",
+    "en": "Set aside button-up or zip-front shirts you can wear one-armed — see the Care tab for how to dress.",
+    "uiContext": "Exercises — Phase 1 — Before Surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.0.pre_4.name",
+    "th": "จัดเตรียมพื้นที่พักฟื้น",
+    "en": "Set up your recovery space",
+    "uiContext": "Exercises — Phase 1 — Before Surgery (Preoperative Preparation)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.0.pre_4.desc",
+    "th": "จัดเตรียมเก้าอี้เอนหรือหมอนรูปลิ่ม และจัดวางของใช้ประจำวันให้อยู่ในระดับเอว",
+    "en": "Set up a recliner or wedge pillow, and stage daily essentials at waist height.",
+    "uiContext": "Exercises — Phase 1 — Before Surgery (Preoperative Preparation)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_1.name",
+    "th": "แกว่งแขนแบบเพนดูลัม (Codman)",
+    "en": "Pendulum (Codman) swings",
+    "uiContext": "Exercises — Phase 2 — Weeks 0–6 (Passive Protection)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_1.desc",
+    "th": "ก้มตัวและปล่อยแขนห้อย แกว่งเป็นวงกลมเล็กๆ เบาๆ",
+    "en": "Lean forward and let the arm hang, swinging gently in small circles.",
+    "uiContext": "Exercises — Phase 2 — Weeks 0–6 (Passive Protection)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_2.name",
+    "th": "ท่าบริหารข้อมือและข้อศอก",
+    "en": "Wrist & elbow exercises",
+    "uiContext": "Exercises — Phase 2 — Weeks 0–6 (Passive Protection)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_2.desc",
+    "th": "งอข้อมือไปมา และงอ-เหยียดข้อศอกช้าๆ",
+    "en": "Bend your wrist back and forth, and bend and straighten your elbow slowly.",
+    "uiContext": "Exercises — Phase 2 — Weeks 0–6 (Passive Protection)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_3.name",
+    "th": "กำมือปั๊มและบีบลูกบอล",
+    "en": "Grip pump & ball squeeze",
+    "uiContext": "Exercises — Phase 2 — Weeks 0–6 (Passive Protection)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_3.desc",
+    "th": "กำและแบมือ หรือบีบลูกบอลนุ่มเบาๆ",
+    "en": "Open and close your hand, or gently squeeze a soft ball.",
+    "uiContext": "Exercises — Phase 2 — Weeks 0–6 (Passive Protection)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.1.p1_4.name",
+    "th": "ยกแขนแบบพาสซีฟ",
+    "en": "Passive forward elevation",
+    "uiContext": "Exercises — Phase 2 — Weeks 0–6 (Passive Protection)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.1.p1_4.desc",
+    "th": "ให้นักกายภาพบำบัดหรือรอกช่วยยก — ห้ามออกแรงยกเอง",
+    "en": "Therapist-assisted or with a pulley — do not lift the arm yourself.",
+    "uiContext": "Exercises — Phase 2 — Weeks 0–6 (Passive Protection)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_1.name",
+    "th": "ยกแขนด้วยไม้ / หมุนไหล่ออกด้านนอก",
+    "en": "Wand/stick elevation & external rotation",
+    "uiContext": "Exercises — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_1.desc",
+    "th": "ใช้ไม้ช่วยยกแขนและหมุนไหล่ออกด้านนอก",
+    "en": "Use a wand or stick to help raise and rotate the arm.",
+    "uiContext": "Exercises — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_2.name",
+    "th": "ไต่กำแพงด้วยนิ้วมือ",
+    "en": "Wall crawls / ladder climbs",
+    "uiContext": "Exercises — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_2.desc",
+    "th": "ใช้นิ้วมือไต่ขึ้นตามผนังหรือบันไดไต่",
+    "en": "Walk your fingers up a wall or ladder rungs.",
+    "uiContext": "Exercises — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_3.name",
+    "th": "ยกแขนออกแรงเองท่านอนหงาย",
+    "en": "Supine active arm raises",
+    "uiContext": "Exercises — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_3.desc",
+    "th": "นอนหงายและยกแขนขึ้นเองภายในระยะที่สบาย",
+    "en": "Lying on your back, actively raise your arm within comfort.",
+    "uiContext": "Exercises — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.2.p2_4.name",
+    "th": "บีบสะบัก",
+    "en": "Scapular squeezes",
+    "uiContext": "Exercises — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.2.p2_4.desc",
+    "th": "ดึงสะบักเข้าหากันและกดลง",
+    "en": "Retract and depress your shoulder blades.",
+    "uiContext": "Exercises — Phase 3 — Weeks 6–12 (Active-Assisted / Active Motion)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.3.p3_3.name",
+    "th": "หมุนไหล่ออกด้านนอกท่านอนตะแคง",
+    "en": "Sidelying dumbbell external rotation",
+    "uiContext": "Exercises — Phase 4 — Months 3–6 (Progressive Resistance)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.3.p3_3.desc",
+    "th": "นอนตะแคงและหมุนไหล่ออกด้านนอก ถือดัมเบล 1–3 ปอนด์",
+    "en": "Lying on your side, rotate the arm holding a 1–3 lb dumbbell.",
+    "uiContext": "Exercises — Phase 4 — Months 3–6 (Progressive Resistance)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_3.name",
+    "th": "ท่ายกแขนแนวทแยงแบบ PNF",
+    "en": "PNF diagonal lift patterns",
+    "uiContext": "Exercises — Phase 5 — Months 6–12 (Advanced Conditioning)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_3.desc",
+    "th": "ฝึกยกแขนตามแนวทแยงมุมเพื่อความแข็งแรงตามการใช้งานจริง",
+    "en": "Diagonal lifting patterns for functional strength.",
+    "uiContext": "Exercises — Phase 5 — Months 6–12 (Advanced Conditioning)",
+    "class": "instruction"
+  },
+  {
+    "key": "exercises.4.p4_4.name",
+    "th": "ท่าจำลองกีฬา/งานเฉพาะทาง",
+    "en": "Sport / job-specific simulation drills",
+    "uiContext": "Exercises — Phase 5 — Months 6–12 (Advanced Conditioning)",
+    "class": "ui"
+  },
+  {
+    "key": "exercises.4.p4_4.desc",
+    "th": "ฝึกท่าทางที่จำลองกีฬาหรืองานที่ต้องกลับไปทำ",
+    "en": "Practice the specific movements of your sport or job.",
+    "uiContext": "Exercises — Phase 5 — Months 6–12 (Advanced Conditioning)",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.0",
+    "th": "นี่คือการเตรียมตัวเท่านั้น ยังไม่ต้องทำท่าบริหารใดๆ — ทำรายการนี้ให้ครบก่อนถึงวันผ่าตัด",
+    "en": "This is preparation only — no exercises are required yet. Work through this checklist before your surgery date.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.1",
+    "th": "ห้ามยกไหล่โดยออกแรงเองโดยเด็ดขาด ห้ามเกร็งกล้ามเนื้อ rotator cuff ข้างที่ผ่าตัด ต้องมีที่รองรับแขนตลอดเวลาเมื่อถอดสลิงออก",
+    "en": "Strictly NO active shoulder elevation. Do not fire the operative rotator cuff muscles. Keep the arm supported at all times when out of the sling.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.2",
+    "th": "หลีกเลี่ยงการยกไหล่ชดเชย หยุดทันทีหากรู้สึกปวดแปลบหรือหนีบ ห้ามยกของหนักเกิน 0.5–1 กก.",
+    "en": "Avoid compensation shrugging. Stop motion at the point of sharp pain or pinching. No lifting objects over 1–2 lbs.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.3",
+    "th": "ใช้น้ำหนักเบาและทำซ้ำมากๆ (15–20 ครั้ง) หลีกเลี่ยงแรงต้านเหนือศีรษะหนักๆ หรือการเคลื่อนไหวที่รวดเร็วรุนแรง",
+    "en": "Keep weights low and reps high (15–20). Avoid heavy overhead resistance or explosive movements.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "exerciseCaution.4",
+    "th": "วอร์มอัพให้เพียงพอก่อนเริ่ม ตรวจสอบว่าควบคุมสะบักได้ดีก่อนเพิ่มแรงต้านหรือความเร็ว",
+    "en": "Warm up thoroughly before loading. Confirm full scapular control before increasing resistance or speed.",
+    "uiContext": "Exercises — phase caution",
+    "class": "instruction"
+  },
+  {
+    "key": "pastPhaseNote",
+    "th": "ท่านผ่านระยะนี้ไปแล้ว แสดงไว้เพื่อดูย้อนหลังเท่านั้น",
+    "en": "You have already completed this phase. Shown for reference only.",
+    "uiContext": "Home",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.0.title",
+    "th": "ท่ากึ่งเอนหลัง",
+    "en": "Semi-reclined",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.0.desc",
+    "th": "ผู้ป่วยหลายท่านจะนอนหลับสบายขึ้นในท่ากึ่งเอนหลัง เช่น บนเก้าอี้เอนได้ หรือใช้หมอนหลายใบพิงหลัง ในช่วง 1–2 สัปดาห์แรก",
+    "en": "Many patients sleep more comfortably semi-reclined — in a recliner, or propped up on several pillows — for the first 1–2 weeks.",
+    "uiContext": "Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "sleep.1.title",
+    "th": "นอนหงาย",
+    "en": "Back sleeping",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.1.desc",
+    "th": "ใช้หมอนรองข้อศอกและแขนท่อนล่าง โดยให้มือวางพักบนหน้าท้อง",
+    "en": "Support your elbow and forearm on a pillow, with your hand resting on your stomach.",
+    "uiContext": "Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "sleep.2.title",
+    "th": "นอนตะแคง (เฉพาะด้านที่ไม่ได้ผ่าตัด)",
+    "en": "Side sleeping (unaffected side only)",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.2.desc",
+    "th": "กอดหมอนโดยให้แขนวางพักบนหมอนเต็มที่ ข้อศอกอยู่ด้านหน้าหัวไหล่เล็กน้อย",
+    "en": "Hug a pillow with your arm fully resting on it, elbow slightly forward of your shoulder.",
+    "uiContext": "Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "sleep.3.title",
+    "th": "ข้อห้าม",
+    "en": "Avoid",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "sleep.3.desc",
+    "th": "ห้ามนอนทับไหล่ข้างที่ผ่าตัดโดยตรง",
+    "en": "Never lie directly on the operated shoulder.",
+    "uiContext": "Sleep",
+    "class": "instruction"
+  },
+  {
+    "key": "normalNote",
+    "th": "ปกติในช่วง 48 ชั่วโมงแรก: บวมและช้ำบริเวณแขน/หน้าอกปานกลาง มีไข้ต่ำกว่า 38.0°C และมีอาการชาชั่วคราวจากยาชาเฉพาะที่",
+    "en": "Normal in the first 48 hours: moderate local swelling, bruising extending down the arm or chest, mild temperature under 38.0°C (100.4°F), and temporary numbness from your nerve block.",
+    "uiContext": "Alert — what is normal",
+    "class": "education"
+  },
+  {
+    "key": "sleepVideoTitle",
+    "th": "ท่านอนที่ถูกต้อง",
+    "en": "Proper Sleeping Position",
+    "uiContext": "Sleep",
+    "class": "ui"
+  },
+  {
+    "key": "emergencyLabel",
+    "th": "ฉุกเฉิน — ติดต่อคลินิกหรือห้องฉุกเฉินทันที",
+    "en": "Emergency — Contact Clinic or ER Immediately",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.0",
+    "th": "มีไข้สูงกว่า 38.3°C หรือหนาวสั่นต่อเนื่อง",
+    "en": "Fever above 38.3°C (101°F) or persistent chills",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.1",
+    "th": "แดงลามขยายวง ร้อนบริเวณแผล หรือมีเส้นแดงลามจากแผล",
+    "en": "Spreading redness, warmth, or red streaks extending from the incision",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.2",
+    "th": "มีสารคัดหลั่งเป็นหนอง มีกลิ่นเหม็น หรือขุ่น จากแผลผ่าตัด",
+    "en": "Pus-like, foul-smelling, or cloudy drainage from the surgical wound",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.3",
+    "th": "บวมรุนแรงขึ้นเรื่อยๆ หรือปวดตุบๆ ที่แขนท่อนล่าง ข้อมือ หรือน่อง (อาจเป็นลิ่มเลือด)",
+    "en": "Progressive, severe swelling or throbbing pain in the forearm, wrist, or calf (possible blood clot)",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.4",
+    "th": "เจ็บหน้าอก หายใจถี่ขึ้นทันที หรือไอเป็นเลือด — ควรไปห้องฉุกเฉินทันที",
+    "en": "Chest pain, sudden shortness of breath, or coughing up blood — seek emergency care immediately",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.5",
+    "th": "ได้ยินเสียง \"ป๊อก\" หรือรู้สึกเหมือนมีอะไรฉีกขาดทันที ร่วมกับปวดรุนแรงและขยับไม่ได้",
+    "en": "A sudden, audible \"pop\" or tearing sensation with sudden severe pain and loss of function",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "emergencyFlags.6",
+    "th": "ชา รู้สึกซ่า หรือขยับมือไม่ได้มากขึ้น หลังยาชาเฉพาะที่หมดฤทธิ์แล้ว",
+    "en": "New or worsening numbness, tingling, or loss of movement in the hand after the nerve block has fully worn off",
+    "uiContext": "Alert — red flags",
+    "class": "warning"
+  },
+  {
+    "key": "tabResources",
+    "th": "แหล่งข้อมูล",
+    "en": "Resources",
+    "uiContext": "Navigation",
+    "class": "ui"
+  },
+  {
+    "key": "privacyTitle",
+    "th": "ความเป็นส่วนตัวของคุณ",
+    "en": "Your Privacy",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacy.0.text",
+    "th": "คำตอบของคุณถูกเก็บไว้ในโทรศัพท์เครื่องนี้ หากล้างข้อมูลแอปหรือเปลี่ยนเครื่อง ข้อมูลจะหายไป",
+    "en": "Your answers are stored on this phone. If you clear the app's data or switch phones, this data will be lost.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacy.1.text",
+    "th": "ข้อมูลของคุณใช้เพื่อแสดงความก้าวหน้าของอาการไหล่ และแนะนำการดูแลที่เหมาะสมกับคุณเท่านั้น",
+    "en": "Your data is used only to show your shoulder's progress and recommend care suited to you.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacy.2.text",
+    "th": "ผลบันทึกประจำวันของคุณจะถูกส่งไปยังทีมผู้ดูแล บันทึกประวัติเพื่อให้การรักษาที่เหมาะสม",
+    "en": "Your daily check-in results are sent to your care team and recorded to support your treatment.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacy.3.text",
+    "th": "ไม่มีการส่งข้อมูลใดก่อนที่คุณจะยินยอม และแอปไม่ส่งข้อมูลเองโดยอัตโนมัติเบื้องหลัง",
+    "en": "No data is sent anywhere before you give consent, and the app never sends data automatically in the background.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacy.4.text",
+    "th": "หากคุณใช้โทรศัพท์ร่วมกับผู้อื่น โปรดทราบว่าผู้ที่เปิดแอปนี้จะเห็นข้อมูลของคุณได้",
+    "en": "If you share this phone with someone else, be aware that anyone who opens this app can see your data.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "privacy.5.text",
+    "th": "คุณสามารถลบข้อมูลทั้งหมดบนเครื่องนี้ได้ทุกเมื่อ ด้วยปุ่ม \"รีเซ็ตข้อมูลแอป\" ที่ด้านล่างของแท็บหน้าแรก",
+    "en": "You can delete all data on this device at any time using the \"Reset App Data\" button at the bottom of the Home tab.",
+    "uiContext": "Privacy",
+    "class": "ui"
+  },
+  {
+    "key": "resourcesTitle",
+    "th": "แหล่งข้อมูลเพิ่มเติม",
+    "en": "Additional Resources",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resourcesIntro",
+    "th": "แหล่งข้อมูลภายนอกที่อาจเป็นประโยชน์ระหว่างการฟื้นตัวของท่าน",
+    "en": "A few outside resources you may find helpful during your recovery.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.0.title",
+    "th": "เส้นเอ็นข้อไหล่ฉีกขาดคืออะไร?",
+    "en": "What Is a Rotator Cuff Tear?",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.0.desc",
+    "th": "ภาพรวมสาเหตุ อาการ การวินิจฉัย และแนวทางการรักษา",
+    "en": "Overview of causes, symptoms, diagnosis, and treatment options.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.0.source",
+    "th": "คณะกายภาพบำบัด มหาวิทยาลัยมหิดล",
+    "en": "Mahidol University Faculty of Physical Therapy",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.1.title",
+    "th": "คู่มือดูแลตัวเองและท่าบริหาร",
+    "en": "Self-Care & Exercise Guide",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.1.desc",
+    "th": "การดูแลตัวเองและท่าบริหารแต่ละระยะ ทั้งแบบผ่าตัดและไม่ผ่าตัด",
+    "en": "Phase-by-phase self-care and exercises for recovery, with or without surgery.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.1.source",
+    "th": "คณะกายภาพบำบัด มหาวิทยาลัยมหิดล",
+    "en": "Mahidol University Faculty of Physical Therapy",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.2.title",
+    "th": "วิดีโอสาธิตท่าบริหาร",
+    "en": "Exercise Demonstration Video",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.2.desc",
+    "th": "วิดีโอจากชุดวิดีโอให้ความรู้ด้านกายภาพบำบัด",
+    "en": "A video from a physical therapy education playlist.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.2.source",
+    "th": "YouTube",
+    "en": "YouTube",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.3.title",
+    "th": "ท่ายืดหัวไหล่ระยะแรกหลังผ่าตัด",
+    "en": "Early Shoulder Stretches After Surgery",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.3.desc",
+    "th": "ท่าเคลื่อนไหวเบาๆ เพื่อคงช่วงการเคลื่อนไหวและป้องกันข้อติด เริ่มจากท่าแกว่งแขนขณะใส่สลิง",
+    "en": "Gentle movements to keep range of motion and prevent stiffness, starting with the pendulum exercise in your sling.",
+    "uiContext": "Resources",
+    "class": "ui"
+  },
+  {
+    "key": "resources.3.source",
+    "th": "YouTube",
+    "en": "YouTube",
+    "uiContext": "Resources",
+    "class": "ui"
+  }
+]

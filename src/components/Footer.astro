@@ -1,0 +1,52 @@
+---
+import Container from './Container.astro';
+import { t, type Locale } from '../i18n/ui';
+import { localizePath, formatDate } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const tr = t(locale);
+const year = new Date().getFullYear();
+const builtAt = formatDate(new Date(), locale);
+
+const links = [
+  { path: '/about', label: tr('footer.about') },
+  { path: '/about/author/sorawut', label: tr('footer.author') },
+  { path: '/disclaimer', label: tr('footer.disclaimerLink') },
+  { path: '/privacy', label: tr('footer.privacy') },
+  { path: '/editorial-policy', label: tr('footer.editorial') },
+  { path: '/contact', label: tr('footer.contact') },
+];
+---
+
+<footer class="border-t border-border bg-surface py-10">
+  <Container>
+    <p class="mb-6 max-w-[68ch] text-[0.95em] text-muted">
+      {tr('footer.disclaimer')}
+    </p>
+
+    <nav aria-label={tr('nav.about')}>
+      <ul class="m-0 mb-6 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-[0.95em]">
+        {
+          links.map((link) => (
+            <li>
+              <a href={localizePath(link.path, locale)} class="text-ink no-underline hover:underline">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <p class="m-0 text-sm text-muted">
+      <strong class="font-semibold text-warning-ink">{tr('footer.emergency')}</strong>
+    </p>
+    <p class="m-0 mt-2 text-sm text-muted">
+      © {year} {tr('site.name')} · {tr('footer.rights')} · {tr('footer.lastBuilt')} {builtAt}
+    </p>
+  </Container>
+</footer>

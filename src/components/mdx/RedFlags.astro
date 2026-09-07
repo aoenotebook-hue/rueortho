@@ -1,0 +1,29 @@
+---
+import { t } from '../../i18n/ui';
+import { getLocaleFromUrl } from '../../i18n/utils';
+
+interface Props {
+  /** Pass `frontmatter.redFlags` so the list is never written twice. */
+  flags?: string[];
+}
+
+const { flags = [] } = Astro.props;
+const tr = t(getLocaleFromUrl(Astro.url));
+---
+
+{
+  flags.length > 0 && (
+    <aside
+      class="red-flags my-7 rounded-[10px] border border-s-4 border-warning-border bg-warning-ground p-5 text-warning-ink"
+      role="note"
+    >
+      <p class="m-0 mb-2 font-semibold">{tr('article.redFlagsTitle')}</p>
+      <p class="m-0 mb-3">{tr('article.redFlagsUrgent')}</p>
+      <ul class="m-0 list-disc ps-5">
+        {flags.map((flag) => (
+          <li class="mt-1">{flag}</li>
+        ))}
+      </ul>
+    </aside>
+  )
+}

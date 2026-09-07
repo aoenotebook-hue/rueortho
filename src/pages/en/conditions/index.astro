@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ConditionsIndex from '../../../components/ConditionsIndex.astro';
+import { t } from '../../../i18n/ui';
+
+const locale = 'en' as const;
+const tr = t(locale);
+---
+
+<BaseLayout title={tr('nav.conditions')} description={tr('site.description')}>
+  <ConditionsIndex locale={locale} />
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import { t } from '../../i18n/ui';
+import { getLocaleFromUrl } from '../../i18n/utils';
+
+/**
+ * A 3–5 bullet summary placed at the top of an article body. The locale comes
+ * from the URL, so MDX authors never pass it.
+ */
+const tr = t(getLocaleFromUrl(Astro.url));
+---
+
+<aside class="key-facts my-7 rounded-[10px] border border-info-border bg-info-ground p-5 text-info-ink">
+  <h2 class="mt-0! mb-3 text-[1.125rem]">{tr('article.keyFacts')}</h2>
+  <div class="key-facts-body">
+    <slot />
+  </div>
+</aside>
+
+<style is:global>
+  .key-facts-body ul {
+    margin: 0;
+    padding-inline-start: 1.3em;
+    list-style: disc;
+  }
+
+  .key-facts-body li + li {
+    margin-top: 0.45em;
+  }
+
+  .key-facts-body p:last-child {
+    margin-bottom: 0;
+  }
+</style>

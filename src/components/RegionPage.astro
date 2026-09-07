@@ -1,0 +1,48 @@
+---
+import Container from './Container.astro';
+import Card from './Card.astro';
+import { t, type Locale } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+import { getRegion, type RegionId } from '../data/regions';
+import { getConditionsByRegion } from '../lib/conditions';
+
+interface Props {
+  locale: Locale;
+  region: RegionId;
+}
+
+const { locale, region: regionId } = Astro.props;
+const tr = t(locale);
+const region = getRegion(regionId);
+const conditions = await getConditionsByRegion(locale, regionId);
+---
+
+<Container>
+  <div class="py-10">
+    <nav aria-label={tr('a11y.breadcrumb')} class="mb-6 text-sm text-muted">
+      <a href={localizePath('/', locale)} class="text-muted">{tr('nav.home')}</a>
+      <span aria-hidden="true"> / </span>
+      <a href={localizePath('/conditions', locale)} class="text-muted">{tr('nav.conditions')}</a>
+      <span aria-hidden="true"> / </span>
+      <span>{region.label[locale]}</span>
+    </nav>
+
+    <h1>{region.label[locale]}</h1>
+    {region.intro && <p class="max-w-[68ch] text-muted">{region.intro[locale]}</p>}
+
+    <ul class="m-0 mt-8 grid list-none grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-4 p-0">
+      {
+        conditions.map((entry) => (
+          <li>
+            <Card
+              href={localizePath(`/conditions/${entry.data.slug}`, locale)}
+              title={entry.data.title}
+              summary={entry.data.summary}
+              locale={locale}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Container>
