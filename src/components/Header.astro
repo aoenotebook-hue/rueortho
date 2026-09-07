@@ -5,9 +5,14 @@ import { getAlternatePath, localizePath, stripLocale } from '../i18n/utils';
 
 interface Props {
   locale: Locale;
+  /**
+   * Where the language switch should point when this page has no counterpart
+   * in the other language — the 404, for instance, which exists only once.
+   */
+  alternateHref?: string;
 }
 
-const { locale } = Astro.props;
+const { locale, alternateHref } = Astro.props;
 const tr = t(locale);
 const alternate = getAlternatePath(Astro.url);
 const here = stripLocale(Astro.url.pathname).replace(/\/$/, '') || '/';
@@ -71,7 +76,7 @@ const navItems = [
           }
           <li>
             <a
-              href={alternate.path}
+              href={alternateHref ?? alternate.path}
               hreflang={alternate.locale}
               aria-label={tr('lang.switchLabel')}
               class="block rounded-[6px] border border-border px-3 py-2 text-ink no-underline hover:border-accent"

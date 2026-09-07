@@ -15,6 +15,36 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'ignore',
 
+  /**
+   * Astro hashes every inline script and style it emits, so the policy below
+   * needs no 'unsafe-inline'. Notes on the non-obvious entries:
+   *  - 'wasm-unsafe-eval': Pagefind runs its index in WebAssembly, and search
+   *    silently fails without it.
+   *  - fonts.googleapis.com is a *stylesheet* host, gstatic serves the fonts.
+   *  - youtube-nocookie is only reached after a reader presses play on an
+   *    ExerciseCard facade.
+   */
+  security: {
+    csp: {
+      directives: [
+        "default-src 'self'",
+        "img-src 'self' data:",
+        "font-src 'self' https://fonts.gstatic.com",
+        "frame-src https://www.youtube-nocookie.com",
+        "connect-src 'self' https://cloudflareinsights.com",
+        "base-uri 'none'",
+        "form-action 'self'",
+        "object-src 'none'",
+      ],
+      styleDirective: {
+        resources: ["'self'", 'https://fonts.googleapis.com'],
+      },
+      scriptDirective: {
+        resources: ["'self'", "'wasm-unsafe-eval'", 'https://static.cloudflareinsights.com'],
+      },
+    },
+  },
+
   i18n: {
     defaultLocale: 'th',
     locales: ['th', 'en'],

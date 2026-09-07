@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "lint:content": "node scripts/lint-content.mjs"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/aoenotebook-hue/rueortho#readme",
   "dependencies": {
     "@astrojs/mdx": "^8.0.0",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.1",
@@ -33,6 +35,7 @@
   "private": true,
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "gray-matter": "^4.0.3",
     "playwright": "^1.63.0",
     "typescript": "^6.0.3"
   }

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import { t } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+
+/**
+ * A single 404 for the whole site — Vercel serves one 404.html regardless of
+ * the path, so it leads in Thai and carries an English line underneath.
+ */
+const th = t('th');
+const en = t('en');
+---
+
+<BaseLayout title={th('error.404.title')} description={th('error.404.body')} hasAlternate={false}>
+  <Container width="prose">
+    <div class="py-16">
+      <h1>{th('error.404.title')}</h1>
+      <p class="text-muted">{th('error.404.body')}</p>
+
+      <ul class="m-0 mt-6 flex list-none flex-wrap gap-4 p-0">
+        <li><a href={localizePath('/', 'th')}>{th('nav.home')}</a></li>
+        <li><a href={localizePath('/conditions', 'th')}>{th('nav.conditions')}</a></li>
+        <li><a href={localizePath('/search', 'th')}>{th('search.label')}</a></li>
+      </ul>
+
+      <p class="mt-10 border-t border-border pt-6 text-muted" lang="en">
+        {en('error.404.body')}{' '}
+        <a href={localizePath('/conditions', 'en')}>{en('nav.conditions')}</a>
+      </p>
+    </div>
+  </Container>
+</BaseLayout>
