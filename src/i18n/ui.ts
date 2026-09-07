@@ -69,6 +69,9 @@ const ui = {
     'article.reviewOverdue':
       'บทความนี้เลยกำหนดทบทวนแล้ว ผู้เขียนกำลังตรวจทานให้เป็นปัจจุบัน',
 
+    'media.play': 'เล่นวิดีโอ',
+    'media.videoHint': 'คลิปสั้น ไม่มีเสียง จะเริ่มโหลดเมื่อคุณกดเล่น',
+
     'apps.sectionTitle': 'แอปช่วยดูแลตัวเองสำหรับภาวะนี้',
     'apps.free': 'ใช้งานฟรี จัดทำโดยผู้เขียนบทความนี้เอง',
     'apps.open': 'เปิดแอป',
@@ -228,6 +231,9 @@ const ui = {
     'article.helpfulNo': 'Not quite',
     'article.reviewOverdue':
       'This article is past its review date. The author is bringing it up to date.',
+
+    'media.play': 'Play video',
+    'media.videoHint': 'A short clip with no sound. Nothing downloads until you press play.',
 
     'apps.sectionTitle': 'A self-care app for this condition',
     'apps.free': 'Free, and made by the author of this article.',

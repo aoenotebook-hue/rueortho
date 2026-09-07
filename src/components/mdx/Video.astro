@@ -1,0 +1,89 @@
+---
+import { t } from '../../i18n/ui';
+import { getLocaleFromUrl } from '../../i18n/utils';
+
+interface Props {
+  /** Path under public/, e.g. "/media/frozen-shoulder/wall-slide.mp4". */
+  src: string;
+  /** What the clip demonstrates. Read out as the button's accessible name. */
+  title: string;
+  /**
+   * A text description of what happens in the clip, for anyone who cannot see
+   * it. Required: a silent demonstration video carries all of its meaning in
+   * the picture, so without this the content simply is not there.
+   */
+  description: string;
+  caption?: string;
+  attribution?: string;
+  /** Still shown before the clip loads. Optional — none of the app clips ship one. */
+  poster?: string;
+}
+
+const { src, title, description, caption, attribution, poster } = Astro.props;
+
+if (!description) {
+  throw new Error(`<Video title="${title}"> needs a description — it is what a blind reader gets instead of the picture.`);
+}
+
+const tr = t(getLocaleFromUrl(Astro.url));
+---
+
+{/*
+  Click-to-load. The <video> element is created only when the reader asks for
+  it, so an article carrying ten clips still downloads none of them on load.
+  There is no poster frame for the app clips (no ffmpeg in the toolchain to cut
+  one), so the facade is a designed panel rather than a still.
+*/}
+<figure class="my-8">
+  <button
+    type="button"
+    class="video-facade relative block w-full overflow-hidden rounded-[10px] border border-border bg-surface text-start"
+    data-video={src}
+    data-title={title}
+    aria-label={`${tr('media.play')} — ${title}`}
+  >
+    {
+      poster ? (
+        <img src={poster} alt="" loading="lazy" decoding="async" class="block w-full" />
+      ) : (
+        <span class="block aspect-video w-full bg-ground" />
+      )
+    }
+    <span class="pointer-events-none absolute inset-0 grid place-items-center" aria-hidden="true">
+      <span class="rounded-full bg-accent px-5 py-3 text-xl text-accent-contrast">▶</span>
+    </span>
+  </button>
+
+  <p class="m-0 mt-2 text-sm text-muted">{tr('media.videoHint')}</p>
+
+  <figcaption class="mt-2 text-sm text-muted">
+    <span class="block font-semibold text-ink">{title}</span>
+    <span class="mt-1 block">{caption ?? description}</span>
+    {attribution && <span class="mt-1 block opacity-80">{attribution}</span>}
+  </figcaption>
+</figure>
+
+<script>
+  document.addEventListener('click', (event) => {
+    const facade = (event.target as HTMLElement)?.closest<HTMLElement>('[data-video]');
+    if (!facade) return;
+
+    const src = facade.dataset.video;
+    if (!src) return;
+
+    const video = document.createElement('video');
+    video.src = src;
+    video.controls = true;
+    video.autoplay = true;
+    video.loop = true;
+    // The clips are silent demonstrations; muted also keeps autoplay allowed.
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+    video.className = 'block w-full rounded-[10px] border border-border';
+    video.setAttribute('aria-label', facade.dataset.title ?? '');
+
+    facade.replaceWith(video);
+    video.focus();
+  });
+</script>
