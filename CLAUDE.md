@@ -403,3 +403,17 @@ no horizontal overflow, exactly one `h1`, mobile nav opens, and every internal
 link returns 200. Google Fonts is blocked in the sandbox, so abort
 `**://fonts.{googleapis,gstatic}.com/**` in the test or the load event never
 fires — and remember Thai renders in a fallback font there, not Plex Looped.
+
+**Drafts are excluded from the build**, so an article that is still
+`draft: true` has no page in `dist/` and can only be driven through
+`npm run dev`. To check one against the real CSP, temporarily set
+`draft: false` and delete its `SAMPLE` marker, build, test, then put both back.
+
+**Playwright's Chromium cannot decode H.264.** `canPlayType('video/mp4;
+codecs="avc1…"')` returns `''` there, so a `<video>` pointed at any of the app
+clips — all of which are `avc1` — fires `MEDIA_ELEMENT_ERROR` code 4 with
+`readyState: 0`. That is the test browser, not the site: H.264 in an MP4 is the
+most widely supported video format there is, and these same files play inside
+the author's own PWAs. Assert on the `<video>` element being created with the
+right `src`, and fetch the URL to prove it serves 200; do not assert on
+playback.
