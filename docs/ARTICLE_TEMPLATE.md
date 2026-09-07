@@ -148,6 +148,29 @@ import kneeAnatomy from './images/knee-anatomy.png';
 <Figure src={kneeAnatomy} alt="…" attribution="…" />
 ```
 
+### `<Video>` — a demonstration clip, loaded only on request
+
+For the short silent clips imported from the author's apps. Nothing downloads
+until the reader presses play, so an article can carry ten of them and still
+load fast.
+
+```mdx
+<Video
+  src="/media/frozen-shoulder/wall-slide.mp4"
+  title="ไถมือขึ้นผนัง"
+  description="ผู้ป่วยยืนหันหน้าเข้าผนัง วางมือบนผนังแล้วค่อย ๆ ไถมือไต่ขึ้นไปจนสุดที่ไหว แล้วไถกลับลงมา"
+  attribution="วิดีโอจากแอปดูแลข้อไหล่ติด โดย นพ.สรวุฒิ ธรรมยงค์กิจ · คลิปสร้างด้วยปัญญาประดิษฐ์"
+/>
+```
+
+`src` is a path under `public/` — video cannot go through `astro:assets`.
+`description` is **required**: a silent demonstration carries all of its meaning
+in the picture, so a reader who cannot see it gets nothing without one. It is
+also what shows under the clip when no `caption` is given.
+
+None of the app clips ship a poster still, so the facade is a designed panel
+rather than a frozen frame. Pass `poster` if a matching still exists.
+
 ### `<Callout>` — an aside worth stopping for
 
 `type` is `info`, `warning` or `tip`. Use `warning` sparingly — it competes with

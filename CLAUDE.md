@@ -74,10 +74,16 @@ consult it when drafting or fact-checking content. Never copy an image out of
   tends to carry other formal markers with it.
 - **The author has confirmed he knows the provenance of all media** in his four
   apps, including the five rotator cuff images that carry no C2PA credential
-  and have stripped metadata (`p2_2`, `p2_3`, `p3_3`, `p4_3`, `p4_4`). Most of
-  the rest is AI-generated and carries a Google C2PA credential.
-  **Still outstanding: the exact attribution wording to put in the `Figure`
-  caption.** Ask for it before putting any app image on a page.
+  and have stripped metadata (`p2_2`, `p2_3`, `p3_3`, `p4_3`, `p4_4`), and has
+  said the media may be used on the site. Media is now imported and placed —
+  see "App media" below. **The five uncredentialed files were deliberately left
+  out** and must stay out until their origin can be written down truthfully.
+  **The exact attribution wording is still his to confirm.** A proposal is in
+  use on the four app-derived articles, all of which are `draft: true`, so
+  nothing is public under wording he has not read. The wording and the reasoning
+  behind it are in `docs/IMAGE-SOURCES.md`; it appears as a literal string in
+  the article MDX, so a search and replace over `src/content/conditions/`
+  changes all of it.
 - **The Thai font stays IBM Plex Sans Thai Looped.** The later master plan
   specifies Noto Sans Thai; the author was asked and chose to keep Plex Looped.
   Looped Thai carries the heads on the glyphs and reads more easily for older
@@ -146,8 +152,8 @@ languages, design system, header/footer, home page, conditions index with
 filtering, region pages, the condition article page (red flags, FAQ, references,
 companion apps, related, JSON-LD), author page, and the info and legal pages.
 
-Also done: the MDX component set (`KeyFacts`, `RedFlags`, `Figure`, `Callout`,
-`Glossary`, `DoctorChecklist`, `ExerciseCard`), registered in
+Also done: the MDX component set (`KeyFacts`, `RedFlags`, `Figure`, `Video`,
+`Callout`, `Glossary`, `DoctorChecklist`, `ExerciseCard`), registered in
 `src/components/mdx/index.ts` and documented with usage examples in
 `docs/ARTICLE_TEMPLATE.md`.
 
@@ -158,8 +164,12 @@ Cloudflare analytics behind `PUBLIC_CF_ANALYTICS_TOKEN`, RSS per locale,
 generated `robots.txt`, a bilingual 404, `npm run lint:content`, CI, and
 `docs/DEPLOY.md`.
 
+Also done: a full Thai draft of all twenty condition articles, and the import of
+the author's app media — see "Articles" and "App media" below.
+
 Still to do: sticky table of contents, the body map, per-article OG images, the
-pre-launch QA pass — and the real articles.
+pre-launch QA pass, English versions of the twenty articles, and the author's
+own medical review of every draft.
 
 ### Publishing safety
 
@@ -169,20 +179,74 @@ author's name with `reviewedBy` set — a false claim of medical review. `SAMPLE
 marks copy Claude drafted; `SEED` marks a roadmap skeleton nobody has written.
 Both are `draft: true` and must stay that way until the author has written and
 read the article himself. The linter also fails on a published article with no
-`sources` and on a `<Figure>` with no `alt`.
+`sources`, on a `<Figure>` with no `alt`, on a `<Video>` with no `description`,
+and on a `<Video>` or `<Figure>` whose `src` names a file that is not in
+`public/`.
 
-### Seed content
+**Every one of the twenty condition articles is currently `SAMPLE` +
+`draft: true`.** None of them is published, and none should be until the author
+has read it.
 
-The nineteen condition seeds from the master plan's §33 live in
-`src/content/conditions/th/`, tracked in `docs/CONTENT-ROADMAP.md`. They are
-**structure, not medicine**: real slug, region, summary, keywords and related
-links, plus the canonical section skeleton with every body section left as
-`(ยังไม่ได้เขียน)` and `redFlags`, `faq` and `sources` empty. Filling them in is
-editorial work for the author, not Claude's — see the medical content rules.
+### Articles
 
-Visible in `npm run dev`, excluded from every build. Topic 20 (MRI เข่า) has no
-file: it is an imaging topic, and forcing it into the conditions schema would be
-wrong. It belongs to `/examinations` once that section has its own collection.
+The nineteen condition seeds from the master plan's §33, **plus osteoporosis**,
+now all carry a full Thai draft. The `SEED` stage is over; every file carries a
+`SAMPLE` marker instead, which means Claude wrote it and no doctor has read it.
+All twenty are still `draft: true`. `docs/CONTENT-ROADMAP.md` tracks which is
+which and what each still needs.
+
+Four of them — `frozen-shoulder`, `osteoporosis`, `rotator-cuff-tear`,
+`acl-injury` — are built largely from the author's **own reviewed Thai**, taken
+from `_extracted/` and re-pronouned from `ท่าน` to `คุณ`. They also carry his app
+media. The apps cover recovery only for the two post-operative topics, so the
+front half of `rotator-cuff-tear` and `acl-injury` (what the condition is, how
+it is diagnosed, non-operative treatment) is new drafting and needs the closest
+reading. The other sixteen are new drafting throughout.
+
+**Sources are only there where they could be verified.** This environment has no
+outbound access to the usual patient-education sites, so seven articles carry
+PubMed references whose title, journal and year were confirmed through the
+PubMed tool before being written down, and eight carry `sources: []` with a note
+in the `SAMPLE` marker saying why. Do not fill those in with a URL you cannot
+check — on a page with a named doctor's byline an unverifiable citation is worse
+than an empty field.
+
+Topic 20 in the plan (MRI เข่า) still has no file: it is an imaging topic, and
+forcing it into the conditions schema would be wrong. It belongs to
+`/examinations` once that section has its own collection.
+
+### App media
+
+`scripts/import-app-media.mjs` is the one-off importer, kept in the repo so the
+import can be re-run and audited. It converts images to WebP capped at 1200 px
+into `src/assets/conditions/<slug>/` (79 MB of source became 0.9 MB) and copies
+videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
+
+- **Videos are not transcoded.** There is no ffmpeg in the toolchain, and the
+  apps' own `media/video-prompts.md` warns that a generated clip can contain a
+  few frames where the joint inverts. Re-encoding without checking each frame is
+  not worth the bytes saved.
+- **No poster stills.** Six video files are byte-identical across the frozen
+  shoulder and rotator cuff apps and are stored once; none of them ships a
+  poster, and there is no ffmpeg to cut one, so `<Video>` uses a designed
+  facade panel rather than a frozen frame.
+- `<Video>` requires a `description` prop and throws without one. A silent
+  demonstration clip carries all of its meaning in the picture, so without a
+  text description the content simply is not there for a blind reader.
+- Every imported file was checked individually for a Google C2PA credential
+  before import (`grep -a c2pa`), not taken on trust from `docs/SOURCES.md`.
+  All 47 carry one; the five that do not were left out.
+- **`npm run lint:content` now fails on a `<Video>` or `<Figure>` whose `src`
+  points at a file that is not in `public/`.** This is not theoretical: three
+  rotator-cuff clips referenced `public/media/rotator-cuff-tear/…` paths that
+  deduplication had collapsed into the frozen-shoulder folder, and nothing
+  caught it — the clip is only requested after the reader presses play, so the
+  page loads clean and Playwright saw a working facade. It also fails on a
+  `<Video>` with no `description`.
+- The 36 MB of video in `public/` is copied into `dist/` on every build even
+  though the articles that use it are still drafts. That is correct once they
+  publish; if it becomes a problem before then, move the folder rather than
+  deleting files the articles reference.
 
 ### Deployment notes
 

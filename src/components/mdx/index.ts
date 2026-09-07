@@ -6,6 +6,7 @@ export { default as Callout } from '../Callout.astro';
 export { default as KeyFacts } from './KeyFacts.astro';
 export { default as RedFlags } from './RedFlags.astro';
 export { default as Figure } from './Figure.astro';
+export { default as Video } from './Video.astro';
 export { default as ExerciseCard } from './ExerciseCard.astro';
 export { default as Glossary } from './Glossary.astro';
 export { default as DoctorChecklist } from './DoctorChecklist.astro';

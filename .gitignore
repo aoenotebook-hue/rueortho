@@ -19,3 +19,7 @@ _sources/
 .DS_Store
 Thumbs.db
 *.log
+
+# Report written by scripts/import-app-media.mjs; the register in
+# docs/IMAGE-SOURCES.md is the version of record.
+scripts/.import-app-media.report.json

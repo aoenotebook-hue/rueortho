@@ -93,6 +93,34 @@ for (const article of [...th, ...en]) {
     }
   }
 
+  /*
+   * A <Video> carries all of its meaning in the picture, so it needs a text
+   * description, and its src must actually resolve. The src is a path under
+   * public/, which nothing else validates: the clip is only requested after the
+   * reader presses play, so a typo or a file that lost out to deduplication in
+   * scripts/import-app-media.mjs would show a broken player rather than fail
+   * the build. This caught three such paths on the rotator cuff article.
+   */
+  for (const tag of content.match(/<Video[\s\S]*?\/>/g) ?? []) {
+    if (!/\bdescription=/.test(tag)) {
+      errors.push(`${path}: a <Video> has no description.`);
+    }
+    const src = tag.match(/\bsrc="([^"]+)"/)?.[1];
+    if (!src) {
+      errors.push(`${path}: a <Video> has no src.`);
+    } else if (src.startsWith('/') && !existsSync(join('public', src))) {
+      errors.push(`${path}: <Video src="${src}"> — no such file under public/.`);
+    }
+  }
+
+  // Same for a <Figure> pointing at a path under public/ rather than an import.
+  for (const tag of content.match(/<Figure[\s\S]*?\/>/g) ?? []) {
+    const src = tag.match(/\bsrc="(\/[^"]+)"/)?.[1];
+    if (src && !existsSync(join('public', src))) {
+      errors.push(`${path}: <Figure src="${src}"> — no such file under public/.`);
+    }
+  }
+
   // Red flags declared but never surfaced is a safety problem worth naming,
   // even though ConditionArticle falls back to rendering them itself.
   if (published && (data.redFlags?.length ?? 0) === 0) {
