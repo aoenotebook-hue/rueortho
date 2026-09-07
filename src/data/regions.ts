@@ -1,6 +1,7 @@
 import type { Locale } from '../i18n/ui';
 
 export const regionIds = [
+  'neck',
   'shoulder',
   'knee',
   'spine',
@@ -30,6 +31,18 @@ export interface Region {
 }
 
 export const regions: Record<RegionId, Region> = {
+  neck: {
+    id: 'neck',
+    label: { th: 'คอ', en: 'Neck' },
+    intro: {
+      th: 'อาการปวดคอส่วนใหญ่มาจากกล้ามเนื้อและข้อต่อรอบคอ และมักดีขึ้นได้เอง แต่บางครั้งอาการปวดที่ร้าวลงแขน ชา หรืออ่อนแรง อาจเกี่ยวข้องกับเส้นประสาทที่ถูกกดทับ ซึ่งต้องการการตรวจที่ละเอียดขึ้น',
+      en: 'Most neck pain comes from the muscles and joints around the neck and settles on its own. Pain that travels down the arm, or numbness and weakness, can involve a compressed nerve and needs a closer look.',
+    },
+    icon: 'neck',
+    bodyMap: true,
+    order: 0,
+  },
+
   shoulder: {
     id: 'shoulder',
     label: { th: 'ไหล่', en: 'Shoulder' },

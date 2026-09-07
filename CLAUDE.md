@@ -163,12 +163,26 @@ pre-launch QA pass — and the real articles.
 
 ### Publishing safety
 
-`npm run lint:content` fails the build when an article still containing the
-`SAMPLE` marker has `draft: false`, because that would publish it under the
-author's name with `reviewedBy` set. The sample knee-osteoarthritis article is
-`draft: true` for that reason: it was written by Claude and the author has not
-reviewed it. Do not flip it without him reading it first. The linter also fails
-on a published article with no `sources` and on a `<Figure>` with no `alt`.
+`npm run lint:content` fails the build when an article carrying a `SAMPLE` or
+`SEED` marker has `draft: false`, because that would publish it under the
+author's name with `reviewedBy` set — a false claim of medical review. `SAMPLE`
+marks copy Claude drafted; `SEED` marks a roadmap skeleton nobody has written.
+Both are `draft: true` and must stay that way until the author has written and
+read the article himself. The linter also fails on a published article with no
+`sources` and on a `<Figure>` with no `alt`.
+
+### Seed content
+
+The nineteen condition seeds from the master plan's §33 live in
+`src/content/conditions/th/`, tracked in `docs/CONTENT-ROADMAP.md`. They are
+**structure, not medicine**: real slug, region, summary, keywords and related
+links, plus the canonical section skeleton with every body section left as
+`(ยังไม่ได้เขียน)` and `redFlags`, `faq` and `sources` empty. Filling them in is
+editorial work for the author, not Claude's — see the medical content rules.
+
+Visible in `npm run dev`, excluded from every build. Topic 20 (MRI เข่า) has no
+file: it is an imaging topic, and forcing it into the conditions schema would be
+wrong. It belongs to `/examinations` once that section has its own collection.
 
 ### Deployment notes
 
