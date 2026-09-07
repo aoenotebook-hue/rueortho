@@ -22,7 +22,27 @@
   --info-ground: #e8f1f7;
   --info-border: #c5dcea;
 
+  /* Brand green from the logo. Used for the mark and the trust marks, never
+     for body text — it is a decorative accent, not a text colour. */
+  --brand: #2e9e5b;
+  --brand-soft: #e8f6ee;
+
+  /* The four "what do you want to know" cards. Each ink value is checked at
+     4.5:1 against its own background. */
+  --card-blue-bg: #e8f2fb;
+  --card-blue-ink: #17527d;
+  --card-green-bg: #e6f5ec;
+  --card-green-ink: #1b6b41;
+  --card-orange-bg: #fdf0e4;
+  --card-orange-ink: #8a4b14;
+  --card-purple-bg: #f0eafb;
+  --card-purple-ink: #4c3184;
+
+  --hero-from: #e9f4f8;
+  --hero-to: #f4faf7;
+
   --radius-card: 10px;
+  --radius-panel: 18px;
   --radius-control: 6px;
 
   --shadow-header: 0 1px 3px rgb(22 34 42 / 0.08);
@@ -49,6 +69,21 @@
 
     --shadow-header: 0 1px 3px rgb(0 0 0 / 0.5);
     --shadow-card: 0 2px 10px -4px rgb(0 0 0 / 0.6);
+
+    --brand: #5fc98a;
+    --brand-soft: #14301f;
+
+    --card-blue-bg: #10283a;
+    --card-blue-ink: #a9cde8;
+    --card-green-bg: #12301f;
+    --card-green-ink: #8fd6ac;
+    --card-orange-bg: #35220f;
+    --card-orange-ink: #eab585;
+    --card-purple-bg: #241c3a;
+    --card-purple-ink: #c1acec;
+
+    --hero-from: #101b20;
+    --hero-to: #0f1815;
   }
 }
 
@@ -70,119 +105,148 @@
   --color-info-ground: var(--info-ground);
   --color-info-border: var(--info-border);
 
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+
+  --color-card-blue-bg: var(--card-blue-bg);
+  --color-card-blue-ink: var(--card-blue-ink);
+  --color-card-green-bg: var(--card-green-bg);
+  --color-card-green-ink: var(--card-green-ink);
+  --color-card-orange-bg: var(--card-orange-bg);
+  --color-card-orange-ink: var(--card-orange-ink);
+  --color-card-purple-bg: var(--card-purple-bg);
+  --color-card-purple-ink: var(--card-purple-ink);
+
   --font-thai: 'IBM Plex Sans Thai Looped', 'IBM Plex Sans', system-ui, sans-serif;
   --font-latin: 'IBM Plex Sans', system-ui, sans-serif;
 }
 
 /* ==========================================================================
    Base
+
+   Wrapped in @layer base on purpose. Tailwind puts its utilities in
+   @layer utilities, and unlayered rules beat layered ones no matter their
+   specificity — so an unlayered `a { color: … }` here silently overrode every
+   Tailwind text-colour utility on a link, which made the header's search
+   button white-on-white and forced nav links to the accent colour.
    ========================================================================== */
 
-html {
-  color-scheme: light dark;
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 5rem;
-}
-
-body {
-  margin: 0;
-  background: var(--ground);
-  color: var(--ink);
-  font-family: var(--font-latin);
-  font-size: 17px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-@media (min-width: 768px) {
-  body {
-    font-size: 18px;
-  }
-}
-
-/*
- * Thai needs more leading than Latin to stay readable, and must never be
- * justified or letter-spaced — both break the way Thai glyphs cluster.
- */
-html[lang='th'] body {
-  font-family: var(--font-thai);
-  line-height: 1.8;
-}
-
-html[lang='th'] * {
-  letter-spacing: normal !important;
-}
-
-body,
-p,
-li,
-dd,
-figcaption {
-  text-align: start;
-  overflow-wrap: break-word;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 600;
-  text-wrap: balance;
-  line-height: 1.35;
-  margin: 0 0 0.5em;
-}
-
-html[lang='th'] h1,
-html[lang='th'] h2,
-html[lang='th'] h3,
-html[lang='th'] h4 {
-  line-height: 1.5;
-}
-
-h1 {
-  font-size: 2rem;
-}
-h2 {
-  font-size: 1.5rem;
-}
-h3 {
-  font-size: 1.25rem;
-}
-
-a {
-  color: var(--accent);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 3px;
-}
-
-/* Touch targets stay at least 44px tall (WCAG 2.5.5). */
-a.control,
-button,
-summary,
-input,
-select {
-  min-height: 44px;
-}
-
-@media (prefers-reduced-motion: reduce) {
+@layer base {
   html {
-    scroll-behavior: auto;
+    color-scheme: light dark;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
   }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-latin);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 18px;
+    }
+  }
+
+  /*
+   * Thai needs more leading than Latin to stay readable, and must never be
+   * justified or letter-spaced — both break the way Thai glyphs cluster.
+   */
+  html[lang='th'] body {
+    font-family: var(--font-thai);
+    line-height: 1.8;
+  }
+
+  html[lang='th'] * {
+    letter-spacing: normal !important;
+  }
+
+  /*
+   * Headings are included deliberately. Thai has no spaces between words, so a
+   * Thai heading is one unbreakable token: without this the site name in the
+   * hero h1 pushed the whole page 11px wider than a 390px viewport.
+   */
+  body,
+  p,
+  li,
+  dd,
+  figcaption,
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-align: start;
+    overflow-wrap: break-word;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    text-wrap: balance;
+    line-height: 1.35;
+    margin: 0 0 0.5em;
+  }
+
+  html[lang='th'] h1,
+  html[lang='th'] h2,
+  html[lang='th'] h3,
+  html[lang='th'] h4 {
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  a {
+    color: var(--accent);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  /* Touch targets stay at least 44px tall (WCAG 2.5.5). */
+  a.control,
+  button,
+  summary,
+  input,
+  select {
+    min-height: 44px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -217,4 +281,13 @@ select {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+}
+
+/*
+ * The hero background. Lives here rather than in a style="" attribute because
+ * our CSP hashes <style> elements but cannot cover style attributes, so an
+ * inline gradient is silently refused by the browser.
+ */
+.hero-surface {
+  background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
 }

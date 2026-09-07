@@ -197,6 +197,47 @@ on a published article with no `sources` and on a `<Figure>` with no `alt`.
 - Only pages with `data-pagefind-body` are indexed (articles and info pages).
   Listings, the home page and the search pages are excluded by construction.
 
+### CSS and layout traps — all three were live bugs
+
+- **Base element styles must stay inside `@layer base` in `global.css`.**
+  Tailwind puts its utilities in `@layer utilities`, and an *unlayered* rule
+  beats a layered one no matter the specificity. An unlayered
+  `a { color: var(--accent) }` therefore overrode every Tailwind text-colour
+  utility on a link: the header's search button rendered teal-on-teal, i.e.
+  invisible, and nav links ignored `text-muted`. Anything new that styles bare
+  elements goes in that layer too.
+- **Never use a `style=""` attribute.** Our CSP hashes `<style>` elements but
+  cannot cover style attributes, so an inline style is silently refused by the
+  browser — the hero gradient simply did not paint. Put it in a class in
+  `global.css`.
+- **Give flex and grid children `min-w-0` on any Thai text.** Thai has no
+  spaces, so a heading is one unbreakable token, and `overflow-wrap: break-word`
+  does *not* reduce an element's min-content contribution. A grid item defaults
+  to `min-width: auto`, so the hero column was sized to the full width of the
+  site name and pushed the page 11px wider than a 390px viewport. Headings now
+  also carry `overflow-wrap: break-word`, but that alone is not enough.
+
+### Homepage
+
+`src/components/Home.astro` follows the author's design mockup: hero with a
+search form, "ปวดตรงไหน?" body regions, four "คุณอยากรู้อะไร?" cards, common
+conditions, trust marks, author strip.
+
+Deliberate departures from that mockup, each with a reason:
+
+- **No photography.** The design uses stock photos for the hero, the region
+  circles and the condition cards. Those need licensing and do not adapt to
+  dark mode, so regions and the hero use SVG glyphs (`BodyIcon.astro`,
+  `Logo.astro`) and condition cards use a neutral panel. A licensed photo can
+  drop into the card via `heroImage` later.
+- **Nav is three items, not eight.** การตรวจ, การรักษา, ฟื้นฟู, เครื่องมือผู้ป่วย
+  and บทความ & วิดีโอ have no pages; putting them in the nav would ship 404s.
+- **Seven body regions, not nine.** `regions.ts` has no neck, and combines foot
+  and ankle. Change the data first if the design's split is wanted.
+- **No social icons in the footer**, because no accounts exist yet.
+- The hero search is a plain GET form to `/search`, so it works without
+  JavaScript, and the example chips are real `?q=` searches.
+
 ### MDX component notes
 
 - `frontmatter` is available inside any MDX body, which is how
