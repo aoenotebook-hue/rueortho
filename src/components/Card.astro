@@ -9,9 +9,17 @@ interface Props {
   summary?: string;
   region?: RegionId;
   locale: Locale;
+  /**
+   * Heading level for the card title. Cards on the home page sit under a
+   * section `h2`, so `h3` is right there and stays the default. On a listing
+   * page the cards are the only thing under the `h1`, and an `h3` would skip a
+   * level — those callers pass 2.
+   */
+  headingLevel?: 2 | 3 | 4;
 }
 
-const { href, title, summary, region, locale } = Astro.props;
+const { href, title, summary, region, locale, headingLevel = 3 } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
 ---
 
 <a
@@ -19,6 +27,6 @@ const { href, title, summary, region, locale } = Astro.props;
   class="group flex h-full flex-col rounded-[10px] border border-border bg-surface p-5 no-underline transition hover:border-accent hover:shadow-[var(--shadow-card)]"
 >
   {region && <div class="mb-3"><RegionBadge region={region} locale={locale} /></div>}
-  <h3 class="mb-2 text-ink group-hover:text-accent">{title}</h3>
+  <Heading class="mb-2 text-ink group-hover:text-accent">{title}</Heading>
   {summary && <p class="m-0 text-[0.95em] text-muted">{summary}</p>}
 </a>
