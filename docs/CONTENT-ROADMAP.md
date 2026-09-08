@@ -5,12 +5,13 @@ now exist as files; one is an imaging topic and has nowhere to live yet.
 **Osteoporosis has since been added as a twentieth condition**, because the
 author's deepest existing material is on that topic.
 
-## Status — all forty articles are published
+## Status — all 62 articles are published
 
-Every condition exists in Thai and English — forty files, twenty slugs — and
-all of them went live on **2026-09-08**, after the author said he had read them.
-No `SAMPLE` or `SEED` marker is left in `src/content/conditions/`; every file is
-`draft: false` with `lastReviewed: 2026-09-08`.
+Twenty conditions, six examinations and five rehabilitation topics, each in Thai
+and English — 62 files, 31 slugs — all live as of **2026-09-08**, after the
+author said he had read them. No `SAMPLE` or `SEED` marker is left anywhere in
+`src/content/`; every file is `draft: false` with `lastReviewed: 2026-09-08`.
+The next review is due by **2028-09-08**.
 
 | Group | Files | Where the words came from |
 |---|---|---|
@@ -107,9 +108,7 @@ It is already referenced by `src/data/apps.ts`.
 `/examinations` now has its own content collection, so the imaging topic no
 longer has to be forced into the conditions schema.
 
-## Examinations — 6 topics, drafted 2026-09-08
-
-All **`SAMPLE` + `draft: true`**, awaiting the author's reading.
+## Examinations — 6 topics, published 2026-09-08
 
 | Topic | Slug | Notes |
 |---|---|---|
@@ -120,9 +119,7 @@ All **`SAMPLE` + `draft: true`**, awaiting the author's reading.
 | การตรวจความหนาแน่นกระดูก (DXA) | `bone-density-scan` | T-score vs Z-score |
 | การตรวจการนำไฟฟ้าของเส้นประสาท | `nerve-conduction-study` | NCS and EMG |
 
-## Rehabilitation — 5 topics, drafted 2026-09-08
-
-All **`SAMPLE` + `draft: true`**, awaiting the author's reading.
+## Rehabilitation — 5 topics, published 2026-09-08
 
 | Topic | Slug | Region |
 |---|---|---|
@@ -136,9 +133,11 @@ Every one of the 22 files carries PubMed-verified references, found and checked
 the same way as the conditions: title, journal and year read back off the
 PubMed record before being written down.
 
-**These are the ones that most need the author's eye.** They were drafted from
-the evidence rather than from his own teaching material, so unlike the four
-app-derived condition articles there is no reviewed Thai underneath them.
+**These are the ones to revisit first at the next review.** They were drafted
+from the evidence rather than from the author's own teaching material, so unlike
+the four app-derived condition articles there is no previously reviewed Thai
+underneath them. The rehabilitation pages carry loading guidance — the 24-hour
+rule and roughly 10% a week — which is the most consequential advice on them.
 
 ## Suggested order for the next read-through
 
