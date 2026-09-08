@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ResourceIndex from '../../../components/ResourceIndex.astro';
+import { getSection } from '../../../data/sections';
+
+const locale = 'en' as const;
+const section = getSection('examinations');
+---
+
+<BaseLayout title={section.title[locale]} description={section.intro[locale]}>
+  <ResourceIndex locale={locale} collection="examinations" />
+</BaseLayout>

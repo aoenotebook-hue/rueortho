@@ -141,14 +141,18 @@ These are not style preferences — they are what makes the site safe to publish
 ```
 src/
   content/conditions/{th,en}/   article MDX, one file per condition per language
+  content/examinations/{th,en}/ imaging and tests — x-ray, MRI, ultrasound, DXA, NCS
+  content/rehabilitation/{th,en}/ phase-based rehab and exercise programmes
   content/pages/{th,en}/        about, disclaimer, privacy, editorial policy, contact
-  content.config.ts             zod schema for both collections
+  content.config.ts             zod schema for all four collections
   data/authors.ts               author records (no workplace, bio or photo — see decisions)
   data/regions.ts               body regions + browsing categories, display order
   data/apps.ts                  companion-app registry, linked from articles
   i18n/ui.ts                    every visible string, th + en
   i18n/utils.ts                 locale from URL, path localisation, date formatting
   lib/conditions.ts             collection queries (by locale, region, recency)
+  lib/resources.ts              the same queries for examinations and rehabilitation
+  lib/videos.ts                 the video index, read out of article bodies at build time
   layouts/BaseLayout.astro      html shell, meta, hreflang, fonts
   pages/                        Thai routes at /, English mirrored under /en
   styles/global.css             design tokens, Thai typography, base styles
@@ -191,8 +195,11 @@ Also done: Vercel Authentication was turned off on 2026-09-08, so the site is
 publicly readable. It had been on for every `*.vercel.app` URL
 (`all_except_custom_domains`), which put production behind a Vercel login.
 
-Still to do: sticky table of contents, the body map, per-article OG images, and
-the pre-launch QA pass.
+Also done: the examinations and rehabilitation sections, and a real `/articles`
+hub — see "The three new sections" below.
+
+Still to do: the `/treatments` section (still a stub), sticky table of contents,
+the body map, per-article OG images, and the pre-launch QA pass.
 
 ### Publishing safety
 
@@ -206,8 +213,15 @@ read the article himself. The linter also fails on a published article with no
 and on a `<Video>` or `<Figure>` whose `src` names a file that is not in
 `public/`.
 
-**All forty articles were published on 2026-09-08**, after the author said he
-had read them. No `SAMPLE` or `SEED` marker remains anywhere in
+`lint:content` covers **all three article collections**, not just conditions:
+the marker rule, the sources rule and the `<Figure>`/`<Video>` rules apply
+wherever an article carries the author's byline. Two checks stay
+conditions-only — the canonical section order, and the warning about a published
+article with no `redFlags`, because an explainer on how a DXA scan works has no
+urgent-symptom list to give and demanding one would invite filler.
+
+**All forty condition articles were published on 2026-09-08**, after the author
+said he had read them. No `SAMPLE` or `SEED` marker remains anywhere in
 `src/content/conditions/`, and every file is `draft: false` with `lastReviewed:
 2026-09-08`. The rule itself has not changed: anything new that Claude drafts
 gets a `SAMPLE` marker and `draft: true` until the author has read it.
@@ -238,9 +252,41 @@ check: on a page with a named doctor's byline an unverifiable citation is worse
 than an empty field, and `lint:content` fails a published article with no
 sources at all.
 
-Topic 20 in the plan (MRI เข่า) still has no file: it is an imaging topic, and
-forcing it into the conditions schema would be wrong. It belongs to
-`/examinations` once that section has its own collection.
+Topic 20 in the plan (MRI เข่า) is now `examinations/{th,en}/knee-mri.mdx`. It
+was held back from the conditions collection on purpose — an imaging topic has a
+different shape from a disease — and it went in as soon as `/examinations` had a
+collection of its own.
+
+### The three new sections
+
+`/examinations`, `/rehabilitation` and `/articles` became real on 2026-09-08.
+
+- **`examinations` and `rehabilitation` are separate collections** sharing one
+  base schema (`resourceSchema()` in `src/content.config.ts`) and one renderer,
+  `ResourceArticle.astro`. They are not a `type` field on `conditions`, so a
+  route, a listing and a schema rule can address one kind of page without
+  filtering, and a change to one cannot reshape the twenty condition articles.
+  `related` holds **condition** slugs in both, which is what lets a bone-density
+  page point at osteoporosis.
+- **`region` is required on a condition and optional on a rehab article**, since
+  the principles that apply to every programme belong to no single joint.
+  Examinations have no region at all.
+- **`ResourceIndex.astro` is one page for two states.** While a collection has
+  nothing published it shows the in-preparation wording `SectionStub` used to
+  show; the moment something is published it becomes a listing. That is why
+  those sections could be marked `live` before their content was reviewed
+  without promising anything that is not there.
+- **`/articles` adds nothing of its own.** It indexes the other collections and
+  the demonstration clips, so it was finishable without the author reading new
+  medical copy. Its video gallery **links to the hosting article rather than
+  embedding a second player** — a clip is a silent demonstration whose cautions
+  live in the prose around it.
+- **The video index is derived, not maintained.** `lib/videos.ts` parses
+  `<Video>` tags out of the article bodies at build time. A hand-kept list would
+  drift, which is exactly the bug that already hit three rotator-cuff clips.
+
+**All 22 files in the two new collections are `SAMPLE` + `draft: true`.** None
+is published, and none should be until the author has read it.
 
 ### App media
 
@@ -371,6 +417,11 @@ gets a real page (`SectionStub.astro`) that says it is being prepared and points
 the reader at search or the conditions index. That is why the navigation can
 carry the plan's full eight entries without shipping a single 404 — add a
 section there and both the nav and its page follow.
+
+`/treatments` is the only stub left. `examinations`, `rehabilitation` and
+`articles` became `live` on 2026-09-08; the first two fall back to the same
+in-preparation wording through `ResourceIndex.astro` while their collections
+hold nothing published, so `live` does not overclaim.
 
 `/terms` from the plan's route list is **not** built: it needs legal wording the
 author has to supply, and inventing terms of use would be worse than not having

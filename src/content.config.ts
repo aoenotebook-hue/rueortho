@@ -47,6 +47,68 @@ const conditions = defineCollection({
     }),
 });
 
+/**
+ * `examinations` and `rehabilitation` share almost all of a condition's shape —
+ * the same byline, review dates, FAQ, red flags and sources — but not its
+ * `region`, which is required on a condition and meaningless on "what an MRI
+ * shows". They are separate collections rather than a `type` field on
+ * `conditions` so that a listing, a route and a schema rule can address one
+ * kind of page without filtering, and so a change to one cannot silently
+ * reshape the twenty condition articles.
+ *
+ * `related` holds condition slugs in every collection, which is what lets a
+ * bone-density page point at osteoporosis and a shoulder-rehab page point at
+ * frozen shoulder.
+ */
+function resourceSchema() {
+  return z.object({
+    title: z.string(),
+    slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'slug must be kebab-case'),
+    summary: z.string().max(300),
+    keywords: z.array(z.string()).default([]),
+    publishedDate: z.coerce.date(),
+    lastReviewed: z.coerce.date(),
+    author: z.string(),
+    reviewedBy: z.string(),
+    /** Optional here: an imaging page rarely has a "go to hospital now" list. */
+    redFlags: z.array(z.string()).default([]),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    /** Slugs from the `conditions` collection. */
+    related: z.array(z.string()).default([]),
+    sources: z.array(z.object({ title: z.string(), url: z.url() })).default([]),
+    translationPending: z.boolean().default(false),
+    draft: z.boolean().default(false),
+  });
+}
+
+/** `generateId` here for the same reason as on conditions — see above. */
+function resourceLoader(base: string) {
+  return glob({
+    base,
+    pattern: '**/*.{md,mdx}',
+    generateId: ({ entry }) => entry.replace(/\.mdx?$/, ''),
+  });
+}
+
+/** X-ray, MRI, ultrasound, bone density, nerve conduction studies. */
+const examinations = defineCollection({
+  loader: resourceLoader('./src/content/examinations'),
+  schema: resourceSchema(),
+});
+
+/** Phase-based rehabilitation and exercise programmes. */
+const rehabilitation = defineCollection({
+  loader: resourceLoader('./src/content/rehabilitation'),
+  schema: resourceSchema().extend({
+    /**
+     * Rehab is mostly organised by body part, so this one keeps a region — but
+     * optional, because the principles that apply to every programme belong to
+     * no single joint.
+     */
+    region: z.enum(regionIds).optional(),
+  }),
+});
+
 /** About, disclaimer, privacy, editorial policy, contact. */
 const pages = defineCollection({
   loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
@@ -57,4 +119,4 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { conditions, pages };
+export const collections = { conditions, examinations, rehabilitation, pages };

@@ -98,16 +98,47 @@ Osteoporosis is not one of the plan's twenty, but it is the deepest material of
 the four apps, so it was written as a full condition in region `bone-health`.
 It is already referenced by `src/data/apps.ts`.
 
-## Not a condition
+## Not a condition — now its own section
 
-| Plan # | Topic | Where it belongs |
+| Plan # | Topic | Where it went |
 |---|---|---|
-| 20 | MRI เข่าดูอะไรบ้าง? | `/examinations` |
+| 20 | MRI เข่าดูอะไรบ้าง? | `examinations/{th,en}/knee-mri.mdx` |
 
-`/examinations` is currently a stub. It needs its own content collection —
-an imaging topic has a different shape from a condition (what the scan shows,
-what the report words mean, what it cannot tell you), so it should not be forced
-into the conditions schema.
+`/examinations` now has its own content collection, so the imaging topic no
+longer has to be forced into the conditions schema.
+
+## Examinations — 6 topics, drafted 2026-09-08
+
+All **`SAMPLE` + `draft: true`**, awaiting the author's reading.
+
+| Topic | Slug | Notes |
+|---|---|---|
+| เอกซเรย์กระดูกและข้อ | `xray` | what it can and cannot show; film/pain discordance |
+| เอ็มอาร์ไอ (MRI) คืออะไร | `mri` | includes the asymptomatic-findings problem |
+| MRI เข่า ดูอะไรได้บ้าง | `knee-mri` | the master plan's topic 20 |
+| อัลตราซาวด์กระดูกและข้อ | `ultrasound` | strengths, and operator dependence |
+| การตรวจความหนาแน่นกระดูก (DXA) | `bone-density-scan` | T-score vs Z-score |
+| การตรวจการนำไฟฟ้าของเส้นประสาท | `nerve-conduction-study` | NCS and EMG |
+
+## Rehabilitation — 5 topics, drafted 2026-09-08
+
+All **`SAMPLE` + `draft: true`**, awaiting the author's reading.
+
+| Topic | Slug | Region |
+|---|---|---|
+| หลักการฟื้นฟูที่ใช้ได้กับเกือบทุกอาการ | `rehab-principles` | *(none — general)* |
+| การฟื้นฟูข้อไหล่ | `shoulder-rehab` | shoulder |
+| การฟื้นฟูข้อเข่า | `knee-rehab` | knee |
+| การฝึกการทรงตัวและการป้องกันการล้ม | `balance-and-fall-prevention` | bone-health |
+| การฟื้นฟูอาการปวดหลัง | `back-rehab` | spine |
+
+Every one of the 22 files carries PubMed-verified references, found and checked
+the same way as the conditions: title, journal and year read back off the
+PubMed record before being written down.
+
+**These are the ones that most need the author's eye.** They were drafted from
+the evidence rather than from his own teaching material, so unlike the four
+app-derived condition articles there is no reviewed Thai underneath them.
 
 ## Suggested order for the next read-through
 

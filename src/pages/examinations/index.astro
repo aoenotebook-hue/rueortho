@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionStub from '../../components/SectionStub.astro';
+import ResourceIndex from '../../components/ResourceIndex.astro';
 import { getSection } from '../../data/sections';
 
-const locale = 'en' as const;
-const section = getSection('rehabilitation');
+const locale = 'th' as const;
+const section = getSection('examinations');
 ---
 
 <BaseLayout title={section.title[locale]} description={section.intro[locale]}>
-  <SectionStub locale={locale} sectionId="rehabilitation" />
+  <ResourceIndex locale={locale} collection="examinations" />
 </BaseLayout>

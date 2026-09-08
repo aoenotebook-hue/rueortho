@@ -1,0 +1,82 @@
+---
+import Container from './Container.astro';
+import Card from './Card.astro';
+import { t, type Locale } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+import { getSection } from '../data/sections';
+import { getResources, type ResourceCollection } from '../lib/resources';
+
+interface Props {
+  locale: Locale;
+  collection: ResourceCollection;
+}
+
+const { locale, collection } = Astro.props;
+const tr = t(locale);
+const section = getSection(collection);
+const entries = await getResources(collection, locale);
+
+/**
+ * One page for both states. While the section has nothing published it says so
+ * and points the reader somewhere useful — the job `SectionStub` used to do —
+ * and the moment an article is published it becomes a real listing, with no
+ * route change and nothing to remember to switch over.
+ *
+ * This matters because every article here starts as a draft: production sees an
+ * empty collection until the author has read it, and an empty page that lies
+ * about being finished would be worse than the stub it replaced.
+ */
+const isEmpty = entries.length === 0;
+---
+
+<Container width={isEmpty ? 'prose' : undefined}>
+  <div class="py-10">
+    {
+      isEmpty && (
+        <p class="m-0 inline-block rounded-full bg-brand-soft px-3 py-1 text-sm font-medium text-ink">
+          {tr('section.inProgress')}
+        </p>
+      )
+    }
+
+    <h1 class={isEmpty ? 'mt-4' : undefined}>{section.title[locale]}</h1>
+    <p class="text-lg text-muted">{section.intro[locale]}</p>
+
+    {
+      isEmpty ? (
+        <>
+          <p class="mt-8">{tr('section.plannedBody')}</p>
+          <ul class="m-0 mt-5 flex list-none flex-wrap gap-3 p-0">
+            {[
+              { path: '/conditions', label: tr('nav.conditions') },
+              { path: '/search', label: tr('search.label') },
+            ].map((item) => (
+              <li>
+                <a
+                  href={localizePath(item.path, locale)}
+                  class="inline-block rounded-full border border-border bg-surface px-5 py-2.5 text-ink no-underline hover:border-accent"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <ul class="m-0 mt-7 grid list-none grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-4 p-0">
+          {entries.map((entry) => (
+            <li>
+              <Card
+                href={localizePath(`${section.path}/${entry.data.slug}`, locale)}
+                title={entry.data.title}
+                summary={entry.data.summary}
+                region={'region' in entry.data ? entry.data.region : undefined}
+                locale={locale}
+              />
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</Container>
