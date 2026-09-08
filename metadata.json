@@ -1,0 +1,6 @@
+{
+  "name": "Easyortho",
+  "description": "รู้เรื่องกระดูกและข้อ / Easyortho — patient education on common orthopaedic problems",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

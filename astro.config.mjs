@@ -14,6 +14,10 @@ export default defineConfig({
   site: SITE,
   output: 'static',
   trailingSlash: 'ignore',
+  server: {
+    host: '0.0.0.0',
+    port: 3000,
+  },
 
   /**
    * Astro hashes every inline script and style it emits, so the policy below
@@ -70,5 +74,8 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: true,
+    },
   },
 });
