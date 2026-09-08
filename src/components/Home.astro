@@ -166,28 +166,39 @@ const trust = [
         </div>
       </div>
 
-      <div class="relative hidden lg:block">
-        <img
-          src="/images/hero-orthopaedic-care.svg"
-          alt={tr('hero.imageAlt')}
-          width="720"
-          height="540"
-          fetchpriority="high"
-          decoding="async"
-          class="aspect-[4/3] w-full rounded-[var(--radius-panel)] border border-border bg-surface shadow-[var(--shadow-card)]"
-        />
-
+      {/*
+        The note sits above the illustration rather than on top of it. It used
+        to be absolutely positioned over the panel, which was invisible while
+        that panel was an empty placeholder — once a full illustration went in,
+        the second line crossed the panel's edge and read half on the page
+        ground and half on the artwork, which shows up plainly in dark mode.
+        The badge below still overlaps on purpose: it carries its own surface
+        and border, so it is legible whatever it lands on.
+      */}
+      <div class="hidden lg:block">
         <p
-          class="absolute -top-2 end-2 max-w-[13rem] text-end text-[1.05rem] italic leading-snug text-accent"
+          class="mb-3 ms-auto max-w-[13rem] text-end text-[1.05rem] italic leading-snug text-accent"
         >
           {tr('hero.note')}
         </p>
 
-        <p
-          class="absolute -bottom-3 end-4 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted shadow-[var(--shadow-card)]"
-        >
-          {tr('hero.badge')}
-        </p>
+        <div class="relative">
+          <img
+            src="/images/hero-orthopaedic-care.svg"
+            alt={tr('hero.imageAlt')}
+            width="720"
+            height="540"
+            fetchpriority="high"
+            decoding="async"
+            class="aspect-[4/3] w-full rounded-[var(--radius-panel)] border border-border bg-surface shadow-[var(--shadow-card)]"
+          />
+
+          <p
+            class="absolute -bottom-3 end-4 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted shadow-[var(--shadow-card)]"
+          >
+            {tr('hero.badge')}
+          </p>
+        </div>
       </div>
     </div>
   </Container>

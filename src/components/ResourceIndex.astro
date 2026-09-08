@@ -67,6 +67,7 @@ const isEmpty = entries.length === 0;
           {entries.map((entry) => (
             <li>
               <Card
+                headingLevel={2}
                 href={localizePath(`${section.path}/${entry.data.slug}`, locale)}
                 title={entry.data.title}
                 summary={entry.data.summary}

@@ -78,6 +78,7 @@ const usedRegions = orderedRegions.filter((r) => sorted.some((c) => c.data.regio
               .toLowerCase()}
           >
             <Card
+              headingLevel={2}
               href={localizePath(`/conditions/${entry.data.slug}`, locale)}
               title={entry.data.title}
               summary={entry.data.summary}

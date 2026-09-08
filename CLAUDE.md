@@ -18,10 +18,26 @@ consult it when drafting or fact-checking content. Never copy an image out of
 
 ## Commands
 
+- **`package-lock.json` must stay in the repo.** CI pins `actions/setup-node`
+  with `cache: npm`, which needs a lockfile to build its cache key, so deleting
+  it fails the job at *setup* — before `npm ci`, before `astro check`, before
+  the content lint and the build. That happened on 2026-09-08: the lockfile was
+  removed and three commits reached `main` with every check silently skipped.
+  If it ever needs regenerating, `npm install --package-lock-only` writes one
+  from `package.json` without touching `node_modules`.
 - `npm run dev` — dev server (drafts are visible here)
 - `npm run build` — **must pass before any commit**
 - `npm run preview` — serve the built site (needed to test search)
 - `npm run check` — `astro check`; keep it at 0 errors, 0 warnings, 0 hints
+  (`npm run lint` is an alias for the same thing)
+
+`astro.config.mjs` sets `server.host: '0.0.0.0'`, `server.port: 3000` and
+`vite.server.allowedHosts: true`, so `npm run dev` and `npm run preview` listen
+on **port 3000 on every interface**, not Astro's default localhost:4321. That is
+for a cloud dev environment that reaches the server by hostname. It only affects
+the dev and preview servers, never the built site — but `allowedHosts: true`
+does turn off Vite's DNS-rebinding protection, so treat the dev server as
+reachable by anything on the network while it runs.
 
 ## Stack notes and gotchas
 
@@ -60,6 +76,13 @@ consult it when drafting or fact-checking content. Never copy an image out of
   after any typography change — Thai has no spaces between words.
 - Accessibility target is WCAG 2.2 AA: contrast ≥ 4.5:1, visible focus rings,
   skip link, one `h1` per page, touch targets ≥ 44px, reduced-motion respected.
+- **A card title's heading level is a prop, not a fixed tag.** `Card.astro`
+  renders `h3` by default, which is right on the home page where cards sit under
+  a section `h2`. On a listing page the cards are the only thing under the `h1`,
+  so `ConditionsIndex`, `ResourceIndex` and `RegionPage` pass `headingLevel={2}`.
+  Without that the page jumps `h1 → h3`, which it did on 17 pages until
+  2026-09-08. Any new listing that puts cards straight under its `h1` must do
+  the same.
 - **Never convey meaning by colour alone.** The homepage triage levels carry a
   distinct shape and a written label as well as a colour, and any future
   status indicator must do the same.
@@ -393,6 +416,22 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
 search form, "ปวดตรงไหน?" body regions, four "คุณอยากรู้อะไร?" cards, common
 conditions and trust marks. The mockup's author strip was built and then
 removed at the author's request — see "Decisions the author has made".
+
+**The hero illustration is `public/images/hero-orthopaedic-care.svg`, loaded
+through `<img>`.** An SVG referenced that way is an isolated document: it cannot
+see `--accent`, `--surface` or any other token, and this one carries about a
+dozen hard-coded colours. So it does **not** adapt to dark mode — it stays a
+pale card on the dark ground. That is tolerable because it is rounded, bordered
+and reads as a deliberate illustration panel, the same concession the QR codes
+make. If it ever needs to follow the theme, it has to be inlined as a component
+so the fills can become `var(--…)`; restyling it from outside is not possible.
+
+Because the illustration fills its panel, **nothing may be absolutely
+positioned over it without carrying its own background.** The italic
+`hero.note` used to be, which was invisible while the panel was an empty
+placeholder and became a half-on-dark, half-on-artwork collision once the
+illustration landed. It now sits above the image in normal flow. The badge below
+still overlaps deliberately — it has its own surface, border and shadow.
 
 Deliberate departures from that mockup, each with a reason:
 

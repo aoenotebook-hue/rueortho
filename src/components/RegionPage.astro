@@ -35,6 +35,7 @@ const conditions = await getConditionsByRegion(locale, regionId);
         conditions.map((entry) => (
           <li>
             <Card
+              headingLevel={2}
               href={localizePath(`/conditions/${entry.data.slug}`, locale)}
               title={entry.data.title}
               summary={entry.data.summary}
