@@ -90,6 +90,19 @@ consult it when drafting or fact-checking content. Never copy an image out of
   readers and anyone with reduced vision, which is much of the audience for a
   site about arthritis and osteoporosis. Do not switch on the master plan's
   say-so.
+- **The author's name appears in exactly two places, and that is deliberate.**
+  On 2026-09-08 he asked for it off the rest of the site: the dedicated author
+  page (`/about/author/<id>`) was **deleted**, the "เกี่ยวกับผู้เขียน" link was
+  taken out of the footer, and the homepage author strip was removed. What
+  remains is the `## ผู้เขียน` / `## The author` section of the About page, and
+  the byline at the top of each article — and that byline is **the name alone**,
+  with no credentials and no second line naming him again as reviewer. There is
+  no `bio` or `photo` on the author record any more; `credentials` survives only
+  because the article JSON-LD still uses it as `jobTitle`. `reviewedBy` is still
+  required in the frontmatter and still emitted in the JSON-LD; only its visible
+  duplicate went. His name is also in the privacy notice, where it identifies
+  who is responsible for the data — that is a legal identification, not a
+  credit, so do not strip it as part of some future tidy-up.
 - **Contact address and domain live in `src/data/site.ts`**, and the legal pages
   read them through an MDX import, so there is one place to change. Both are
   still placeholders (`easyortho.com`).
@@ -130,7 +143,7 @@ src/
   content/conditions/{th,en}/   article MDX, one file per condition per language
   content/pages/{th,en}/        about, disclaimer, privacy, editorial policy, contact
   content.config.ts             zod schema for both collections
-  data/authors.ts               author records (deliberately no workplace field)
+  data/authors.ts               author records (no workplace, bio or photo — see decisions)
   data/regions.ts               body regions + browsing categories, display order
   data/apps.ts                  companion-app registry, linked from articles
   i18n/ui.ts                    every visible string, th + en
@@ -150,7 +163,7 @@ The full build plan lives outside the repo.
 Done: scaffold, i18n, content collections, data files, sample article in both
 languages, design system, header/footer, home page, conditions index with
 filtering, region pages, the condition article page (red flags, FAQ, references,
-companion apps, related, JSON-LD), author page, and the info and legal pages.
+companion apps, related, JSON-LD), and the info and legal pages.
 
 Also done: the MDX component set (`KeyFacts`, `RedFlags`, `Figure`, `Video`,
 `Callout`, `Glossary`, `DoctorChecklist`, `ExerciseCard`), registered in
@@ -164,12 +177,22 @@ Cloudflare analytics behind `PUBLIC_CF_ANALYTICS_TOKEN`, RSS per locale,
 generated `robots.txt`, a bilingual 404, `npm run lint:content`, CI, and
 `docs/DEPLOY.md`.
 
-Also done: a full Thai draft of all twenty condition articles, and the import of
-the author's app media — see "Articles" and "App media" below.
+Also done: all twenty condition articles in both languages, the import of the
+author's app media — see "Articles" and "App media" below — and, on 2026-09-08,
+the author's read-through and the publication of all forty.
 
-Still to do: sticky table of contents, the body map, per-article OG images, the
-pre-launch QA pass, English versions of the twenty articles, and the author's
-own medical review of every draft.
+Also done: the author's logo. `src/assets/logo.png` is his own mark, run through
+`astro:assets` by `Logo.astro`, with `public/favicon-32.png`, `favicon-192.png`
+and `apple-touch-icon.png` generated from it. It is raster, so unlike the
+placeholder SVG it does not recolour with `--brand`/`--accent`; it is a
+transparent PNG and reads on both themes.
+
+Also done: Vercel Authentication was turned off on 2026-09-08, so the site is
+publicly readable. It had been on for every `*.vercel.app` URL
+(`all_except_custom_domains`), which put production behind a Vercel login.
+
+Still to do: sticky table of contents, the body map, per-article OG images, and
+the pre-launch QA pass.
 
 ### Publishing safety
 
@@ -183,17 +206,17 @@ read the article himself. The linter also fails on a published article with no
 and on a `<Video>` or `<Figure>` whose `src` names a file that is not in
 `public/`.
 
-**Every one of the twenty condition articles is currently `SAMPLE` +
-`draft: true`.** None of them is published, and none should be until the author
-has read it.
+**All forty articles were published on 2026-09-08**, after the author said he
+had read them. No `SAMPLE` or `SEED` marker remains anywhere in
+`src/content/conditions/`, and every file is `draft: false` with `lastReviewed:
+2026-09-08`. The rule itself has not changed: anything new that Claude drafts
+gets a `SAMPLE` marker and `draft: true` until the author has read it.
 
 ### Articles
 
 The nineteen condition seeds from the master plan's §33, **plus osteoporosis**,
-now all carry a full Thai draft. The `SEED` stage is over; every file carries a
-`SAMPLE` marker instead, which means Claude wrote it and no doctor has read it.
-All twenty are still `draft: true`. `docs/CONTENT-ROADMAP.md` tracks which is
-which and what each still needs.
+exist in Thai and English — forty files, twenty slugs. All are published.
+`docs/CONTENT-ROADMAP.md` tracks where each article's words came from.
 
 Four of them — `frozen-shoulder`, `osteoporosis`, `rotator-cuff-tear`,
 `acl-injury` — are built largely from the author's **own reviewed Thai**, taken
@@ -203,13 +226,17 @@ front half of `rotator-cuff-tear` and `acl-injury` (what the condition is, how
 it is diagnosed, non-operative treatment) is new drafting and needs the closest
 reading. The other sixteen are new drafting throughout.
 
-**Sources are only there where they could be verified.** This environment has no
-outbound access to the usual patient-education sites, so seven articles carry
-PubMed references whose title, journal and year were confirmed through the
-PubMed tool before being written down, and eight carry `sources: []` with a note
-in the `SAMPLE` marker saying why. Do not fill those in with a URL you cannot
-check — on a page with a named doctor's byline an unverifiable citation is worse
-than an empty field.
+**Every reference on the site came out of the PubMed tool.** This environment
+has no outbound access to the usual patient-education sites, so each source's
+title, journal and year was read back off the PubMed record before it was
+written down, and each `url` is a `pubmed.ncbi.nlm.nih.gov` link. Twelve topics
+were sourced this way when they were drafted; the remaining eight — ankle
+sprain, carpal tunnel, knee pain, meniscus tear, meniscus root tear,
+patellofemoral pain, tennis elbow, trigger finger — had `sources: []` until
+publication, and were filled the same way. Never write a citation you cannot
+check: on a page with a named doctor's byline an unverifiable citation is worse
+than an empty field, and `lint:content` fails a published article with no
+sources at all.
 
 Topic 20 in the plan (MRI เข่า) still has no file: it is an imaging topic, and
 forcing it into the conditions schema would be wrong. It belongs to
@@ -317,7 +344,8 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
 
 `src/components/Home.astro` follows the author's design mockup: hero with a
 search form, "ปวดตรงไหน?" body regions, four "คุณอยากรู้อะไร?" cards, common
-conditions, trust marks, author strip.
+conditions and trust marks. The mockup's author strip was built and then
+removed at the author's request — see "Decisions the author has made".
 
 Deliberate departures from that mockup, each with a reason:
 
@@ -330,7 +358,8 @@ Deliberate departures from that mockup, each with a reason:
   and บทความ & วิดีโอ have no pages; putting them in the nav would ship 404s.
 - **Seven body regions, not nine.** `regions.ts` has no neck, and combines foot
   and ankle. Change the data first if the design's split is wanted.
-- **No social icons in the footer**, because no accounts exist yet.
+- **No social icons in the footer**, because no accounts exist yet, and no
+  author link either — see "Decisions the author has made".
 - The hero search is a plain GET form to `/search`, so it works without
   JavaScript, and the example chips are real `?q=` searches.
 

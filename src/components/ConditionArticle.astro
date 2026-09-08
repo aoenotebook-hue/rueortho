@@ -8,7 +8,7 @@ import RegionBadge from './RegionBadge.astro';
 import * as mdxComponents from './mdx';
 import { t, type Locale } from '../i18n/ui';
 import { localizePath, formatDate, isoDate, isReviewOverdue } from '../i18n/utils';
-import { getAuthor, byline } from '../data/authors';
+import { getAuthor } from '../data/authors';
 import { getRegion } from '../data/regions';
 import { appsForCondition } from '../data/apps';
 import { getConditions, type Condition } from '../lib/conditions';
@@ -113,19 +113,25 @@ const jsonLd = {
     <p class="text-lg text-muted">{entry.data.summary}</p>
 
     <div class="my-7 rounded-[10px] border border-border bg-surface p-4 text-sm" data-pagefind-ignore>
-      <p class="m-0 font-semibold text-ink">{byline(author, locale)}</p>
+      {/*
+        The author asked for the name alone here — no credentials, and no
+        second line repeating it as the reviewer, since author and reviewer are
+        the same person. `reviewedBy` stays in the frontmatter and in the
+        JSON-LD; it is only the visible duplicate that goes.
+      */}
+      <p class="m-0 font-semibold text-ink">{author.name[locale]}</p>
       {
         /*
           `reviewedBy` is set in the frontmatter from the day the file is
-          created, so printing it on a draft would assert a medical review that
-          has not happened — the exact false claim `npm run lint:content`
-          exists to prevent at publish time.
+          created, so printing a review date on a draft would assert a medical
+          review that has not happened — the exact false claim
+          `npm run lint:content` exists to prevent at publish time.
         */
         entry.data.draft ? (
           <p class="m-0 mt-1 font-semibold text-warning-ink">{tr('article.notReviewed')}</p>
         ) : (
           <p class="m-0 mt-1 text-muted">
-            {tr('article.reviewedBy')} {reviewer.name[locale]} · {tr('article.lastReviewed')}{' '}
+            {tr('article.lastReviewed')}{' '}
             <time datetime={isoDate(entry.data.lastReviewed)}>
               {formatDate(entry.data.lastReviewed, locale)}
             </time>

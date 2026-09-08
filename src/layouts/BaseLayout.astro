@@ -65,7 +65,12 @@ const thaiUrl = new URL(localizePath(Astro.url.pathname.replace(/^\/en/, ''), 't
     <meta property="og:locale" content={locale === 'th' ? 'th_TH' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {/* The mark is raster, so there is no SVG favicon to prefer here. 32px for
+        the tab, 192px for an Android home screen, and a flattened 180px for
+        iOS, which composites a transparent icon onto black. */}
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta name="theme-color" content="#f7f8f8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f1518" media="(prefers-color-scheme: dark)" />

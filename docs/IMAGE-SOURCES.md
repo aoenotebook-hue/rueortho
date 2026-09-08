@@ -20,10 +20,9 @@ not ship.
 | `public/images/conditions/` | Condition hero and card images |
 | `public/images/exercises/` | Exercise demonstration stills |
 | `public/images/hero/` | Homepage and section headers |
-| `public/images/authors/` | Author portraits |
 | `public/images/figures/` | Diagrams referenced by a single article |
 | `public/icons/` | Icon assets not drawn inline as SVG |
-| `public/logo/` | Logo files |
+| `src/assets/logo.png` | The site's logo mark, run through `astro:assets` so each place that uses it gets a correctly sized copy |
 | `src/assets/conditions/<slug>/` | Media imported from the author's four apps, optimised (WebP). Imported through `scripts/import-app-media.mjs`, never copied by hand |
 | `public/media/<slug>/` | Demonstration video clips from the same apps. Videos cannot go through `astro:assets`, so they sit in `public/` and are played by `<Video>` |
 
@@ -35,9 +34,9 @@ share one visual language, so prefer a single source for the whole set.
 
 | File | Source | Licence | Attribution shown | Added |
 |---|---|---|---|---|
-| `images/authors/sorawut-placeholder.svg` | Drawn for this project | Project's own | none needed (decorative) | 2026-09-06 |
 | `images/figures/knee-anatomy-placeholder.svg` | Drawn for this project | Project's own | placeholder caption | 2026-09-06 |
-| `favicon.svg` | Drawn for this project | Project's own | none needed | 2026-09-06 |
+| `src/assets/logo.png` | Supplied by the author (uploaded to the repo as `logo3.png`) | Author's own | none needed (decorative; the wordmark carries the name) | 2026-09-08 |
+| `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png` | Generated from `src/assets/logo.png` | Author's own | none needed | 2026-09-08 |
 
 
 ## App media imported from the author's own apps
