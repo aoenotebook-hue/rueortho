@@ -1,0 +1,128 @@
+---
+import Container from './Container.astro';
+import Card from './Card.astro';
+import { t, type Locale } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+import { getSection, sections } from '../data/sections';
+import { getConditions } from '../lib/conditions';
+import { getResources } from '../lib/resources';
+import { getVideos } from '../lib/videos';
+import type { RegionId } from '../data/regions';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const tr = t(locale);
+const section = getSection('articles');
+
+/**
+ * This page indexes what already exists rather than adding anything of its own.
+ * It is the one section that can be finished without the author reading new
+ * medical copy, because every word it shows was written and reviewed somewhere
+ * else on the site.
+ */
+const groups = [
+  {
+    id: 'conditions',
+    entries: (await getConditions(locale)).map((e) => ({
+      title: e.data.title,
+      summary: e.data.summary,
+      href: localizePath(`/conditions/${e.data.slug}`, locale),
+      region: e.data.region as RegionId | undefined,
+    })),
+  },
+  ...(await Promise.all(
+    (['examinations', 'rehabilitation'] as const).map(async (id) => ({
+      id,
+      entries: (await getResources(id, locale)).map((e) => ({
+        title: e.data.title,
+        summary: e.data.summary,
+        href: localizePath(`/${id}/${e.data.slug}`, locale),
+        region: undefined as RegionId | undefined,
+      })),
+    })),
+  )),
+];
+
+const videos = await getVideos(locale);
+const total = groups.reduce((n, g) => n + g.entries.length, 0);
+---
+
+<Container>
+  <div class="py-10">
+    <h1>{section.title[locale]}</h1>
+    <p class="text-lg text-muted">{section.intro[locale]}</p>
+
+    <p class="mt-2 text-muted">
+      {tr('articles.count', { articles: total, videos: videos.length })}
+    </p>
+
+    {
+      videos.length > 0 && (
+        <section class="mt-10">
+          <h2>{tr('articles.videos')}</h2>
+          {/*
+            Links, not players. A clip is a silent demonstration whose safety
+            instructions live in the prose around it, so the gallery sends the
+            reader to the article rather than letting them watch an exercise
+            with none of its cautions attached.
+          */}
+          <p class="text-muted">{tr('articles.videosBody')}</p>
+          <ul class="m-0 mt-5 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-3 p-0">
+            {videos.map((video) => (
+              <li>
+                <a
+                  href={video.articleHref}
+                  class="group flex h-full min-w-0 flex-col rounded-[10px] border border-border bg-surface p-4 no-underline transition hover:border-accent"
+                >
+                  <span class="flex items-center gap-2 text-sm text-muted">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      class="shrink-0"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    {tr('articles.clip')}
+                  </span>
+                  <span class="mt-2 font-medium text-ink group-hover:text-accent">
+                    {video.title}
+                  </span>
+                  <span class="mt-1 text-[0.9em] text-muted">{video.articleTitle}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      groups.map((group) =>
+        group.entries.length === 0 ? null : (
+          <section class="mt-12">
+            <h2>{sections.find((s) => s.id === group.id)!.title[locale]}</h2>
+            <ul class="m-0 mt-5 grid list-none grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-4 p-0">
+              {group.entries.map((entry) => (
+                <li>
+                  <Card
+                    href={entry.href}
+                    title={entry.title}
+                    summary={entry.summary}
+                    region={entry.region}
+                    locale={locale}
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ),
+      )
+    }
+  </div>
+</Container>

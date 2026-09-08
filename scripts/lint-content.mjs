@@ -10,7 +10,14 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import matter from 'gray-matter';
 
-const CONDITIONS = 'src/content/conditions';
+/**
+ * Every collection of article MDX. The publication-safety checks below — the
+ * SAMPLE/SEED marker, the sources requirement, and the media checks — apply to
+ * all of them, because a page in any of these carries the same byline and the
+ * same claim of review. A few checks are specific to conditions and are gated
+ * on the collection name where they appear.
+ */
+const COLLECTIONS = ['conditions', 'examinations', 'rehabilitation'];
 const REVIEW_MONTHS = 24;
 
 const errors = [];
@@ -42,24 +49,28 @@ const SECTIONS = {
   ],
 };
 
-function readArticles(locale) {
-  const dir = join(CONDITIONS, locale);
+function readArticles(collection, locale) {
+  const dir = join('src/content', collection, locale);
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter((f) => f.endsWith('.mdx') || f.endsWith('.md'))
     .map((file) => {
       const path = join(dir, file);
       const { data, content } = matter(readFileSync(path, 'utf8'));
-      return { path, locale, file, data, content };
+      return { path, collection, locale, file, data, content };
     });
 }
 
-const th = readArticles('th');
-const en = readArticles('en');
-const enSlugs = new Set(en.map((a) => a.data.slug));
+const byCollection = COLLECTIONS.map((collection) => ({
+  collection,
+  th: readArticles(collection, 'th'),
+  en: readArticles(collection, 'en'),
+}));
 
-for (const article of [...th, ...en]) {
-  const { path, data, content, locale } = article;
+const articles = byCollection.flatMap((c) => [...c.th, ...c.en]);
+
+for (const article of articles) {
+  const { path, data, content, locale, collection } = article;
   /*
    * The schema declares `draft: z.boolean().default(false)`, so an article that
    * omits the field is PUBLISHED. Testing `=== false` would treat an omitted
@@ -121,9 +132,13 @@ for (const article of [...th, ...en]) {
     }
   }
 
-  // Red flags declared but never surfaced is a safety problem worth naming,
-  // even though ConditionArticle falls back to rendering them itself.
-  if (published && (data.redFlags?.length ?? 0) === 0) {
+  /*
+   * Every condition needs a "when to see a doctor" list. Examinations and
+   * rehabilitation pages do not: an explainer on how a DXA scan works has no
+   * urgent-symptom list to give, and demanding one would only invite an author
+   * to invent filler on a medical page.
+   */
+  if (collection === 'conditions' && published && (data.redFlags?.length ?? 0) === 0) {
     warnings.push(`${path}: published with no redFlags.`);
   }
 
@@ -152,21 +167,28 @@ for (const article of [...th, ...en]) {
 }
 
 // Every Thai article needs an English counterpart unless deliberately deferred.
-for (const article of th) {
-  if (article.data.translationPending) continue;
-  if (!enSlugs.has(article.data.slug)) {
-    warnings.push(
-      `${article.path}: no English version, and translationPending is not set.`,
-    );
+for (const { th, en } of byCollection) {
+  const enSlugs = new Set(en.map((a) => a.data.slug));
+  for (const article of th) {
+    if (article.data.translationPending) continue;
+    if (!enSlugs.has(article.data.slug)) {
+      warnings.push(
+        `${article.path}: no English version, and translationPending is not set.`,
+      );
+    }
   }
 }
 
 for (const w of warnings) console.warn(`warning  ${w}`);
 for (const e of errors) console.error(`error    ${e}`);
 
+const tally = byCollection
+  .map(({ collection, th, en }) => `${collection} ${th.length}+${en.length}`)
+  .join(', ');
+
 console.log(
-  `\nlint:content — ${th.length} Thai, ${en.length} English article(s); ` +
-    `${errors.length} error(s), ${warnings.length} warning(s).`,
+  `\nlint:content — ${tally} (Thai+English); ` +
+    `${articles.length} file(s); ${errors.length} error(s), ${warnings.length} warning(s).`,
 );
 
 process.exit(errors.length > 0 ? 1 : 0);

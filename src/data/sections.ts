@@ -8,6 +8,11 @@ import type { Locale } from '../i18n/ui';
  * asks for every navigation element to point at a real route, and a stub that
  * tells the reader where to go instead is more useful than a dead link.
  *
+ * `examinations`, `rehabilitation` and `articles` are `live` because they now
+ * have real index pages. The first two list whatever is published in their
+ * collection and fall back to the same in-preparation wording while that is
+ * empty, so marking them live does not promise content that is not there.
+ *
  * Labels live here rather than in ui.ts because they belong to the section, the
  * same way region labels live in regions.ts.
  */
@@ -47,8 +52,7 @@ export const sections: Section[] = [
       th: 'เอกซเรย์ MRI อัลตราซาวด์ และการตรวจความหนาแน่นกระดูก ดูอะไรได้บ้าง และศัพท์ในใบรายงานผลแปลว่าอะไร',
       en: 'What X-ray, MRI, ultrasound and bone-density scans can show, and what the words in a report actually mean.',
     },
-    status: 'planned',
-    fallback: 'search',
+    status: 'live',
   },
   {
     id: 'treatments',
@@ -71,8 +75,7 @@ export const sections: Section[] = [
       th: 'โปรแกรมฟื้นฟูแบ่งตามระยะ ตั้งแต่ช่วงปกป้องข้อ ไปจนถึงการกลับไปใช้งานได้ตามปกติ',
       en: 'Phase-based programmes, from protecting the joint through to returning to normal activity.',
     },
-    status: 'planned',
-    fallback: 'conditions',
+    status: 'live',
   },
   {
     id: 'tools',
@@ -94,8 +97,7 @@ export const sections: Section[] = [
       th: 'บทความสั้นและวิดีโอสาธิต สำหรับเรื่องที่อธิบายด้วยภาพได้ดีกว่าตัวอักษร',
       en: 'Short articles and demonstration videos, for the things a picture explains better than words.',
     },
-    status: 'planned',
-    fallback: 'conditions',
+    status: 'live',
   },
   {
     id: 'about',

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResourceArticle from '../../components/ResourceArticle.astro';
+import { getResources } from '../../lib/resources';
+
+export async function getStaticPaths() {
+  const entries = await getResources('examinations', 'th');
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+const locale = 'th' as const;
+const { entry } = Astro.props;
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.summary}
+  ogType="article"
+  noindex={entry.data.draft}
+>
+  <ResourceArticle locale={locale} entry={entry} collection="examinations" />
+</BaseLayout>
