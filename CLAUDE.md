@@ -164,12 +164,18 @@ Cloudflare analytics behind `PUBLIC_CF_ANALYTICS_TOKEN`, RSS per locale,
 generated `robots.txt`, a bilingual 404, `npm run lint:content`, CI, and
 `docs/DEPLOY.md`.
 
-Also done: a full Thai draft of all twenty condition articles, and the import of
-the author's app media — see "Articles" and "App media" below.
+Also done: all twenty condition articles in both languages, the import of the
+author's app media — see "Articles" and "App media" below — and, on 2026-09-08,
+the author's read-through and the publication of all forty.
 
-Still to do: sticky table of contents, the body map, per-article OG images, the
-pre-launch QA pass, English versions of the twenty articles, and the author's
-own medical review of every draft.
+Also done: the author's logo. `src/assets/logo.png` is his own mark, run through
+`astro:assets` by `Logo.astro`, with `public/favicon-32.png`, `favicon-192.png`
+and `apple-touch-icon.png` generated from it. It is raster, so unlike the
+placeholder SVG it does not recolour with `--brand`/`--accent`; it is a
+transparent PNG and reads on both themes.
+
+Still to do: sticky table of contents, the body map, per-article OG images, and
+the pre-launch QA pass.
 
 ### Publishing safety
 
@@ -183,17 +189,17 @@ read the article himself. The linter also fails on a published article with no
 and on a `<Video>` or `<Figure>` whose `src` names a file that is not in
 `public/`.
 
-**Every one of the twenty condition articles is currently `SAMPLE` +
-`draft: true`.** None of them is published, and none should be until the author
-has read it.
+**All forty articles were published on 2026-09-08**, after the author said he
+had read them. No `SAMPLE` or `SEED` marker remains anywhere in
+`src/content/conditions/`, and every file is `draft: false` with `lastReviewed:
+2026-09-08`. The rule itself has not changed: anything new that Claude drafts
+gets a `SAMPLE` marker and `draft: true` until the author has read it.
 
 ### Articles
 
 The nineteen condition seeds from the master plan's §33, **plus osteoporosis**,
-now all carry a full Thai draft. The `SEED` stage is over; every file carries a
-`SAMPLE` marker instead, which means Claude wrote it and no doctor has read it.
-All twenty are still `draft: true`. `docs/CONTENT-ROADMAP.md` tracks which is
-which and what each still needs.
+exist in Thai and English — forty files, twenty slugs. All are published.
+`docs/CONTENT-ROADMAP.md` tracks where each article's words came from.
 
 Four of them — `frozen-shoulder`, `osteoporosis`, `rotator-cuff-tear`,
 `acl-injury` — are built largely from the author's **own reviewed Thai**, taken
@@ -203,13 +209,17 @@ front half of `rotator-cuff-tear` and `acl-injury` (what the condition is, how
 it is diagnosed, non-operative treatment) is new drafting and needs the closest
 reading. The other sixteen are new drafting throughout.
 
-**Sources are only there where they could be verified.** This environment has no
-outbound access to the usual patient-education sites, so seven articles carry
-PubMed references whose title, journal and year were confirmed through the
-PubMed tool before being written down, and eight carry `sources: []` with a note
-in the `SAMPLE` marker saying why. Do not fill those in with a URL you cannot
-check — on a page with a named doctor's byline an unverifiable citation is worse
-than an empty field.
+**Every reference on the site came out of the PubMed tool.** This environment
+has no outbound access to the usual patient-education sites, so each source's
+title, journal and year was read back off the PubMed record before it was
+written down, and each `url` is a `pubmed.ncbi.nlm.nih.gov` link. Twelve topics
+were sourced this way when they were drafted; the remaining eight — ankle
+sprain, carpal tunnel, knee pain, meniscus tear, meniscus root tear,
+patellofemoral pain, tennis elbow, trigger finger — had `sources: []` until
+publication, and were filled the same way. Never write a citation you cannot
+check: on a page with a named doctor's byline an unverifiable citation is worse
+than an empty field, and `lint:content` fails a published article with no
+sources at all.
 
 Topic 20 in the plan (MRI เข่า) still has no file: it is an imaging topic, and
 forcing it into the conditions schema would be wrong. It belongs to
