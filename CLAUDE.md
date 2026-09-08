@@ -90,6 +90,19 @@ consult it when drafting or fact-checking content. Never copy an image out of
   readers and anyone with reduced vision, which is much of the audience for a
   site about arthritis and osteoporosis. Do not switch on the master plan's
   say-so.
+- **The author's name appears in exactly two places, and that is deliberate.**
+  On 2026-09-08 he asked for it off the rest of the site: the dedicated author
+  page (`/about/author/<id>`) was **deleted**, the "เกี่ยวกับผู้เขียน" link was
+  taken out of the footer, and the homepage author strip was removed. What
+  remains is the `## ผู้เขียน` / `## The author` section of the About page, and
+  the byline at the top of each article — and that byline is **the name alone**,
+  with no credentials and no second line naming him again as reviewer. There is
+  no `bio` or `photo` on the author record any more; `credentials` survives only
+  because the article JSON-LD still uses it as `jobTitle`. `reviewedBy` is still
+  required in the frontmatter and still emitted in the JSON-LD; only its visible
+  duplicate went. His name is also in the privacy notice, where it identifies
+  who is responsible for the data — that is a legal identification, not a
+  credit, so do not strip it as part of some future tidy-up.
 - **Contact address and domain live in `src/data/site.ts`**, and the legal pages
   read them through an MDX import, so there is one place to change. Both are
   still placeholders (`easyortho.com`).
@@ -130,7 +143,7 @@ src/
   content/conditions/{th,en}/   article MDX, one file per condition per language
   content/pages/{th,en}/        about, disclaimer, privacy, editorial policy, contact
   content.config.ts             zod schema for both collections
-  data/authors.ts               author records (deliberately no workplace field)
+  data/authors.ts               author records (no workplace, bio or photo — see decisions)
   data/regions.ts               body regions + browsing categories, display order
   data/apps.ts                  companion-app registry, linked from articles
   i18n/ui.ts                    every visible string, th + en
@@ -150,7 +163,7 @@ The full build plan lives outside the repo.
 Done: scaffold, i18n, content collections, data files, sample article in both
 languages, design system, header/footer, home page, conditions index with
 filtering, region pages, the condition article page (red flags, FAQ, references,
-companion apps, related, JSON-LD), author page, and the info and legal pages.
+companion apps, related, JSON-LD), and the info and legal pages.
 
 Also done: the MDX component set (`KeyFacts`, `RedFlags`, `Figure`, `Video`,
 `Callout`, `Glossary`, `DoctorChecklist`, `ExerciseCard`), registered in
@@ -173,6 +186,10 @@ Also done: the author's logo. `src/assets/logo.png` is his own mark, run through
 and `apple-touch-icon.png` generated from it. It is raster, so unlike the
 placeholder SVG it does not recolour with `--brand`/`--accent`; it is a
 transparent PNG and reads on both themes.
+
+Also done: Vercel Authentication was turned off on 2026-09-08, so the site is
+publicly readable. It had been on for every `*.vercel.app` URL
+(`all_except_custom_domains`), which put production behind a Vercel login.
 
 Still to do: sticky table of contents, the body map, per-article OG images, and
 the pre-launch QA pass.
@@ -327,7 +344,8 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
 
 `src/components/Home.astro` follows the author's design mockup: hero with a
 search form, "ปวดตรงไหน?" body regions, four "คุณอยากรู้อะไร?" cards, common
-conditions, trust marks, author strip.
+conditions and trust marks. The mockup's author strip was built and then
+removed at the author's request — see "Decisions the author has made".
 
 Deliberate departures from that mockup, each with a reason:
 
@@ -340,7 +358,8 @@ Deliberate departures from that mockup, each with a reason:
   and บทความ & วิดีโอ have no pages; putting them in the nav would ship 404s.
 - **Seven body regions, not nine.** `regions.ts` has no neck, and combines foot
   and ankle. Change the data first if the design's split is wanted.
-- **No social icons in the footer**, because no accounts exist yet.
+- **No social icons in the footer**, because no accounts exist yet, and no
+  author link either — see "Decisions the author has made".
 - The hero search is a plain GET form to `/search`, so it works without
   JavaScript, and the example chips are real `?q=` searches.
 

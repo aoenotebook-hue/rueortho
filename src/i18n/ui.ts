@@ -51,7 +51,6 @@ const ui = {
 
     'article.published': 'เผยแพร่เมื่อ',
     'article.lastReviewed': 'ตรวจทานล่าสุด',
-    'article.reviewedBy': 'ตรวจทานโดย',
     'article.writtenBy': 'เขียนโดย',
     'article.onThisPage': 'หัวข้อในหน้านี้',
     'article.keyFacts': 'สรุปสั้น ๆ',
@@ -91,7 +90,6 @@ const ui = {
 
     'home.recentlyReviewed': 'บทความที่ตรวจทานล่าสุด',
     'home.aboutAuthor': 'เกี่ยวกับผู้เขียน',
-    'home.readAuthor': 'อ่านประวัติผู้เขียน',
 
     'brand.sub': 'Easy Orthopaedic Knowledge for Everyone',
     'brand.promise': 'เข้าใจอาการ รู้ทางเลือก ดูแลตัวเองได้',
@@ -162,7 +160,6 @@ const ui = {
     'footer.disclaimer':
       'เนื้อหาบนเว็บไซต์นี้เป็นความรู้ทั่วไป ไม่ใช่คำแนะนำทางการแพทย์เฉพาะบุคคล และไม่สามารถใช้แทนการตรวจและปรึกษาแพทย์ได้',
     'footer.about': 'เกี่ยวกับเว็บไซต์',
-    'footer.author': 'เกี่ยวกับผู้เขียน',
     'footer.disclaimerLink': 'ข้อจำกัดความรับผิดชอบ',
     'footer.privacy': 'นโยบายความเป็นส่วนตัว',
     'footer.editorial': 'นโยบายด้านเนื้อหา',
@@ -219,7 +216,6 @@ const ui = {
 
     'article.published': 'Published',
     'article.lastReviewed': 'Last reviewed',
-    'article.reviewedBy': 'Medically reviewed by',
     'article.writtenBy': 'Written by',
     'article.onThisPage': 'On this page',
     'article.keyFacts': 'Key facts',
@@ -259,7 +255,6 @@ const ui = {
 
     'home.recentlyReviewed': 'Recently reviewed',
     'home.aboutAuthor': 'About the author',
-    'home.readAuthor': 'Read the author’s background',
 
     'brand.sub': 'Easy Orthopaedic Knowledge for Everyone',
     'brand.promise': 'Understand your symptoms, know your options, look after yourself',
@@ -331,7 +326,6 @@ const ui = {
     'footer.disclaimer':
       'Everything here is general information. It is not personal medical advice and cannot replace being examined by a doctor.',
     'footer.about': 'About',
-    'footer.author': 'About the author',
     'footer.disclaimerLink': 'Medical disclaimer',
     'footer.privacy': 'Privacy notice',
     'footer.editorial': 'Editorial policy',
