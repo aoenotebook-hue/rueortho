@@ -1,0 +1,27 @@
+---
+/**
+ * Overrides the `table` element inside article MDX.
+ *
+ * A markdown table renders as a bare <table>, and Prose's
+ * `.prose .table-wrapper { overflow-x: auto }` rule therefore matched nothing:
+ * a table wider than the viewport pushed the whole page sideways instead of
+ * scrolling inside itself. The English osteoporosis article did exactly that
+ * at 390px — a 419px table in a 390px viewport.
+ *
+ * This is done as an MDX component override rather than a rehype plugin
+ * because Astro 7 uses Sätteri as its Markdown processor, and
+ * `markdown.rehypePlugins` now requires installing @astrojs/markdown-remark,
+ * which would switch the whole site back to the unified pipeline for the sake
+ * of one wrapper element.
+ *
+ * `tabindex="0"` makes the scrolling area reachable by keyboard, which WCAG 2.2
+ * requires of any region that scrolls. It deliberately carries no role: a
+ * `role="region"` with no accessible name is worse than none at all.
+ */
+---
+
+<div class="table-wrapper" tabindex="0">
+  <table>
+    <slot />
+  </table>
+</div>

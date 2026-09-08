@@ -59,6 +59,11 @@ const ui = {
     'article.redFlagsTitle': 'อาการที่ควรไปพบแพทย์ทันที',
     'article.redFlagsUrgent':
       'หากมีอาการข้อใดข้อหนึ่งต่อไปนี้ ควรไปพบแพทย์หรือห้องฉุกเฉินทันที หรือโทร 1669',
+    'article.draftTitle': 'ฉบับร่าง ยังไม่เผยแพร่',
+    'article.draftBody':
+      'หน้านี้เป็นฉบับร่างที่ยังไม่ผ่านการตรวจทานทางการแพทย์ จัดทำขึ้นเพื่อให้ผู้เขียนอ่านและแก้ไขก่อนเผยแพร่ ยังไม่ควรใช้อ้างอิงในการดูแลตนเอง และจะไม่ปรากฏบนเว็บไซต์จริงจนกว่าผู้เขียนจะตรวจทานแล้ว',
+    'article.notReviewed': 'ยังไม่ผ่านการตรวจทานทางการแพทย์',
+
     'article.faq': 'คำถามที่พบบ่อย',
     'article.references': 'แหล่งอ้างอิง',
     'article.related': 'เรื่องที่เกี่ยวข้อง',
@@ -222,6 +227,11 @@ const ui = {
     'article.redFlagsTitle': 'See a doctor straight away if you have',
     'article.redFlagsUrgent':
       'If any of the following apply, go to a doctor or an emergency department now, or call 1669.',
+    'article.draftTitle': 'Draft — not published',
+    'article.draftBody':
+      'This page is a draft that has not been medically reviewed. It is here so the author can read and correct it before publication. Do not rely on it for your own care; it will not appear on the live site until he has reviewed it.',
+    'article.notReviewed': 'Not yet medically reviewed',
+
     'article.faq': 'Frequently asked questions',
     'article.references': 'References',
     'article.related': 'Related conditions',

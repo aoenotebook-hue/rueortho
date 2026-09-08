@@ -10,3 +10,9 @@ export { default as Video } from './Video.astro';
 export { default as ExerciseCard } from './ExerciseCard.astro';
 export { default as Glossary } from './Glossary.astro';
 export { default as DoctorChecklist } from './DoctorChecklist.astro';
+
+/**
+ * An HTML element override, not a component authors write by hand: every
+ * markdown table in an article gets a scrolling wrapper. See Table.astro.
+ */
+export { default as table } from './Table.astro';

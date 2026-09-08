@@ -12,9 +12,17 @@ interface Props {
   /** Omit on pages that exist in one language only. */
   hasAlternate?: boolean;
   ogType?: 'website' | 'article';
+  /** Keep the page out of search engines. Set on every draft article. */
+  noindex?: boolean;
 }
 
-const { title, description, hasAlternate = true, ogType = 'website' } = Astro.props;
+const {
+  title,
+  description,
+  hasAlternate = true,
+  ogType = 'website',
+  noindex = false,
+} = Astro.props;
 
 const locale: Locale = getLocaleFromUrl(Astro.url);
 const tr = t(locale);
@@ -37,6 +45,8 @@ const thaiUrl = new URL(localizePath(Astro.url.pathname.replace(/^\/en/, ''), 't
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="canonical" href={canonical} />
+    {/* Drafts are built only in dev and preview, and must never be indexed. */}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     {
       hasAlternate && (
