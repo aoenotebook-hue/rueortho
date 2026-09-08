@@ -220,9 +220,10 @@ conditions-only — the canonical section order, and the warning about a publish
 article with no `redFlags`, because an explainer on how a DXA scan works has no
 urgent-symptom list to give and demanding one would invite filler.
 
-**All forty condition articles were published on 2026-09-08**, after the author
-said he had read them. No `SAMPLE` or `SEED` marker remains anywhere in
-`src/content/conditions/`, and every file is `draft: false` with `lastReviewed:
+**All 62 articles were published on 2026-09-08**, after the author said he had
+read them — the forty condition files first, then the 22 examinations and
+rehabilitation files. No `SAMPLE` or `SEED` marker remains anywhere in
+`src/content/`, and every file is `draft: false` with `lastReviewed:
 2026-09-08`. The rule itself has not changed: anything new that Claude drafts
 gets a `SAMPLE` marker and `draft: true` until the author has read it.
 
@@ -285,8 +286,8 @@ collection of its own.
   `<Video>` tags out of the article bodies at build time. A hand-kept list would
   drift, which is exactly the bug that already hit three rotator-cuff clips.
 
-**All 22 files in the two new collections are `SAMPLE` + `draft: true`.** None
-is published, and none should be until the author has read it.
+All 22 files in the two new collections were published on 2026-09-08 alongside
+the conditions. Production builds **105 pages**; before publication it built 83.
 
 ### App media
 
@@ -419,9 +420,10 @@ carry the plan's full eight entries without shipping a single 404 — add a
 section there and both the nav and its page follow.
 
 `/treatments` is the only stub left. `examinations`, `rehabilitation` and
-`articles` became `live` on 2026-09-08; the first two fall back to the same
-in-preparation wording through `ResourceIndex.astro` while their collections
-hold nothing published, so `live` does not overclaim.
+`articles` became `live` on 2026-09-08 and all three now carry published
+content. The in-preparation fallback in `ResourceIndex.astro` is no longer being
+exercised, but keep it: it is what lets a new collection be added and routed
+before its first article has been reviewed.
 
 `/terms` from the plan's route list is **not** built: it needs legal wording the
 author has to supply, and inventing terms of use would be worse than not having
