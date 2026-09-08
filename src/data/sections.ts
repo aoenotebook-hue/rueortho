@@ -21,6 +21,18 @@ export type SectionStatus = 'live' | 'planned';
 export interface Section {
   id: string;
   path: string;
+  /**
+   * Kept out of the main navigation while still having a page of its own.
+   *
+   * `conditions` is the one that uses this. Its index duplicates what
+   * "บทความ & วิดีโอ" already lists, so the author asked for the menu item to
+   * go — but the page itself is where the body-region filter and the
+   * type-to-filter box live, and the body map, the homepage cards, the region
+   * pages and every article breadcrumb link straight to it. Deleting the route
+   * would break all of those, so it stays reachable and simply stops appearing
+   * in the menu.
+   */
+  hiddenFromNav?: boolean;
   /** Short label for the main navigation. */
   nav: Record<Locale, string>;
   /** Page heading, which can be longer than the nav label. */
@@ -37,6 +49,7 @@ export const sections: Section[] = [
     path: '/conditions',
     nav: { th: 'อาการ & โรค', en: 'Conditions' },
     title: { th: 'อาการ & โรค', en: 'Conditions' },
+    hiddenFromNav: true,
     intro: {
       th: 'ค้นหาข้อมูลจากบริเวณที่มีอาการ หรือเลือกจากชื่อโรค',
       en: 'Find information by the area that hurts, or by the name of the condition.',
@@ -63,8 +76,7 @@ export const sections: Section[] = [
       th: 'การดูแลตนเอง กายภาพบำบัด ยา การฉีดยา และการผ่าตัด แต่ละทางเลือกช่วยอะไรได้ มีข้อดีข้อเสียอย่างไร',
       en: 'Self-care, physiotherapy, medicines, injections and surgery — what each one aims to do, and its trade-offs.',
     },
-    status: 'planned',
-    fallback: 'conditions',
+    status: 'live',
   },
   {
     id: 'rehabilitation',
@@ -110,6 +122,9 @@ export const sections: Section[] = [
 ];
 
 export const plannedSections = sections.filter((s) => s.status === 'planned');
+
+/** What the main navigation shows. */
+export const navSections = sections.filter((s) => !s.hiddenFromNav);
 
 export function getSection(id: string): Section {
   const section = sections.find((s) => s.id === id);

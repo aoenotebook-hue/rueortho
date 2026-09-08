@@ -3,7 +3,7 @@ import Container from './Container.astro';
 import Logo from './Logo.astro';
 import { t, type Locale } from '../i18n/ui';
 import { getAlternatePath, localizePath, stripLocale } from '../i18n/utils';
-import { sections } from '../data/sections';
+import { navSections } from '../data/sections';
 
 interface Props {
   locale: Locale;
@@ -26,7 +26,7 @@ const here = stripLocale(Astro.url.pathname).replace(/\/$/, '') || '/';
  */
 const navItems = [
   { path: '/', label: tr('nav.home') },
-  ...sections.map((section) => ({ path: section.path, label: section.nav[locale] })),
+  ...navSections.map((section) => ({ path: section.path, label: section.nav[locale] })),
 ];
 ---
 

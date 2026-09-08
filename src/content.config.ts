@@ -96,6 +96,12 @@ const examinations = defineCollection({
   schema: resourceSchema(),
 });
 
+/** Self-care, medicines by class, injections and surgery. */
+const treatments = defineCollection({
+  loader: resourceLoader('./src/content/treatments'),
+  schema: resourceSchema(),
+});
+
 /** Phase-based rehabilitation and exercise programmes. */
 const rehabilitation = defineCollection({
   loader: resourceLoader('./src/content/rehabilitation'),
@@ -119,4 +125,4 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { conditions, examinations, rehabilitation, pages };
+export const collections = { conditions, examinations, rehabilitation, treatments, pages };

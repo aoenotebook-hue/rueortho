@@ -291,3 +291,107 @@
 .hero-surface {
   background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
 }
+
+/*
+ * The body map. Coordinates are percentages of the drawing, keyed off
+ * `data-region`, and they live here rather than in a `style` attribute for the
+ * same reason as the hero gradient above: our CSP hashes <style> elements but
+ * cannot cover style attributes, so inline positioning is refused silently and
+ * every hotspot would stack in the top-left corner.
+ *
+ * The coordinates were measured off the artwork's alpha channel rather than
+ * guessed: the two figures occupy x 13-44% and 55-86%, the arms reach their
+ * widest at y 50%, and below y 58% there are no arms in the outline at all.
+ *
+ * A hotspot is anchored by its *dot*, not by the middle of the pill — the dot
+ * is what points at the body part, and centring the whole pill on the landmark
+ * is what put the elbow and the hand in the middle of the torso the first time
+ * round. Labels then flow outwards, away from the figure, so they never have to
+ * cross it.
+ *
+ * The artwork is black line art on transparency, so it disappears against the
+ * dark ground. Inverting it there turns the lines white and leaves the
+ * transparent areas alone — the dots and labels are separate elements and keep
+ * their own theme colours.
+ */
+.body-map-figure {
+  opacity: 0.85;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body-map-figure {
+    filter: invert(1);
+  }
+}
+
+.body-map-hotspot {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.5rem;
+  /* Keeps the tap target at the 44px the accessibility target asks for, even
+     though the dot itself is 14px. */
+  min-height: 44px;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  /* Puts the dot's centre, not the pill's, on the coordinate. */
+  transform: translate(-15px, -50%);
+}
+
+/* Left-hand figure: the label runs away from the body, to the left. */
+.body-map-hotspot.to-left {
+  flex-direction: row-reverse;
+  transform: translate(calc(-100% + 15px), -50%);
+}
+
+.body-map-dot {
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  background: var(--surface);
+  flex: none;
+}
+
+.body-map-label {
+  font-size: 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.15rem 0.6rem;
+}
+
+a.body-map-hotspot:hover .body-map-label,
+a.body-map-hotspot:focus-visible .body-map-label {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+a.body-map-hotspot:hover .body-map-dot {
+  background: var(--accent);
+}
+
+/* Not a link: a region with nothing published yet. Shape and wording carry
+   that, never colour alone. */
+.body-map-hotspot.is-empty {
+  color: var(--muted);
+  opacity: 0.65;
+}
+
+.body-map-hotspot.is-empty .body-map-dot {
+  border-style: dashed;
+}
+
+/* Left figure carries the limbs, right figure the neck and back. The y values
+   are spread far enough apart that two labels in the same column cannot
+   overlap at the sizes this renders at. */
+.body-map [data-region='shoulder'] { left: 22%; top: 26%; }
+.body-map [data-region='elbow'] { left: 16.5%; top: 40%; }
+.body-map [data-region='hand-wrist'] { left: 13.5%; top: 50%; }
+.body-map [data-region='hip'] { left: 23%; top: 60%; }
+.body-map [data-region='knee'] { left: 24%; top: 74%; }
+.body-map [data-region='foot-ankle'] { left: 24%; top: 91%; }
+.body-map [data-region='neck'] { left: 71%; top: 25%; }
+.body-map [data-region='spine'] { left: 71%; top: 45%; }

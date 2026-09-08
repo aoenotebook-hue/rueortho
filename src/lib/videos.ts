@@ -61,7 +61,7 @@ export async function getVideos(locale: Locale): Promise<VideoRef[]> {
       ...collect(entry.body, entry.data.title, `${prefix}/conditions/${entry.data.slug}`),
     );
   }
-  for (const collection of ['examinations', 'rehabilitation'] as const) {
+  for (const collection of ['examinations', 'rehabilitation', 'treatments'] as const) {
     for (const entry of await getResources(collection, locale)) {
       videos.push(
         ...collect(entry.body, entry.data.title, `${prefix}/${collection}/${entry.data.slug}`),

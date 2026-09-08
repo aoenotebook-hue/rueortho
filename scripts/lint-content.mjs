@@ -17,7 +17,7 @@ import matter from 'gray-matter';
  * same claim of review. A few checks are specific to conditions and are gated
  * on the collection name where they appear.
  */
-const COLLECTIONS = ['conditions', 'examinations', 'rehabilitation'];
+const COLLECTIONS = ['conditions', 'examinations', 'rehabilitation', 'treatments'];
 const REVIEW_MONTHS = 24;
 
 const errors = [];
