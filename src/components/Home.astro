@@ -42,7 +42,7 @@ const wantCards = [
   {
     title: tr('home.want2Title'),
     body: tr('home.want2Body'),
-    href: `${searchPath}?q=${encodeURIComponent(locale === 'th' ? 'เอกซเรย์' : 'x-ray')}`,
+    href: localizePath('/examinations', locale),
     bg: 'bg-card-green-bg',
     ink: 'text-card-green-ink',
     icon: 'scan',
@@ -50,7 +50,7 @@ const wantCards = [
   {
     title: tr('home.want3Title'),
     body: tr('home.want3Body'),
-    href: `${searchPath}?q=${encodeURIComponent(locale === 'th' ? 'การรักษา' : 'treatment')}`,
+    href: localizePath('/treatments', locale),
     bg: 'bg-card-orange-bg',
     ink: 'text-card-orange-ink',
     icon: 'pill',
@@ -58,7 +58,7 @@ const wantCards = [
   {
     title: tr('home.want4Title'),
     body: tr('home.want4Body'),
-    href: `${searchPath}?q=${encodeURIComponent(locale === 'th' ? 'ออกกำลังกาย' : 'exercise')}`,
+    href: localizePath('/rehabilitation', locale),
     bg: 'bg-card-purple-bg',
     ink: 'text-card-purple-ink',
     icon: 'move',
@@ -167,32 +167,15 @@ const trust = [
       </div>
 
       <div class="relative hidden lg:block">
-        <!-- Placeholder for the hero photograph in the design. Drawn rather
-             than photographed so it needs no licence and works in dark mode. -->
-        <div
-          class="grid aspect-[4/3] place-items-center rounded-[var(--radius-panel)] border border-border bg-surface"
-        >
-          <svg
-            width="150"
-            height="220"
-            viewBox="0 0 100 150"
-            fill="none"
-            stroke="var(--accent)"
-            stroke-width="2.4"
-            stroke-linecap="round"
-            aria-hidden="true"
-            class="opacity-70"
-          >
-            <path d="M50 8c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
-            <path d="M50 27c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
-            <path d="M50 46c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
-            <path d="M50 65c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
-            <path d="M50 84c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z" />
-            <path d="M38 15H26M38 34H24M38 53H22M38 72H24M38 91H26" />
-            <path d="M62 15h12M62 34h14M62 53h16M62 72h14M62 91h12" />
-            <path d="M42 105c-3 12-4 24-3 37M58 105c3 12 4 24 3 37" />
-          </svg>
-        </div>
+        <img
+          src="/images/hero-orthopaedic-care.svg"
+          alt={tr('hero.imageAlt')}
+          width="720"
+          height="540"
+          fetchpriority="high"
+          decoding="async"
+          class="aspect-[4/3] w-full rounded-[var(--radius-panel)] border border-border bg-surface shadow-[var(--shadow-card)]"
+        />
 
         <p
           class="absolute -top-2 end-2 max-w-[13rem] text-end text-[1.05rem] italic leading-snug text-accent"
@@ -372,7 +355,12 @@ const trust = [
                   href={localizePath(`/conditions/${entry.data.slug}`, locale)}
                   class="group block no-underline"
                 >
-                  <span class="mb-3 block aspect-[4/3] rounded-[10px] border border-border bg-ground" />
+                  <span
+                    class="mb-3 grid aspect-[4/3] place-items-center rounded-[10px] border border-border bg-ground text-accent transition group-hover:bg-brand-soft"
+                    aria-hidden="true"
+                  >
+                    <BodyIcon region={entry.data.region} />
+                  </span>
                   <span class="block font-semibold text-ink group-hover:text-accent">
                     {entry.data.title}
                   </span>
@@ -465,7 +453,12 @@ const trust = [
                   href={localizePath(`/conditions/${entry.data.slug}`, locale)}
                   class="group block no-underline"
                 >
-                  <span class="mb-3 block aspect-[16/9] rounded-[10px] border border-border bg-ground" />
+                  <span
+                    class="mb-3 grid aspect-[16/9] place-items-center rounded-[10px] border border-border bg-ground text-accent transition group-hover:bg-brand-soft"
+                    aria-hidden="true"
+                  >
+                    <BodyIcon region={entry.data.region} />
+                  </span>
                   <span class="block font-semibold text-ink group-hover:text-accent">
                     {entry.data.title}
                   </span>

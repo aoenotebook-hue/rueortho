@@ -106,6 +106,7 @@ const ui = {
     'hero.examplesLabel': 'ตัวอย่าง:',
     'hero.note': 'ความรู้ที่ดี ช่วยให้คุณกลับมาใช้ชีวิตได้อีกครั้ง',
     'hero.badge': 'สุขภาพข้อดี เริ่มได้จากความเข้าใจ',
+    'hero.imageAlt': 'ภาพประกอบคนกำลังเดิน พร้อมสัญลักษณ์การตรวจ การดูแล และการฟื้นฟูข้อ',
 
     'home.whereTitle': 'ปวดตรงไหน?',
     'home.whereSub': 'เลือกบริเวณที่มีอาการ เพื่อดูข้อมูลที่เกี่ยวข้อง',
@@ -277,6 +278,7 @@ const ui = {
     'hero.examplesLabel': 'For example:',
     'hero.note': 'Understanding your condition helps you get your life back.',
     'hero.badge': 'Healthy joints start with understanding',
+    'hero.imageAlt': 'Illustration of a person walking with symbols for assessment, care and joint recovery.',
 
     'home.whereTitle': 'Where does it hurt?',
     'home.whereSub': 'Choose the area with symptoms to see what is relevant.',
