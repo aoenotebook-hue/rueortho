@@ -48,8 +48,6 @@ const ui = {
     'common.viewAll': 'ดูทั้งหมด',
     'common.article': 'บทความ',
     'common.articleCount': '{n} บทความ',
-
-    'article.published': 'เผยแพร่เมื่อ',
     'article.lastReviewed': 'ตรวจทานล่าสุด',
     'article.writtenBy': 'เขียนโดย',
     'article.onThisPage': 'หัวข้อในหน้านี้',
@@ -61,7 +59,6 @@ const ui = {
     'article.draftTitle': 'ฉบับร่าง ยังไม่เผยแพร่',
     'article.draftBody':
       'หน้านี้เป็นฉบับร่างที่ยังไม่ผ่านการตรวจทานทางการแพทย์ จัดทำขึ้นเพื่อให้ผู้เขียนอ่านและแก้ไขก่อนเผยแพร่ ยังไม่ควรใช้อ้างอิงในการดูแลตนเอง และจะไม่ปรากฏบนเว็บไซต์จริงจนกว่าผู้เขียนจะตรวจทานแล้ว',
-    'article.notReviewed': 'ยังไม่ผ่านการตรวจทานทางการแพทย์',
 
     'article.faq': 'คำถามที่พบบ่อย',
     'article.references': 'แหล่งอ้างอิง',
@@ -102,11 +99,10 @@ const ui = {
 
     'hero.body':
       'ความรู้เรื่องกระดูก ข้อ กล้ามเนื้อ และเส้นเอ็น อธิบายให้เข้าใจง่าย อ้างอิงหลักฐานทางการแพทย์',
-    'hero.searchPlaceholder': 'คุณกำลังมีอาการอะไร?',
-    'hero.examplesLabel': 'ตัวอย่าง:',
+    'hero.popularLabel': 'หัวข้อที่คนค้นบ่อย:',
     'hero.note': 'ความรู้ที่ดี ช่วยให้คุณกลับมาใช้ชีวิตได้อีกครั้ง',
     'hero.badge': 'สุขภาพข้อดี เริ่มได้จากความเข้าใจ',
-    'hero.imageAlt': 'ภาพประกอบคนกำลังเดิน พร้อมสัญลักษณ์การตรวจ การดูแล และการฟื้นฟูข้อ',
+    'hero.imageAlt': 'ภาพประกอบชายคนหนึ่งใช้มือจับไหล่ข้างที่ปวด โดยมีสัญลักษณ์แสดงตำแหน่งที่ปวดบริเวณไหล่',
 
     'home.whereTitle': 'ปวดตรงไหน?',
     'home.whereSub': 'เลือกบริเวณที่มีอาการ เพื่อดูข้อมูลที่เกี่ยวข้อง',
@@ -220,8 +216,6 @@ const ui = {
     'common.viewAll': 'View all',
     'common.article': 'article',
     'common.articleCount': '{n} articles',
-
-    'article.published': 'Published',
     'article.lastReviewed': 'Last reviewed',
     'article.writtenBy': 'Written by',
     'article.onThisPage': 'On this page',
@@ -233,7 +227,6 @@ const ui = {
     'article.draftTitle': 'Draft — not published',
     'article.draftBody':
       'This page is a draft that has not been medically reviewed. It is here so the author can read and correct it before publication. Do not rely on it for your own care; it will not appear on the live site until he has reviewed it.',
-    'article.notReviewed': 'Not yet medically reviewed',
 
     'article.faq': 'Frequently asked questions',
     'article.references': 'References',
@@ -274,11 +267,10 @@ const ui = {
 
     'hero.body':
       'Bone, joint, muscle and tendon problems explained in plain language, grounded in medical evidence.',
-    'hero.searchPlaceholder': 'What symptoms do you have?',
-    'hero.examplesLabel': 'For example:',
+    'hero.popularLabel': 'Commonly looked up:',
     'hero.note': 'Understanding your condition helps you get your life back.',
     'hero.badge': 'Healthy joints start with understanding',
-    'hero.imageAlt': 'Illustration of a person walking with symbols for assessment, care and joint recovery.',
+    'hero.imageAlt': 'Illustration of a man holding his shoulder, with a marker showing where the pain is.',
 
     'home.whereTitle': 'Where does it hurt?',
     'home.whereSub': 'Choose the area with symptoms to see what is relevant.',

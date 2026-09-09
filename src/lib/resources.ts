@@ -3,11 +3,11 @@ import type { Locale } from '../i18n/ui';
 import { draftsIncluded } from './conditions';
 
 /**
- * `examinations` and `rehabilitation` are shaped alike on purpose, so one set
- * of queries serves both. Anything that needs the rehab-only `region` field
+ * `examinations`, `rehabilitation` and `treatments` are shaped alike on purpose,
+ * so one set of queries serves all three. Anything that needs the rehab-only `region` field
  * narrows the entry itself rather than getting a separate function here.
  */
-export type ResourceCollection = 'examinations' | 'rehabilitation';
+export type ResourceCollection = 'examinations' | 'rehabilitation' | 'treatments';
 export type Resource = CollectionEntry<ResourceCollection>;
 
 /** Entry ids look like "th/knee-mri". */

@@ -6,7 +6,7 @@ import Callout from './Callout.astro';
 import Card from './Card.astro';
 import * as mdxComponents from './mdx';
 import { t, type Locale } from '../i18n/ui';
-import { localizePath, formatDate, isoDate, isReviewOverdue } from '../i18n/utils';
+import { localizePath, isoDate, isReviewOverdue } from '../i18n/utils';
 import { getAuthor } from '../data/authors';
 import { getSection } from '../data/sections';
 import { getConditions, type Condition } from '../lib/conditions';
@@ -103,27 +103,6 @@ const jsonLd = {
     <h1>{entry.data.title}</h1>
     <p class="text-lg text-muted">{entry.data.summary}</p>
 
-    <div class="my-7 rounded-[10px] border border-border bg-surface p-4 text-sm" data-pagefind-ignore>
-      <p class="m-0 font-semibold text-ink">{author.name[locale]}</p>
-      {
-        entry.data.draft ? (
-          <p class="m-0 mt-1 font-semibold text-warning-ink">{tr('article.notReviewed')}</p>
-        ) : (
-          <p class="m-0 mt-1 text-muted">
-            {tr('article.lastReviewed')}{' '}
-            <time datetime={isoDate(entry.data.lastReviewed)}>
-              {formatDate(entry.data.lastReviewed, locale)}
-            </time>
-          </p>
-        )
-      }
-      <p class="m-0 mt-1 text-muted">
-        {tr('article.published')}{' '}
-        <time datetime={isoDate(entry.data.publishedDate)}>
-          {formatDate(entry.data.publishedDate, locale)}
-        </time>
-      </p>
-    </div>
 
     {overdue && <Callout type="warning">{tr('article.reviewOverdue')}</Callout>}
 
@@ -193,6 +172,18 @@ const jsonLd = {
         </section>
       )
     }
+
+
+    {/*
+      The byline sits at the end of the article, not under the title, and shows
+      the author's name and nothing else — the author asked for the review and
+      publication dates off the page. Both are still required in the frontmatter
+      and still emitted in the JSON-LD above, so the review record is intact;
+      only the visible dates went.
+    */}
+    <p class="mt-12 border-t border-border pt-6 text-sm text-muted" data-pagefind-ignore>
+      {tr('article.writtenBy')} <span class="font-semibold text-ink">{author.name[locale]}</span>
+    </p>
 
     <div data-pagefind-ignore>
       <Callout type="info">{tr('footer.disclaimer')}</Callout>

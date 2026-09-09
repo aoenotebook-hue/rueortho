@@ -34,7 +34,7 @@ const groups = [
     })),
   },
   ...(await Promise.all(
-    (['examinations', 'rehabilitation'] as const).map(async (id) => ({
+    (['examinations', 'rehabilitation', 'treatments'] as const).map(async (id) => ({
       id,
       entries: (await getResources(id, locale)).map((e) => ({
         title: e.data.title,

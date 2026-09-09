@@ -118,8 +118,12 @@ reachable by anything on the network while it runs.
   page (`/about/author/<id>`) was **deleted**, the "เกี่ยวกับผู้เขียน" link was
   taken out of the footer, and the homepage author strip was removed. What
   remains is the `## ผู้เขียน` / `## The author` section of the About page, and
-  the byline at the top of each article — and that byline is **the name alone**,
-  with no credentials and no second line naming him again as reviewer. There is
+  the byline on each article — which he then asked to move to the **foot** of
+  the article, showing **the name alone**: no credentials, no reviewer line, and
+  **no review or publication date**. The editorial policy was reworded to match,
+  since it used to promise those dates at the top of every article. The dates
+  are still in the frontmatter and still in the JSON-LD; only the visible ones
+  went. There is
   no `bio` or `photo` on the author record any more; `credentials` survives only
   because the article JSON-LD still uses it as `jobTitle`. `reviewedBy` is still
   required in the frontmatter and still emitted in the JSON-LD; only its visible
@@ -166,8 +170,9 @@ src/
   content/conditions/{th,en}/   article MDX, one file per condition per language
   content/examinations/{th,en}/ imaging and tests — x-ray, MRI, ultrasound, DXA, NCS
   content/rehabilitation/{th,en}/ phase-based rehab and exercise programmes
+  content/treatments/{th,en}/   self-care, medicines by class, injections, surgery
   content/pages/{th,en}/        about, disclaimer, privacy, editorial policy, contact
-  content.config.ts             zod schema for all four collections
+  content.config.ts             zod schema for all five collections
   data/authors.ts               author records (no workplace, bio or photo — see decisions)
   data/regions.ts               body regions + browsing categories, display order
   data/apps.ts                  companion-app registry, linked from articles
@@ -281,9 +286,10 @@ was held back from the conditions collection on purpose — an imaging topic has
 different shape from a disease — and it went in as soon as `/examinations` had a
 collection of its own.
 
-### The three new sections
+### The section collections
 
-`/examinations`, `/rehabilitation` and `/articles` became real on 2026-09-08.
+`/examinations`, `/rehabilitation` and `/articles` became real on 2026-09-08,
+and `/treatments` followed the same day.
 
 - **`examinations` and `rehabilitation` are separate collections** sharing one
   base schema (`resourceSchema()` in `src/content.config.ts`) and one renderer,
@@ -309,8 +315,23 @@ collection of its own.
   `<Video>` tags out of the article bodies at build time. A hand-kept list would
   drift, which is exactly the bug that already hit three rotator-cuff clips.
 
-All 22 files in the two new collections were published on 2026-09-08 alongside
-the conditions. Production builds **105 pages**; before publication it built 83.
+**`treatments` is the third collection on `resourceSchema()`** — self-care,
+medicines by class, injections, surgery, and how to choose between them, five
+topics in each language. Adding a collection means touching five places:
+`content.config.ts`, the `ResourceCollection` union in `lib/resources.ts`, the
+collection lists in `lib/videos.ts` and `ArticlesIndex.astro`, and `COLLECTIONS`
+in `scripts/lint-content.mjs`. Miss the last one and the publication-safety
+checks silently skip the new collection.
+
+All 32 files in the three resource collections are published. Production builds
+**115 pages**.
+
+**The treatments articles are the one exception to the read-before-publish
+rule.** The author asked for the section to be created *and published* in the
+same instruction, so unlike everything else on the site they went live without
+him having read them first. They follow the medical content rules — no doses
+anywhere, drug classes only, evidence stated with its uncertainty — but if he
+wants them held back, setting `draft: true` on the ten files is the whole job.
 
 ### App media
 
@@ -410,6 +431,29 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
   site name and pushed the page 11px wider than a 390px viewport. Headings now
   also carry `overflow-wrap: break-word`, but that alone is not enough.
 
+### The body map
+
+`BodyMap.astro` puts clickable hotspots over `src/assets/body-map.png`, the
+author's own drawing of two figures. Three things about it are load-bearing:
+
+- **The coordinates live in `global.css`, keyed off `data-region`**, not in a
+  `style` attribute. Our CSP hashes `<style>` elements but cannot cover style
+  attributes, so inline positioning is refused silently and every hotspot piles
+  up in one corner.
+- **A hotspot is anchored by its dot, not by the middle of the pill.** Centring
+  the whole pill on the landmark is what put the elbow and the hand in the
+  middle of the torso the first time. Labels then flow outwards, away from the
+  figure, so they never cross it — `.to-left` flips that for the left figure.
+- **The coordinates were measured off the artwork's alpha channel, not guessed.**
+  The figures occupy x 13–44% and 55–86%, the arms reach their widest at y 50%,
+  and below y 58% there are no arms in the outline at all. Re-measure if the
+  drawing is ever replaced.
+
+The drawing is black line art on transparency, so it is inverted under
+`prefers-color-scheme: dark` — that turns the lines white and leaves the
+transparent areas alone. Below `md` the map is hidden and the original circle
+grid renders instead: the labels would overlap each other at that width.
+
 ### Homepage
 
 `src/components/Home.astro` follows the author's design mockup: hero with a
@@ -417,21 +461,28 @@ search form, "ปวดตรงไหน?" body regions, four "คุณอย�
 conditions and trust marks. The mockup's author strip was built and then
 removed at the author's request — see "Decisions the author has made".
 
-**The hero illustration is `public/images/hero-orthopaedic-care.svg`, loaded
-through `<img>`.** An SVG referenced that way is an isolated document: it cannot
-see `--accent`, `--surface` or any other token, and this one carries about a
-dozen hard-coded colours. So it does **not** adapt to dark mode — it stays a
-pale card on the dark ground. That is tolerable because it is rounded, bordered
-and reads as a deliberate illustration panel, the same concession the QR codes
-make. If it ever needs to follow the theme, it has to be inlined as a component
-so the fills can become `var(--…)`; restyling it from outside is not possible.
+**The hero image is `src/assets/hero-shoulder-pain.png`**, the author's own
+illustration, through `astro:assets`. Like any opaque raster image it does not
+follow the theme: in dark mode it stays a pale panel on the dark ground. It is
+rounded and bordered so it reads as a deliberate illustration card — the same
+concession the QR codes make.
 
 Because the illustration fills its panel, **nothing may be absolutely
 positioned over it without carrying its own background.** The italic
 `hero.note` used to be, which was invisible while the panel was an empty
-placeholder and became a half-on-dark, half-on-artwork collision once the
+placeholder and became a half-on-dark, half-on-artwork collision once a real
 illustration landed. It now sits above the image in normal flow. The badge below
 still overlaps deliberately — it has its own surface, border and shadow.
+
+**There is no search field in the hero.** The author asked for it off on
+2026-09-08; the chips beneath it stayed, relabelled `hero.popularLabel`, because
+they are ordinary links to real searches and their old "examples" label pointed
+at a field that is no longer there. **The teal button in the header is now the
+only search entry point on the site, so it must never be removed** — nothing
+else links to `/search`.
+
+The "latest articles" strip shows titles without dates, for the same reason the
+article byline does.
 
 Deliberate departures from that mockup, each with a reason:
 
@@ -458,11 +509,17 @@ the reader at search or the conditions index. That is why the navigation can
 carry the plan's full eight entries without shipping a single 404 — add a
 section there and both the nav and its page follow.
 
-`/treatments` is the only stub left. `examinations`, `rehabilitation` and
-`articles` became `live` on 2026-09-08 and all three now carry published
-content. The in-preparation fallback in `ResourceIndex.astro` is no longer being
-exercised, but keep it: it is what lets a new collection be added and routed
-before its first article has been reviewed.
+No stubs are left — `examinations`, `rehabilitation`, `articles` and
+`treatments` all went `live` on 2026-09-08 with published content. Keep the
+in-preparation fallback in `ResourceIndex.astro` anyway: it is what lets a new
+collection be added and routed before its first article has been reviewed.
+
+**`conditions` carries `hiddenFromNav: true`.** Its index duplicates what
+"บทความ & วิดีโอ" lists, so the author asked for the menu item to go — but the
+page holds the region filter and the type-to-filter box, and the body map, the
+homepage cards, the region pages and every article breadcrumb link straight to
+it. The nav is built from `navSections`, not `sections`, so hiding an entry
+never removes its route.
 
 `/terms` from the plan's route list is **not** built: it needs legal wording the
 author has to supply, and inventing terms of use would be worse than not having

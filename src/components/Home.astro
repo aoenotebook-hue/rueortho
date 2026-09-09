@@ -1,8 +1,11 @@
 ---
 import Container from './Container.astro';
+import { Image } from 'astro:assets';
 import BodyIcon from './BodyIcon.astro';
+import BodyMap from './BodyMap.astro';
+import heroImage from '../assets/hero-shoulder-pain.png';
 import { t, type Locale } from '../i18n/ui';
-import { localizePath, formatDate } from '../i18n/utils';
+import { localizePath } from '../i18n/utils';
 import { bodyMapRegions } from '../data/regions';
 import { getConditions, getRecentlyReviewed, getRegionCounts } from '../lib/conditions';
 
@@ -115,44 +118,16 @@ const trust = [
         <p class="mt-2 text-xl font-medium text-accent md:text-2xl">{tr('brand.promise')}</p>
         <p class="mt-4 max-w-[46ch] text-muted">{tr('hero.body')}</p>
 
-        <!-- Works without JavaScript: a plain GET to the search page. -->
-        <form action={searchPath} method="get" role="search" class="mt-7 max-w-[34rem]">
-          <label class="visually-hidden" for="hero-search">{tr('search.label')}</label>
-          <div
-            class="flex items-center gap-2 rounded-full border border-border bg-surface p-1.5 shadow-[var(--shadow-card)]"
-          >
-            <svg
-              class="ms-3 shrink-0 text-muted"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <circle cx="11" cy="11" r="7"></circle>
-              <path d="M20 20l-3.5-3.5" stroke-linecap="round"></path>
-            </svg>
-            <input
-              id="hero-search"
-              type="search"
-              name="q"
-              autocomplete="off"
-              placeholder={tr('hero.searchPlaceholder')}
-              class="min-w-0 flex-1 border-0 bg-transparent px-1 py-2 text-ink outline-none"
-            />
-            <button
-              type="submit"
-              class="shrink-0 rounded-full bg-accent px-6 py-2.5 font-medium text-accent-contrast"
-            >
-              {tr('search.label')}
-            </button>
-          </div>
-        </form>
 
-        <div class="mt-4 flex flex-wrap items-center gap-2">
-          <span class="text-sm text-muted">{tr('hero.examplesLabel')}</span>
+        {/*
+          The search field that used to sit here is gone at the author's
+          request. These chips stay: they are ordinary links to real searches,
+          and with the field removed their label no longer says "examples" of
+          something that is not on the page any more. The header keeps the one
+          remaining search entry point.
+        */}
+        <div class="mt-7 flex flex-wrap items-center gap-2">
+          <span class="text-sm text-muted">{tr('hero.popularLabel')}</span>
           {
             examples.map((example) => (
               <a
@@ -183,14 +158,13 @@ const trust = [
         </p>
 
         <div class="relative">
-          <img
-            src="/images/hero-orthopaedic-care.svg"
+          <Image
+            src={heroImage}
             alt={tr('hero.imageAlt')}
-            width="720"
-            height="540"
-            fetchpriority="high"
-            decoding="async"
-            class="aspect-[4/3] w-full rounded-[var(--radius-panel)] border border-border bg-surface shadow-[var(--shadow-card)]"
+            widths={[560, 760, 1120]}
+            sizes="(min-width: 1024px) 34rem, 100vw"
+            loading="eager"
+            class="w-full rounded-[var(--radius-panel)] border border-border object-cover shadow-[var(--shadow-card)]"
           />
 
           <p
@@ -218,6 +192,16 @@ const trust = [
         </a>
       </div>
 
+      {/*
+        The drawing is the primary way in from tablet up. Below that the labels
+        would sit on top of each other, so the same regions render as the circle
+        grid instead — same links, same order, laid out for a narrow screen.
+      */}
+      <div class="hidden md:block">
+        <BodyMap locale={locale} counts={counts} />
+      </div>
+
+      <div class="md:hidden">
       <ul
         class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(5.5rem,1fr))] gap-4 p-0 text-center"
       >
@@ -260,6 +244,7 @@ const trust = [
           })
         }
       </ul>
+      </div>
     </div>
   </Container>
 </section>
@@ -472,9 +457,6 @@ const trust = [
                   </span>
                   <span class="block font-semibold text-ink group-hover:text-accent">
                     {entry.data.title}
-                  </span>
-                  <span class="mt-1 block text-sm text-muted">
-                    {formatDate(entry.data.lastReviewed, locale)}
                   </span>
                 </a>
               </li>
