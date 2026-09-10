@@ -1,6 +1,7 @@
 ---
 import Container from './Container.astro';
 import Card from './Card.astro';
+import FilterBar from './FilterBar.astro';
 import { t, type Locale } from '../i18n/ui';
 import { localizePath } from '../i18n/utils';
 import { getSection, sections } from '../data/sections';
@@ -31,6 +32,7 @@ const groups = [
       summary: e.data.summary,
       href: localizePath(`/conditions/${e.data.slug}`, locale),
       region: e.data.region as RegionId | undefined,
+      search: [e.data.title, e.data.summary, ...e.data.keywords].join(' ').toLowerCase(),
     })),
   },
   ...(await Promise.all(
@@ -41,6 +43,7 @@ const groups = [
         summary: e.data.summary,
         href: localizePath(`/${id}/${e.data.slug}`, locale),
         region: undefined as RegionId | undefined,
+        search: [e.data.title, e.data.summary, ...e.data.keywords].join(' ').toLowerCase(),
       })),
     })),
   )),
@@ -48,6 +51,21 @@ const groups = [
 
 const videos = await getVideos(locale);
 const total = groups.reduce((n, g) => n + g.entries.length, 0);
+
+/**
+ * Jump links to the groups this page actually has. The video gallery is one of
+ * them, so it is named here rather than hard-coded into the markup, and a
+ * group with nothing published never gets a link to an empty heading.
+ */
+const jumpTargets = [
+  ...(videos.length > 0 ? [{ id: 'videos', label: tr('articles.videos') }] : []),
+  ...groups
+    .filter((group) => group.entries.length > 0)
+    .map((group) => ({
+      id: group.id,
+      label: sections.find((section) => section.id === group.id)!.title[locale],
+    })),
+];
 ---
 
 <Container>
@@ -59,9 +77,40 @@ const total = groups.reduce((n, g) => n + g.entries.length, 0);
       {tr('articles.count', { articles: total, videos: videos.length })}
     </p>
 
+    {/*
+      The page already says how much it holds, so the filter's own line stays
+      quiet until it has something to add.
+    */}
+    <FilterBar
+      locale={locale}
+      total={total + videos.length}
+      resetHref={localizePath('/articles', locale)}
+      showTotal={false}
+    />
+
+    {
+      jumpTargets.length > 1 && (
+        <nav aria-label={tr('articles.jumpLabel')} class="mb-2">
+          <p class="m-0 text-sm text-muted">{tr('articles.jumpLabel')}</p>
+          <ul class="m-0 mt-2 flex list-none flex-wrap gap-2 p-0">
+            {jumpTargets.map((target) => (
+              <li data-jump-for={target.id}>
+                <a
+                  href={`#${target.id}`}
+                  class="inline-block rounded-full border border-border bg-surface px-4 py-2 text-[0.95em] text-ink no-underline hover:border-accent"
+                >
+                  {target.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
     {
       videos.length > 0 && (
-        <section class="mt-10">
+        <section class="mt-10" id="videos" data-filter-group="videos">
           <h2>{tr('articles.videos')}</h2>
           {/*
             Links, not players. A clip is a silent demonstration whose safety
@@ -72,7 +121,10 @@ const total = groups.reduce((n, g) => n + g.entries.length, 0);
           <p class="text-muted">{tr('articles.videosBody')}</p>
           <ul class="m-0 mt-5 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-3 p-0">
             {videos.map((video) => (
-              <li>
+              <li
+                data-filter-item
+                data-search={`${video.title} ${video.articleTitle}`.toLowerCase()}
+              >
                 <a
                   href={video.articleHref}
                   class="group flex h-full min-w-0 flex-col rounded-[10px] border border-border bg-surface p-4 no-underline transition hover:border-accent"
@@ -105,11 +157,11 @@ const total = groups.reduce((n, g) => n + g.entries.length, 0);
     {
       groups.map((group) =>
         group.entries.length === 0 ? null : (
-          <section class="mt-12">
+          <section class="mt-12" id={group.id} data-filter-group={group.id}>
             <h2>{sections.find((s) => s.id === group.id)!.title[locale]}</h2>
             <ul class="m-0 mt-5 grid list-none grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-4 p-0">
               {group.entries.map((entry) => (
-                <li>
+                <li data-filter-item data-search={entry.search}>
                   <Card
                     href={entry.href}
                     title={entry.title}

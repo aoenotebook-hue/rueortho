@@ -1,0 +1,194 @@
+---
+import { t, type Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  /** Where "clear" goes without JavaScript: this page, with nothing applied. */
+  resetHref: string;
+  /** How many filterable items the page renders, for the count line. */
+  total: number;
+  /** Placeholder for the box. Defaults to the generic filter wording. */
+  placeholder?: string;
+  /**
+   * Whether the count line starts by naming the total. Off where the page
+   * already says how much it holds, so the two do not disagree on screen — the
+   * live region is still there, it simply says nothing until it has something
+   * to report.
+   */
+  showTotal?: boolean;
+}
+
+const { locale, resetHref, total, placeholder, showTotal = true } = Astro.props;
+const tr = t(locale);
+
+/**
+ * The templates the script fills in. `t()` only substitutes the variables it is
+ * given, so calling it with none returns the string with `{n}` and `{total}`
+ * still in place — which is how the text stays in `ui.ts` and out of the
+ * JavaScript, the same arrangement the search page uses.
+ */
+const strings = {
+  count: tr('filter.count'),
+  total: showTotal ? tr('filter.total') : '',
+};
+---
+
+{/*
+  One filter for two listings. The page marks its own items with
+  `data-filter-item` (and `data-search`, and `data-region` where region chips
+  apply) and its groups with `data-filter-group`; this component owns the
+  controls, the count and the behaviour, so the two pages cannot drift.
+*/}
+<div class="my-6" data-filter>
+  <div class="max-w-[28rem]">
+    <label class="visually-hidden" for="filter-input">{tr('filter.label')}</label>
+    <input
+      id="filter-input"
+      type="search"
+      placeholder={placeholder ?? tr('filter.placeholder')}
+      autocomplete="off"
+      class="w-full rounded-[6px] border border-border bg-surface px-4 py-3 text-ink"
+      data-filter-input
+    />
+  </div>
+
+  <slot name="chips" />
+
+  {/*
+    The count is a polite live region, so a screen-reader user hears how many
+    entries are left rather than watching cards vanish silently. The script
+    waits a moment before writing to it: announcing on every keystroke would
+    talk over the typing.
+  */}
+  <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+    <p class="m-0 text-sm text-muted" aria-live="polite" data-filter-count>
+      {showTotal ? tr('filter.total', { n: total }) : ''}
+    </p>
+
+    {/*
+      Offered the moment anything is filtered, not only when the filter finds
+      nothing: a reader looking at three of twenty cards needs the way back as
+      much as one looking at none. It is a link to this page rather than a
+      button, so it still works with no JavaScript — the script turns it into
+      an in-place reset and keeps the reader where they are.
+    */}
+    <a
+      href={resetHref}
+      class="rounded-full border border-border bg-surface px-4 py-1.5 text-sm text-ink no-underline hover:border-accent"
+      hidden
+      data-filter-clear
+    >
+      {tr('filter.clear')}
+    </a>
+  </div>
+
+  {/* The filter matched nothing. Says so in its own words — this used to
+      borrow the 404 page's "the page may have moved", which was not true and
+      not about the filter. */}
+  <p class="mt-3 text-muted" hidden data-filter-empty>{tr('filter.noMatch')}</p>
+
+  <script type="application/json" data-filter-strings set:html={JSON.stringify(strings)} is:inline />
+</div>
+
+<script>
+  /**
+   * Progressive enhancement over a list that is already complete and readable:
+   * with no JavaScript every item is on the page, the box does nothing, and
+   * "clear" is an ordinary link back to the same page.
+   */
+  const root = document.querySelector<HTMLElement>('[data-filter]');
+  const stringsEl = document.querySelector<HTMLScriptElement>('[data-filter-strings]');
+
+  if (root && stringsEl) {
+    const strings = JSON.parse(stringsEl.textContent ?? '{}') as {
+      count: string;
+      total: string;
+    };
+
+    const input = document.querySelector<HTMLInputElement>('[data-filter-input]');
+    const countEl = document.querySelector<HTMLElement>('[data-filter-count]');
+    const emptyEl = document.querySelector<HTMLElement>('[data-filter-empty]');
+    const clearEl = document.querySelector<HTMLAnchorElement>('[data-filter-clear]');
+    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-filter-item]'));
+    const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-filter-group]'));
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-region-chip]'));
+
+    const total = items.length;
+    let region = 'all';
+    let announce: number | undefined;
+
+    /** Politely: one announcement after the typing stops, not one per letter. */
+    const setCount = (text: string) => {
+      if (!countEl) return;
+      window.clearTimeout(announce);
+      announce = window.setTimeout(() => {
+        countEl.textContent = text;
+      }, 250);
+    };
+
+    const apply = () => {
+      const query = (input?.value ?? '').trim().toLowerCase();
+      const filtering = query !== '' || region !== 'all';
+      let shown = 0;
+
+      for (const item of items) {
+        const matchesRegion = region === 'all' || item.dataset.region === region;
+        const matchesQuery = query === '' || (item.dataset.search ?? '').includes(query);
+        const visible = matchesRegion && matchesQuery;
+        item.hidden = !visible;
+        if (visible) shown++;
+      }
+
+      // A group heading with nothing under it is worse than no heading, and a
+      // jump link to a hidden group is a link to nowhere.
+      for (const group of groups) {
+        const has = Array.from(group.querySelectorAll<HTMLElement>('[data-filter-item]')).some(
+          (item) => !item.hidden,
+        );
+        group.hidden = !has;
+        const jump = document.querySelector<HTMLElement>(
+          `[data-jump-for="${group.dataset.filterGroup}"]`,
+        );
+        if (jump) jump.hidden = !has;
+      }
+
+      if (emptyEl) emptyEl.hidden = shown !== 0;
+      if (clearEl) clearEl.hidden = !filtering;
+
+      setCount(
+        filtering
+          ? strings.count.replace('{n}', String(shown)).replace('{total}', String(total))
+          : strings.total.replace('{n}', String(total)),
+      );
+    };
+
+    input?.addEventListener('input', apply);
+
+    for (const chip of chips) {
+      chip.addEventListener('click', () => {
+        region = chip.dataset.regionChip ?? 'all';
+        for (const other of chips) {
+          const active = other === chip;
+          other.setAttribute('aria-pressed', String(active));
+          other.classList.toggle('border-accent', active);
+          other.classList.toggle('bg-info-ground', active);
+          other.classList.toggle('text-info-ink', active);
+          other.classList.toggle('border-border', !active);
+          other.classList.toggle('bg-surface', !active);
+          other.classList.toggle('text-ink', !active);
+        }
+        apply();
+      });
+    }
+
+    clearEl?.addEventListener('click', (event) => {
+      // With JavaScript this resets in place; the href is the no-JS path.
+      event.preventDefault();
+      if (input) input.value = '';
+      chips.find((chip) => chip.dataset.regionChip === 'all')?.click();
+      region = 'all';
+      apply();
+      input?.focus();
+    });
+  }
+</script>
