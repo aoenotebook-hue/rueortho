@@ -688,14 +688,34 @@ copied, so there is one copy of each in git:
   is why the osteoporosis card on the home page rendered an **empty panel**:
   `BodyIcon` keys off the region id and simply had no path for `bone-health`.
   Any new region needs either a drawing here or a glyph there.
-- `src/assets/illustrations/<condition slug>.png` — nine condition drawings,
-  wired in as `heroImage`/`heroImageAlt` in the frontmatter of both language
-  files. The schema has carried those two fields since the beginning and
-  nothing rendered them; `ConditionArticle` now shows the image under the
-  summary, held to `max-w-[20rem]` because the artwork is square and would
-  otherwise tower over the prose column. `RegionArt` takes a condition's own
-  image as an override, so those nine cards show the condition rather than its
-  region.
+- `src/assets/illustrations/<condition slug>` — a drawing per condition, wired
+  in as `heroImage`/`heroImageAlt` in the frontmatter of both language files.
+  The schema has carried those two fields since the beginning and nothing
+  rendered them; `ConditionArticle` shows the image under the summary, and
+  `RegionArt` takes a condition's own image as an override, so its cards show
+  the condition rather than its region.
+
+  **All twenty conditions have one now, and they come in two shapes.** The
+  first nine are the square 800×800 badges described above. The other eleven —
+  achilles-tendinopathy, frozen-shoulder, herniated-disc, meniscus-root-tear,
+  meniscus-tear, neck-pain, osteoporosis, patellofemoral-pain, sciatica,
+  tennis-elbow, trigger-finger — arrived on 2026-09-10 committed straight to
+  `src/assets/illustrations/`, and are 4:3 scenes at 1024×765. Several carry an
+  inset anatomical diagram with labels on it. (frozen-shoulder first landed as
+  a 2400×1792, 1.7 MB export; the author replaced it with a 1024×765 one the
+  same day, so the set is uniform.)
+
+  **They were uploaded as `.png` and are JPEGs inside**, every one of them.
+  They were renamed to `.jpg`; the bytes are the author's, untouched. Astro
+  reads the real format through sharp and emits webp either way, so the site
+  worked regardless — but the extension has to match the file or the served
+  `Content-Type` is a lie the browser has to sniff its way past.
+
+  **The article hero sizes itself by shape.** A square badge is held to
+  `max-w-[20rem]` so it does not tower over the prose; a 4:3 scene gets
+  `max-w-[34rem]`, because squeezing a labelled inset diagram to 320px makes it
+  unreadable — which matters on a site written for older readers. `sizes` has
+  to branch with it, or the browser fetches a 34rem file for a 20rem slot.
 - `src/assets/sections/rehabilitation.png` — the runner, beside the heading on
   `/rehabilitation`. `ResourceIndex` maps collection → art, and the other two
   sections simply run without a picture rather than borrowing one.
@@ -810,7 +830,7 @@ Deliberate departures from that mockup, each with a reason:
 - **No stock photography.** The design uses stock photos for the hero, the
   region circles and the condition cards. Those need licensing and do not adapt
   to dark mode. The author has since drawn his own illustrations for the hero,
-  the eight regions and nine conditions — see "The author's illustrations" —
+  the eight regions and all twenty conditions — see "The author's illustrations" —
   and everything still uncovered falls back to an SVG glyph
   (`BodyIcon.astro`, `Logo.astro`). Like any opaque raster the drawings keep
   their pale ground in dark mode, which is why each one carries a border.

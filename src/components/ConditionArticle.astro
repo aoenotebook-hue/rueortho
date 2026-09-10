@@ -38,6 +38,16 @@ const overdue = isReviewOverdue(entry.data.lastReviewed);
  */
 const authorPlacedRedFlags = (entry.body ?? '').includes('<RedFlags');
 
+/**
+ * The illustrations come in two shapes: the first set are square badges, the
+ * later ones 4:3 scenes. The wide ones get a wider column and ask the browser
+ * for a bigger image; the square ones stay narrow, and `sizes` has to say so or
+ * the browser downloads a 34rem file for a 20rem slot.
+ */
+const heroIsWide = Boolean(
+  entry.data.heroImage && entry.data.heroImage.width > entry.data.heroImage.height,
+);
+
 const siblings = await getConditions(locale);
 const related = entry.data.related
   .map((slug) => siblings.find((c) => c.data.slug === slug))
@@ -116,19 +126,28 @@ const jsonLd = {
 
     {
       /*
-        The author's own illustration for this condition, where one exists. It
-        is square, so it is held to a column narrower than the prose rather
-        than stretched across it, and it is an opaque raster: like the hero on
-        the home page it keeps its own pale ground in dark mode, which is why
-        it carries a border and reads as an illustration card.
+        The author's own illustration for this condition, where one exists.
+
+        Its width follows its shape. The first set he drew are square badges
+        and are held to a narrow column so they do not tower over the prose;
+        the later ones are 4:3 scenes, several carrying an inset anatomical
+        diagram, and squeezing those to 20rem would make the labels on the
+        inset unreadable — which matters on a site written for older readers.
+
+        Either way it is an opaque raster: like the hero on the home page it
+        keeps its own pale ground in dark mode, which is why it carries a
+        border and reads as an illustration card.
       */
       entry.data.heroImage && (
-        <div class="mx-auto mt-6 max-w-[20rem]" data-pagefind-ignore>
+        <div
+          class:list={['mx-auto mt-6', heroIsWide ? 'max-w-[34rem]' : 'max-w-[20rem]']}
+          data-pagefind-ignore
+        >
           <Image
             src={entry.data.heroImage}
             alt={entry.data.heroImageAlt ?? ''}
-            widths={[320, 480, 640]}
-            sizes="(min-width: 640px) 20rem, 70vw"
+            widths={[320, 544, 768, 1088]}
+            sizes={heroIsWide ? '(min-width: 640px) 34rem, 90vw' : '(min-width: 640px) 20rem, 70vw'}
             loading="eager"
             decoding="async"
             class="w-full rounded-[var(--radius-panel)] border border-border"
