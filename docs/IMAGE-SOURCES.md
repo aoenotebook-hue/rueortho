@@ -41,6 +41,7 @@ share one visual language, so prefer a single source for the whole set.
 | `src/assets/body-map.png` | Supplied by the author (uploaded to the repo under `images/`) | Author's own | none needed (decorative; the hotspot labels carry the meaning) | 2026-09-08 |
 | `src/assets/regions/*.png` (8: neck, shoulder, spine, hip, knee, elbow, hand-wrist, foot-ankle) | Supplied by the author (uploaded to the repo under `images/` as `icon_*.png`) | Author's own | none needed (decorative; the region label sits beside each one) | 2026-09-10 |
 | `src/assets/illustrations/*.png` (9: acl-injury, ankle-sprain, back-pain, carpal-tunnel-syndrome, knee-osteoarthritis, knee-pain, plantar-fasciitis, rotator-cuff-tear, shoulder-pain) | Supplied by the author (uploaded to the repo under `images/`) | Author's own | none needed; described to screen readers by each article's `heroImageAlt` | 2026-09-10 |
+| `src/assets/illustrations/*.jpg` (11: achilles-tendinopathy, frozen-shoulder, herniated-disc, meniscus-root-tear, meniscus-tear, neck-pain, osteoporosis, patellofemoral-pain, sciatica, tennis-elbow, trigger-finger) | Supplied by the author (committed straight to `src/assets/illustrations/`) | Author's own | none needed; described to screen readers by each article's `heroImageAlt` | 2026-09-10 |
 | `src/assets/sections/rehabilitation.png` | Supplied by the author (uploaded to the repo under `images/` as `running.png`) | Author's own | none needed (decorative) | 2026-09-10 |
 
 
