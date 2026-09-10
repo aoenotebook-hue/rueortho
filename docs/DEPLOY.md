@@ -17,16 +17,16 @@ Two things are not deployment problems but will embarrass you if skipped.
    your name on it as reviewer. Nothing carries that marker today — all 72
    article files are published — so the check is there for the next thing
    anyone drafts.
-2. **The contact address is still not real.** `src/data/site.ts` prints
-   `contact@easyortho.com` on the contact page, twice in the privacy notice —
+2. **Both addresses are real.** `contactEmail` in `src/data/site.ts` is
+   `sorawut410@gmail.com`, the mailbox you asked to have published on
+   2026-09-10. It appears on the contact page, twice in the privacy notice —
    as the data controller's address and as the route for exercising PDPA
-   rights — and once in the editorial policy. That mailbox is at a domain the
-   project does not own, so nothing sent to it arrives. **Supply the address
-   you want published and change that one line before announcing the site.**
-   Nothing in this repository records a working address, so nobody but you can
-   fill it in.
+   rights — and once in the editorial policy, so it is a legal identification
+   as well as a way to be reached. It is a plain `mailto:`-less string in the
+   page text, which is what you want legally; it does mean address harvesters
+   can read it, so expect some spam and filter rather than removing it.
 
-   The site's own address, by contrast, is settled: `src/data/site.ts` sets
+   The site's own address is settled too: `src/data/site.ts` sets
    `origin` to `https://rueortho.vercel.app`, the Vercel deployment, and
    `astro.config.mjs` imports it. That single line drives the canonical URLs,
    `hreflang`, the sitemap, both feeds, `robots.txt`, the QR codes and the

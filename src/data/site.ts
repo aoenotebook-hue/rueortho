@@ -24,21 +24,19 @@ export const site = {
   /** Host only, for the sentence "Easyortho (rueortho.vercel.app)" in the legal pages. */
   domain: new URL(origin).host,
   /**
-   * ⚠️ UNCONFIRMED — the one value on this page that is still not real.
+   * The author's own mailbox, given by him on 2026-09-10 to be published.
    *
-   * This address is a mailbox at `easyortho.com`, a domain the project does not
-   * own, so mail sent to it does not reach the author. It is printed on the
-   * contact page, twice in the privacy notice (as the data controller's address
-   * and as the route for exercising PDPA rights) and once in the editorial
-   * policy, so it cannot simply be deleted — a privacy notice with no contact
-   * route is worse than one with a wrong address.
+   * It is printed on the contact page, twice in the privacy notice — as the
+   * data controller's address and as the route for exercising PDPA rights —
+   * and once in the editorial policy, so it is a legal identification as much
+   * as a way to get in touch. Do not remove it, and do not swap in a different
+   * address without asking him: a privacy notice has to name a channel that
+   * actually reaches the person responsible for the data.
    *
-   * Nothing in this repository records a working address, and inventing one
-   * would be worse still. **The author must supply the mailbox he wants
-   * published**; then change this line. Until he does, treat the site as not
-   * ready to be announced. See docs/DEPLOY.md.
+   * It is deliberately not tied to the site's domain, so mapping a custom
+   * domain later does not change it.
    */
-  contactEmail: 'contact@easyortho.com',
+  contactEmail: 'sorawut410@gmail.com',
   /** Emergency medical number in Thailand. */
   emergencyNumber: '1669',
 } as const;

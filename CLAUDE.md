@@ -136,14 +136,15 @@ reachable by anything on the network while it runs.
   who is responsible for the data — that is a legal identification, not a
   credit, so do not strip it as part of some future tidy-up.
 - **Contact address and domain live in `src/data/site.ts`**, and the legal pages
-  read them through an MDX import, so there is one place to change. The domain
-  is now real (`rueortho.vercel.app`). **`contactEmail` is not**: it is still
-  `contact@easyortho.com`, a mailbox at a domain nobody here owns, printed on
-  the contact page, twice in the privacy notice and once in the editorial
-  policy. Nothing in the repository records a working address and one must not
-  be invented, so **the author has to supply it**; until he does the site
-  should not be announced. Deleting it instead is not an option — a PDPA notice
-  with no contact route is worse than one with a wrong address.
+  read them through an MDX import, so there is one place to change. Both are
+  real now: the domain is `rueortho.vercel.app`, and `contactEmail` is
+  `sorawut410@gmail.com`, which the author gave on 2026-09-10 to be published.
+  It is his own mailbox rather than an address at the site's domain, so mapping
+  a custom domain later does not change it. It is printed on the contact page,
+  twice in the privacy notice — as the data controller's address and as the
+  route for exercising PDPA rights — and once in the editorial policy, so it is
+  a legal identification as much as a courtesy: do not remove it, and do not
+  substitute a different address without asking him.
 
 ## Medical content rules
 
