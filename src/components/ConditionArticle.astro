@@ -14,6 +14,8 @@ import { getAuthor } from '../data/authors';
 import { getRegion } from '../data/regions';
 import { appsForCondition } from '../data/apps';
 import { getConditions, type Condition } from '../lib/conditions';
+import { getResourcesForCondition } from '../lib/resources';
+import { getSection } from '../data/sections';
 
 interface Props {
   locale: Locale;
@@ -52,6 +54,15 @@ const siblings = await getConditions(locale);
 const related = entry.data.related
   .map((slug) => siblings.find((c) => c.data.slug === slug))
   .filter((c): c is Condition => Boolean(c));
+
+/**
+ * Examinations, treatments and rehabilitation articles that name this
+ * condition in their own `related` list — the mapping the author already
+ * maintains, read backwards. Eighteen of the twenty conditions have one;
+ * `ankle-sprain` and `plantar-fasciitis` have none today and simply render no
+ * section, which is the honest outcome rather than a guessed one.
+ */
+const relatedReading = await getResourcesForCondition(locale, entry.data.slug);
 
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 
@@ -231,6 +242,44 @@ const jsonLd = {
               >
                 {tr('apps.open')}
               </a>
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    {/*
+      Further reading, and labelled as exactly that. These are the author's own
+      editorial links between a condition and the tests, treatments and
+      rehabilitation that bear on it — grouped by which of the three a page
+      belongs to, so a reader can see what kind of page they are about to open.
+
+      The sub-line is load-bearing: an ordered list of tests and treatments
+      under a condition reads like a plan for the reader unless it says it is
+      not one. The site cannot see them and does not know their stage, so it
+      offers reading, never a sequence.
+    */}
+    {
+      relatedReading.length > 0 && (
+        <section class="mt-12" data-pagefind-ignore>
+          <h2>{tr('article.relatedReading')}</h2>
+          <p class="mt-2 max-w-[60ch] text-muted">{tr('article.relatedReadingSub')}</p>
+
+          {relatedReading.map((group) => (
+            <div class="mt-5">
+              <h3 class="m-0 text-[1rem] text-muted">{getSection(group.collection).nav[locale]}</h3>
+              <ul class="m-0 mt-2 grid list-none grid-cols-[repeat(auto-fill,minmax(min(15rem,100%),1fr))] gap-3 p-0">
+                {group.entries.map((item) => (
+                  <li>
+                    <a
+                      href={localizePath(`/${group.collection}/${item.data.slug}`, locale)}
+                      class="block h-full rounded-[10px] border border-border bg-surface p-4 text-ink no-underline transition hover:border-accent hover:text-accent"
+                    >
+                      {item.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </section>

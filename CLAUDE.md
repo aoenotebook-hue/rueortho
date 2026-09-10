@@ -331,6 +331,21 @@ and `/treatments` followed the same day.
 - **`region` is required on a condition and optional on a rehab article**, since
   the principles that apply to every programme belong to no single joint.
   Examinations have no region at all.
+- **`related` runs one way in the data and both ways on the site.** A resource
+  names the conditions it bears on; `getResourcesForCondition` in
+  `lib/resources.ts` reads that backwards so a condition page can offer the
+  tests, treatments and rehabilitation mapped to it, grouped by collection and
+  labelled with `sections.ts`'s own names. **Nothing is inferred**: a resource
+  appears only where the author wrote the condition into its `related`, and a
+  condition nobody has mapped renders no section rather than a guessed one —
+  `ankle-sprain` and `plantar-fasciitis` have no inbound mapping today and show
+  nothing. It resolves through `getPublishedResources`, so a draft stays out
+  even in a preview build (verified by drafting one Thai examination and
+  watching it vanish from the Thai page while the English page kept it).
+  The section is headed "อ่านเพิ่มเติมเรื่องที่เกี่ยวข้อง" / "Related
+  educational reading" and carries a sub-line saying it is general reading and
+  not a treatment sequence — an ordered list of tests and treatments under a
+  condition reads as a plan for the reader unless it says it is not one.
 - **`ResourceIndex.astro` is one page for two states.** While a collection has
   nothing published it shows the in-preparation wording `SectionStub` used to
   show; the moment something is published it becomes a listing. That is why
@@ -344,6 +359,19 @@ and `/treatments` followed the same day.
 - **The video index is derived, not maintained.** `lib/videos.ts` parses
   `<Video>` tags out of the article bodies at build time. A hand-kept list would
   drift, which is exactly the bug that already hit three rotator-cuff clips.
+- **A gallery link lands on the `##` section holding the clip, never on the
+  `###` above it.** The anchor comes from `render()`'s `headings` — the same
+  slugs the page really emits, never re-derived from heading text, for the
+  reason `ArticleContents` gives. It is the `##` because that is the smallest
+  unit that still carries the heading, the instructions *and* the cautions: in
+  the frozen shoulder article the phase sub-headings sit under
+  "การฟื้นตัวและการฟื้นฟู" and the callout saying how far to stretch — green
+  keep going, red stop — sits under that `##`, above every phase. An anchor on
+  "ระยะที่ 1" drops the reader below the thing that qualifies the exercise.
+  A clip whose section cannot be resolved falls back to the plain article link,
+  so the gallery never points at an id that is not on the page. Verified: 19
+  anchored links per locale, no dead anchors, each landing at the header offset
+  with a caution inside the section it lands on.
 
 **`treatments` is the third collection on `resourceSchema()`** — self-care,
 medicines by class, injections, surgery, and how to choose between them, five
@@ -381,6 +409,19 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
 - `<Video>` requires a `description` prop and throws without one. A silent
   demonstration clip carries all of its meaning in the picture, so without a
   text description the content simply is not there for a blind reader.
+- **When the file will not play, `<Video>` swaps in words rather than leaving a
+  dead rectangle**, and moves focus to that message if the reader had activated
+  the player from the keyboard — replacing a focused element with a plain `<p>`
+  otherwise sends focus to `<body>`, i.e. back to the top of the article. The
+  message points at the figcaption description, which is on the page either
+  way. This path is easy to exercise: the clips are all H.264 and Playwright's
+  Chromium cannot decode it, so the fallback is what that browser shows.
+- **`ExerciseCard`'s play control is localised**, through `media.play` and
+  `getLocaleFromUrl` exactly as `<Video>` does it. It used to hard-code
+  "`<title>` — play video" and a bare "Video" for the YouTube frame's title, so
+  a Thai page handed a screen reader an English name for a Thai exercise. The
+  `youtube` prop is unused in content today; the fix is there so the first
+  article to use it is not the one that ships the bug.
 - Every imported file was checked individually for a Google C2PA credential
   before import (`grep -a c2pa`), not taken on trust from `docs/SOURCES.md`.
   All 47 carry one; the five that do not were left out.
@@ -747,9 +788,9 @@ author's own drawing of two figures. Three things about it are load-bearing:
   reach their widest at y 50%, and below y 58% there are no arms in the outline
   at all. Re-measure if the drawing is ever replaced.
 
-**The map is 44rem and renders from `lg`, and both numbers are load-bearing.**
-It used to be 34rem from `md`, and that was measured to be too small for its
-own labels:
+**The map renders from `md` and its width scales with the breakpoint — 36rem at
+md, 44rem at lg.** It used to be a flat 34rem, which was measured to be too
+small for its own labels:
 
 - A hotspot is 44px tall to meet the touch-target rule. At 34rem the drawing is
   363px high, so the 10% between elbow (40%), hand-wrist (50%) and hip (60%) is
@@ -762,21 +803,33 @@ own labels:
   overlap" — that was measurably false.
 - At 44rem the drawing is 704×469 and the same 10% is 46.9px, so the targets
   clear each other **without a single coordinate moving**.
-- 44rem needs room the tablet does not have: the longest label ("Hand & wrist",
-  167px) reaches 57px left of the drawing, and at 768px the panel is only 664px
-  wide — the English hand-wrist label already crossed 19px past the panel's
-  inner edge at 34rem. From `lg` the panel leaves at least 108px of slack on
-  that side. So the map waits for `lg` and the circle grid covers phone **and**
-  tablet. Measured at 1023px the grid is 8 columns with no clipped label in
-  either language.
+- 44rem needs room the tablet does not have, which is why the width is not one
+  number. The longest label ("Hand & wrist", 167px) reaches ~57px left of the
+  drawing, and at 768px the panel is only 664px wide; at 44rem that label would
+  go off the side of the screen. 36rem is the widest the tablet holds, and from
+  `lg` the panel is at least 920px and 44rem fits with slack to spare.
+- **From `lg` this is clean. At md a small overlap survives** — measured 5–6px
+  in Thai and 3px in English between elbow, hand-wrist and hip, down from 8px.
+  36rem gives those three 38.4px of separation and a hotspot is intrinsically
+  ~44px tall in Thai and ~41px in English, because the pill is a line box plus
+  its padding; the `min-height: 44px` floor is rarely what decides it. Closing
+  the last pixels would need either a wider drawing, which 768px cannot hold,
+  or smaller label text, which this audience is the last one to spend. The
+  overlap sits in the hotspot's transparent padding and never in the visible
+  pill, so aiming at a label always hits that label — it only decides taps in
+  the blank space between two of them. **If that trade is ever judged the wrong
+  way round, moving the map to `lg` removes it entirely** and the circle grid
+  covers the tablet perfectly well: measured at 1023px it is 8 columns with no
+  clipped label in either language.
 
 **The back-view figure's labels sit on a leader line.** Its two landmarks —
 neck and spine — are at x 71% on a figure spanning 55–86%, i.e. in the middle
 of it, so a label beside the dot lay across the drawing: the spine label
 crossed the torso edge at 76% and both arm lines at 79–80% and 84–84.5%. The
 dot has to stay on the spine, so the label moves instead — `has-leader` in
-`global.css` pushes it 7rem clear and joins it back with a dashed rule. A fixed
-7rem is safe because the map is exactly 44rem at every width it renders at.
+`global.css` pushes it clear by `--body-map-leader` and joins it back with a
+dashed rule. That length scales with the drawing, because "clear of the figure"
+is a fraction of it: 4.5rem at md, 7rem at lg.
 The left figure needs none of this: its dots are already on the outer edge and
 its labels run away from the body.
 

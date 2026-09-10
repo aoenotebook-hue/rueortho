@@ -1,6 +1,8 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+import { t } from '../../i18n/ui';
+import { getLocaleFromUrl } from '../../i18n/utils';
 
 interface Props {
   title: string;
@@ -25,6 +27,15 @@ if (image && !imageAlt) {
 }
 
 const meta = [sets, reps, hold].filter(Boolean);
+
+/*
+ * The play control and the frame it becomes are named in the reader's own
+ * language, the same way <Video> does it. Both used to be English literals —
+ * "<title> — play video" and a bare "Video" — which on a Thai page gave a
+ * screen reader an English name for a Thai exercise.
+ */
+const tr = t(getLocaleFromUrl(Astro.url));
+const playLabel = `${tr('media.play')} — ${title}`;
 ---
 
 <article class="exercise-card my-6 rounded-[10px] border border-border bg-surface p-5">
@@ -59,7 +70,8 @@ const meta = [sets, reps, hold].filter(Boolean);
           type="button"
           class="video-facade relative w-full overflow-hidden rounded-[10px] border border-border"
           data-youtube={youtube}
-          aria-label={`${title} — play video`}
+          data-frame-title={playLabel}
+          aria-label={playLabel}
         >
           {poster ? (
             <img src={poster} alt="" loading="lazy" class="block w-full" />
@@ -111,10 +123,14 @@ const meta = [sets, reps, hold].filter(Boolean);
     frame.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
     frame.allowFullscreen = true;
     frame.loading = 'lazy';
-    frame.title = facade.getAttribute('aria-label') ?? 'Video';
+    // Localised, and carried on the facade so the script holds no visible text.
+    frame.title = facade.dataset.frameTitle ?? facade.getAttribute('aria-label') ?? '';
     frame.className = 'aspect-video w-full rounded-[10px] border border-border';
 
     facade.replaceWith(frame);
+    // Keyboard activation lands the reader on the player rather than back at
+    // the top of the document. An iframe is focusable, but only once it is in
+    // the document — hence focus() after replaceWith(), not before.
     frame.focus();
   });
 </script>

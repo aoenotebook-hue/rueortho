@@ -70,6 +70,9 @@ const ui = {
     'article.references': 'แหล่งอ้างอิง',
     'article.related': 'เรื่องที่เกี่ยวข้อง',
     'article.relatedConditions': 'โรคและภาวะที่เกี่ยวข้อง',
+    'article.relatedReading': 'อ่านเพิ่มเติมเรื่องที่เกี่ยวข้อง',
+    'article.relatedReadingSub':
+      'หน้าเหล่านี้อธิบายการตรวจ การรักษา และการฟื้นฟูที่มักพบร่วมกับภาวะนี้ ไว้อ่านเป็นความรู้ทั่วไป ไม่ใช่ลำดับการรักษาที่จัดไว้สำหรับคุณ แผนที่เหมาะกับคุณต้องมาจากแพทย์ที่ได้ตรวจคุณจริง',
     'articles.count': 'บทความ {articles} เรื่อง และวิดีโอสาธิต {videos} คลิป',
     'articles.videos': 'วิดีโอสาธิต',
     'articles.videosBody':
@@ -84,6 +87,8 @@ const ui = {
 
     'media.play': 'เล่นวิดีโอ',
     'media.videoHint': 'คลิปสั้น ไม่มีเสียง จะเริ่มโหลดเมื่อคุณกดเล่น',
+    'media.unavailable':
+      'เบราว์เซอร์นี้เล่นคลิปดังกล่าวไม่ได้ คำอธิบายด้านล่างบอกไว้ครบแล้วว่าคลิปแสดงอะไร และคำแนะนำในหน้านี้ใช้ได้ตามปกติ',
 
     'apps.sectionTitle': 'แอปช่วยดูแลตัวเองสำหรับภาวะนี้',
     'apps.free': 'ใช้งานฟรี จัดทำโดยผู้เขียนบทความนี้เอง',
@@ -264,6 +269,9 @@ const ui = {
     'article.references': 'References',
     'article.related': 'Related conditions',
     'article.relatedConditions': 'Related conditions',
+    'article.relatedReading': 'Related educational reading',
+    'article.relatedReadingSub':
+      'These pages explain tests, treatments and rehabilitation that often come up with this condition. They are general reading, not a treatment sequence arranged for you — that has to come from a doctor who has examined you.',
     'articles.count': '{articles} articles and {videos} demonstration videos',
     'articles.videos': 'Demonstration videos',
     'articles.videosBody':
@@ -278,6 +286,8 @@ const ui = {
 
     'media.play': 'Play video',
     'media.videoHint': 'A short clip with no sound. Nothing downloads until you press play.',
+    'media.unavailable':
+      'This browser cannot play that clip. The description below says what it shows, and the instructions on this page still apply.',
 
     'apps.sectionTitle': 'A self-care app for this condition',
     'apps.free': 'Free, and made by the author of this article.',

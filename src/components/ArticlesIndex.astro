@@ -117,16 +117,22 @@ const jumpTargets = [
             instructions live in the prose around it, so the gallery sends the
             reader to the article rather than letting them watch an exercise
             with none of its cautions attached.
+
+            Each link now lands on the `##` section holding the clip rather
+            than the top of the article — close enough to be useful, and never
+            closer than the heading whose callouts qualify the exercises below
+            it. `lib/videos.ts` explains why that is the `##` and not the phase
+            sub-heading directly above the clip.
           */}
           <p class="text-muted">{tr('articles.videosBody')}</p>
           <ul class="m-0 mt-5 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-3 p-0">
             {videos.map((video) => (
               <li
                 data-filter-item
-                data-search={`${video.title} ${video.articleTitle}`.toLowerCase()}
+                data-search={`${video.title} ${video.articleTitle} ${video.sectionTitle ?? ''}`.toLowerCase()}
               >
                 <a
-                  href={video.articleHref}
+                  href={video.sectionHref}
                   class="group flex h-full min-w-0 flex-col rounded-[10px] border border-border bg-surface p-4 no-underline transition hover:border-accent"
                 >
                   <span class="flex items-center gap-2 text-sm text-muted">
@@ -145,7 +151,17 @@ const jumpTargets = [
                   <span class="mt-2 font-medium text-ink group-hover:text-accent">
                     {video.title}
                   </span>
-                  <span class="mt-1 text-[0.9em] text-muted">{video.articleTitle}</span>
+                  {/*
+                    Where the link actually lands: the article, and the section
+                    inside it that carries this clip along with its
+                    instructions and its cautions. Saying so beats a card that
+                    silently jumps the reader into the middle of a page.
+                  */}
+                  <span class="mt-1 text-[0.9em] text-muted">
+                    {video.sectionTitle
+                      ? `${video.articleTitle} · ${video.sectionTitle}`
+                      : video.articleTitle}
+                  </span>
                 </a>
               </li>
             ))}
