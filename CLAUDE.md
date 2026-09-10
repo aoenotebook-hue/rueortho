@@ -100,6 +100,18 @@ reachable by anything on the network while it runs.
   `คุณ`. When reusing extracted text from `_extracted/`, convert the pronoun —
   and check the surrounding register still reads naturally, since `ท่าน` text
   tends to carry other formal markers with it.
+
+  The four Thai legal pages — disclaimer, privacy, editorial policy, contact —
+  and `error.404.body` kept `ท่าน` until 2026-09-10, because they were written
+  in a formal register rather than reused from an app. 28 pronouns converted;
+  nothing else in those pages changed.
+
+  **Grepping for `ท่าน` mostly finds words that are not the pronoun**, and they
+  must not be touched: `เท่านั้น` ("only"), and `ท่านี้` / `ท่านั่ง` / `ท่านอน`
+  / `ท่านั้น` — `ท่า` is "position", so almost every exercise instruction on
+  the site contains one. `แพทย์บางท่าน` ("some doctors") is `ท่าน` as a polite
+  classifier for other people, which is correct and stays. The safe filter is
+  `grep -rn 'ท่าน' src/ | grep -v 'เท่านั้น' | grep -vE 'ท่านี้|ท่านั่ง|ท่านอน|บางท่าน'`.
 - **The author has confirmed he knows the provenance of all media** in his four
   apps, including the five rotator cuff images that carry no C2PA credential
   and have stripped metadata (`p2_2`, `p2_3`, `p3_3`, `p4_3`, `p4_4`), and has
@@ -240,8 +252,9 @@ publicly readable. It had been on for every `*.vercel.app` URL
 Also done: the examinations and rehabilitation sections, and a real `/articles`
 hub — see "The three new sections" below.
 
-Still to do: the `/treatments` section (still a stub), sticky table of contents,
-the body map, per-article OG images, and the pre-launch QA pass.
+Still to do: a sticky table of contents, per-article OG images, and the
+pre-launch QA pass. `/treatments` and the body map are done — see their
+sections below.
 
 ### Publishing safety
 
@@ -456,6 +469,15 @@ header. Resizing needs no handler at all: `hidden` only bites below md because
 the nav also carries `md:block`, so the desktop row is unaffected by whatever
 the button last said, and the state survives a round trip.
 
+**`brand.promise` is not in the header.** It used to sit beside the wordmark
+from lg up — the one width at which the home page's hero shows the same
+sentence in full, a hundred pixels below. The header is for getting somewhere;
+the promise is a statement about the site, and the home page is where it
+belongs. Its `flex-1` was also what pushed the search button to the end of the
+row, which is why that button no longer drops its `ms-auto` at lg. Removing it
+changed no header height: it was `hidden` below lg, and from lg up the row is
+sized by the logo block.
+
 The toggle button stays visible without JavaScript even though it cannot do
 anything there. Hiding it would need the same CSS the CSP refuses, and the
 menu below it is already open in that case, so the cost is a button that does
@@ -590,6 +612,8 @@ when-to-see-a-doctor, latest articles and trust marks. The mockup's author
 strip was built and then removed at the author's request — see "Decisions the
 author has made"; the hero's search field went the same way.
 
+**The promise appears exactly once on the site, here.** See "The header".
+
 **The hero says one thing and offers one action.** It had four turns of the
 same phrase — the site name, `brand.promise`, `hero.body`, then `hero.note`
 above the illustration and `hero.badge` overlapping its corner. The last two
@@ -646,14 +670,14 @@ Deliberate departures from that mockup, each with a reason:
   and everything still uncovered falls back to an SVG glyph
   (`BodyIcon.astro`, `Logo.astro`). Like any opaque raster the drawings keep
   their pale ground in dark mode, which is why each one carries a border.
-- **Nav is three items, not eight.** การตรวจ, การรักษา, ฟื้นฟู, เครื่องมือผู้ป่วย
-  and บทความ & วิดีโอ have no pages; putting them in the nav would ship 404s.
-- **Seven body regions, not nine.** `regions.ts` has no neck, and combines foot
-  and ankle. Change the data first if the design's split is wanted.
+- **Eight body-map regions, not nine.** `regions.ts` combines foot and ankle.
+  Change the data first if the design's split is wanted.
 - **No social icons in the footer**, because no accounts exist yet, and no
   author link either — see "Decisions the author has made".
-- The hero search is a plain GET form to `/search`, so it works without
-  JavaScript, and the example chips are real `?q=` searches.
+
+The nav caught up with the plan: การตรวจ, การรักษา, ฟื้นฟู, เครื่องมือผู้ป่วย
+and บทความ & วิดีโอ all have real pages now and are all in the menu, with
+`conditions` the only entry deliberately hidden from it.
 
 ### Sections and routes
 

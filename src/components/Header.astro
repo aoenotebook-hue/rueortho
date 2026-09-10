@@ -49,9 +49,14 @@ const navItems = [
         </span>
       </a>
 
-      <p class="mx-4 hidden flex-1 text-sm text-muted lg:block">{tr('brand.promise')}</p>
-
       {/*
+        `brand.promise` used to sit here, from lg up — the one width at which
+        the home page's hero shows the same sentence in full, a hundred pixels
+        below. The header is for getting somewhere; the promise is a statement
+        about the site, and the home page is where it belongs. Its `flex-1` was
+        also what pushed this button to the end, which is why the button no
+        longer drops its `ms-auto` at lg.
+
         Icon-only on a narrow header, label from sm up. This is the only way
         into search on the site, so it must never disappear at any width — and
         because its text does, it carries a name of its own. That name starts
@@ -61,7 +66,7 @@ const navItems = [
       <a
         href={localizePath('/search', locale)}
         aria-label={tr('search.linkLabel')}
-        class="ms-auto flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 font-medium text-accent-contrast no-underline hover:opacity-90 sm:px-5 lg:ms-0"
+        class="ms-auto flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 font-medium text-accent-contrast no-underline hover:opacity-90 sm:px-5"
       >
         <svg
           width="18"
