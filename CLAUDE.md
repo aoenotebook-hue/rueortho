@@ -707,6 +707,21 @@ into "20".
   cannot cover style attributes, so an inline style is silently refused by the
   browser — the hero gradient simply did not paint. Put it in a class in
   `global.css`.
+- **An `auto-fit`/`auto-fill` grid minimum must be capped by the space
+  available.** `minmax(16rem, 1fr)` cannot shrink below 16rem, so in a narrow
+  panel the *card* grows wider than its own track and breaks out. Measured at
+  320px: the triage card was 256px in a 230px track — 26px out through the
+  panel's padding — and the reviewed-articles card 10px. It never showed up as
+  page overflow, because the panel and container padding absorbed it, so
+  `scrollWidth` stayed clean while the card visibly crossed the panel edge.
+  Write `minmax(min(16rem, 100%), 1fr)`; every grid on the home page now does,
+  and `/tools` already did.
+- **`line-clamp-N` and `block` cannot both be on the same element.** Tailwind's
+  `line-clamp` works by setting `display: -webkit-box`, and a `block` next to it
+  wins the cascade and turns the clamp off silently — `-webkit-line-clamp` stays
+  in the computed style, doing nothing. The home page's card summaries carried
+  both from the day they were written and ran to six lines instead of two, which
+  is why every card in a row was a different height.
 - **Give flex and grid children `min-w-0` on any Thai text.** Thai has no
   spaces, so a heading is one unbreakable token, and `overflow-wrap: break-word`
   does *not* reduce an element's min-content contribution. A grid item defaults
@@ -728,14 +743,46 @@ author's own drawing of two figures. Three things about it are load-bearing:
   middle of the torso the first time. Labels then flow outwards, away from the
   figure, so they never cross it — `.to-left` flips that for the left figure.
 - **The coordinates were measured off the artwork's alpha channel, not guessed.**
-  The figures occupy x 13–44% and 55–86%, the arms reach their widest at y 50%,
-  and below y 58% there are no arms in the outline at all. Re-measure if the
-  drawing is ever replaced.
+  The drawing is 1200×800. The figures occupy x 13–44% and 55–86%, the arms
+  reach their widest at y 50%, and below y 58% there are no arms in the outline
+  at all. Re-measure if the drawing is ever replaced.
+
+**The map is 44rem and renders from `lg`, and both numbers are load-bearing.**
+It used to be 34rem from `md`, and that was measured to be too small for its
+own labels:
+
+- A hotspot is 44px tall to meet the touch-target rule. At 34rem the drawing is
+  363px high, so the 10% between elbow (40%), hand-wrist (50%) and hip (60%) is
+  36.3px — **the three tap targets on the left figure overlapped each other by
+  8px at every width**, in both languages (elbow/hand-wrist 87px of horizontal
+  overlap in Thai, 85px in English; hip/hand-wrist 49px and 31px). The visible
+  pills never touched, so nothing looked wrong; the clickable boxes did, which
+  is a mis-tap you cannot see. CLAUDE.md used to claim here that the y values
+  were "spread far enough apart that two labels in the same column cannot
+  overlap" — that was measurably false.
+- At 44rem the drawing is 704×469 and the same 10% is 46.9px, so the targets
+  clear each other **without a single coordinate moving**.
+- 44rem needs room the tablet does not have: the longest label ("Hand & wrist",
+  167px) reaches 57px left of the drawing, and at 768px the panel is only 664px
+  wide — the English hand-wrist label already crossed 19px past the panel's
+  inner edge at 34rem. From `lg` the panel leaves at least 108px of slack on
+  that side. So the map waits for `lg` and the circle grid covers phone **and**
+  tablet. Measured at 1023px the grid is 8 columns with no clipped label in
+  either language.
+
+**The back-view figure's labels sit on a leader line.** Its two landmarks —
+neck and spine — are at x 71% on a figure spanning 55–86%, i.e. in the middle
+of it, so a label beside the dot lay across the drawing: the spine label
+crossed the torso edge at 76% and both arm lines at 79–80% and 84–84.5%. The
+dot has to stay on the spine, so the label moves instead — `has-leader` in
+`global.css` pushes it 7rem clear and joins it back with a dashed rule. A fixed
+7rem is safe because the map is exactly 44rem at every width it renders at.
+The left figure needs none of this: its dots are already on the outer edge and
+its labels run away from the body.
 
 The drawing is black line art on transparency, so it is inverted under
 `prefers-color-scheme: dark` — that turns the lines white and leaves the
-transparent areas alone. Below `md` the map is hidden and the original circle
-grid renders instead: the labels would overlap each other at that width.
+transparent areas alone.
 
 ### The author's illustrations
 
@@ -787,9 +834,24 @@ copied, so there is one copy of each in git:
   `/rehabilitation`. `ResourceIndex` maps collection → art, and the other two
   sections simply run without a picture rather than borrowing one.
 
-**The latest-articles panels changed from 16/9 to 4/3** to take these. A square
-drawing loses 44% of its height to a 16/9 crop, which cut heads and feet off;
-4/3 removes only the soft edge of the circle.
+**The home page's featured and reviewed cards show these as an 80×60
+thumbnail, not a banner, and with `object-contain`.** They were full-width 4:3
+panels — 247×185 at 1280 and 300×225 at 390, nine of them on one page — and the
+crop was not the harmless one this note used to claim. Measured: **seven of the
+nine cropped 25% off the top and bottom**, because those seven are the square
+badges and the box was 4:3; only the two 4:3 scenes fitted. A quarter of the
+height off a circle-in-a-square takes the top and bottom off the circle, not
+"the soft edge".
+
+The two shapes mean *any* single box ratio crops one set or the other, so the
+box no longer crops at all: `RegionArt` takes a `fit` prop, the cards pass
+`contain`, and both shapes sit whole on the panel's own ground. The box keeps
+4:3 so every card matches. **The region circles keep `cover`** — there the box
+is square and so is the badge, so the crop only ever removes the soft corners,
+which is what that layout wants.
+
+Shrinking the media took the Thai home page from 8052px to 5929px at 390px and
+4057px to 3442px at 1280px.
 
 `images/back pain.png` is the one upload still unused — it is the older,
 non-square version of `back_pain.png`, which is now the back-pain article's
@@ -836,6 +898,23 @@ illustration, through `astro:assets`. Like any opaque raster image it does not
 follow the theme: in dark mode it stays a pale panel on the dark ground. It is
 rounded and bordered so it reads as a deliberate illustration card — the same
 concession the QR codes make.
+
+**It is `loading="lazy"`, and that is about the phone, not the desktop.** Its
+column is `display: none` below `lg`, and *an eager image inside a hidden box is
+still fetched*: measured at 390px, the hero webp was downloaded in full — 6,986
+bytes of a 29 KiB page — for a picture the reader never sees. A lazy image in a
+`display: none` box is not fetched at all, and from `lg` up it is in the
+viewport when the page lays out, so it still starts immediately;
+`fetchpriority="high"` keeps it ahead of the region drawings further down.
+Verified both ways: no hero request at 320/390/768, one at 1024/1280. The phone
+now fetches 22.6 KiB before scrolling instead of 29 KiB.
+
+**There is deliberately no compact hero illustration on the phone**, and that
+was tested rather than assumed. At 390px the primary action already sits 391px
+down in Thai and 406px in English, and `#where-it-hurts` at 680px and 730px —
+one screen on a phone with nothing to spare. Any illustration above them pushes
+both past the fold, and the illustration is atmosphere where the button is the
+point. If this is ever revisited, measure those two numbers again first.
 
 Nothing is positioned over it any more, and if anything ever is again it
 **must carry its own background**: the italic `hero.note` used to, which was

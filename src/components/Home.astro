@@ -184,13 +184,31 @@ const trust = [
         purpose and then two more turns of phrase. The promise and the purpose
         say it; the picture does not need to say it again.
       */}
+      {/*
+        `loading="lazy"` rather than eager, and that is about the phone rather
+        than the desktop. This column is `display: none` below lg, and an
+        *eager* image inside a hidden box is still fetched: measured at 390px,
+        the hero webp was downloaded in full — 6,986 bytes of a 29 KiB page —
+        for a picture the reader never sees. A lazy image in a `display: none`
+        box is not fetched at all. From lg up it is in the viewport when the
+        page lays out, so it still starts immediately; `fetchpriority="high"`
+        keeps it ahead of the region drawings further down.
+
+        The picture stays off the phone entirely rather than appearing in a
+        compact form. Measured at 390px, the primary action already sits 391px
+        down in Thai and 406px in English, and "where does it hurt" at 680px
+        and 730px — one screen on a phone, with nothing to spare. A 200px
+        illustration above the fold pushes both past it, and the illustration
+        is atmosphere where the button is the point.
+      */}
       <div class="hidden lg:block">
         <Image
           src={heroImage}
           alt={tr('hero.imageAlt')}
           widths={[560, 760, 1120]}
           sizes="(min-width: 1024px) 34rem, 100vw"
-          loading="eager"
+          loading="lazy"
+          fetchpriority="high"
           class="w-full rounded-[var(--radius-panel)] border border-border object-cover shadow-[var(--shadow-card)]"
         />
       </div>
@@ -218,13 +236,25 @@ const trust = [
         would sit on top of each other, so the same regions render as the circle
         grid instead — same links, same order, laid out for a narrow screen.
       */}
-      <div class="hidden md:block">
+      {/*
+        The drawing is the way in from lg up, and the circle grid below that.
+
+        This used to switch at md, and 768px is measured to be too narrow for
+        it. The map is a fixed 34rem, so its hotspots never move: the labels on
+        the left-hand figure overlapped by 8px of tap target at *every* width
+        (elbow/hand-wrist 87px wide in Thai, 85px in English; hip/hand-wrist
+        49px and 31px), and in English at 768px "Hand & wrist" reached 19px
+        past the panel's inner edge. Widening the map fixes the overlap and
+        needs room the tablet does not have — so the map now waits for lg,
+        where there is, and the grid covers phone and tablet.
+      */}
+      <div class="hidden lg:block">
         <BodyMap locale={locale} counts={counts} />
       </div>
 
-      <div class="md:hidden">
+      <div class="lg:hidden">
       <ul
-        class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(5.5rem,1fr))] gap-4 p-0 text-center"
+        class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(5.5rem,100%),1fr))] gap-4 p-0 text-center"
       >
         {
           bodyMapRegions.map((region) => {
@@ -276,7 +306,7 @@ const trust = [
     <h2 class="m-0">{tr('home.wantTitle')}</h2>
     <p class="m-0 mt-1 text-muted">{tr('home.wantSub')}</p>
 
-    <ul class="m-0 mt-6 grid list-none grid-cols-[repeat(auto-fit,minmax(15rem,1fr))] gap-4 p-0">
+    <ul class="m-0 mt-6 grid list-none grid-cols-[repeat(auto-fit,minmax(min(15rem,100%),1fr))] gap-4 p-0">
       {
         wantCards.map((card) => (
           <li>
@@ -364,24 +394,52 @@ const trust = [
             </a>
           </div>
 
-          <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(13rem,1fr))] gap-5 p-0">
+          <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(min(20rem,100%),1fr))] gap-5 p-0">
             {featured.map((entry) => (
               <li>
                 <a
                   href={localizePath(`/conditions/${entry.data.slug}`, locale)}
-                  class="group block no-underline"
+                  class="group flex h-full items-start gap-4 rounded-[10px] border border-border bg-surface p-4 no-underline transition hover:border-accent"
                 >
+                  {/*
+                    A compact thumbnail rather than the banner panel this used
+                    to be. Nine of these on one page, each a 4:3 box 185px tall
+                    at 1280 and 225px at 390, was a lot of screen for
+                    decoration — and `object-cover` was throwing away 25% of
+                    the height of every square badge to do it, cutting the top
+                    and bottom off the circle. Measured: seven of the nine
+                    cropped, two did not.
+
+                    The box keeps the 4:3 ratio so every card matches, and
+                    `contain` lets both shapes of drawing sit in it whole.
+                  */}
                   <span
-                    class="mb-3 grid aspect-[4/3] place-items-center overflow-hidden rounded-[10px] border border-border bg-ground text-accent transition group-hover:border-accent"
+                    class="grid aspect-[4/3] w-20 shrink-0 place-items-center overflow-hidden rounded-[8px] border border-border bg-ground text-accent transition group-hover:border-accent"
                     aria-hidden="true"
                   >
-                    <RegionArt region={entry.data.region} image={entry.data.heroImage} />
+                    <RegionArt
+                      region={entry.data.region}
+                      image={entry.data.heroImage}
+                      fit="contain"
+                      sizes="5rem"
+                    />
                   </span>
-                  <span class="block font-semibold text-ink group-hover:text-accent">
-                    {entry.data.title}
-                  </span>
-                  <span class="mt-1 line-clamp-2 block text-[0.9em] text-muted">
-                    {entry.data.summary}
+
+                  {/* min-w-0: a flex child defaults to min-width:auto and a
+                      Thai title is one unbreakable token, so without this the
+                      text column is sized to the whole title. */}
+                  <span class="min-w-0">
+                    <span class="block font-semibold text-ink group-hover:text-accent">
+                      {entry.data.title}
+                    </span>
+                    {/* No `block` here: Tailwind's `line-clamp-2` works by
+                        setting `display: -webkit-box`, and a `block` alongside
+                        it wins and turns the clamp off. It had been inert since
+                        this card was written — the summaries ran to six lines
+                        and every card in the row was a different height. */}
+                    <span class="mt-1 line-clamp-2 text-[0.9em] text-muted">
+                      {entry.data.summary}
+                    </span>
                   </span>
                 </a>
               </li>
@@ -401,7 +459,7 @@ const trust = [
       <h2 class="m-0">{tr('triage.title')}</h2>
       <p class="m-0 mt-1 text-muted">{tr('triage.sub')}</p>
 
-      <ol class="m-0 mt-6 grid list-none grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 p-0">
+      <ol class="m-0 mt-6 grid list-none grid-cols-[repeat(auto-fit,minmax(min(16rem,100%),1fr))] gap-4 p-0">
         {
           triage.map((level) => (
             <li class:list={['rounded-[10px] p-5', level.bg, level.ink]}>
@@ -468,20 +526,38 @@ const trust = [
             </a>
           </div>
 
-          <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-5 p-0">
+          <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(min(20rem,100%),1fr))] gap-5 p-0">
             {recentlyReviewed.map((entry) => (
               <li>
                 <a
                   href={localizePath(`/conditions/${entry.data.slug}`, locale)}
-                  class="group block no-underline"
+                  class="group flex h-full items-center gap-4 rounded-[10px] border border-border bg-surface p-4 no-underline transition hover:border-accent"
                 >
+                  {/*
+                    A compact thumbnail rather than the banner panel this used
+                    to be. Nine of these on one page, each a 4:3 box 185px tall
+                    at 1280 and 225px at 390, was a lot of screen for
+                    decoration — and `object-cover` was throwing away 25% of
+                    the height of every square badge to do it, cutting the top
+                    and bottom off the circle. Measured: seven of the nine
+                    cropped, two did not.
+
+                    The box keeps the 4:3 ratio so every card matches, and
+                    `contain` lets both shapes of drawing sit in it whole.
+                  */}
                   <span
-                    class="mb-3 grid aspect-[4/3] place-items-center overflow-hidden rounded-[10px] border border-border bg-ground text-accent transition group-hover:border-accent"
+                    class="grid aspect-[4/3] w-20 shrink-0 place-items-center overflow-hidden rounded-[8px] border border-border bg-ground text-accent transition group-hover:border-accent"
                     aria-hidden="true"
                   >
-                    <RegionArt region={entry.data.region} image={entry.data.heroImage} />
+                    <RegionArt
+                      region={entry.data.region}
+                      image={entry.data.heroImage}
+                      fit="contain"
+                      sizes="5rem"
+                    />
                   </span>
-                  <span class="block font-semibold text-ink group-hover:text-accent">
+
+                  <span class="min-w-0 font-semibold text-ink group-hover:text-accent">
                     {entry.data.title}
                   </span>
                 </a>
@@ -498,7 +574,7 @@ const trust = [
 <section class="border-y border-border bg-surface py-8">
   <Container>
     <ul
-      class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-6 p-0 text-[0.95em]"
+      class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(14rem,100%),1fr))] gap-6 p-0 text-[0.95em]"
     >
       {
         trust.map((item) => (

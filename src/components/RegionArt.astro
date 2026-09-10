@@ -19,6 +19,21 @@ interface Props {
   image?: ImageMetadata;
   sizes?: string;
   class?: string;
+  /**
+   * How the drawing meets its box.
+   *
+   * `cover` is right where the box is square and the artwork is one of the
+   * author's circle-in-a-square badges: the crop only ever removes the soft
+   * corners, which is what the region circles want.
+   *
+   * `contain` is for a box the artwork does not share a ratio with. The
+   * illustrations come in two shapes — nine square badges and eleven 4:3
+   * scenes, several carrying a labelled inset diagram — so any single box crops
+   * one set or the other. Measured in a 4:3 card panel, `cover` threw away 25%
+   * of the height of every square badge, cutting the top and bottom off the
+   * circle. `contain` shows both shapes whole against the panel's own ground.
+   */
+  fit?: 'cover' | 'contain';
 }
 
 /**
@@ -46,6 +61,7 @@ const {
   image,
   sizes = '(min-width: 768px) 20rem, 45vw',
   class: className,
+  fit = 'cover',
 } = Astro.props;
 
 const src = image ?? art[region];
@@ -65,7 +81,11 @@ const src = image ?? art[region];
       sizes={sizes}
       loading="lazy"
       decoding="async"
-      class:list={['h-full w-full object-cover', className]}
+      class:list={[
+        'h-full w-full',
+        fit === 'contain' ? 'object-contain' : 'object-cover',
+        className,
+      ]}
     />
   ) : (
     <BodyIcon region={region} size={72} />
