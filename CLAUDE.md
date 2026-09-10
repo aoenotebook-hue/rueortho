@@ -209,6 +209,7 @@ src/
   assets/regions/               the author's drawing for each body-map region
   assets/illustrations/         his drawing for a condition, used as heroImage
   components/ArticleContents.astro  the on-this-page list, built from render()'s headings
+  components/FilterBar.astro    the shared listing filter: box, count, reset
   layouts/BaseLayout.astro      html shell, meta, hreflang, fonts
   pages/                        Thai routes at /, English mirrored under /en
   styles/global.css             design tokens, Thai typography, base styles
@@ -484,6 +485,60 @@ The toggle button stays visible without JavaScript even though it cannot do
 anything there. Hiding it would need the same CSS the CSP refuses, and the
 menu below it is already open in that case, so the cost is a button that does
 nothing on a page where nothing needs it.
+
+### The listing filter
+
+`FilterBar.astro` is the filter on `/conditions` and on `/articles`. One
+component, because two copies of "hide the cards that do not match" drift.
+
+- **The page marks its own content, the component owns the behaviour.** Items
+  carry `data-filter-item` plus a lowercased `data-search` string (title,
+  summary and keywords) and, on conditions, `data-region`. Groups carry
+  `data-filter-group`; a jump link carries `data-jump-for` with the same id.
+  When a filter empties a group the component hides the group **and** its jump
+  link — a heading with nothing under it is worse than no heading, and a jump
+  link to a hidden group goes nowhere.
+- **The count is a polite live region**, so a screen-reader user hears "แสดง 6
+  จาก 20 เรื่อง" instead of watching cards vanish in silence. It is written on
+  a 250ms timer: announcing every keystroke talks over the typing. `/articles`
+  passes `showTotal={false}` because that page already prints its own count —
+  the live region is still there, it just says nothing until it has something
+  to report.
+- **Reset is a link, not a button.** `href` is the page itself, so it works
+  with no JavaScript; the script intercepts the click, clears the box and the
+  chips in place, and puts focus back in the box. It appears as soon as
+  anything is filtered, not only when the filter finds nothing: a reader
+  looking at three of twenty cards needs the way back as much as one looking
+  at none.
+- **The zero-results message is about the filter.** It used to reuse
+  `error.404.body` — "the page may have moved or no longer exists" — which was
+  neither true nor about the filter.
+
+Strings reach the script the way the search page does it: a
+`type="application/json"` block, which is not executable and so is not
+something the CSP has to hash. `t()` only substitutes the variables it is
+given, so calling it with none returns the template with `{n}` and `{total}`
+intact for the browser to fill in.
+
+Without JavaScript the box and the chips do nothing, and that is the
+pre-existing bargain on these pages: **the full list is always in the HTML**,
+so nothing is unreachable — the filter only ever hides.
+
+### The region empty state
+
+`RegionPage` renders an explanation and a link to the conditions index when a
+region has nothing published. **No route reaches it today**: both region
+routes build only the regions with a published article *in that locale*, so
+`/regions/hip` (nought articles) does not exist and the body map renders that
+dot inert rather than linking. The branch is there for the day a region's only
+article is held back, or is written in one language before the other, and it
+was tested by routing every region temporarily.
+
+The wording is deliberate and worth keeping deliberate: an empty region page
+must not read as reassurance. A body part with no articles yet says nothing at
+all about the reader's symptoms, and the site cannot see them — so it says the
+articles are being written, says that it means nothing about them, and points
+at the full index.
 
 ### The article contents list
 

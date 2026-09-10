@@ -30,20 +30,45 @@ const conditions = await getConditionsByRegion(locale, regionId);
     <h1>{region.label[locale]}</h1>
     {region.intro && <p class="max-w-[68ch] text-muted">{region.intro[locale]}</p>}
 
-    <ul class="m-0 mt-8 grid list-none grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-4 p-0">
-      {
-        conditions.map((entry) => (
-          <li>
-            <Card
-              headingLevel={2}
-              href={localizePath(`/conditions/${entry.data.slug}`, locale)}
-              title={entry.data.title}
-              summary={entry.data.summary}
-              locale={locale}
-            />
-          </li>
-        ))
-      }
-    </ul>
+    {
+      /*
+        A region page is only routed while that language has something
+        published in it, so this branch is a guard rather than a common case —
+        it catches the day a region's only article is held back, or is written
+        in one language before the other.
+
+        The wording is careful on purpose. An empty page must not read as
+        reassurance: a region with no articles yet says nothing at all about
+        the reader's symptoms, and the site cannot see them. It says the
+        articles are being written, says that plainly, and points at the full
+        index.
+      */
+      conditions.length === 0 ? (
+        <div class="mt-8 max-w-[68ch] rounded-[var(--radius-panel)] border border-dashed border-border p-6">
+          <h2 class="mt-0">{tr('region.emptyTitle')}</h2>
+          <p class="text-muted">{tr('region.emptyBody')}</p>
+          <a
+            href={localizePath('/conditions', locale)}
+            class="mt-2 inline-block rounded-full border border-border bg-surface px-5 py-2.5 text-ink no-underline hover:border-accent"
+          >
+            {tr('region.emptyLink')}
+          </a>
+        </div>
+      ) : (
+        <ul class="m-0 mt-8 grid list-none grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-4 p-0">
+          {conditions.map((entry) => (
+            <li>
+              <Card
+                headingLevel={2}
+                href={localizePath(`/conditions/${entry.data.slug}`, locale)}
+                title={entry.data.title}
+                summary={entry.data.summary}
+                locale={locale}
+              />
+            </li>
+          ))}
+        </ul>
+      )
+    }
   </div>
 </Container>

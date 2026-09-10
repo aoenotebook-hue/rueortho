@@ -89,6 +89,21 @@ const ui = {
     'apps.pageTitle': 'แอปดูแลตัวเอง',
     'apps.helpsWith': 'ใช้กับภาวะ',
 
+    'filter.label': 'กรองรายการในหน้านี้',
+    'filter.placeholder': 'พิมพ์เพื่อกรองรายการในหน้านี้',
+    /* `{n}` and `{total}` are filled in by the browser — see FilterBar.astro. */
+    'filter.total': 'ทั้งหมด {n} เรื่อง',
+    'filter.count': 'แสดง {n} จาก {total} เรื่อง',
+    'filter.noMatch': 'ไม่พบเรื่องที่ตรงกับคำค้นและตัวกรองที่เลือก',
+    'filter.clear': 'ล้างคำค้นและตัวกรอง',
+
+    'articles.jumpLabel': 'ข้ามไปยังหมวด',
+
+    'region.emptyTitle': 'ยังไม่มีบทความในบริเวณนี้',
+    'region.emptyBody':
+      'บทความสำหรับบริเวณนี้กำลังจัดทำอยู่ การที่ยังไม่มีบทความไม่ได้บอกอะไรเกี่ยวกับอาการของคุณ หากมีอาการที่ทำให้กังวล ควรปรึกษาแพทย์',
+    'region.emptyLink': 'ดูโรคและภาวะทั้งหมด',
+
     'region.browseTitle': 'เลือกตามตำแหน่งที่ปวด',
     'region.browseIntro': 'เลือกส่วนของร่างกายที่มีอาการ เพื่อดูโรคและภาวะที่พบบ่อยในบริเวณนั้น',
     'region.allRegions': 'ทุกตำแหน่ง',
@@ -265,6 +280,20 @@ const ui = {
     'apps.open': 'Open the app',
     'apps.pageTitle': 'Self-care apps',
     'apps.helpsWith': 'Helps with',
+
+    'filter.label': 'Filter this page',
+    'filter.placeholder': 'Type to filter this page',
+    'filter.total': '{n} articles',
+    'filter.count': 'Showing {n} of {total}',
+    'filter.noMatch': 'Nothing here matches your search and filters.',
+    'filter.clear': 'Clear search and filters',
+
+    'articles.jumpLabel': 'Jump to',
+
+    'region.emptyTitle': 'No articles for this area yet',
+    'region.emptyBody':
+      'Articles for this area are being written. That says nothing about your own symptoms — if something is worrying you, see a doctor.',
+    'region.emptyLink': 'Browse all conditions',
 
     'region.browseTitle': 'Browse by body region',
     'region.browseIntro': 'Choose the part of the body that hurts to see the common problems there.',
