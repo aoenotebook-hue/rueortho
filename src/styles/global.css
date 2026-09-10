@@ -415,6 +415,35 @@ a.body-map-hotspot:hover .body-map-dot {
   background: var(--accent);
 }
 
+/*
+ * The back-view figure's labels are pushed clear of the drawing and joined
+ * back to their dot with a leader line.
+ *
+ * Its two landmarks sit at x 71% on a figure that occupies 55-86%, so a label
+ * sitting beside the dot lay across the torso edge and both arm lines. The dot
+ * has to stay where the spine is, so the label moves instead. 7rem clears 86%
+ * on the 44rem drawing, and the map is exactly 44rem at every width it renders
+ * at, so a fixed length is safe here.
+ */
+.body-map-hotspot.has-leader .body-map-label {
+  position: relative;
+  margin-inline-start: 7rem;
+}
+
+.body-map-hotspot.has-leader .body-map-label::before {
+  content: '';
+  position: absolute;
+  inset-inline-end: 100%;
+  top: 50%;
+  width: 7rem;
+  border-top: 1px dashed var(--border);
+}
+
+a.body-map-hotspot.has-leader:hover .body-map-label::before,
+a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
+  border-top-color: var(--accent);
+}
+
 /* Not a link: a region with nothing published yet. Shape and wording carry
    that, never colour alone. */
 .body-map-hotspot.is-empty {
