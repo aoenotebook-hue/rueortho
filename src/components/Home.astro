@@ -120,13 +120,27 @@ const trust = [
 
 
         {/*
-          The search field that used to sit here is gone at the author's
-          request. These chips stay: they are ordinary links to real searches,
-          and with the field removed their label no longer says "examples" of
-          something that is not on the page any more. The header keeps the one
-          remaining search entry point.
+          One primary action, and one quiet way to the safety section beside
+          it. Both are same-page anchors — `scroll-padding-top` in global.css
+          is what keeps the heading they land on clear of the sticky header.
+
+          Deliberately not a search box: the field that used to sit here was
+          removed at the author's request, and the header's button is the one
+          search entry point on the site. Repeating it here would be a second
+          copy of the same control.
         */}
-        <div class="mt-7 flex flex-wrap items-center gap-2">
+        <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <a
+            href="#where-it-hurts"
+            class="rounded-full bg-accent px-6 py-3 font-medium text-accent-contrast no-underline hover:opacity-90"
+          >
+            {tr('home.primaryAction')} ↓
+          </a>
+
+          <a href="#when-to-see-a-doctor" class="text-[0.95em]">{tr('triage.title')}</a>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-2">
           <span class="text-sm text-muted">{tr('hero.popularLabel')}</span>
           {
             examples.map((example) => (
@@ -139,47 +153,41 @@ const trust = [
             ))
           }
         </div>
+
+        {/*
+          How the words on this site are made, for a reader deciding whether to
+          trust them. A link, not a byline: the author's name, his credentials
+          and the review dates are deliberately not in the hero.
+        */}
+        <p class="mt-6 m-0 text-sm text-muted">
+          <a href={localizePath('/editorial-policy', locale)}>{tr('home.editorialLink')}</a>
+        </p>
       </div>
 
       {/*
-        The note sits above the illustration rather than on top of it. It used
-        to be absolutely positioned over the panel, which was invisible while
-        that panel was an empty placeholder — once a full illustration went in,
-        the second line crossed the panel's edge and read half on the page
-        ground and half on the artwork, which shows up plainly in dark mode.
-        The badge below still overlaps on purpose: it carries its own surface
-        and border, so it is legible whatever it lands on.
+        The illustration, and nothing else. It used to carry two more slogans —
+        one above it and one overlapping its corner — which left the hero
+        saying the same thing four times over: the site name, the promise, the
+        purpose and then two more turns of phrase. The promise and the purpose
+        say it; the picture does not need to say it again.
       */}
       <div class="hidden lg:block">
-        <p
-          class="mb-3 ms-auto max-w-[13rem] text-end text-[1.05rem] italic leading-snug text-accent"
-        >
-          {tr('hero.note')}
-        </p>
-
-        <div class="relative">
-          <Image
-            src={heroImage}
-            alt={tr('hero.imageAlt')}
-            widths={[560, 760, 1120]}
-            sizes="(min-width: 1024px) 34rem, 100vw"
-            loading="eager"
-            class="w-full rounded-[var(--radius-panel)] border border-border object-cover shadow-[var(--shadow-card)]"
-          />
-
-          <p
-            class="absolute -bottom-3 end-4 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted shadow-[var(--shadow-card)]"
-          >
-            {tr('hero.badge')}
-          </p>
-        </div>
+        <Image
+          src={heroImage}
+          alt={tr('hero.imageAlt')}
+          widths={[560, 760, 1120]}
+          sizes="(min-width: 1024px) 34rem, 100vw"
+          loading="eager"
+          class="w-full rounded-[var(--radius-panel)] border border-border object-cover shadow-[var(--shadow-card)]"
+        />
       </div>
     </div>
   </Container>
 </section>
 
-<!-- Where does it hurt? -->
-<section class="py-10">
+<!-- Where does it hurt? The hero's primary action lands here, so the id is
+     part of the page's contract and must not be renamed casually. -->
+<section id="where-it-hurts" class="py-10">
   <Container>
     <div class="rounded-[var(--radius-panel)] border border-border bg-surface p-6 md:p-8">
       <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
@@ -373,8 +381,9 @@ const trust = [
   </Container>
 </section>
 
-<!-- When should I see a doctor? Guidance, explicitly not diagnosis. -->
-<section class="pb-10">
+<!-- When should I see a doctor? Guidance, explicitly not diagnosis. The hero
+     links here by id; the wording inside is the author's and is unchanged. -->
+<section id="when-to-see-a-doctor" class="pb-10">
   <Container>
     <div class="rounded-[var(--radius-panel)] border border-border bg-surface p-6 md:p-8">
       <h2 class="m-0">{tr('triage.title')}</h2>
