@@ -7,7 +7,7 @@ import heroImage from '../assets/hero-shoulder-pain.png';
 import { t, type Locale } from '../i18n/ui';
 import { localizePath } from '../i18n/utils';
 import { bodyMapRegions } from '../data/regions';
-import { getConditions, getRecentlyReviewed, getRegionCounts } from '../lib/conditions';
+import { getFeaturedConditions, getRecentlyReviewed, getRegionCounts } from '../lib/conditions';
 
 interface Props {
   locale: Locale;
@@ -17,8 +17,21 @@ const { locale } = Astro.props;
 const tr = t(locale);
 
 const counts = await getRegionCounts(locale);
-const published = await getConditions(locale);
-const recent = await getRecentlyReviewed(locale, 3);
+
+/**
+ * The featured strip is a chosen list of slugs (`src/data/featured.ts`)
+ * resolved against what this locale publishes, so both languages lead with the
+ * same topics in the same order and a missing or unfinished article simply
+ * does not appear.
+ *
+ * The reviewed strip below it then skips whatever the featured strip already
+ * shows: two lists on one screen with the same article in both is a waste of
+ * the reader's attention. There are twenty conditions and nine slots between
+ * them, so nothing has to be padded to fill the row.
+ */
+const featured = await getFeaturedConditions(locale);
+const featuredSlugs = new Set(featured.map((entry) => entry.data.slug));
+const recentlyReviewed = await getRecentlyReviewed(locale, 3, featuredSlugs);
 
 const searchPath = localizePath('/search', locale);
 
@@ -141,7 +154,7 @@ const trust = [
         </div>
 
         <div class="mt-6 flex flex-wrap items-center gap-2">
-          <span class="text-sm text-muted">{tr('hero.popularLabel')}</span>
+          <span class="text-sm text-muted">{tr('hero.exploreLabel')}</span>
           {
             examples.map((example) => (
               <a
@@ -332,28 +345,27 @@ const trust = [
   </Container>
 </section>
 
-<!-- Common conditions -->
-<section class="pb-10">
-  <Container>
-    <div class="rounded-[var(--radius-panel)] border border-border bg-surface p-6 md:p-8">
-      <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h2 class="m-0">{tr('home.popularTitle')}</h2>
-          <p class="m-0 mt-1 text-muted">{tr('home.popularSub')}</p>
-        </div>
-        <a href={localizePath('/conditions', locale)} class="text-[0.95em]">
-          {tr('home.viewAllConditions')} →
-        </a>
-      </div>
+<!-- Featured topics. A chosen starting selection, in a chosen order — not a
+     ranking, and not "most searched": nothing here counts anything. The whole
+     section is absent rather than empty when none of the featured slugs has a
+     published article in this locale. -->
+{
+  featured.length > 0 && (
+    <section class="pb-10">
+      <Container>
+        <div class="rounded-[var(--radius-panel)] border border-border bg-surface p-6 md:p-8">
+          <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h2 class="m-0">{tr('home.featuredTitle')}</h2>
+              <p class="m-0 mt-1 text-muted">{tr('home.featuredSub')}</p>
+            </div>
+            <a href={localizePath('/conditions', locale)} class="text-[0.95em]">
+              {tr('home.viewAllConditions')} →
+            </a>
+          </div>
 
-      {
-        published.length === 0 ? (
-          <p class="m-0 rounded-[10px] border border-dashed border-border p-6 text-center text-muted">
-            {tr('home.emptyConditions')}
-          </p>
-        ) : (
           <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(13rem,1fr))] gap-5 p-0">
-            {published.slice(0, 6).map((entry) => (
+            {featured.map((entry) => (
               <li>
                 <a
                   href={localizePath(`/conditions/${entry.data.slug}`, locale)}
@@ -375,11 +387,11 @@ const trust = [
               </li>
             ))}
           </ul>
-        )
-      }
-    </div>
-  </Container>
-</section>
+        </div>
+      </Container>
+    </section>
+  )
+}
 
 <!-- When should I see a doctor? Guidance, explicitly not diagnosis. The hero
      links here by id; the wording inside is the author's and is unchanged. -->
@@ -438,21 +450,26 @@ const trust = [
   </Container>
 </section>
 
-<!-- Latest articles -->
+<!-- Recently reviewed. The list is ordered by `lastReviewed`, so it is named
+     after that and not "latest articles", which would promise a publication
+     order it does not have. The dates themselves stay off the page, for the
+     same reason the article byline carries no date. -->
 {
-  recent.length > 0 && (
+  recentlyReviewed.length > 0 && (
     <section class="pb-10">
       <Container>
         <div class="rounded-[var(--radius-panel)] border border-border bg-surface p-6 md:p-8">
           <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
-            <h2 class="m-0">{tr('home.latestTitle')}</h2>
-            <a href={localizePath('/conditions', locale)} class="text-[0.95em]">
+            <h2 class="m-0">{tr('home.recentlyReviewed')}</h2>
+            {/* The article hub, not the conditions index — this link said
+                "all articles" and went somewhere else. */}
+            <a href={localizePath('/articles', locale)} class="text-[0.95em]">
               {tr('home.viewAllArticles')} →
             </a>
           </div>
 
           <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-5 p-0">
-            {recent.map((entry) => (
+            {recentlyReviewed.map((entry) => (
               <li>
                 <a
                   href={localizePath(`/conditions/${entry.data.slug}`, locale)}
