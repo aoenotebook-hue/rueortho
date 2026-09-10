@@ -366,14 +366,36 @@
   }
 }
 
+/*
+ * The leader scales with the drawing, because the drawing scales with the
+ * breakpoint (36rem at md, 44rem at lg — see BodyMap.astro) and "clear of the
+ * figure" is a fraction of it: reaching past x 86% is 72px from the dot at
+ * 36rem and 112px at 44rem.
+ */
+.body-map {
+  --body-map-leader: 4.5rem;
+}
+
+@media (min-width: 1024px) {
+  .body-map {
+    --body-map-leader: 7rem;
+  }
+}
+
 .body-map-hotspot {
   position: absolute;
   display: flex;
   align-items: center;
   gap: 0.45rem;
   padding: 0.35rem 0.5rem;
-  /* Keeps the tap target at the 44px the accessibility target asks for, even
-     though the dot itself is 14px. */
+  /*
+   * The site's 44px tap target. Note this floor is rarely what decides the
+   * height: a Thai label is intrinsically ~44px tall at this size and an
+   * English one ~41px, since the pill carries the line box plus its own
+   * padding. Shrinking the box therefore means shrinking the text, which is
+   * not on the table — see the note in BodyMap.astro about what that costs at
+   * md.
+   */
   min-height: 44px;
   color: var(--ink);
   text-decoration: none;
@@ -421,13 +443,13 @@ a.body-map-hotspot:hover .body-map-dot {
  *
  * Its two landmarks sit at x 71% on a figure that occupies 55-86%, so a label
  * sitting beside the dot lay across the torso edge and both arm lines. The dot
- * has to stay where the spine is, so the label moves instead. 7rem clears 86%
- * on the 44rem drawing, and the map is exactly 44rem at every width it renders
- * at, so a fixed length is safe here.
+ * has to stay where the spine is, so the label moves instead, by
+ * `--body-map-leader` — which scales with the drawing, since "clear of the
+ * figure" is a fraction of it.
  */
 .body-map-hotspot.has-leader .body-map-label {
   position: relative;
-  margin-inline-start: 7rem;
+  margin-inline-start: var(--body-map-leader);
 }
 
 .body-map-hotspot.has-leader .body-map-label::before {
@@ -435,7 +457,7 @@ a.body-map-hotspot:hover .body-map-dot {
   position: absolute;
   inset-inline-end: 100%;
   top: 50%;
-  width: 7rem;
+  width: var(--body-map-leader);
   border-top: 1px dashed var(--border);
 }
 

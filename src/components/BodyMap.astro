@@ -43,21 +43,42 @@ const needsLeader = (id: string) => !LEFT_FIGURE.has(id);
 ---
 
 {/*
-  34rem was too small for its own labels. The hotspots are 44px tall to meet the
-  touch-target rule, but at 34rem the drawing is 363px high, so the 10% between
-  elbow (40%), hand-wrist (50%) and hip (60%) is only 36.3px — the three tap
-  targets on the left-hand figure overlapped each other by 8px, measured, at
-  every width. The visible pills never touched; the clickable boxes did, which
-  is a mis-tap rather than something you can see.
+  The drawing is sized per breakpoint, because the tablet is the tight case and
+  everything on the map is measured against it.
 
-  At 44rem the drawing is 469px high and the same 10% is 46.9px, so the targets
-  clear each other without a single coordinate moving — the percentages in
-  global.css still point exactly where they were measured on the artwork's
-  alpha channel. It also buys the room the longest label needs: "Hand & wrist"
-  is 167px and reaches 57px to the left of the drawing, and from lg up the
-  panel leaves at least 108px of slack on that side.
+  A hotspot has to be tall enough to tap and the labels have to stay inside the
+  panel, and at a fixed 34rem neither held: the drawing was 363px high, so the
+  10% between elbow (40%), hand-wrist (50%) and hip (60%) was 36.3px against a
+  44px target, and the three tap targets on the left figure overlapped by 8px at
+  every width in both languages. The visible pills never touched, so nothing
+  looked wrong — only the clickable boxes did.
+
+  Widening the drawing spreads those percentages apart, but a wider drawing has
+  less room beside it for the labels that flow outwards, and the two pull
+  against each other. At 768px the panel is 664px wide and the longest label
+  ("Hand & wrist", 167px) reaches 74px left of the drawing, so the drawing
+  cannot exceed about 36rem there; at 44rem it would push that label off the
+  side of the screen. From lg the panel is at least 920px and 44rem fits with
+  room to spare.
+
+  So: 36rem at md and 44rem at lg, with `--body-map-leader` scaled to match in
+  global.css. Not one coordinate moves — the percentages still point exactly
+  where they were measured on the artwork's alpha channel.
+
+  **From lg this is clean: no overlap, nothing outside the panel. At md a small
+  overlap remains** — measured 5-6px in Thai and 3px in English between elbow,
+  hand-wrist and hip, down from 8px before. 36rem gives those three 38.4px of
+  separation, and a hotspot is ~44px tall in Thai and ~41px in English because
+  the pill is a line box plus padding. Closing the last few pixels would mean
+  either a wider drawing, which 768px cannot hold without pushing "Hand &
+  wrist" off the side, or smaller label text, which this audience is the last
+  one to spend. The overlap sits in the hotspot's transparent padding and never
+  in the visible pill, so a reader aiming at a label always gets that label; it
+  only decides taps in the blank space between two of them. If that trade is
+  ever judged the wrong way round, moving the map back to lg removes it
+  entirely and the circle grid covers the tablet perfectly well.
 */}
-<div class="body-map relative mx-auto max-w-[44rem]">
+<div class="body-map relative mx-auto max-w-[36rem] lg:max-w-[44rem]">
   {/*
     Decorative: the drawing shows a body front and back, and every piece of
     information a reader needs is in the labelled links on top of it. Giving it
@@ -68,7 +89,7 @@ const needsLeader = (id: string) => !LEFT_FIGURE.has(id);
     src={bodyMap}
     alt=""
     widths={[600, 900, 1200]}
-    sizes="(min-width: 1024px) 44rem, 100vw"
+    sizes="(min-width: 1024px) 44rem, (min-width: 768px) 36rem, 100vw"
     loading="lazy"
     decoding="async"
     class="body-map-figure w-full"

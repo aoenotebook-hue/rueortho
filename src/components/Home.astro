@@ -237,22 +237,18 @@ const trust = [
         grid instead — same links, same order, laid out for a narrow screen.
       */}
       {/*
-        The drawing is the way in from lg up, and the circle grid below that.
+        The drawing is the way in from md up, and the circle grid below that.
 
-        This used to switch at md, and 768px is measured to be too narrow for
-        it. The map is a fixed 34rem, so its hotspots never move: the labels on
-        the left-hand figure overlapped by 8px of tap target at *every* width
-        (elbow/hand-wrist 87px wide in Thai, 85px in English; hip/hand-wrist
-        49px and 31px), and in English at 768px "Hand & wrist" reached 19px
-        past the panel's inner edge. Widening the map fixes the overlap and
-        needs room the tablet does not have — so the map now waits for lg,
-        where there is, and the grid covers phone and tablet.
+        The tablet is the tight case and the map is sized for it rather than
+        moved out of it — see BodyMap.astro, which scales the drawing, the tap
+        targets and the leader lines per breakpoint so 768px keeps every label
+        at full size inside the panel.
       */}
-      <div class="hidden lg:block">
+      <div class="hidden md:block">
         <BodyMap locale={locale} counts={counts} />
       </div>
 
-      <div class="lg:hidden">
+      <div class="md:hidden">
       <ul
         class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(5.5rem,100%),1fr))] gap-4 p-0 text-center"
       >
