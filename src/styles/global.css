@@ -296,6 +296,28 @@
    Utilities used across layouts
    ========================================================================== */
 
+/*
+ * A 24x24 hit area for a standalone text link, per WCAG 2.2 AA 2.5.8.
+ *
+ * The site's own goal is 44px, and every control that can reach it does — but
+ * a link in a run of text cannot without pushing the lines apart. A 0.95em
+ * footer link measures 19px tall and a 0.875em breadcrumb 16px, so the ten
+ * footer links, the four breadcrumb links and the hero's editorial line all
+ * fell short of even the 24px minimum.
+ *
+ * Vertical padding on an *inline* element grows its border box — which is what
+ * the browser hit-tests — while leaving the line box alone, so the target gets
+ * bigger and nothing on the page moves. 5px each side takes a 16px link to
+ * 26px and a 19px one to 29px.
+ *
+ * Links inside a sentence are exempt from 2.5.8 and are deliberately left
+ * alone: padding them would make neighbouring lines' targets overlap, which is
+ * worse than the thing it fixes.
+ */
+.tap-24 {
+  padding-block: 5px;
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -374,11 +396,15 @@
  */
 .body-map {
   --body-map-leader: 4.5rem;
+  --body-map-pad-block: 0.1rem;
+  --body-map-target: 36px;
 }
 
 @media (min-width: 1024px) {
   .body-map {
     --body-map-leader: 7rem;
+    --body-map-pad-block: 0.35rem;
+    --body-map-target: 44px;
   }
 }
 
@@ -387,16 +413,26 @@
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.35rem 0.5rem;
   /*
-   * The site's 44px tap target. Note this floor is rarely what decides the
-   * height: a Thai label is intrinsically ~44px tall at this size and an
-   * English one ~41px, since the pill carries the line box plus its own
-   * padding. Shrinking the box therefore means shrinking the text, which is
-   * not on the table — see the note in BodyMap.astro about what that costs at
-   * md.
+   * The tap target: 44px from lg, 36px at md, and the difference is entirely
+   * transparent padding — the visible pill is the same size at both.
+   *
+   * The height is set by the pill's own line box plus this padding, so the
+   * `min-height` floor is rarely what decides it: a Thai label runs ~44px at
+   * the lg padding and an English one ~41px. At md the drawing is 36rem, which
+   * leaves only 38.4px between the elbow, hand-wrist and hip coordinates, so a
+   * 44px box overlapped its neighbours by 5-6px — an ambiguous strip of blank
+   * space where a tap landed on whichever element came later in the document.
+   *
+   * Trimming the padding to 0.1rem there brings the box to ~36px and clears
+   * the overlap with 2.4px to spare. 36px is comfortably past the 24px WCAG
+   * 2.2 AA asks for, and a target that is smaller but unambiguous beats one
+   * that is nominally 44px and fights the target above it. Shrinking the *text*
+   * was never on the table — see BodyMap.astro.
    */
-  min-height: 44px;
+  padding-block: var(--body-map-pad-block);
+  padding-inline: 0.5rem;
+  min-height: var(--body-map-target);
   color: var(--ink);
   text-decoration: none;
   white-space: nowrap;

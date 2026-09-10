@@ -86,9 +86,9 @@ const jsonLd = {
 <Container width="prose">
   <article class="py-8" data-pagefind-body data-pagefind-meta={`summary:${entry.data.summary}`}>
     <nav aria-label={tr('a11y.breadcrumb')} class="mb-6 text-sm text-muted" data-pagefind-ignore>
-      <a href={localizePath('/', locale)} class="text-muted">{tr('nav.home')}</a>
+      <a href={localizePath('/', locale)} class="tap-24 text-muted">{tr('nav.home')}</a>
       <span aria-hidden="true"> / </span>
-      <a href={localizePath(section.path, locale)} class="text-muted">{section.nav[locale]}</a>
+      <a href={localizePath(section.path, locale)} class="tap-24 text-muted">{section.nav[locale]}</a>
     </nav>
 
     {

@@ -108,9 +108,9 @@ const jsonLd = {
     data-pagefind-meta={`summary:${entry.data.summary},region:${region.label[locale]}`}
   >
     <nav aria-label={tr('a11y.breadcrumb')} class="mb-6 text-sm text-muted" data-pagefind-ignore>
-      <a href={localizePath('/', locale)} class="text-muted">{tr('nav.home')}</a>
+      <a href={localizePath('/', locale)} class="tap-24 text-muted">{tr('nav.home')}</a>
       <span aria-hidden="true"> / </span>
-      <a href={localizePath(`/regions/${region.id}`, locale)} class="text-muted">
+      <a href={localizePath(`/regions/${region.id}`, locale)} class="tap-24 text-muted">
         {region.label[locale]}
       </a>
     </nav>

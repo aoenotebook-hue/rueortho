@@ -88,6 +88,17 @@ reachable by anything on the network while it runs.
   Without that the page jumps `h1 → h3`, which it did on 17 pages until
   2026-09-08. Any new listing that puts cards straight under its `h1` must do
   the same.
+- **A standalone text link needs `tap-24`.** WCAG 2.2 AA asks for a 24x24
+  target, and the site's own goal is 44px — but a link in a run of text cannot
+  reach either without pushing the lines apart. The footer links measured 19px
+  tall, the breadcrumb links and the hero's editorial line 16px. `.tap-24` in
+  `global.css` adds 5px of vertical padding, which on an *inline* element grows
+  the border box the browser hit-tests while leaving the line box alone: the
+  target gets bigger and nothing on the page moves. Links **inside a sentence
+  are exempt** from 2.5.8 and must stay unpadded — padding them makes
+  neighbouring lines' targets overlap, which is worse than the thing it fixes.
+  The footer list also went `gap-y-2` to `gap-y-3`, because at 390px it wraps
+  and 8px between rows would let two padded rows touch.
 - **Never convey meaning by colour alone.** The homepage triage levels carry a
   distinct shape and a written label as well as a colour, and any future
   status indicator must do the same.
@@ -455,6 +466,17 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
   feeds and the sitemap all spell a page the same way — no trailing slash, the
   language prefix applied once — and a forged Host header or a preview domain
   cannot change what a page claims to be.
+- **The sitemap drops drafts, and the filter is keyed by locale.** A draft only
+  exists in a preview build, where it carries `noindex, nofollow` — and listing a
+  page in a sitemap while telling robots not to index it is a contradiction. The
+  draft slugs are read straight off the MDX frontmatter in `astro.config.mjs`,
+  because the sitemap integration is configured before the content layer exists;
+  it is a plain frontmatter scan, and a file the regex cannot read is treated as
+  published, which is the safe direction. **The key includes the locale
+  prefix.** Both languages share a slug on purpose and only one of a pair may be
+  a draft, so keying on the bare slug dropped the *published* counterpart from
+  the sitemap too — measured, and fixed. Production is unaffected: 112 URLs
+  either way, because a production build never renders a draft at all.
 - **The sitemap needs `serialize` to agree with the canonical tags.**
   `@astrojs/sitemap` writes every URL with a trailing slash and has no option
   to turn that off in this version (`trailingSlash` is rejected as an
@@ -808,19 +830,21 @@ small for its own labels:
   drawing, and at 768px the panel is only 664px wide; at 44rem that label would
   go off the side of the screen. 36rem is the widest the tablet holds, and from
   `lg` the panel is at least 920px and 44rem fits with slack to spare.
-- **From `lg` this is clean. At md a small overlap survives** — measured 5–6px
-  in Thai and 3px in English between elbow, hand-wrist and hip, down from 8px.
-  36rem gives those three 38.4px of separation and a hotspot is intrinsically
-  ~44px tall in Thai and ~41px in English, because the pill is a line box plus
-  its padding; the `min-height: 44px` floor is rarely what decides it. Closing
-  the last pixels would need either a wider drawing, which 768px cannot hold,
-  or smaller label text, which this audience is the last one to spend. The
-  overlap sits in the hotspot's transparent padding and never in the visible
-  pill, so aiming at a label always hits that label — it only decides taps in
-  the blank space between two of them. **If that trade is ever judged the wrong
-  way round, moving the map to `lg` removes it entirely** and the circle grid
-  covers the tablet perfectly well: measured at 1023px it is 8 columns with no
-  clipped label in either language.
+- **The tap target scales too: 44px from lg, 36px at md, and the difference is
+  entirely transparent padding.** A hotspot's height is its pill's line box plus
+  the hotspot's own padding, so `min-height` is rarely what decides it — a Thai
+  label runs ~44px at the lg padding and an English one ~41px. At md the drawing
+  is 36rem, leaving only 38.4px between the elbow, hand-wrist and hip
+  coordinates, so a 44px box overlapped its neighbours by 5–6px: an ambiguous
+  strip of blank space where a tap landed on whichever element came later in the
+  document. Trimming `--body-map-pad-block` to 0.1rem there brings the box to
+  36px and clears the overlap with 2.4px to spare. **The visible pill is
+  identical at both sizes** — measured 33px in Thai and 30px in English at every
+  width — so this is invisible. 36px is comfortably past the 24px WCAG 2.2 AA
+  asks for, and an unambiguous 36px target beats a nominal 44px one that fights
+  the target above it. Shrinking the *text* was never on the table.
+  Verified: zero hotspot collisions at 768, 820, 900, 1023, 1024 and 1280px in
+  both languages.
 
 **The back-view figure's labels sit on a leader line.** Its two landmarks —
 neck and spine — are at x 71% on a figure spanning 55–86%, i.e. in the middle

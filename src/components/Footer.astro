@@ -44,11 +44,17 @@ const links = [
       </a>
 
       <nav aria-label={tr('nav.about')}>
-        <ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-[0.95em]">
+        {/* gap-y-3 rather than gap-y-2: the links carry `tap-24`, which grows
+            their hit box to 29px, and at 390px this list wraps — 8px between
+            rows would let two rows' targets touch. */}
+        <ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-3 p-0 text-[0.95em]">
           {
             links.map((link) => (
               <li>
-                <a href={localizePath(link.path, locale)} class="text-ink no-underline hover:underline">
+                <a
+                  href={localizePath(link.path, locale)}
+                  class="tap-24 text-ink no-underline hover:underline"
+                >
                   {link.label}
                 </a>
               </li>
