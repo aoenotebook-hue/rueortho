@@ -1,5 +1,6 @@
 ---
 import { render } from 'astro:content';
+import { Image } from 'astro:assets';
 import Container from './Container.astro';
 import Prose from './Prose.astro';
 import Callout from './Callout.astro';
@@ -111,6 +112,29 @@ const jsonLd = {
 
     <h1 class="mt-4">{entry.data.title}</h1>
     <p class="text-lg text-muted">{entry.data.summary}</p>
+
+    {
+      /*
+        The author's own illustration for this condition, where one exists. It
+        is square, so it is held to a column narrower than the prose rather
+        than stretched across it, and it is an opaque raster: like the hero on
+        the home page it keeps its own pale ground in dark mode, which is why
+        it carries a border and reads as an illustration card.
+      */
+      entry.data.heroImage && (
+        <div class="mx-auto mt-6 max-w-[20rem]" data-pagefind-ignore>
+          <Image
+            src={entry.data.heroImage}
+            alt={entry.data.heroImageAlt ?? ''}
+            widths={[320, 480, 640]}
+            sizes="(min-width: 640px) 20rem, 70vw"
+            loading="eager"
+            decoding="async"
+            class="w-full rounded-[var(--radius-panel)] border border-border"
+          />
+        </div>
+      )
+    }
 
 
     {overdue && <Callout type="warning">{tr('article.reviewOverdue')}</Callout>}

@@ -181,6 +181,8 @@ src/
   lib/conditions.ts             collection queries (by locale, region, recency)
   lib/resources.ts              the same queries for examinations and rehabilitation
   lib/videos.ts                 the video index, read out of article bodies at build time
+  assets/regions/               the author's drawing for each body-map region
+  assets/illustrations/         his drawing for a condition, used as heroImage
   layouts/BaseLayout.astro      html shell, meta, hreflang, fonts
   pages/                        Thai routes at /, English mirrored under /en
   styles/global.css             design tokens, Thai typography, base styles
@@ -454,6 +456,44 @@ The drawing is black line art on transparency, so it is inverted under
 transparent areas alone. Below `md` the map is hidden and the original circle
 grid renders instead: the labels would overlap each other at that width.
 
+### The author's illustrations
+
+On 2026-09-10 the author uploaded eighteen flat illustrations to `images/` and
+asked for them to be placed. Each is an 800×800 PNG whose artwork is a **circle
+inside a square**, with only soft gradient in the corners — so every use crops
+with `object-cover`, which throws away corner and nothing else, and the circular
+crop in the region grid lines up with the drawing by construction.
+
+They went to three places, and the files were moved out of `images/` rather than
+copied, so there is one copy of each in git:
+
+- `src/assets/regions/<region id>.png` — the eight body-map regions, rendered by
+  `RegionArt.astro`. **The three browsing categories that are not body parts —
+  bone-health, paediatric, sports — have no drawing**, and fall back to the line
+  glyph in `BodyIcon.astro`. Those three glyphs did not exist until now, which
+  is why the osteoporosis card on the home page rendered an **empty panel**:
+  `BodyIcon` keys off the region id and simply had no path for `bone-health`.
+  Any new region needs either a drawing here or a glyph there.
+- `src/assets/illustrations/<condition slug>.png` — nine condition drawings,
+  wired in as `heroImage`/`heroImageAlt` in the frontmatter of both language
+  files. The schema has carried those two fields since the beginning and
+  nothing rendered them; `ConditionArticle` now shows the image under the
+  summary, held to `max-w-[20rem]` because the artwork is square and would
+  otherwise tower over the prose column. `RegionArt` takes a condition's own
+  image as an override, so those nine cards show the condition rather than its
+  region.
+- `src/assets/sections/rehabilitation.png` — the runner, beside the heading on
+  `/rehabilitation`. `ResourceIndex` maps collection → art, and the other two
+  sections simply run without a picture rather than borrowing one.
+
+**The latest-articles panels changed from 16/9 to 4/3** to take these. A square
+drawing loses 44% of its height to a 16/9 crop, which cut heads and feet off;
+4/3 removes only the soft edge of the circle.
+
+`images/back pain.png` is the one upload still unused — it is the older,
+non-square version of `back_pain.png`, which is now the back-pain article's
+illustration.
+
 ### Homepage
 
 `src/components/Home.astro` follows the author's design mockup: hero with a
@@ -486,11 +526,13 @@ article byline does.
 
 Deliberate departures from that mockup, each with a reason:
 
-- **No photography.** The design uses stock photos for the hero, the region
-  circles and the condition cards. Those need licensing and do not adapt to
-  dark mode, so regions and the hero use SVG glyphs (`BodyIcon.astro`,
-  `Logo.astro`) and condition cards use a neutral panel. A licensed photo can
-  drop into the card via `heroImage` later.
+- **No stock photography.** The design uses stock photos for the hero, the
+  region circles and the condition cards. Those need licensing and do not adapt
+  to dark mode. The author has since drawn his own illustrations for the hero,
+  the eight regions and nine conditions — see "The author's illustrations" —
+  and everything still uncovered falls back to an SVG glyph
+  (`BodyIcon.astro`, `Logo.astro`). Like any opaque raster the drawings keep
+  their pale ground in dark mode, which is why each one carries a border.
 - **Nav is three items, not eight.** การตรวจ, การรักษา, ฟื้นฟู, เครื่องมือผู้ป่วย
   and บทความ & วิดีโอ have no pages; putting them in the nav would ship 404s.
 - **Seven body regions, not nine.** `regions.ts` has no neck, and combines foot

@@ -1,0 +1,73 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import BodyIcon from './BodyIcon.astro';
+import type { RegionId } from '../data/regions';
+
+import neck from '../assets/regions/neck.png';
+import shoulder from '../assets/regions/shoulder.png';
+import spine from '../assets/regions/spine.png';
+import hip from '../assets/regions/hip.png';
+import knee from '../assets/regions/knee.png';
+import elbow from '../assets/regions/elbow.png';
+import handWrist from '../assets/regions/hand-wrist.png';
+import footAnkle from '../assets/regions/foot-ankle.png';
+
+interface Props {
+  region: RegionId;
+  /** A condition's own illustration, which wins over the region's. */
+  image?: ImageMetadata;
+  sizes?: string;
+  class?: string;
+}
+
+/**
+ * The author's own illustrations, one per body region on the map. The three
+ * browsing categories that are not a body part — bone-health, paediatric,
+ * sports — have no drawing, so they fall back to the line glyph rather than
+ * borrowing a picture of somewhere the category is not about.
+ *
+ * Each drawing is a circular illustration inside a square, so it is always
+ * placed with `object-cover`: the crop only ever removes the soft corners.
+ */
+const art: Partial<Record<RegionId, ImageMetadata>> = {
+  neck,
+  shoulder,
+  spine,
+  hip,
+  knee,
+  elbow,
+  'hand-wrist': handWrist,
+  'foot-ankle': footAnkle,
+};
+
+const {
+  region,
+  image,
+  sizes = '(min-width: 768px) 20rem, 45vw',
+  class: className,
+} = Astro.props;
+
+const src = image ?? art[region];
+---
+
+{
+  /*
+    Decorative in every place it is used — the card title or the region label
+    beside it carries the meaning, and a condition's own illustration gets its
+    description from `heroImageAlt` where the article itself shows it.
+  */
+  src ? (
+    <Image
+      src={src}
+      alt=""
+      widths={[160, 320, 480]}
+      sizes={sizes}
+      loading="lazy"
+      decoding="async"
+      class:list={['h-full w-full object-cover', className]}
+    />
+  ) : (
+    <BodyIcon region={region} size={72} />
+  )
+}
