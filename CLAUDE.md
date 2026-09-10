@@ -502,6 +502,14 @@ nothing on a page where nothing needs it.
   utility on a link: the header's search button rendered teal-on-teal, i.e.
   invisible, and nav links ignored `text-muted`. Anything new that styles bare
   elements goes in that layer too.
+- **Anchor offset lives in `--header-offset`, not in a magic number.** The
+  header is sticky and changes height with the viewport — measured, in both
+  languages, with the menu closed: 124px below sm, 76px from sm, 183px from md
+  (the nav row appears while the top row still wraps) and 132px from lg. `html
+  { scroll-padding-top }` reads the token, so the skip link and every in-page
+  anchor clear the header at every width. It used to be a flat `5rem`, which
+  left an anchor target under the header nearly everywhere. Re-measure if the
+  header gains a row or the nav gains an item.
 - **Never use a `style=""` attribute.** Our CSP hashes `<style>` elements but
   cannot cover style attributes, so an inline style is silently refused by the
   browser — the hero gradient simply did not paint. Put it in a class in
@@ -576,10 +584,37 @@ illustration.
 
 ### Homepage
 
-`src/components/Home.astro` follows the author's design mockup: hero with a
-search form, "ปวดตรงไหน?" body regions, four "คุณอยากรู้อะไร?" cards, common
-conditions and trust marks. The mockup's author strip was built and then
-removed at the author's request — see "Decisions the author has made".
+`src/components/Home.astro` follows the author's design mockup: a hero,
+"ปวดตรงไหน?" body regions, four "คุณอยากรู้อะไร?" cards, common conditions,
+when-to-see-a-doctor, latest articles and trust marks. The mockup's author
+strip was built and then removed at the author's request — see "Decisions the
+author has made"; the hero's search field went the same way.
+
+**The hero says one thing and offers one action.** It had four turns of the
+same phrase — the site name, `brand.promise`, `hero.body`, then `hero.note`
+above the illustration and `hero.badge` overlapping its corner. The last two
+are gone. What is left is the identity, the promise, the purpose, and then:
+
+- **one primary action**, `home.primaryAction` ("เลือกตำแหน่งที่ปวด" / "Choose
+  where it hurts"), anchored to `#where-it-hurts`;
+- **a quiet link to `#when-to-see-a-doctor`**, whose text is `triage.title`
+  itself so the link and the heading it lands on can never say different
+  things;
+- the popular-search chips;
+- **a small link to the editorial policy**, `home.editorialLink`. That is the
+  only trust signal the hero carries: the author's name, his credentials and
+  the review dates are deliberately not there.
+
+**`#where-it-hurts` and `#when-to-see-a-doctor` are part of the page's
+contract** now that the hero links to them. Renaming either breaks a link on
+the same page.
+
+**The four cards are named after the sections they open**, not after questions
+the site cannot answer. "ฉันเป็นอะไร?" / "What is wrong with me?" promised an
+assessment and led to a library of explanations; "ฉันควรทำอะไรตอนนี้?" / "What
+should I do now?" promised immediate personal advice and led to phase-based
+rehab programmes. A card label that does not match its destination is a
+promise the next page has to break.
 
 **The hero image is `src/assets/hero-shoulder-pain.png`**, the author's own
 illustration, through `astro:assets`. Like any opaque raster image it does not
@@ -587,12 +622,10 @@ follow the theme: in dark mode it stays a pale panel on the dark ground. It is
 rounded and bordered so it reads as a deliberate illustration card — the same
 concession the QR codes make.
 
-Because the illustration fills its panel, **nothing may be absolutely
-positioned over it without carrying its own background.** The italic
-`hero.note` used to be, which was invisible while the panel was an empty
-placeholder and became a half-on-dark, half-on-artwork collision once a real
-illustration landed. It now sits above the image in normal flow. The badge below
-still overlaps deliberately — it has its own surface, border and shadow.
+Nothing is positioned over it any more, and if anything ever is again it
+**must carry its own background**: the italic `hero.note` used to, which was
+invisible while the panel was an empty placeholder and became a half-on-dark,
+half-on-artwork collision once a real illustration landed.
 
 **There is no search field in the hero.** The author asked for it off on
 2026-09-08; the chips beneath it stayed, relabelled `hero.popularLabel`, because

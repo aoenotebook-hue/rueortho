@@ -104,8 +104,10 @@ const ui = {
     'hero.body':
       'ความรู้เรื่องกระดูก ข้อ กล้ามเนื้อ และเส้นเอ็น อธิบายให้เข้าใจง่าย อ้างอิงหลักฐานทางการแพทย์',
     'hero.popularLabel': 'หัวข้อที่คนค้นบ่อย:',
-    'hero.note': 'ความรู้ที่ดี ช่วยให้คุณกลับมาใช้ชีวิตได้อีกครั้ง',
-    'hero.badge': 'สุขภาพข้อดี เริ่มได้จากความเข้าใจ',
+    /* The one thing to do first. It jumps to the body-region section further
+       down the same page, so it is a link, not a button. */
+    'home.primaryAction': 'เลือกตำแหน่งที่ปวด',
+    'home.editorialLink': 'เนื้อหานี้จัดทำอย่างไร',
     'hero.imageAlt': 'ภาพประกอบชายคนหนึ่งใช้มือจับไหล่ข้างที่ปวด โดยมีสัญลักษณ์แสดงตำแหน่งที่ปวดบริเวณไหล่',
 
     'home.whereTitle': 'ปวดตรงไหน?',
@@ -113,14 +115,19 @@ const ui = {
 
     'home.wantTitle': 'คุณอยากรู้อะไร?',
     'home.wantSub': 'เลือกเมนูที่ตรงกับสิ่งที่คุณต้องการ',
-    'home.want1Title': 'ฉันเป็นอะไร?',
-    'home.want1Body': 'ประเมินอาการเบื้องต้น และทำความเข้าใจโรคที่พบบ่อย',
-    'home.want2Title': 'ผล X-ray / MRI หมายความว่าอะไร?',
-    'home.want2Body': 'แปลศัพท์ทางการแพทย์ให้เข้าใจง่าย',
-    'home.want3Title': 'ต้องรักษาอย่างไร?',
-    'home.want3Body': 'รู้จักทางเลือกการรักษา ข้อดี ข้อเสีย และสิ่งที่ควรพิจารณา',
-    'home.want4Title': 'ฉันควรทำอะไรตอนนี้?',
-    'home.want4Body': 'คำแนะนำเบื้องต้น การออกกำลังกาย และการฟื้นฟู',
+    /* Each card is named after the section it opens, not after a question the
+       site cannot answer. "ฉันเป็นอะไร?" promised an assessment; /conditions is
+       a library of explanations. */
+    'home.want1Title': 'ทำความรู้จักโรคและภาวะ',
+    'home.want1Body': 'คำอธิบายโรคและภาวะกระดูก ข้อ และกล้ามเนื้อที่พบบ่อย ด้วยภาษาที่เข้าใจง่าย',
+    'home.want2Title': 'การตรวจและผลตรวจ',
+    'home.want2Body':
+      'เอกซเรย์ เอ็มอาร์ไอ อัลตราซาวด์ และการตรวจความหนาแน่นกระดูก คืออะไร และบอกอะไรได้บ้าง',
+    'home.want3Title': 'ทางเลือกการรักษา',
+    'home.want3Body':
+      'ตั้งแต่การดูแลตัวเอง ยา และการฉีดยา ไปจนถึงการผ่าตัด พร้อมข้อดีข้อเสียของแต่ละทาง',
+    'home.want4Title': 'การฟื้นฟูและการออกกำลังกาย',
+    'home.want4Body': 'โปรแกรมฟื้นฟูแบ่งตามระยะ สำหรับไหล่ เข่า หลัง และการฝึกการทรงตัว',
 
     'home.popularTitle': 'โรคและอาการยอดนิยม',
     'home.popularSub': 'เรื่องที่คนค้นหามากที่สุด',
@@ -273,8 +280,8 @@ const ui = {
     'hero.body':
       'Bone, joint, muscle and tendon problems explained in plain language, grounded in medical evidence.',
     'hero.popularLabel': 'Commonly looked up:',
-    'hero.note': 'Understanding your condition helps you get your life back.',
-    'hero.badge': 'Healthy joints start with understanding',
+    'home.primaryAction': 'Choose where it hurts',
+    'home.editorialLink': 'How this content is prepared',
     'hero.imageAlt': 'Illustration of a man holding his shoulder, with a marker showing where the pain is.',
 
     'home.whereTitle': 'Where does it hurt?',
@@ -282,14 +289,18 @@ const ui = {
 
     'home.wantTitle': 'What would you like to know?',
     'home.wantSub': 'Pick whichever matches what you need.',
-    'home.want1Title': 'What is wrong with me?',
-    'home.want1Body': 'Make sense of your symptoms and the conditions that cause them.',
-    'home.want2Title': 'What does my X-ray or MRI mean?',
-    'home.want2Body': 'Medical terms translated into plain language.',
-    'home.want3Title': 'How is it treated?',
-    'home.want3Body': 'The treatment options, their trade-offs, and what to weigh up.',
-    'home.want4Title': 'What should I do now?',
-    'home.want4Body': 'Practical first steps, exercise and rehabilitation.',
+    'home.want1Title': 'Learn about conditions',
+    'home.want1Body':
+      'Plain-language explanations of the common bone, joint and muscle problems.',
+    'home.want2Title': 'Tests and scans',
+    'home.want2Body':
+      'What an X-ray, MRI, ultrasound or bone-density scan is, and what it can show.',
+    'home.want3Title': 'Treatment options',
+    'home.want3Body':
+      'From self-care and medicines to injections and surgery, and the trade-offs of each.',
+    'home.want4Title': 'Rehabilitation and exercise',
+    'home.want4Body':
+      'Phase-by-phase programmes for the shoulder, knee and back, and balance training.',
 
     'home.popularTitle': 'Common conditions',
     'home.popularSub': 'What people look for most',

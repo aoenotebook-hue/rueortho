@@ -1,6 +1,47 @@
 @import 'tailwindcss';
 
 /* ==========================================================================
+   How far an in-page anchor has to clear the sticky header.
+
+   The header is sticky and its height changes with the viewport, so one value
+   cannot serve every width. Measured, not guessed — in both languages, with
+   the mobile menu closed:
+
+     < 640px   124px  the top row wraps onto two lines, the menu is collapsed
+     ≥ 640px    76px  one row: the search label fits beside the wordmark
+     ≥ 768px   183px  the nav row appears, and the top row still wraps
+     ≥ 1024px  132px  the top row fits on one line again
+
+   Each value below adds roughly 20px on top, so the heading an anchor lands on
+   sits clear of the header rather than tight against it. Re-measure if the
+   header gains a row or the nav gains an item: everything that scrolls to an
+   id — the skip link, the body-region link, the when-to-see-a-doctor link —
+   reads this one number.
+   ========================================================================== */
+
+:root {
+  --header-offset: 9rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-offset: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-offset: 13rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-offset: 9.5rem;
+  }
+}
+
+/* ==========================================================================
    Palette. Light values on :root, dark swapped under prefers-color-scheme.
    Every colour in the site must come from one of these tokens.
    ========================================================================== */
@@ -136,7 +177,8 @@
     color-scheme: light dark;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 5rem;
+    /* A flat 5rem left every anchor target under the header at most widths. */
+    scroll-padding-top: var(--header-offset);
   }
 
   body {
