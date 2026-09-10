@@ -17,6 +17,12 @@ const tr = t(locale);
  */
 const isDev = import.meta.env.DEV;
 
+/** Where a reader goes when search cannot help: both real, both localised. */
+const browse = [
+  { href: localizePath('/conditions', locale), label: tr('search.browseAll') },
+  { href: localizePath('/articles', locale), label: tr('search.browseArticles') },
+];
+
 // Handed to the client script so every visible string still comes from ui.ts.
 const strings = {
   searching: tr('search.searching'),
@@ -24,8 +30,7 @@ const strings = {
   noResults: tr('search.noResults'),
   noResultsHint: tr('search.noResultsHint'),
   unavailable: tr('search.unavailable'),
-  browseAll: tr('search.browseAll'),
-  conditionsPath: localizePath('/conditions', locale),
+  browse,
 };
 ---
 
@@ -57,9 +62,39 @@ const strings = {
             />
           </form>
 
-          <p class="mt-5 text-muted" aria-live="polite" data-search-status />
+          {/*
+            Every state the search can be in — searching, a count, no results,
+            unavailable — is written here, and `aria-atomic` makes a screen
+            reader read the whole new sentence rather than the words that
+            changed. The results themselves are a list below it, which is what
+            a reader moves to next.
+          */}
+          <p class="mt-5 text-muted" role="status" aria-live="polite" aria-atomic="true" data-search-status />
 
           <ul class="m-0 mt-4 list-none p-0" data-search-results />
+
+          {/*
+            The box above cannot work without the script, so say so and offer
+            the two lists that reach everything on the site. Rendered only when
+            scripting is off; with it on the parser treats this as text.
+          */}
+          <noscript>
+            <p class="mt-5 rounded-[10px] border border-info-border bg-info-ground p-5 text-info-ink">
+              {tr('search.noScript')}
+            </p>
+            <ul class="m-0 mt-4 flex list-none flex-wrap gap-3 p-0">
+              {browse.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="inline-block rounded-full border border-border bg-surface px-5 py-2.5 text-ink no-underline hover:border-accent"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </noscript>
 
           <script
             type="application/json"

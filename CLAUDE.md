@@ -589,15 +589,47 @@ anything to be told to go to hospital.
   `"th": { "wasm": null }` — Thai falls back to the generic handler, which
   **strips Thai tone marks**. เข่า (knee), เข้า (enter) and เขา all match each
   other. This is not fixable from our side; design around it.
-- Two mitigations, both load-bearing, both tuned against measured scores:
+- **Pagefind falls back to fuzzy matching**, so a query that matches nothing
+  can still return pages. `zzzqqqxxx` returns the DXA page in the Thai index
+  and `วววฬฬฬ` returns sixteen. A test that needs a genuinely empty result set
+  has to be checked rather than assumed — `qwxzvkjhg` is empty in both locales.
+- Two mitigations, both load-bearing:
   1. Info pages carry `data-pagefind-weight="0.25"` so articles out-rank them,
-     while they stay findable by their own words (searching นโยบาย still
-     returns the privacy and editorial pages).
-  2. `public/search.js` drops results scoring below 30% of the top score. With
-     tone folding the noise sits far below a real match — for เข่า the article
-     scores 0.94 and the next page 0.26 — so the cutoff removes it without
-     touching genuinely multi-page matches.
-  If either is removed, a search for เข่า returns the privacy notice.
+     while they stay findable by their own words. Both halves still hold:
+     searching นโยบาย returns `/privacy/` first at 19.149, and for เข่า the
+     four info pages rank **28th, 31st, 34th and 37th of 39**, scoring
+     0.091–0.038. **This is the mitigation that keeps the privacy notice out
+     of a search for เข่า** — not the cutoff below.
+  2. `public/search.js` takes the top 20 hits and drops any scoring below 30%
+     of the top score.
+
+  **Re-measured on the 2026-09-10 build, 115 pages, all nine reference
+  queries** (ปวดเข่า, เข่า, ไหล่ติด, มือชา, รองช้ำ, knee pain, frozen
+  shoulder, numb hand, heel pain). What the numbers actually say:
+
+  | query | hits | top | kept of 20 | what the cutoff removes |
+  |---|---|---|---|---|
+  | ปวดเข่า | 34 | 2.494 | 20 | nothing |
+  | เข่า | 39 | 0.634 | 10 | tone-fold noise from 0.185 down |
+  | ไหล่ติด | 17 | 4.858 | 15 | acl-injury, meniscus-root-tear |
+  | มือชา | 20 | 5.097 | 17 | three knee/foot articles |
+  | รองช้ำ | 1 | 23.565 | 1 | nothing |
+  | knee pain | 20 | 16.947 | 7 | acl-injury (4.817) and below |
+  | frozen shoulder | 5 | 32.59 | 3 | rotator-cuff-tear (8.034) |
+  | numb hand | 18 | 5.024 | 17 | plantar-fasciitis |
+  | heel pain | 8 | 10.54 | 6 | patellofemoral-pain, meniscus-root-tear |
+
+  **The cutoff was left at 0.3, and the evidence for that is mixed rather than
+  clean.** It earns its place on เข่า, where it removes half the list. But it
+  is not a noise filter everywhere: it drops acl-injury from *knee pain* and
+  rotator-cuff-tear from *frozen shoulder*, both plausibly worth showing, while
+  keeping frozen-shoulder — a shoulder article — in the results for เข่า at
+  0.251. No threshold separates signal from noise on this corpus, so moving the
+  number trades one visible wrong answer for another. **Do not retune it
+  without measuring all nine queries again**; two of the three claims that used
+  to justify it here (the 0.94/0.26 figures, and "without it เข่า returns the
+  privacy notice") were already stale when this table was measured. The top-20
+  slice does much of the work the cutoff is credited with.
 - **The client script lives in `public/search.js`, not in a `<script>` in the
   component, and must stay there.** Pagefind generates `/pagefind/pagefind.js`
   *after* the Astro build, so Vite must never resolve that import. In a bundled
@@ -611,6 +643,41 @@ anything to be told to go to hospital.
   contains no user-facing text.
 - Only pages with `data-pagefind-body` are indexed (articles and info pages).
   Listings, the home page and the search pages are excluded by construction.
+
+**The query lives in the URL, and `replaceState` puts it there.** Typing syncs
+`?q=` so a result set can be bookmarked, shared or reloaded — but never with
+`pushState`, which would leave a history entry per keystroke and strand the
+reader inside their own typing. Once typing keeps the URL in step there is
+nothing left for Enter to push that is not already the current entry, so submit
+does not push either: it cancels the debounce and runs the query at once, which
+is what a reader who types and hits Enter quickly is asking for. Back therefore
+leaves the search page, and any entry the reader *does* arrive at — a bookmark,
+a shared link, Forward, Back from an article — is re-read by `fromUrl`, which
+refills the box and re-renders. `popstate` is wired to the same function.
+
+**Every render carries a token and a stale one throws its results away.** A
+slow query that resolves after a newer keystroke must not repaint the list, and
+that includes the failure path: the `catch` checks the token before it writes
+the unavailable message.
+
+**An IME composes over several keystrokes** — Japanese and Chinese always, Thai
+on some keyboards — and the half-formed text in the box is not something anybody
+meant to search for. `compositionstart` cancels the pending debounce and gates
+the `input` handler; `compositionend` searches once. Submit clears the flag, so
+a composition abandoned without an `end` event cannot wedge the box.
+
+**Failure and emptiness both offer real links, not a sentence.** When Pagefind
+cannot load, and when a query matches nothing, the list renders the two browse
+destinations (`/conditions` and `/articles`, localised) rather than telling the
+reader to go and find them. A `<noscript>` block does the same for a reader with
+no JavaScript, where the box cannot work at all — `<noscript>` for the same
+reason the header uses it, since our CSP refuses an `is:inline` script.
+
+The status line is `role="status"` with `aria-live="polite"` and
+**`aria-atomic="true"`**: it says four different things over a search's life
+(searching, a count, no results, unavailable), and without `aria-atomic` a
+screen reader announces only the words that changed, which turns "พบ 20 รายการ"
+into "20".
 
 ### CSS and layout traps — all three were live bugs
 
