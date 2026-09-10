@@ -5,18 +5,29 @@ import InfoPage from '../components/InfoPage.astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
+  const translated = new Set(
+    pages.filter((entry) => entry.id.startsWith('en/')).map((entry) => entry.id.slice(3)),
+  );
+
   return pages
     .filter((entry) => entry.id.startsWith('th/'))
     .map((entry) => ({
       params: { page: entry.id.replace(/^th\//, '') },
-      props: { entry },
+      // All five info pages exist in both languages today. Deriving it anyway
+      // means a page added in one language only does not advertise an
+      // `hreflang` alternate that was never written.
+      props: { entry, hasAlternate: translated.has(entry.id.slice(3)) },
     }));
 }
 
 const locale = 'th' as const;
-const { entry } = Astro.props;
+const { entry, hasAlternate } = Astro.props;
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description}>
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  hasAlternate={hasAlternate}
+>
   <InfoPage locale={locale} entry={entry} />
 </BaseLayout>
