@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Container from './Container.astro';
 import Prose from './Prose.astro';
+import ArticleContents from './ArticleContents.astro';
 import Callout from './Callout.astro';
 import Card from './Card.astro';
 import RegionBadge from './RegionBadge.astro';
@@ -21,7 +22,7 @@ interface Props {
 
 const { locale, entry } = Astro.props;
 const tr = t(locale);
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 
 const author = getAuthor(entry.data.author);
 const reviewer = getAuthor(entry.data.reviewedBy);
@@ -151,6 +152,13 @@ const jsonLd = {
         </Callout>
       )
     }
+
+    {/*
+      After the summary and after every warning — the draft banner, the overdue
+      notice and the red-flag box stay above it and stay in the open. A reader
+      must not have to expand anything to be told to go to hospital.
+    */}
+    <ArticleContents locale={locale} headings={headings} />
 
     <Prose>
       <Content components={mdxComponents} />

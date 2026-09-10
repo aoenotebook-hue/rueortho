@@ -1,0 +1,115 @@
+---
+import type { MarkdownHeading } from 'astro';
+import { t, type Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  /** Straight from `await render(entry)` — never parsed out of the body. */
+  headings: MarkdownHeading[];
+}
+
+const { locale, headings } = Astro.props;
+const tr = t(locale);
+
+/**
+ * Astro gives every markdown heading an id and hands the same list back from
+ * `render()`, so the contents are built from what the page actually rendered.
+ * Nothing here reads the MDX source: a regex over Markdown would miss the
+ * slugger's own rules — Thai text keeps its characters, spaces become hyphens,
+ * and a repeated title gets a `-1` suffix — and the two would drift the first
+ * time an author wrote a heading the regex did not expect.
+ *
+ * Only the article body is listed. The FAQ, references, companion apps and
+ * related-articles blocks below it come from the renderer rather than the MDX,
+ * carry no ids, and are appendices to the article rather than parts of it.
+ *
+ * h2 is the outline. An h3 is listed only where its parent h2 has **at least
+ * two** of them: a section with a single subheading is not something a reader
+ * needs help navigating, while the ACL article's twelve-part recovery section
+ * is exactly what a contents list is for.
+ */
+const sections: { heading: MarkdownHeading; children: MarkdownHeading[] }[] = [];
+
+for (const heading of headings) {
+  if (heading.depth === 2) {
+    sections.push({ heading, children: [] });
+  } else if (heading.depth === 3) {
+    sections.at(-1)?.children.push(heading);
+  }
+}
+
+const items = sections.flatMap(({ heading, children }) => [
+  heading,
+  ...(children.length >= 2 ? children : []),
+]).filter((heading) => heading.slug);
+
+/**
+ * A contents list shorter than three entries is a list of the two things
+ * already on screen. The caller renders nothing at all in that case.
+ */
+const worthShowing = items.length >= 3;
+---
+
+{
+  worthShowing && (
+    <details
+      class="article-contents mt-8 rounded-[10px] border border-border bg-surface px-4 py-3"
+      data-article-contents
+      data-pagefind-ignore
+    >
+      {/*
+        One element for both widths. It opens itself from md up — see the
+        script — so a phone gets a closed, compact disclosure and a desktop
+        gets a plain list with a heading. Without JavaScript it stays closed
+        everywhere, which is still a working control rather than hidden
+        content: the CSS that would flip it instead is the kind our CSP
+        refuses, and forcing a closed <details> open from a stylesheet is not
+        reliable across browsers anyway.
+      */}
+      <summary class="cursor-pointer font-medium text-ink">{tr('article.onThisPage')}</summary>
+
+      <nav aria-label={tr('article.onThisPage')} class="mt-3">
+        {/* Two columns from md up: a long outline should not push the article
+            it belongs to off the screen. */}
+        <ol class="m-0 list-none p-0 text-[0.95em] md:columns-2 md:gap-8">
+          {items.map((heading) => (
+            <li class:list={['break-inside-avoid', heading.depth === 3 && 'ps-4']}>
+              <a
+                href={`#${heading.slug}`}
+                class:list={[
+                  'block py-1.5 no-underline hover:underline',
+                  heading.depth === 3 ? 'text-muted' : 'text-ink',
+                ]}
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </details>
+  )
+}
+
+<script>
+  /**
+   * The contents list is a disclosure on a phone and a plain list on a desktop,
+   * and `open` is an attribute rather than something CSS can set — so this
+   * mirrors the media query onto it.
+   *
+   * It only ever sets the state the width implies, so a reader who closes it on
+   * a desktop gets it closed until the width changes. Nothing is stored; the
+   * next page starts from the width again.
+   */
+  const contents = document.querySelector<HTMLDetailsElement>('[data-article-contents]');
+
+  if (contents) {
+    const wide = window.matchMedia('(min-width: 768px)');
+    const sync = () => {
+      contents.open = wide.matches;
+    };
+
+    sync();
+    wide.addEventListener('change', sync);
+  }
+</script>

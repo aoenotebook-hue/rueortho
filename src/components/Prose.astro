@@ -16,19 +16,24 @@
     margin-top: 1.1em;
   }
 
+  /*
+     No `scroll-margin-top` here. `html { scroll-padding-top }` in global.css
+     already holds every anchor target clear of the sticky header, and the two
+     add up: a flat 5rem on top of the measured `--header-offset` put a heading
+     a third of the way down the viewport, which reads as the wrong heading.
+     One offset, in one place — see "Anchor offset" in CLAUDE.md.
+  */
   .prose h2 {
     margin-top: 2.2em;
     margin-bottom: 0.6em;
     padding-top: 0.3em;
     font-size: 1.5rem;
-    scroll-margin-top: 5rem;
   }
 
   .prose h3 {
     margin-top: 1.8em;
     margin-bottom: 0.5em;
     font-size: 1.25rem;
-    scroll-margin-top: 5rem;
   }
 
   .prose p,

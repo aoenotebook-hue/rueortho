@@ -208,6 +208,7 @@ src/
   lib/videos.ts                 the video index, read out of article bodies at build time
   assets/regions/               the author's drawing for each body-map region
   assets/illustrations/         his drawing for a condition, used as heroImage
+  components/ArticleContents.astro  the on-this-page list, built from render()'s headings
   layouts/BaseLayout.astro      html shell, meta, hreflang, fonts
   pages/                        Thai routes at /, English mirrored under /en
   styles/global.css             design tokens, Thai typography, base styles
@@ -484,6 +485,46 @@ anything there. Hiding it would need the same CSS the CSP refuses, and the
 menu below it is already open in that case, so the cost is a button that does
 nothing on a page where nothing needs it.
 
+### The article contents list
+
+`ArticleContents.astro` renders the "หัวข้อในหน้านี้" / "On this page" list on
+every condition and resource article. Four things about it are load-bearing.
+
+- **It is built from `render(entry)`'s `headings`, never from the MDX source.**
+  Astro's markdown pipeline gives every heading an id and hands the same list
+  back, so the links and the anchors come from one place. A regex over the
+  Markdown would have to reimplement the slugger — Thai keeps its characters,
+  spaces become hyphens, and a repeated title gets a `-1` suffix (verified: two
+  `## หัวข้อซ้ำ` headings produce `หัวข้อซ้ำ` and `หัวข้อซ้ำ-1`) — and the two
+  would drift the first time an author wrote something the regex missed.
+- **Only the MDX body is listed.** The FAQ, references, companion apps and
+  related blocks are rendered by `ConditionArticle`/`ResourceArticle` after the
+  body, carry no ids, and are appendices rather than parts of the article. The
+  component headings inside `KeyFacts`, `DoctorChecklist` and the rest are not
+  markdown headings, so they never reach `headings` — which is why the list
+  starts at "โรคนี้คืออะไร" and not at "สรุปสั้น ๆ".
+- **h2 is the outline; an h3 is listed only where its parent h2 has at least
+  two of them.** A section with one subheading needs no help; the ACL article's
+  twelve-part recovery section is exactly what the list is for. Fewer than
+  three entries in total and the component renders nothing at all.
+- **It is `<details>`, closed in the markup, opened from md up by its own
+  script.** `open` is an attribute and CSS cannot set it, and forcing a closed
+  `<details>` open from a stylesheet is not reliable — so a phone gets a
+  compact disclosure and a desktop a plain two-column list. Without JavaScript
+  it stays closed at every width, which is a working control rather than hidden
+  content. There is no sidebar because there is no room: the reading column is
+  68ch and nothing else fits beside it. It is not sticky.
+
+It carries `data-pagefind-ignore`, so the headings are not indexed twice —
+confirmed through Pagefind's own API, not just by reading the attribute — and
+`@media print` hides it, because a page of links nobody can click is a wasted
+sheet of paper.
+
+**The warnings stay above it and outside it.** The draft banner, the
+overdue-review notice and the red-flag box are rendered before the contents
+list and are never inside the disclosure: nobody should have to expand
+anything to be told to go to hospital.
+
 ### Search notes — read before touching search
 
 - **Test search with `npm run build && npm run preview`, never `npm run dev`.**
@@ -533,6 +574,13 @@ nothing on a page where nothing needs it.
   anchor clear the header at every width. It used to be a flat `5rem`, which
   left an anchor target under the header nearly everywhere. Re-measure if the
   header gains a row or the nav gains an item.
+
+  **One offset, in one place.** `.prose h2`/`h3` also carried
+  `scroll-margin-top: 5rem`, and the two add: scroll-padding pulls the
+  scrollport's edge down, scroll-margin pushes the target's box up, so a
+  heading landed `--header-offset` plus 5rem from the top — a third of the way
+  down the viewport, which reads as the wrong heading entirely. The prose rule
+  is gone; do not add a second offset anywhere.
 - **Never use a `style=""` attribute.** Our CSP hashes `<style>` elements but
   cannot cover style attributes, so an inline style is silently refused by the
   browser — the hero gradient simply did not paint. Put it in a class in

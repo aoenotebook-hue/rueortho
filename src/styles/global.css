@@ -438,6 +438,17 @@ a.body-map-hotspot:hover .body-map-dot {
 .body-map [data-region='neck'] { left: 71%; top: 25%; }
 .body-map [data-region='spine'] { left: 71%; top: 45%; }
 
+/*
+   The contents list belongs to the screen. On paper the reader is holding the
+   whole article already, and a page of links they cannot click is a page of
+   wasted paper.
+*/
+@media print {
+  .article-contents {
+    display: none;
+  }
+}
+
 /* ==========================================================================
    Header navigation
    ========================================================================== */
