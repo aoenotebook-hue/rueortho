@@ -1,7 +1,7 @@
 ---
 import Container from './Container.astro';
 import { Image } from 'astro:assets';
-import BodyIcon from './BodyIcon.astro';
+import RegionArt from './RegionArt.astro';
 import BodyMap from './BodyMap.astro';
 import heroImage from '../assets/hero-shoulder-pain.png';
 import { t, type Locale } from '../i18n/ui';
@@ -213,13 +213,13 @@ const trust = [
               <>
                 <span
                   class:list={[
-                    'mx-auto grid h-16 w-16 place-items-center rounded-full border',
+                    'mx-auto grid h-16 w-16 place-items-center overflow-hidden rounded-full border',
                     count > 0
                       ? 'border-border bg-ground text-accent'
                       : 'border-dashed border-border text-muted opacity-60',
                   ]}
                 >
-                  <BodyIcon region={region.id} />
+                  <RegionArt region={region.id} sizes="4rem" />
                 </span>
                 <span class="mt-2 block text-[0.9em]">{label}</span>
               </>
@@ -352,10 +352,10 @@ const trust = [
                   class="group block no-underline"
                 >
                   <span
-                    class="mb-3 grid aspect-[4/3] place-items-center rounded-[10px] border border-border bg-ground text-accent transition group-hover:bg-brand-soft"
+                    class="mb-3 grid aspect-[4/3] place-items-center overflow-hidden rounded-[10px] border border-border bg-ground text-accent transition group-hover:border-accent"
                     aria-hidden="true"
                   >
-                    <BodyIcon region={entry.data.region} />
+                    <RegionArt region={entry.data.region} image={entry.data.heroImage} />
                   </span>
                   <span class="block font-semibold text-ink group-hover:text-accent">
                     {entry.data.title}
@@ -450,10 +450,10 @@ const trust = [
                   class="group block no-underline"
                 >
                   <span
-                    class="mb-3 grid aspect-[16/9] place-items-center rounded-[10px] border border-border bg-ground text-accent transition group-hover:bg-brand-soft"
+                    class="mb-3 grid aspect-[4/3] place-items-center overflow-hidden rounded-[10px] border border-border bg-ground text-accent transition group-hover:border-accent"
                     aria-hidden="true"
                   >
-                    <BodyIcon region={entry.data.region} />
+                    <RegionArt region={entry.data.region} image={entry.data.heroImage} />
                   </span>
                   <span class="block font-semibold text-ink group-hover:text-accent">
                     {entry.data.title}
