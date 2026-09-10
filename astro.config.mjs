@@ -1,4 +1,6 @@
 // @ts-check
+import { readdirSync, readFileSync } from 'node:fs';
+
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
@@ -12,6 +14,53 @@ import tailwindcss from '@tailwindcss/vite';
 import { site } from './src/data/site.ts';
 
 const SITE = site.origin;
+
+/**
+ * Slugs of articles the author has not finished, read straight off the MDX
+ * frontmatter.
+ *
+ * A production build never renders these, so the sitemap filter below is a
+ * no-op there. A **preview** build does render them — that is the whole point,
+ * the author reviews his drafts on a deployed URL — and each draft page carries
+ * `noindex, nofollow`. Listing a page in a sitemap while telling robots not to
+ * index it is a contradiction, so they are dropped from the sitemap too.
+ *
+ * Read here rather than through `getCollection`, because the sitemap
+ * integration is configured before the content layer is available. It is a
+ * plain frontmatter scan: no MDX is parsed, and a file the regex cannot read is
+ * treated as published, which is the safe direction — a published article
+ * missing from the sitemap would be the worse failure.
+ *
+ * **Keyed by locale, not by slug.** Both languages share a slug on purpose, and
+ * only one of the pair may be a draft — an article written in Thai before its
+ * English translation is reviewed, say. Storing the bare slug dropped the
+ * published counterpart from the sitemap along with the draft.
+ */
+const draftSlugs = (() => {
+  const root = new URL('./src/content/', import.meta.url);
+  const slugs = new Set();
+  for (const collection of readdirSync(root, { withFileTypes: true })) {
+    if (!collection.isDirectory()) continue;
+    for (const locale of ['th', 'en']) {
+      const dir = new URL(`${collection.name}/${locale}/`, root);
+      let files;
+      try {
+        files = readdirSync(dir);
+      } catch {
+        continue;
+      }
+      for (const file of files) {
+        if (!file.endsWith('.mdx')) continue;
+        const head = readFileSync(new URL(file, dir), 'utf8').split('---')[1] ?? '';
+        if (!/^draft:\s*true\s*$/m.test(head)) continue;
+        const slug = head.match(/^slug:\s*['"]?([\w-]+)/m)?.[1];
+        const prefix = locale === 'en' ? '/en' : '';
+        if (slug) slugs.add(`${prefix}/${collection.name}/${slug}`);
+      }
+    }
+  }
+  return slugs;
+})();
 
 /**
  * `https://host/about/` → `https://host/about`, leaving `https://host/` alone.
@@ -95,7 +144,17 @@ export default defineConfig({
         defaultLocale: 'th',
         locales: { th: 'th', en: 'en' },
       },
-      filter: (page) => !page.includes('/search'),
+      /*
+       * Out: the search pages, which index nothing of their own, and any draft
+       * — which only exists in a preview build, and carries `noindex` there.
+       * The locale prefix stays on the path: only the drafted language is
+       * dropped, and its published counterpart is not.
+       */
+      filter: (page) => {
+        if (page.includes('/search')) return false;
+        const path = new URL(page).pathname.replace(/\/$/, '');
+        return !draftSlugs.has(path);
+      },
     }),
   ],
 

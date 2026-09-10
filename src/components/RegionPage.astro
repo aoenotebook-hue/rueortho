@@ -20,9 +20,9 @@ const conditions = await getConditionsByRegion(locale, regionId);
 <Container>
   <div class="py-10">
     <nav aria-label={tr('a11y.breadcrumb')} class="mb-6 text-sm text-muted">
-      <a href={localizePath('/', locale)} class="text-muted">{tr('nav.home')}</a>
+      <a href={localizePath('/', locale)} class="tap-24 text-muted">{tr('nav.home')}</a>
       <span aria-hidden="true"> / </span>
-      <a href={localizePath('/conditions', locale)} class="text-muted">{tr('nav.conditions')}</a>
+      <a href={localizePath('/conditions', locale)} class="tap-24 text-muted">{tr('nav.conditions')}</a>
       <span aria-hidden="true"> / </span>
       <span>{region.label[locale]}</span>
     </nav>
