@@ -55,9 +55,14 @@ reachable by anything on the network while it runs.
   integration). Design tokens are CSS custom properties in
   `src/styles/global.css`, exposed to Tailwind via `@theme inline` so that
   `prefers-color-scheme` can swap them.
-- `site` in `astro.config.mjs` is still the placeholder `https://easyortho.com`.
-  It drives canonical URLs, hreflang, the sitemap and RSS — **set the real
-  domain before launch.**
+- **The site's origin lives in one place: `origin` in `src/data/site.ts`.**
+  `astro.config.mjs` imports it (a `.ts` import from the config file works —
+  Astro loads the config through Vite), so `site`, the canonical URLs, the
+  hreflang alternates, the sitemap, both RSS feeds, `robots.txt`, the QR codes
+  and the domain printed in the legal pages all come from that line. It is
+  `https://rueortho.vercel.app`, the live Vercel deployment. `easyortho.com`
+  was never registered and is gone from the code. A branch preview URL must
+  never go in there.
 - The companion-app URLs in `src/data/apps.ts` are unverified GitHub Pages URLs.
   Confirm each one resolves before launch.
 
@@ -132,7 +137,14 @@ reachable by anything on the network while it runs.
   credit, so do not strip it as part of some future tidy-up.
 - **Contact address and domain live in `src/data/site.ts`**, and the legal pages
   read them through an MDX import, so there is one place to change. Both are
-  still placeholders (`easyortho.com`).
+  real now: the domain is `rueortho.vercel.app`, and `contactEmail` is
+  `sorawut410@gmail.com`, which the author gave on 2026-09-10 to be published.
+  It is his own mailbox rather than an address at the site's domain, so mapping
+  a custom domain later does not change it. It is printed on the contact page,
+  twice in the privacy notice — as the data controller's address and as the
+  route for exercising PDPA rights — and once in the editorial policy, so it is
+  a legal identification as much as a courtesy: do not remove it, and do not
+  substitute a different address without asking him.
 
 ## Medical content rules
 
@@ -377,9 +389,32 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
   must be added to `security.csp` or the browser blocks it silently.
 - `'wasm-unsafe-eval'` in the script directive is required: Pagefind runs its
   index in WebAssembly and search fails without it.
-- `site` in `astro.config.mjs` and `domain`/`contactEmail` in `src/data/site.ts`
-  are still the `easyortho.com` placeholder and must be changed together when
-  the real domain is registered.
+- **The origin is `origin` in `src/data/site.ts` and nowhere else.**
+  `astro.config.mjs` imports it, `domain` is derived from it with `new URL()`,
+  and everything else reads `Astro.site`. Changing domain is a one-line edit.
+- **Absolute URLs are built from `Astro.site`, never from the request.**
+  `BaseLayout` normalises the path through `stripLocale` + `localizePath`
+  before joining it to the origin, so canonical, `hreflang`, `og:url`, the
+  feeds and the sitemap all spell a page the same way — no trailing slash, the
+  language prefix applied once — and a forged Host header or a preview domain
+  cannot change what a page claims to be.
+- **The sitemap needs `serialize` to agree with the canonical tags.**
+  `@astrojs/sitemap` writes every URL with a trailing slash and has no option
+  to turn that off in this version (`trailingSlash` is rejected as an
+  unrecognised key, and passing it makes the integration emit no sitemap at
+  all). The `serialize` hook in `astro.config.mjs` trims it from each entry and
+  each language alternate, leaving the root's slash alone.
+- **hreflang: self, alternate, x-default.** A page always links to itself in
+  its own language — a cluster whose members do not name themselves is ignored
+  — and only adds the other two when the counterpart page was really built.
+  The routes compute that: the file exists in the other language, it is not a
+  draft in this build, and `translationPending` is false. `translationPending`
+  had never been read by anything until then. The sitemap is safe by
+  construction — `@astrojs/sitemap` pairs languages from the built URL list and
+  omits the alternates entirely when a page exists in one language — but it
+  does not know about `translationPending`, so a pair that is built but flagged
+  pending is dropped from the page's hreflang and still paired in the sitemap.
+  Keep the untranslated side `draft: true` if that ever matters.
 
 ### Search notes — read before touching search
 
@@ -590,9 +625,11 @@ Two things that are deliberate and should not be "fixed":
 - **`margin: 2`** keeps the quiet zone the QR spec requires. Without it many
   scanners fail on a code that sits flush against other content.
 
-The site code encodes whatever `site` is set to, which is still the
-`easyortho.com` placeholder — it becomes correct the moment the real domain is
-configured, but until then it points nowhere. Do not print it.
+The site code encodes whatever `origin` in `src/data/site.ts` is set to, which
+is the live `rueortho.vercel.app` deployment, so the codes scan to a real page.
+If a custom domain is mapped later, every code regenerates from that one line —
+but codes already printed on paper will keep pointing at the Vercel address, so
+wait for the domain before printing anything.
 
 `/tools` (เครื่องมือผู้ป่วย) is `live` rather than a stub because the companion
 apps *are* the patient tools. A grid whose `minmax` minimum exceeds the viewport

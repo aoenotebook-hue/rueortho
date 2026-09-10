@@ -14,13 +14,23 @@ Two things are not deployment problems but will embarrass you if skipped.
 
 1. **No unreviewed article is published.** `npm run lint:content` fails if an
    article still marked `SAMPLE` has `draft: false`, because publishing it puts
-   your name on it as reviewer. The sample knee-osteoarthritis article is
-   currently `draft: true` for exactly this reason. Read it, correct it, then
-   set `draft: false` — or delete it and write the real one.
-2. **`src/data/site.ts` and `astro.config.mjs` still say `easyortho.com`.**
-   That placeholder drives canonical URLs, `hreflang`, the sitemap, the RSS
-   feeds and the contact address printed on the legal pages. Fix both the
-   moment the real domain exists (step 5).
+   your name on it as reviewer. Nothing carries that marker today — all 72
+   article files are published — so the check is there for the next thing
+   anyone drafts.
+2. **Both addresses are real.** `contactEmail` in `src/data/site.ts` is
+   `sorawut410@gmail.com`, the mailbox you asked to have published on
+   2026-09-10. It appears on the contact page, twice in the privacy notice —
+   as the data controller's address and as the route for exercising PDPA
+   rights — and once in the editorial policy, so it is a legal identification
+   as well as a way to be reached. It is a plain `mailto:`-less string in the
+   page text, which is what you want legally; it does mean address harvesters
+   can read it, so expect some spam and filter rather than removing it.
+
+   The site's own address is settled too: `src/data/site.ts` sets
+   `origin` to `https://rueortho.vercel.app`, the Vercel deployment, and
+   `astro.config.mjs` imports it. That single line drives the canonical URLs,
+   `hreflang`, the sitemap, both feeds, `robots.txt`, the QR codes and the
+   domain printed in the legal text.
 
 ---
 
@@ -88,12 +98,20 @@ DNS changes. You do **not** need a WordPress site plan.
 4. Wait for propagation — usually minutes, occasionally up to an hour. Vercel
    issues the HTTPS certificate automatically once DNS resolves; the domain
    shows a green tick when it is done.
-5. **Now update the placeholders** and push:
-   - `astro.config.mjs` → `site`
-   - `src/data/site.ts` → `domain` and `contactEmail`
+5. **Point the site at the new domain** and push: change `origin` in
+   `src/data/site.ts`. That is the only place it lives — `astro.config.mjs`
+   imports it, and the canonical URLs, `hreflang` alternates, the sitemap, both
+   RSS feeds, `robots.txt`, every QR code and the domain in the legal text all
+   follow from it.
 
-   Until you do, every canonical URL, `hreflang` tag and sitemap entry points at
-   `easyortho.com`, which tells search engines the wrong address.
+   Until you do, all of those keep naming `rueortho.vercel.app`, which is
+   correct — it is where the site answers — but it means the custom domain
+   serves pages whose canonical points at the Vercel address, so search engines
+   go on indexing that one. Change it in the same session you add the domain.
+
+   Never put a branch preview URL (`rueortho-git-…vercel.app`) in `origin`:
+   previews are deleted, and a canonical pointing at one sends readers to a URL
+   that stops existing.
 
 ## 6. Tell search engines
 
