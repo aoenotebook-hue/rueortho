@@ -416,6 +416,51 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
   pending is dropped from the page's hreflang and still paired in the sitemap.
   Keep the untranslated side `draft: true` if that ever matters.
 
+### The header
+
+`Header.astro` is the site's only navigation, and three things in it are
+load-bearing.
+
+- **The search button carries its own `aria-label`.** Its text is
+  `hidden sm:inline` and the icon is `aria-hidden`, so below 640px the link had
+  no accessible name at all — an unlabelled link to the only search entry point
+  on the site. `search.linkLabel` ("ค้นหาในเว็บไซต์" / "Search the site") starts
+  with the same word the visible label shows, which is what keeps speech
+  control working while that label is on screen (WCAG 2.5.3).
+- **Section state is not page state.** `aria-current="page"` is only ever the
+  exact page; a section that merely *contains* the current page —
+  `/treatments` while reading `/treatments/surgery` — gets `aria-current="true"`
+  and an outlined pill instead of a filled one. Two shapes, not two colours.
+  The match runs through `isWithinSection` in `i18n/utils.ts`, which exists
+  because a `startsWith` test would mark Home as the current section on every
+  page (every path starts with `/`) and would count `/treatments-old` as inside
+  `/treatments`. Paths are compared after `currentPath`, i.e. locale-stripped —
+  `stripLocale` already drops a trailing slash, since it filters empty
+  segments.
+- **The mobile menu's no-JS path is a `<noscript>` copy of the list**, hidden
+  from md up. It is not a `<style>` or an inline script, and that is not a
+  style preference: **Astro's `security.csp` hashes only the scripts and styles
+  Astro itself generates, so an `is:inline` script is refused by the browser** —
+  the same trap as the `style=""` attribute, and it was hit while building
+  this. `<noscript>` needs neither. With scripting on, the parser treats its
+  contents as text, so there is no second nav in the DOM, the accessibility
+  tree or the tab order; `NavList.astro` renders the list for both copies so
+  they cannot drift.
+
+The disclosure is a disclosure, not a modal: no focus trap, no inert page, and
+links inside it navigate normally. `aria-expanded` and the nav's `hidden` class
+are set in one function so they cannot disagree. Escape closes it and returns
+focus to the toggle **only when focus was inside the menu** — pressing Escape
+while reading further down the page must not throw the caret back up to the
+header. Resizing needs no handler at all: `hidden` only bites below md because
+the nav also carries `md:block`, so the desktop row is unaffected by whatever
+the button last said, and the state survives a round trip.
+
+The toggle button stays visible without JavaScript even though it cannot do
+anything there. Hiding it would need the same CSS the CSP refuses, and the
+menu below it is already open in that case, so the cost is a button that does
+nothing on a page where nothing needs it.
+
 ### Search notes — read before touching search
 
 - **Test search with `npm run build && npm run preview`, never `npm run dev`.**

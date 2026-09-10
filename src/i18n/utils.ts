@@ -23,6 +23,32 @@ export function stripLocale(pathname: string): string {
   return '/' + parts.join('/');
 }
 
+/**
+ * The page's own path, with the language prefix and any trailing slash gone,
+ * so `/en/treatments/surgery/` and `/treatments/surgery` are the same string.
+ * `stripLocale` already drops the trailing slash — filtering empty segments
+ * does it — so this is only a name for the pair of steps.
+ */
+export function currentPath(url: URL): string {
+  return stripLocale(url.pathname);
+}
+
+/**
+ * Is `path` the page at `section`, or a page inside it? Both are expected to
+ * have come through `currentPath` or `stripLocale` already.
+ *
+ * The home page is the reason this is not a plain `startsWith`: every path on
+ * the site begins with `/`, so treating `/` as a section would mark Home as
+ * the section you are in no matter where you are. It is a page, not a
+ * container, and only matches itself. The segment boundary matters for the
+ * same reason in the other direction: `/treatments-old` must not count as
+ * being inside `/treatments`.
+ */
+export function isWithinSection(path: string, section: string): boolean {
+  if (section === '/') return path === '/';
+  return path === section || path.startsWith(`${section}/`);
+}
+
 /** The same page in the other language. */
 export function getAlternatePath(url: URL): { locale: Locale; path: string } {
   const current = getLocaleFromUrl(url);

@@ -395,3 +395,30 @@ a.body-map-hotspot:hover .body-map-dot {
 .body-map [data-region='foot-ankle'] { left: 24%; top: 91%; }
 .body-map [data-region='neck'] { left: 71%; top: 25%; }
 .body-map [data-region='spine'] { left: 71%; top: 45%; }
+
+/* ==========================================================================
+   Header navigation
+   ========================================================================== */
+
+/*
+   Nav state. The page you are on is a filled pill; a section you are inside —
+   /treatments while reading /treatments/surgery — is outlined instead. Two
+   shapes, so the difference is not carried by colour alone, and `aria-current`
+   carries it to a screen reader either way: `page` for the page itself, and
+   the weaker `true` for the section, which is not the current page and must
+   not claim to be.
+
+   `box-shadow` rather than a border, so the outlined state does not change the
+   size of the pill and make the row jump between pages.
+*/
+.nav-link-current {
+  background: var(--brand-soft);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.nav-link-section {
+  box-shadow: inset 0 0 0 1px var(--border);
+  color: var(--ink);
+  font-weight: 500;
+}
