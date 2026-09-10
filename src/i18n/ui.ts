@@ -103,7 +103,9 @@ const ui = {
 
     'hero.body':
       'ความรู้เรื่องกระดูก ข้อ กล้ามเนื้อ และเส้นเอ็น อธิบายให้เข้าใจง่าย อ้างอิงหลักฐานทางการแพทย์',
-    'hero.popularLabel': 'หัวข้อที่คนค้นบ่อย:',
+    /* Labels the chips under the hero. It used to say "หัวข้อที่คนค้นบ่อย" —
+       what people search for most — which nothing on this site measures. */
+    'hero.exploreLabel': 'ลองอ่านเรื่อง',
     /* The one thing to do first. It jumps to the body-region section further
        down the same page, so it is a link, not a button. */
     'home.primaryAction': 'เลือกตำแหน่งที่ปวด',
@@ -129,12 +131,11 @@ const ui = {
     'home.want4Title': 'การฟื้นฟูและการออกกำลังกาย',
     'home.want4Body': 'โปรแกรมฟื้นฟูแบ่งตามระยะ สำหรับไหล่ เข่า หลัง และการฝึกการทรงตัว',
 
-    'home.popularTitle': 'โรคและอาการยอดนิยม',
-    'home.popularSub': 'เรื่องที่คนค้นหามากที่สุด',
+    /* A chosen starting point, not a ranking — see src/data/featured.ts. */
+    'home.featuredTitle': 'หัวข้อแนะนำ',
+    'home.featuredSub': 'จุดเริ่มต้นที่ดี ถ้ายังไม่รู้ว่าจะอ่านเรื่องไหนก่อน',
     'home.viewAllConditions': 'ดูโรคทั้งหมด',
-    'home.latestTitle': 'บทความล่าสุด',
     'home.viewAllArticles': 'ดูบทความทั้งหมด',
-    'home.emptyConditions': 'บทความชุดแรกกำลังอยู่ระหว่างการตรวจทาน และจะเผยแพร่เร็ว ๆ นี้',
 
     'section.inProgress': 'กำลังจัดทำ',
     'section.plannedBody':
@@ -279,7 +280,7 @@ const ui = {
 
     'hero.body':
       'Bone, joint, muscle and tendon problems explained in plain language, grounded in medical evidence.',
-    'hero.popularLabel': 'Commonly looked up:',
+    'hero.exploreLabel': 'Explore topics',
     'home.primaryAction': 'Choose where it hurts',
     'home.editorialLink': 'How this content is prepared',
     'hero.imageAlt': 'Illustration of a man holding his shoulder, with a marker showing where the pain is.',
@@ -302,12 +303,10 @@ const ui = {
     'home.want4Body':
       'Phase-by-phase programmes for the shoulder, knee and back, and balance training.',
 
-    'home.popularTitle': 'Common conditions',
-    'home.popularSub': 'What people look for most',
+    'home.featuredTitle': 'Featured topics',
+    'home.featuredSub': 'A good place to start if you are not sure what to read first.',
     'home.viewAllConditions': 'All conditions',
-    'home.latestTitle': 'Latest articles',
     'home.viewAllArticles': 'All articles',
-    'home.emptyConditions': 'The first articles are being reviewed and will be published shortly.',
 
     'section.inProgress': 'In preparation',
     'section.plannedBody':

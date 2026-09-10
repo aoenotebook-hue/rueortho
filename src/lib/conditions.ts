@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { Locale } from '../i18n/ui';
 import type { RegionId } from '../data/regions';
+import { featuredConditionSlugs } from '../data/featured';
 
 export type Condition = CollectionEntry<'conditions'>;
 
@@ -54,11 +55,45 @@ export async function getConditionsByRegion(
   return conditions.filter((entry) => entry.data.region === region);
 }
 
-export async function getRecentlyReviewed(locale: Locale, limit = 6): Promise<Condition[]> {
+/**
+ * `exclude` holds slugs the caller is already showing elsewhere on the page —
+ * the home page passes its featured list — so the same article does not appear
+ * twice within one screen. Filtering happens before the limit is applied, so
+ * excluding an article promotes the next one rather than leaving a gap; if
+ * that runs the list short, it comes back short. Nothing is padded.
+ */
+export async function getRecentlyReviewed(
+  locale: Locale,
+  limit = 6,
+  exclude: ReadonlySet<string> = new Set(),
+): Promise<Condition[]> {
   const conditions = await getConditions(locale);
   return conditions
+    .filter((entry) => !exclude.has(entry.data.slug))
     .sort((a, b) => b.data.lastReviewed.getTime() - a.data.lastReviewed.getTime())
     .slice(0, limit);
+}
+
+/**
+ * The home page's featured strip: `src/data/featured.ts` in its own order,
+ * resolved against what this locale actually publishes.
+ *
+ * `getPublishedConditions`, not `getConditions`, so a draft is skipped even in
+ * a preview build where the rest of the site shows drafts. A curated strip
+ * says "start here", and an article the author has not finished reading is not
+ * ready to be recommended — he can still reach it from the conditions index,
+ * which is where reviewing drafts belongs.
+ *
+ * A slug with no published article is dropped, so the strip is always as long
+ * as the articles that exist and never renders an empty card.
+ */
+export async function getFeaturedConditions(locale: Locale): Promise<Condition[]> {
+  const published = await getPublishedConditions(locale);
+  const bySlug = new Map(published.map((entry) => [entry.data.slug, entry]));
+
+  return featuredConditionSlugs
+    .map((slug) => bySlug.get(slug))
+    .filter((entry): entry is Condition => entry !== undefined);
 }
 
 export async function getConditionBySlug(

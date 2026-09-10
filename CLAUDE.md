@@ -200,6 +200,7 @@ src/
   data/authors.ts               author records (no workplace, bio or photo — see decisions)
   data/regions.ts               body regions + browsing categories, display order
   data/apps.ts                  companion-app registry, linked from articles
+  data/featured.ts              the home page's chosen condition slugs, in order
   i18n/ui.ts                    every visible string, th + en
   i18n/utils.ts                 locale from URL, path localisation, date formatting
   lib/conditions.ts             collection queries (by locale, region, recency)
@@ -658,8 +659,48 @@ at a field that is no longer there. **The teal button in the header is now the
 only search entry point on the site, so it must never be removed** — nothing
 else links to `/search`.
 
-The "latest articles" strip shows titles without dates, for the same reason the
-article byline does.
+**The featured strip is curated, and says so.** It used to be
+`published.slice(0, 6)` under the heading "โรคและอาการยอดนิยม" / "Common
+conditions" with the sub-line "เรื่องที่คนค้นหามากที่สุด" / "What people look
+for most" — a popularity claim nothing on this site measures, over a selection
+that was simply the first six articles in each language's alphabet. The two
+home pages therefore led with different topics in an order nobody chose.
+
+`src/data/featured.ts` now holds the slugs, in the order they appear, and
+`getFeaturedConditions` resolves them against what the locale publishes. It is
+**slugs only** — the title, summary and illustration come from the article, so
+the list cannot go stale against what it names. Both languages share a slug, so
+one list serves both. The heading is "หัวข้อแนะนำ" / "Featured topics" and the
+sub-line offers it as a starting point, which is what it is. The chips under
+the hero lost the same claim: `hero.exploreLabel`, "ลองอ่านเรื่อง" / "Explore
+topics".
+
+A slug naming a missing, untranslated or draft article is dropped rather than
+rendered as an empty card, and the whole section is absent rather than empty
+when nothing resolves. Featured uses `getPublishedConditions`, so a draft is
+skipped **even in a preview build** where the rest of the site shows drafts:
+a strip that says "start here" should not point at something the author has
+not finished reading. He still reaches it from the conditions index, which is
+where reviewing drafts belongs.
+
+**The strip below it is "บทความที่ตรวจทานล่าสุด" / "Recently reviewed", not
+"latest articles"** — it is ordered by `lastReviewed`, and calling that
+"latest" would promise a publication order it does not have. It also skips
+whatever the featured strip already shows, by passing those slugs to
+`getRecentlyReviewed`'s `exclude` set; filtering happens before the limit, so
+an excluded article promotes the next one instead of leaving a gap, and if the
+list runs short it stays short. Its "ดูบทความทั้งหมด" / "All articles" link
+goes to `/articles`, the hub it names; it used to go to `/conditions`.
+
+Worth knowing: **every article carries the same `lastReviewed`** (2026-09-08,
+the day they were all published), so that sort is a no-op over the
+title-sorted list and the two languages show a different three. That is not
+wrong — they really were all reviewed the same day — but the strip will only
+become meaningful when review dates start to differ. Do not manufacture dates
+to make it look livelier.
+
+Both strips show titles without dates, for the same reason the article byline
+does.
 
 Deliberate departures from that mockup, each with a reason:
 
