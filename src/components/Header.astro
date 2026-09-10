@@ -1,8 +1,9 @@
 ---
 import Container from './Container.astro';
 import Logo from './Logo.astro';
+import NavList from './NavList.astro';
 import { t, type Locale } from '../i18n/ui';
-import { getAlternatePath, localizePath, stripLocale } from '../i18n/utils';
+import { getAlternatePath, localizePath, currentPath } from '../i18n/utils';
 import { navSections } from '../data/sections';
 
 interface Props {
@@ -17,12 +18,15 @@ interface Props {
 const { locale, alternateHref } = Astro.props;
 const tr = t(locale);
 const alternate = getAlternatePath(Astro.url);
-const here = stripLocale(Astro.url.pathname).replace(/\/$/, '') || '/';
+
+/** Locale-stripped and trailing-slash free, so it can be compared to a path. */
+const here = currentPath(Astro.url);
 
 /**
- * The full menu from the plan. Every entry resolves: sections still being
- * written render a stub that says so and points the reader somewhere useful,
- * which is better than a menu item that 404s or one that is missing entirely.
+ * The full menu from the plan, minus the entries `sections.ts` marks
+ * `hiddenFromNav` — `conditions`, whose page is still routed and still linked
+ * to from the body map, the home page and every article breadcrumb. Every
+ * entry that is here resolves.
  */
 const navItems = [
   { path: '/', label: tr('nav.home') },
@@ -47,10 +51,16 @@ const navItems = [
 
       <p class="mx-4 hidden flex-1 text-sm text-muted lg:block">{tr('brand.promise')}</p>
 
-      <!-- Icon-only on a narrow header, label from sm up. One search entry
-           point, so it must never disappear at any width. -->
+      {/*
+        Icon-only on a narrow header, label from sm up. This is the only way
+        into search on the site, so it must never disappear at any width — and
+        because its text does, it carries a name of its own. That name starts
+        with the same word the button shows, so a speech-control user asking
+        for "ค้นหา" still hits it while the text is on screen.
+      */}
       <a
         href={localizePath('/search', locale)}
+        aria-label={tr('search.linkLabel')}
         class="ms-auto flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 font-medium text-accent-contrast no-underline hover:opacity-90 sm:px-5 lg:ms-0"
       >
         <svg
@@ -89,44 +99,81 @@ const navItems = [
       </button>
     </div>
 
-    <nav
-      id="primary-nav"
-      aria-label={tr('a11y.mainNav')}
-      class="hidden pb-2 md:block"
-      data-nav
-    >
-      <ul class="m-0 flex list-none flex-col gap-1 p-0 md:flex-row md:flex-wrap md:items-center md:gap-1">
-        {
-          navItems.map((item) => {
-            const current = here === item.path;
-            return (
-              <li>
-                <a
-                  href={localizePath(item.path, locale)}
-                  aria-current={current ? 'page' : undefined}
-                  class:list={[
-                    'block rounded-full px-4 py-2 text-[0.95em] no-underline',
-                    current ? 'bg-brand-soft font-medium text-ink' : 'text-muted hover:text-ink',
-                  ]}
-                >
-                  {item.label}
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
+    <nav id="primary-nav" aria-label={tr('a11y.mainNav')} class="hidden pb-2 md:block" data-nav>
+      <NavList locale={locale} here={here} items={navItems} />
     </nav>
+
+    {/*
+      The no-JavaScript path.
+
+      The menu above is collapsed below md and only a script can open it, so
+      without one the site would have no navigation on a phone at all. This
+      copy renders only when scripting is off — with it on, the parser treats
+      everything in here as text, so there is no second set of links in the
+      accessibility tree and none in the tab order.
+
+      It is hidden from md up, where the real menu is a plain row and visible
+      anyway; exactly one of the two is ever on screen.
+
+      A <style> or an inline <script> would have been the tidier way to do
+      this, and neither works here: our CSP hashes only the scripts and styles
+      Astro itself generates, so an `is:inline` one is refused by the browser.
+      <noscript> needs neither.
+    */}
+    <noscript>
+      <nav aria-label={tr('a11y.mainNav')} class="pb-2 md:hidden">
+        <NavList locale={locale} here={here} items={navItems} />
+      </nav>
+    </noscript>
   </Container>
 </header>
 
 <script>
+  /**
+   * An inline disclosure, not a modal: the page behind it stays interactive,
+   * focus is not trapped, and a link inside it navigates normally — the menu
+   * is closed on the next page because that page renders it closed.
+   *
+   * The button's `aria-expanded` is the state, and the nav's `hidden` class is
+   * set in the same function, so what a screen reader is told and what is on
+   * screen cannot drift apart.
+   *
+   * Resizing needs no handler: `hidden` is a below-md concern because the nav
+   * also carries `md:block`, which wins from md up whatever the button last
+   * said. Open on a phone, rotate to a tablet, come back — the state survives
+   * and the desktop row is never affected.
+   */
   const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
   const nav = document.querySelector<HTMLElement>('[data-nav]');
 
-  toggle?.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    nav?.classList.toggle('hidden', open);
-  });
+  if (toggle && nav) {
+    const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('hidden', !open);
+    };
+
+    /**
+     * From md up the button is `display: none` and the menu is a plain row, so
+     * there is nothing to open or close. `offsetParent` is null exactly then.
+     */
+    const isDisclosure = () => toggle.offsetParent !== null;
+
+    toggle.addEventListener('click', () => setOpen(!isOpen()));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !isDisclosure() || !isOpen()) return;
+
+      // Escape hands focus back to the control that opened the menu — but only
+      // when focus was inside the menu to begin with. Pressing Escape while
+      // reading further down the page should not throw the caret up to the
+      // header.
+      const target = event.target;
+      const inside = target instanceof Node && (nav.contains(target) || toggle.contains(target));
+
+      setOpen(false);
+      if (inside) toggle.focus();
+    });
+  }
 </script>

@@ -30,6 +30,10 @@ const ui = {
     'lang.comingSoon': 'ฉบับภาษาอังกฤษกำลังจัดทำ',
 
     'search.label': 'ค้นหา',
+    /* Names the header's search button when the viewport is too narrow to show
+       its text. It starts with the visible label so speech control still works
+       when the label is on screen. */
+    'search.linkLabel': 'ค้นหาในเว็บไซต์',
     'search.placeholder': 'ค้นหาอาการหรือชื่อโรค เช่น ปวดเข่า ไหล่ติด',
     'search.devNotice':
       'ระบบค้นหาทำงานเมื่อสร้างเว็บไซต์แล้วเท่านั้น ลองใช้คำสั่ง npm run build แล้วตามด้วย npm run preview',
@@ -198,6 +202,7 @@ const ui = {
     'lang.comingSoon': 'English version coming soon',
 
     'search.label': 'Search',
+    'search.linkLabel': 'Search the site',
     'search.placeholder': 'Search a symptom or condition, e.g. knee pain',
     'search.devNotice':
       'Search only works on a built site. Run npm run build, then npm run preview.',

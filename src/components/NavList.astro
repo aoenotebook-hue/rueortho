@@ -1,0 +1,46 @@
+---
+import { localizePath, isWithinSection } from '../i18n/utils';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  /** The current page's path, locale-stripped — see `currentPath`. */
+  here: string;
+  items: { path: string; label: string }[];
+}
+
+const { locale, here, items } = Astro.props;
+---
+
+{/*
+  The menu's links, rendered by `Header` twice: once in the real nav, and once
+  inside its <noscript> fallback. One component so the two cannot drift.
+*/}
+<ul class="m-0 flex list-none flex-col gap-1 p-0 md:flex-row md:flex-wrap md:items-center md:gap-1">
+  {
+    items.map((item) => {
+      // Exactly this page, or a page inside this section. Only the first is
+      // `aria-current="page"`; the second says `true`, which marks the item as
+      // the current one in its set without claiming to be the page being read.
+      const isCurrentPage = here === item.path;
+      const inSection = !isCurrentPage && isWithinSection(here, item.path);
+
+      return (
+        <li>
+          <a
+            href={localizePath(item.path, locale)}
+            aria-current={isCurrentPage ? 'page' : inSection ? 'true' : undefined}
+            class:list={[
+              'block rounded-full px-4 py-2 text-[0.95em] no-underline',
+              isCurrentPage && 'nav-link-current',
+              inSection && 'nav-link-section',
+              !isCurrentPage && !inSection && 'text-muted hover:text-ink',
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>
