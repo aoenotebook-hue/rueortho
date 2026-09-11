@@ -546,6 +546,55 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
   pending is dropped from the page's hreflang and still paired in the sitemap.
   Keep the untranslated side `draft: true` if that ever matters.
 
+### Search Console and Google Tag Manager
+
+Added on 2026-09-11, at the author's request, so the site can be found in
+Google.
+
+- **Ownership is claimed two ways, on purpose.**
+  `public/googlef9618cb9fa32a0a8.html` is Google's own file, copied in
+  byte-for-byte (one line, no trailing newline), and
+  `site.googleSiteVerification` in `src/data/site.ts` is rendered as a
+  `<meta name="google-site-verification">` by `BaseLayout` on **every** page,
+  not only the home page. Search Console re-checks periodically, and one proof
+  that a later edit could remove is one proof too few.
+- **The DNS TXT record Search Console also offers cannot be done.** The site
+  answers on a `vercel.app` subdomain, and Vercel owns that zone — there is no
+  place to put a record. It becomes possible only if a custom domain is mapped,
+  and mapping one means re-verifying the new address in Search Console anyway.
+- **The GTM loader lives in `public/gtm.js`, and it has to.** Google's
+  instructions say to paste an inline `<script>`; `security.csp` hashes only
+  the scripts Astro itself generates and the policy carries no
+  `'unsafe-inline'`, so a pasted inline script is refused by the browser and
+  the container silently never loads. A file in `public/` is copied verbatim
+  and served from our own origin, which `script-src 'self'` already allows —
+  the same escape `public/search.js` makes, for the same reason. The container
+  id is read from a `data-gtm-id` attribute rather than written into the file,
+  so it lives only in `site.gtmContainerId`; that is also the off switch,
+  since an empty string renders neither the loader nor the frame.
+- **The `<noscript>` iframe is hidden by a class, not Google's `style`
+  attribute.** The CSP cannot cover a style attribute, so Google's version is
+  refused and leaves a visible empty frame at the top of every page.
+  `.gtm-noscript` in `global.css` does the same job. Verified with scripting
+  off: the iframe is in the markup and has no layout box.
+- **A GTM Custom HTML tag will not run.** Those inject inline script, which the
+  policy refuses; adding `'unsafe-inline'` to make one work would undo the
+  reason the rest of the site has no inline script at all. Built-in tags — the
+  Google tag / GA4 among them — load an external script from
+  googletagmanager.com and work normally. `googletagmanager.com` is in four
+  directives (`script-src`, `frame-src`, `img-src`, `connect-src`), with
+  `*.google-analytics.com` and `*.analytics.google.com` in `connect-src` for
+  GA4's beacons. Any further tag host has to be added there or the browser
+  blocks it silently.
+- **The privacy notice has not been updated, and it is now out of date.**
+  `src/content/pages/{th,en}/privacy.mdx` says the site uses no tracking
+  cookies and lists Cloudflare, Vercel, Google Fonts and YouTube as the only
+  third parties. GTM is a fifth, and whatever is configured inside the
+  container — GA4 in particular — sets cookies and is a PDPA disclosure. That
+  is legal wording the author has to write; it is not Claude's to invent — so
+  until he does, the notice under-states what the site collects. Fixing it is
+  the open item this section exists to keep visible.
+
 ### The header
 
 `Header.astro` is the site's only navigation, and three things in it are

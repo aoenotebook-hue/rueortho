@@ -88,15 +88,21 @@ export default defineConfig({
    *  - fonts.googleapis.com is a *stylesheet* host, gstatic serves the fonts.
    *  - youtube-nocookie is only reached after a reader presses play on an
    *    ExerciseCard facade.
+   *  - googletagmanager.com appears in four directives because that is what a
+   *    container needs: the script itself, the frame the <noscript> fallback
+   *    loads, the tracking pixels some tags send as images, and the beacons
+   *    GA4 posts. `'unsafe-inline'` is deliberately still absent, so a GTM
+   *    Custom HTML tag will be refused by the browser — built-in tags, which
+   *    load an external script, are unaffected.
    */
   security: {
     csp: {
       directives: [
         "default-src 'self'",
-        "img-src 'self' data:",
+        "img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com",
         "font-src 'self' https://fonts.gstatic.com",
-        "frame-src https://www.youtube-nocookie.com",
-        "connect-src 'self' https://cloudflareinsights.com",
+        "frame-src https://www.youtube-nocookie.com https://www.googletagmanager.com",
+        "connect-src 'self' https://cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
         "base-uri 'none'",
         "form-action 'self'",
         "object-src 'none'",
@@ -105,7 +111,12 @@ export default defineConfig({
         resources: ["'self'", 'https://fonts.googleapis.com'],
       },
       scriptDirective: {
-        resources: ["'self'", "'wasm-unsafe-eval'", 'https://static.cloudflareinsights.com'],
+        resources: [
+          "'self'",
+          "'wasm-unsafe-eval'",
+          'https://static.cloudflareinsights.com',
+          'https://www.googletagmanager.com',
+        ],
       },
     },
   },

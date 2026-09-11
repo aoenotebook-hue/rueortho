@@ -297,6 +297,19 @@
    ========================================================================== */
 
 /*
+ * Google Tag Manager's <noscript> frame.
+ *
+ * Google's own snippet hides it with a `style` attribute, which our CSP refuses
+ * silently — it hashes <style> elements and cannot cover an attribute — leaving
+ * a visible empty frame at the very top of every page. Same class, same rules,
+ * in a file the policy already allows.
+ */
+.gtm-noscript {
+  display: none;
+  visibility: hidden;
+}
+
+/*
  * A 24x24 hit area for a standalone text link, per WCAG 2.2 AA 2.5.8.
  *
  * The site's own goal is 44px, and every control that can reach it does — but

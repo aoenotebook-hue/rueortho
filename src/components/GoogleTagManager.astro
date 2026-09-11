@@ -1,0 +1,20 @@
+---
+/**
+ * The Google Tag Manager loader, for the <head>.
+ *
+ * Google's instructions say to paste an inline <script> as high in the head as
+ * possible. Our Content-Security-Policy refuses inline script — Astro hashes
+ * only what it generates itself — so the snippet lives in `public/gtm.js` and
+ * is pulled in from our own origin instead. It is a normal blocking script in
+ * the head, so it still runs before the page renders, which is what "as high as
+ * possible" is asking for. `public/gtm.js` explains the rest.
+ *
+ * Renders nothing when no container id is set, so switching GTM off is one
+ * line in `src/data/site.ts`.
+ */
+import { site } from '../data/site';
+
+const containerId = site.gtmContainerId;
+---
+
+{containerId && <script src="/gtm.js" data-gtm-id={containerId} is:inline />}

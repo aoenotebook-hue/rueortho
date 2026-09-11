@@ -115,11 +115,52 @@ DNS changes. You do **not** need a WordPress site plan.
 
 ## 6. Tell search engines
 
-1. [Google Search Console](https://search.google.com/search-console): add the
-   domain, verify it (the DNS TXT method uses the same WordPress.com DNS panel),
-   and submit `https://<your-domain>/sitemap-index.xml`.
+`rueortho.vercel.app` is **already verified in code**, two ways, so this step
+needs no edit for the current address:
+
+- `public/googlef9618cb9fa32a0a8.html` — Google's own verification file, served
+  at `https://rueortho.vercel.app/googlef9618cb9fa32a0a8.html`.
+- `<meta name="google-site-verification">`, on every page, from
+  `site.googleSiteVerification` in `src/data/site.ts`.
+
+**The DNS TXT method is not available on the Vercel address.** Vercel owns the
+`vercel.app` zone, so there is nowhere to add a record. Use either method above.
+
+1. [Google Search Console](https://search.google.com/search-console): add
+   `https://rueortho.vercel.app` as a **URL prefix** property (not a Domain
+   property — those require DNS), press **Verify**, then submit
+   `https://rueortho.vercel.app/sitemap-index.xml` under **Sitemaps**.
 2. [Bing Webmaster Tools](https://www.bing.com/webmasters) accepts an import
    from Search Console — a two-minute job worth doing.
+
+**After mapping a custom domain (step 5)** the new address is a separate
+property and has to be verified again. Both methods still work — the file and
+the meta tag move with the site — and the DNS TXT method becomes available
+too, through the same DNS panel as step 5. Submit the new sitemap URL, and
+leave the old property in place while the redirect settles.
+
+## 7. Google Tag Manager
+
+The container is wired in already: `site.gtmContainerId` in `src/data/site.ts`
+is `GTM-M6XH4X2D`, and it loads on every page. Setting that string to `''`
+switches it off everywhere — that is the whole off switch.
+
+Two things to know before configuring tags in the GTM console:
+
+- **A Custom HTML tag will not run.** Our Content-Security-Policy allows no
+  inline script, and that is deliberate — it is what the whole site is built
+  around. Built-in tag types (the **Google tag** / GA4 among them) load an
+  external script and work normally. Use those.
+- **Any new tag host must be added to `security.csp` in `astro.config.mjs`**,
+  or the browser blocks it with nothing in the UI to show why.
+  `googletagmanager.com`, `*.google-analytics.com` and
+  `*.analytics.google.com` are already allowed.
+
+**Adding GA4 changes what the privacy notice has to say.** The notice currently
+tells readers the site sets no tracking cookies and names Cloudflare, Vercel,
+Google Fonts and YouTube as the only third parties. GA4 sets cookies and is a
+PDPA disclosure, so `src/content/pages/{th,en}/privacy.mdx` needs the author's
+own wording before a GA4 tag is published in the container.
 
 ---
 
