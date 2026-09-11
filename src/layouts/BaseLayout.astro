@@ -3,7 +3,10 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import GoogleTagManager from '../components/GoogleTagManager.astro';
+import GoogleTagManagerNoscript from '../components/GoogleTagManagerNoscript.astro';
 import { t, type Locale } from '../i18n/ui';
+import { site } from '../data/site';
 import { getLocaleFromUrl, getAlternatePath, localizePath, stripLocale } from '../i18n/utils';
 
 interface Props {
@@ -52,9 +55,21 @@ const thaiUrl = new URL(localizePath(shared, 'th'), Astro.site).href;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/*
+      Google Tag Manager, as high in the head as the charset and viewport
+      declarations allow. It is a <script src> rather than Google's inline
+      snippet because our CSP hashes only what Astro generates — see
+      `public/gtm.js`.
+    */}
+    <GoogleTagManager />
+
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="canonical" href={canonical} />
+    {/* Google Search Console ownership. Site-wide, and claimed a second way by
+        `public/googlef9618cb9fa32a0a8.html` — see `src/data/site.ts`. */}
+    <meta name="google-site-verification" content={site.googleSiteVerification} />
     {/* Drafts are built only in dev and preview, and must never be indexed. */}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
@@ -111,6 +126,10 @@ const thaiUrl = new URL(localizePath(shared, 'th'), Astro.site).href;
   </head>
 
   <body>
+    {/* Google's instructions put this immediately after the opening tag. It is
+        hidden, carries no link and is inert with scripting on, so it does not
+        come before the skip link in the tab order. */}
+    <GoogleTagManagerNoscript />
     <a class="skip-link" href="#main">{tr('a11y.skipToContent')}</a>
     <Header
       locale={locale}

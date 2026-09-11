@@ -1,0 +1,34 @@
+---
+/**
+ * Google Tag Manager's <noscript> fallback, for immediately after <body>.
+ *
+ * Kept in its own component so the container id is read from
+ * `src/data/site.ts` here too, rather than written into the layout by hand
+ * where it could drift from the loader's.
+ *
+ * The iframe needs `frame-src https://www.googletagmanager.com` in the policy
+ * in `astro.config.mjs`; `X-Frame-Options: DENY` in `vercel.json` is about
+ * other sites framing us and does not affect this.
+ *
+ * The frame is hidden with a class rather than Google's `style` attribute: our
+ * CSP hashes <style> elements but cannot cover a style attribute, so an inline
+ * one is refused by the browser and the frame would show as a visible gap.
+ */
+import { site } from '../data/site';
+
+const containerId = site.gtmContainerId;
+---
+
+{
+  containerId && (
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${containerId}`}
+        height="0"
+        width="0"
+        class="gtm-noscript"
+        title="Google Tag Manager"
+      />
+    </noscript>
+  )
+}
