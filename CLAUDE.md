@@ -348,9 +348,19 @@ and `/treatments` followed the same day.
   tests, treatments and rehabilitation mapped to it, grouped by collection and
   labelled with `sections.ts`'s own names. **Nothing is inferred**: a resource
   appears only where the author wrote the condition into its `related`, and a
-  condition nobody has mapped renders no section rather than a guessed one —
-  `ankle-sprain` and `plantar-fasciitis` have no inbound mapping today and show
-  nothing. It resolves through `getPublishedResources`, so a draft stays out
+  condition nobody has mapped renders no section rather than a guessed one.
+  **All twenty are mapped now.** `ankle-sprain` and `plantar-fasciitis` were the
+  last two without one, and the author asked for them on 2026-09-11; every link
+  added was taken from a sentence already in his own text rather than chosen on
+  clinical grounds — the ankle article names X-ray, "ultrasound or MRI", pain
+  relief, the ice/elevation/compression routine, surgery and rehabilitation, and
+  the plantar article names the same plus "injection or shockwave". Two
+  candidates were deliberately left out on the same rule:
+  `balance-and-fall-prevention`, which is about thin bone and falls in older
+  adults and never mentions the ankle, and `joint-injections` for the ankle,
+  which names ankle sprains only inside a hyaluronic-acid evidence paragraph
+  while the ankle article itself offers no injection. It resolves through
+  `getPublishedResources`, so a draft stays out
   even in a preview build (verified by drafting one Thai examination and
   watching it vanish from the Thai page while the English page kept it).
   The section is headed "อ่านเพิ่มเติมเรื่องที่เกี่ยวข้อง" / "Related
