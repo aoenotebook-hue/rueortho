@@ -32,6 +32,7 @@ const { entry, hasAlternate } = Astro.props;
   description={entry.data.summary}
   ogType="article"
   noindex={entry.data.draft}
+  image={entry.data.heroImage}
   hasAlternate={hasAlternate}
 >
   <ConditionArticle locale={locale} entry={entry} />

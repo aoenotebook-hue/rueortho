@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import defaultShareImage from '../assets/hero-shoulder-pain.png';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
@@ -17,6 +19,11 @@ interface Props {
   ogType?: 'website' | 'article';
   /** Keep the page out of search engines. Set on every draft article. */
   noindex?: boolean;
+  /**
+   * The picture a link to this page shows when it is shared. Articles pass
+   * their own `heroImage`; everything else falls back to the site's.
+   */
+  image?: ImageMetadata;
 }
 
 const {
@@ -25,6 +32,7 @@ const {
   hasAlternate = true,
   ogType = 'website',
   noindex = false,
+  image,
 } = Astro.props;
 
 const locale: Locale = getLocaleFromUrl(Astro.url);
@@ -48,6 +56,37 @@ const shared = stripLocale(Astro.url.pathname);
 const canonical = new URL(localizePath(shared, locale), Astro.site).href;
 const alternateUrl = new URL(alternate.path, Astro.site).href;
 const thaiUrl = new URL(localizePath(shared, 'th'), Astro.site).href;
+
+/**
+ * The share picture.
+ *
+ * Every page carried `twitter:card="summary_large_image"` and no image at all,
+ * so a link posted to LINE, Facebook or X rendered as a blank card — on a site
+ * whose readers reach it by being sent a link, that is most of the first
+ * impression. An article uses its own illustration and everything else the
+ * site's hero; both are the author's own drawings, so nothing new is licensed.
+ *
+ * JPEG rather than WebP: this file is fetched by the crawlers behind those
+ * platforms, not by a browser, and their WebP support is uneven. 1200px is the
+ * width they all ask for. The URL has to be absolute, and is built from
+ * `Astro.site` for the same reason the canonical is.
+ */
+const shareSource = image ?? defaultShareImage;
+const shareImage = await getImage({
+  src: shareSource,
+  width: 1200,
+  format: 'jpg',
+  quality: 80,
+});
+const shareImageUrl = new URL(shareImage.src, Astro.site).href;
+
+/*
+ * A large card is a promise about the picture's shape. The condition
+ * illustrations come in two — 4:3 scenes and square badges — and a square one
+ * in a 1.91:1 slot is cropped to a band across its middle, so those get the
+ * small card, which shows a square thumbnail beside the text instead.
+ */
+const wideEnoughForLargeCard = shareImage.attributes.width / shareImage.attributes.height >= 1.5;
 ---
 
 <!doctype html>
@@ -101,7 +140,15 @@ const thaiUrl = new URL(localizePath(shared, 'th'), Astro.site).href;
     {hasAlternate && (
       <meta property="og:locale:alternate" content={locale === 'th' ? 'en_US' : 'th_TH'} />
     )}
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image" content={shareImageUrl} />
+    <meta property="og:image:width" content={String(shareImage.attributes.width)} />
+    <meta property="og:image:height" content={String(shareImage.attributes.height)} />
+    <meta property="og:image:alt" content={title} />
+    <meta
+      name="twitter:card"
+      content={wideEnoughForLargeCard ? 'summary_large_image' : 'summary'}
+    />
+    <meta name="twitter:image" content={shareImageUrl} />
 
     {/* The mark is raster, so there is no SVG favicon to prefer here. 32px for
         the tab, 192px for an Android home screen, and a flattened 180px for
