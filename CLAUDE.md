@@ -273,8 +273,8 @@ publicly readable. It had been on for every `*.vercel.app` URL
 Also done: the examinations and rehabilitation sections, and a real `/articles`
 hub — see "The three new sections" below.
 
-Still to do: a sticky table of contents, per-article OG images, and the
-pre-launch QA pass. `/treatments` and the body map are done — see their
+Still to do: a sticky table of contents and the pre-launch QA pass. Share
+images are done — see "The share picture" below. `/treatments` and the body map are done — see their
 sections below.
 
 ### Publishing safety
@@ -594,6 +594,33 @@ Google.
   is legal wording the author has to write; it is not Claude's to invent — so
   until he does, the notice under-states what the site collects. Fixing it is
   the open item this section exists to keep visible.
+
+### The share picture
+
+Every page carried `twitter:card="summary_large_image"` and **no `og:image` at
+all**, so a link posted to LINE, Facebook or X rendered as a blank card. On a
+site readers mostly reach because somebody sent them the link, that was most of
+the first impression, and it was the one real defect found when the live site
+was audited on 2026-09-11.
+
+- `BaseLayout` takes an optional `image` prop and falls back to
+  `src/assets/hero-shoulder-pain.png`. The two **condition** routes pass
+  `entry.data.heroImage`; nothing else does, because `heroImage` is on the
+  conditions schema only — `resourceSchema()` has no such field, and adding one
+  would mean a schema change and 32 files. Resource articles therefore share
+  the site picture, which is correct rather than a gap.
+- **JPEG, not WebP.** The file is fetched by the crawlers behind those
+  platforms rather than by a browser, and their WebP support is uneven. 1200px
+  wide is what they all ask for; the whole set is 1.8 MB.
+- **The card type follows the picture's shape.** A large card promises a
+  1.91:1 image, and the author's illustrations are 4:3 scenes and square
+  badges — both get cropped to a band across the middle in that slot. So
+  `summary_large_image` is emitted only at ratio ≥ 1.5, which today means the
+  site hero; every article gets `summary`, which shows a square thumbnail
+  beside the text. Give a page a genuinely wide image and it takes the large
+  card automatically.
+- The URL is absolute and built from `Astro.site`, for the same reason the
+  canonical is. CSP does not apply — no browser fetches it.
 
 ### The header
 
