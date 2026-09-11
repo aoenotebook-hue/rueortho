@@ -463,14 +463,60 @@
   padding: 0.15rem 0.6rem;
 }
 
+/*
+ * Pointing at a region has to say clearly *which* region is about to open.
+ *
+ * Recolouring the label alone was too quiet: the reader is looking at the
+ * drawing, not at the pill, and a teal border on a small pill at the edge of
+ * the figure is easy to miss before committing to a click. So the hover state
+ * now marks the place as well as the name — the dot grows into a filled ring
+ * with a halo centred on the landmark, and the label fills in.
+ *
+ * The halo is a box-shadow rather than an extra element, so nothing moves and
+ * nothing is added to the accessibility tree. `:focus-visible` gets exactly
+ * the same treatment, because a keyboard reader needs to know where they are
+ * every bit as much as a mouse one.
+ */
 a.body-map-hotspot:hover .body-map-label,
 a.body-map-hotspot:focus-visible .body-map-label {
   border-color: var(--accent);
-  color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
 }
 
-a.body-map-hotspot:hover .body-map-dot {
+a.body-map-hotspot:hover .body-map-dot,
+a.body-map-hotspot:focus-visible .body-map-dot {
   background: var(--accent);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.body-map-dot {
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.12s ease;
+}
+
+.body-map-label {
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+/* A reader who asked for less motion still gets the colour and the halo —
+   only the growing stops. */
+@media (prefers-reduced-motion: reduce) {
+  .body-map-dot,
+  .body-map-label {
+    transition: none;
+  }
+
+  a.body-map-hotspot:hover .body-map-dot,
+  a.body-map-hotspot:focus-visible .body-map-dot {
+    transform: none;
+  }
 }
 
 /*

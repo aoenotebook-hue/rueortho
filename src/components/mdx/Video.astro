@@ -1,4 +1,5 @@
 ---
+import { existsSync } from 'node:fs';
 import { t } from '../../i18n/ui';
 import { getLocaleFromUrl } from '../../i18n/utils';
 
@@ -15,7 +16,13 @@ interface Props {
   description: string;
   caption?: string;
   attribution?: string;
-  /** Still shown before the clip loads. Optional — none of the app clips ship one. */
+  /**
+   * Still shown before the clip loads.
+   *
+   * Optional, and normally left out: `scripts/make-video-posters.mjs` cuts a
+   * frame from every clip in `public/media/` to `<name>.poster.webp`, and the
+   * component picks that up by convention. Pass this only to override it.
+   */
   poster?: string;
 }
 
@@ -26,6 +33,21 @@ if (!description) {
 }
 
 const tr = t(getLocaleFromUrl(Astro.url));
+
+/**
+ * The poster, by convention rather than by hand.
+ *
+ * A clip used to open onto a flat grey panel, so before pressing play the
+ * reader had only the caption's word for what it showed — and on a silent
+ * demonstration that is most of the point. Every clip now has a frame cut from
+ * itself sitting beside it.
+ *
+ * Checked on disk at build time rather than assumed: a clip added before its
+ * poster is generated falls back to the old panel instead of a broken image.
+ */
+const derivedPoster = src.replace(/\.mp4$/, '.poster.webp');
+const still =
+  poster ?? (existsSync(`public${derivedPoster}`) ? derivedPoster : undefined);
 ---
 
 {/*
@@ -37,21 +59,37 @@ const tr = t(getLocaleFromUrl(Astro.url));
 <figure class="my-8">
   <button
     type="button"
-    class="video-facade relative block w-full overflow-hidden rounded-[10px] border border-border bg-surface text-start"
+    class="video-facade group relative block w-full overflow-hidden rounded-[10px] border border-border bg-surface text-start"
     data-video={src}
     data-title={title}
     data-unavailable={tr('media.unavailable')}
     aria-label={`${tr('media.play')} — ${title}`}
   >
     {
-      poster ? (
-        <img src={poster} alt="" loading="lazy" decoding="async" class="block w-full" />
+      still ? (
+        <img
+          src={still}
+          alt=""
+          width="960"
+          height="540"
+          loading="lazy"
+          decoding="async"
+          class="block aspect-video w-full object-cover"
+        />
       ) : (
         <span class="block aspect-video w-full bg-ground" />
       )
     }
-    <span class="pointer-events-none absolute inset-0 grid place-items-center" aria-hidden="true">
-      <span class="rounded-full bg-accent px-5 py-3 text-xl text-accent-contrast">▶</span>
+    {/* Over a photograph the badge needs its own contrast: a scrim behind it
+        and a ring around it, so it reads on a light frame as well as a dark
+        one. */}
+    <span
+      class="pointer-events-none absolute inset-0 grid place-items-center bg-black/15 transition group-hover:bg-black/25"
+      aria-hidden="true"
+    >
+      <span class="rounded-full bg-accent px-5 py-3 text-xl text-accent-contrast shadow-[0_2px_10px_rgba(0,0,0,0.35)] ring-2 ring-white/70">
+        ▶
+      </span>
     </span>
   </button>
 

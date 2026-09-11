@@ -33,7 +33,20 @@ const conditions = defineCollection({
       readingTime: z.number().optional(),
       heroImage: image().optional(),
       heroImageAlt: z.string().optional(),
+      /**
+       * Symptoms that mean hospital now. Kept for the urgent tier only — see
+       * `seeDoctorSoon` for the ones that mean "book an appointment".
+       */
       redFlags: z.array(z.string()).default([]),
+      /**
+       * Symptoms worth seeing a doctor about, but not an emergency.
+       *
+       * Split out of `redFlags` on 2026-09-11 at the author's request: a list
+       * headed "go to hospital now" that also contains "if it has not settled
+       * in two weeks" teaches the reader to discount the whole list. The two
+       * are rendered as visibly different blocks by `<RedFlags>`.
+       */
+      seeDoctorSoon: z.array(z.string()).default([]),
       faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
       related: z.array(z.string()).default([]),
       sources: z.array(z.object({ title: z.string(), url: z.url() })).default([]),
@@ -72,6 +85,8 @@ function resourceSchema() {
     reviewedBy: z.string(),
     /** Optional here: an imaging page rarely has a "go to hospital now" list. */
     redFlags: z.array(z.string()).default([]),
+    /** The calmer tier — see the conditions schema above. */
+    seeDoctorSoon: z.array(z.string()).default([]),
     faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     /** Slugs from the `conditions` collection. */
     related: z.array(z.string()).default([]),

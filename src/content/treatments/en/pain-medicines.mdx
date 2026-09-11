@@ -15,6 +15,7 @@ redFlags:
   - 'Black stools, vomiting blood, or severe stomach pain while taking a painkiller — stop and go to hospital now'
   - 'Swelling of the legs or face, unusual breathlessness, or passing much less urine'
   - 'A widespread rash, facial swelling or difficulty breathing after a dose — call emergency services'
+seeDoctorSoon:
   - 'Needing a painkiller every day for weeks just to get through the day'
 faq:
   - q: 'Why does this page not give doses?'
@@ -90,7 +91,7 @@ Injections have their own page: [injections into and around a joint](/en/treatme
 
 ## When to see a doctor
 
-<RedFlags flags={frontmatter.redFlags} />
+<RedFlags flags={frontmatter.redFlags} soon={frontmatter.seeDoctorSoon} />
 
 ## Questions to ask your doctor or pharmacist
 

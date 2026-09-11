@@ -138,7 +138,11 @@ for (const article of articles) {
    * urgent-symptom list to give, and demanding one would only invite an author
    * to invent filler on a medical page.
    */
-  if (collection === 'conditions' && published && (data.redFlags?.length ?? 0) === 0) {
+  // Either tier counts. An article about a benign, non-urgent problem can
+  // legitimately have nothing in `redFlags` while still telling the reader
+  // when to book an appointment — what must never happen is neither.
+  const safetyItems = (data.redFlags?.length ?? 0) + (data.seeDoctorSoon?.length ?? 0);
+  if (collection === 'conditions' && published && safetyItems === 0) {
     warnings.push(`${path}: published with no redFlags.`);
   }
 

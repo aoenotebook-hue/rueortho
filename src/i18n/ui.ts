@@ -59,9 +59,12 @@ const ui = {
     'article.onThisPage': 'หัวข้อในหน้านี้',
     'article.keyFacts': 'สรุปสั้น ๆ',
     'article.whenToSeeDoctor': 'เมื่อไหร่ควรไปพบแพทย์',
-    'article.redFlagsTitle': 'อาการที่ควรไปพบแพทย์ทันที',
+    'article.redFlagsTitle': 'ต้องไปโรงพยาบาลทันที',
     'article.redFlagsUrgent':
-      'หากมีอาการข้อใดข้อหนึ่งต่อไปนี้ ควรไปพบแพทย์หรือห้องฉุกเฉินทันที หรือโทร 1669',
+      'อาการต่อไปนี้เป็นภาวะเร่งด่วน หากมีข้อใดข้อหนึ่ง ให้ไปห้องฉุกเฉินทันที หรือโทร 1669 ไม่ต้องรอนัด',
+    'article.seeSoonTitle': 'ควรนัดพบแพทย์ แต่ไม่ใช่ภาวะฉุกเฉิน',
+    'article.seeSoonBody':
+      'อาการต่อไปนี้ยังไม่ใช่เรื่องด่วน แต่ควรนัดพบแพทย์เพื่อตรวจหาสาเหตุ ไม่ควรปล่อยไว้',
     'article.draftTitle': 'ฉบับร่าง ยังไม่เผยแพร่',
     'article.draftBody':
       'หน้านี้เป็นฉบับร่างที่ยังไม่ผ่านการตรวจทานทางการแพทย์ จัดทำขึ้นเพื่อให้ผู้เขียนอ่านและแก้ไขก่อนเผยแพร่ ยังไม่ควรใช้อ้างอิงในการดูแลตนเอง และจะไม่ปรากฏบนเว็บไซต์จริงจนกว่าผู้เขียนจะตรวจทานแล้ว',
@@ -258,9 +261,12 @@ const ui = {
     'article.onThisPage': 'On this page',
     'article.keyFacts': 'Key facts',
     'article.whenToSeeDoctor': 'When to see a doctor',
-    'article.redFlagsTitle': 'See a doctor straight away if you have',
+    'article.redFlagsTitle': 'Go to hospital now',
     'article.redFlagsUrgent':
-      'If any of the following apply, go to a doctor or an emergency department now, or call 1669.',
+      'These are emergencies. If any one of them applies, go to an emergency department now or call 1669 — do not wait for an appointment.',
+    'article.seeSoonTitle': 'Book an appointment, but not an emergency',
+    'article.seeSoonBody':
+      'These are not urgent, but they are worth a doctor looking into rather than leaving alone.',
     'article.draftTitle': 'Draft — not published',
     'article.draftBody':
       'This page is a draft that has not been medically reviewed. It is here so the author can read and correct it before publication. Do not rely on it for your own care; it will not appear on the live site until he has reviewed it.',

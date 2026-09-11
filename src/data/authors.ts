@@ -22,12 +22,12 @@ export const authors: Record<string, Author> = {
   sorawut: {
     id: 'sorawut',
     name: {
-      th: 'นพ.สรวุฒิ ธรรมยงค์กิจ',
-      en: 'Sorawut Thamyongkit',
+      th: 'รศ. นพ. สรวุฒิ ธรรมยงค์กิจ',
+      en: 'Assoc. Prof. Sorawut Thamyongkit, M.D.',
     },
     credentials: {
-      th: 'พ.บ. · ศัลยแพทย์ออร์โธปิดิกส์',
-      en: 'MD · Orthopaedic surgeon',
+      th: 'ศัลยแพทย์ออร์โธปิดิกส์ · เชี่ยวชาญการบาดเจ็บข้อไหล่และข้อเข่า อุบัติเหตุทางออร์โธปิดิกส์ และเวชศาสตร์การกีฬา',
+      en: 'Orthopedic Surgeon · Specialist in Shoulder & Knee Injuries, Orthopaedics Trauma and Sports Medicine',
     },
     links: [],
   },
