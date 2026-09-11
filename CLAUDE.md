@@ -141,6 +141,13 @@ reachable by anything on the network while it runs.
   readers and anyone with reduced vision, which is much of the audience for a
   site about arthritis and osteoporosis. Do not switch on the master plan's
   say-so.
+- **How he is addressed, as of 2026-09-11:** `รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` /
+  `Assoc. Prof. Sorawut Thamyongkit, M.D.`, with `credentials` reading
+  "Orthopedic Surgeon · Specialist in Shoulder & Knee Injuries, Orthopaedics
+  Trauma and Sports Medicine". It lives in `data/authors.ts`, but his name is
+  **also written out as a literal string 96 times in the article MDX** — the
+  video and figure attribution lines — so a change has to sweep
+  `src/content/` too, not just the data file.
 - **The author's name appears in exactly two places, and that is deliberate.**
   On 2026-09-08 he asked for it off the rest of the site: the dedicated author
   page (`/about/author/<id>`) was **deleted**, the "เกี่ยวกับผู้เขียน" link was
@@ -302,15 +309,13 @@ The nineteen condition seeds from the master plan's §33, **plus osteoporosis**,
 exist in Thai and English — forty files, twenty slugs. All are published.
 `docs/CONTENT-ROADMAP.md` tracks where each article's words came from.
 
-**Two hip articles are Thai-only**, and they are the first pages on the site
-that exist in one language. The author wrote `hip-pain` and `snapping-hip`
-himself and sent them on 2026-09-11; there is no English text, and translating
-medical copy without his review is not something to do quietly, so both carry
-`translationPending: true`. That is the field's first real use. Nothing else is
-needed: with no English file the routes emit no `hreflang` alternate — each page
-names only itself — the sitemap lists the Thai URL alone, and `/regions/hip`
-now builds in Thai while the English body map keeps the hip dot inert. Adding
-the English side later is just two files with the same slugs.
+**The two hip articles are bilingual.** The author wrote `hip-pain` and
+`snapping-hip` in Thai on 2026-09-11 and asked for English the same day, so
+they were Thai-only for about an hour — long enough to confirm that
+`translationPending` and the one-language routing work, which nothing had ever
+exercised. Both are now `translationPending: false` with a full English
+counterpart, `/regions/hip` builds in both languages, and the hip dot on the
+body map links in both.
 
 **His prose is unchanged; the scaffolding around it is not his.** The headings
 were mapped onto the canonical order (`ทำความเข้าใจอาการปวดสะโพก` became
@@ -424,8 +429,8 @@ in `scripts/lint-content.mjs`. Miss the last one and the publication-safety
 checks silently skip the new collection.
 
 All 32 files in the three resource collections are published. Production builds
-**118 pages** — 115 until the two Thai-only hip articles and `/regions/hip`
-landed on 2026-09-11.
+**121 pages** — 115 until the two hip articles, their English counterparts and
+`/regions/hip` in both languages landed on 2026-09-11.
 
 **The treatments articles are the one exception to the read-before-publish
 rule.** The author asked for the section to be created *and published* in the
@@ -445,10 +450,24 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
   apps' own `media/video-prompts.md` warns that a generated clip can contain a
   few frames where the joint inverts. Re-encoding without checking each frame is
   not worth the bytes saved.
-- **No poster stills.** Six video files are byte-identical across the frozen
-  shoulder and rotator cuff apps and are stored once; none of them ships a
-  poster, and there is no ffmpeg to cut one, so `<Video>` uses a designed
-  facade panel rather than a frozen frame.
+- **Every clip now has a poster, cut from the clip itself.** A `<Video>` used
+  to open onto a flat grey panel, so before pressing play the reader had only
+  the caption's word for what it showed — which on a silent demonstration is
+  most of the point. `scripts/make-video-posters.mjs` writes
+  `<name>.poster.webp` beside each mp4 and `<Video>` picks it up **by
+  convention**, checking `existsSync` at build time so a clip added before its
+  poster falls back to the old panel rather than a broken image. The frame is
+  taken at 20% of the duration, not at 0s: the first frame is often a fade-in
+  or an empty room. 16 posters, 520 KB in total, 960px wide so they stay sharp
+  at 2x. The play badge gained a scrim and a ring, because it now sits over a
+  photograph rather than a flat panel.
+
+  **ffmpeg is still not part of the toolchain** and is deliberately not in
+  `package.json` — the posters are committed, so the script only runs again if
+  a clip changes. Re-run it with
+  `npm i --no-save ffmpeg-static && node scripts/make-video-posters.mjs`.
+  Six video files are byte-identical across the frozen shoulder and rotator
+  cuff apps and are stored once, so they share one poster too.
 - `<Video>` requires a `description` prop and throws without one. A silent
   demonstration clip carries all of its meaning in the picture, so without a
   text description the content simply is not there for a blind reader.
@@ -892,6 +911,15 @@ is a fraction of it: 4.5rem at md, 7rem at lg.
 The left figure needs none of this: its dots are already on the outer edge and
 its labels run away from the body.
 
+**Hovering a hotspot marks the place, not just the name.** Recolouring the
+label alone was too quiet — the reader is looking at the drawing, not at the
+pill, and a teal border on a small pill at the edge of the figure is easy to
+miss before committing to a click. The dot now fills, grows 35% and takes a
+halo (a `box-shadow`, so nothing moves and nothing joins the accessibility
+tree) while the label fills solid. `:focus-visible` gets exactly the same
+treatment, and `prefers-reduced-motion` keeps the colour and the halo while
+dropping the growth.
+
 The drawing is black line art on transparency, so it is inverted under
 `prefers-color-scheme: dark` — that turns the lines white and leaves the
 transparent areas alone.
@@ -1163,6 +1191,31 @@ overflows, so it uses `minmax(min(23rem,100%),1fr)`.
 
 - `frontmatter` is available inside any MDX body, which is how
   `<RedFlags flags={frontmatter.redFlags} />` avoids restating the list.
+- **Urgency has two tiers, and they are two visibly different blocks.**
+  `redFlags` means hospital now; `seeDoctorSoon` means book an appointment.
+  They were one list until 2026-09-11, and a list headed "go to hospital now"
+  that also contains "if it is no better in two weeks" teaches the reader that
+  the heading is an exaggeration — so the one line that really means tonight
+  gets read at the same weight as the rest. `<RedFlags>` takes both
+  (`flags` and `soon`) and renders the urgent one first, in the warning colours
+  with an octagon, and the calmer one below it in the info colours with a
+  calendar: **shape as well as colour**, per the site's own rule.
+  `lint:content` accepts either tier as satisfying the "a published condition
+  needs safety content" check, because an article about a benign problem can
+  legitimately have nothing urgent to say while still saying when to book.
+  Only five bullets site-wide needed moving — the existing lists were already
+  genuinely urgent — and the split was made on wording the author had already
+  written ("ไม่ดีขึ้นหลัง 1–2 สัปดาห์", "needing a painkiller every day for
+  weeks"), never on a fresh judgement. Anything ambiguous stayed urgent, which
+  is the safe direction.
+- **A `<DoctorChecklist>` carries no heading of its own**, and every article
+  caps the list at **five questions**. The component used to print an `h3` with
+  the same words as the `## คำถามที่ควรถามแพทย์` immediately above it, one line
+  apart; the section name now reaches assistive technology through
+  `aria-label`, which is not rendered. Where a list ran longer than five, the
+  author's own order was treated as the ranking: the first four are kept, plus
+  the "how many weeks, and when should I come back" question wherever it sat,
+  because that is the one with safety in it.
 - If an article declares `redFlags` but never places `<RedFlags />`,
   `ConditionArticle` renders the box near the top instead — it detects the tag
   by looking for `<RedFlags` in `entry.body`. Safety content must not vanish

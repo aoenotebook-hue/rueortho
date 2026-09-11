@@ -10,8 +10,17 @@ import { getLocaleFromUrl } from '../../i18n/utils';
 const tr = t(getLocaleFromUrl(Astro.url));
 ---
 
-<section class="doctor-checklist my-7 rounded-[10px] border border-border bg-surface p-5">
-  <h3 class="mt-0! mb-3 text-[1.125rem]">{tr('article.doctorChecklist')}</h3>
+{/*
+  No visible heading of its own. Every article places this directly under its
+  own `## คำถามที่ควรถามแพทย์` / `## Questions to ask your doctor`, so the h3
+  that used to sit here printed the same sentence twice, one line apart. The
+  section keeps the name for assistive technology through `aria-label`, which
+  is not rendered.
+*/}
+<section
+  class="doctor-checklist my-7 rounded-[10px] border border-border bg-surface p-5"
+  aria-label={tr('article.doctorChecklist')}
+>
   <div class="checklist-body">
     <slot />
   </div>
