@@ -302,6 +302,27 @@ The nineteen condition seeds from the master plan's §33, **plus osteoporosis**,
 exist in Thai and English — forty files, twenty slugs. All are published.
 `docs/CONTENT-ROADMAP.md` tracks where each article's words came from.
 
+**Two hip articles are Thai-only**, and they are the first pages on the site
+that exist in one language. The author wrote `hip-pain` and `snapping-hip`
+himself and sent them on 2026-09-11; there is no English text, and translating
+medical copy without his review is not something to do quietly, so both carry
+`translationPending: true`. That is the field's first real use. Nothing else is
+needed: with no English file the routes emit no `hreflang` alternate — each page
+names only itself — the sitemap lists the Thai URL alone, and `/regions/hip`
+now builds in Thai while the English body map keeps the hip dot inert. Adding
+the English side later is just two files with the same slugs.
+
+**His prose is unchanged; the scaffolding around it is not his.** The headings
+were mapped onto the canonical order (`ทำความเข้าใจอาการปวดสะโพก` became
+`โรคนี้คืออะไร`, `สาเหตุที่พบบ่อย` became `สาเหตุและปัจจัยเสี่ยง`, and so on)
+and the "when to see a doctor" bullets were lifted verbatim into `redFlags` so
+`<RedFlags>` renders them. Both articles stop after `แนวทางการรักษา` and
+`คำถามที่ควรถามแพทย์` — the linter allows an article to stop early, only not to
+reorder. `KeyFacts` is a selection of his own sentences, `faq` is empty rather
+than invented, and the `sources` came out of the PubMed tool the same way the
+other eight topics' did. Those four things are Claude's and are flagged for him:
+he has not read them.
+
 Four of them — `frozen-shoulder`, `osteoporosis`, `rotator-cuff-tear`,
 `acl-injury` — are built largely from the author's **own reviewed Thai**, taken
 from `_extracted/` and re-pronouned from `ท่าน` to `คุณ`. They also carry his app
@@ -403,7 +424,8 @@ in `scripts/lint-content.mjs`. Miss the last one and the publication-safety
 checks silently skip the new collection.
 
 All 32 files in the three resource collections are published. Production builds
-**115 pages**.
+**118 pages** — 115 until the two Thai-only hip articles and `/regions/hip`
+landed on 2026-09-11.
 
 **The treatments articles are the one exception to the read-before-publish
 rule.** The author asked for the section to be created *and published* in the
@@ -601,9 +623,12 @@ so nothing is unreachable — the filter only ever hides.
 
 `RegionPage` renders an explanation and a link to the conditions index when a
 region has nothing published. **No route reaches it today**: both region
-routes build only the regions with a published article *in that locale*, so
-`/regions/hip` (nought articles) does not exist and the body map renders that
-dot inert rather than linking. The branch is there for the day a region's only
+routes build only the regions with a published article *in that locale*. That
+used to be demonstrated by `/regions/hip`, which had nothing until the two Thai
+hip articles landed — the Thai route now exists and the Thai body map links to
+it, while **the English one still does not**, because those articles are Thai
+only. So the branch is now live in exactly the shape it was written for: a
+region published in one language and not the other. The branch is there for the day a region's only
 article is held back, or is written in one language before the other, and it
 was tested by routing every region temporarily.
 
