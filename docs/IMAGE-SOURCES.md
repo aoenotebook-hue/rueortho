@@ -45,6 +45,7 @@ share one visual language, so prefer a single source for the whole set.
 | `src/assets/conditions/<slug>/<slug>-anatomy.jpg` (21 — every condition but meniscus-tear) | Supplied by the author (as above) | Author's own | `ภาพประกอบโดย รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` / `Illustration by Assoc. Prof. Sorawut Thamyongkit, M.D.` in the figure caption | 2026-09-17 |
 | `src/assets/conditions/<slug>/<slug>-care.jpg` (22) | Supplied by the author (as above) | Author's own | as above | 2026-09-17 |
 | `src/assets/conditions/<slug>/<slug>-symptoms.jpg` (3: carpal-tunnel-syndrome, herniated-disc, meniscus-tear) | Supplied by the author (as above) | Author's own | as above | 2026-09-17 |
+| `public/images/examinations/<exam>/*.jpg` (22) | Supplied by the author (committed straight to `public/images/examinations/`) | Author's own | `ภาพประกอบโดย รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` / `Illustration by Assoc. Prof. Sorawut Thamyongkit, M.D.` in the figure caption | 2026-09-17 |
 | `src/assets/sections/rehabilitation.png` | Supplied by the author (uploaded to the repo under `images/` as `running.png`) | Author's own | none needed (decorative) | 2026-09-10 |
 
 
@@ -83,6 +84,32 @@ author. None of them carries a `caption`: a caption under an exercise picture
 reads as an instruction, and what a reader should actually do is the author's
 to write, not Claude's. The `alt` text describes only what is visibly in the
 frame.
+
+## The 2026-09-17 examination illustration set
+
+The same day, and on the same terms as the condition set above, the author
+committed 22 illustrations into `public/images/examinations/<exam>/` — for each
+of the six examination topics a **concept** diagram (what the test shows), an
+**overview** scene (the room and the machine) and a **practical** scene
+(preparation, screening, what to declare), plus for four of them a second
+procedure scene carried over from an earlier upload.
+
+These sit in `public/` rather than `src/assets/`, so they are referenced by URL
+and `lint:content` checks each `<Figure src="/images/…">` against the file on
+disk. They are not run through `astro:assets`, so they are served exactly as
+uploaded.
+
+Provenance is the author's own upload, as for every other `src/assets` and
+`public/images` picture here. They carry the same attribution line as the
+condition set, and the same open question about an AI disclosure applies —
+nothing in the files claims it, so neither does the caption.
+
+**Six older flat files were deleted as exact duplicates.**
+`public/images/examinations/{xray,mri-scan,knee-mri,dxa-scan,musculoskeletal-ultrasound,nerve-conduction-emg}.webp`
+were byte-identical (SHA-256) to a file now inside the matching subfolder.
+
+**Every file was a JPEG named `.webp`** and was renamed to `.jpg`; the bytes are
+untouched.
 
 ## App media imported from the author's own apps
 
