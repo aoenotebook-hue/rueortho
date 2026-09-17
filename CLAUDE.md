@@ -1080,6 +1080,47 @@ a hero and a care picture; only meniscus-tear has no anatomy diagram.
   whose captions can claim AI generation because a credential proved it. The new
   captions therefore credit the author and claim nothing else.
 
+### The examination illustration set
+
+Also on 2026-09-17, 22 illustrations arrived in
+`public/images/examinations/<exam>/` — for each of the six examination topics a
+`-concept` diagram (what the test shows), an `-overview` scene (the room and the
+machine) and a `-practical` scene (preparation, screening, what to declare),
+plus for four of them a second procedure scene left over from an earlier upload.
+
+- **These live in `public/`, not `src/assets/`**, so they are referenced as
+  `<Figure src="/images/examinations/…">` — a string path, which is the branch
+  of `<Figure>` that `lint:content` validates against the file on disk. They
+  are not processed by `astro:assets` and are served exactly as uploaded.
+- **Placement follows what is in the frame, not the filename.** `-overview` is
+  a room scene, so it goes in the section that explains what the test *is* or
+  how it works; `-concept` goes where the article says what the test can show;
+  `-practical` goes in preparation or safety. Two that did not fit that rule
+  were placed on their content instead: the MRI `-practical` picture is a
+  safety-screening interview, which is exactly "what to declare before you go
+  in", and the nerve-conduction `-practical` picture is the needle EMG, which
+  belongs under "afterwards" where the article talks about the needle site
+  aching.
+- **`ultrasound/musculoskeletal-ultrasound.jpg` is a lead image**, placed
+  before the first `##`. It is a second shoulder-scanning scene with no section
+  of its own, and putting it beside `ultrasound-overview.jpg` in one section
+  would have been two near-identical pictures a few lines apart.
+- **Six older flat files were deleted as byte-identical duplicates** of a file
+  now inside a subfolder — `xray.webp`, `mri-scan.webp`, `knee-mri.webp`,
+  `dxa-scan.webp`, `musculoskeletal-ultrasound.webp`,
+  `nerve-conduction-emg.webp`. Checked by SHA-256, not by name.
+- **Every file was a JPEG named `.webp`**, the third batch in a row to arrive
+  that way. Renamed to `.jpg`, bytes untouched. In `public/` this matters more
+  than in `src/assets/`: nothing re-encodes these, so the served
+  `Content-Type` came straight off the extension and was simply wrong.
+- Captions are again `alt` + `attribution` and nothing else, for the reason
+  the condition set gives.
+
+**`public/images/exercises/` is still unplaced** — 35 exercise pictures from an
+earlier upload that no article references. They belong to the rehabilitation
+and treatment articles and are a separate job. Two of them carry the same
+`.webp.jpg` double extension the condition set had.
+
 ### The author's earlier illustrations
 
 On 2026-09-10 the author uploaded eighteen flat illustrations to `images/` and
