@@ -4,7 +4,7 @@ import Logo from './Logo.astro';
 import NavList from './NavList.astro';
 import { t, type Locale } from '../i18n/ui';
 import { getAlternatePath, localizePath, currentPath } from '../i18n/utils';
-import { navSections } from '../data/sections';
+import { getNavItems } from '../lib/nav';
 
 interface Props {
   locale: Locale;
@@ -27,11 +27,13 @@ const here = currentPath(Astro.url);
  * `hiddenFromNav` — `conditions`, whose page is still routed and still linked
  * to from the body map, the home page and every article breadcrumb. Every
  * entry that is here resolves.
+ *
+ * Each tab that has one also carries a drop-down of the pages beneath it,
+ * read from the same published collections its index page lists — see
+ * `lib/nav.ts`. `conditions` is back within reach from the menu through the
+ * "articles" drop-down, without getting a tab of its own again.
  */
-const navItems = [
-  { path: '/', label: tr('nav.home') },
-  ...navSections.map((section) => ({ path: section.path, label: section.nav[locale] })),
-];
+const navItems = await getNavItems(locale);
 ---
 
 <header class="sticky top-0 z-50 border-b border-border bg-surface shadow-[var(--shadow-header)]">
@@ -127,7 +129,7 @@ const navItems = [
     */}
     <noscript>
       <nav aria-label={tr('a11y.mainNav')} class="pb-2 md:hidden">
-        <NavList locale={locale} here={here} items={navItems} />
+        <NavList locale={locale} here={here} items={navItems} expanded />
       </nav>
     </noscript>
   </Container>
@@ -179,6 +181,72 @@ const navItems = [
 
       setOpen(false);
       if (inside) toggle.focus();
+    });
+  }
+
+  /**
+   * The per-tab drop-downs.
+   *
+   * A disclosure, opened by its own button — not a hover menu. Hover cannot be
+   * tapped, and a menu that opens on hover and closes on leave is the single
+   * most common way a drop-down becomes unusable on a touch screen and for
+   * anyone who moves a pointer slowly. The tab itself stays an ordinary link
+   * to the section index, so nothing is reachable only through the menu.
+   *
+   * One open at a time. Escape closes the open one and returns focus to its
+   * button; a click anywhere outside closes it without moving focus at all.
+   */
+  const submenuToggles = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-nav-submenu-toggle]'),
+  );
+
+  const menuFor = (button: HTMLButtonElement) => {
+    const id = button.getAttribute('aria-controls');
+    return id ? document.getElementById(id) : null;
+  };
+
+  const setSubmenu = (button: HTMLButtonElement, open: boolean) => {
+    button.setAttribute('aria-expanded', String(open));
+    menuFor(button)?.classList.toggle('hidden', !open);
+  };
+
+  const closeAllSubmenus = (except?: HTMLButtonElement) => {
+    for (const button of submenuToggles) {
+      if (button !== except) setSubmenu(button, false);
+    }
+  };
+
+  for (const button of submenuToggles) {
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      closeAllSubmenus(button);
+      setSubmenu(button, !open);
+    });
+  }
+
+  if (submenuToggles.length > 0) {
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      // A click inside a drop-down is a link being followed, and a click on a
+      // toggle is handled above; anything else dismisses whatever is open.
+      if (target instanceof Element && target.closest('[data-nav-submenu], [data-nav-submenu-toggle]')) {
+        return;
+      }
+      closeAllSubmenus();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      const open = submenuToggles.find((b) => b.getAttribute('aria-expanded') === 'true');
+      if (!open) return;
+
+      const target = event.target;
+      const inside =
+        target instanceof Node && (open.contains(target) || menuFor(open)?.contains(target));
+
+      setSubmenu(open, false);
+      if (inside) open.focus();
     });
   }
 </script>

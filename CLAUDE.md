@@ -657,6 +657,36 @@ load-bearing.
   tree or the tab order; `NavList.astro` renders the list for both copies so
   they cannot drift.
 
+**Every section tab carries a drop-down of the pages under it**, added on
+2026-09-17 at the author's request. Four things about it:
+
+- **The children are read from the collections, not hand-kept.** `lib/nav.ts`
+  calls `getPublishedResources`, so a drop-down can never offer a draft and
+  never drifts from the index page below it. Two tabs are hand-written because
+  what they hold is not a collection: `articles`, whose page indexes the four
+  libraries, and `about`, whose children are the info and legal pages — and
+  those take the *footer's* labels, so the two menus cannot disagree about the
+  same page. `tools` is one page and has no drop-down.
+- **`conditions` is reachable from the menu again**, as the first entry of the
+  `articles` drop-down. It still has no tab of its own — `hiddenFromNav` is
+  unchanged — so the author's decision stands while the largest library on the
+  site stops being menu-invisible.
+- **It opens on click, never on hover.** A hover menu cannot be tapped, and the
+  tab itself stays an ordinary link to the section index, so nothing is
+  reachable only by opening a menu. One open at a time; Escape closes and
+  returns focus to the chevron; a click outside closes without moving focus.
+- **The `<noscript>` copy renders every drop-down open**, through NavList's
+  `expanded` prop. A closed disclosure with no script to open it would put the
+  whole of `/treatments` and `/examinations` behind a dead control.
+
+**The chevron is 30px wide, not the site's usual 44px, and that was measured.**
+Five chevrons at 44px widened the nav row enough to wrap it onto a second line
+at every desktop width, which added 36px of sticky header and put every in-page
+anchor under it. The button still fills the row's height, so the target is about
+30x44 — past the 24x24 of WCAG 2.5.8 — and the tab beside it is untouched. The
+nav row still wraps in English at every width and in Thai below 1120px, which is
+why `--header-offset` was re-measured; see the table in `global.css`.
+
 The disclosure is a disclosure, not a modal: no focus trap, no inert page, and
 links inside it navigate normally. `aria-expanded` and the nav's `hidden` class
 are set in one function so they cannot disagree. Escape closes it and returns
@@ -909,6 +939,59 @@ The status line is `role="status"` with `aria-live="polite"` and
 (searching, a count, no results, unavailable), and without `aria-atomic` a
 screen reader announces only the words that changed, which turns "พบ 20 รายการ"
 into "20".
+
+### Type scale, section numbering and captions
+
+All three were reviewed on 2026-09-17 at the author's request.
+
+- **The base size is 18px on a phone and 19px from 768px up**, raised from
+  17/18. Much of the audience is reading about arthritis and osteoporosis, so
+  it skews older — the same reason the looped Thai face was chosen.
+- **It is deliberately not set on `html`.** A great deal of this site is sized
+  in `rem` and measured by hand: the body map's 36rem/44rem widths and its
+  hotspot coordinates, `--header-offset`, the `/tools` grid minimum, the
+  article hero's 20rem/34rem caps. Moving the root would rescale all of it and
+  invalidate those measurements. **Headings therefore use `em`, not `rem`**,
+  so they track the base size while the layout stays put. Before this they were
+  `rem` against the browser's 16px root, so a `1.5rem` h2 was 24px next to a
+  19px paragraph — 1.26x, which does not read as a new section.
+- **Article sections are numbered** — `1.`, `1.1`, `1.2`, `2.` — by CSS
+  counters in `Prose.astro`, with a hairline rule above each `h2` and an
+  indented left border on each `h3`. Nothing in the MDX changed, so moving a
+  section renumbers everything below it for free, in both languages.
+  `ArticleContents` computes the identical numbering from `render()`'s
+  headings and shows it in the list.
+- **The counters use the child combinator, and that is load-bearing.**
+  `KeyFacts` renders an `<h2>` inside an `<aside>` and `ExerciseCard` an `<h3>`
+  inside an `<article>`, both inside `.prose`. As descendants they were counted
+  too: "สรุปสั้น ๆ" took number 1, every real section was one out from the
+  contents list beside it, and every exercise card claimed a subsection number.
+  A markdown heading is a *direct child* of the prose div; a component's
+  heading never is.
+- **Info and legal pages are not numbered.** `InfoPage` passes
+  `numbered={false}` — their sections are independent statements, not steps.
+- **Captions are `.caption` in `global.css`, at 0.75em**, which is the smallest
+  type on the site: 13.5px on a phone, 14.25px on a desktop. `<Figure>`,
+  `<Video>` and `<ExerciseCard>` all use it, so one rule moves every credit
+  line on the site. It replaced Tailwind's `text-sm`, which was 0.875 of the
+  browser's 16px root and so froze at 14px however large the body got.
+- **The 80% opacity those lines used to carry is gone, and that was a
+  contrast bug.** `--muted` on `--surface` is already near the AA floor; dimming
+  it to 80% took it under. Small and muted is the whole effect — transparency
+  is not part of it.
+- **The app-media credits moved out of the card body.** In frozen-shoulder,
+  osteoporosis and rotator-cuff-tear they were plain paragraphs inside
+  `<ExerciseCard>`, so they rendered at full reading size in the middle of the
+  instructions. They are now on `imageAttribution`, **wording untouched** —
+  that wording is still the author's to confirm.
+- **Figures are capped at 34rem and spaced asymmetrically.** At 68ch the column
+  runs to ~680px on a desktop and a 1024px illustration printed that size
+  dominates the sentences around it; 34rem is the same cap the article hero
+  uses for a 4:3 scene. The figure sits 1.25em under the paragraph it
+  illustrates and 2.5em above whatever follows, so it reads as belonging to the
+  text above it. Exercise-card pictures are capped at 20rem: they are 765x1024
+  portraits, and uncapped they rendered about 910px tall inside a card holding
+  four lines of instructions.
 
 ### CSS and layout traps — all three were live bugs
 
@@ -1488,6 +1571,36 @@ overflows, so it uses `minmax(min(23rem,100%),1fr)`.
 
 - `frontmatter` is available inside any MDX body, which is how
   `<RedFlags flags={frontmatter.redFlags} />` avoids restating the list.
+- **1669 is for a life-threatening emergency, and nothing else.** Reviewed on
+  2026-09-17 at the author's request, because the number was being handed out
+  by the box rather than by the symptom. The urgent box's own intro told every
+  reader to "go to an emergency department now **or call 1669**" — under a
+  heading that also carried "you have lost 2 cm in height, tell your doctor"
+  and, on the MRI page, "tell the staff you have a pacemaker". What changed:
+  - **The intro now names the emergency department first** and reserves 1669
+    for being too unwell to travel, or for a bullet that says to call. The
+    triage panel and the footer say "life-threatening" rather than just
+    "emergency"; the disclaimer and contact pages give the department first and
+    1669 as the condition.
+  - **Every bullet that names 1669 was checked and kept** — suspected heart
+    attack, stroke symptoms, a limb with no pulse, a neck injury, a hip
+    fracture that cannot bear weight, a head injury on blood thinners,
+    anaphylaxis. Those are ambulance calls.
+  - **One was reworded for consistency, not on a fresh judgement.**
+    Osteoporosis said "call 1669 now" for cauda equina; back-pain,
+    herniated-disc and sciatica all say "go to the emergency room immediately"
+    for the same symptom. Osteoporosis now matches its three siblings.
+  - **Four bullets moved to `seeDoctorSoon`**, and only where the author's own
+    sentence already named a non-urgent action: "speak to your doctor"
+    (achilles, fluoroquinolone), "tell your doctor" (osteoporosis, height
+    loss), "have a doctor examine it" and "even when it does not hurt"
+    (trigger-finger). **Anything ambiguous stayed urgent**, which is the safe
+    direction and the same rule the tiers were split on.
+  - **The MRI page's three items left `redFlags` entirely.** They are pre-scan
+    declarations — a pacemaker, metal in the eye, aneurysm clips — and the box
+    was telling readers to take them to an emergency department. They are now a
+    warning callout in the section that already existed for them, which says in
+    as many words that they are not emergencies.
 - **Urgency has two tiers, and they are two visibly different blocks.**
   `redFlags` means hospital now; `seeDoctorSoon` means book an appointment.
   They were one list until 2026-09-11, and a list headed "go to hospital now"

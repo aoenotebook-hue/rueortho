@@ -103,7 +103,7 @@ const playLabel = `${tr('media.play')} — ${title}`;
           <Image src={image} alt={imageAlt!} widths={[400, 800]} loading="lazy" class="rounded-[10px]" />
         )}
         {imageAttribution && (
-          <figcaption class="mt-2 text-sm text-muted opacity-80">{imageAttribution}</figcaption>
+          <figcaption class="caption mt-2">{imageAttribution}</figcaption>
         )}
       </figure>
     )
@@ -139,6 +139,17 @@ const playLabel = `${tr('media.play')} — ${title}`;
 <style is:global>
   .exercise-body p:last-child {
     margin-bottom: 0;
+  }
+
+  /*
+   * The exercise pictures are 765x1024 portraits. Uncapped they take the full
+   * width of the card — about 680px on a desktop, and so 910px tall — which
+   * turns a short set of instructions into a page of photograph. 20rem keeps
+   * the picture beside its own text rather than burying it, and is the same
+   * cap the article hero uses for a square illustration.
+   */
+  .exercise-card figure img {
+    max-width: min(20rem, 100%);
   }
 
   .exercise-body ul,

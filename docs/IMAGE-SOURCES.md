@@ -42,10 +42,10 @@ share one visual language, so prefer a single source for the whole set.
 | `src/assets/regions/*.png` (8: neck, shoulder, spine, hip, knee, elbow, hand-wrist, foot-ankle) | Supplied by the author (uploaded to the repo under `images/` as `icon_*.png`) | Author's own | none needed (decorative; the region label sits beside each one) | 2026-09-10 |
 | ~~`src/assets/illustrations/*`~~ (20 condition heroes) | Supplied by the author | Author's own | — | 2026-09-10, **superseded 2026-09-17** |
 | `src/assets/conditions/<slug>/<slug>-hero.jpg` (22) | Supplied by the author (committed straight to `src/assets/conditions/`) | Author's own | none needed; described to screen readers by each article's `heroImageAlt` | 2026-09-17 |
-| `src/assets/conditions/<slug>/<slug>-anatomy.jpg` (21 — every condition but meniscus-tear) | Supplied by the author (as above) | Author's own | `ภาพประกอบโดย รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` / `Illustration by Assoc. Prof. Sorawut Thamyongkit, M.D.` in the figure caption | 2026-09-17 |
+| `src/assets/conditions/<slug>/<slug>-anatomy.jpg` (21 — every condition but meniscus-tear) | Supplied by the author (as above) | Author's own | `ภาพ: รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` / `Illustration: Assoc. Prof. Sorawut Thamyongkit, M.D.` in the figure caption | 2026-09-17 |
 | `src/assets/conditions/<slug>/<slug>-care.jpg` (22) | Supplied by the author (as above) | Author's own | as above | 2026-09-17 |
 | `src/assets/conditions/<slug>/<slug>-symptoms.jpg` (3: carpal-tunnel-syndrome, herniated-disc, meniscus-tear) | Supplied by the author (as above) | Author's own | as above | 2026-09-17 |
-| `public/images/examinations/<exam>/*.jpg` (22) | Supplied by the author (committed straight to `public/images/examinations/`) | Author's own | `ภาพประกอบโดย รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` / `Illustration by Assoc. Prof. Sorawut Thamyongkit, M.D.` in the figure caption | 2026-09-17 |
+| `public/images/examinations/<exam>/*.jpg` (22) | Supplied by the author (committed straight to `public/images/examinations/`) | Author's own | `ภาพ: รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` / `Illustration: Assoc. Prof. Sorawut Thamyongkit, M.D.` in the figure caption | 2026-09-17 |
 | `src/assets/sections/rehabilitation.png` | Supplied by the author (uploaded to the repo under `images/` as `running.png`) | Author's own | none needed (decorative) | 2026-09-10 |
 
 
