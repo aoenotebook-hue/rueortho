@@ -9,7 +9,8 @@
     "check": "astro check",
     "lint": "astro check",
     "astro": "astro",
-    "lint:content": "node scripts/lint-content.mjs"
+    "lint:content": "node scripts/lint-content.mjs",
+    "lint:anchors": "node scripts/check-anchors.mjs"
   },
   "repository": {
     "type": "git",

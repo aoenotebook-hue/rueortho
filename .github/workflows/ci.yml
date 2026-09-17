@@ -37,16 +37,26 @@ jobs:
       # Internal links must resolve. Offline mode resolves hrefs against the
       # built output and never touches the network, so this step fails only on
       # a genuinely broken internal link.
+      #
+      # `--include-fragments` is deliberately NOT set. Astro builds
+      # directory-style pages, so /conditions/frozen-shoulder is a directory
+      # holding index.html: lychee resolves that fine for a plain link but
+      # cannot read ids out of it, and reported "Cannot find fragment" for all
+      # 38 of the site's anchored links while every one of them worked. On this
+      # site the flag can only produce false positives, so the anchor check is
+      # the step below instead — it resolves the target the way a browser does.
       - name: Check internal links
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
             --offline
             --no-progress
-            --include-fragments
             --root-dir ${{ github.workspace }}/dist
             'dist/**/*.html'
           fail: true
+
+      # Every in-page anchor must point at an id that exists.
+      - run: npm run lint:anchors
 
       # External links are reported but never block: a third-party outage is
       # not a reason to fail our build.
