@@ -12,10 +12,20 @@ interface Props {
   attribution?: string;
   /** Licence of the source, e.g. "CC BY 4.0". */
   license?: string;
+  /**
+   * The file's own pixel size — for a `src="/…"` path only, and both or
+   * neither.
+   *
+   * An imported image carries its dimensions and `<Image>` writes them out. A
+   * path does not, so the browser lays the figure out with a zero-height box
+   * and reflows the rest of the article when the lazy file arrives. Passing
+   * both reserves the right box before the fetch.
+   */
   width?: number;
+  height?: number;
 }
 
-const { src, alt, caption, attribution, license, width } = Astro.props;
+const { src, alt, caption, attribution, license, width, height } = Astro.props;
 
 if (!alt) {
   throw new Error('<Figure> requires an alt description — it is not optional on this site.');
@@ -25,7 +35,15 @@ if (!alt) {
 <figure class="my-8">
   {
     typeof src === 'string' ? (
-      <img src={src} alt={alt} width={width} loading="lazy" decoding="async" class="rounded-[10px]" />
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+        class="rounded-[10px]"
+      />
     ) : (
       <Image src={src} alt={alt} widths={[400, 800]} loading="lazy" class="rounded-[10px]" />
     )
