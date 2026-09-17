@@ -225,7 +225,7 @@ src/
   lib/resources.ts              the same queries for examinations and rehabilitation
   lib/videos.ts                 the video index, read out of article bodies at build time
   assets/regions/               the author's drawing for each body-map region
-  assets/illustrations/         his drawing for a condition, used as heroImage
+  assets/conditions/<slug>/     everything drawn for one condition: hero, anatomy, care
   components/ArticleContents.astro  the on-this-page list, built from render()'s headings
   components/FilterBar.astro    the shared listing filter: box, count, reset
   layouts/BaseLayout.astro      html shell, meta, hreflang, fonts
@@ -1000,7 +1000,49 @@ The drawing is black line art on transparency, so it is inverted under
 `prefers-color-scheme: dark` — that turns the lines white and leaves the
 transparent areas alone.
 
-### The author's illustrations
+### The condition illustration set
+
+On 2026-09-17 the author committed 68 more illustrations, this time straight
+into `src/assets/conditions/<slug>/` — **three per condition**: a `-hero` scene,
+an `-anatomy` diagram and a `-care` scene, with a spare `-symptoms` scene for
+carpal-tunnel-syndrome, herniated-disc and meniscus-tear. All 22 conditions have
+a hero and a care picture; only meniscus-tear has no anatomy diagram.
+
+- **One folder per condition now holds everything about it.**
+  `src/assets/illustrations/` is **gone**: every hero it held was either
+  byte-identical to the new one (4 of them) or superseded by it (18), so
+  `heroImage` in all 44 article files points into `assets/conditions/` and the
+  old folder had no referrer left. The two hip articles gained their first hero
+  — they had none and were falling back to the region drawing.
+- **The upload mangled a lot of names and every one was normalised.** A folder
+  called `Achilles tendinopathy`; `.webp.jpg` double extensions; three files
+  written as `back-pain:back-pain-care.webp` with a colon where the folder
+  separator should have been; `nee-pain-anatomy.webp`; eleven names with spaces
+  in them. Five files were byte-identical re-uploads of heroes already in the
+  repo and were dropped.
+- **Every new file is a JPEG whatever its extension claimed.** Same trap as
+  2026-09-10: they arrived as `.webp` and `.png` and are JPEG inside. They were
+  renamed to `.jpg`; the bytes are the author's, untouched. Astro reads the real
+  format through sharp and emits webp either way, but a served `Content-Type`
+  that lies is a bug waiting to happen.
+- **Placement follows the canonical section order**: the anatomy diagram closes
+  `โรคนี้คืออะไร` / `What it is`, the spare scene closes `อาการ` / `Symptoms`,
+  and the care scene closes `แนวทางการรักษา` / `Treatment options`. Both
+  languages get the same picture in the same place, which works because **none
+  of these images carries text**.
+- **Captions were deliberately left off.** `<Figure>` takes `alt`, which
+  describes what is in the frame, and `attribution`, which `lint:content` warns
+  without. It does **not** carry a `caption` on any of the 92 new figures: a
+  caption under a picture of an exercise reads as an instruction to do it, and
+  what the reader should actually do is the author's to write. Adding captions
+  is the obvious next pass and it is his.
+- **Provenance is recorded in `docs/IMAGE-SOURCES.md` and the AI disclosure is
+  an open question.** None of the 68 carries a C2PA credential or any metadata
+  at all — same as the 20 heroes already published, and unlike the app media,
+  whose captions can claim AI generation because a credential proved it. The new
+  captions therefore credit the author and claim nothing else.
+
+### The author's earlier illustrations
 
 On 2026-09-10 the author uploaded eighteen flat illustrations to `images/` and
 asked for them to be placed. Each is an 800×800 PNG whose artwork is a **circle
@@ -1020,6 +1062,9 @@ copied, so there is one copy of each in git:
   Any new region needs either a drawing here or a glyph there.
 - `src/assets/illustrations/<condition slug>` — a drawing per condition, wired
   in as `heroImage`/`heroImageAlt` in the frontmatter of both language files.
+  **Superseded on 2026-09-17** — see "The condition illustration set" above;
+  the folder no longer exists and those heroes now live beside the rest of each
+  condition's artwork.
   The schema has carried those two fields since the beginning and nothing
   rendered them; `ConditionArticle` shows the image under the summary, and
   `RegionArt` takes a condition's own image as an override, so its cards show
