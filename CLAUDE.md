@@ -1116,6 +1116,48 @@ plus for four of them a second procedure scene left over from an earlier upload.
 - Captions are again `alt` + `attribution` and nothing else, for the reason
   the condition set gives.
 
+### The rehabilitation and treatment illustration set
+
+Also on 2026-09-17, 30 illustrations for the five rehabilitation and five
+treatment topics — an `-overview`, a `-technique`/`-mechanism` and a
+`-progression`/`-practical` scene each. 29 are placed, in both languages, as 58
+`<Figure>`s.
+
+- **The paths were normalised to the examination set's convention**,
+  `public/images/<collection>/<slug>/<slug>-<role>.jpg`. They arrived as
+  `public/images/Rehabilitation/` — a capital letter, which is a broken URL on a
+  case-sensitive server — and `public/images/treatment/`, where the collection
+  is `treatments`, with subfolders (`balance-fall`, `principle`, `selfcare`,
+  `injection`, `medication`, `choosing`) that did not match the articles.
+- **The role in the filename does not describe the frame, so placement follows
+  the picture, as it did for the examinations.** `rehab-principles-overview` is
+  a three-stage progression from floor work to carrying shopping upstairs and
+  closes "the four phases"; `rehab-principles-progression` is five everyday
+  scenes around a ticked calendar and closes "how to measure progress";
+  `rehab-principles-technique` is light weight → heavier → straining under a
+  barbell with pain marked, and closes "increasing the load safely". Taking the
+  filenames at face value would have put all three in the wrong sections.
+- **`shoulder-rehab` is the one article whose figures are interleaved rather
+  than closing a section.** All three of its pictures belong to "the usual
+  sequence", which is four numbered steps, so each sits directly under the step
+  it shows. Three stacked at the end of one section would have separated every
+  picture from its own instructions.
+- **`<Figure>` gained a `height` prop**, and all 102 path-based figures now
+  carry `width` and `height` — the 58 new ones and the 44 examination figures
+  that were already live. Same reason as `<ExerciseCard>`'s
+  `imageWidth`/`imageHeight`: a path carries no dimensions, so the figure lays
+  out with a zero-height box and reflows the article when the lazy file lands.
+- **Every file was a JPEG named `.webp`**, the fifth batch in a row; renamed to
+  `.jpg`, bytes untouched.
+
+**`self-care-mechanism.jpg` is deliberately unplaced and must stay that way
+until the author rules on it.** Two of its three panels show a knee sleeve being
+put on and then worn outdoors. The self-care article never mentions a brace or a
+support, and the only mention anywhere in these ten articles is a question to
+*ask* a doctor in `knee-rehab` — so placing it would put a treatment on the page
+that he never wrote, through a picture. It is the only file in the two folders
+with no referrer.
+
 ### The exercise illustration set
 
 The 36 pictures in `public/images/exercises/`, unreferenced since an earlier

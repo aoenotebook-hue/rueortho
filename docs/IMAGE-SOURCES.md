@@ -111,6 +111,40 @@ were byte-identical (SHA-256) to a file now inside the matching subfolder.
 **Every file was a JPEG named `.webp`** and was renamed to `.jpg`; the bytes are
 untouched.
 
+## The 2026-09-17 rehabilitation and treatment illustration set
+
+30 more illustrations, on the same terms as the sets above: for each of the five
+rehabilitation topics and each of the five treatment topics an `-overview`, a
+`-technique`/`-mechanism` and a `-progression`/`-practical` scene. 29 are placed
+as `<Figure>` on the article of the same name, in both languages — 58 figures.
+
+**The paths were normalised to the convention the examination set uses**,
+`public/images/<collection>/<slug>/<slug>-<role>.jpg`: the folders arrived as
+`Rehabilitation` (capital R, which is a broken URL on a case-sensitive server)
+and `treatment` (the collection is `treatments`), with subfolders named
+`balance-fall`, `principle`, `selfcare`, `injection`, `medication` and
+`choosing` rather than after the articles they belong to.
+
+**Every file was a JPEG named `.webp`** — the fifth batch in a row — and all 30
+were renamed to `.jpg` with the bytes untouched.
+
+**The role in the filename does not describe the frame, so placement follows the
+picture.** `rehab-principles-overview` is a three-stage progression from floor
+work to carrying shopping upstairs, and `rehab-principles-progression` is five
+everyday scenes around a ticked calendar; the first closes "the four phases",
+the second "how to measure progress". The same applies across the set.
+
+**`self-care-mechanism.jpg` is deliberately unplaced.** Two of its three panels
+show a knee sleeve being put on and then worn outdoors. Nothing in the self-care
+article recommends a brace or support — the only mention of one anywhere in
+these collections is a question to *ask* a doctor, in `knee-rehab` — so placing
+it would put a treatment on the page that the author never wrote. It is the one
+file in the two folders with no referrer.
+
+Provenance is the author's own upload, and the same open question about an AI
+disclosure applies — nothing in the files claims it, so neither does the
+caption.
+
 ## The 2026-09-17 exercise illustration set
 
 36 exercise pictures had been sitting unreferenced in `public/images/exercises/`
@@ -254,6 +288,11 @@ In the `<Figure>` caption, via the `attribution` and `license` props — not in 
 credits page. The reader should see where a figure came from without leaving the
 article. `npm run lint:content` warns on a `<Figure>` with no `attribution` and
 fails on one with no `alt`.
+
+`<Figure>` also takes `width`/`height` for a picture given as a path, for the
+reason `<ExerciseCard>`'s `imageWidth`/`imageHeight` exists: a path carries no
+dimensions, so the figure lays out with a zero-height box and reflows the
+article when the lazy file arrives. All 102 path-based figures carry both.
 
 `<ExerciseCard>` does the same through `imageAttribution`, which renders under
 the picture exactly as a figcaption does. The prop was added on 2026-09-17 with
