@@ -1,15 +1,25 @@
 ---
 import { localizePath, isWithinSection } from '../i18n/utils';
-import type { Locale } from '../i18n/ui';
+import { t, type Locale } from '../i18n/ui';
+import type { NavItem } from '../lib/nav';
 
 interface Props {
   locale: Locale;
   /** The current page's path, locale-stripped — see `currentPath`. */
   here: string;
-  items: { path: string; label: string }[];
+  items: NavItem[];
+  /**
+   * Render every drop-down open, with no toggles.
+   *
+   * This is the `<noscript>` copy. Nothing can open a disclosure there, so a
+   * closed one would put the whole of `/treatments` and `/examinations` behind
+   * a control that does not work. Open, it is simply a longer list.
+   */
+  expanded?: boolean;
 }
 
-const { locale, here, items } = Astro.props;
+const { locale, here, items, expanded = false } = Astro.props;
+const tr = t(locale);
 ---
 
 {/*
@@ -24,21 +34,74 @@ const { locale, here, items } = Astro.props;
       // the current one in its set without claiming to be the page being read.
       const isCurrentPage = here === item.path;
       const inSection = !isCurrentPage && isWithinSection(here, item.path);
+      const children = item.children ?? [];
+      const hasMenu = children.length > 0;
+
+      // Only the real nav needs ids: the <noscript> copy has no toggle to
+      // point at one, and two copies in the DOM must not share them.
+      const menuId = expanded ? undefined : `nav-menu-${item.path.replace(/\W+/g, '-')}`;
 
       return (
-        <li>
-          <a
-            href={localizePath(item.path, locale)}
-            aria-current={isCurrentPage ? 'page' : inSection ? 'true' : undefined}
-            class:list={[
-              'block rounded-full px-4 py-2 text-[0.95em] no-underline',
-              isCurrentPage && 'nav-link-current',
-              inSection && 'nav-link-section',
-              !isCurrentPage && !inSection && 'text-muted hover:text-ink',
-            ]}
-          >
-            {item.label}
-          </a>
+        <li class="nav-item">
+          <span class="flex items-center">
+            <a
+              href={localizePath(item.path, locale)}
+              aria-current={isCurrentPage ? 'page' : inSection ? 'true' : undefined}
+              class:list={[
+                'block rounded-full px-4 py-2 text-[0.95em] no-underline',
+                isCurrentPage && 'nav-link-current',
+                inSection && 'nav-link-section',
+                !isCurrentPage && !inSection && 'text-muted hover:text-ink',
+              ]}
+            >
+              {item.label}
+            </a>
+
+            {hasMenu && !expanded && (
+              <button
+                type="button"
+                class="nav-submenu-toggle"
+                aria-expanded="false"
+                aria-controls={menuId}
+                aria-label={tr('nav.submenuLabel').replace('{section}', item.label)}
+                data-nav-submenu-toggle
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            )}
+          </span>
+
+          {hasMenu && (
+            <ul
+              id={menuId}
+              class:list={['nav-submenu', !expanded && 'hidden']}
+              data-nav-submenu={expanded ? undefined : ''}
+            >
+              {children.map((child) => (
+                <li>
+                  <a
+                    href={localizePath(child.path, locale)}
+                    aria-current={here === child.path ? 'page' : undefined}
+                    class:list={['nav-submenu-link', here === child.path && 'nav-link-current']}
+                  >
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       );
     })

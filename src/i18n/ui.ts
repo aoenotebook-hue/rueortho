@@ -19,6 +19,7 @@ const ui = {
     'nav.apps': 'แอปดูแลตัวเอง',
     'nav.about': 'เกี่ยวกับเว็บไซต์',
     'nav.menu': 'เมนู',
+    'nav.submenuLabel': 'แสดงหัวข้อย่อยของ {section}',
     'nav.close': 'ปิด',
 
     'a11y.skipToContent': 'ข้ามไปยังเนื้อหาหลัก',
@@ -61,7 +62,7 @@ const ui = {
     'article.whenToSeeDoctor': 'เมื่อไหร่ควรไปพบแพทย์',
     'article.redFlagsTitle': 'ต้องไปโรงพยาบาลทันที',
     'article.redFlagsUrgent':
-      'อาการต่อไปนี้เป็นภาวะเร่งด่วน หากมีข้อใดข้อหนึ่ง ให้ไปห้องฉุกเฉินทันที หรือโทร 1669 ไม่ต้องรอนัด',
+      'อาการต่อไปนี้เป็นภาวะเร่งด่วน หากมีข้อใดข้อหนึ่ง ให้ไปห้องฉุกเฉินทันที ไม่ต้องรอนัด — และโทร 1669 เมื่ออาการหนักจนเดินทางเองไม่ไหว หรือเมื่อข้อนั้นระบุให้โทร',
     'article.seeSoonTitle': 'ควรนัดพบแพทย์ แต่ไม่ใช่ภาวะฉุกเฉิน',
     'article.seeSoonBody':
       'อาการต่อไปนี้ยังไม่ใช่เรื่องด่วน แต่ควรนัดพบแพทย์เพื่อตรวจหาสาเหตุ ไม่ควรปล่อยไว้',
@@ -177,7 +178,8 @@ const ui = {
     'triage.redLabel': 'ควรพบแพทย์ทันที',
     'triage.redBody':
       'บาดเจ็บรุนแรง ลงน้ำหนักไม่ได้ ข้อบวมแดงร้อนร่วมกับมีไข้ ชาหรืออ่อนแรงเฉียบพลัน หรือควบคุมการขับถ่ายไม่ได้',
-    'triage.emergency': 'กรณีฉุกเฉิน โทร 1669 หรือไปห้องฉุกเฉินที่ใกล้ที่สุด',
+    'triage.emergency':
+      'หากเป็นเหตุฉุกเฉินที่อาจเป็นอันตรายถึงชีวิต โทร 1669 หรือไปห้องฉุกเฉินที่ใกล้ที่สุดทันที',
 
     'tools.appsTitle': 'แอปดูแลตัวเอง',
     'tools.appsIntro':
@@ -204,7 +206,7 @@ const ui = {
     'footer.privacy': 'นโยบายความเป็นส่วนตัว',
     'footer.editorial': 'นโยบายด้านเนื้อหา',
     'footer.contact': 'ติดต่อ',
-    'footer.emergency': 'กรณีฉุกเฉิน โทร 1669',
+    'footer.emergency': 'เหตุฉุกเฉินถึงชีวิต โทร 1669',
     'footer.lastBuilt': 'ปรับปรุงเว็บไซต์เมื่อ',
     'footer.rights': 'สงวนลิขสิทธิ์',
 
@@ -224,6 +226,7 @@ const ui = {
     'nav.apps': 'Self-care apps',
     'nav.about': 'About',
     'nav.menu': 'Menu',
+    'nav.submenuLabel': 'Show the topics under {section}',
     'nav.close': 'Close',
 
     'a11y.skipToContent': 'Skip to content',
@@ -263,7 +266,7 @@ const ui = {
     'article.whenToSeeDoctor': 'When to see a doctor',
     'article.redFlagsTitle': 'Go to hospital now',
     'article.redFlagsUrgent':
-      'These are emergencies. If any one of them applies, go to an emergency department now or call 1669 — do not wait for an appointment.',
+      'These need to be seen now. If any one of them applies, go to an emergency department straight away — do not wait for an appointment. Call 1669 if you are too unwell to travel, or if the line itself says to.',
     'article.seeSoonTitle': 'Book an appointment, but not an emergency',
     'article.seeSoonBody':
       'These are not urgent, but they are worth a doctor looking into rather than leaving alone.',
@@ -373,7 +376,8 @@ const ui = {
     'triage.redLabel': 'See a doctor straight away',
     'triage.redBody':
       'A serious injury, being unable to bear weight, a joint that is swollen, red and hot with a fever, sudden numbness or weakness, or loss of bladder or bowel control.',
-    'triage.emergency': 'In an emergency call 1669 or go to the nearest emergency department.',
+    'triage.emergency':
+      'In a life-threatening emergency, call 1669 or go straight to the nearest emergency department.',
 
     'tools.appsTitle': 'Self-care apps',
     'tools.appsIntro':
@@ -400,7 +404,7 @@ const ui = {
     'footer.privacy': 'Privacy notice',
     'footer.editorial': 'Editorial policy',
     'footer.contact': 'Contact',
-    'footer.emergency': 'Emergency in Thailand: call 1669',
+    'footer.emergency': 'Life-threatening emergency in Thailand: call 1669',
     'footer.lastBuilt': 'Site last built',
     'footer.rights': 'All rights reserved',
 

@@ -7,10 +7,20 @@
    cannot serve every width. Measured, not guessed — in both languages, with
    the mobile menu closed:
 
-     < 640px   124px  the top row wraps onto two lines, the menu is collapsed
-     ≥ 640px    76px  one row: the search label fits beside the wordmark
-     ≥ 768px   183px  the nav row appears, and the top row still wraps
-     ≥ 1024px  132px  the top row fits on one line again
+     Re-measured on 2026-09-17, when every section tab gained a drop-down
+     chevron and the nav row grew:
+
+                      Thai   English
+     < 640px          125px   122px  top row wraps, the menu is collapsed
+     ≥ 640px           77px    74px  one row: the search label fits
+     ≥ 768px          188px   177px  the nav row appears, on two lines
+     ≥ 1024px         188px   177px  same
+     ≥ 1120px         136px   177px  Thai fits on one nav row again
+
+     Hence 13rem from 1024px, and a Thai-only 10rem from 1120px — the measured
+     width at which the Thai row stops wrapping. One value per
+     breakpoint would otherwise have to cover 188px everywhere and leave 72px
+     of empty space above every Thai anchor target on a desktop.
 
    Each value below adds roughly 20px on top, so the heading an anchor lands on
    sits clear of the header rather than tight against it. Re-measure if the
@@ -37,7 +47,19 @@
 
 @media (min-width: 1024px) {
   :root {
-    --header-offset: 9.5rem;
+    --header-offset: 13rem;
+  }
+}
+
+/*
+ * Thai is the one case that fits on a single nav row again from 1280px, so it
+ * gets its own value rather than 72px of empty space above every anchor
+ * target. English keeps two rows at every desktop width — its section labels
+ * are longer — and keeps 13rem.
+ */
+@media (min-width: 1120px) {
+  html[lang='th'] {
+    --header-offset: 10rem;
   }
 }
 
@@ -181,19 +203,33 @@
     scroll-padding-top: var(--header-offset);
   }
 
+  /*
+   * Base size.
+   *
+   * 18px on a phone and 19px from tablet up, raised from 17/18 on 2026-09-17.
+   * Much of this site's audience is reading about arthritis and osteoporosis,
+   * so it skews older; the looped Thai face was chosen for the same reason.
+   *
+   * It is deliberately NOT set on `html`. A great deal of the layout is sized
+   * in `rem` — the body map's 36rem/44rem widths and its measured hotspot
+   * coordinates, `--header-offset`, the `/tools` grid minimum, the article
+   * hero's 20rem/34rem caps — and moving the root would scale all of it and
+   * undo measurements that were taken by hand. Headings therefore use `em`,
+   * so they track this size while the layout stays where it was measured.
+   */
   body {
     margin: 0;
     background: var(--ground);
     color: var(--ink);
     font-family: var(--font-latin);
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
   @media (min-width: 768px) {
     body {
-      font-size: 18px;
+      font-size: 19px;
     }
   }
 
@@ -245,14 +281,15 @@
     line-height: 1.5;
   }
 
+  /* `em`, so headings scale with the base size above — see the note there. */
   h1 {
-    font-size: 2rem;
+    font-size: 2em;
   }
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
   h3 {
-    font-size: 1.25rem;
+    font-size: 1.2em;
   }
 
   a {
@@ -295,6 +332,31 @@
 /* ==========================================================================
    Utilities used across layouts
    ========================================================================== */
+
+/*
+ * Picture and clip captions — the credit line under a figure, an exercise
+ * card's illustration and a video.
+ *
+ * Deliberately the smallest type on the page: a caption is there to be found
+ * when looked for, not to compete with the sentence it sits under. It is
+ * `em`, so it tracks the base size rather than freezing at the browser's 16px
+ * root the way `text-sm` did.
+ *
+ * It carries no extra opacity. `--muted` on `--surface` is already at the
+ * contrast floor, and the 80% these lines used to carry took them under it —
+ * so the dimming that made them "quiet" also made them fail WCAG 1.4.3.
+ * Smaller and muted is the whole effect; transparency is not part of it.
+ */
+.caption {
+  font-size: 0.75em;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* Thai needs more leading than Latin even at caption size. */
+html[lang='th'] .caption {
+  line-height: 1.7;
+}
 
 /*
  * Google Tag Manager's <noscript> frame.
@@ -620,4 +682,116 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
   box-shadow: inset 0 0 0 1px var(--border);
   color: var(--ink);
   font-weight: 500;
+}
+
+/* ==========================================================================
+   Navigation drop-downs
+
+   A disclosure per tab, not a hover menu — see the script in `Header.astro`
+   for why. The panel is positioned here rather than in a `style` attribute,
+   which our CSP refuses outright.
+   ========================================================================== */
+
+.nav-item {
+  position: relative;
+}
+
+/*
+ * The chevron is a control of its own, beside the tab's link rather than
+ * inside it, so the tab still navigates to the section index in one tap. It
+ * carries its own accessible name — the icon is `aria-hidden` and the label
+ * names the section, so a screen reader hears which menu is being opened.
+ */
+.nav-submenu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /*
+   * 30px wide rather than the site's usual 44px target, and it pulls back into
+   * the tab's own padding. Five chevrons at 44px widened the row enough to wrap
+   * the desktop nav onto a second line, which added 36px of sticky header on
+   * every page and put every in-page anchor under it. The button still fills
+   * the row's height, so the target is about 30x44 — comfortably past the
+   * 24x24 WCAG 2.5.8 asks for, and the tab beside it is full size.
+   */
+  min-width: 30px;
+  min-height: 44px;
+  margin-inline-start: -0.5rem;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.nav-submenu-toggle:hover {
+  color: var(--ink);
+}
+
+.nav-submenu-toggle svg {
+  transition: transform 150ms ease;
+}
+
+.nav-submenu-toggle[aria-expanded='true'] {
+  color: var(--ink);
+}
+
+.nav-submenu-toggle[aria-expanded='true'] svg {
+  transform: rotate(180deg);
+}
+
+/*
+ * Below md the menu is already a vertical list, so a drop-down is simply an
+ * indented continuation of it — nothing is positioned and nothing can be
+ * pushed off the side of a phone.
+ */
+.nav-submenu {
+  margin: 0.15rem 0 0.35rem;
+  padding: 0 0 0 1rem;
+  list-style: none;
+  border-inline-start: 2px solid var(--border);
+}
+
+.nav-submenu-link {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+.nav-submenu-link:hover {
+  background: var(--ground);
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  /*
+   * From md up the menu is a single row, so the panel floats under its tab.
+   * `max-height` with scrolling keeps the longest list — the six
+   * examinations — inside the viewport rather than running off the bottom.
+   */
+  .nav-submenu {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 100%;
+    z-index: 60;
+    min-width: 15rem;
+    max-width: min(22rem, calc(100vw - 2rem));
+    max-height: min(24rem, calc(100vh - var(--header-offset)));
+    overflow-y: auto;
+    margin: 0.25rem 0 0;
+    padding: 0.35rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: var(--shadow-header);
+  }
+
+  /* A panel near the end of the row opens towards the middle of the page. */
+  .nav-item:nth-last-child(-n + 2) .nav-submenu {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+  }
 }

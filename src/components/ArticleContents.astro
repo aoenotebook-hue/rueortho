@@ -38,10 +38,24 @@ for (const heading of headings) {
   }
 }
 
-const items = sections.flatMap(({ heading, children }) => [
-  heading,
-  ...(children.length >= 2 ? children : []),
-]).filter((heading) => heading.slug);
+/**
+ * The same numbering the page itself shows.
+ *
+ * `Prose` numbers the body with CSS counters — `1.`, `1.1`, `2.` — and the
+ * two have to agree, or the list sends a reader looking for "3." at a heading
+ * called something else. They are computed from one list of headings here and
+ * incremented on the same rule there: every h2 counts, and every h3 counts
+ * within its h2, whether or not this list ends up showing it.
+ */
+const items = sections.flatMap(({ heading, children }, sectionIndex) => [
+  { heading, number: `${sectionIndex + 1}.` },
+  ...(children.length >= 2
+    ? children.map((child, childIndex) => ({
+        heading: child,
+        number: `${sectionIndex + 1}.${childIndex + 1}`,
+      }))
+    : []),
+]).filter((item) => item.heading.slug);
 
 /**
  * A contents list shorter than three entries is a list of the two things
@@ -72,16 +86,17 @@ const worthShowing = items.length >= 3;
         {/* Two columns from md up: a long outline should not push the article
             it belongs to off the screen. */}
         <ol class="m-0 list-none p-0 text-[0.95em] md:columns-2 md:gap-8">
-          {items.map((heading) => (
+          {items.map(({ heading, number }) => (
             <li class:list={['break-inside-avoid', heading.depth === 3 && 'ps-4']}>
               <a
                 href={`#${heading.slug}`}
                 class:list={[
-                  'block py-1.5 no-underline hover:underline',
+                  'flex gap-2 py-1.5 no-underline hover:underline',
                   heading.depth === 3 ? 'text-muted' : 'text-ink',
                 ]}
               >
-                {heading.text}
+                <span class="shrink-0 tabular-nums text-accent">{number}</span>
+                <span class="min-w-0">{heading.text}</span>
               </a>
             </li>
           ))}

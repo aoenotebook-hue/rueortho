@@ -221,7 +221,7 @@ from screen readers; the list itself carries the meaning.
   imageAlt="ผู้ป่วยนั่งบนเก้าอี้และเหยียดเข่าข้างหนึ่งให้ตรง"
   imageWidth={765}
   imageHeight={1024}
-  imageAttribution="ภาพประกอบโดย รศ. นพ. สรวุฒิ ธรรมยงค์กิจ"
+  imageAttribution="ภาพ: รศ. นพ. สรวุฒิ ธรรมยงค์กิจ"
 >
 นั่งหลังตรงบนเก้าอี้ เหยียดเข่าข้างหนึ่งขึ้นจนตรง ค้างไว้ แล้วค่อย ๆ ลดลง หากปวดมากขึ้นให้หยุด
 </ExerciseCard>
@@ -232,8 +232,8 @@ it. Describe what is in the frame and nothing else: if the picture shows the
 starting position rather than the movement, say so, and if it shows a different
 movement from the one the card teaches, do not use it at all. `imageAttribution`
 renders under the picture the way a `<Figure>` caption does, and carries the
-same line: `ภาพประกอบโดย รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` /
-`Illustration by Assoc. Prof. Sorawut Thamyongkit, M.D.`
+same line: `ภาพ: รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` /
+`Illustration: Assoc. Prof. Sorawut Thamyongkit, M.D.`
 
 `imageWidth` and `imageHeight` are the file's own pixel size, and a picture
 given as a path needs both. An imported image carries its dimensions and

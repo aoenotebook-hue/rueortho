@@ -1,9 +1,27 @@
 ---
 /** Typographic styles for rendered MDX. Slotted content is not scoped, so the
     rules below are global but namespaced under .prose. */
+
+interface Props {
+  /**
+   * Number the body's sections — `1.`, `1.1`, `1.2`, `2.` …
+   *
+   * On by default, and turned off for the legal and info pages, where the
+   * sections are independent statements rather than steps a reader works
+   * through in order.
+   *
+   * The numbers come from CSS counters rather than from the MDX, so no author
+   * has to renumber anything when a section moves, and both languages are
+   * numbered from the same source. `ArticleContents` computes the identical
+   * numbering from `render()`'s headings, so the list and the page agree.
+   */
+  numbered?: boolean;
+}
+
+const { numbered = true } = Astro.props;
 ---
 
-<div class="prose">
+<div class:list={['prose', numbered && 'prose-numbered']}>
   <slot />
 </div>
 
@@ -23,17 +41,73 @@
      a third of the way down the viewport, which reads as the wrong heading.
      One offset, in one place — see "Anchor offset" in CLAUDE.md.
   */
+  /*
+     Sizes are `em`, not `rem`. The base size lives on `body` in px and `rem`
+     is the browser's 16px root, so rem headings did not scale with it: at the
+     desktop 19px body an h2 of 1.5rem was 24px — 1.26x the paragraph around
+     it, which does not read as a new section at a glance.
+  */
   .prose h2 {
-    margin-top: 2.2em;
-    margin-bottom: 0.6em;
-    padding-top: 0.3em;
-    font-size: 1.5rem;
+    margin-top: 2.6em;
+    margin-bottom: 0.7em;
+    padding-top: 1.1em;
+    border-top: 1px solid var(--border);
+    font-size: 1.5em;
   }
 
   .prose h3 {
-    margin-top: 1.8em;
+    margin-top: 2em;
     margin-bottom: 0.5em;
-    font-size: 1.25rem;
+    font-size: 1.2em;
+  }
+
+  /* ---------------------------------------------------------------------
+     Numbered sections.
+
+     Two levels, so a reader always knows which part of the article they are
+     in and in what order the parts run. The section counter resets per
+     article and the subsection counter per section, so moving a section
+     renumbers everything below it with no edit to any MDX file.
+     --------------------------------------------------------------------- */
+  /*
+     The child combinator is load-bearing. A markdown heading is a direct child
+     of this div; a component's heading is not — `KeyFacts` renders an <h2>
+     inside an <aside> and `ExerciseCard` an <h3> inside an <article>. As
+     descendants they were counted too, so "สรุปสั้น ๆ" took number 1 and every
+     real section was one out from the contents list beside it, and every
+     exercise card claimed a subsection number of its own.
+  */
+  .prose-numbered {
+    counter-reset: prose-section;
+  }
+
+  .prose-numbered > h2 {
+    counter-reset: prose-subsection;
+  }
+
+  .prose-numbered > h2::before,
+  .prose-numbered > h3::before {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  .prose-numbered > h2::before {
+    counter-increment: prose-section;
+    content: counter(prose-section) '.';
+    margin-inline-end: 0.5em;
+  }
+
+  .prose-numbered > h3::before {
+    counter-increment: prose-subsection;
+    content: counter(prose-section) '.' counter(prose-subsection);
+    margin-inline-end: 0.5em;
+  }
+
+  /* An h3 is a step inside its section, so it is also indented from it. */
+  .prose-numbered > h3 {
+    padding-inline-start: 0.9em;
+    border-inline-start: 3px solid var(--border);
   }
 
   .prose p,
@@ -86,13 +160,39 @@
     color: var(--muted);
   }
 
+  /* ---------------------------------------------------------------------
+     Figures.
+
+     Two things make a picture read as belonging to the words above it: it
+     sits closer to them than to whatever comes next, and it does not fill
+     the column so completely that it becomes the page rather than an
+     illustration of it.
+
+     The spacing is asymmetric on purpose. A figure closes the section it
+     illustrates, so it hugs the paragraph above and leaves a clear gap
+     before the next heading — which now also carries a rule of its own.
+
+     The cap is 34rem, the same width the article hero uses for a 4:3 scene.
+     At 68ch the column runs to about 680px on a desktop, and a 1024px-wide
+     illustration printed at that size dominates every sentence around it.
+     Below ~544px the column is narrower than the cap and nothing changes.
+     --------------------------------------------------------------------- */
   .prose figure {
     margin-inline: 0;
+    margin-top: 1.25em;
+    margin-bottom: 2.5em;
   }
 
+  .prose figure img {
+    max-width: min(34rem, 100%);
+  }
+
+  /* `.caption` in global.css carries the size; this only sets the spacing,
+     so a figcaption written straight into markdown matches the components. */
   .prose figcaption {
     margin-top: 0.6em;
-    font-size: 0.875rem;
+    font-size: 0.75em;
+    line-height: 1.5;
     color: var(--muted);
   }
 
