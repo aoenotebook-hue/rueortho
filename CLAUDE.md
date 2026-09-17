@@ -1116,10 +1116,65 @@ plus for four of them a second procedure scene left over from an earlier upload.
 - Captions are again `alt` + `attribution` and nothing else, for the reason
   the condition set gives.
 
-**`public/images/exercises/` is still unplaced** — 35 exercise pictures from an
-earlier upload that no article references. They belong to the rehabilitation
-and treatment articles and are a separate job. Two of them carry the same
-`.webp.jpg` double extension the condition set had.
+### The exercise illustration set
+
+The 36 pictures in `public/images/exercises/`, unreferenced since an earlier
+upload, went onto the `<ExerciseCard>`s of the condition articles on
+2026-09-17 — **42 cards in each language, 34 distinct pictures**. They did not
+go to the rehabilitation or treatment articles, which an earlier note here
+guessed at: those articles carry no `<ExerciseCard>` at all, and the card
+titles in the condition articles map onto the filenames almost one to one.
+
+- **A picture may serve two articles**, because two articles prescribe the same
+  exercise — `calf-stretch-wall` on achilles-tendinopathy and plantar-fasciitis,
+  `prone-on-elbows` on herniated-disc and sciatica, `hand-tendon-glide` on
+  carpal-tunnel-syndrome and trigger-finger, `bridge` on back-pain and sciatica,
+  `quadriceps-setting` on three knee articles.
+- **Cards are addressed by index, not by title.** The Thai and English files
+  carry the same exercises in the same order under different names, so the
+  placement script matched on position within the file. Reordering the cards in
+  one language without the other would silently pair a picture with the wrong
+  exercise — as would inserting a card into one file only.
+- **`<ExerciseCard>` gained an `imageAttribution` prop**, rendering under the
+  picture exactly as a `<Figure>` figcaption does, and carrying the same line
+  the condition and examination sets use. The app-derived cards in
+  frozen-shoulder, osteoporosis and rotator-cuff-tear predate it and keep their
+  credit as a line of body text, because that wording is still the author's to
+  confirm.
+- **A picture given as a path needs `imageWidth`/`imageHeight`**, and the cards
+  carry the files' own 765x1024. An import carries its dimensions and `<Image>`
+  writes them out; a string path does not, so the browser lays the card out with
+  a zero-height box and reflows when the lazy file arrives. Measured at 390px by
+  stripping the two attributes back out at runtime: the article grew 413px per
+  picture as they landed — up to **1,650px on ankle-sprain**, four pictures, out
+  of an 11,784px page. With the attributes the page height changes by at most
+  1px across all 28 article pages at 390px and 1280px.
+- **`lint:content` now checks an `<ExerciseCard image="/…">` against `public/`**,
+  the same rule it already ran on `<Figure>` and `<Video>`. The component throws
+  when an image has no `imageAlt` but cannot tell whether the file is there, and
+  a string path goes straight to `<img>` — so a typo would render a broken
+  picture on a published page rather than fail the build. Tested by breaking a
+  path and watching it fail.
+- **Every file was a JPEG named `.webp`**, the fourth batch in a row; renamed to
+  `.jpg`, bytes untouched. Two had a `.webp.jpg` double extension.
+  `knee-oa-cartilage-loss.webp` was deleted as a byte-identical duplicate of
+  the copy in `public/images/figures/`, and was never an exercise picture.
+
+**`straight-leg-raise.jpg` is deliberately unplaced and must stay that way until
+the author rules on it.** The picture shows the raised leg with the knee bent to
+about a right angle, and all three cards it would have gone on — knee-pain,
+meniscus-tear, meniscus-root-tear — say in their own "watch for" line that the
+knee must stay straight throughout. Placing it would contradict the instruction
+printed beside it, which is a medical change made by picture rather than by
+text, and those are the author's. It is the only file in the folder with no
+referrer.
+
+Two more were placed but are flagged for him: `ankle-alphabet.jpg` has the
+letters **"ABC"** drawn into it — the first picture on the site with text in it,
+so the Thai page shows English letters — and `double-leg-heel-raise.jpg` and
+`heel-raise-towel-toes.jpg` show the **starting position**, feet flat, rather
+than the heels raised. The alt text on those two says "starting position"
+rather than describing a movement that is not in the frame.
 
 ### The author's earlier illustrations
 

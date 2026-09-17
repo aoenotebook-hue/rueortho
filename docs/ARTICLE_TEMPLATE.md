@@ -219,14 +219,33 @@ from screen readers; the list itself carries the meaning.
   hold="ค้างไว้ 5 วินาที"
   image="/images/exercises/seated-knee-extension.jpg"
   imageAlt="ผู้ป่วยนั่งบนเก้าอี้และเหยียดเข่าข้างหนึ่งให้ตรง"
+  imageWidth={765}
+  imageHeight={1024}
+  imageAttribution="ภาพประกอบโดย รศ. นพ. สรวุฒิ ธรรมยงค์กิจ"
 >
 นั่งหลังตรงบนเก้าอี้ เหยียดเข่าข้างหนึ่งขึ้นจนตรง ค้างไว้ แล้วค่อย ๆ ลดลง หากปวดมากขึ้นให้หยุด
 </ExerciseCard>
 ```
 
-`imageAlt` is required whenever `image` is set. A `youtube="<video id>"` prop is
-also available: it renders a click-to-load facade, so nothing loads from Google
-until the reader presses play. Add `poster="…"` for the still image.
+`imageAlt` is required whenever `image` is set — the component throws without
+it. Describe what is in the frame and nothing else: if the picture shows the
+starting position rather than the movement, say so, and if it shows a different
+movement from the one the card teaches, do not use it at all. `imageAttribution`
+renders under the picture the way a `<Figure>` caption does, and carries the
+same line: `ภาพประกอบโดย รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` /
+`Illustration by Assoc. Prof. Sorawut Thamyongkit, M.D.`
+
+`imageWidth` and `imageHeight` are the file's own pixel size, and a picture
+given as a path needs both. An imported image carries its dimensions and
+`<Image>` writes them out; a path does not, so without them the browser lays the
+card out with a zero-height box and reflows the rest of the article when the
+file arrives — most of a screen, on a phone, for a tall picture.
+
+`npm run lint:content` fails on an `image="/…"` whose file is not in `public/`.
+
+A `youtube="<video id>"` prop is also available: it renders a click-to-load
+facade, so nothing loads from Google until the reader presses play. Add
+`poster="…"` for the still image.
 
 Keep day-by-day rehab programmes in the companion apps and link to them — the
 article is for someone who does not yet know what is wrong.

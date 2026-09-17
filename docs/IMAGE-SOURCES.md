@@ -111,6 +111,50 @@ were byte-identical (SHA-256) to a file now inside the matching subfolder.
 **Every file was a JPEG named `.webp`** and was renamed to `.jpg`; the bytes are
 untouched.
 
+## The 2026-09-17 exercise illustration set
+
+36 exercise pictures had been sitting unreferenced in `public/images/exercises/`
+since an earlier upload. They are the author's own, on the same terms as the two
+sets above, and they are placed on the `<ExerciseCard>`s of the condition
+articles — 42 cards in each language, 34 distinct pictures, several of which
+serve two articles because the two articles prescribe the same exercise
+(`calf-stretch-wall` on achilles-tendinopathy and plantar-fasciitis,
+`prone-on-elbows` on herniated-disc and sciatica, `hand-tendon-glide` on
+carpal-tunnel-syndrome and trigger-finger, and so on).
+
+**Every file was a JPEG whatever its extension claimed** — the fourth batch in a
+row — and all 36 were renamed to `.jpg` with the bytes untouched. Two carried a
+`.webp.jpg` double extension. These live in `public/`, so nothing re-encodes
+them and the served `Content-Type` came straight off the extension; before the
+rename every one of them was served as `image/webp` and was not one.
+
+`knee-oa-cartilage-loss.webp` was deleted as a byte-identical (SHA-256)
+duplicate of `public/images/figures/knee-oa-cartilage-loss.webp`, and was not an
+exercise picture at all.
+
+**`straight-leg-raise.jpg` is deliberately unplaced.** The picture shows the
+raised leg with the knee bent to about a right angle, and every card it would
+have gone on (knee-pain, meniscus-tear, meniscus-root-tear) says in its own
+"watch for" line that the knee must stay straight throughout. An illustration
+that contradicts the instruction beside it teaches the wrong movement, so the
+file stays in the folder until the author decides whether to redraw it or to
+retitle the exercise. It is the one file in the set with no referrer, and
+nothing on the site links to it.
+
+Two more are worth his eye, and both were placed:
+
+- `ankle-alphabet.jpg` carries the baked-in letters **"ABC"**. It is the first
+  picture on the site with text in it, so unlike everything else it is not
+  language-neutral: the Thai page shows English letters. The exercise is
+  usually taught with the alphabet, so it is not wrong — only not Thai.
+- `double-leg-heel-raise.jpg` and `heel-raise-towel-toes.jpg` show the
+  **starting position**, feet flat, rather than the heels raised. The alt text
+  says so rather than describing a movement that is not in the frame.
+
+Provenance is the author's own upload, and the same open question about an AI
+disclosure applies — nothing in the files claims it, so neither does the
+caption.
+
 ## App media imported from the author's own apps
 
 All 43 files below come from the four patient-care apps in `_sources/`, which
@@ -210,6 +254,19 @@ In the `<Figure>` caption, via the `attribution` and `license` props — not in 
 credits page. The reader should see where a figure came from without leaving the
 article. `npm run lint:content` warns on a `<Figure>` with no `attribution` and
 fails on one with no `alt`.
+
+`<ExerciseCard>` does the same through `imageAttribution`, which renders under
+the picture exactly as a figcaption does. The prop was added on 2026-09-17 with
+the exercise set; the app-derived cards in frozen-shoulder, osteoporosis and
+rotator-cuff-tear predate it and carry their credit as a line of body text
+instead, because that wording is still the author's to confirm and migrating it
+would have meant rewriting it.
+
+`lint:content` also fails on an `<ExerciseCard image="/…">` whose file is not in
+`public/`, the same check it already ran on `<Figure>` and `<Video>`. The
+component throws when an image has no `imageAlt`, but it cannot tell whether the
+file exists — a string path goes straight to `<img>`, so a typo would render a
+broken picture on a published page rather than fail the build.
 
 ## Open question
 
