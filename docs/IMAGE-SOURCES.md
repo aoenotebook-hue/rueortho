@@ -40,10 +40,49 @@ share one visual language, so prefer a single source for the whole set.
 | `src/assets/hero-shoulder-pain.png` | Supplied by the author (uploaded to the repo under `images/`) | Author's own | none needed (decorative illustration) | 2026-09-08 |
 | `src/assets/body-map.png` | Supplied by the author (uploaded to the repo under `images/`) | Author's own | none needed (decorative; the hotspot labels carry the meaning) | 2026-09-08 |
 | `src/assets/regions/*.png` (8: neck, shoulder, spine, hip, knee, elbow, hand-wrist, foot-ankle) | Supplied by the author (uploaded to the repo under `images/` as `icon_*.png`) | Author's own | none needed (decorative; the region label sits beside each one) | 2026-09-10 |
-| `src/assets/illustrations/*.png` (9: acl-injury, ankle-sprain, back-pain, carpal-tunnel-syndrome, knee-osteoarthritis, knee-pain, plantar-fasciitis, rotator-cuff-tear, shoulder-pain) | Supplied by the author (uploaded to the repo under `images/`) | Author's own | none needed; described to screen readers by each article's `heroImageAlt` | 2026-09-10 |
-| `src/assets/illustrations/*.jpg` (11: achilles-tendinopathy, frozen-shoulder, herniated-disc, meniscus-root-tear, meniscus-tear, neck-pain, osteoporosis, patellofemoral-pain, sciatica, tennis-elbow, trigger-finger) | Supplied by the author (committed straight to `src/assets/illustrations/`) | Author's own | none needed; described to screen readers by each article's `heroImageAlt` | 2026-09-10 |
+| ~~`src/assets/illustrations/*`~~ (20 condition heroes) | Supplied by the author | Author's own | — | 2026-09-10, **superseded 2026-09-17** |
+| `src/assets/conditions/<slug>/<slug>-hero.jpg` (22) | Supplied by the author (committed straight to `src/assets/conditions/`) | Author's own | none needed; described to screen readers by each article's `heroImageAlt` | 2026-09-17 |
+| `src/assets/conditions/<slug>/<slug>-anatomy.jpg` (21 — every condition but meniscus-tear) | Supplied by the author (as above) | Author's own | `ภาพประกอบโดย รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` / `Illustration by Assoc. Prof. Sorawut Thamyongkit, M.D.` in the figure caption | 2026-09-17 |
+| `src/assets/conditions/<slug>/<slug>-care.jpg` (22) | Supplied by the author (as above) | Author's own | as above | 2026-09-17 |
+| `src/assets/conditions/<slug>/<slug>-symptoms.jpg` (3: carpal-tunnel-syndrome, herniated-disc, meniscus-tear) | Supplied by the author (as above) | Author's own | as above | 2026-09-17 |
 | `src/assets/sections/rehabilitation.png` | Supplied by the author (uploaded to the repo under `images/` as `running.png`) | Author's own | none needed (decorative) | 2026-09-10 |
 
+
+## The 2026-09-17 condition illustration set
+
+On 2026-09-17 the author committed 68 illustrations straight into
+`src/assets/conditions/<slug>/`, three for most conditions: a **hero** scene, an
+**anatomy** diagram and a **care** scene, plus a spare symptom scene for three
+topics. They are the same 4:3, 1024x765 house style as the eleven heroes he
+added on 2026-09-10, and they are **his own**, committed by him to his own
+repository — the same basis on which every other `src/assets/` image here is
+recorded.
+
+Two things about them are worth writing down rather than discovering later.
+
+**They carry no metadata whatsoever.** `grep -a c2pa` finds no content
+credential in any of the 68, and sharp reports no EXIF, ICC, XMP or IPTC block
+either. That is *not* the situation that got five rotator-cuff files excluded
+from the app-media import: those were files of unknown origin sitting inside a
+third-party-ish source tree, where a missing credential was the only signal
+available. These came from the author directly. The already-published
+`illustrations/` heroes are in exactly the same position — 0 of 20 carry a
+credential — so this set is consistent with what the site already ships.
+
+**The AI question is therefore open, and deliberately not answered here.** The
+app-media captions say `ภาพประกอบสร้างด้วยปัญญาประดิษฐ์` because a Google C2PA
+credential proved it. Nothing proves it for these, so the caption does not claim
+it. If the author generated them the same way, the disclosure should be added —
+it is one search and replace over `src/content/conditions/`, since the
+attribution appears there as a literal string. That is his call to make, not
+one to guess at.
+
+**The captions carry attribution and nothing else.** `lint:content` warns on a
+`<Figure>` with no `attribution`, so each of the 92 new figures names the
+author. None of them carries a `caption`: a caption under an exercise picture
+reads as an instruction, and what a reader should actually do is the author's
+to write, not Claude's. The `alt` text describes only what is visibly in the
+frame.
 
 ## App media imported from the author's own apps
 
