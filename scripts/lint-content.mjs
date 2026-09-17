@@ -133,6 +133,21 @@ for (const article of articles) {
   }
 
   /*
+   * And for an <ExerciseCard image="/…"> — the same trap, for the same reason.
+   * The component throws at build time when an image has no `imageAlt`, but it
+   * cannot tell whether the file is there: a string path is handed straight to
+   * <img>, so a typo renders a broken picture on a published page rather than
+   * failing the build. The exercise pictures placed on 2026-09-17 are all of
+   * this kind. `image={…}` is an import and is checked by the build itself.
+   */
+  for (const tag of content.match(/<ExerciseCard[\s\S]*?>/g) ?? []) {
+    const src = tag.match(/\bimage="(\/[^"]+)"/)?.[1];
+    if (src && !existsSync(join('public', src))) {
+      errors.push(`${path}: <ExerciseCard image="${src}"> — no such file under public/.`);
+    }
+  }
+
+  /*
    * Every condition needs a "when to see a doctor" list. Examinations and
    * rehabilitation pages do not: an explainer on how a DXA scan works has no
    * urgent-symptom list to give, and demanding one would only invite an author

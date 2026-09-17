@@ -14,13 +14,48 @@ interface Props {
   hold?: string;
   image?: ImageMetadata | string;
   imageAlt?: string;
+  /**
+   * Where the picture came from, rendered under it exactly as `<Figure>` does.
+   *
+   * The site's rule is that an image may not be published unless its source can
+   * be stated truthfully, and an exercise picture is no different from a figure
+   * in that respect. The app-derived cards in frozen-shoulder, osteoporosis and
+   * rotator-cuff-tear predate this prop and carry their credit as a line of body
+   * text instead; that wording is the author's to confirm, so it was left alone
+   * rather than migrated.
+   */
+  imageAttribution?: string;
+  /**
+   * The picture's own pixel size, for a `image="/…"` path only.
+   *
+   * An import carries its dimensions and `<Image>` writes them out; a string
+   * path does not, so the browser lays the card out with a zero-height box and
+   * then reflows it when the file arrives. These pictures are lazy and tall —
+   * 765x1024 — so that reflow moved the rest of the article by the better part
+   * of a screen on a phone. Passing both sizes reserves the right box before
+   * the fetch.
+   */
+  imageWidth?: number;
+  imageHeight?: number;
   /** YouTube video id. Nothing from Google loads until the reader presses play. */
   youtube?: string;
   /** Still image shown in place of the video before it is loaded. */
   poster?: string;
 }
 
-const { title, reps, sets, hold, image, imageAlt, youtube, poster } = Astro.props;
+const {
+  title,
+  reps,
+  sets,
+  hold,
+  image,
+  imageAlt,
+  imageAttribution,
+  imageWidth,
+  imageHeight,
+  youtube,
+  poster,
+} = Astro.props;
 
 if (image && !imageAlt) {
   throw new Error(`<ExerciseCard title="${title}"> has an image but no imageAlt.`);
@@ -53,13 +88,24 @@ const playLabel = `${tr('media.play')} — ${title}`;
 
   {
     image && (
-      <div class="mt-4">
+      <figure class="mt-4 mb-0">
         {typeof image === 'string' ? (
-          <img src={image} alt={imageAlt} loading="lazy" decoding="async" class="rounded-[10px]" />
+          <img
+            src={image}
+            alt={imageAlt}
+            width={imageWidth}
+            height={imageHeight}
+            loading="lazy"
+            decoding="async"
+            class="rounded-[10px]"
+          />
         ) : (
           <Image src={image} alt={imageAlt!} widths={[400, 800]} loading="lazy" class="rounded-[10px]" />
         )}
-      </div>
+        {imageAttribution && (
+          <figcaption class="mt-2 text-sm text-muted opacity-80">{imageAttribution}</figcaption>
+        )}
+      </figure>
     )
   }
 
