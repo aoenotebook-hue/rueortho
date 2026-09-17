@@ -29,7 +29,11 @@ consult it when drafting or fact-checking content. Never copy an image out of
 - `npm run build` — **must pass before any commit**
 - `npm run preview` — serve the built site (needed to test search)
 - `npm run check` — `astro check`; keep it at 0 errors, 0 warnings, 0 hints
-  (`npm run lint` is an alias for the same thing)
+  (`npm run lint` is an alias for the same thing). It reads `scripts/*.mjs`
+  too — an unused import in one of those is a hint, and hints count.
+- `npm run lint:anchors` — every in-page anchor in `dist/` points at an id that
+  exists. Needs a build first; see "The anchor check" below for why it is a
+  script of ours rather than a lychee flag.
 
 `astro.config.mjs` sets `server.host: '0.0.0.0'`, `server.port: 3000` and
 `vite.server.allowedHosts: true`, so `npm run dev` and `npm run preview` listen
@@ -675,6 +679,40 @@ The toggle button stays visible without JavaScript even though it cannot do
 anything there. Hiding it would need the same CSS the CSP refuses, and the
 menu below it is already open in that case, so the cost is a button that does
 nothing on a page where nothing needs it.
+
+### The anchor check, and why CI was red
+
+CI failed on every push from 2026-09-17 02:51 onwards — **before any of that
+day's work**, on commits that only uploaded images. The failing step was
+"Check internal links", and all 38 of its errors were the same thing:
+
+```
+dist/conditions/frozen-shoulder#การฟื้นตัวและการฟื้นฟู | Cannot find fragment
+```
+
+**Every one was a false positive.** Those ids are in the HTML — `grep -o
+'id="[^"]*"'` on the built page lists them, and the links work in a browser.
+The cause is `--include-fragments` meeting Astro's directory-style output:
+`/conditions/frozen-shoulder` is a *directory* holding `index.html`, lychee
+resolves it happily for a link with no fragment — those never errored — but
+cannot read ids out of a directory, so it fails every anchored link on the
+site. 19 gallery links per locale, 38 in total, which is exactly the error
+count. On this site the flag cannot catch a real problem, only invent one.
+
+So `--include-fragments` is off, and `scripts/check-anchors.mjs` does the job
+instead. It resolves a target the way a browser does (`/a/b` → `dist/a/b/index.html`,
+else `dist/a/b.html`, else the path itself), strips the query string,
+percent-decodes the fragment — Thai heading ids arrive encoded — and looks for
+a matching `id` or `name`. 929 in-page links across 122 pages.
+
+**It was tested by breaking things, not by watching it pass**: a dead ASCII
+fragment, a fragment pointing at a page that does not exist, and a dead
+percent-encoded Thai fragment were each introduced into `dist/` in turn and
+each was caught, with exit code 1; the rebuilt site exits 0. A checker that has
+never failed is not known to work.
+
+lychee still runs, and still blocks: it checks that every internal link
+*resolves*, which it does correctly. External links stay `continue-on-error`.
 
 ### The listing filter
 
