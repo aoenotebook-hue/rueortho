@@ -304,10 +304,20 @@ urgent-symptom list to give and demanding one would invite filler.
 
 **All 62 articles were published on 2026-09-08**, after the author said he had
 read them — the forty condition files first, then the 22 examinations and
-rehabilitation files. No `SAMPLE` or `SEED` marker remains anywhere in
-`src/content/`, and every file is `draft: false` with `lastReviewed:
-2026-09-08`. The rule itself has not changed: anything new that Claude drafts
-gets a `SAMPLE` marker and `draft: true` until the author has read it.
+rehabilitation files. The four `basics` files followed on 2026-09-18, on his
+instruction rather than after a read-through (see "the section collections"),
+bringing the total to 66.
+
+No `SAMPLE` or `SEED` marker remains anywhere in `src/content/`, and every file
+is `draft: false`. `lastReviewed` is 2026-09-08 on the original 62 and
+2026-09-18 on the four basics files — the first review date on this site that is
+not 2026-09-08. The home page's "recently reviewed" strip is **unaffected**:
+`getRecentlyReviewed` reads `getConditions`, so it sorts over the 22 condition
+articles only, and those still all share one date. That strip only becomes
+meaningful when a *condition* is re-reviewed.
+
+The rule itself has not changed: anything new that Claude drafts gets a
+`SAMPLE` marker and `draft: true` until the author has read it.
 
 ### Articles
 
@@ -434,11 +444,21 @@ diagnose, and no urgent-symptom list of its own; and because putting "what is
 cartilage" in a list of diseases tells a reader it is one.
 
 Its first two articles are `bone-as-an-organ` and `bone-and-cartilage`, in both
-languages. **Both are `draft: true` and carry a `SAMPLE` marker**, per the
-standing rule: Claude drafted them, and they stay out of the build until the
-author has read them. `npm run lint:content` enforces that — publishing either
-with the marker still in place is an error, not a warning. Flipping them live
-is two edits per file once he has read them.
+languages, and **all four files are published**.
+
+**They are the second exception to the read-before-publish rule**, after the
+treatments section. They were drafted with a `SAMPLE` marker and `draft: true`
+as the rule requires, and the author asked for them to be published in his next
+instruction rather than after a read-through — so, like `/treatments`, they went
+live without him having confirmed he had read them. They follow the medical
+content rules (no doses, nothing that tells a reader what they have, nothing
+that tells a reader they do not need a doctor, uncertainty stated), and every
+reference came out of the PubMed tool. If he wants either held back, setting
+`draft: true` on the two files is the whole job.
+
+The rule itself is unchanged: anything new that Claude drafts still gets a
+`SAMPLE` marker and `draft: true`, and `lint:content` still fails the build if a
+marked file is published.
 
 **`treatments` is the third collection on `resourceSchema()`** — self-care,
 medicines by class, injections, surgery, and how to choose between them, five
@@ -454,11 +474,9 @@ new collection** — the SAMPLE marker, the sources rule and the media checks al
 stop applying. Miss `lib/nav.ts` and the tab appears with no drop-down.
 
 All 32 files in the three published resource collections are live. Production
-builds **123 pages** — 115 until the two hip articles and `/regions/hip` landed
-on 2026-09-11, then 121, and 123 once `/basics` got an index page in each
-language. The two basics articles are drafts, so they add no pages to a
-production build yet; `ResourceIndex` shows its in-preparation state for them,
-which is exactly what that two-state fallback is for.
+builds **127 pages** — 115 until the two hip articles and `/regions/hip` landed
+on 2026-09-11, then 121, then 123 once `/basics` got an index page in each
+language, and 127 when its two articles were published on 2026-09-18.
 
 **The treatments articles are the one exception to the read-before-publish
 rule.** The author asked for the section to be created *and published* in the
