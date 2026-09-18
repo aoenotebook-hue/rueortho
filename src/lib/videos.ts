@@ -137,7 +137,7 @@ export async function getVideos(locale: Locale): Promise<VideoRef[]> {
   for (const entry of await getConditions(locale)) {
     await add(entry, `${prefix}/conditions/${entry.data.slug}`);
   }
-  for (const collection of ['examinations', 'rehabilitation', 'treatments'] as const) {
+  for (const collection of ['basics', 'examinations', 'rehabilitation', 'treatments'] as const) {
     for (const entry of await getResources(collection, locale)) {
       await add(
         entry as CollectionEntry<'examinations'>,

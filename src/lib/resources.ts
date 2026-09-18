@@ -3,11 +3,11 @@ import type { Locale } from '../i18n/ui';
 import { draftsIncluded } from './conditions';
 
 /**
- * `examinations`, `rehabilitation` and `treatments` are shaped alike on purpose,
+ * `basics`, `examinations`, `rehabilitation` and `treatments` are shaped alike on purpose,
  * so one set of queries serves all three. Anything that needs the rehab-only `region` field
  * narrows the entry itself rather than getting a separate function here.
  */
-export type ResourceCollection = 'examinations' | 'rehabilitation' | 'treatments';
+export type ResourceCollection = 'basics' | 'examinations' | 'rehabilitation' | 'treatments';
 export type Resource = CollectionEntry<ResourceCollection>;
 
 /** Entry ids look like "th/knee-mri". */
@@ -84,7 +84,7 @@ export async function getResourcesForCondition(
   locale: Locale,
   conditionSlug: string,
 ): Promise<RelatedResourceGroup[]> {
-  const order: ResourceCollection[] = ['examinations', 'treatments', 'rehabilitation'];
+  const order: ResourceCollection[] = ['basics', 'examinations', 'treatments', 'rehabilitation'];
   const groups: RelatedResourceGroup[] = [];
 
   for (const collection of order) {

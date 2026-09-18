@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ResourceArticle from '../../../components/ResourceArticle.astro';
+import { getResources } from '../../../lib/resources';
+
+export async function getStaticPaths() {
+  const [entries, counterparts] = await Promise.all([
+    getResources('basics', 'en'),
+    getResources('basics', 'th'),
+  ]);
+  const translated = new Set(counterparts.map((entry) => entry.data.slug));
+
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: {
+      entry,
+      // The counterpart page is advertised only when this build really
+      // produced it: the file exists in the other language, it is not held
+      // back as a draft, and the author has not marked the translation as
+      // still pending. Anything else points `hreflang` at a 404.
+      hasAlternate: !entry.data.translationPending && translated.has(entry.data.slug),
+    },
+  }));
+}
+
+const locale = 'en' as const;
+const { entry, hasAlternate } = Astro.props;
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.summary}
+  ogType="article"
+  noindex={entry.data.draft}
+  hasAlternate={hasAlternate}
+>
+  <ResourceArticle locale={locale} entry={entry} collection="basics" />
+</BaseLayout>

@@ -7,20 +7,21 @@
    cannot serve every width. Measured, not guessed — in both languages, with
    the mobile menu closed:
 
-     Re-measured on 2026-09-17, when every section tab gained a drop-down
-     chevron and the nav row grew:
+     Re-measured on 2026-09-18, when the eighth section tab was added and the
+     nav row stopped fitting on one line at any desktop width:
 
                       Thai   English
      < 640px          125px   122px  top row wraps, the menu is collapsed
      ≥ 640px           77px    74px  one row: the search label fits
      ≥ 768px          188px   177px  the nav row appears, on two lines
-     ≥ 1024px         188px   177px  same
-     ≥ 1120px         136px   177px  Thai fits on one nav row again
+     ≥ 1024px         188px   177px  same, at every width tested to 1920px
 
-     Hence 13rem from 1024px, and a Thai-only 10rem from 1120px — the measured
-     width at which the Thai row stops wrapping. One value per
-     breakpoint would otherwise have to cover 188px everywhere and leave 72px
-     of empty space above every Thai anchor target on a desktop.
+     Hence a flat 13rem from 1024px. A Thai-only 10rem lived here from 1120px
+     for the one day on which seven tabs still fitted Thai onto a single row;
+     the eighth tab ended that, and the override is gone rather than left
+     behind matching nothing. The container has a max width, so a wider
+     viewport does not put the row back on one line — re-measure only if a tab
+     is removed or a label shortened.
 
    Each value below adds roughly 20px on top, so the heading an anchor lands on
    sits clear of the header rather than tight against it. Re-measure if the
@@ -51,17 +52,6 @@
   }
 }
 
-/*
- * Thai is the one case that fits on a single nav row again from 1280px, so it
- * gets its own value rather than 72px of empty space above every anchor
- * target. English keeps two rows at every desktop width — its section labels
- * are longer — and keeps 13rem.
- */
-@media (min-width: 1120px) {
-  html[lang='th'] {
-    --header-offset: 10rem;
-  }
-}
 
 /* ==========================================================================
    Palette. Light values on :root, dark swapped under prefers-color-scheme.

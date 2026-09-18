@@ -213,12 +213,13 @@ These are not style preferences — they are what makes the site safe to publish
 
 ```
 src/
+  content/basics/{th,en}/       how the body works — bone, cartilage, the tissues in a joint
   content/conditions/{th,en}/   article MDX, one file per condition per language
   content/examinations/{th,en}/ imaging and tests — x-ray, MRI, ultrasound, DXA, NCS
   content/rehabilitation/{th,en}/ phase-based rehab and exercise programmes
   content/treatments/{th,en}/   self-care, medicines by class, injections, surgery
   content/pages/{th,en}/        about, disclaimer, privacy, editorial policy, contact
-  content.config.ts             zod schema for all five collections
+  content.config.ts             zod schema for all six collections
   data/authors.ts               author records (no workplace, bio or photo — see decisions)
   data/regions.ts               body regions + browsing categories, display order
   data/apps.ts                  companion-app registry, linked from articles
@@ -226,7 +227,8 @@ src/
   i18n/ui.ts                    every visible string, th + en
   i18n/utils.ts                 locale from URL, path localisation, date formatting
   lib/conditions.ts             collection queries (by locale, region, recency)
-  lib/resources.ts              the same queries for examinations and rehabilitation
+  lib/resources.ts              the same queries for basics, examinations, treatments and rehabilitation
+  lib/nav.ts                    the main menu and each tab's drop-down, read from the collections
   lib/videos.ts                 the video index, read out of article bodies at build time
   assets/regions/               the author's drawing for each body-map region
   assets/conditions/<slug>/     everything drawn for one condition: hero, anatomy, care
@@ -424,17 +426,39 @@ and `/treatments` followed the same day.
   anchored links per locale, no dead anchors, each landing at the header offset
   with a caution inside the section it lands on.
 
+**`basics` is the fourth collection on `resourceSchema()`**, added on
+2026-09-18 — how the body works, rather than a disease, a test or a treatment.
+It exists as its own collection rather than as `conditions` entries because a
+basics page has **no body region** (which `conditions` requires), nothing to
+diagnose, and no urgent-symptom list of its own; and because putting "what is
+cartilage" in a list of diseases tells a reader it is one.
+
+Its first two articles are `bone-as-an-organ` and `bone-and-cartilage`, in both
+languages. **Both are `draft: true` and carry a `SAMPLE` marker**, per the
+standing rule: Claude drafted them, and they stay out of the build until the
+author has read them. `npm run lint:content` enforces that — publishing either
+with the marker still in place is an error, not a warning. Flipping them live
+is two edits per file once he has read them.
+
 **`treatments` is the third collection on `resourceSchema()`** — self-care,
 medicines by class, injections, surgery, and how to choose between them, five
-topics in each language. Adding a collection means touching five places:
-`content.config.ts`, the `ResourceCollection` union in `lib/resources.ts`, the
-collection lists in `lib/videos.ts` and `ArticlesIndex.astro`, and `COLLECTIONS`
-in `scripts/lint-content.mjs`. Miss the last one and the publication-safety
-checks silently skip the new collection.
+topics in each language. Adding a collection means touching nine places, and `basics`
+walked all of them on 2026-09-18: `content.config.ts` (define it and add it to
+the `collections` export), the `ResourceCollection` union and the display order
+in `lib/resources.ts`, the collection lists in `lib/videos.ts` and
+`ArticlesIndex.astro`, `COLLECTIONS` in `scripts/lint-content.mjs`,
+`COLLECTION_FOR` in `lib/nav.ts`, an entry in `data/sections.ts`, and four
+routes (`index.astro` and `[slug].astro` in each language). **Miss
+`scripts/lint-content.mjs` and the publication-safety checks silently skip the
+new collection** — the SAMPLE marker, the sources rule and the media checks all
+stop applying. Miss `lib/nav.ts` and the tab appears with no drop-down.
 
-All 32 files in the three resource collections are published. Production builds
-**121 pages** — 115 until the two hip articles, their English counterparts and
-`/regions/hip` in both languages landed on 2026-09-11.
+All 32 files in the three published resource collections are live. Production
+builds **123 pages** — 115 until the two hip articles and `/regions/hip` landed
+on 2026-09-11, then 121, and 123 once `/basics` got an index page in each
+language. The two basics articles are drafts, so they add no pages to a
+production build yet; `ResourceIndex` shows its in-preparation state for them,
+which is exactly what that two-state fallback is for.
 
 **The treatments articles are the one exception to the read-before-publish
 rule.** The author asked for the section to be created *and published* in the
@@ -683,9 +707,16 @@ load-bearing.
 Five chevrons at 44px widened the nav row enough to wrap it onto a second line
 at every desktop width, which added 36px of sticky header and put every in-page
 anchor under it. The button still fills the row's height, so the target is about
-30x44 — past the 24x24 of WCAG 2.5.8 — and the tab beside it is untouched. The
-nav row still wraps in English at every width and in Thai below 1120px, which is
-why `--header-offset` was re-measured; see the table in `global.css`.
+30x44 — past the 24x24 of WCAG 2.5.8 — and the tab beside it is untouched.
+
+**The nav row wraps onto two lines at every desktop width, in both languages,
+and `--header-offset` covers that.** Thai briefly fitted on one row from 1120px,
+and carried a `html[lang='th']` override of its own for one day; the eighth tab
+(`basics`, 2026-09-18) ended that, and the override was deleted rather than left
+matching nothing. Measured to 1920px: the container has a max width, so a wider
+viewport does not put the row back on one line. **Adding a ninth tab, or
+lengthening a label, means re-measuring the table in `global.css` again** —
+every in-page anchor on the site reads that one number.
 
 The disclosure is a disclosure, not a modal: no focus trap, no inert page, and
 links inside it navigate normally. `aria-expanded` and the nav's `hidden` class
