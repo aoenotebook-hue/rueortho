@@ -24,6 +24,7 @@ export interface NavItem {
  * legal pages. `tools` is a single page and gets no drop-down at all.
  */
 const COLLECTION_FOR: Partial<Record<string, ResourceCollection>> = {
+  basics: 'basics',
   examinations: 'examinations',
   treatments: 'treatments',
   rehabilitation: 'rehabilitation',

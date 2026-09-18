@@ -57,6 +57,17 @@ export const sections: Section[] = [
     status: 'live',
   },
   {
+    id: 'basics',
+    path: '/basics',
+    nav: { th: 'รู้จักร่างกาย', en: 'How the body works' },
+    title: { th: 'รู้จักร่างกายของคุณ', en: 'How your body works' },
+    intro: {
+      th: 'กระดูกและกระดูกอ่อนคืออะไร ทำงานอย่างไร และทำไมการดูแลตั้งแต่ยังไม่ปวดจึงสำคัญ',
+      en: 'What bone and cartilage actually are, how they work, and why looking after them before anything hurts is the part that pays off.',
+    },
+    status: 'live',
+  },
+  {
     id: 'examinations',
     path: '/examinations',
     nav: { th: 'การตรวจ', en: 'Tests & imaging' },

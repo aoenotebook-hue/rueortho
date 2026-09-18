@@ -111,6 +111,18 @@ const examinations = defineCollection({
   schema: resourceSchema(),
 });
 
+/**
+ * How the body works — bone, cartilage and the tissues around a joint.
+ *
+ * Not a disease, a test or a treatment, which is why it is its own collection
+ * rather than a `conditions` entry: a basics page has no body region, no
+ * "when to see a doctor" list of its own, and nothing to diagnose.
+ */
+const basics = defineCollection({
+  loader: resourceLoader('./src/content/basics'),
+  schema: resourceSchema(),
+});
+
 /** Self-care, medicines by class, injections and surgery. */
 const treatments = defineCollection({
   loader: resourceLoader('./src/content/treatments'),
@@ -140,4 +152,4 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { conditions, examinations, rehabilitation, treatments, pages };
+export const collections = { basics, conditions, examinations, rehabilitation, treatments, pages };

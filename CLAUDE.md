@@ -213,12 +213,13 @@ These are not style preferences — they are what makes the site safe to publish
 
 ```
 src/
+  content/basics/{th,en}/       how the body works — bone, cartilage, the tissues in a joint
   content/conditions/{th,en}/   article MDX, one file per condition per language
   content/examinations/{th,en}/ imaging and tests — x-ray, MRI, ultrasound, DXA, NCS
   content/rehabilitation/{th,en}/ phase-based rehab and exercise programmes
   content/treatments/{th,en}/   self-care, medicines by class, injections, surgery
   content/pages/{th,en}/        about, disclaimer, privacy, editorial policy, contact
-  content.config.ts             zod schema for all five collections
+  content.config.ts             zod schema for all six collections
   data/authors.ts               author records (no workplace, bio or photo — see decisions)
   data/regions.ts               body regions + browsing categories, display order
   data/apps.ts                  companion-app registry, linked from articles
@@ -226,7 +227,8 @@ src/
   i18n/ui.ts                    every visible string, th + en
   i18n/utils.ts                 locale from URL, path localisation, date formatting
   lib/conditions.ts             collection queries (by locale, region, recency)
-  lib/resources.ts              the same queries for examinations and rehabilitation
+  lib/resources.ts              the same queries for basics, examinations, treatments and rehabilitation
+  lib/nav.ts                    the main menu and each tab's drop-down, read from the collections
   lib/videos.ts                 the video index, read out of article bodies at build time
   assets/regions/               the author's drawing for each body-map region
   assets/conditions/<slug>/     everything drawn for one condition: hero, anatomy, care
@@ -302,10 +304,20 @@ urgent-symptom list to give and demanding one would invite filler.
 
 **All 62 articles were published on 2026-09-08**, after the author said he had
 read them — the forty condition files first, then the 22 examinations and
-rehabilitation files. No `SAMPLE` or `SEED` marker remains anywhere in
-`src/content/`, and every file is `draft: false` with `lastReviewed:
-2026-09-08`. The rule itself has not changed: anything new that Claude drafts
-gets a `SAMPLE` marker and `draft: true` until the author has read it.
+rehabilitation files. The four `basics` files followed on 2026-09-18, on his
+instruction rather than after a read-through (see "the section collections"),
+bringing the total to 66.
+
+No `SAMPLE` or `SEED` marker remains anywhere in `src/content/`, and every file
+is `draft: false`. `lastReviewed` is 2026-09-08 on the original 62 and
+2026-09-18 on the four basics files — the first review date on this site that is
+not 2026-09-08. The home page's "recently reviewed" strip is **unaffected**:
+`getRecentlyReviewed` reads `getConditions`, so it sorts over the 22 condition
+articles only, and those still all share one date. That strip only becomes
+meaningful when a *condition* is re-reviewed.
+
+The rule itself has not changed: anything new that Claude drafts gets a
+`SAMPLE` marker and `draft: true` until the author has read it.
 
 ### Articles
 
@@ -424,17 +436,47 @@ and `/treatments` followed the same day.
   anchored links per locale, no dead anchors, each landing at the header offset
   with a caution inside the section it lands on.
 
+**`basics` is the fourth collection on `resourceSchema()`**, added on
+2026-09-18 — how the body works, rather than a disease, a test or a treatment.
+It exists as its own collection rather than as `conditions` entries because a
+basics page has **no body region** (which `conditions` requires), nothing to
+diagnose, and no urgent-symptom list of its own; and because putting "what is
+cartilage" in a list of diseases tells a reader it is one.
+
+Its first two articles are `bone-as-an-organ` and `bone-and-cartilage`, in both
+languages, and **all four files are published**.
+
+**They are the second exception to the read-before-publish rule**, after the
+treatments section. They were drafted with a `SAMPLE` marker and `draft: true`
+as the rule requires, and the author asked for them to be published in his next
+instruction rather than after a read-through — so, like `/treatments`, they went
+live without him having confirmed he had read them. They follow the medical
+content rules (no doses, nothing that tells a reader what they have, nothing
+that tells a reader they do not need a doctor, uncertainty stated), and every
+reference came out of the PubMed tool. If he wants either held back, setting
+`draft: true` on the two files is the whole job.
+
+The rule itself is unchanged: anything new that Claude drafts still gets a
+`SAMPLE` marker and `draft: true`, and `lint:content` still fails the build if a
+marked file is published.
+
 **`treatments` is the third collection on `resourceSchema()`** — self-care,
 medicines by class, injections, surgery, and how to choose between them, five
-topics in each language. Adding a collection means touching five places:
-`content.config.ts`, the `ResourceCollection` union in `lib/resources.ts`, the
-collection lists in `lib/videos.ts` and `ArticlesIndex.astro`, and `COLLECTIONS`
-in `scripts/lint-content.mjs`. Miss the last one and the publication-safety
-checks silently skip the new collection.
+topics in each language. Adding a collection means touching nine places, and `basics`
+walked all of them on 2026-09-18: `content.config.ts` (define it and add it to
+the `collections` export), the `ResourceCollection` union and the display order
+in `lib/resources.ts`, the collection lists in `lib/videos.ts` and
+`ArticlesIndex.astro`, `COLLECTIONS` in `scripts/lint-content.mjs`,
+`COLLECTION_FOR` in `lib/nav.ts`, an entry in `data/sections.ts`, and four
+routes (`index.astro` and `[slug].astro` in each language). **Miss
+`scripts/lint-content.mjs` and the publication-safety checks silently skip the
+new collection** — the SAMPLE marker, the sources rule and the media checks all
+stop applying. Miss `lib/nav.ts` and the tab appears with no drop-down.
 
-All 32 files in the three resource collections are published. Production builds
-**121 pages** — 115 until the two hip articles, their English counterparts and
-`/regions/hip` in both languages landed on 2026-09-11.
+All 32 files in the three published resource collections are live. Production
+builds **127 pages** — 115 until the two hip articles and `/regions/hip` landed
+on 2026-09-11, then 121, then 123 once `/basics` got an index page in each
+language, and 127 when its two articles were published on 2026-09-18.
 
 **The treatments articles are the one exception to the read-before-publish
 rule.** The author asked for the section to be created *and published* in the
@@ -683,9 +725,16 @@ load-bearing.
 Five chevrons at 44px widened the nav row enough to wrap it onto a second line
 at every desktop width, which added 36px of sticky header and put every in-page
 anchor under it. The button still fills the row's height, so the target is about
-30x44 — past the 24x24 of WCAG 2.5.8 — and the tab beside it is untouched. The
-nav row still wraps in English at every width and in Thai below 1120px, which is
-why `--header-offset` was re-measured; see the table in `global.css`.
+30x44 — past the 24x24 of WCAG 2.5.8 — and the tab beside it is untouched.
+
+**The nav row wraps onto two lines at every desktop width, in both languages,
+and `--header-offset` covers that.** Thai briefly fitted on one row from 1120px,
+and carried a `html[lang='th']` override of its own for one day; the eighth tab
+(`basics`, 2026-09-18) ended that, and the override was deleted rather than left
+matching nothing. Measured to 1920px: the container has a max width, so a wider
+viewport does not put the row back on one line. **Adding a ninth tab, or
+lengthening a label, means re-measuring the table in `global.css` again** —
+every in-page anchor on the site reads that one number.
 
 The disclosure is a disclosure, not a modal: no focus trap, no inert page, and
 links inside it navigate normally. `aria-expanded` and the nav's `hidden` class
