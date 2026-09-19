@@ -205,9 +205,40 @@ const navItems = await getNavItems(locale);
     return id ? document.getElementById(id) : null;
   };
 
+  /**
+   * Keep an open panel inside the viewport.
+   *
+   * The panel hangs from its tab's start edge, which is right until the tab is
+   * near the right-hand end of the row — then it has to open the other way. It
+   * cannot be decided from the tab's position in the DOM: the nav row wraps
+   * onto two lines at every desktop width, so the *last* tab is alone on row
+   * two at the far left, and the rule that used to right-align it hung the
+   * panel off the left edge of the screen.
+   *
+   * So it is measured. Below md the panel is an indented list in the flow and
+   * has nothing to overflow, which `position` reports.
+   */
+  const positionSubmenu = (menu: HTMLElement) => {
+    if (getComputedStyle(menu).position !== 'absolute') return;
+
+    const margin = 8;
+    menu.classList.remove('opens-inline-end');
+
+    if (menu.getBoundingClientRect().right > window.innerWidth - margin) {
+      menu.classList.add('opens-inline-end');
+      // If it does not fit that way either, go back: the start of every label
+      // being on screen beats the end of every label being on screen.
+      if (menu.getBoundingClientRect().left < margin) {
+        menu.classList.remove('opens-inline-end');
+      }
+    }
+  };
+
   const setSubmenu = (button: HTMLButtonElement, open: boolean) => {
     button.setAttribute('aria-expanded', String(open));
-    menuFor(button)?.classList.toggle('hidden', !open);
+    const menu = menuFor(button);
+    menu?.classList.toggle('hidden', !open);
+    if (menu && open) positionSubmenu(menu);
   };
 
   const closeAllSubmenus = (except?: HTMLButtonElement) => {
@@ -234,6 +265,15 @@ const navItems = await getNavItems(locale);
         return;
       }
       closeAllSubmenus();
+    });
+
+    // A window resized while a panel is open can move it off the edge.
+    addEventListener('resize', () => {
+      for (const button of submenuToggles) {
+        if (button.getAttribute('aria-expanded') !== 'true') continue;
+        const menu = menuFor(button);
+        if (menu) positionSubmenu(menu);
+      }
     });
 
     document.addEventListener('keydown', (event) => {

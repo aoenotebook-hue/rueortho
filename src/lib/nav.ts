@@ -59,15 +59,25 @@ export async function getNavItems(locale: Locale): Promise<NavItem[]> {
         label: entry.data.title,
       }));
     } else if (section.id === 'articles') {
-      // What `/articles` indexes. `conditions` is deliberately not a tab of its
-      // own — see `hiddenFromNav` — so this is the one place in the menu that
-      // still leads to the largest library on the site.
+      /*
+       * Only what is not already a tab of its own.
+       *
+       * This used to list conditions, examinations, treatments and
+       * rehabilitation — and the last three each have a tab two places to the
+       * left, with the same label and the same destination. Opening this menu
+       * therefore showed a reader three rows they had just walked past, which
+       * is what the author reported on 2026-09-19: the menu looked duplicated
+       * because it was.
+       *
+       * What is genuinely only reachable from here is `conditions`, which has
+       * no tab by the author's own decision (`hiddenFromNav`), and the video
+       * gallery, which is a section of the `/articles` page rather than a page
+       * of its own. Everything else the hub indexes is one click away on the
+       * row above.
+       */
       item.children = [
         { path: '/conditions', label: getSection('conditions').nav[locale] },
-        ...(['examinations', 'treatments', 'rehabilitation'] as const).map((id) => ({
-          path: getSection(id).path,
-          label: getSection(id).nav[locale],
-        })),
+        { path: '/articles#videos', label: tr('articles.videos') },
       ];
     } else if (section.id === 'about') {
       item.children = ABOUT_PAGES.map((page) => ({

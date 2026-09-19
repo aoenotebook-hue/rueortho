@@ -583,6 +583,16 @@ languages. Two more followed on 2026-09-19 — `fracture-healing` (how a broken
 bone mends) and `arthroscopic-surgery` (what the camera can and cannot do) —
 and **all eight files are published**.
 
+**All four are illustrated as of 2026-09-19.** The author committed twenty
+pictures to `public/images/basics/<slug>/`, to the filenames
+`docs/IMAGE-SOURCES.md` had asked for, and they are placed in both languages as
+forty `<Figure>`s — six, four, five and five. They are **the first upload on
+this project whose extension matched the file**: genuine JPEGs named `.jpg`,
+where the five batches before them all arrived as JPEG named `.webp` or `.png`.
+All twenty are 1024x765, so every figure carries `width` and `height`; without
+them a string path lays out with a zero-height box and reflows the article when
+the lazy file lands.
+
 **`arthroscopic-surgery` is in `basics` on the author's instruction**, and it
 earns the place: it explains how the operation works rather than whether to have
 it. The *decision* — when to consider surgery, what to ask, what happens if you
@@ -877,6 +887,14 @@ load-bearing.
   `articles` drop-down. It still has no tab of its own — `hiddenFromNav` is
   unchanged — so the author's decision stands while the largest library on the
   site stops being menu-invisible.
+- **The `articles` drop-down lists only what is not already a tab.** It used to
+  list conditions, examinations, treatments and rehabilitation, and the last
+  three each have a tab two places to the left with the same label and the same
+  destination — so opening the menu showed a reader three rows they had just
+  walked past. The author reported it on 2026-09-19. It now holds `conditions`
+  (no tab of its own, by his decision) and the video gallery at
+  `/articles#videos` (a section of that page rather than a page). Verified: zero
+  drop-down entries anywhere in the menu repeat a tab label.
 - **It opens on click, never on hover.** A hover menu cannot be tapped, and the
   tab itself stays an ordinary link to the section index, so nothing is
   reachable only by opening a menu. One open at a time; Escape closes and
@@ -899,6 +917,20 @@ load-bearing.
   invisible there (#f7f8f8 on a #ffffff panel). The panel went 15rem to 16rem
   to hold the longest label in two lines. Measured at 1280 and 1440px: six
   rows, 44px each except the two that wrap to 70px, no overflow either side.
+
+**A drop-down decides which way to open by measuring, never from its position
+in the DOM.** `positionSubmenu` in `Header.astro` adds `.opens-inline-end` when
+the panel would run off the right edge, and takes it off again if the flipped
+panel would run off the left — a **class**, not an inline style, because the CSP
+refuses those. This replaced `.nav-item:nth-last-child(-n + 2)`, which assumed
+the last two tabs sit at the right-hand end of the row. **The nav wraps onto two
+lines at every desktop width**, so the last tab is alone on row two at the far
+*left*, and right-aligning its panel hung the About menu 51px off the left of a
+1280px viewport with the first characters of every label cut off. Found on
+2026-09-19 while screenshotting the drop-down work, and it predates that work.
+Verified: 60 drop-down openings — six menus at 768, 1024, 1280, 1440 and 1920px
+in both languages — none crossing either edge. A resize while a panel is open
+re-runs it.
 
 **The chevron is 30px wide, not the site's usual 44px, and that was measured.**
 Five chevrons at 44px widened the nav row enough to wrap it onto a second line
@@ -1435,12 +1467,38 @@ a hero and a care picture; only meniscus-tear has no anatomy diagram.
   and the care scene closes `แนวทางการรักษา` / `Treatment options`. Both
   languages get the same picture in the same place, which works because **none
   of these images carries text**.
-- **Captions stay off, and that is now settled rather than pending.** `<Figure>`
-  takes `alt`, which describes what is in the frame, and `attribution`, which
-  `lint:content` warns without. It carries no `caption` on any of the 92
-  figures: a caption under a picture of an exercise reads as an instruction to
-  do it. This used to be recorded here as "the obvious next pass and it is his";
-  he ruled on 2026-09-19 that **no captions are to be added**. Do not add them.
+- **Captions are now ON, and that reverses the ruling recorded here.** He ruled
+  on 2026-09-19 that no captions were to be added; **later the same day he asked
+  for the opposite** — "instead of `Illustration: …`, make appropriate captions
+  for each image and video". Every one of the **284** `<Figure>` and `<Video>`
+  blocks on the site now carries a `caption`; 196 were written in that pass and
+  88 already had one.
+
+  **The reason the old ruling gave still governs how they are written.** A
+  caption under a picture of an exercise must not read as an instruction to do
+  it, so every caption describes the frame or says what to notice in it, and
+  none tells the reader to do anything. They also keep the medical content
+  rules: nothing that tells a reader what they have, nothing that rules
+  anything out ("a normal film does not mean nothing is wrong", not "a normal
+  film is reassuring").
+
+  **A caption is not a second copy of the `alt`.** `alt` describes the whole
+  frame for somebody who cannot see it; the caption says why the picture is
+  there. Duplicating one into the other makes a screen reader read the same
+  sentence twice.
+
+  **`attribution` was kept.** The instruction said "instead of", and the
+  visible line is now the caption with the credit under it in the same small
+  type — the credit is also what the editorial policy's copyright section
+  leans on, and `lint:content` warns on a figure without one. Dropping it
+  entirely is a search and replace over `src/content/` if that is what he
+  meant.
+
+  **`<ExerciseCard>` pictures were deliberately left alone.** The card already
+  carries a title, the repetitions, the instructions and a "watch for" line;
+  a caption would be a fifth block of text under a picture whose whole context
+  is the card around it, and it is exactly the exercise case the old ruling was
+  written about. The component has no `caption` prop, only `imageAttribution`.
 - **The AI disclosure was answered on 2026-09-19 and lives on the editorial
   policy page, not in the captions.** None of these files carries a C2PA
   credential or any metadata — same as the 20 heroes before them, and unlike the
