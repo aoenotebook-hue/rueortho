@@ -72,13 +72,13 @@ const worthShowing = items.length >= 3;
       data-pagefind-ignore
     >
       {/*
-        From 1360px up this same element becomes a sticky rail in the right
+        From 1400px up this same element becomes a sticky rail in the LEFT
         gutter — see `.article-contents` in global.css. It is styling only: the
         markup, the DOM order and the accessibility tree are identical at every
         width, so there is no second copy to drift and nothing a narrow screen
-        has to skip past. The rail's width is computed from the gutter the
-        reading column actually leaves, not from a fixed number, because that
-        column is 68ch and `ch` depends on which font loaded.
+        has to skip past. The rail is a fixed 14rem so it never reflows as the
+        window is dragged, with a gutter-derived `min()` behind it purely as a
+        guard against a font that makes the 68ch column unusually wide.
       */}
       {/*
         One element for both widths. It opens itself from md up — see the
