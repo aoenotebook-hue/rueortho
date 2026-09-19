@@ -1,0 +1,21 @@
+---
+/**
+ * Overrides the `th` element inside article MDX, purely to add `scope="col"`.
+ *
+ * A markdown table gives its header cells no scope, so an assistive technology
+ * has to guess which column a cell belongs to. On the osteoporosis medicines
+ * table that guess is the whole content: column three is "tell your doctor if",
+ * and a value read without its header is a warning with nothing attached to it.
+ * WCAG 2.2 AA asks for the association (1.3.1 Info and Relationships).
+ *
+ * `col` is right for every table on the site and will stay right, because
+ * markdown has no syntax for a row header: a `<th>` can only ever appear in the
+ * header row. If a hand-written table ever needs `scope="row"`, it cannot use
+ * this override.
+ *
+ * Done as an MDX component override for the same reason `Table.astro` is — see
+ * the note there about Astro 7's Markdown processor and rehype plugins.
+ */
+---
+
+<th scope="col"><slot /></th>

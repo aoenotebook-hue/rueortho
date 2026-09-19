@@ -400,6 +400,26 @@ html[lang='th'] .caption {
   top: 0;
 }
 
+/*
+   Breadcrumb links need a horizontal target as well as a vertical one.
+
+   `.tap-24` adds vertical padding only, and deliberately so: a link inside a
+   sentence is exempt from WCAG 2.5.8, and padding one horizontally makes
+   neighbouring lines' targets overlap. A breadcrumb link is not inside a
+   sentence, so it gets no exemption and has to reach 24px in **both**
+   directions — and three of them did not, because the label is a short Thai
+   word: เข่า measured 22px wide, คอ 18px, and "Hip" 23px.
+
+   The padding is cancelled by an equal negative margin, so every breadcrumb
+   sits exactly where it did and only the box the browser hit-tests grows. The
+   separator between them is an `aria-hidden` slash rather than a target, so
+   the two padded boxes have nothing to collide with.
+*/
+nav[aria-label] .tap-24 {
+  margin-inline: -0.35rem;
+  padding-inline: 0.35rem;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
