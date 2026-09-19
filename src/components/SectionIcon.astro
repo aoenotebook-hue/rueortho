@@ -1,0 +1,72 @@
+---
+import type { ResourceCollection } from '../lib/resources';
+
+interface Props {
+  collection: ResourceCollection;
+  size?: number;
+}
+
+const { collection, size = 40 } = Astro.props;
+
+/**
+ * One line glyph per resource collection, for the listing cards.
+ *
+ * `conditions` is not here: every condition carries a body region, so its card
+ * gets the author's own regional drawing through `RegionArt`, which falls back
+ * to `BodyIcon` for the three browsing categories that are not body parts.
+ * The four resource collections have no region and no artwork small enough to
+ * serve as an icon — their pictures are 1024x765 scenes in `public/`, which a
+ * 56px box would both waste and make unreadable — so they get a glyph.
+ *
+ * Drawn in `currentColor` on a 40x40 viewBox, exactly as `BodyIcon` is, so the
+ * two sit together on one page without looking like two icon sets and both
+ * follow the theme. Decorative: the card title beside it carries the meaning.
+ */
+const paths: Record<ResourceCollection, string> = {
+  // A long bone with its two flared ends — the same shape `BodyIcon` uses for
+  // bone-health, because the basics articles are about what bone is made of.
+  basics: `
+    <path d="M14 26L26 14"/>
+    <circle cx="11" cy="26" r="4"/>
+    <circle cx="14" cy="29" r="4"/>
+    <circle cx="29" cy="14" r="4"/>
+    <circle cx="26" cy="11" r="4"/>
+  `,
+  // A magnifier. Nothing inside the lens: at 34px an extra trace in there is
+  // noise, not detail.
+  examinations: `
+    <circle cx="18" cy="18" r="10"/>
+    <path d="M25 25l7 7"/>
+  `,
+  // A capsule, split across the middle. Drawn flat rather than at an angle for
+  // the same reason — a rotated capsule reads as a smudge at this size.
+  treatments: `
+    <rect x="7" y="14" width="26" height="12" rx="6"/>
+    <path d="M20 14v12"/>
+  `,
+  // A figure mid-stride, matching the runner on the rehabilitation index.
+  rehabilitation: `
+    <circle cx="25" cy="9" r="3"/>
+    <path d="M23 15l-4 6 4 4 1 8"/>
+    <path d="M23 15l6 3 2 6"/>
+    <path d="M19 21l-7 2"/>
+    <path d="M24 25l-7 8"/>
+  `,
+};
+
+const d = paths[collection] ?? '';
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 40 40"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+  set:html={d}
+/>

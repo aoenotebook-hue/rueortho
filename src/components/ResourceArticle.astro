@@ -167,12 +167,13 @@ const jsonLd = {
       related.length > 0 && (
         <section class="mt-12" data-pagefind-ignore>
           <h2>{tr('article.relatedConditions')}</h2>
-          <ul class="m-0 mt-5 grid list-none grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-4 p-0">
+          <ul class="m-0 mt-5 flex list-none flex-col gap-3 p-0">
             {related.map((item) => (
               <li>
                 <Card
                   href={localizePath(`/conditions/${item.data.slug}`, locale)}
                   title={item.data.title}
+                  region={item.data.region}
                   locale={locale}
                 />
               </li>

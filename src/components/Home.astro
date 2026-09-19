@@ -436,7 +436,7 @@ const trust = [
                         this card was written — the summaries ran to six lines
                         and every card in the row was a different height. */}
                     <span class="mt-1 line-clamp-2 text-[0.9em] text-muted">
-                      {entry.data.summary}
+                      {entry.data.cardSummary ?? entry.data.summary}
                     </span>
                   </span>
                 </a>
