@@ -19,7 +19,8 @@ the site — a reader is asked to imagine cells dissolving and rebuilding bone,
 fluid moving in and out of a joint surface, a cartilage bridge growing across a
 break, and a camera inside a knee. Nothing here is drawn yet; this is the list
 to draw from. `fracture-healing` and `arthroscopic-surgery` were added on
-2026-09-19 and are still `draft: true`.
+2026-09-19 and published the same day, after the author read them — so all
+four are live without a picture between them.
 
 **Where they go:** `public/images/basics/<slug>/<filename>`. `basics` shares
 `resourceSchema()` with examinations, treatments and rehabilitation, whose
