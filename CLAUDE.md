@@ -563,6 +563,27 @@ cartilage" in a list of diseases tells a reader it is one.
 Its first two articles are `bone-as-an-organ` and `bone-and-cartilage`, in both
 languages, and **all four files are published**.
 
+**Two more were drafted on 2026-09-19 and are `draft: true`**: `fracture-healing`
+(how a broken bone mends) and `arthroscopic-surgery` (what the camera can and
+cannot do). They carry a `SAMPLE` marker, so `lint:content` fails the build if
+anyone publishes them before the author has read them — which is the rule, and
+is what the previous two articles were an announced exception to rather than a
+precedent. Production still builds 127 pages because a draft has no page.
+
+**`arthroscopic-surgery` is in `basics` on the author's instruction**, and it
+earns the place: it explains how the operation works rather than whether to have
+it. The *decision* — when to consider surgery, what to ask, what happens if you
+wait — stays in `treatments/surgery`, and the two link to each other rather than
+repeating. Keep that split if either is edited.
+
+Both were render-tested by the documented procedure: publish temporarily, build,
+drive, then restore. **`git checkout --` cannot restore a new file**, because an
+untracked file has nothing to restore from — put the frontmatter back explicitly
+and check it, or you will commit a draft as published. The marker comment also
+contains the words `draft: true`, so a blind replace of that string hits it as
+well; do the comment first, then anchor the frontmatter replace to the closing
+`---`.
+
 **They are the second exception to the read-before-publish rule**, after the
 treatments section. They were drafted with a `SAMPLE` marker and `draft: true`
 as the rule requires, and the author asked for them to be published in his next
