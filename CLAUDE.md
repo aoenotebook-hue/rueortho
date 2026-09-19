@@ -127,6 +127,39 @@ reachable by anything on the network while it runs.
   the site contains one. `แพทย์บางท่าน` ("some doctors") is `ท่าน` as a polite
   classifier for other people, which is correct and stays. The safe filter is
   `grep -rn 'ท่าน' src/ | grep -v 'เท่านั้น' | grep -vE 'ท่านี้|ท่านั่ง|ท่านอน|บางท่าน'`.
+- **The Thai reads as Thai, not as translated English.** Reviewed across the
+  whole corpus on 2026-09-19 at the author's request. Three habits were swept
+  out and must not come back:
+  - **`ถูก` for a neutral passive.** Thai `ถูก` is adversative — it says
+    something was done *to* the subject, usually badly. "กระดูกถูกรื้อและสร้าง
+    ใหม่" therefore reads wrong for ordinary bone turnover. Name the agent and
+    use the active voice: `ร่างกายรื้อกระดูกเก่าและสร้างกระดูกใหม่`,
+    `เซลล์สองกลุ่ม…คอยดูแลกระดูก`, `ศัลยแพทย์จะเป็นผู้กำหนดโปรแกรมให้`.
+    **Most `ถูก` on the site are correct and must not be touched**: `ถูกกด`,
+    `ถูกกดทับ`, `ถูกกระแทก`, `ถูกใช้งานเกินกำลัง`, `ถูกมองข้าม`, and the
+    metaphor `บัญชีที่ถูกถอนเงิน` where the adversative sense is the point.
+    `ถูกต้อง` ("correct") is not a passive at all and a grep for `ถูก` finds it.
+  - **`มัน` for an inanimate thing.** Repeat the noun instead — `พังผืด`,
+    `หมอนรอง`, `กระดูกอ่อน`, `อัลตราซาวด์` — or drop the pronoun where it
+    carries nothing. English "it" has no comfortable Thai equivalent in this
+    register, and on a page a reader may have entered mid-article a bare `มัน`
+    makes them hunt for the referent. (`ไขมัน`, `เค้าโครง`, `สครับ` contain the
+    letters and are not the pronoun.)
+  - **English idiom translated word for word.** The one that mattered was in
+    `bone-and-cartilage`: "some way down the road before it says anything" had
+    become `ข้ออาจเดินทางมาไกล…ก่อนจะเริ่มส่งเสียง`, where `ส่งเสียง` collides
+    with the joint-noise topic of that same article. Also gone: `รับแรงที่
+    ไม่อย่างนั้นจะ…` (a calque of "that would otherwise") and `ในขณะที่` used
+    for a contrastive "while" — the temporal ones are correct and stay.
+
+  **Spelling and term choices settled by the same pass**, so a new article
+  should follow them: `เมื่อไหร่`, never `เมื่อไร` (seven files carried both,
+  with an article's `## เมื่อไหร่ควรไปพบแพทย์` heading disagreeing with its own
+  checklist); `กระดูกสะบ้า`, never `ลูกสะบ้า`; `แพทย์`, never `หมอ` (the site
+  has never used the colloquial form and should not start). Checked and already
+  clean: terminology (one Thai rendering per English term), `ๆ` spacing (a
+  space always precedes it), and numeric ranges in prose (always an en-dash,
+  never an ASCII hyphen — those are only in URLs, slugs and dates).
 - **The author has confirmed he knows the provenance of all media** in his four
   apps, including the five rotator cuff images that carry no C2PA credential
   and have stripped metadata (`p2_2`, `p2_3`, `p3_3`, `p4_3`, `p4_4`), and has
