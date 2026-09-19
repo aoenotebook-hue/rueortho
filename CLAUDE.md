@@ -160,6 +160,22 @@ reachable by anything on the network while it runs.
   clean: terminology (one Thai rendering per English term), `ๆ` spacing (a
   space always precedes it), and numeric ranges in prose (always an en-dash,
   never an ASCII hyphen — those are only in URLs, slugs and dates).
+
+  **A second sweep on 2026-09-19, after the two new basics articles landed,
+  found seven more and settled one further habit.** The seven were all the
+  neutral `ถูก` the first pass had let through: `ถูกยึดไว้…ด้วยห่วงเอ็น`
+  (trigger-finger) → `มีห่วงเอ็นเล็ก ๆ ยึดไว้`, `มักถูกเรียกว่าโรคเงียบ`
+  (osteoporosis, twice) → `มักเรียกกันว่า`, `วัดว่าถูกดูดกลืนไปเท่าใด` and
+  `เม็ดยาที่ยังไม่ถูกดูดซึม` (bone-density-scan) → the agent named, and two
+  `ทำการ` + verb constructions (achilles-tendinopathy, carpal-tunnel-syndrome)
+  → plain verbs. **`ทำการ` is the new entry**: `ทำการทดสอบ` is bureaucratic
+  Thai for what a doctor simply does, and a grep for it should stay at zero.
+  `ถูกชะลอ` in `acl-injury` was **checked against `_extracted/` and left
+  alone** — it is the author's own wording from his app, and his prose is not
+  Claude's to smooth. Also verified clean in the same sweep: `มัน` (only
+  `น้ำมัน` remains), `เมื่อไร`, `ลูกสะบ้า`, `หมอ`, the `ท่าน` filter, `ๆ`
+  spacing, and ASCII hyphens in Thai prose (zero, once frontmatter dates are
+  excluded — a naive grep finds `2026-09-19` and means nothing).
 - **The author has confirmed he knows the provenance of all media** in his four
   apps, including the five rotator cuff images that carry no C2PA credential
   and have stripped metadata (`p2_2`, `p2_3`, `p3_3`, `p4_3`, `p4_4`), and has
@@ -423,12 +439,14 @@ urgent-symptom list to give and demanding one would invite filler.
 read them — the forty condition files first, then the 22 examinations and
 rehabilitation files. The four `basics` files followed on 2026-09-18, on his
 instruction rather than after a read-through (see "the section collections"),
-bringing the total to 66.
+bringing the total to 66, and the four files of the second pair of basics
+articles on 2026-09-19 — those after he said he had read them — bringing it
+to 70.
 
 No `SAMPLE` or `SEED` marker remains anywhere in `src/content/`, and every file
-is `draft: false`. `lastReviewed` is 2026-09-08 on the original 62 and
-2026-09-18 on the four basics files — the first review date on this site that is
-not 2026-09-08. The home page's "recently reviewed" strip is **unaffected**:
+is `draft: false`. `lastReviewed` is 2026-09-08 on the original 62,
+2026-09-18 on the first four basics files — the first review date on this site
+that is not 2026-09-08 — and 2026-09-19 on the second four. The home page's "recently reviewed" strip is **unaffected**:
 `getRecentlyReviewed` reads `getConditions`, so it sorts over the 22 condition
 articles only, and those still all share one date. That strip only becomes
 meaningful when a *condition* is re-reviewed.
@@ -561,14 +579,9 @@ diagnose, and no urgent-symptom list of its own; and because putting "what is
 cartilage" in a list of diseases tells a reader it is one.
 
 Its first two articles are `bone-as-an-organ` and `bone-and-cartilage`, in both
-languages, and **all four files are published**.
-
-**Two more were drafted on 2026-09-19 and are `draft: true`**: `fracture-healing`
-(how a broken bone mends) and `arthroscopic-surgery` (what the camera can and
-cannot do). They carry a `SAMPLE` marker, so `lint:content` fails the build if
-anyone publishes them before the author has read them — which is the rule, and
-is what the previous two articles were an announced exception to rather than a
-precedent. Production still builds 127 pages because a draft has no page.
+languages. Two more followed on 2026-09-19 — `fracture-healing` (how a broken
+bone mends) and `arthroscopic-surgery` (what the camera can and cannot do) —
+and **all eight files are published**.
 
 **`arthroscopic-surgery` is in `basics` on the author's instruction**, and it
 earns the place: it explains how the operation works rather than whether to have
@@ -584,15 +597,16 @@ contains the words `draft: true`, so a blind replace of that string hits it as
 well; do the comment first, then anchor the frontmatter replace to the closing
 `---`.
 
-**They are the second exception to the read-before-publish rule**, after the
-treatments section. They were drafted with a `SAMPLE` marker and `draft: true`
-as the rule requires, and the author asked for them to be published in his next
-instruction rather than after a read-through — so, like `/treatments`, they went
-live without him having confirmed he had read them. They follow the medical
-content rules (no doses, nothing that tells a reader what they have, nothing
-that tells a reader they do not need a doctor, uncertainty stated), and every
-reference came out of the PubMed tool. If he wants either held back, setting
-`draft: true` on the two files is the whole job.
+**They went through the rule rather than around it**, unlike `/treatments` and
+unlike the first two basics articles. They were drafted with a `SAMPLE` marker
+and `draft: true`; the author read them and said to publish; the marker came
+out and `draft` went to `false` in the same instruction. That is what the
+process is supposed to look like, and it is the first time on this site it has
+run end to end. They follow the medical content rules (no doses, nothing that
+tells a reader what they have, nothing that tells a reader they do not need a
+doctor, uncertainty stated), and every reference came out of the PubMed tool.
+If he wants either held back, setting `draft: true` on the two files is the
+whole job.
 
 The rule itself is unchanged: anything new that Claude drafts still gets a
 `SAMPLE` marker and `draft: true`, and `lint:content` still fails the build if a
@@ -612,9 +626,10 @@ new collection** — the SAMPLE marker, the sources rule and the media checks al
 stop applying. Miss `lib/nav.ts` and the tab appears with no drop-down.
 
 All 32 files in the three published resource collections are live. Production
-builds **127 pages** — 115 until the two hip articles and `/regions/hip` landed
+builds **131 pages** — 115 until the two hip articles and `/regions/hip` landed
 on 2026-09-11, then 121, then 123 once `/basics` got an index page in each
-language, and 127 when its two articles were published on 2026-09-18.
+language, 127 when its first two articles were published on 2026-09-18, and 131
+when its second two were published on 2026-09-19.
 
 **The treatments articles are the one exception to the read-before-publish
 rule.** The author asked for the section to be created *and published* in the
