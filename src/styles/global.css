@@ -677,25 +677,36 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
    still gets the compact disclosure it had, and nothing narrow has to skip
    past a rail it cannot use.
 
-   **The width is computed, never a constant.** `100%` on a child resolves
-   against its containing block, so `(100vw - 100%) / 2` is exactly the gutter
-   the centred reading column leaves on one side. The column is capped at
-   `68ch` and `ch` is the width of a digit in whatever font actually loaded —
-   IBM Plex Sans Thai Looped in production, something else while it is still
-   loading or if Google Fonts is blocked — so a fixed rail width measured
-   against one of those overflows the viewport under another. This cannot: as
-   the column grows the rail shrinks, and at zero it simply disappears.
+   **It sits in the LEFT gutter**, on the author's instruction of 2026-09-19.
+   A contents list is a map of the page, and a map belongs on the side the
+   reader's eye starts from in both of this site's languages; on the right it
+   read as an afterthought hung off the end of the text.
 
-   1360px is where the gutter is wide enough to be worth it — measured at 221px
-   of usable rail there against the 822px column the fallback font produces.
-   Below that the disclosure above the article is the better use of the space.
+   **Its width is a constant — 14rem — and that is the point.** It used to be
+   `min(15rem, gutter)`, which meant the rail grew a few pixels with every
+   pixel of viewport between 1360px and about 1600px: drag a window wider and
+   the list reflowed the whole way. A rail that is never the same width twice
+   is a rail that will not sit still. The `min()` is kept only as a guard, at
+   a floor no realistic font reaches, so a pathologically wide reading column
+   shrinks the rail instead of pushing it off the screen. `100%` on a child
+   resolves against its containing block, so `(100vw - 100%) / 2` is exactly
+   the gutter the centred column leaves on one side; the column is `68ch` and
+   `ch` is a digit's width in whatever font actually loaded — IBM Plex Sans
+   Thai Looped in production, a fallback while it loads or in the sandbox.
+
+   **1400px, not 1360px, is where it appears**, because that is where 14rem
+   fits with room to spare under the *widest* column the fonts here produce:
+   the sandbox fallback gives an 822px column at 1400px, leaving 241px of
+   usable gutter against the 224px the rail wants. The real Thai face is
+   narrower, so production has more room, never less. Below 1400px the
+   disclosure above the article is the better use of the space.
 */
-@media (min-width: 1360px) {
+@media (min-width: 1400px) {
   .article-contents {
     --toc-gap: 2rem;
-    --toc-width: min(15rem, calc((100vw - 100%) / 2 - var(--toc-gap) - 1rem));
+    --toc-width: min(14rem, calc((100vw - 100%) / 2 - var(--toc-gap) - 1rem));
 
-    float: inline-end;
+    float: inline-start;
     width: var(--toc-width);
     /*
        Pulls the whole box clear of the reading column. A float's *margin* box
@@ -703,16 +714,22 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
        outside the container, so the prose keeps its full measure and is not
        indented around the rail.
     */
-    margin-inline-end: calc(-1 * (var(--toc-width) + var(--toc-gap)));
+    margin-inline-start: calc(-1 * (var(--toc-width) + var(--toc-gap)));
     margin-top: 0;
 
     position: sticky;
     /* The same offset every anchor on the site uses, so the rail clears the
        sticky header at each width rather than hiding under it. */
     top: calc(var(--header-offset) + 1rem);
-    max-height: calc(100vh - var(--header-offset) - 3rem);
+    /*
+       Short enough that the rail is a panel rather than a column of its own.
+       A list that fills the viewport competes with the article; one that
+       stops well short of the fold reads as a sidebar. Anything longer
+       scrolls inside the rail, and `overscroll-behavior` keeps that scroll
+       from running on into the page once it reaches the end.
+    */
+    max-height: calc(100vh - var(--header-offset) - 5rem);
     overflow-y: auto;
-    /* A long outline scrolls inside the rail without taking the page with it. */
     overscroll-behavior: contain;
   }
 
@@ -838,17 +855,47 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
   border-inline-start: 2px solid var(--border);
 }
 
+/*
+ * One rule per topic, so the list reads as a list of separate places rather
+ * than a paragraph of links. Asked for on 2026-09-19: the panel was a stack
+ * of small muted lines with nothing between them, and at a glance it was one
+ * block of text. The line is on the `li` rather than the link so the hover
+ * fill can still be a rounded row inside it.
+ */
+.nav-submenu li + li {
+  border-top: 1px solid var(--border);
+}
+
+/*
+ * Full reading colour and very nearly the tab's own size. It was `--muted` at
+ * 0.9em, which on a 0.95em nav is small grey text on a white panel — legible
+ * by the letter of the contrast rule and hard work in practice, on the one
+ * control that has to be scanned quickly. `--ink` and 0.95em cost nothing:
+ * the panel is 16rem wide and the longest label still fits on two lines.
+ *
+ * 44px tall, which is the site's own touch-target goal rather than the 24px
+ * floor — a menu row is a primary control, not a link inside a sentence.
+ */
 .nav-submenu-link {
-  display: block;
-  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.55rem 0.75rem;
   border-radius: 6px;
-  color: var(--muted);
-  font-size: 0.9em;
+  color: var(--ink);
+  font-size: 0.95em;
+  line-height: 1.45;
   text-decoration: none;
 }
 
-.nav-submenu-link:hover {
-  background: var(--ground);
+/*
+ * The same soft brand fill the current-page pill uses, so a pointed-at row and
+ * a current row are the same idea rather than two. `--ground` was almost
+ * invisible here: it is #f7f8f8 on a #ffffff panel.
+ */
+.nav-submenu-link:hover,
+.nav-submenu-link:focus-visible {
+  background: var(--brand-soft);
   color: var(--ink);
 }
 
@@ -863,7 +910,7 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
     inset-inline-start: 0;
     top: 100%;
     z-index: 60;
-    min-width: 15rem;
+    min-width: 16rem;
     max-width: min(22rem, calc(100vw - 2rem));
     max-height: min(24rem, calc(100vh - var(--header-offset)));
     overflow-y: auto;

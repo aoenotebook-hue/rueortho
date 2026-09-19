@@ -884,6 +884,21 @@ load-bearing.
 - **The `<noscript>` copy renders every drop-down open**, through NavList's
   `expanded` prop. A closed disclosure with no script to open it would put the
   whole of `/treatments` and `/examinations` behind a dead control.
+- **Each topic is its own row, and that was asked for on 2026-09-19.** The
+  panel was a stack of `--muted` links at 0.9em with nothing between them, so
+  at a glance it read as one block of text rather than a list of places. Three
+  changes, all in `global.css`: a hairline `border-top` on every `li` after
+  the first, so the rows are visibly separate; `--ink` at 0.95em instead of
+  `--muted` at 0.9em, because small grey text on a white panel passes the
+  contrast rule by the letter and is hard work on the one control that has to
+  be scanned quickly (measured 13.58:1 in dark mode); and a 44px minimum row
+  height — the site's own touch-target goal rather than the 24px floor, since
+  a menu row is a primary control, not a link inside a sentence. The hover and
+  focus fill is `--brand-soft`, the same tint the current-page pill uses, so a
+  pointed-at row and a current row are one idea; `--ground` was almost
+  invisible there (#f7f8f8 on a #ffffff panel). The panel went 15rem to 16rem
+  to hold the longest label in two lines. Measured at 1280 and 1440px: six
+  rows, 44px each except the two that wrap to 70px, no overflow either side.
 
 **The chevron is 30px wide, not the site's usual 44px, and that was measured.**
 Five chevrons at 44px widened the nav row enough to wrap it onto a second line
@@ -1042,23 +1057,38 @@ every condition and resource article. Four things about it are load-bearing.
   compact disclosure and a desktop a plain two-column list. Without JavaScript
   it stays closed at every width, which is a working control rather than hidden
   content.
-- **From 1360px it becomes a sticky rail in the right gutter**, added on
-  2026-09-19 at the author's request. This entry used to say there was no room
-  for a sidebar because the reading column is 68ch — true of the column, but
-  the gutter beside it is not part of the column, and that is where the rail
-  goes. **The reading column does not move**: measured at 1359px and 1360px,
-  the prose starts at the same x and keeps the same width, because the rail is
-  a float with a negative margin whose margin box falls entirely outside the
-  container and so shortens no line box.
+- **From 1400px it becomes a sticky rail in the LEFT gutter**, added on
+  2026-09-19 at the author's request and moved from the right gutter to the
+  left later the same day, also at his request. This entry used to say there
+  was no room for a sidebar because the reading column is 68ch — true of the
+  column, but the gutter beside it is not part of the column, and that is
+  where the rail goes. **The reading column does not move**: measured at
+  1399px and 1400px, the prose starts at the same x (309px) and keeps the same
+  width (782px), because the rail is a float with a negative margin whose
+  margin box falls entirely outside the container and so shortens no line box.
 
-  **Its width is computed, never a constant.** `(100vw - 100%) / 2` on the
-  child is exactly the gutter the centred column leaves, so a rail sized in
-  `ch` against one font cannot overflow the viewport under another — which
-  matters because the column is `68ch` and `ch` is a digit's width in whichever
-  font actually loaded. As the column grows the rail shrinks, and at zero it
-  disappears. It is capped at 15rem and needs 1360px to appear at all:
-  measured, that leaves 221px of usable rail against the 822px column the
-  sandbox fallback font produces, and 240px from 1440px up.
+  **Its width is a constant — 14rem — and that is the point.** It was
+  `min(15rem, gutter)`, which meant the rail grew with every pixel of viewport
+  between 1360px and about 1600px: drag the window wider and the whole list
+  reflowed. Measured now at 1400, 1440, 1600 and 1920px: 224px at every one.
+  The gutter-derived `min()` is kept purely as a guard — `(100vw - 100%) / 2`
+  on the child is exactly the gutter the centred column leaves, so a
+  pathologically wide 68ch column shrinks the rail instead of pushing it off
+  the screen, which matters because `ch` is a digit's width in whichever font
+  actually loaded. **1400px rather than 1360px** is where 14rem fits with room
+  to spare under the widest column the fonts here produce: the sandbox
+  fallback gives an 822px column there, leaving 241px of usable gutter against
+  the 224px the rail wants. The real Thai face is narrower, so production has
+  more room, never less.
+
+  **The rail does not scroll itself to follow the marked section, deliberately.**
+  On a 23-entry article (acl-injury) the list is 1753px inside a 662px box, so
+  the current-section marker can be scrolled out of the rail's own view. Fixing
+  that means moving the rail's contents on a scroll event, which is the exact
+  jumpiness the author asked to be rid of. Measured instead: the rail caps at
+  `100vh - header - 5rem`, scrolls internally with `overscroll-behavior:
+  contain`, and never overhangs the footer — checked at 950, 800 and 700px
+  viewport heights, scrolled to the end of the page each time.
 
   **There is one copy of the list, not two.** Markup, DOM order and the
   accessibility tree are identical at every width; only the CSS differs. Two
