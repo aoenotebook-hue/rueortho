@@ -665,14 +665,25 @@ Google.
   `*.google-analytics.com` and `*.analytics.google.com` in `connect-src` for
   GA4's beacons. Any further tag host has to be added there or the browser
   blocks it silently.
-- **The privacy notice has not been updated, and it is now out of date.**
-  `src/content/pages/{th,en}/privacy.mdx` says the site uses no tracking
-  cookies and lists Cloudflare, Vercel, Google Fonts and YouTube as the only
-  third parties. GTM is a fifth, and whatever is configured inside the
-  container — GA4 in particular — sets cookies and is a PDPA disclosure. That
-  is legal wording the author has to write; it is not Claude's to invent — so
-  until he does, the notice under-states what the site collects. Fixing it is
-  the open item this section exists to keep visible.
+- **The privacy notice discloses GTM and GA4 as of 2026-09-19**, at the
+  author's instruction — it had said "no tracking cookies" and listed four
+  third parties for the eight days GTM was live, which under-stated what the
+  site collects. `src/content/pages/{th,en}/privacy.mdx` now names Google LLC
+  in the third-party list and carries a section 4 on GTM/GA4: what the cookie
+  stores, what reaches Google (page, time, device and browser, approximate
+  location, IP), what it is used for, and two ways to opt out. The "what we do
+  not do" paragraph dropped its "we do not build user profiles" claim, which
+  GA4 makes hard to defend.
+
+  **A consent banner was not built and the author was told why it may be
+  needed.** The notice claims legitimate interest (s.24(5)) for these cookies,
+  matching the wording already used for Cloudflare — but PDPC guidance
+  generally treats non-essential analytics cookies as needing consent, which
+  legitimate interest does not supply. That is a legal judgement, and Claude
+  does not make it: the gap is flagged to him, and closing it means either a
+  consent banner gating `public/gtm.js` or dropping GA4 and keeping
+  cookie-less Cloudflare Analytics alone. **Adding any further tag to the
+  container is a fresh PDPA disclosure** and has to come back to this section.
 
 ### The share picture
 
@@ -1233,17 +1244,29 @@ a hero and a care picture; only meniscus-tear has no anatomy diagram.
   and the care scene closes `แนวทางการรักษา` / `Treatment options`. Both
   languages get the same picture in the same place, which works because **none
   of these images carries text**.
-- **Captions were deliberately left off.** `<Figure>` takes `alt`, which
-  describes what is in the frame, and `attribution`, which `lint:content` warns
-  without. It does **not** carry a `caption` on any of the 92 new figures: a
-  caption under a picture of an exercise reads as an instruction to do it, and
-  what the reader should actually do is the author's to write. Adding captions
-  is the obvious next pass and it is his.
-- **Provenance is recorded in `docs/IMAGE-SOURCES.md` and the AI disclosure is
-  an open question.** None of the 68 carries a C2PA credential or any metadata
-  at all — same as the 20 heroes already published, and unlike the app media,
-  whose captions can claim AI generation because a credential proved it. The new
-  captions therefore credit the author and claim nothing else.
+- **Captions stay off, and that is now settled rather than pending.** `<Figure>`
+  takes `alt`, which describes what is in the frame, and `attribution`, which
+  `lint:content` warns without. It carries no `caption` on any of the 92
+  figures: a caption under a picture of an exercise reads as an instruction to
+  do it. This used to be recorded here as "the obvious next pass and it is his";
+  he ruled on 2026-09-19 that **no captions are to be added**. Do not add them.
+- **The AI disclosure was answered on 2026-09-19 and lives on the editorial
+  policy page, not in the captions.** None of these files carries a C2PA
+  credential or any metadata — same as the 20 heroes before them, and unlike the
+  app media, whose captions could claim AI generation because a credential
+  proved it. The author confirmed that **every illustration and clip on the site
+  is AI-generated** and asked for the statement to be made once, on
+  `editorial-policy.mdx` in both languages, which also says the pictures are not
+  photographs of patients, not medical images, and that where a picture and the
+  words disagree the words win. **The 139 per-image attribution lines in each
+  language were therefore not touched** and still read `ภาพ: …` / `Illustration:
+  …` alone. A future pass that wants the disclosure per-image must ask him — he
+  chose where it goes.
+- **The illustrations are fully reserved; the text is not.** The same page now
+  splits them: the site's text may still be reused for non-commercial education
+  with attribution and a link back, while the illustrations and clips may not be
+  copied, altered or republished for any purpose, education included, without
+  his written permission. Do not re-merge those two into one licence.
 
 ### The examination illustration set
 
