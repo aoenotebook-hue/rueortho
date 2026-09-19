@@ -1,6 +1,6 @@
 import type { Locale } from '../i18n/ui';
 import { t } from '../i18n/ui';
-import { navSections, getSection } from '../data/sections';
+import { navSections } from '../data/sections';
 import { getPublishedResources, type ResourceCollection } from './resources';
 
 export interface NavItem {
@@ -18,10 +18,11 @@ export interface NavItem {
  * draft, and never drifts from what the page below it shows. A hand-kept list
  * here would do both, which is the bug the video index already taught us.
  *
- * Two tabs get a hand-written list instead, because what they contain is not a
- * collection: `articles`, whose page indexes the four libraries rather than
- * holding articles of its own, and `about`, whose children are the info and
- * legal pages. `tools` is a single page and gets no drop-down at all.
+ * `about` gets a hand-written list instead, because what it contains is not a
+ * collection — its children are the info and legal pages, and they take the
+ * *footer's* labels so the two menus cannot disagree about the same page.
+ * `conditions`, `tools` and the video gallery get no drop-down: the first
+ * would be a list of 22 rows, and the other two are single destinations.
  */
 const COLLECTION_FOR: Partial<Record<string, ResourceCollection>> = {
   basics: 'basics',
@@ -58,27 +59,6 @@ export async function getNavItems(locale: Locale): Promise<NavItem[]> {
         path: `${section.path}/${entry.data.slug}`,
         label: entry.data.title,
       }));
-    } else if (section.id === 'articles') {
-      /*
-       * Only what is not already a tab of its own.
-       *
-       * This used to list conditions, examinations, treatments and
-       * rehabilitation — and the last three each have a tab two places to the
-       * left, with the same label and the same destination. Opening this menu
-       * therefore showed a reader three rows they had just walked past, which
-       * is what the author reported on 2026-09-19: the menu looked duplicated
-       * because it was.
-       *
-       * What is genuinely only reachable from here is `conditions`, which has
-       * no tab by the author's own decision (`hiddenFromNav`), and the video
-       * gallery, which is a section of the `/articles` page rather than a page
-       * of its own. Everything else the hub indexes is one click away on the
-       * row above.
-       */
-      item.children = [
-        { path: '/conditions', label: getSection('conditions').nav[locale] },
-        { path: '/articles#videos', label: tr('articles.videos') },
-      ];
     } else if (section.id === 'about') {
       item.children = ABOUT_PAGES.map((page) => ({
         path: page.path,
@@ -87,6 +67,22 @@ export async function getNavItems(locale: Locale): Promise<NavItem[]> {
     }
 
     items.push(item);
+
+    /*
+     * The video gallery, as a tab of its own.
+     *
+     * It is not a section in `sections.ts` because it is not a page: it is the
+     * `#videos` block of `/articles`, built by `lib/videos.ts` from the clips
+     * in the article bodies. Giving it an entry there would hand `getSection`
+     * and `ArticlesIndex` an id that answers to no collection.
+     *
+     * It goes in beside `rehabilitation` rather than at the end because the
+     * clips are demonstrations of the exercises that section describes, and
+     * because the menu otherwise ends on two utility entries in a row.
+     */
+    if (section.id === 'rehabilitation') {
+      items.push({ path: '/articles#videos', label: tr('nav.videos') });
+    }
   }
 
   return items;

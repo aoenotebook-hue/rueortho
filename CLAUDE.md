@@ -938,14 +938,37 @@ at every desktop width, which added 36px of sticky header and put every in-page
 anchor under it. The button still fills the row's height, so the target is about
 30x44 — past the 24x24 of WCAG 2.5.8 — and the tab beside it is untouched.
 
-**The nav row wraps onto two lines at every desktop width, in both languages,
-and `--header-offset` covers that.** Thai briefly fitted on one row from 1120px,
-and carried a `html[lang='th']` override of its own for one day; the eighth tab
-(`basics`, 2026-09-18) ended that, and the override was deleted rather than left
-matching nothing. Measured to 1920px: the container has a max width, so a wider
-viewport does not put the row back on one line. **Adding a ninth tab, or
-lengthening a label, means re-measuring the table in `global.css` again** —
-every in-page anchor on the site reads that one number.
+**The nav row is one line from 960px up, in both languages — and getting it
+there took three changes at once.** It had wrapped onto two lines at every
+desktop width since the eighth tab landed, and on 2026-09-19 the author asked
+for every entry on one row. The row now carries **nine** entries, so nothing
+short of all three would have done it:
+
+- **the type went from 0.95em to 0.85em** (16.15px against a 19px body) and the
+  pill padding from `px-4` to `px-3`, and the chevron from 30px to 26px;
+- **four nav labels were shortened**, because a nav label is not a page
+  heading and `sections.ts` already has a separate `title` for that:
+  `ฟื้นฟู & ออกกำลังกาย` → `ฟื้นฟู`, `เครื่องมือผู้ป่วย` → `เครื่องมือ`,
+  `How the body works` → `Body basics`, `Tests & imaging` → `Tests`,
+  `Rehab & exercise` → `Rehab`, `Patient tools` → `Tools`;
+- **the "บทความ & วิดีโอ" tab went away** in the same pass, which is what made
+  room for `conditions` and `วิดีโอ` to be tabs at all.
+
+**English was the binding constraint, not Thai.** Before the change the Thai
+row needed 1297px against 1112px of container; English needed **1519px**. The
+container caps at 72rem, so there is no width at which the problem solves
+itself.
+
+**All nine still pass AA**: 5.55:1 in light and 6.33:1 in dark, measured at the
+new size. The labels are also the headings of the related-reading groups on
+every condition page (`ConditionArticle` reads `nav[locale]`), which now read
+"การตรวจ" / "Tests" rather than "การตรวจ" / "Tests & imaging" — checked, and it
+reads better there too.
+
+**Lengthening any label pushes the one-row threshold above 960px and breaks
+`--header-offset` for the widths that newly wrap.** The threshold was found by
+binary search over both languages and is 960px exactly. Re-measure the table in
+`global.css` if a label grows or a tenth tab appears.
 
 The disclosure is a disclosure, not a modal: no focus trap, no inert page, and
 links inside it navigate normally. `aria-expanded` and the nav's `hidden` class
@@ -1319,13 +1342,19 @@ All three were reviewed on 2026-09-17 at the author's request.
   invisible, and nav links ignored `text-muted`. Anything new that styles bare
   elements goes in that layer too.
 - **Anchor offset lives in `--header-offset`, not in a magic number.** The
-  header is sticky and changes height with the viewport — measured, in both
-  languages, with the menu closed: 124px below sm, 76px from sm, 183px from md
-  (the nav row appears while the top row still wraps) and 132px from lg. `html
-  { scroll-padding-top }` reads the token, so the skip link and every in-page
-  anchor clear the header at every width. It used to be a flat `5rem`, which
-  left an anchor target under the header nearly everywhere. Re-measure if the
-  header gains a row or the nav gains an item.
+  header is sticky and changes height with the viewport — re-measured on
+  2026-09-19 once the nav fitted on one row, in both languages, with the menu
+  closed: **125px below 480px, 75px from 480px, 77px from 640px, 181px from
+  768px** (two nav rows) **and 132px from 960px** (one nav row, to 1920px).
+  The token is 9rem / 6rem / 13rem / 9.5rem across those bands, each leaving
+  about 20px on top. `html { scroll-padding-top }` reads it, so the skip link
+  and every in-page anchor clear the header at every width. It used to be a
+  flat `5rem`, which left an anchor target under the header nearly everywhere.
+  **Overshooting is safe and undershooting is not** — too large only opens a
+  gap above the heading, too small hides it under the header. Verified at
+  twelve widths in both languages that the offset is never smaller than the
+  header, and that a contents-list link lands its heading at exactly the
+  offset.
 
   **One offset, in one place.** `.prose h2`/`h3` also carried
   `scroll-margin-top: 5rem`, and the two add: scroll-padding pulls the
@@ -1877,12 +1906,25 @@ No stubs are left — `examinations`, `rehabilitation`, `articles` and
 in-preparation fallback in `ResourceIndex.astro` anyway: it is what lets a new
 collection be added and routed before its first article has been reviewed.
 
-**`conditions` carries `hiddenFromNav: true`.** Its index duplicates what
-"บทความ & วิดีโอ" lists, so the author asked for the menu item to go — but the
-page holds the region filter and the type-to-filter box, and the body map, the
-homepage cards, the region pages and every article breadcrumb link straight to
-it. The nav is built from `navSections`, not `sections`, so hiding an entry
-never removes its route.
+**`articles` carries `hiddenFromNav: true`, and it used to be `conditions`.**
+`/articles` and `/conditions` overlap — the hub indexes the four libraries and
+the clips, the conditions index lists the largest of those libraries — so only
+one of the two belongs in the menu. It was `conditions` that was hidden from
+2026-09-08; on 2026-09-19 the author asked for the swap, and `conditions` is a
+tab again while "บทความ & วิดีโอ" is gone. **Neither route was deleted**: the
+home page's "ดูบทความทั้งหมด" link and the menu's videos entry both land on
+`/articles`, and the body map, the homepage cards, the region pages and every
+article breadcrumb link straight to `/conditions`. The nav is built from
+`navSections`, not `sections`, so hiding an entry never removes its route.
+
+**The video gallery is a tab without being a section.** It is the `#videos`
+block of `/articles`, not a page, so it is pushed onto the list in `lib/nav.ts`
+rather than added to `sections.ts` — an entry there would hand `getSection` and
+`ArticlesIndex` an id that answers to no collection. It sits next to
+`rehabilitation` because the clips demonstrate that section's exercises. Its
+label is `nav.videos` ("วิดีโอ" / "Videos"), a string of its own rather than
+`articles.videos` ("วิดีโอสาธิต" / "Demonstration videos"), which is still the
+gallery's own heading on the page it lands on.
 
 `/terms` from the plan's route list is **not** built: it needs legal wording the
 author has to supply, and inventing terms of use would be worse than not having

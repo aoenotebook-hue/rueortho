@@ -7,27 +7,31 @@
    cannot serve every width. Measured, not guessed — in both languages, with
    the mobile menu closed:
 
-     Re-measured on 2026-09-18, when the eighth section tab was added and the
-     nav row stopped fitting on one line at any desktop width:
+     Re-measured on 2026-09-19, when the "articles & videos" tab was replaced
+     by separate "conditions" and "videos" entries and the nav type was cut to
+     0.85em so nine tabs fit on one row:
 
-                      Thai   English
-     < 640px          125px   122px  top row wraps, the menu is collapsed
-     ≥ 640px           77px    74px  one row: the search label fits
-     ≥ 768px          188px   177px  the nav row appears, on two lines
-     ≥ 1024px         188px   177px  same, at every width tested to 1920px
+                      Thai   English   the nav row
+     < 480px          125px   122px    collapsed behind the menu button
+     480–639px         75px    72px    collapsed; the top row stops wrapping
+     640–767px         77px    74px    collapsed; the search label fits
+     768–959px        181px   175px    **two lines** — nine tabs do not fit
+     ≥ 960px          132px   127px    **one line**, at every width to 1920
 
-     Hence a flat 13rem from 1024px. A Thai-only 10rem lived here from 1120px
-     for the one day on which seven tabs still fitted Thai onto a single row;
-     the eighth tab ended that, and the override is gone rather than left
-     behind matching nothing. The container has a max width, so a wider
-     viewport does not put the row back on one line — re-measure only if a tab
-     is removed or a label shortened.
+     The one-row threshold is 960px exactly, found by binary search over both
+     languages. Above it the container's 72rem cap means the row can never
+     wrap again, which is why there is no further breakpoint.
 
-   Each value below adds roughly 20px on top, so the heading an anchor lands on
-   sits clear of the header rather than tight against it. Re-measure if the
-   header gains a row or the nav gains an item: everything that scrolls to an
-   id — the skip link, the body-region link, the when-to-see-a-doctor link —
-   reads this one number.
+   Each value below leaves roughly 20px on top, so the heading an anchor lands
+   on sits clear of the header rather than tight against it. **Overshooting is
+   safe and undershooting is not** — too large only opens a gap above the
+   heading, while too small hides it under the header.
+
+   **Re-measure whenever the header gains a row or a nav label gets longer.**
+   A longer label pushes the one-row threshold above 960px, and then the 960px
+   band undershoots by 49px across the widths that newly wrap. Everything that
+   scrolls to an id — the skip link, the body-region link, the
+   when-to-see-a-doctor link, every contents-list entry — reads this one number.
    ========================================================================== */
 
 :root {
@@ -46,9 +50,9 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 960px) {
   :root {
-    --header-offset: 13rem;
+    --header-offset: 9.5rem;
   }
 }
 
@@ -817,7 +821,7 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
    * the row's height, so the target is about 30x44 — comfortably past the
    * 24x24 WCAG 2.5.8 asks for, and the tab beside it is full size.
    */
-  min-width: 30px;
+  min-width: 26px;
   min-height: 44px;
   margin-inline-start: -0.5rem;
   border: 0;
