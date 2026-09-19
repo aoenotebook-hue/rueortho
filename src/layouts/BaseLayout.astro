@@ -182,7 +182,14 @@ const wideEnoughForLargeCard = shareImage.attributes.width / shareImage.attribut
       locale={locale}
       alternateHref={hasAlternate ? undefined : localizePath('/', locale === 'th' ? 'en' : 'th')}
     />
-    <main id="main">
+    {/*
+      `tabindex="-1"` is what lets the skip link move *focus*, not just the
+      scroll position. Without it the fragment jump leaves `document.activeElement`
+      on `<body>`: the next Tab does continue from here in a current browser, so
+      the link works, but a screen reader's cursor is not guaranteed to follow.
+      It is not in the tab order — only a programmatic or fragment focus reaches it.
+    */}
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer locale={locale} />

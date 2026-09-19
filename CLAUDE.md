@@ -312,10 +312,93 @@ publicly readable. It had been on for every `*.vercel.app` URL
 Also done: the examinations and rehabilitation sections, and a real `/articles`
 hub — see "The three new sections" below.
 
-Still to do: the pre-launch QA pass. The sticky table of contents landed on
-2026-09-19 — see "The article contents list" below. Share
-images are done — see "The share picture" below. `/treatments` and the body map are done — see their
-sections below.
+The build plan's own list is finished. The sticky table of contents landed on
+2026-09-19 — see "The article contents list" below — and the pre-launch QA pass
+ran the same day; see "The pre-launch QA pass" below for what it found, what it
+fixed, and the three things it could not check from here. Share images are done
+— see "The share picture". `/treatments` and the body map are done — see their
+sections.
+
+### The pre-launch QA pass
+
+Ran 2026-09-19 over all 126 pages at 390, 768, 1280 and 1440px in both
+languages — 504 page loads — plus the four gates, a contrast audit in light and
+dark, and a check of every citation on the site against PubMed.
+
+**It found three real defects, all fixed in the same pass:**
+
+- **52 `<th>` on 22 tables carried no `scope`.** A markdown table emits bare
+  header cells, so assistive technology had to guess which column a value
+  belonged to. On the osteoporosis medicines table that guess *is* the content:
+  column three is "tell your doctor if", and a value read without its header is
+  a warning attached to nothing (WCAG 1.3.1). Fixed with `TableHeader.astro`, an
+  MDX `th` override beside the existing `Table.astro`, for the same reason that
+  one is a component override rather than a rehype plugin. `scope="col"` is
+  right for every table here and will stay right: markdown has no syntax for a
+  row header, so a `<th>` can only appear in the header row.
+- **Three breadcrumb links were under 24×24** — เข่า 22px wide, คอ 18px, "Hip"
+  23px. `.tap-24` adds vertical padding only, deliberately, because a link
+  inside a sentence is exempt from WCAG 2.5.8 and padding one horizontally
+  makes neighbouring lines overlap. **A breadcrumb link is not inside a
+  sentence**, so it gets no exemption and needs 24px both ways. The new
+  `nav[aria-label] .tap-24` rule adds horizontal padding cancelled by an equal
+  negative margin: the breadcrumb sits exactly where it did (verified, text
+  still aligned with the `h1` to the pixel) and only the hit box grows.
+- **`<main>` had no `tabindex="-1"`,** so the skip link moved the scroll but
+  left `document.activeElement` on `<body>`. The next Tab did continue from
+  `<main>` in a current browser, so the link worked — but a screen reader's
+  cursor is not guaranteed to follow without it. The focus outline this now
+  paints is drawn outside the full-width box, i.e. off-screen: sampled the
+  viewport's edge pixels, zero accent-coloured ones.
+
+**Every one of the 51 distinct PubMed citations was verified** against the
+PubMed record on first author, title, journal and year. All 51 match. Two
+looked wrong at first and are not: PubMed's `publication_date` is the
+electronic-ahead-of-print date, while the site cites the **issue** year, which
+is correct practice — `33356772` is e-pub Dec 2020 in the 2021 issue, and
+`37832814` is e-pub Oct 2023 in APMR vol 105, which is 2024. **Do not
+"correct" those two to match PubMed's date field.**
+
+**Clean, and worth not re-testing blind:** contrast in light *and* dark mode
+(every sampled paragraph, link, heading and table cell passes AA); one `h1` per
+page; no heading-level skips; no image without `alt`; no unnamed link or
+button; no horizontal page overflow at any width; mobile nav opens and closes;
+search returns 20 results for ปวดเข่า in the built preview; the 404 page; RSS
+(22 items per locale); the sitemap (124 URLs, no stray trailing slashes);
+hreflang clusters complete with self, alternate and x-default; `robots.txt`
+disallowing `/search` in agreement with the sitemap that omits it; reduced
+motion leaving nothing animating; page weight 102–150 KiB with 6–14 requests.
+
+**Two things that look like defects and are not**, both of which cost a round
+of investigation — do not re-file them:
+
+- A crawler that reads `innerText` reports ~20 "unnamed links" per article at
+  390px. Those are the contents list's links inside a **closed** `<details>`.
+  `textContent` has them; a closed disclosure is out of the accessibility tree
+  too, so there is nothing there to fix. Check accessible names with
+  `textContent`.
+- The English osteoporosis medicines table reports as "escaping the viewport"
+  at 390px. It is 444px inside a 350px `.table-wrapper` that scrolls, which is
+  the designed behaviour; the page itself does not scroll sideways. A viewport
+  check has to skip elements inside a horizontal scroll container.
+
+**Three things could not be checked from this environment**, and are the only
+open items the pass leaves:
+
+- **No external URL can be verified.** The agent proxy denies CONNECT to every
+  outside host, so `curl` returns `000` for pubmed.ncbi.nlm.nih.gov as readily
+  as for anything else — an apparent failure that means nothing. **The four
+  companion-app URLs in `src/data/apps.ts` are therefore still unverified**,
+  as they have been since they were written, and `/tools` prints a QR code for
+  each. Somebody has to open all four in a browser before launch.
+- **What is inside the GTM container.** `GTM-M6XH4X2D` demonstrably loads on
+  every page — the proxy logged the blocked requests — but its tag list lives
+  in Google's UI, not in this repo. The privacy notice describes GA4 on the
+  author's word.
+- **Thai in its real font.** Google Fonts is blocked here, so every measurement
+  above is in a fallback face. The layout numbers that depend on it are written
+  to be font-independent (see the contents rail), but a human should still look
+  at one long Thai article in a browser that has Plex Looped.
 
 ### Publishing safety
 

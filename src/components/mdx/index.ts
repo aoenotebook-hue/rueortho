@@ -16,3 +16,8 @@ export { default as DoctorChecklist } from './DoctorChecklist.astro';
  * markdown table in an article gets a scrolling wrapper. See Table.astro.
  */
 export { default as table } from './Table.astro';
+
+/**
+ * `th` gets `scope="col"`, which markdown does not emit. See TableHeader.astro.
+ */
+export { default as th } from './TableHeader.astro';
