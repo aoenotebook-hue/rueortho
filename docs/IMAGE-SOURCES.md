@@ -12,6 +12,29 @@ An image may go on the site only if this table can be filled in truthfully for
 it. If the Source or Licence column would have to say "not sure", the image does
 not ship.
 
+## The AI disclosure, and image reuse — settled 2026-09-19
+
+The author ruled on both open questions on 2026-09-19, and the answers now live
+on the **editorial policy page** in both languages rather than in any caption:
+
+- **Every illustration and demonstration clip on the site is AI-generated**, by
+  him. That covers the sets below whose provenance reads "supplied by the
+  author" and which carry no C2PA credential — the question two sections of this
+  file used to leave open is answered, and those passages are marked.
+- **The illustrations are fully reserved.** The site's text may still be reused
+  for non-commercial education with attribution; the pictures may not be copied,
+  altered or republished for any purpose without his written permission. That is
+  a deliberate split: text one way, images the other.
+
+**The per-image attribution lines were not changed, on his instruction.** He
+asked for the AI statement to be made once, on the policy page, and asked for no
+captions to be added — so the 139 figure and exercise-card credits in each
+language still read `ภาพ: รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` /
+`Illustration: Assoc. Prof. Sorawut Thamyongkit, M.D.` and nothing more. The
+app-media lines, which already said `สร้างด้วยปัญญาประดิษฐ์` because a C2PA
+credential proved it, are also untouched. A future pass that wants the
+disclosure per-image should ask him first — he chose where it goes.
+
 ## Folders
 
 | Folder | For |
@@ -70,13 +93,12 @@ available. These came from the author directly. The already-published
 `illustrations/` heroes are in exactly the same position — 0 of 20 carry a
 credential — so this set is consistent with what the site already ships.
 
-**The AI question is therefore open, and deliberately not answered here.** The
-app-media captions say `ภาพประกอบสร้างด้วยปัญญาประดิษฐ์` because a Google C2PA
-credential proved it. Nothing proves it for these, so the caption does not claim
-it. If the author generated them the same way, the disclosure should be added —
-it is one search and replace over `src/content/conditions/`, since the
-attribution appears there as a literal string. That is his call to make, not
-one to guess at.
+**The AI question was open here until 2026-09-19, and is now answered** — see
+"The AI disclosure, and image reuse" above. The author confirmed these are
+AI-generated and asked for the disclosure to be made once on the editorial
+policy page rather than in each caption, so the attribution lines below are
+unchanged. The paragraph this replaced was right that nothing in the files
+proved it and that guessing was not Claude's call; it took him saying so.
 
 **The captions carry attribution and nothing else.** `lint:content` warns on a
 `<Figure>` with no `attribution`, so each of the 92 new figures names the
@@ -101,8 +123,9 @@ uploaded.
 
 Provenance is the author's own upload, as for every other `src/assets` and
 `public/images` picture here. They carry the same attribution line as the
-condition set, and the same open question about an AI disclosure applies —
-nothing in the files claims it, so neither does the caption.
+condition set, and the AI disclosure that covers them is the site-wide one on
+the editorial policy page — see the top of this file. Nothing in the files
+claims it; the policy page does, for the whole set at once.
 
 **Six older flat files were deleted as exact duplicates.**
 `public/images/examinations/{xray,mri-scan,knee-mri,dxa-scan,musculoskeletal-ultrasound,nerve-conduction-emg}.webp`
