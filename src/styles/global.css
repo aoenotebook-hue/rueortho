@@ -922,8 +922,21 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
     box-shadow: var(--shadow-header);
   }
 
-  /* A panel near the end of the row opens towards the middle of the page. */
-  .nav-item:nth-last-child(-n + 2) .nav-submenu {
+  /*
+   * A panel that would run off the right edge opens towards the middle
+   * instead, and the class is put on by the header's script after measuring —
+   * see `positionSubmenu` there.
+   *
+   * This used to be `.nav-item:nth-last-child(-n + 2)`, which assumed the last
+   * two tabs sit at the right-hand end of the row. **The nav wraps onto two
+   * lines at every desktop width**, so the last tab is the only item on row
+   * two and sits at the far LEFT — and right-aligning its panel hung it 51px
+   * off the left of a 1280px viewport, with the first characters of every
+   * label cut off. Found on 2026-09-19. Anything that decides this from an
+   * item's position in the DOM will get it wrong again the next time the row
+   * wraps differently; it has to be measured.
+   */
+  .nav-submenu.opens-inline-end {
     inset-inline-start: auto;
     inset-inline-end: 0;
   }

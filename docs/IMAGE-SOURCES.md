@@ -12,17 +12,28 @@ An image may go on the site only if this table can be filled in truthfully for
 it. If the Source or Licence column would have to say "not sure", the image does
 not ship.
 
-## Wanted: illustrations for the four `basics` articles
+## The `basics` illustrations — delivered and placed
 
-Not one of the four has a picture, and they are the most abstract articles on
-the site — a reader is asked to imagine cells dissolving and rebuilding bone,
-fluid moving in and out of a joint surface, a cartilage bridge growing across a
-break, and a camera inside a knee. Nothing here is drawn yet; this is the list
-to draw from. `fracture-healing` and `arthroscopic-surgery` were added on
-2026-09-19 and published the same day, after the author read them — so all
-four are live without a picture between them.
+**The author drew all twenty and committed them on 2026-09-19**, to exactly the
+filenames this section asked for. They are placed, in both languages, as forty
+`<Figure>`s: six on `bone-as-an-organ`, four on `bone-and-cartilage`, five on
+`fracture-healing` and five on `arthroscopic-surgery`. The table below is kept
+as the register entry for each file and as the record of what was asked for.
 
-**Where they go:** `public/images/basics/<slug>/<filename>`. `basics` shares
+Three things worth knowing about this batch:
+
+- **They are genuine JPEGs with a `.jpg` extension** — the first upload on this
+  project where the extension matched the file. The five batches before it all
+  arrived as JPEG named `.webp` or `.png` and had to be renamed.
+- **All twenty are 1024x765**, so every `<Figure>` carries
+  `width={1024} height={765}`; a string path carries no dimensions of its own
+  and the article reflows when the lazy file lands without them.
+- **Placement follows what is in the frame**, checked picture by picture rather
+  than taken from the filename — the rule the examination and rehabilitation
+  sets established. It happened to agree with the filenames everywhere here,
+  which the earlier batches did not.
+
+**Where they live:** `public/images/basics/<slug>/<filename>`. `basics` shares
 `resourceSchema()` with examinations, treatments and rehabilitation, whose
 pictures all live in `public/` and are referenced by URL, so these follow the
 same convention rather than going through `astro:assets`.
