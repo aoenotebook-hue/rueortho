@@ -1,6 +1,9 @@
 ---
+import RegionArt from './RegionArt.astro';
 import RegionBadge from './RegionBadge.astro';
+import SectionIcon from './SectionIcon.astro';
 import type { RegionId } from '../data/regions';
+import type { ResourceCollection } from '../lib/resources';
 import type { Locale } from '../i18n/ui';
 
 interface Props {
@@ -8,6 +11,24 @@ interface Props {
   title: string;
   summary?: string;
   region?: RegionId;
+  /**
+   * Which library the card belongs to, for the icon.
+   *
+   * A card with a `region` shows the author's own drawing for that region;
+   * anything else falls back to this collection's glyph. A rehabilitation
+   * article may carry a region and then gets the drawing, which is right — the
+   * knee programme is about the knee.
+   */
+  collection?: ResourceCollection;
+  /**
+   * Show the region's name as a pill beside the title.
+   *
+   * `/regions/<id>` passes false: every card there is the same region, so the
+   * pill would repeat the page's own `h1` on every row. The drawing still
+   * shows, because an icon that names the body part is useful even when the
+   * words beside it would not be.
+   */
+  badge?: boolean;
   locale: Locale;
   /**
    * Heading level for the card title. Cards on the home page sit under a
@@ -18,15 +39,69 @@ interface Props {
   headingLevel?: 2 | 3 | 4;
 }
 
-const { href, title, summary, region, locale, headingLevel = 3 } = Astro.props;
+const {
+  href,
+  title,
+  summary,
+  region,
+  collection,
+  badge = true,
+  locale,
+  headingLevel = 3,
+} = Astro.props;
 const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
+
+const hasIcon = region !== undefined || collection !== undefined;
 ---
 
+{/*
+  A wide row, not a tile.
+
+  These were square cards in an `auto-fill` grid, three or four to a line on a
+  desktop, and the author asked on 2026-09-19 for one topic per row so nothing
+  competes for the eye sideways. A row also gives the summary the full measure,
+  which is what lets it stay on one or two lines instead of five.
+
+  The icon is decorative and the title beside it carries the meaning, so
+  neither `RegionArt` nor `SectionIcon` contributes an accessible name — see
+  the `alt=""` and `aria-hidden` in each.
+*/}
 <a
   href={href}
-  class="group flex h-full flex-col rounded-[10px] border border-border bg-surface p-5 no-underline transition hover:border-accent hover:shadow-[var(--shadow-card)]"
+  class="group flex items-start gap-4 rounded-[10px] border border-border bg-surface p-4 no-underline transition hover:border-accent hover:shadow-[var(--shadow-card)] sm:gap-5 sm:p-5"
 >
-  {region && <div class="mb-3"><RegionBadge region={region} locale={locale} /></div>}
-  <Heading class="mb-2 text-ink group-hover:text-accent">{title}</Heading>
-  {summary && <p class="m-0 text-[0.95em] text-muted">{summary}</p>}
+  {
+    hasIcon && (
+      <span class="card-icon">
+        {region ? (
+          <RegionArt region={region} sizes="64px" class="rounded-[8px]" />
+        ) : (
+          <SectionIcon collection={collection!} size={34} />
+        )}
+      </span>
+    )
+  }
+
+  {/*
+    `min-w-0` is load-bearing on any flex child holding Thai: Thai has no
+    spaces between words, so a title is one unbreakable token and a flex item's
+    default `min-width: auto` would size this column to the whole of it and
+    push the card past the viewport.
+  */}
+  <span class="min-w-0 flex-1">
+    <span class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <Heading class="m-0 text-ink group-hover:text-accent">{title}</Heading>
+      {region && badge && <RegionBadge region={region} locale={locale} />}
+    </span>
+    {/*
+      Two lines from sm up, three on a phone. A desktop row is wide enough
+      that a `cardSummary` lands on one line; a 390px card is a third of that
+      measure, so the same sentence needs three. The clamp is the guard for an
+      article that has no `cardSummary` and falls back to the long `summary`.
+      Never add `block` beside it: Tailwind's `line-clamp` works by setting
+      `display: -webkit-box`, and a `block` wins the cascade and silently
+      turns the clamp off.
+    */}
+    {summary && <p class="m-0 mt-1.5 line-clamp-3 text-[0.95em] text-muted sm:line-clamp-2">{summary}</p>}
+  </span>
 </a>

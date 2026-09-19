@@ -96,15 +96,16 @@ const art = sectionArt[collection];
           </ul>
         </>
       ) : (
-        <ul class="m-0 mt-7 grid list-none grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-4 p-0">
+        <ul class="m-0 mt-7 flex list-none flex-col gap-3 p-0">
           {entries.map((entry) => (
             <li>
               <Card
                 headingLevel={2}
                 href={localizePath(`${section.path}/${entry.data.slug}`, locale)}
                 title={entry.data.title}
-                summary={entry.data.summary}
+                summary={entry.data.cardSummary ?? entry.data.summary}
                 region={'region' in entry.data ? entry.data.region : undefined}
+                collection={collection}
                 locale={locale}
               />
             </li>

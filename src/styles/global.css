@@ -765,6 +765,40 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
 }
 
 /* ==========================================================================
+   The listing card's icon
+
+   A fixed square at the start of a card row, holding either the author's
+   regional drawing (a raster that fills the box) or a collection glyph (an SVG
+   in `currentColor`, centred). The box carries the soft ground and the accent
+   colour so the glyph reads without the SVG having to know anything about the
+   theme, and `overflow: hidden` is what rounds the raster's corners with it.
+
+   `flex: 0 0 auto` matters: without it the icon is a flex item that can shrink,
+   and a long unbroken Thai title in the column beside it squeezes the square
+   into a sliver.
+   ========================================================================== */
+
+.card-icon {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--ground);
+  color: var(--accent);
+}
+
+@media (min-width: 640px) {
+  .card-icon {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+}
+
+/* ==========================================================================
    Header navigation
    ========================================================================== */
 

@@ -25,6 +25,20 @@ const conditions = defineCollection({
         .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'slug must be kebab-case'),
       region: z.enum(regionIds),
       summary: z.string().max(300),
+      /**
+       * The one line the listing card shows, in place of `summary`.
+       *
+       * `summary` has two other jobs — it is the page's meta description and what
+       * Pagefind shows under a search hit — and it earns its length there. On a
+       * card it runs to two full lines, and on a phone the card clamps it
+       * mid-word. This is the same claim in a glance's worth of words, and the
+       * card falls back to `summary` when it is absent.
+       *
+       * It must never soften a caution by dropping its qualifier: "most settle
+       * within weeks" without "know which symptoms need a doctor" is a
+       * reassurance this site does not make.
+       */
+      cardSummary: z.string().max(140).optional(),
       keywords: z.array(z.string()).default([]),
       publishedDate: z.coerce.date(),
       lastReviewed: z.coerce.date(),
@@ -78,6 +92,20 @@ function resourceSchema() {
     title: z.string(),
     slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'slug must be kebab-case'),
     summary: z.string().max(300),
+    /**
+     * The one line the listing card shows, in place of `summary`.
+     *
+     * `summary` has two other jobs — it is the page's meta description and what
+     * Pagefind shows under a search hit — and it earns its length there. On a
+     * card it runs to two full lines, and on a phone the card clamps it
+     * mid-word. This is the same claim in a glance's worth of words, and the
+     * card falls back to `summary` when it is absent.
+     *
+     * It must never soften a caution by dropping its qualifier: "most settle
+     * within weeks" without "know which symptoms need a doctor" is a
+     * reassurance this site does not make.
+     */
+    cardSummary: z.string().max(140).optional(),
     keywords: z.array(z.string()).default([]),
     publishedDate: z.coerce.date(),
     lastReviewed: z.coerce.date(),

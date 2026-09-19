@@ -1065,6 +1065,64 @@ Without JavaScript the box and the chips do nothing, and that is the
 pre-existing bargain on these pages: **the full list is always in the HTML**,
 so nothing is unreachable — the filter only ever hides.
 
+### The listing cards
+
+`Card.astro` is the row on `/conditions`, on each section index, on `/articles`,
+on a region page, and in the two "related" blocks at the foot of an article. It
+was a square tile in an `auto-fill` grid until 2026-09-19, when the author asked
+for three things at once: an icon in front of the title, one topic per row, and
+a shorter line under it.
+
+- **A row, not a tile.** Every list that used
+  `grid-cols-[repeat(auto-fill,minmax(17rem,1fr))]` is now
+  `flex flex-col gap-3`, so nothing competes for the eye sideways. The row also
+  gives the summary the full measure, which is what lets one sentence sit on
+  one line instead of five.
+- **The icon is the author's own drawing wherever a region exists.** A card with
+  a `region` renders `RegionArt`, which is the regional illustration and falls
+  back to a `BodyIcon` glyph for the three browsing categories that are not body
+  parts. Every condition has a region, so the whole conditions index is
+  illustrated for free — and **it costs nothing**, because eight drawings serve
+  22 cards and `<Image>` emits a 160px webp for a 52px box. Measured:
+  `/conditions` at 390px is 125 KiB over 14 requests, inside the site's usual
+  102–150 KiB.
+- **`SectionIcon.astro` covers the four resource collections**, which have no
+  region. They are glyphs rather than photographs on purpose: their pictures are
+  1024x765 scenes in `public/`, which a 52px box would both waste and make
+  unreadable, and five of them on one listing would be a megabyte. Drawn on the
+  same 40x40 viewBox in `currentColor` as `BodyIcon`, so the two sit together on
+  one page without looking like two icon sets and both follow the theme.
+  **Keep them simple**: the first draft's capsule was drawn at an angle with an
+  inner split and read as a smudge at 34px.
+- **`.card-icon` in `global.css` is the box.** `flex: 0 0 auto` is
+  load-bearing — without it a long unbroken Thai title in the column beside it
+  squeezes the square into a sliver — and so is `min-w-0` on that text column,
+  for the reason the CSS traps section gives.
+- **A region page passes `badge={false}`.** Every card there is the same region,
+  so the pill would repeat the page's own `h1` on every row. The drawing stays,
+  because an icon naming the body part is useful even where the words are not.
+
+**`cardSummary` is a new schema field, and it is not a shortened `summary`.**
+`summary` has two other jobs — it is the page's meta description and what
+Pagefind shows under a hit — and it earns its 92-to-267 characters there. On a
+card it ran to two full lines and a phone clamped it mid-word. `cardSummary` is
+the same claim in a glance: **all 84 article files carry one**, 55–91 characters
+in Thai and 49–75 in English, and the card falls back to `summary` when it is
+absent. The home page's featured strip reads it too.
+
+- **It must never soften a caution by dropping its qualifier.** "most settle
+  within weeks" without "know which symptoms need a doctor" is a reassurance
+  this site does not make — `back-pain`'s card line keeps both halves, and so
+  must any future one.
+- **Measured rather than assumed**: 0 of 168 card lines clip at 390, 768 or
+  1280px in either language. One Thai line and 42 English ones were trimmed
+  after the first measurement showed them wrapping past the clamp. The clamp
+  itself is `line-clamp-3 sm:line-clamp-2` — a 390px card is a third of a
+  desktop row's measure, so the same sentence needs three lines there — and it
+  is the guard for an article that has no `cardSummary`.
+- **These are 168 new visible strings under the author's byline** and he has
+  not read them. They carry no claim his own `summary` did not.
+
 ### The region empty state
 
 `RegionPage` renders an explanation and a link to the conditions index when a
