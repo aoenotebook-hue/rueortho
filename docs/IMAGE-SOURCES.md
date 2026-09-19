@@ -12,12 +12,14 @@ An image may go on the site only if this table can be filled in truthfully for
 it. If the Source or Licence column would have to say "not sure", the image does
 not ship.
 
-## Wanted: illustrations for the two `basics` articles
+## Wanted: illustrations for the four `basics` articles
 
-Neither `bone-as-an-organ` nor `bone-and-cartilage` has a single picture, and
-they are the two most abstract articles on the site — a reader is being asked to
-imagine cells dissolving and rebuilding bone, and fluid moving in and out of a
-joint surface. Nothing here is drawn yet; this is the list to draw from.
+Not one of the four has a picture, and they are the most abstract articles on
+the site — a reader is asked to imagine cells dissolving and rebuilding bone,
+fluid moving in and out of a joint surface, a cartilage bridge growing across a
+break, and a camera inside a knee. Nothing here is drawn yet; this is the list
+to draw from. `fracture-healing` and `arthroscopic-surgery` were added on
+2026-09-19 and are still `draft: true`.
 
 **Where they go:** `public/images/basics/<slug>/<filename>`. `basics` shares
 `resourceSchema()` with examinations, treatments and rehabilitation, whose
@@ -55,7 +57,42 @@ Optional:
 |---|---|---|
 | `bone-and-cartilage-nonerve.jpg` | ทำไมความต่างนี้จึงสำคัญมาก (second figure) | Why early wear does not hurt: no nerve reaching the surface, while the lining, the bone underneath and the capsule around it do carry pain |
 
-### Rules these files have to follow
+### `public/images/basics/fracture-healing/`
+
+For the article on how a broken bone mends. Same story as the two above: no
+picture yet, and the subject is entirely invisible to the reader.
+
+| File | Closes the section | What should be in the frame |
+|---|---|---|
+| `fracture-healing-stages.jpg` | สี่ระยะที่คาบเกี่ยวกัน / Four stages, running into each other | The four stages as one strip: blood filling the break, the inflamed stage, a soft cartilage bridge across the gap, then that bridge turned to bone. **The core diagram of the article** |
+| `fracture-healing-cast.jpg` | เฝือกมีไว้ทำอะไรกันแน่ / What the cast is actually for | Two bone ends held still and close with the soft bridge forming between them, beside the same bridge being pulled apart by movement and failing to harden — the cast holds, it does not join |
+| `fracture-healing-remodelling.jpg` | สี่ระยะที่คาบเกี่ยวกัน (second figure) or ต้องนิ่ง แต่ไม่ใช่แข็งทื่อ | The same bone twice: bulky untidy new bone around the break, then months later the same bone carved back to its proper shape |
+| `fracture-healing-care.jpg` | สิ่งที่คุณทำได้จริง / What you can actually do | Everyday scenes: a cigarette put down, food on a plate, the joints above and below the cast being moved, a follow-up appointment card |
+
+Optional:
+
+| File | Closes the section | What should be in the frame |
+|---|---|---|
+| `fracture-healing-delay.jpg` | อะไรทำให้ติดช้า / What slows it down | Smoking, high blood sugar and a poorly supplied bone end shown as three things slowing the same repair |
+
+### `public/images/basics/arthroscopic-surgery/`
+
+For the article on keyhole joint surgery.
+
+| File | Closes the section | What should be in the frame |
+|---|---|---|
+| `arthroscopic-surgery-overview.jpg` | การส่องกล้องข้อคืออะไร / What it actually is | The set-up: a thin camera entering a knee through a tiny opening, instruments alongside it, and the magnified view of the inside of the joint on a screen |
+| `arthroscopic-surgery-fluid.jpg` | ทำไมต้องใส่น้ำเข้าไปในข้อ / Why the joint is filled with fluid | Side by side: joint surfaces pressed together with the lens against tissue and nothing to see, beside the same joint opened up by fluid with a clear view. **The detail nobody expects** |
+| `arthroscopic-surgery-repair.jpg` | กล้องทำอะไรได้ดี / What it is good at | Work being done through the small openings — a torn meniscus stitched back down, a tendon drawn back to bone |
+| `arthroscopic-surgery-recovery.jpg` | แผลเล็กไม่ได้แปลว่าเรื่องเล็ก / Small cuts do not mean a small operation | The point of the whole article: two or three healed millimetre scars on the outside, and inside the same joint a repair still knitting, against a calendar running to months. **The core diagram of the article** |
+
+Optional:
+
+| File | Closes the section | What should be in the frame |
+|---|---|---|
+| `arthroscopic-surgery-limits.jpg` | สิ่งที่กล้องทำไม่ได้ / What it cannot do | A worn joint surface with an instrument beside it that can tidy a catching flap but cannot resurface what has thinned |
+
+### Rules all of these files have to follow
 
 - **JPEG, and the extension must say `.jpg`.** Five uploads in a row arrived
   named `.webp` or `.png` and were JPEG inside. In `public/` nothing re-encodes
@@ -72,7 +109,7 @@ Optional:
   the standard attribution line, and nothing else.
 - **No hero image is needed.** `heroImage` is on the conditions schema only;
   `resourceSchema()` has no such field, so a basics article has no hero slot.
-- **No video is needed.** Neither article demonstrates a movement.
+- **No video is needed.** None of these four articles demonstrates a movement.
 
 ## The AI disclosure, and image reuse — settled 2026-09-19
 
