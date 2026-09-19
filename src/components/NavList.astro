@@ -48,7 +48,7 @@ const tr = t(locale);
               href={localizePath(item.path, locale)}
               aria-current={isCurrentPage ? 'page' : inSection ? 'true' : undefined}
               class:list={[
-                'block rounded-full px-4 py-2 text-[0.95em] no-underline',
+                'block rounded-full px-3 py-2 text-[0.85em] no-underline',
                 isCurrentPage && 'nav-link-current',
                 inSection && 'nav-link-section',
                 !isCurrentPage && !inSection && 'text-muted hover:text-ink',

@@ -19,6 +19,7 @@ const ui = {
     'nav.apps': 'แอปดูแลตัวเอง',
     'nav.about': 'เกี่ยวกับเว็บไซต์',
     'nav.menu': 'เมนู',
+    'nav.videos': 'วิดีโอ',
     'nav.submenuLabel': 'แสดงหัวข้อย่อยของ {section}',
     'nav.close': 'ปิด',
 
@@ -226,6 +227,7 @@ const ui = {
     'nav.apps': 'Self-care apps',
     'nav.about': 'About',
     'nav.menu': 'Menu',
+    'nav.videos': 'Videos',
     'nav.submenuLabel': 'Show the topics under {section}',
     'nav.close': 'Close',
 
