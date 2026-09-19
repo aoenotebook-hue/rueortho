@@ -12,6 +12,68 @@ An image may go on the site only if this table can be filled in truthfully for
 it. If the Source or Licence column would have to say "not sure", the image does
 not ship.
 
+## Wanted: illustrations for the two `basics` articles
+
+Neither `bone-as-an-organ` nor `bone-and-cartilage` has a single picture, and
+they are the two most abstract articles on the site — a reader is being asked to
+imagine cells dissolving and rebuilding bone, and fluid moving in and out of a
+joint surface. Nothing here is drawn yet; this is the list to draw from.
+
+**Where they go:** `public/images/basics/<slug>/<filename>`. `basics` shares
+`resourceSchema()` with examinations, treatments and rehabilitation, whose
+pictures all live in `public/` and are referenced by URL, so these follow the
+same convention rather than going through `astro:assets`.
+
+### `public/images/basics/bone-as-an-organ/`
+
+| File | Closes the section | What should be in the frame |
+|---|---|---|
+| `bone-as-an-organ-living.jpg` | ภาพที่คนส่วนใหญ่นึกถึง / The picture most people have | The article's own contrast: the dry, pale bone in a museum case beside the same bone alive — blood vessels running through it, cells at work inside |
+| `bone-as-an-organ-remodelling.jpg` | ขณะที่คุณอ่านอยู่นี้ ร่างกายกำลังสร้างกระดูกใหม่ | The two crews on one patch of bone: cells clearing old bone away, cells filling the space with new, and the buried network sensing load and directing them. **The core diagram of the article** |
+| `bone-as-an-organ-marrow.jpg` | ข้างในมีโรงงานอยู่ | A long bone cut away, marrow in the middle producing red cells, white cells and platelets |
+| `bone-as-an-organ-care.jpg` | การดูแลกระดูก | Everyday loading rather than a gym: walking, stairs, a resistance band, food, a well-lit uncluttered floor |
+
+Optional, if the set is worth extending:
+
+| File | Closes the section | What should be in the frame |
+|---|---|---|
+| `bone-as-an-organ-calcium.jpg` | บัญชีแคลเซียมของร่างกาย | Calcium leaving the skeleton into the bloodstream on a hormone signal, and going back when there is plenty — the "account being drawn on" |
+| `bone-as-an-organ-signals.jpg` | กระดูกส่งข้อความถึงอวัยวะอื่น | Bone releasing messengers that reach the kidney, muscle and fat |
+
+### `public/images/basics/bone-and-cartilage/`
+
+| File | Closes the section | What should be in the frame |
+|---|---|---|
+| `bone-and-cartilage-anatomy.jpg` | สองเนื้อเยื่อ ในข้อเดียวกัน | A joint cut away: bone ends capped with a few millimetres of smooth white cartilage. The two tissues told apart by texture and colour, not by a label |
+| `bone-and-cartilage-healing.jpg` | ทำไมความต่างนี้จึงสำคัญมาก | Side by side: a fracture with vessels arriving and knitting it, beside a worn joint surface with no vessel reaching it at all. **The core diagram of the article** |
+| `bone-and-cartilage-nutrition.jpg` | กระดูกอ่อนได้อาหารอย่างไร | The sponge the article describes: the joint loaded and fluid pressed out, the joint released and fluid drawn back in |
+| `bone-and-cartilage-care.jpg` | การดูแลทั้งสองอย่าง | Regular ordinary movement and strength work for the muscle around the joint, and load going up a little at a time rather than in a jump |
+
+Optional:
+
+| File | Closes the section | What should be in the frame |
+|---|---|---|
+| `bone-and-cartilage-nonerve.jpg` | ทำไมความต่างนี้จึงสำคัญมาก (second figure) | Why early wear does not hurt: no nerve reaching the surface, while the lining, the bone underneath and the capsule around it do carry pain |
+
+### Rules these files have to follow
+
+- **JPEG, and the extension must say `.jpg`.** Five uploads in a row arrived
+  named `.webp` or `.png` and were JPEG inside. In `public/` nothing re-encodes
+  them, so the served `Content-Type` comes straight off the extension.
+- **1024 × 765**, matching every other set on the site. `<Figure>` on a string
+  path carries `width` and `height`, and a path gives the browser neither, so
+  the figure would lay out at zero height and reflow the article when the lazy
+  file lands.
+- **No text, letters or numbers drawn into the picture.** Thai and English share
+  the same file in the same section, which only works because the frame carries
+  no words. `exercises/ankle-alphabet.jpg`, with "ABC" drawn in, is the one
+  exception on the site and is flagged as a problem rather than a precedent.
+- **No caption**, per the 2026-09-19 ruling — `alt` describing the frame, and
+  the standard attribution line, and nothing else.
+- **No hero image is needed.** `heroImage` is on the conditions schema only;
+  `resourceSchema()` has no such field, so a basics article has no hero slot.
+- **No video is needed.** Neither article demonstrates a movement.
+
 ## The AI disclosure, and image reuse — settled 2026-09-19
 
 **`images/figures/knee-anatomy-placeholder.svg` was removed on 2026-09-19**, at

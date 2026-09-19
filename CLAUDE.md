@@ -312,7 +312,8 @@ publicly readable. It had been on for every `*.vercel.app` URL
 Also done: the examinations and rehabilitation sections, and a real `/articles`
 hub — see "The three new sections" below.
 
-Still to do: a sticky table of contents and the pre-launch QA pass. Share
+Still to do: the pre-launch QA pass. The sticky table of contents landed on
+2026-09-19 — see "The article contents list" below. Share
 images are done — see "The share picture" below. `/treatments` and the body map are done — see their
 sections below.
 
@@ -921,8 +922,49 @@ every condition and resource article. Four things about it are load-bearing.
   `<details>` open from a stylesheet is not reliable — so a phone gets a
   compact disclosure and a desktop a plain two-column list. Without JavaScript
   it stays closed at every width, which is a working control rather than hidden
-  content. There is no sidebar because there is no room: the reading column is
-  68ch and nothing else fits beside it. It is not sticky.
+  content.
+- **From 1360px it becomes a sticky rail in the right gutter**, added on
+  2026-09-19 at the author's request. This entry used to say there was no room
+  for a sidebar because the reading column is 68ch — true of the column, but
+  the gutter beside it is not part of the column, and that is where the rail
+  goes. **The reading column does not move**: measured at 1359px and 1360px,
+  the prose starts at the same x and keeps the same width, because the rail is
+  a float with a negative margin whose margin box falls entirely outside the
+  container and so shortens no line box.
+
+  **Its width is computed, never a constant.** `(100vw - 100%) / 2` on the
+  child is exactly the gutter the centred column leaves, so a rail sized in
+  `ch` against one font cannot overflow the viewport under another — which
+  matters because the column is `68ch` and `ch` is a digit's width in whichever
+  font actually loaded. As the column grows the rail shrinks, and at zero it
+  disappears. It is capped at 15rem and needs 1360px to appear at all:
+  measured, that leaves 221px of usable rail against the 822px column the
+  sandbox fallback font produces, and 240px from 1440px up.
+
+  **There is one copy of the list, not two.** Markup, DOM order and the
+  accessibility tree are identical at every width; only the CSS differs. Two
+  copies would double the tab order and drift.
+- **The rail marks the section the reader is in**, which is the thing that
+  makes a list that follows you worth having. The spy reads the scroll position
+  and takes the last heading whose top has passed under `--header-offset` —
+  the heading `scroll-padding-top` would land the reader on. An
+  IntersectionObserver answers a different question, which headings are
+  visible, and gets it wrong for a long section whose heading has scrolled
+  away. Targets are looked up by the ids already in the list's own hrefs, so
+  the spy and the links cannot disagree about a slug.
+
+  The marker is a rule down the side **and** a colour **and** a weight, per the
+  site's own no-colour-alone rule, and every link reserves the same 2px and
+  padding whether current or not — on a list that re-marks itself each scroll
+  frame, a one-pixel jog reads as a shiver.
+
+  Verified at 1440px: tabbing into the rail brings the link on screen (the
+  browser scrolls it into view — check this with a real `Tab` press and wait
+  for the smooth scroll to settle, or you will measure a failure that is not
+  there), activating a link lands its heading at exactly `--header-offset`,
+  the rail stays inside the article at the foot of the page rather than
+  overhanging the footer, and with JavaScript off it is a closed disclosure in
+  the gutter that still fits the viewport.
 
 It carries `data-pagefind-ignore`, so the headings are not indexed twice —
 confirmed through Pagefind's own API, not just by reading the attribute — and
