@@ -72,6 +72,15 @@ const worthShowing = items.length >= 3;
       data-pagefind-ignore
     >
       {/*
+        From 1360px up this same element becomes a sticky rail in the right
+        gutter — see `.article-contents` in global.css. It is styling only: the
+        markup, the DOM order and the accessibility tree are identical at every
+        width, so there is no second copy to drift and nothing a narrow screen
+        has to skip past. The rail's width is computed from the gutter the
+        reading column actually leaves, not from a fixed number, because that
+        column is 68ch and `ch` depends on which font loaded.
+      */}
+      {/*
         One element for both widths. It opens itself from md up — see the
         script — so a phone gets a closed, compact disclosure and a desktop
         gets a plain list with a heading. Without JavaScript it stays closed
@@ -85,11 +94,12 @@ const worthShowing = items.length >= 3;
       <nav aria-label={tr('article.onThisPage')} class="mt-3">
         {/* Two columns from md up: a long outline should not push the article
             it belongs to off the screen. */}
-        <ol class="m-0 list-none p-0 text-[0.95em] md:columns-2 md:gap-8">
+        <ol class="article-contents-list m-0 list-none p-0 text-[0.95em] md:columns-2 md:gap-8">
           {items.map(({ heading, number }) => (
             <li class:list={['break-inside-avoid', heading.depth === 3 && 'ps-4']}>
               <a
                 href={`#${heading.slug}`}
+                data-toc-link={heading.slug}
                 class:list={[
                   'flex gap-2 py-1.5 no-underline hover:underline',
                   heading.depth === 3 ? 'text-muted' : 'text-ink',
@@ -126,5 +136,73 @@ const worthShowing = items.length >= 3;
 
     sync();
     wide.addEventListener('change', sync);
+
+    /**
+     * Scroll-spy: mark the section the reader is currently in.
+     *
+     * This is what makes a rail that follows the reader worth having. Without
+     * it the list says where you can go but never where you are, which on a
+     * twelve-section article is the question a reader actually has.
+     *
+     * The targets are found by the ids already in the list's own hrefs, so the
+     * spy and the links cannot disagree about a slug — the same reason the
+     * list is built from `render()`'s headings rather than from the MDX.
+     *
+     * It reads the scroll position rather than using IntersectionObserver. The
+     * rule wanted is "the last heading whose top has passed under the sticky
+     * header", which is the heading `scroll-padding-top` just landed the
+     * reader on. An observer answers a different question — which headings are
+     * visible — and gets it wrong for a long section whose heading has already
+     * scrolled away.
+     */
+    const links = new Map<string, HTMLAnchorElement>();
+    for (const link of contents.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')) {
+      links.set(link.dataset.tocLink!, link);
+    }
+
+    const targets = [...links.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (targets.length > 0) {
+      let current: HTMLAnchorElement | null = null;
+      let queued = false;
+
+      const mark = () => {
+        queued = false;
+
+        // The offset the browser itself uses for an anchor jump, plus a pixel
+        // so a heading sitting exactly on the line counts as reached.
+        const offset =
+          parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+
+        let active: HTMLElement | null = null;
+        for (const target of targets) {
+          if (target.getBoundingClientRect().top <= offset + 1) active = target;
+          else break;
+        }
+
+        // Past the last heading it stays marked; above the first one nothing
+        // is, because the reader is still in the summary.
+        const next = active ? links.get(active.id) ?? null : null;
+        if (next === current) return;
+
+        current?.removeAttribute('aria-current');
+        current?.classList.remove('is-current');
+        next?.setAttribute('aria-current', 'true');
+        next?.classList.add('is-current');
+        current = next;
+      };
+
+      const onScroll = () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(mark);
+      };
+
+      mark();
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('resize', onScroll, { passive: true });
+    }
   }
 </script>

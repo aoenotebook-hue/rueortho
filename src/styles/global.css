@@ -647,6 +647,82 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
   }
 }
 
+/*
+   The sticky contents rail.
+
+   From 1360px up the same `<details>` moves out of the flow into the gutter
+   beside the reading column and follows the reader down the page. There is no
+   second copy of the list: the markup, the DOM order and the accessibility
+   tree are identical at every width, and only these rules differ — so a phone
+   still gets the compact disclosure it had, and nothing narrow has to skip
+   past a rail it cannot use.
+
+   **The width is computed, never a constant.** `100%` on a child resolves
+   against its containing block, so `(100vw - 100%) / 2` is exactly the gutter
+   the centred reading column leaves on one side. The column is capped at
+   `68ch` and `ch` is the width of a digit in whatever font actually loaded —
+   IBM Plex Sans Thai Looped in production, something else while it is still
+   loading or if Google Fonts is blocked — so a fixed rail width measured
+   against one of those overflows the viewport under another. This cannot: as
+   the column grows the rail shrinks, and at zero it simply disappears.
+
+   1360px is where the gutter is wide enough to be worth it — measured at 221px
+   of usable rail there against the 822px column the fallback font produces.
+   Below that the disclosure above the article is the better use of the space.
+*/
+@media (min-width: 1360px) {
+  .article-contents {
+    --toc-gap: 2rem;
+    --toc-width: min(15rem, calc((100vw - 100%) / 2 - var(--toc-gap) - 1rem));
+
+    float: inline-end;
+    width: var(--toc-width);
+    /*
+       Pulls the whole box clear of the reading column. A float's *margin* box
+       is what shortens the line boxes beside it, and this one ends up entirely
+       outside the container, so the prose keeps its full measure and is not
+       indented around the rail.
+    */
+    margin-inline-end: calc(-1 * (var(--toc-width) + var(--toc-gap)));
+    margin-top: 0;
+
+    position: sticky;
+    /* The same offset every anchor on the site uses, so the rail clears the
+       sticky header at each width rather than hiding under it. */
+    top: calc(var(--header-offset) + 1rem);
+    max-height: calc(100vh - var(--header-offset) - 3rem);
+    overflow-y: auto;
+    /* A long outline scrolls inside the rail without taking the page with it. */
+    overscroll-behavior: contain;
+  }
+
+  /* Two columns is for the wide in-flow block; a rail is one narrow column. */
+  .article-contents-list {
+    columns: 1;
+  }
+}
+
+/*
+   Which section the reader is in.
+
+   The marker is a rule down the side as well as a colour and a weight, because
+   nothing on this site may carry meaning in colour alone. Every link reserves
+   the same 2px and the same padding whether or not it is the current one, so
+   marking one shifts no text — on a list that re-marks itself on every scroll
+   frame, a one-pixel jog would be visible as a shiver.
+*/
+.article-contents [data-toc-link] {
+  margin-inline-start: -0.625rem;
+  border-inline-start: 2px solid transparent;
+  padding-inline-start: 0.5rem;
+}
+
+.article-contents [data-toc-link].is-current {
+  border-inline-start-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* ==========================================================================
    Header navigation
    ========================================================================== */
