@@ -1078,29 +1078,64 @@ a shorter line under it.
   `flex flex-col gap-3`, so nothing competes for the eye sideways. The row also
   gives the summary the full measure, which is what lets one sentence sit on
   one line instead of five.
-- **The icon is the author's own drawing wherever a region exists.** A card with
-  a `region` renders `RegionArt`, which is the regional illustration and falls
-  back to a `BodyIcon` glyph for the three browsing categories that are not body
-  parts. Every condition has a region, so the whole conditions index is
-  illustrated for free — and **it costs nothing**, because eight drawings serve
-  22 cards and `<Image>` emits a 160px webp for a 52px box. Measured:
-  `/conditions` at 390px is 125 KiB over 14 requests, inside the site's usual
-  102–150 KiB.
-- **`SectionIcon.astro` covers the four resource collections**, which have no
-  region. They are glyphs rather than photographs on purpose: their pictures are
-  1024x765 scenes in `public/`, which a 52px box would both waste and make
-  unreadable, and five of them on one listing would be a megabyte. Drawn on the
-  same 40x40 viewBox in `currentColor` as `BodyIcon`, so the two sit together on
-  one page without looking like two icon sets and both follow the theme.
-  **Keep them simple**: the first draft's capsule was drawn at an angle with an
-  inner split and read as a smudge at 34px.
-- **`.card-icon` in `global.css` is the box.** `flex: 0 0 auto` is
-  load-bearing — without it a long unbroken Thai title in the column beside it
-  squeezes the square into a sliver — and so is `min-w-0` on that text column,
-  for the reason the CSS traps section gives.
+- **The icon is a picture from inside that topic**, asked for later the same
+  day. The first version used the region's drawing for a condition and a
+  collection glyph for everything else, which meant one picture for all five
+  knee articles and one glyph for all five treatments — a card told the reader
+  which shelf it was on, not what it was about. Now every card on the site
+  shows its own article's artwork: **all 42 of them, no glyph anywhere.**
+  `Card.astro` takes `image` and prefers it over `region`, which it still
+  prefers over `collection`, so the two older paths survive as fallbacks and
+  nothing can render an empty box.
+- **A condition lends its `heroImage`; a resource article lends a frame named
+  in `src/lib/topic-images.ts`.** Conditions had one already, in the
+  frontmatter. The four resource collections have no image field at all — their
+  pictures are `/images/<collection>/<slug>/…` strings in the MDX body, which
+  never reach `astro:assets` — so `topic-images.ts` imports one file per
+  article straight out of `public/`. Vite resolves the project-root path and
+  Astro treats it as an ordinary asset, which is what lets `<Image>` emit a
+  2–7 KB webp instead of putting a 100–200 KB original behind a 68px box. The
+  file is still copied to `dist/images/` for the article body; nothing is
+  duplicated in git.
+- **They are twenty explicit imports, not an `import.meta.glob`, and that was
+  measured.** A glob has to be a static pattern, so it matches the whole tree —
+  and an *eager* glob imports every file it matches while Astro emits every
+  module it has imported, referenced or not. The first version put **8 MB
+  across 52 full-size JPEGs** into `dist/_astro/`, every one a second copy of a
+  file already in `dist/images/` and none of them ever requested. Explicit
+  imports are also louder: rename a picture and the build fails in that file,
+  rather than the card quietly falling back to a glyph.
+- **The frame is chosen by looking at it, not by taking the first file in the
+  folder.** At 56–68px a diagram with two or three large shapes survives and a
+  room scene does not — a photograph of a scanner and a photograph of a clinic
+  are the same grey rectangle that small. So a `-concept`, `-mechanism` or
+  `-anatomy` frame wins wherever one exists. `self-care` is the one exception
+  and uses `-overview`: `self-care-mechanism.jpg` shows a knee sleeve, the
+  article never mentions a brace, and it is deliberately unplaced until the
+  author rules on it — so it must not arrive as an icon either.
+- **`SectionIcon.astro`'s four glyphs are now the fallback, not the norm.**
+  Every published resource article has a picture, so nothing renders one today;
+  it is what a new article gets until somebody picks a frame for it. Drawn on
+  the same 40x40 viewBox in `currentColor` as `BodyIcon`, so the two sit
+  together without looking like two icon sets. **Keep them simple**: the first
+  draft's capsule was drawn at an angle with an inner split and read as a
+  smudge at 34px.
+- **`.card-icon` in `global.css` is the box** — 56px on a phone, 68px from
+  640px up, grown from 52/60 when the icons became photographs rather than line
+  art. `flex: 0 0 auto` is load-bearing — without it a long unbroken Thai title
+  in the column beside it squeezes the square into a sliver — and so is
+  `min-w-0` on that text column, for the reason the CSS traps section gives.
+  The pictures are 4:3 in a square box under `object-cover`, so each loses an
+  eighth off either side and nothing off the top or bottom.
+- **Page weight was re-measured after the switch**, because 22 distinct
+  pictures replaced eight shared drawings: `/conditions` at 390px is **132 KiB
+  over 14 requests** against 125 KiB before, and every other listing is 82–100
+  KiB. `/articles` reads 158–170 KiB, but that is 123 KB of raw HTML for 42
+  cards — 17 KB gzipped — and not the icons, which are lazy and below the fold.
 - **A region page passes `badge={false}`.** Every card there is the same region,
-  so the pill would repeat the page's own `h1` on every row. The drawing stays,
-  because an icon naming the body part is useful even where the words are not.
+  so the pill would repeat the page's own `h1` on every row. The picture stays,
+  because an icon showing the condition is useful even where the words beside
+  it are not.
 
 **`cardSummary` is a new schema field, and it is not a shortened `summary`.**
 `summary` has two other jobs — it is the page's meta description and what
@@ -1114,9 +1149,13 @@ absent. The home page's featured strip reads it too.
   within weeks" without "know which symptoms need a doctor" is a reassurance
   this site does not make — `back-pain`'s card line keeps both halves, and so
   must any future one.
-- **Measured rather than assumed**: 0 of 168 card lines clip at 390, 768 or
-  1280px in either language. One Thai line and 42 English ones were trimmed
-  after the first measurement showed them wrapping past the clamp. The clamp
+- **Measured rather than assumed**: 0 of 564 card lines clip at 390, 768 or
+  1280px in either language, over 48 page loads. One Thai line and 42 English
+  ones were trimmed after the first measurement showed them wrapping past the
+  clamp, and two more English lines — `back-pain` and `ankle-sprain`, both 75
+  characters — when the icon box grew 52px to 56px at 390px and took the width
+  back out of the text column. Both were trimmed to ~70, and `back-pain` kept
+  both halves of its caution. The clamp
   itself is `line-clamp-3 sm:line-clamp-2` — a 390px card is a third of a
   desktop row's measure, so the same sentence needs three lines there — and it
   is the guard for an article that has no `cardSummary`.

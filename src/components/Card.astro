@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import RegionArt from './RegionArt.astro';
 import RegionBadge from './RegionBadge.astro';
 import SectionIcon from './SectionIcon.astro';
@@ -10,6 +12,17 @@ interface Props {
   href: string;
   title: string;
   summary?: string;
+  /**
+   * A picture from inside this topic, shown as the card's icon.
+   *
+   * Asked for on 2026-09-19: the icon was the region's drawing, which is the
+   * same picture on every knee article, and a collection glyph, which is the
+   * same on every treatment. A condition lends its `heroImage`; a resource
+   * article lends one frame chosen in `lib/topic-images.ts`. Without one the
+   * card falls back to the region drawing, then to the collection glyph, so
+   * nothing renders an empty box.
+   */
+  image?: ImageMetadata;
   region?: RegionId;
   /**
    * Which library the card belongs to, for the icon.
@@ -43,6 +56,7 @@ const {
   href,
   title,
   summary,
+  image,
   region,
   collection,
   badge = true,
@@ -51,7 +65,7 @@ const {
 } = Astro.props;
 const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
 
-const hasIcon = region !== undefined || collection !== undefined;
+const hasIcon = image !== undefined || region !== undefined || collection !== undefined;
 ---
 
 {/*
@@ -73,8 +87,24 @@ const hasIcon = region !== undefined || collection !== undefined;
   {
     hasIcon && (
       <span class="card-icon">
-        {region ? (
-          <RegionArt region={region} sizes="64px" class="rounded-[8px]" />
+        {image ? (
+          /*
+            One fixed size, not a `widths` set: the box is 68px at most, so a
+            192px source covers a 2x screen and nothing larger is ever worth
+            fetching. `widths` would also emit the untouched 1024px original
+            as the `src`, which is a 200 KB file behind a 68px picture.
+          */
+          <Image
+            src={image}
+            alt=""
+            width={192}
+            height={144}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+        ) : region ? (
+          <RegionArt region={region} sizes="68px" class="rounded-[8px]" />
         ) : (
           <SectionIcon collection={collection!} size={34} />
         )}

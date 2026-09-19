@@ -3,6 +3,7 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import Container from './Container.astro';
 import Card from './Card.astro';
+import { getTopicImage } from '../lib/topic-images';
 import { t, type Locale } from '../i18n/ui';
 import { localizePath } from '../i18n/utils';
 import { getSection } from '../data/sections';
@@ -104,6 +105,7 @@ const art = sectionArt[collection];
                 href={localizePath(`${section.path}/${entry.data.slug}`, locale)}
                 title={entry.data.title}
                 summary={entry.data.cardSummary ?? entry.data.summary}
+                image={getTopicImage(collection, entry.data.slug)}
                 region={'region' in entry.data ? entry.data.region : undefined}
                 collection={collection}
                 locale={locale}

@@ -79,6 +79,7 @@ const usedRegions = orderedRegions.filter((r) => sorted.some((c) => c.data.regio
               href={localizePath(`/conditions/${entry.data.slug}`, locale)}
               title={entry.data.title}
               summary={entry.data.cardSummary ?? entry.data.summary}
+              image={entry.data.heroImage}
               region={entry.data.region}
               locale={locale}
             />

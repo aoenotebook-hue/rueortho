@@ -8,6 +8,7 @@ import { getSection, sections } from '../data/sections';
 import { getConditions } from '../lib/conditions';
 import { getResources } from '../lib/resources';
 import { getVideos } from '../lib/videos';
+import { getTopicImage } from '../lib/topic-images';
 import type { ResourceCollection } from '../lib/resources';
 import type { RegionId } from '../data/regions';
 
@@ -35,6 +36,7 @@ const groups = [
       title: e.data.title,
       summary: e.data.cardSummary ?? e.data.summary,
       href: localizePath(`/conditions/${e.data.slug}`, locale),
+      image: e.data.heroImage,
       region: e.data.region as RegionId | undefined,
       search: [e.data.title, e.data.summary, ...e.data.keywords].join(' ').toLowerCase(),
     })),
@@ -47,6 +49,7 @@ const groups = [
         title: e.data.title,
         summary: e.data.cardSummary ?? e.data.summary,
         href: localizePath(`/${id}/${e.data.slug}`, locale),
+        image: getTopicImage(id, e.data.slug),
         region: undefined as RegionId | undefined,
         search: [e.data.title, e.data.summary, ...e.data.keywords].join(' ').toLowerCase(),
       })),
@@ -187,6 +190,7 @@ const jumpTargets = [
                     href={entry.href}
                     title={entry.title}
                     summary={entry.summary}
+                    image={entry.image}
                     region={entry.region}
                     collection={group.collection}
                     locale={locale}

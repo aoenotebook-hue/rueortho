@@ -783,8 +783,8 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
   overflow: hidden;
   border-radius: 10px;
   background: var(--ground);
@@ -793,8 +793,8 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
 
 @media (min-width: 640px) {
   .card-icon {
-    width: 3.75rem;
-    height: 3.75rem;
+    width: 4.25rem;
+    height: 4.25rem;
   }
 }
 
