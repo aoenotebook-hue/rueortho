@@ -160,7 +160,7 @@ const ui = {
     /* A chosen starting point, not a ranking — see src/data/featured.ts. */
     'home.featuredTitle': 'หัวข้อแนะนำ',
     'home.featuredSub': 'จุดเริ่มต้นที่ดี ถ้ายังไม่รู้ว่าจะอ่านเรื่องไหนก่อน',
-    'home.viewAllConditions': 'ดูโรคทั้งหมด',
+    'home.viewAllConditions': 'ดูโรคและภาวะทั้งหมด',
     'home.viewAllArticles': 'ดูบทความทั้งหมด',
 
     'section.inProgress': 'กำลังจัดทำ',
