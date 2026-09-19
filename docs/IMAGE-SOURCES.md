@@ -14,6 +14,16 @@ not ship.
 
 ## The AI disclosure, and image reuse — settled 2026-09-19
 
+**`images/figures/knee-anatomy-placeholder.svg` was removed on 2026-09-19**, at
+the author's request, and its row is gone from the register. It was a crude
+stand-in with the words "Placeholder — replace with a licensed anatomy figure"
+drawn into the picture itself, and it had been sitting in the published
+`knee-osteoarthritis` article in both languages since 2026-09-06 under an
+attribution that said so. The article loses nothing: the author's own knee
+anatomy diagram sits three paragraphs below it, and the caption the placeholder
+carried repeated the sentence that followed it. The file is deleted and nothing
+references it.
+
 The author ruled on both open questions on 2026-09-19, and the answers now live
 on the **editorial policy page** in both languages rather than in any caption:
 
@@ -57,7 +67,6 @@ share one visual language, so prefer a single source for the whole set.
 
 | File | Source | Licence | Attribution shown | Added |
 |---|---|---|---|---|
-| `images/figures/knee-anatomy-placeholder.svg` | Drawn for this project | Project's own | placeholder caption | 2026-09-06 |
 | `src/assets/logo.png` | Supplied by the author (uploaded to the repo as `logo3.png`) | Author's own | none needed (decorative; the wordmark carries the name) | 2026-09-08 |
 | `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png` | Generated from `src/assets/logo.png` | Author's own | none needed | 2026-09-08 |
 | `src/assets/hero-shoulder-pain.png` | Supplied by the author (uploaded to the repo under `images/`) | Author's own | none needed (decorative illustration) | 2026-09-08 |
