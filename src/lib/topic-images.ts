@@ -31,29 +31,29 @@ import type { ResourceCollection } from './resources';
  * a picture and the build fails here, rather than the card quietly falling
  * back to a glyph.
  */
-import arthroscopicSurgery from '/public/images/basics/arthroscopic-surgery/arthroscopic-surgery-repair.jpg';
-import boneAndCartilage from '/public/images/basics/bone-and-cartilage/bone-and-cartilage-anatomy.jpg';
-import boneAsAnOrgan from '/public/images/basics/bone-as-an-organ/bone-as-an-organ-living.jpg';
-import fractureHealing from '/public/images/basics/fracture-healing/fracture-healing-stages.jpg';
+import arthroscopicSurgery from '/public/images/basics/arthroscopic-surgery/arthroscopic-surgery-repair.webp';
+import boneAndCartilage from '/public/images/basics/bone-and-cartilage/bone-and-cartilage-anatomy.webp';
+import boneAsAnOrgan from '/public/images/basics/bone-as-an-organ/bone-as-an-organ-living.webp';
+import fractureHealing from '/public/images/basics/fracture-healing/fracture-healing-stages.webp';
 
-import boneDensityScan from '/public/images/examinations/bone-density-scan/bone-density-scan-concept.jpg';
-import kneeMri from '/public/images/examinations/knee-mri/knee-mri-concept.jpg';
-import mri from '/public/images/examinations/mri/mri-concept.jpg';
-import nerveConductionStudy from '/public/images/examinations/nerve-conduction-study/nerve-conduction-study-concept.jpg';
-import ultrasound from '/public/images/examinations/ultrasound/ultrasound-concept.jpg';
-import xray from '/public/images/examinations/xray/xray-concept.jpg';
+import boneDensityScan from '/public/images/examinations/bone-density-scan/bone-density-scan-concept.webp';
+import kneeMri from '/public/images/examinations/knee-mri/knee-mri-concept.webp';
+import mri from '/public/images/examinations/mri/mri-concept.webp';
+import nerveConductionStudy from '/public/images/examinations/nerve-conduction-study/nerve-conduction-study-concept.webp';
+import ultrasound from '/public/images/examinations/ultrasound/ultrasound-concept.webp';
+import xray from '/public/images/examinations/xray/xray-concept.webp';
 
-import choosingTreatment from '/public/images/treatments/choosing-treatment/choosing-treatment-mechanism.jpg';
-import jointInjections from '/public/images/treatments/joint-injections/joint-injections-mechanism.jpg';
-import painMedicines from '/public/images/treatments/pain-medicines/pain-medicines-mechanism.jpg';
-import selfCare from '/public/images/treatments/self-care/self-care-overview.jpg';
-import surgery from '/public/images/treatments/surgery/surgery-mechanism.jpg';
+import choosingTreatment from '/public/images/treatments/choosing-treatment/choosing-treatment-mechanism.webp';
+import jointInjections from '/public/images/treatments/joint-injections/joint-injections-mechanism.webp';
+import painMedicines from '/public/images/treatments/pain-medicines/pain-medicines-mechanism.webp';
+import selfCare from '/public/images/treatments/self-care/self-care-overview.webp';
+import surgery from '/public/images/treatments/surgery/surgery-mechanism.webp';
 
-import backRehab from '/public/images/rehabilitation/back-rehab/back-rehab-technique.jpg';
-import balanceAndFallPrevention from '/public/images/rehabilitation/balance-and-fall-prevention/balance-and-fall-prevention-overview.jpg';
-import kneeRehab from '/public/images/rehabilitation/knee-rehab/knee-rehab-technique.jpg';
-import rehabPrinciples from '/public/images/rehabilitation/rehab-principles/rehab-principles-technique.jpg';
-import shoulderRehab from '/public/images/rehabilitation/shoulder-rehab/shoulder-rehab-technique.jpg';
+import backRehab from '/public/images/rehabilitation/back-rehab/back-rehab-technique.webp';
+import balanceAndFallPrevention from '/public/images/rehabilitation/balance-and-fall-prevention/balance-and-fall-prevention-overview.webp';
+import kneeRehab from '/public/images/rehabilitation/knee-rehab/knee-rehab-technique.webp';
+import rehabPrinciples from '/public/images/rehabilitation/rehab-principles/rehab-principles-technique.webp';
+import shoulderRehab from '/public/images/rehabilitation/shoulder-rehab/shoulder-rehab-technique.webp';
 
 /**
  * Which picture each article lends to its card, chosen by looking at the
