@@ -31,6 +31,18 @@ if (form && input && statusEl && list && stringsEl) {
       (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c],
     );
 
+  /**
+   * Is this query one unsegmented Thai phrase?
+   *
+   * Thai is written without spaces between words, so a reader searching for
+   * two Thai words types them as one run of characters. That is the case
+   * Pagefind cannot handle and the phrase filter in `render` exists for. A
+   * query with a space in it was segmented by the person typing it, so it is
+   * left to Pagefind.
+   */
+  const THAI = /[\u0E00-\u0E7F]/;
+  const isThaiPhrase = (query) => THAI.test(query) && !/\s/.test(query.trim());
+
   /** The localised way out when search cannot help: real links, not a sentence. */
   const browseLinks = () =>
     `<li class="mt-4"><ul class="m-0 flex list-none flex-wrap gap-3 p-0">${(s.browse || [])
@@ -63,23 +75,88 @@ if (form && input && statusEl && list && stringsEl) {
     try {
       const pf = await load();
       const search = await pf.search(query);
-      const scored = search.results.slice(0, 20);
 
       /*
-       * Pagefind has no Thai analyser and its fallback strips Thai tone marks,
-       * so เข่า (knee) also matches เข้า (enter) and drags unrelated pages in.
-       * Those matches score far below a real one, so drop anything under a
-       * fraction of the top score. A query that genuinely matches several pages
-       * keeps them all, because their scores stay close together.
+       * Fetch the candidates' fragments before ranking, because the Thai rule
+       * below needs each page's own text to decide. A wider slice for Thai:
+       * the phrase filter throws most of them away.
+       */
+      const phrase = isThaiPhrase(query);
+      let scored = search.results.slice(0, phrase ? 30 : 20);
+      let data = await Promise.all(scored.map((r) => r.data()));
+
+      /*
+       * **A Thai query typed without spaces is one phrase, and Pagefind cannot
+       * see that.** It has no Thai segmenter, so it matches the leading run of
+       * the query and lets the rest contribute almost nothing: searching
+       * ปวดเข่า (knee pain) returned the ranking for ปวด (pain) alone, with
+       * ปวดหลัง (back pain) first and ปวดเข่า itself sixth of 38. The author
+       * reported it on 2026-09-20.
        *
-       * Measured on the 2026-09-10 build, 72 articles — see "Search notes" in
-       * CLAUDE.md for the full table and for why this number was left alone.
+       * Thai has no word boundaries, so a plain substring test is the thing a
+       * segmenter would be approximating: a page about knee pain contains the
+       * characters ปวดเข่า, and a page about back pain does not. Measured over
+       * eight Thai reference queries, it separates them exactly — มือชา (numb
+       * hand) went from 19 results to the two that are actually about it.
+       *
+       * **It is stricter than Pagefind on purpose.** Pagefind's generic
+       * handler strips Thai tone marks, so เข่า (knee) matches เข้า (enter);
+       * comparing against the page's real text does not. Both sides are
+       * normalised to NFC first, since the same Thai string can be encoded
+       * more than one way.
+       *
+       * **A query that matches nothing exactly keeps Pagefind's ranking**
+       * rather than returning nothing. A reader who types a phrase the site
+       * words differently — ปวดข้อเข่า where an article says ข้อเข่า — is
+       * better served by near misses than by an empty page.
+       *
+       * English is deliberately untouched. Its queries arrive as space-
+       * separated words that Pagefind already ANDs correctly, and a substring
+       * test there would break stemming: a search for "injuries" would stop
+       * matching a page that says "injury".
+       *
+       * **Two cleverer tiers were built, measured and thrown away**, so that
+       * nobody builds them again. `Intl.Segmenter` does segment Thai
+       * correctly (ปวดข้อเข่า → ปวด + ข้อ + เข่า), but requiring every word
+       * somewhere in `content` filters almost nothing: `content` is the whole
+       * page, and a back-pain article's related-reading links carry ข้อ and
+       * เข่า. Requiring the longest contiguous sub-phrase instead picks the
+       * leftmost of equal length, so ปวดข้อเข่า matched ปวดข้อ and returned
+       * tennis elbow — worse than falling through. Both made an invented
+       * query slightly better and a real one worse.
+       */
+      if (phrase) {
+        const needle = query.normalize('NFC');
+        const exact = scored
+          .map((r, i) => ({ r, d: data[i] }))
+          .filter(({ d }) => (d.content || '').normalize('NFC').includes(needle));
+
+        if (exact.length > 0) {
+          scored = exact.map((x) => x.r);
+          data = exact.map((x) => x.d);
+        }
+      }
+
+      /*
+       * Pagefind's fallback still drags in weak matches, so drop anything
+       * under a fraction of the top score. A query that genuinely matches
+       * several pages keeps them all, because their scores stay close
+       * together.
+       *
+       * See "Search notes" in CLAUDE.md for the measured table and for why
+       * this number has been left alone.
        */
       const RELATIVE_CUTOFF = 0.3;
       const top = scored.length > 0 ? scored[0].score : 0;
-      const kept = scored.filter((r, i) => i === 0 || r.score >= top * RELATIVE_CUTOFF);
 
-      results = await Promise.all(kept.map((r) => r.data()));
+      // Indices rather than a filtered list, because each kept result has to
+      // carry its already-fetched fragment across from `data`.
+      const keep = [];
+      for (let i = 0; i < scored.length && keep.length < 20; i += 1) {
+        if (i === 0 || scored[i].score >= top * RELATIVE_CUTOFF) keep.push(i);
+      }
+
+      results = keep.map((i) => data[i]);
     } catch (error) {
       if (mine !== token) return;
       console.error('Pagefind failed to load or search', error);
