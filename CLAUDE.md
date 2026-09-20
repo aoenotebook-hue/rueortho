@@ -2201,6 +2201,52 @@ author has to supply, and inventing terms of use would be worse than not having
 the page. The footer links to the disclaimer, privacy notice and editorial
 policy, which do exist.
 
+### The repository itself
+
+Audited on 2026-09-20. GitHub reports it at **70 MB** over 160 commits, which
+is nowhere near any GitHub limit — **do not rewrite history to reclaim space.**
+Removing the superseded blobs (the 12.9 MB of JPEGs converted to WebP that
+day, the deleted `src/assets/illustrations/` folder, the old `images/`
+uploads) would need a filter-repo and a force push: every commit SHA changes,
+every clone breaks, and every commit link in this file and in 50 merged PRs
+goes dead. The saving is about 20 MB on a repo with no size problem.
+
+What the audit did find and fix:
+
+- **The LICENSE was CC0 1.0 — a public-domain dedication — on a public repo
+  holding every illustration and clip.** The site's own editorial policy says
+  in both languages that the illustrations and clips are fully reserved and
+  may not be republished without written permission, so the licence said the
+  exact opposite of the author's stated decision. He chose a three-part
+  replacement on 2026-09-20: MIT for the code, CC BY-NC 4.0 for the article
+  text, all rights reserved for the illustrations and clips, with the
+  editorial policy named as the authority where the two differ. **A CC0
+  dedication cannot be withdrawn from anyone who already relied on it**, which
+  the file says plainly; it governs use from that date onwards.
+- **The README was one line** (`# rueortho`) on a public repo. It now says
+  what the site is, how to run it, what the four gates check, where things
+  live, and how the three-way licence splits.
+- **A stray copy of `googlef9618cb9fa32a0a8.html` sat at the repo root**,
+  byte-identical to the one in `public/`. Only the `public/` copy is served;
+  nothing referenced the root one. Deleted — **the two real proofs of Search
+  Console ownership are untouched.**
+- **`images/back pain.png`** (1 MB) was the last file in `images/` and this
+  file had recorded it as unused since 2026-09-10. Deleted.
+- **Two 200 KB planning documents sat at the repo root** and moved to
+  `docs/planning/`. They are the author's own prompt notes, unreferenced by
+  any code, and are kept rather than deleted.
+
+Verified clean in the same pass: no secrets tracked (`.env.example` holds an
+empty analytics token and nothing else), no open pull requests, `main` the
+only branch, and CI green on all recent runs. The CI workflow is already
+correctly scoped — `push` restricted to `main` plus `pull_request`, with
+`cancel-in-progress` concurrency — so a branch push runs the jobs once, not
+twice.
+
+**`_extracted/` is tracked on purpose** and should stay tracked: it is the
+author's own app content, and it is what his wording is checked against when
+a Thai sweep asks whether a phrase is his or Claude's.
+
 ### Images
 
 `docs/IMAGE-SOURCES.md` is a register: an image may not go on the site unless
