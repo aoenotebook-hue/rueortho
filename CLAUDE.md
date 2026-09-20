@@ -602,6 +602,7 @@ pictures to `public/images/basics/<slug>/`, to the filenames
 forty `<Figure>`s — six, four, five and five. They are **the first upload on
 this project whose extension matched the file**: genuine JPEGs named `.jpg`,
 where the five batches before them all arrived as JPEG named `.webp` or `.png`.
+They are `.webp` since 2026-09-20 along with the rest of `public/images/`.
 All twenty are 1024x765, so every figure carries `width` and `height`; without
 them a string path lays out with a zero-height box and reflows the article when
 the lazy file lands.
@@ -717,10 +718,74 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
   caught it — the clip is only requested after the reader presses play, so the
   page loads clean and Playwright saw a working facade. It also fails on a
   `<Video>` with no `description`.
-- The 36 MB of video in `public/` is copied into `dist/` on every build even
-  though the articles that use it are still drafts. That is correct once they
-  publish; if it becomes a problem before then, move the folder rather than
-  deleting files the articles reference.
+- **The 36 MB of video in `public/` is copied into `dist/` on every build, and
+  it is now the single largest thing the site ships** — 57% of a 63 MB build.
+  The articles that use it are published, so that is correct rather than waste;
+  **`single-leg-stand-supported.mp4` was the one exception** and was deleted on
+  2026-09-20, having never been referenced by any `<Video>`. The no-transcode
+  rule above still stands, and it is the author's to lift — see "Build size and
+  Vercel usage".
+
+### Build size and Vercel usage
+
+Audited on 2026-09-20 against the live project (`aoe5/rueortho`,
+`prj_FnXhsld44pmKNu5rmVauaALJxJOy`). A production build was **71 MB** and is
+now **63 MB**. What it is made of, largest first:
+
+| part | size | what it is |
+|---|---|---|
+| `dist/media` | 36 MB | the 16 demonstration clips, copied verbatim |
+| `dist/_astro` | 11 MB | every `astro:assets` derivative |
+| `dist/images` | 6.6 MB | `public/images`, served byte for byte |
+| the rest | ~9 MB | 133 pages of HTML, Pagefind's index, the feeds |
+
+**`public/images` was re-encoded to WebP**, 12.9 MB of JPEG to 6.2 MB at
+quality 85, and all 246 `<Figure src>` / `<ExerciseCard image>` paths in 69
+files were repointed. This is not cosmetic: nothing in the build touches
+`public/`, so those bytes are exactly what a reader downloads, and the figures
+are the heaviest thing on an article page. Every other picture on the site has
+always been WebP — `astro:assets` emits it from `src/assets/` — so this only
+applies the site's own format to the files that happen to live in `public/`.
+`lint:content` validates every one of those paths against the file on disk, so
+a missed rename fails the build rather than shipping a broken picture. The
+JPEGs are in git history if a source is ever wanted back.
+
+**Two genuinely dead files went**: `public/media/exercises/single-leg-stand-supported.mp4`
+(1.7 MB, no `<Video>` ever referenced it — it is the one clip with no poster,
+which is how it was found) and `public/images/figures/knee-oa-cartilage-loss.webp`
+(69 KB, orphaned when the placeholder knee figure was removed).
+**`self-care-mechanism.webp` and `straight-leg-raise.webp` were deliberately
+kept** although nothing references them either: both are held pending the
+author's ruling, and the sections above say why.
+
+**What is left, and why it stays:**
+
+- **The 36 MB of video is 57% of the build and cannot be touched from here.**
+  Re-encoding would roughly halve it, but the no-transcode rule under "App
+  media" is the author's: the apps' own notes warn a generated clip can contain
+  a few frames where the joint inverts, so re-encoding without checking every
+  frame is not a decision Claude makes. There is no ffmpeg in the toolchain
+  either. **If he ever wants it done, that is the single biggest saving left.**
+- **1.5 MB of `dist/_astro` is unreferenced and unavoidable.** Astro emits the
+  untouched original of every imported image, and 22 condition heroes are
+  imported through the content schema's `image()` helper — checked, zero pages
+  reference those files. The other 23 JPEGs there *are* referenced: they are
+  the `og:image` social cards, which must be JPEG (see "The share picture").
+- **No duplicate bytes.** All 16 clips hash distinctly, and `public/` carries
+  no second copy of anything in `src/assets/`.
+
+**The project had 159 stored deployments** going back to the first commit —
+one live, the rest superseded production builds and stale branch previews. The
+author chose on 2026-09-20 to keep the ten most recent and delete the rest.
+Every branch push makes one, so this recurs: if it matters, Vercel's
+deployment-retention setting is the thing to turn on rather than a periodic
+sweep. Vercel stores files content-addressed and shares unchanged ones between
+deployments, so 159 deployments never meant 159 × 71 MB — the video was
+uploaded once — but the deployment list itself is what the dashboard counts.
+
+Also confirmed while auditing: no password or SSO protection on the project,
+three domains attached (`rueortho.vercel.app` plus the two Vercel aliases), and
+the build is fully static, so nothing is running a serverless function.
 
 ### Deployment notes
 
@@ -1746,7 +1811,9 @@ plus for four of them a second procedure scene left over from an earlier upload.
 - **These live in `public/`, not `src/assets/`**, so they are referenced as
   `<Figure src="/images/examinations/…">` — a string path, which is the branch
   of `<Figure>` that `lint:content` validates against the file on disk. They
-  are not processed by `astro:assets` and are served exactly as uploaded.
+  are not processed by `astro:assets`: **what is in `public/images/` is what
+  the reader downloads, byte for byte**, which is why the whole set was
+  re-encoded to WebP on 2026-09-20 — see "Build size and Vercel usage".
 - **Placement follows what is in the frame, not the filename.** `-overview` is
   a room scene, so it goes in the section that explains what the test *is* or
   how it works; `-concept` goes where the article says what the test can show;
@@ -1765,9 +1832,11 @@ plus for four of them a second procedure scene left over from an earlier upload.
   `dxa-scan.webp`, `musculoskeletal-ultrasound.webp`,
   `nerve-conduction-emg.webp`. Checked by SHA-256, not by name.
 - **Every file was a JPEG named `.webp`**, the third batch in a row to arrive
-  that way. Renamed to `.jpg`, bytes untouched. In `public/` this matters more
-  than in `src/assets/`: nothing re-encodes these, so the served
-  `Content-Type` came straight off the extension and was simply wrong.
+  that way. Renamed to `.jpg`, bytes untouched — and then genuinely converted
+  to WebP on 2026-09-20, so they are `.webp` again and this time the extension
+  is true. In `public/` this matters more than in `src/assets/`: nothing
+  re-encodes these at build time, so the served `Content-Type` comes straight
+  off the extension.
 - Captions are again `alt` + `attribution` and nothing else, for the reason
   the condition set gives.
 
@@ -1803,9 +1872,9 @@ treatment topics — an `-overview`, a `-technique`/`-mechanism` and a
   `imageWidth`/`imageHeight`: a path carries no dimensions, so the figure lays
   out with a zero-height box and reflows the article when the lazy file lands.
 - **Every file was a JPEG named `.webp`**, the fifth batch in a row; renamed to
-  `.jpg`, bytes untouched.
+  `.jpg`, bytes untouched, then converted to real WebP on 2026-09-20.
 
-**`self-care-mechanism.jpg` is deliberately unplaced and must stay that way
+**`self-care-mechanism.webp` is deliberately unplaced and must stay that way
 until the author rules on it.** Two of its three panels show a knee sleeve being
 put on and then worn outdoors. The self-care article never mentions a brace or a
 support, and the only mention anywhere in these ten articles is a question to
@@ -1852,12 +1921,15 @@ titles in the condition articles map onto the filenames almost one to one.
   a string path goes straight to `<img>` — so a typo would render a broken
   picture on a published page rather than fail the build. Tested by breaking a
   path and watching it fail.
-- **Every file was a JPEG named `.webp`**, the fourth batch in a row; renamed to
-  `.jpg`, bytes untouched. Two had a `.webp.jpg` double extension.
-  `knee-oa-cartilage-loss.webp` was deleted as a byte-identical duplicate of
-  the copy in `public/images/figures/`, and was never an exercise picture.
+- **Every file was a JPEG named `.webp`**, the fourth batch in a row; renamed
+  to `.jpg`, bytes untouched, then converted to real WebP on 2026-09-20. Two
+  had a `.webp.jpg` double extension. `knee-oa-cartilage-loss.webp` was deleted
+  as a byte-identical duplicate of the copy in `public/images/figures/`, and
+  was never an exercise picture — **that surviving copy was deleted too on
+  2026-09-20**, because nothing had referenced it since the placeholder knee
+  figure went.
 
-**`straight-leg-raise.jpg` is deliberately unplaced and must stay that way until
+**`straight-leg-raise.webp` is deliberately unplaced and must stay that way until
 the author rules on it.** The picture shows the raised leg with the knee bent to
 about a right angle, and all three cards it would have gone on — knee-pain,
 meniscus-tear, meniscus-root-tear — say in their own "watch for" line that the
