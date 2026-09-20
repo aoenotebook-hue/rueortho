@@ -21,8 +21,11 @@ export interface NavItem {
  * `about` gets a hand-written list instead, because what it contains is not a
  * collection — its children are the info and legal pages, and they take the
  * *footer's* labels so the two menus cannot disagree about the same page.
- * `conditions`, `tools` and the video gallery get no drop-down: the first
- * would be a list of 22 rows, and the other two are single destinations.
+ * `conditions`, `tools` and `videos` get no drop-down: the first would be a
+ * list of 22 rows, and the other two are single destinations. `videos` used to
+ * be pushed onto this list by hand, because it was an anchor on `/articles`
+ * rather than a page; it is a route and a section of its own now, so the loop
+ * below picks it up like every other tab.
  */
 const COLLECTION_FOR: Partial<Record<string, ResourceCollection>> = {
   basics: 'basics',
@@ -67,22 +70,6 @@ export async function getNavItems(locale: Locale): Promise<NavItem[]> {
     }
 
     items.push(item);
-
-    /*
-     * The video gallery, as a tab of its own.
-     *
-     * It is not a section in `sections.ts` because it is not a page: it is the
-     * `#videos` block of `/articles`, built by `lib/videos.ts` from the clips
-     * in the article bodies. Giving it an entry there would hand `getSection`
-     * and `ArticlesIndex` an id that answers to no collection.
-     *
-     * It goes in beside `rehabilitation` rather than at the end because the
-     * clips are demonstrations of the exercises that section describes, and
-     * because the menu otherwise ends on two utility entries in a row.
-     */
-    if (section.id === 'rehabilitation') {
-      items.push({ path: '/articles#videos', label: tr('nav.videos') });
-    }
   }
 
   return items;

@@ -444,12 +444,23 @@ articles on 2026-09-19 — those after he said he had read them — bringing it
 to 70.
 
 No `SAMPLE` or `SEED` marker remains anywhere in `src/content/`, and every file
-is `draft: false`. `lastReviewed` is 2026-09-08 on the original 62,
-2026-09-18 on the first four basics files — the first review date on this site
-that is not 2026-09-08 — and 2026-09-19 on the second four. The home page's "recently reviewed" strip is **unaffected**:
-`getRecentlyReviewed` reads `getConditions`, so it sorts over the 22 condition
-articles only, and those still all share one date. That strip only becomes
-meaningful when a *condition* is re-reviewed.
+is `draft: false`. **`lastReviewed` is 2026-09-20 on all 84 files**, set there
+on the author's instruction on 2026-09-20 — he asked for the review date to be
+brought up to date everywhere, and the review date is his claim to make. It
+asserts that he re-read the corpus that day; nothing else about the articles
+changed in that pass, and `publishedDate` was deliberately left alone, so the
+record still shows when each article first went up (2026-09-06 to 2026-09-19).
+Before it, 72 files carried 2026-09-08, four 2026-09-12, four 2026-09-18 and
+four 2026-09-19.
+
+**Do not refresh these dates on your own.** A `lastReviewed` is a statement
+that a named doctor read the article, under a byline that says so; it moves
+when he says it moves and at no other time.
+
+The home page's "recently reviewed" strip is **unaffected**: it sorts by that
+date over the 22 condition articles, which shared one date before and share
+one date now, so the sort stays a no-op over the title-sorted list. That strip
+only becomes meaningful when a *condition* is re-reviewed on its own.
 
 The rule itself has not changed: anything new that Claude drafts gets a
 `SAMPLE` marker and `draft: true` until the author has read it.
@@ -549,11 +560,11 @@ and `/treatments` followed the same day.
   show; the moment something is published it becomes a listing. That is why
   those sections could be marked `live` before their content was reviewed
   without promising anything that is not there.
-- **`/articles` adds nothing of its own.** It indexes the other collections and
-  the demonstration clips, so it was finishable without the author reading new
-  medical copy. Its video gallery **links to the hosting article rather than
-  embedding a second player** — a clip is a silent demonstration whose cautions
-  live in the prose around it.
+- **`/articles` adds nothing of its own.** It indexes the other collections, so
+  it was finishable without the author reading new medical copy. It **held the
+  clip gallery too until 2026-09-20**, when that moved to `/videos` — see "The
+  videos tab" below. What is left is the four libraries and a link to the
+  gallery, and the page is lighter for it: 111–114 KiB against 158–170 KiB.
 - **The video index is derived, not maintained.** `lib/videos.ts` parses
   `<Video>` tags out of the article bodies at build time. A hand-kept list would
   drift, which is exactly the bug that already hit three rotator-cuff clips.
@@ -569,7 +580,9 @@ and `/treatments` followed the same day.
   A clip whose section cannot be resolved falls back to the plain article link,
   so the gallery never points at an id that is not on the page. Verified: 19
   anchored links per locale, no dead anchors, each landing at the header offset
-  with a caution inside the section it lands on.
+  with a caution inside the section it lands on. Still true now the gallery
+  lives at `/videos` — the anchor is computed in `lib/videos.ts`, not in the
+  page that renders it.
 
 **`basics` is the fourth collection on `resourceSchema()`**, added on
 2026-09-18 — how the body works, rather than a disease, a test or a treatment.
@@ -636,10 +649,11 @@ new collection** — the SAMPLE marker, the sources rule and the media checks al
 stop applying. Miss `lib/nav.ts` and the tab appears with no drop-down.
 
 All 32 files in the three published resource collections are live. Production
-builds **131 pages** — 115 until the two hip articles and `/regions/hip` landed
+builds **133 pages** — 115 until the two hip articles and `/regions/hip` landed
 on 2026-09-11, then 121, then 123 once `/basics` got an index page in each
 language, 127 when its first two articles were published on 2026-09-18, and 131
-when its second two were published on 2026-09-19.
+when its second two were published on 2026-09-19, and 133 when `/videos`
+became a page in each language on 2026-09-20.
 
 **The treatments articles are the one exception to the read-before-publish
 rule.** The author asked for the section to be created *and published* in the
@@ -892,9 +906,10 @@ load-bearing.
   three each have a tab two places to the left with the same label and the same
   destination — so opening the menu showed a reader three rows they had just
   walked past. The author reported it on 2026-09-19. It now holds `conditions`
-  (no tab of its own, by his decision) and the video gallery at
-  `/articles#videos` (a section of that page rather than a page). Verified: zero
-  drop-down entries anywhere in the menu repeat a tab label.
+  (no tab of its own, by his decision) and, until 2026-09-20, the gallery at
+  `/articles#videos`; that entry is gone, because the clips are a page of their
+  own now. Verified: zero drop-down entries anywhere in the menu repeat a tab
+  label.
 - **It opens on click, never on hover.** A hover menu cannot be tapped, and the
   tab itself stays an ordinary link to the section index, so nothing is
   reachable only by opening a menu. One open at a time; Escape closes and
@@ -1136,6 +1151,12 @@ a shorter line under it.
   so the pill would repeat the page's own `h1` on every row. The picture stays,
   because an icon showing the condition is useful even where the words beside
   it are not.
+- **`meta`, `playBadge` and `fullSummary` exist for the video gallery alone**,
+  and it is the only caller of any of them. See "The videos tab" below for what
+  each one is for; the short version is that a clip's card links into the
+  middle of an article, its icon is a photograph that needs saying it is a
+  clip, and its summary carries a caution that must not be clipped off the
+  end.
 
 **`cardSummary` is a new schema field, and it is not a shortened `summary`.**
 `summary` has two other jobs — it is the page's meta description and what
@@ -1161,6 +1182,77 @@ absent. The home page's featured strip reads it too.
   is the guard for an article that has no `cardSummary`.
 - **These are 168 new visible strings under the author's byline** and he has
   not read them. They carry no claim his own `summary` did not.
+
+### The videos tab
+
+`/videos` and `/en/videos` are the clip gallery, and they are a page rather
+than an anchor since 2026-09-20.
+
+**The tab used to land on `/articles#videos`**, and that page carried the
+gallery *plus* five groups of article cards — conditions, basics, tests,
+treatments and rehabilitation. Every one of those five is a tab of its own two
+places to the left, so a reader who chose "วิดีโอ" got a page mostly made of
+the menu they had just used. The author asked for the tab to show clips and
+nothing else.
+
+- **The gallery moved; the hub stayed.** `/articles` still indexes the four
+  libraries — the home page's "ดูบทความทั้งหมด" link and the search page's
+  browse link both point at it — and now carries one link to `/videos` instead
+  of a second copy of the list. Two galleries built from the same scan of the
+  article bodies would be two things to keep in step, which is the bug
+  `lib/videos.ts` exists to avoid.
+- **The nav did not change shape.** `videos` was already the ninth tab; it just
+  stopped being pushed onto the list by hand and became an entry in
+  `sections.ts` like the others. Same nine labels, same one row from 960px,
+  same `--header-offset` — re-measured at 960, 1024, 1280, 1440 and 1920px in
+  both languages: one row, nine tabs, 132px of header in Thai and 127px in
+  English. (A row test that counts distinct `top` values reports two rows in
+  English and is wrong: a tab with a chevron is 1px taller than one without.
+  Measure the `<ul>`'s height — it is 44px.)
+- **Each row is an ordinary `Card`**, the same row `/conditions` and every
+  section index use, because the author asked for the horizontal box here too
+  and two implementations of "a listing row" drift.
+- **The icon is the clip's own poster frame.** `scripts/make-video-posters.mjs`
+  already cuts one at 20% of each clip's duration, and `src/lib/video-posters.ts`
+  hands the same file to the card — so the row shows what the clip shows, and
+  the picture can never disagree with the one the player opens onto, because
+  both derive it from the clip's `src` by the same `.mp4` → `.poster.webp`
+  rule. Sixteen explicit imports, not a glob, for the reason
+  `lib/topic-images.ts` records. 16 files serve 19 rows, because six clips are
+  byte-identical across two apps and stored once. Cost: 84 KiB for the whole
+  set of thumbnails, 2–7 KiB each.
+- **A play badge sits over the poster**, because a frame from a clip looks
+  exactly like any other photograph at 68px. It is a shape on a scrim with a
+  ring — the treatment `<Video>`'s own poster badge uses — not a tint, per the
+  site's rule against meaning carried by colour alone, and it is decorative:
+  the card's heading and its `meta` line say the same thing in words.
+- **The card's summary is the author's own `<Video caption>`, verbatim and
+  unclamped — and the unclamping is a safety fix, not a visual one.**
+  `Card` normally clamps a summary to two lines, which is right for a
+  `cardSummary` written to fit. A clip's caption was written to sit under a
+  playing video, and several carry their caution in the last clause:
+  "หยุดที่ความตึง ไม่ใช่ที่ความปวด", "ดึงที่ต้นแขน ห้ามดึงที่ข้อมือ", "Stop at a
+  stretch, not at a sting", "Pull at the upper arm, never at the wrist".
+  Measured at 390px, the clamp cut **30 of 38 captions**, and what it cut was
+  the end — it was deleting the warning and keeping the instruction. `Card`
+  therefore takes `fullSummary`, and the gallery is the only caller. A tall row
+  is the cheap problem here; **do not put the clamp back**.
+- **`meta` is the other new `Card` prop**, and it is what lets the gallery be
+  ordinary cards at all: a clip's link lands in the *middle* of an article, at
+  the `##` that carries its cautions, and a card that jumps a reader there
+  without saying so is a card that lied. It prints "article · section" under
+  the caption, clamped to two lines — one line truncated
+  "เอ็นหมุนไหล่ฉีกขาด · การฟื้นตัวและการฟื้นฟู" on nine rows out of nineteen at
+  390px. Nothing else passes it.
+- **Links, not players, unchanged.** The gallery never embeds a second player,
+  for the reason it never did: a clip is a silent demonstration whose cautions
+  live in the prose around it.
+
+Verified: 19 cards per locale, 19 posters, 19 play badges, every href anchored
+at a section; 54 page loads at 390, 768 and 1280px across both languages with
+0 clipped lines, 0 horizontal overflow and one `h1` each; `/videos` is 54–105
+KiB; the hreflang cluster carries self, alternate and x-default; and no
+`/articles#videos` is left anywhere in the built markup.
 
 ### The region empty state
 
@@ -2014,14 +2106,16 @@ home page's "ดูบทความทั้งหมด" link and the menu's 
 article breadcrumb link straight to `/conditions`. The nav is built from
 `navSections`, not `sections`, so hiding an entry never removes its route.
 
-**The video gallery is a tab without being a section.** It is the `#videos`
-block of `/articles`, not a page, so it is pushed onto the list in `lib/nav.ts`
-rather than added to `sections.ts` — an entry there would hand `getSection` and
-`ArticlesIndex` an id that answers to no collection. It sits next to
-`rehabilitation` because the clips demonstrate that section's exercises. Its
-label is `nav.videos` ("วิดีโอ" / "Videos"), a string of its own rather than
-`articles.videos` ("วิดีโอสาธิต" / "Demonstration videos"), which is still the
-gallery's own heading on the page it lands on.
+**The video gallery is a section now, and it used to be an anchor.** It was the
+`#videos` block of `/articles` with a tab pushed onto the list by hand in
+`lib/nav.ts`, because it was not a page and an entry in `sections.ts` would
+have handed `getSection` an id that answers to no collection. On 2026-09-20 the
+author asked for the tab to show clips and nothing else, so it became `/videos`
+with a component of its own — see "The videos tab" below — and the hand-pushed
+entry went away. Nothing dispatches a collection off a section id, so the
+missing one never mattered; what a section needs is a path, a nav label and a
+heading, and the gallery has all three. It still sits after `rehabilitation`,
+because the clips demonstrate that section's exercises.
 
 `/terms` from the plan's route list is **not** built: it needs legal wording the
 author has to supply, and inventing terms of use would be worse than not having

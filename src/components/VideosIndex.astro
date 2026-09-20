@@ -1,0 +1,92 @@
+---
+import Container from './Container.astro';
+import Card from './Card.astro';
+import FilterBar from './FilterBar.astro';
+import { t, type Locale } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+import { getSection } from '../data/sections';
+import { getVideos } from '../lib/videos';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const tr = t(locale);
+const section = getSection('videos');
+const videos = await getVideos(locale);
+---
+
+{/*
+  The clip gallery, a page of its own since 2026-09-20.
+
+  It used to be the `#videos` block of `/articles`, and the Videos tab pointed
+  at that anchor — so the tab landed on a page carrying five groups of article
+  cards that repeat five tabs of the menu. The author asked for the tab to show
+  clips and nothing else.
+
+  **Links, not players, and that has not changed.** A clip is a silent
+  demonstration whose cautions live in the prose around it, so each row sends
+  the reader to the `##` section of the article that holds it — the smallest
+  unit that still carries the heading, the instructions and the cautions
+  together. `lib/videos.ts` explains why that is the `##` and never the phase
+  sub-heading directly above the clip. Embedding a second player here would put
+  an exercise on the screen with none of the words that qualify it.
+*/}
+<Container>
+  <div class="py-10">
+    <h1>{section.title[locale]}</h1>
+    <p class="text-lg text-muted">{section.intro[locale]}</p>
+
+    <p class="mt-2 text-muted">{tr('videos.count', { n: videos.length })}</p>
+
+    {/*
+      The page already says how many clips it holds, so the filter's own line
+      stays quiet until it has something to add.
+    */}
+    <FilterBar
+      locale={locale}
+      total={videos.length}
+      resetHref={localizePath('/videos', locale)}
+      showTotal={false}
+    />
+
+    <ul class="m-0 mt-5 flex list-none flex-col gap-3 p-0">
+      {
+        videos.map((video) => (
+          <li
+            data-filter-item
+            data-search={`${video.title} ${video.caption ?? ''} ${video.articleTitle} ${video.sectionTitle ?? ''}`.toLowerCase()}
+          >
+            {/*
+              The same row every other listing on the site uses, so a reader
+              who has learned one listing has learned this one.
+
+              `image` is the poster frame cut from this clip, which is the
+              picture "inside the topic" the author asked for — and `playBadge`
+              is what stops it reading as just another photograph. `summary` is
+              his own caption for the clip, verbatim, and `meta` names the
+              article and section the link lands in, because this is the one
+              listing whose rows do not go to the top of a page.
+            */}
+            <Card
+              headingLevel={2}
+              href={video.sectionHref}
+              title={video.title}
+              summary={video.caption}
+              fullSummary
+              image={video.poster}
+              playBadge
+              meta={
+                video.sectionTitle
+                  ? `${video.articleTitle} · ${video.sectionTitle}`
+                  : video.articleTitle
+              }
+              locale={locale}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Container>

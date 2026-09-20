@@ -110,6 +110,36 @@ export const sections: Section[] = [
     status: 'live',
   },
   {
+    /*
+     * The clip gallery, a page of its own since 2026-09-20.
+     *
+     * It used to be the `#videos` block of `/articles` with a tab pointing at
+     * that anchor, so the Videos tab landed on a page whose five other groups
+     * repeated five tabs the reader had just walked past. The author asked for
+     * the tab to show clips and nothing else, so the gallery moved out to
+     * `/videos` and `/articles` kept the libraries.
+     *
+     * It answers to no collection — `lib/videos.ts` reads the clips out of the
+     * article bodies at build time — which is why it was kept out of this file
+     * while it was only an anchor. Now that it is a route with its own
+     * component, an entry here is what a section is: a path, a nav label and a
+     * heading. Nothing dispatches a collection off a section id, so there is
+     * nothing for the missing one to break.
+     *
+     * It sits after `rehabilitation` because the clips demonstrate that
+     * section's exercises, and so the menu does not end on two utility tabs.
+     */
+    id: 'videos',
+    path: '/videos',
+    nav: { th: 'วิดีโอ', en: 'Videos' },
+    title: { th: 'วิดีโอสาธิต', en: 'Demonstration videos' },
+    intro: {
+      th: 'คลิปสั้น ไม่มีเสียง แสดงท่าบริหารและการดูแลตัวเอง แต่ละคลิปเปิดในบทความที่อธิบายข้อควรระวังไว้ด้วย',
+      en: 'Short silent clips of exercises and everyday care. Each one opens in the article that explains its cautions.',
+    },
+    status: 'live',
+  },
+  {
     id: 'tools',
     path: '/tools',
     nav: { th: 'เครื่องมือ', en: 'Tools' },

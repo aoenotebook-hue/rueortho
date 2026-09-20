@@ -78,11 +78,9 @@ const ui = {
     'article.relatedReading': 'อ่านเพิ่มเติมเรื่องที่เกี่ยวข้อง',
     'article.relatedReadingSub':
       'หน้าเหล่านี้อธิบายการตรวจ การรักษา และการฟื้นฟูที่มักพบร่วมกับภาวะนี้ ไว้อ่านเป็นความรู้ทั่วไป ไม่ใช่ลำดับการรักษาที่จัดไว้สำหรับคุณ แผนที่เหมาะกับคุณต้องมาจากแพทย์ที่ได้ตรวจคุณจริง',
-    'articles.count': 'บทความ {articles} เรื่อง และวิดีโอสาธิต {videos} คลิป',
-    'articles.videos': 'วิดีโอสาธิต',
-    'articles.videosBody':
-      'คลิปทั้งหมดเป็นภาพเคลื่อนไหวไม่มีเสียง และอยู่ในบทความที่อธิบายวิธีทำและข้อควรระวังไว้แล้ว กดที่คลิปเพื่อไปยังบทความนั้น',
-    'articles.clip': 'วิดีโอ',
+    'articles.count': 'บทความทั้งหมด {articles} เรื่อง',
+    'articles.videosLink': 'ดูวิดีโอสาธิตทั้งหมด',
+    'videos.count': 'ทั้งหมด {n} คลิป',
     'article.doctorChecklist': 'คำถามที่ควรถามแพทย์',
     'article.helpful': 'บทความนี้มีประโยชน์หรือไม่',
     'article.helpfulYes': 'มีประโยชน์',
@@ -283,11 +281,9 @@ const ui = {
     'article.relatedReading': 'Related educational reading',
     'article.relatedReadingSub':
       'These pages explain tests, treatments and rehabilitation that often come up with this condition. They are general reading, not a treatment sequence arranged for you — that has to come from a doctor who has examined you.',
-    'articles.count': '{articles} articles and {videos} demonstration videos',
-    'articles.videos': 'Demonstration videos',
-    'articles.videosBody':
-      'The clips are silent, and each one sits in an article that explains how to do the movement and what to watch for. Choosing a clip opens that article.',
-    'articles.clip': 'Video',
+    'articles.count': '{articles} articles in all',
+    'articles.videosLink': 'See all the demonstration videos',
+    'videos.count': '{n} clips in all',
     'article.doctorChecklist': 'Questions to ask your doctor',
     'article.helpful': 'Was this helpful?',
     'article.helpfulYes': 'Yes',
