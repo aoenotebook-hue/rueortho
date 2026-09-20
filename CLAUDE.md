@@ -286,7 +286,9 @@ src/
   layouts/BaseLayout.astro      html shell, meta, hreflang, fonts
   pages/                        Thai routes at /, English mirrored under /en
   styles/global.css             design tokens, Thai typography, base styles
-docs/                           SOURCES.md, ARTICLE_TEMPLATE.md, legal texts
+docs/                           SOURCES.md, ARTICLE_TEMPLATE.md, IMAGE-SOURCES.md,
+                                CONTENT-ROADMAP.md, DEPLOY.md, planning/
+                                (the legal texts are content, in content/pages/)
 _sources/                       read-only clones of the author's apps (git-ignored)
 ```
 
@@ -326,7 +328,7 @@ publicly readable. It had been on for every `*.vercel.app` URL
 (`all_except_custom_domains`), which put production behind a Vercel login.
 
 Also done: the examinations and rehabilitation sections, and a real `/articles`
-hub — see "The three new sections" below.
+hub — see "The section collections" below.
 
 The build plan's own list is finished. The sticky table of contents landed on
 2026-09-19 — see "The article contents list" below — and the pre-launch QA pass
@@ -337,35 +339,26 @@ sections.
 
 ### The pre-launch QA pass
 
-Ran 2026-09-19 over all 126 pages at 390, 768, 1280 and 1440px in both
+Ran 2026-09-19 over all 126 pages the site had then at 390, 768, 1280 and 1440px in both
 languages — 504 page loads — plus the four gates, a contrast audit in light and
 dark, and a check of every citation on the site against PubMed.
 
-**It found three real defects, all fixed in the same pass:**
+**It found three real defects, all fixed in the same pass**, and each fix is
+load-bearing where it lives:
 
-- **52 `<th>` on 22 tables carried no `scope`.** A markdown table emits bare
-  header cells, so assistive technology had to guess which column a value
-  belonged to. On the osteoporosis medicines table that guess *is* the content:
-  column three is "tell your doctor if", and a value read without its header is
-  a warning attached to nothing (WCAG 1.3.1). Fixed with `TableHeader.astro`, an
-  MDX `th` override beside the existing `Table.astro`, for the same reason that
-  one is a component override rather than a rehype plugin. `scope="col"` is
-  right for every table here and will stay right: markdown has no syntax for a
-  row header, so a `<th>` can only appear in the header row.
-- **Three breadcrumb links were under 24×24** — เข่า 22px wide, คอ 18px, "Hip"
-  23px. `.tap-24` adds vertical padding only, deliberately, because a link
-  inside a sentence is exempt from WCAG 2.5.8 and padding one horizontally
-  makes neighbouring lines overlap. **A breadcrumb link is not inside a
-  sentence**, so it gets no exemption and needs 24px both ways. The new
-  `nav[aria-label] .tap-24` rule adds horizontal padding cancelled by an equal
-  negative margin: the breadcrumb sits exactly where it did (verified, text
-  still aligned with the `h1` to the pixel) and only the hit box grows.
-- **`<main>` had no `tabindex="-1"`,** so the skip link moved the scroll but
-  left `document.activeElement` on `<body>`. The next Tab did continue from
-  `<main>` in a current browser, so the link worked — but a screen reader's
-  cursor is not guaranteed to follow without it. The focus outline this now
-  paints is drawn outside the full-width box, i.e. off-screen: sampled the
-  viewport's edge pixels, zero accent-coloured ones.
+- **`TableHeader.astro`** gives every `<th>` a `scope="col"`. A markdown table
+  emits bare header cells, and on the osteoporosis medicines table that guess
+  *is* the content — column three is "tell your doctor if", and a value read
+  without its header is a warning attached to nothing (WCAG 1.3.1). It is an
+  MDX component override rather than a rehype plugin, like `Table.astro`.
+  `scope="col"` will stay right: markdown has no syntax for a row header.
+- **`nav[aria-label] .tap-24`** adds horizontal padding cancelled by an equal
+  negative margin, because a breadcrumb link is *not* inside a sentence and so
+  gets no WCAG 2.5.8 exemption — three were under 24px wide. See the `.tap-24`
+  entry under Conventions for why the plain rule pads vertically only.
+- **`<main>` carries `tabindex="-1"`** so a screen reader's cursor follows the
+  skip link, not just the scroll. The focus outline it paints falls outside the
+  full-width box, i.e. off-screen.
 
 **Every one of the 51 distinct PubMed citations was verified** against the
 PubMed record on first author, title, journal and year. All 51 match. Two
@@ -969,19 +962,14 @@ load-bearing.
   libraries, and `about`, whose children are the info and legal pages — and
   those take the *footer's* labels, so the two menus cannot disagree about the
   same page. `tools` is one page and has no drop-down.
-- **`conditions` is reachable from the menu again**, as the first entry of the
-  `articles` drop-down. It still has no tab of its own — `hiddenFromNav` is
-  unchanged — so the author's decision stands while the largest library on the
-  site stops being menu-invisible.
-- **The `articles` drop-down lists only what is not already a tab.** It used to
-  list conditions, examinations, treatments and rehabilitation, and the last
-  three each have a tab two places to the left with the same label and the same
-  destination — so opening the menu showed a reader three rows they had just
-  walked past. The author reported it on 2026-09-19. It now holds `conditions`
-  (no tab of its own, by his decision) and, until 2026-09-20, the gallery at
-  `/articles#videos`; that entry is gone, because the clips are a page of their
-  own now. Verified: zero drop-down entries anywhere in the menu repeat a tab
-  label.
+- **No drop-down entry anywhere repeats a tab label**, and that was a real
+  complaint. The `articles` tab used to carry a drop-down listing conditions,
+  examinations, treatments and rehabilitation — and the last three each had a
+  tab two places to the left with the same label and the same destination, so
+  opening the menu showed a reader three rows they had just walked past. The
+  author reported it on 2026-09-19. `articles` has had no tab at all since the
+  swap later that day, so the menu holds `conditions` directly. Keep it that
+  way: verify the invariant, not the old shape.
 - **It opens on click, never on hover.** A hover menu cannot be tapped, and the
   tab itself stays an ordinary link to the section index, so nothing is
   reachable only by opening a menu. One open at a time; Escape closes and
@@ -1010,11 +998,13 @@ in the DOM.** `positionSubmenu` in `Header.astro` adds `.opens-inline-end` when
 the panel would run off the right edge, and takes it off again if the flipped
 panel would run off the left — a **class**, not an inline style, because the CSP
 refuses those. This replaced `.nav-item:nth-last-child(-n + 2)`, which assumed
-the last two tabs sit at the right-hand end of the row. **The nav wraps onto two
-lines at every desktop width**, so the last tab is alone on row two at the far
-*left*, and right-aligning its panel hung the About menu 51px off the left of a
-1280px viewport with the first characters of every label cut off. Found on
-2026-09-19 while screenshotting the drop-down work, and it predates that work.
+the last two tabs sit at the right-hand end of the row. **The nav wrapped onto
+two lines at every desktop width when that was written**, so the last tab was
+alone on row two at the far *left*, and right-aligning its panel hung the About
+menu 51px off the left of a 1280px viewport with the first characters of every
+label cut off. The row is one line from 960px now, but the measuring is what
+keeps it correct at the widths below that — and at any width a tenth tab would
+create.
 Verified: 60 drop-down openings — six menus at 768, 1024, 1280, 1440 and 1920px
 in both languages — none crossing either edge. A resize while a panel is open
 re-runs it.
@@ -1217,8 +1207,10 @@ a shorter line under it.
 - **Page weight was re-measured after the switch**, because 22 distinct
   pictures replaced eight shared drawings: `/conditions` at 390px is **132 KiB
   over 14 requests** against 125 KiB before, and every other listing is 82–100
-  KiB. `/articles` reads 158–170 KiB, but that is 123 KB of raw HTML for 42
-  cards — 17 KB gzipped — and not the icons, which are lazy and below the fold.
+  KiB. `/articles` was the heaviest at 158–170 KiB, and that was 123 KB of
+  raw HTML for 42 cards — 17 KB gzipped — rather than the icons, which are
+  lazy and below the fold. It is 111–114 KiB since the clip gallery moved out
+  to `/videos` on 2026-09-20.
 - **A region page passes `badge={false}`.** Every card there is the same region,
   so the pill would repeat the page's own `h1` on every row. The picture stays,
   because an icon showing the condition is useful even where the words beside
@@ -1330,14 +1322,13 @@ KiB; the hreflang cluster carries self, alternate and x-default; and no
 
 `RegionPage` renders an explanation and a link to the conditions index when a
 region has nothing published. **No route reaches it today**: both region
-routes build only the regions with a published article *in that locale*. That
-used to be demonstrated by `/regions/hip`, which had nothing until the two Thai
-hip articles landed — the Thai route now exists and the Thai body map links to
-it, while **the English one still does not**, because those articles are Thai
-only. So the branch is now live in exactly the shape it was written for: a
-region published in one language and not the other. The branch is there for the day a region's only
-article is held back, or is written in one language before the other, and it
-was tested by routing every region temporarily.
+routes build only the regions with a published article *in that locale*, and
+every region now has one in both. `/regions/hip` demonstrated the branch for
+about an hour on 2026-09-11, while the two hip articles were Thai-only; they
+are bilingual now, so it builds in both languages again. The branch is there
+for the day a region's only article is held back, or is written in one
+language before the other, and it was tested by routing every region
+temporarily.
 
 The wording is deliberate and worth keeping deliberate: an empty region page
 must not read as reassurance. A body part with no articles yet says nothing at
@@ -1452,45 +1443,75 @@ anything to be told to go to hospital.
   other. This is not fixable from our side; design around it.
 - **Pagefind falls back to fuzzy matching**, so a query that matches nothing
   can still return pages. `zzzqqqxxx` returns the DXA page in the Thai index
-  and `วววฬฬฬ` returns sixteen. A test that needs a genuinely empty result set
-  has to be checked rather than assumed — `qwxzvkjhg` is empty in both locales.
-- Two mitigations, both load-bearing:
-  1. Info pages carry `data-pagefind-weight="0.25"` so articles out-rank them,
-     while they stay findable by their own words. Both halves still hold:
-     searching นโยบาย returns `/privacy/` first at 19.149, and for เข่า the
-     four info pages rank **28th, 31st, 34th and 37th of 39**, scoring
-     0.091–0.038. **This is the mitigation that keeps the privacy notice out
-     of a search for เข่า** — not the cutoff below.
-  2. `public/search.js` takes the top 20 hits and drops any scoring below 30%
-     of the top score.
+  and `วววฬฬฬ` returns sixteen; even `qwxzvkjhg`, which this file used to call
+  empty in both locales, returns the knee-pain page once. A test that needs a
+  genuinely empty result set has to be checked rather than assumed, and there
+  may not be one.
 
-  **Re-measured on the 2026-09-10 build, 115 pages, all nine reference
-  queries** (ปวดเข่า, เข่า, ไหล่ติด, มือชา, รองช้ำ, knee pain, frozen
-  shoulder, numb hand, heel pain). What the numbers actually say:
+**A Thai query typed without spaces is one phrase, and Pagefind could not see
+that.** The author reported it on 2026-09-20: searching ปวดเข่า (knee pain)
+returned the ranking for ปวด (pain) alone — ปวดหลัง (back pain) first, ปวดคอ
+and ปวดไหล่ above it, and ปวดเข่า itself sixth of 38. With no Thai segmenter,
+Pagefind matches the leading run of the query and the rest contributes almost
+nothing.
 
-  | query | hits | top | kept of 20 | what the cutoff removes |
-  |---|---|---|---|---|
-  | ปวดเข่า | 34 | 2.494 | 20 | nothing |
-  | เข่า | 39 | 0.634 | 10 | tone-fold noise from 0.185 down |
-  | ไหล่ติด | 17 | 4.858 | 15 | acl-injury, meniscus-root-tear |
-  | มือชา | 20 | 5.097 | 17 | three knee/foot articles |
-  | รองช้ำ | 1 | 23.565 | 1 | nothing |
-  | knee pain | 20 | 16.947 | 7 | acl-injury (4.817) and below |
-  | frozen shoulder | 5 | 32.59 | 3 | rotator-cuff-tear (8.034) |
-  | numb hand | 18 | 5.024 | 17 | plantar-fasciitis |
-  | heel pain | 8 | 10.54 | 6 | patellofemoral-pain, meniscus-root-tear |
+`public/search.js` therefore **filters Thai phrase results by whether the
+page's own text actually contains the query**, before any scoring. Thai has no
+word boundaries, so a substring test is what a segmenter would be
+approximating: a page about knee pain contains the characters ปวดเข่า and a
+page about back pain does not. It is *stricter* than Pagefind, which strips
+Thai tone marks; both sides are normalised to NFC first. A query that matches
+nothing exactly keeps Pagefind's ranking rather than returning nothing, and
+**English is untouched** — its words arrive space-separated and already AND
+correctly, and a substring test there would break stemming.
 
-  **The cutoff was left at 0.3, and the evidence for that is mixed rather than
-  clean.** It earns its place on เข่า, where it removes half the list. But it
-  is not a noise filter everywhere: it drops acl-injury from *knee pain* and
-  rotator-cuff-tear from *frozen shoulder*, both plausibly worth showing, while
-  keeping frozen-shoulder — a shoulder article — in the results for เข่า at
-  0.251. No threshold separates signal from noise on this corpus, so moving the
-  number trades one visible wrong answer for another. **Do not retune it
-  without measuring all nine queries again**; two of the three claims that used
-  to justify it here (the 0.94/0.26 figures, and "without it เข่า returns the
-  privacy notice") were already stale when this table was measured. The top-20
-  slice does much of the work the cutoff is credited with.
+Three mitigations now, in the order they apply:
+
+1. **The Thai phrase filter above**, which does most of the work.
+2. Info pages carry `data-pagefind-weight="0.25"` so articles out-rank them
+   while staying findable by their own words. **This is what keeps the privacy
+   notice out of a search for เข่า** — not the cutoff.
+3. `public/search.js` keeps the top 20 and drops anything scoring below 30% of
+   the top score.
+
+**Measured on the 2026-09-20 build, 133 pages.** Thai first, where the filter
+applies:
+
+| query | hits | shown before | shown now | first result now |
+|---|---|---|---|---|
+| ปวดเข่า | 38 | 20 | **9** | ปวดเข่า *(was ปวดหลัง)* |
+| เข่า | 43 | 13 | 12 | MRI เข่า |
+| ไหล่ติด | 20 | 17 | **5** | เอ็นหมุนไหล่ฉีกขาด |
+| มือชา | 24 | 19 | **2** | carpal tunnel |
+| ปวดหลัง | 38 | 20 | **8** | ปวดหลัง |
+| ข้อเข่าเสื่อม | 20 | 20 | **8** | MRI เข่า |
+| รองช้ำ | 1 | 1 | 1 | รองช้ำ |
+| กระดูกพรุน | 1 | 1 | 1 | กระดูกพรุน |
+
+English is unchanged, and was re-measured to prove it: knee pain 7, frozen
+shoulder 3, numb hand 19, heel pain 6 — identical to before the change. A
+Thai search costs about 30 fragment fetches and stays under 350ms.
+
+**Two cleverer designs were built, measured and thrown away**, so nobody
+builds them again. `Intl.Segmenter` does segment Thai correctly (ปวดข้อเข่า →
+ปวด + ข้อ + เข่า), but requiring every word somewhere in `content` filters
+almost nothing, because `content` is the whole page and a back-pain article's
+related-reading links carry ข้อ and เข่า. Requiring the longest contiguous
+sub-phrase instead picks the leftmost of equal length, so ปวดข้อเข่า matched
+ปวดข้อ and returned tennis elbow — worse than falling through. Both made an
+invented query slightly better and a real one worse.
+
+**The known gap:** a Thai phrase the site words differently still falls back to
+Pagefind's ranking. ปวดข้อเข่า leads with ปวดหลัง, because no page contains
+that exact string. That is the pre-existing behaviour rather than a
+regression, and the two rejected designs above are why it was left alone.
+
+**The 0.3 cutoff was left where it is, and the evidence for it is mixed rather
+than clean.** It still trims the tail on เข่า. But it is not a noise filter
+everywhere: it drops acl-injury from *knee pain* and rotator-cuff-tear from
+*frozen shoulder*, both plausibly worth showing. **Do not retune it without
+re-measuring every query in the table above**; the top-20 slice and, now, the
+phrase filter do much of the work the cutoff used to be credited with.
 - **The client script lives in `public/search.js`, not in a `<script>` in the
   component, and must stay there.** Pagefind generates `/pagefind/pagefind.js`
   *after* the Astro build, so Vite must never resolve that import. In a bundled
@@ -1952,81 +1973,51 @@ so the Thai page shows English letters — and `double-leg-heel-raise.jpg` and
 than the heels raised. The alt text on those two says "starting position"
 rather than describing a movement that is not in the frame.
 
-### The author's earlier illustrations
+### Region art, and the two illustration shapes
 
-On 2026-09-10 the author uploaded eighteen flat illustrations to `images/` and
-asked for them to be placed. Each is an 800×800 PNG whose artwork is a **circle
-inside a square**, with only soft gradient in the corners — so every use crops
-with `object-cover`, which throws away corner and nothing else, and the circular
-crop in the region grid lines up with the drawing by construction.
+Two things from the 2026-09-10 upload still govern layout. The rest of that
+batch's history — the `images/` staging folder, the `src/assets/illustrations/`
+folder that replaced it, and the `.png`-named-JPEG renaming — is over: the
+folder is gone and `heroImage` in all 44 article files points into
+`assets/conditions/`. See "The condition illustration set" for where they live
+now.
 
-They went to three places, and the files were moved out of `images/` rather than
-copied, so there is one copy of each in git:
+**`src/assets/regions/<region id>.png` is the drawing for each body-map
+region**, rendered by `RegionArt.astro`. **The three browsing categories that
+are not body parts — bone-health, paediatric, sports — have no drawing** and
+fall back to the line glyph in `BodyIcon.astro`. That fallback is why the
+osteoporosis card on the home page once rendered an **empty panel**: `BodyIcon`
+keys off the region id and simply had no path for `bone-health`. **Any new
+region needs either a drawing here or a glyph there.**
 
-- `src/assets/regions/<region id>.png` — the eight body-map regions, rendered by
-  `RegionArt.astro`. **The three browsing categories that are not body parts —
-  bone-health, paediatric, sports — have no drawing**, and fall back to the line
-  glyph in `BodyIcon.astro`. Those three glyphs did not exist until now, which
-  is why the osteoporosis card on the home page rendered an **empty panel**:
-  `BodyIcon` keys off the region id and simply had no path for `bone-health`.
-  Any new region needs either a drawing here or a glyph there.
-- `src/assets/illustrations/<condition slug>` — a drawing per condition, wired
-  in as `heroImage`/`heroImageAlt` in the frontmatter of both language files.
-  **Superseded on 2026-09-17** — see "The condition illustration set" above;
-  the folder no longer exists and those heroes now live beside the rest of each
-  condition's artwork.
-  The schema has carried those two fields since the beginning and nothing
-  rendered them; `ConditionArticle` shows the image under the summary, and
-  `RegionArt` takes a condition's own image as an override, so its cards show
-  the condition rather than its region.
+`src/assets/sections/rehabilitation.png` is the runner beside the heading on
+`/rehabilitation`. `ResourceIndex` maps collection → art, and the other
+sections run without a picture rather than borrowing one.
 
-  **All twenty conditions have one now, and they come in two shapes.** The
-  first nine are the square 800×800 badges described above. The other eleven —
-  achilles-tendinopathy, frozen-shoulder, herniated-disc, meniscus-root-tear,
-  meniscus-tear, neck-pain, osteoporosis, patellofemoral-pain, sciatica,
-  tennis-elbow, trigger-finger — arrived on 2026-09-10 committed straight to
-  `src/assets/illustrations/`, and are 4:3 scenes at 1024×765. Several carry an
-  inset anatomical diagram with labels on it. (frozen-shoulder first landed as
-  a 2400×1792, 1.7 MB export; the author replaced it with a 1024×765 one the
-  same day, so the set is uniform.)
+**Two shapes are still in play, and that is not cosmetic** — but check which,
+because this changed. **All 22 condition heroes are 4:3 at 1024x765** since the
+2026-09-17 set replaced the badges; the **eight region drawings are still
+square 800x800**, a circle inside a square with only soft gradient in the
+corners. So the split is now regions against conditions, not one condition
+against another.
 
-  **They were uploaded as `.png` and are JPEGs inside**, every one of them.
-  They were renamed to `.jpg`; the bytes are the author's, untouched. Astro
-  reads the real format through sharp and emits webp either way, so the site
-  worked regardless — but the extension has to match the file or the served
-  `Content-Type` is a lie the browser has to sniff its way past.
-
-  **The article hero sizes itself by shape.** A square badge is held to
-  `max-w-[20rem]` so it does not tower over the prose; a 4:3 scene gets
-  `max-w-[34rem]`, because squeezing a labelled inset diagram to 320px makes it
-  unreadable — which matters on a site written for older readers. `sizes` has
-  to branch with it, or the browser fetches a 34rem file for a 20rem slot.
-- `src/assets/sections/rehabilitation.png` — the runner, beside the heading on
-  `/rehabilitation`. `ResourceIndex` maps collection → art, and the other two
-  sections simply run without a picture rather than borrowing one.
-
-**The home page's featured and reviewed cards show these as an 80×60
-thumbnail, not a banner, and with `object-contain`.** They were full-width 4:3
-panels — 247×185 at 1280 and 300×225 at 390, nine of them on one page — and the
-crop was not the harmless one this note used to claim. Measured: **seven of the
-nine cropped 25% off the top and bottom**, because those seven are the square
-badges and the box was 4:3; only the two 4:3 scenes fitted. A quarter of the
-height off a circle-in-a-square takes the top and bottom off the circle, not
-"the soft edge".
-
-The two shapes mean *any* single box ratio crops one set or the other, so the
-box no longer crops at all: `RegionArt` takes a `fit` prop, the cards pass
-`contain`, and both shapes sit whole on the panel's own ground. The box keeps
-4:3 so every card matches. **The region circles keep `cover`** — there the box
-is square and so is the badge, so the crop only ever removes the soft corners,
-which is what that layout wants.
-
-Shrinking the media took the Thai home page from 8052px to 5929px at 390px and
-4057px to 3442px at 1280px.
-
-`images/back pain.png` is the one upload still unused — it is the older,
-non-square version of `back_pain.png`, which is now the back-pain article's
-illustration.
+- **`ConditionArticle` still branches on hero shape** — `max-w-[34rem]` for a
+  wide hero, `max-w-[20rem]` for a square one, with `sizes` branching to match
+  so the browser does not fetch a 34rem file for a 20rem slot. Every hero
+  takes the wide path today, so **it is a guard rather than a live split**:
+  keep it, because squeezing a labelled inset diagram to 320px makes it
+  unreadable, and that is what would happen the day a square hero is added.
+- **`RegionArt` takes a `fit` prop and the cards pass `contain`.** The home
+  page's featured and reviewed cards are an 80x60 thumbnail on a 4:3 box.
+  They were full-width 4:3 panels showing square badges, and measured, **seven
+  of nine lost 25% off the top and bottom** — a quarter of the height off a
+  circle-in-a-square takes the circle, not "the soft edge". `contain` is close
+  to a no-op now that the heroes are 4:3, and it still earns its place: a card
+  whose article has no `heroImage` falls back to that article's square region
+  badge, and `cover` would crop it again.
+- **The region circles keep `cover`** — there the box is square and so is the
+  badge, so the crop only ever removes the soft corners, which is what that
+  layout wants.
 
 ### Homepage
 
@@ -2132,12 +2123,11 @@ an excluded article promotes the next one instead of leaving a gap, and if the
 list runs short it stays short. Its "ดูบทความทั้งหมด" / "All articles" link
 goes to `/articles`, the hub it names; it used to go to `/conditions`.
 
-Worth knowing: **every article carries the same `lastReviewed`** (2026-09-08,
-the day they were all published), so that sort is a no-op over the
-title-sorted list and the two languages show a different three. That is not
-wrong — they really were all reviewed the same day — but the strip will only
-become meaningful when review dates start to differ. Do not manufacture dates
-to make it look livelier.
+Worth knowing: **every article still shares one `lastReviewed`**, so that
+sort is a no-op over the title-sorted list and the two languages show a
+different three. The strip only becomes meaningful when review dates start to
+differ. Do not manufacture dates to make it look livelier — see "Publishing
+safety" for whose claim that date is.
 
 Both strips show titles without dates, for the same reason the article byline
 does.
@@ -2156,9 +2146,6 @@ Deliberate departures from that mockup, each with a reason:
 - **No social icons in the footer**, because no accounts exist yet, and no
   author link either — see "Decisions the author has made".
 
-The nav caught up with the plan: การตรวจ, การรักษา, ฟื้นฟู, เครื่องมือผู้ป่วย
-and บทความ & วิดีโอ all have real pages now and are all in the menu, with
-`conditions` the only entry deliberately hidden from it.
 
 ### Sections and routes
 
