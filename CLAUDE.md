@@ -774,14 +774,21 @@ author's ruling, and the sections above say why.
 - **No duplicate bytes.** All 16 clips hash distinctly, and `public/` carries
   no second copy of anything in `src/assets/`.
 
-**The project had 159 stored deployments** going back to the first commit —
-one live, the rest superseded production builds and stale branch previews. The
-author chose on 2026-09-20 to keep the ten most recent and delete the rest.
-Every branch push makes one, so this recurs: if it matters, Vercel's
-deployment-retention setting is the thing to turn on rather than a periodic
-sweep. Vercel stores files content-addressed and shares unchanged ones between
-deployments, so 159 deployments never meant 159 × 71 MB — the video was
-uploaded once — but the deployment list itself is what the dashboard counts.
+**The project had 159 stored deployments** on 2026-09-20, going back to the
+first commit — one live, the rest superseded production builds and stale branch
+previews. The author chose to keep the ten most recent and delete the rest, and
+**that deletion is still outstanding**: the Vercel MCP server this project is
+wired to exposes no delete-deployment call. `cancel_deployment` only stops a
+build in progress, and all 159 are `READY`; `update_project` has no retention
+field in its schema either. It has to be done from the dashboard — Settings →
+Deployment Retention to stop it recurring, or the deployment list to remove
+them by hand.
+
+Worth knowing before anyone panics about that number: Vercel stores files
+content-addressed and shares unchanged ones between deployments, so 159
+deployments never meant 159 × 71 MB — the 36 MB of video was uploaded once and
+reused. What multiplies is the HTML and the hashed assets that change per
+build. The deployment list itself is what the dashboard counts.
 
 Also confirmed while auditing: no password or SSO protection on the project,
 three domains attached (`rueortho.vercel.app` plus the two Vercel aliases), and
