@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VideosIndex from '../../components/VideosIndex.astro';
+import { getSection } from '../../data/sections';
+
+const locale = 'en' as const;
+const section = getSection('videos');
+---
+
+<BaseLayout title={section.title[locale]} description={section.intro[locale]}>
+  <VideosIndex locale={locale} />
+</BaseLayout>

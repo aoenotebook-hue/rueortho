@@ -1,5 +1,6 @@
 import { render, type CollectionEntry } from 'astro:content';
-import type { MarkdownHeading } from 'astro';
+import type { ImageMetadata, MarkdownHeading } from 'astro';
+import { getVideoPoster } from './video-posters';
 import type { Locale } from '../i18n/ui';
 import { getConditions } from './conditions';
 import { getResources } from './resources';
@@ -8,6 +9,20 @@ export interface VideoRef {
   /** Path under public/, e.g. "/media/frozen-shoulder/wall-slide.mp4". */
   src: string;
   title: string;
+  /**
+   * The author's own caption for the clip, as written on the `<Video>` tag.
+   *
+   * The gallery card shows this under the title, so the row says what the clip
+   * shows rather than only naming it. It is his wording verbatim — the card
+   * never paraphrases a caption, for the same reason the article never does.
+   */
+  caption?: string;
+  /**
+   * A frame cut from the clip itself, for the card's icon. `undefined` when no
+   * poster has been generated, and the card then falls back to a play glyph
+   * rather than an empty box.
+   */
+  poster?: ImageMetadata;
   /** Title of the article the clip lives in. */
   articleTitle: string;
   /** Site-relative path of that article, already localised. */
@@ -97,6 +112,16 @@ function collect(
     const title = attr(tag, 'title');
     if (!src || !title) continue;
 
+    /*
+     * `caption`, not `description`. Both are on every `<Video>` tag, and they
+     * do different jobs: `description` is written for a reader who cannot see
+     * the picture and narrates the whole clip, while `caption` is the line
+     * printed under it — short enough for a card, and already written to the
+     * rule that a caption never tells the reader to do anything the article
+     * has not qualified first.
+     */
+    const caption = attr(tag, 'caption');
+
     // No resolvable section — a clip above the first heading, or a body and a
     // heading list that disagree — falls back to the article itself rather
     // than pointing at an id that is not on the page.
@@ -105,6 +130,8 @@ function collect(
     out.push({
       src,
       title,
+      caption,
+      poster: getVideoPoster(src),
       articleTitle,
       articleHref,
       sectionHref: anchored,

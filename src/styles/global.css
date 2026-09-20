@@ -798,6 +798,37 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
   }
 }
 
+/*
+ * The play badge on a video gallery card.
+ *
+ * The icon there is a frame cut from the clip, so without this a row looks
+ * exactly like a row on any other listing. The badge is a shape over the
+ * picture rather than a tint of it — the site never carries meaning in colour
+ * alone — and it sits on a scrim with a ring, the same treatment `<Video>`'s
+ * own poster badge uses, because a white triangle disappears into a bright
+ * frame and a dark one disappears into a dim frame.
+ *
+ * `position: relative` is on the modifier rather than on `.card-icon` itself:
+ * every other card would pay for a containing block it never uses.
+ */
+.card-icon-play {
+  position: relative;
+}
+
+.card-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.3rem 0.25rem 0.3rem 0.35rem;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background: rgb(0 0 0 / 0.55);
+  border: 1px solid rgb(255 255 255 / 0.7);
+  border-radius: 999px;
+}
+
 /* ==========================================================================
    Header navigation
    ========================================================================== */
