@@ -277,12 +277,13 @@ work to carrying shopping upstairs, and `rehab-principles-progression` is five
 everyday scenes around a ticked calendar; the first closes "the four phases",
 the second "how to measure progress". The same applies across the set.
 
-**`self-care-mechanism.jpg` is deliberately unplaced.** Two of its three panels
-show a knee sleeve being put on and then worn outdoors. Nothing in the self-care
-article recommends a brace or support — the only mention of one anywhere in
-these collections is a question to *ask* a doctor, in `knee-rehab` — so placing
-it would put a treatment on the page that the author never wrote. It is the one
-file in the two folders with no referrer.
+**`self-care-mechanism.webp` is placed on `knee-pain`, not on `self-care`.**
+Two of its three panels show a knee sleeve being put on and then worn outdoors.
+Nothing in the self-care article recommends a brace or support, so it does not
+go there. `knee-pain`'s own FAQ answers "Should I wear a knee support?", and on
+2026-09-23, at the author's request, the picture went at the end of that
+article's prevention and self-care section, captioned with that answer's
+qualifiers intact.
 
 Provenance is the author's own upload, and the same open question about an AI
 disclosure applies — nothing in the files claims it, so neither does the
