@@ -1,5 +1,6 @@
 ---
 import { existsSync } from 'node:fs';
+import { clipFrameClass, getClipSize } from '../../lib/clip-size';
 import { t } from '../../i18n/ui';
 import { getLocaleFromUrl } from '../../i18n/utils';
 
@@ -48,6 +49,14 @@ const tr = t(getLocaleFromUrl(Astro.url));
 const derivedPoster = src.replace(/\.mp4$/, '.poster.webp');
 const still =
   poster ?? (existsSync(`public${derivedPoster}`) ? derivedPoster : undefined);
+
+/*
+ * The frame is drawn at the clip's own shape (lib/clip-size.ts). A 720x1280
+ * clip used to open as a 16:9 panel with its poster shrunk inside it, then
+ * grow to 75vh with black bars either side once played; now the facade and the
+ * player are the same box, so pressing play moves nothing on the page.
+ */
+const frame = clipFrameClass(getClipSize(src));
 ---
 
 {/*
@@ -58,8 +67,9 @@ const still =
 <figure class="my-8">
   <button
     type="button"
-    class="video-facade group relative block w-full overflow-hidden rounded-[10px] border border-border bg-surface text-start"
+    class:list={['video-facade group relative mx-auto block w-full overflow-hidden rounded-[10px] border border-border bg-surface text-start', frame]}
     data-video={src}
+    data-video-class={`mx-auto block w-full rounded-[10px] border border-border bg-black ${frame}`}
     data-title={title}
     data-unavailable={tr('media.unavailable')}
     aria-label={`${tr('media.play')} — ${title}`}
@@ -69,14 +79,12 @@ const still =
         <img
           src={still}
           alt=""
-          width="960"
-          height="540"
           loading="lazy"
           decoding="async"
-          class="block aspect-video w-full bg-ground object-contain"
+          class="block h-full w-full bg-ground object-cover"
         />
       ) : (
-        <span class="block aspect-video w-full bg-ground" />
+        <span class="block h-full w-full bg-ground" />
       )
     }
     {/* Over a photograph the badge needs its own contrast: a scrim behind it
