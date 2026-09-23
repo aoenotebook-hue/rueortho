@@ -341,6 +341,25 @@
  * so the dimming that made them "quiet" also made them fail WCAG 1.4.3.
  * Smaller and muted is the whole effect; transparency is not part of it.
  */
+/*
+ * A demonstration clip's frame, at the clip's own shape — chosen by
+ * lib/clip-size.ts from the file's own header, as a class because the CSP
+ * refuses `style=""`. The height cap is applied through the width, so the box
+ * keeps its exact proportions and nothing is letterboxed: a 9:16 clip is at
+ * most 34rem tall and centred, where it used to open as a short 16:9 panel and
+ * then jump to 75vh behind black bars when played. A 16:9 clip in a 680px
+ * column is unaffected.
+ */
+.clip-frame-wide {
+  aspect-ratio: 16 / 9;
+  max-width: min(100%, calc(min(70vh, 34rem) * 16 / 9));
+}
+
+.clip-frame-tall {
+  aspect-ratio: 9 / 16;
+  max-width: min(100%, calc(min(70vh, 34rem) * 9 / 16));
+}
+
 .caption {
   font-size: 0.75em;
   line-height: 1.5;

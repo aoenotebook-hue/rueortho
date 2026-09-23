@@ -4,6 +4,7 @@ import { isPortrait } from '../../lib/image-shape';
 import { Image } from 'astro:assets';
 import { t } from '../../i18n/ui';
 import { getLocaleFromUrl } from '../../i18n/utils';
+import { clipFrameClass, getClipSize } from '../../lib/clip-size';
 
 interface Props {
   title: string;
@@ -98,7 +99,13 @@ const meta = [sets, reps, hold].filter(Boolean);
  */
 const tr = t(getLocaleFromUrl(Astro.url));
 const playLabel = `${tr('media.play')} — ${title}`;
-const videoClass = portrait
+/*
+ * The player is sized by the clip's shape, not the still's: a square still
+ * (chin tuck, shoulder-blade squeeze) hides a 9:16 clip, which the landscape
+ * size then played at 30rem wide and 75vh tall between black bars.
+ */
+const clipIsTall = video ? clipFrameClass(getClipSize(video)) === 'clip-frame-tall' : portrait;
+const videoClass = clipIsTall
   ? 'block max-h-[75vh] w-full max-w-[min(20rem,100%)] rounded-[10px] border border-border bg-black'
   : 'block max-h-[75vh] w-full max-w-[min(30rem,100%)] rounded-[10px] border border-border bg-black';
 ---

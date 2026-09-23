@@ -779,6 +779,24 @@ article's app block, from `src/assets/apps/`, taken from each app's repository
 On a phone, `/tools` puts the app's name and Open button before its QR code:
 nobody can scan the screen they are holding.
 
+### Clip frames take the clip's shape (2026-09-23)
+
+`lib/clip-size.ts` reads a clip's width and height from its MP4 track header at
+build time, and `<Video>` and `<ExerciseCard video>` size themselves from that
+rather than assuming 16:9 or copying the still's shape. The classes are
+`.clip-frame-wide` / `.clip-frame-tall` in global.css (classes, because the CSP
+refuses `style=""`); the height cap goes through the width, so a 9:16 clip is a
+306x544 box at every width and nothing is letterboxed.
+
+Measured on the seven 9:16 rotator-cuff clips before the change: the facade was
+a 16:9 panel (350x198 on a phone, 782x308 on a desktop) and pressing play grew
+it to 350x621 / 782x675 with black bars either side, **pushing the text below
+down by 368–588px**. After: the facade and the player are the same box, and the
+text below moves 0px at 390, 820 and 1440. A card whose still is square but
+whose clip is 9:16 (chin tuck, shoulder-blade squeeze) now plays at the tall
+size instead of 30rem wide and 75vh tall between bars. The 28 wide clips are
+unaffected.
+
 ### Build size and Vercel usage
 
 Audited on 2026-09-20 against the live project (`aoe5/rueortho`,
