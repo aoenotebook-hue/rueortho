@@ -314,7 +314,7 @@ exercise picture at all.
 raised leg with the knee bent to about a right angle beside three cards that
 say the knee must stay straight. On 2026-09-23 the file was replaced with a
 correct-form picture from the ACL app — see "The straight-leg raise" under the
-2026-09-23 refresh — and it is still waiting on one ruling from the author.
+2026-09-23 refresh — and is now placed on all three cards.
 
 Two more are worth his eye, and both were placed:
 
@@ -582,11 +582,10 @@ is the one clip still from the first import — see below.
 
 `public/images/exercises/straight-leg-raise.webp` **now holds the ACL app's
 `pre_4.jpg`**, replacing the picture that showed the knee bent. The form is
-right — the other knee bent, the working leg fully straight, toes up. **It is
-still unplaced**: the three cards say to lift the leg "about a hand's width",
-and the picture lifts it to about the height of the other knee. That is a
-difference in an instruction, so it is the author's call — place it as it is,
-or change the card text.
+right — the other knee bent, the working leg fully straight, toes up. It lifts
+the leg to about the height of the other knee, where the three cards say
+"about a hand's width"; the author was shown that and ruled on 2026-09-23 to
+place it as it is. It is on all six cards, credited to the ACL app.
 
 ## Where attribution appears
 

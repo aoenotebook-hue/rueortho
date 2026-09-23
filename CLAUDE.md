@@ -812,10 +812,8 @@ JPEGs are in git history if a source is ever wanted back.
 (1.7 MB, no `<Video>` ever referenced it — it is the one clip with no poster,
 which is how it was found) and `public/images/figures/knee-oa-cartilage-loss.webp`
 (69 KB, orphaned when the placeholder knee figure was removed).
-**`straight-leg-raise.webp` was deliberately kept** although nothing
-references it: it is held pending the author's ruling, and "The exercise
-illustration set" below says why. (`self-care-mechanism.webp` was held with it
-until 2026-09-23, when it went onto `knee-pain`.)
+`self-care-mechanism.webp` and `straight-leg-raise.webp`, once held unplaced,
+are both placed since 2026-09-23 — see the sections on each below.
 
 **Reading a property off an imported image emits its full-size original.**
 Found on 2026-09-23, and it cost 5.7 MB before it was caught. An `import x
@@ -2050,25 +2048,18 @@ titles in the condition articles map onto the filenames almost one to one.
   2026-09-20**, because nothing had referenced it since the placeholder knee
   figure went.
 
-**`straight-leg-raise.webp` is deliberately unplaced and must stay that way until
-the author rules on it.** Later on 2026-09-23 the file was **replaced** with
-the ACL app's `pre_4.jpg`, which has the form right — other knee bent, working
-leg straight, toes up. It is still unplaced for one reason: the cards say to
-lift "about a hand's width" and the picture lifts to about the height of the
-other knee. That is a difference in an instruction; it waits on him. What
-follows is why the *previous* picture was held. Re-examined on 2026-09-23 when he asked for it to be
-placed: the frame shows lying on the back with one foot flat and the **other
-hip and knee both bent to about a right angle**, lower leg level with the floor.
-That is not a straight-leg raise at any point in the movement, not its starting
-position either, and it matches **no exercise anywhere on the site** — every
-card title was checked. So there is no truthful home for it; what it needs is
-a redrawn picture (which the three cards would then take) or a new exercise
-written by him. All three cards it would have gone on — knee-pain,
-meniscus-tear, meniscus-root-tear — say in their own "watch for" line that the
-knee must stay straight throughout. Placing it would contradict the instruction
-printed beside it, which is a medical change made by picture rather than by
-text, and those are the author's. It is the only file in the folder with no
-referrer.
+**`straight-leg-raise.webp` is placed on all three straight-leg-raise cards**
+(knee-pain, meniscus-tear, meniscus-root-tear, both languages) since
+2026-09-23, **on the author's ruling**. The file is the ACL app's `pre_4.jpg`:
+other knee bent, working leg straight, toes up. It lifts the leg to about the
+height of the other knee where the cards say "about a hand's width"; the
+author was shown that difference and said to place it as it is. The alt text
+describes the height the picture shows rather than the one the card states.
+
+The picture it replaced was held for a different reason and must not come
+back: it showed the working leg with the hip and knee both bent to about a
+right angle — not a straight-leg raise at any point in the movement — beside
+cards whose "watch for" line says the knee must stay straight throughout.
 
 Two more were placed but are flagged for him: `ankle-alphabet.jpg` has the
 letters **"ABC"** drawn into it — the first picture on the site with text in it,
