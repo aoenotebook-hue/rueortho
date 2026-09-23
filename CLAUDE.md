@@ -747,9 +747,10 @@ JPEGs are in git history if a source is ever wanted back.
 (1.7 MB, no `<Video>` ever referenced it — it is the one clip with no poster,
 which is how it was found) and `public/images/figures/knee-oa-cartilage-loss.webp`
 (69 KB, orphaned when the placeholder knee figure was removed).
-**`self-care-mechanism.webp` and `straight-leg-raise.webp` were deliberately
-kept** although nothing references them either: both are held pending the
-author's ruling, and the sections above say why.
+**`straight-leg-raise.webp` was deliberately kept** although nothing
+references it: it is held pending the author's ruling, and "The exercise
+illustration set" below says why. (`self-care-mechanism.webp` was held with it
+until 2026-09-23, when it went onto `knee-pain`.)
 
 **What is left, and why it stays:**
 
@@ -1187,9 +1188,10 @@ a shorter line under it.
   room scene does not — a photograph of a scanner and a photograph of a clinic
   are the same grey rectangle that small. So a `-concept`, `-mechanism` or
   `-anatomy` frame wins wherever one exists. `self-care` is the one exception
-  and uses `-overview`: `self-care-mechanism.jpg` shows a knee sleeve, the
-  article never mentions a brace, and it is deliberately unplaced until the
-  author rules on it — so it must not arrive as an icon either.
+  and uses `-overview`: `self-care-mechanism.webp` shows a knee sleeve, and the
+  self-care article never mentions a brace. The picture now lives on
+  `knee-pain`, whose text does discuss one — it must still not arrive as the
+  self-care icon.
 - **`SectionIcon.astro`'s four glyphs are now the fallback, not the norm.**
   Every published resource article has a picture, so nothing renders one today;
   it is what a new article gets until somebody picks a frame for it. Drawn on
@@ -1902,13 +1904,19 @@ treatment topics — an `-overview`, a `-technique`/`-mechanism` and a
 - **Every file was a JPEG named `.webp`**, the fifth batch in a row; renamed to
   `.jpg`, bytes untouched, then converted to real WebP on 2026-09-20.
 
-**`self-care-mechanism.webp` is deliberately unplaced and must stay that way
-until the author rules on it.** Two of its three panels show a knee sleeve being
-put on and then worn outdoors. The self-care article never mentions a brace or a
-support, and the only mention anywhere in these ten articles is a question to
-*ask* a doctor in `knee-rehab` — so placing it would put a treatment on the page
-that he never wrote, through a picture. It is the only file in the two folders
-with no referrer.
+**`self-care-mechanism.webp` is on `knee-pain`, not on `self-care`, and that
+is on purpose.** It was held unplaced until the author asked for it to be
+placed on 2026-09-23. Its three panels are a sore knee during a chore → an elastic sleeve
+going on → walking outdoors in it. The self-care article never mentions a
+brace or a support, so it still does not belong there: it would put a
+treatment on that page that he never wrote, through a picture. `knee-pain`
+*does* discuss one, in the author's own FAQ ("Should I wear a knee support?"),
+and the picture shows exactly the sequence that answer describes. It closes
+`## Prevention and self-care` / `## การป้องกันและการดูแลตนเอง`, and its caption
+is that FAQ answer shortened **with both qualifiers kept** — it does not treat
+the cause, and it is not a substitute for strengthening. A caption that kept
+"helps some people feel more confident" and dropped those two would be the
+picture promoting a product, which the medical content rules forbid.
 
 ### The exercise illustration set
 
@@ -1958,8 +1966,14 @@ titles in the condition articles map onto the filenames almost one to one.
   figure went.
 
 **`straight-leg-raise.webp` is deliberately unplaced and must stay that way until
-the author rules on it.** The picture shows the raised leg with the knee bent to
-about a right angle, and all three cards it would have gone on — knee-pain,
+the author rules on it.** Re-examined on 2026-09-23 when he asked for it to be
+placed: the frame shows lying on the back with one foot flat and the **other
+hip and knee both bent to about a right angle**, lower leg level with the floor.
+That is not a straight-leg raise at any point in the movement, not its starting
+position either, and it matches **no exercise anywhere on the site** — every
+card title was checked. So there is no truthful home for it; what it needs is
+a redrawn picture (which the three cards would then take) or a new exercise
+written by him. All three cards it would have gone on — knee-pain,
 meniscus-tear, meniscus-root-tear — say in their own "watch for" line that the
 knee must stay straight throughout. Placing it would contradict the instruction
 printed beside it, which is a medical change made by picture rather than by

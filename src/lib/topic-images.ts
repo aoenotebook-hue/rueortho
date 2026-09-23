@@ -91,8 +91,8 @@ const chosen: Record<ResourceCollection, Record<string, ImageMetadata>> = {
     /*
      * The one that is not a `-mechanism`. `self-care-mechanism.jpg` shows a
      * knee sleeve being put on and worn, and the self-care article never
-     * mentions a brace — it is deliberately unplaced until the author rules on
-     * it, so it must not arrive on the page as an icon either.
+     * mentions a brace. The picture lives on `knee-pain`, whose FAQ discusses
+     * a support; it must not arrive here as the self-care icon.
      */
     'self-care': selfCare,
     surgery,
