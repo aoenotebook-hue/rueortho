@@ -54,7 +54,7 @@ export interface VideoRef {
  * `[^#]` after `##` keeps `###` out: the section, not the sub-heading — see
  * `collect` below for why that distinction is the whole point.
  */
-const SCAN = /(?<h2>^##[^#][^\n]*)|(?<video><Video\b[^>]*?\/>)/gm;
+const SCAN = /(?<h2>^##[^#][^\n]*)|(?<video><Video\b[^>]*?\/>)|(?<card><ExerciseCard\b[^>]*?\bvideo="[^"]*"[^>]*>)/gm;
 
 function attr(tag: string, name: string): string | undefined {
   const match = tag.match(new RegExp(`\\b${name}="([^"]*)"`, 's'));
@@ -105,10 +105,18 @@ function collect(
       continue;
     }
 
-    const tag = match.groups?.video;
+    /*
+     * A clip can sit in a `<Video>` block or on an `<ExerciseCard>`, where the
+     * card's still is its poster. The card has no caption of its own — its
+     * body is the instructions — so the gallery row carries the card's
+     * `videoDescription` and links to the section, where the instructions and
+     * their cautions are.
+     */
+    const card = match.groups?.card;
+    const tag = match.groups?.video ?? card;
     if (!tag) continue;
 
-    const src = attr(tag, 'src');
+    const src = card ? attr(tag, 'video') : attr(tag, 'src');
     const title = attr(tag, 'title');
     if (!src || !title) continue;
 
@@ -120,7 +128,7 @@ function collect(
      * rule that a caption never tells the reader to do anything the article
      * has not qualified first.
      */
-    const caption = attr(tag, 'caption');
+    const caption = card ? attr(tag, 'videoDescription') : attr(tag, 'caption');
 
     // No resolvable section — a clip above the first heading, or a body and a
     // heading list that disagree — falls back to the article itself rather
@@ -156,7 +164,7 @@ export async function getVideos(locale: Locale): Promise<VideoRef[]> {
     entry: CollectionEntry<'conditions'> | CollectionEntry<'examinations'>,
     href: string,
   ) => {
-    if (!entry.body?.includes('<Video')) return;
+    if (!entry.body?.includes('<Video') && !entry.body?.includes(' video="')) return;
     const { headings } = await render(entry);
     videos.push(...collect(entry.body, headings, entry.data.title, href));
   };

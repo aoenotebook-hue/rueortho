@@ -1,4 +1,9 @@
+import type { ImageMetadata } from 'astro';
 import type { Locale } from '../i18n/ui';
+import osteoporosisIcon from '../assets/apps/osteoporosis-care.png';
+import frozenShoulderIcon from '../assets/apps/frozen-shoulder-care.png';
+import rotatorCuffIcon from '../assets/apps/postoperative-care-rc.png';
+import aclIcon from '../assets/apps/postoperative-care-aclr.png';
 
 export interface CompanionApp {
   id: string;
@@ -6,6 +11,12 @@ export interface CompanionApp {
   /** One sentence on what the app does for a patient, not what it is. */
   description: Record<Locale, string>;
   url: string;
+  /**
+   * The app's own home-screen icon, copied from its repository, so a reader
+   * who installs the app recognises it on the phone as the one the site
+   * pointed at. Decorative here: the app's name is always printed beside it.
+   */
+  icon: ImageMetadata;
   /** Condition slugs this app belongs to. */
   conditions: string[];
   status: 'live' | 'draft';
@@ -22,6 +33,7 @@ export interface CompanionApp {
 export const apps: CompanionApp[] = [
   {
     id: 'osteoporosis-care',
+    icon: osteoporosisIcon,
     name: {
       th: 'ดูแลกระดูกพรุน',
       en: 'Osteoporosis Care',
@@ -36,6 +48,7 @@ export const apps: CompanionApp[] = [
   },
   {
     id: 'frozen-shoulder-care',
+    icon: frozenShoulderIcon,
     name: {
       th: 'ดูแลข้อไหล่ติด',
       en: 'Frozen Shoulder Care',
@@ -50,6 +63,7 @@ export const apps: CompanionApp[] = [
   },
   {
     id: 'postoperative-care-rc',
+    icon: rotatorCuffIcon,
     name: {
       th: 'ดูแลหลังผ่าตัดเย็บเอ็นหมุนไหล่',
       en: 'Rotator Cuff Repair Recovery',
@@ -64,6 +78,7 @@ export const apps: CompanionApp[] = [
   },
   {
     id: 'postoperative-care-aclr',
+    icon: aclIcon,
     name: {
       th: 'ดูแลหลังผ่าตัดสร้างเอ็นไขว้หน้า',
       en: 'ACL Reconstruction Recovery',

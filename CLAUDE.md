@@ -711,19 +711,84 @@ videos verbatim, deduplicated by SHA-256, into `public/media/<slug>/`.
   caught it — the clip is only requested after the reader presses play, so the
   page loads clean and Playwright saw a working facade. It also fails on a
   `<Video>` with no `description`.
-- **The 36 MB of video in `public/` is copied into `dist/` on every build, and
-  it is now the single largest thing the site ships** — 57% of a 63 MB build.
+- **The 38 MB of video in `public/` is copied into `dist/` on every build, and
+  it is the single largest thing the site ships** — 70% of a 54 MB build as of
+  2026-09-23 (it was 36 MB, 57% of 63 MB, before the refresh).
   The articles that use it are published, so that is correct rather than waste;
   **`single-leg-stand-supported.mp4` was the one exception** and was deleted on
   2026-09-20, having never been referenced by any `<Video>`. The no-transcode
   rule above still stands, and it is the author's to lift — see "Build size and
   Vercel usage".
 
+### The 2026-09-23 refresh from the apps
+
+The author asked for everything he had uploaded to his four apps to be reused
+wherever it fits. `scripts/import-app-media.mjs` was rewritten to the apps'
+current filenames and re-run; **its lists are the record of what came from
+where**, and `docs/IMAGE-SOURCES.md` has the table and every file that was
+looked at and left out, with the reason. Four things about it:
+
+- **Nothing was placed where the article is silent.** Each picture or clip sits
+  beside a sentence that already describes what it shows — the ACL article's
+  care sections (heel prop, ice, crutches, shower cover, pillow under the heel,
+  desk work, no smoking), the osteoporosis rooms and the Timed Up and Go test,
+  the frozen shoulder stage-4 levels, the rotator cuff movements "your
+  physiotherapist will usually add". The ACL phase exercises were **not**
+  placed: the article's phase table names none of them.
+- **Every file was looked at first** — stills on contact sheets, clips as five
+  frames each. That found the defects the filenames hide: an osteoporosis
+  "marching" clip that is sit-to-stand footage, a rotator cuff "passive
+  elevation" clip that is someone icing a shoulder, drug-box pictures with
+  brand names and doses, and three ACL pictures that contradict the text
+  beside them. **Check the frames of any new clip before trusting its name.**
+- **It fixed two things that were already wrong on the live site.** The
+  rotator cuff sleep section used frozen shoulder clips showing **no sling**,
+  beside text saying to wear the sling while sleeping; the app's own stills,
+  sling on, replaced them. And three `<Video>` descriptions — the text a blind
+  reader gets instead of the clip — described something else: "passive forward
+  elevation" said a therapist lifts the arm of someone lying down, the clip is
+  a seated table slide; "activity precautions" and "if stiffness wakes you"
+  were also off. Descriptions describe the frame, so they were corrected.
+- **The C2PA check no longer applies.** The re-cut files carry no credential;
+  provenance rests on the author's own statement (see the register). The five
+  rotator cuff stills of unknown origin are still out.
+
+**`<ExerciseCard>` takes `video` and `videoDescription`.** The card's picture
+becomes the clip's poster: a play badge over the still, and tapping swaps in
+the clip through the same click-to-load `<Video>` uses — the handler lives in
+`src/scripts/video-facade.ts`, imported by both components, because Astro only
+bundles a component's script on pages that use that component. 17 cards carry
+a clip now (ten frozen shoulder, six osteoporosis, one rotator cuff), which
+turns every frozen shoulder exercise into a still you can press to see it
+move. `lint:content` checks a card's `video` file exists and that it has a
+description, as it does for `<Video>`.
+
+**A portrait picture is capped at 20rem, a landscape one at 30rem (card) or
+34rem (figure).** The ACL photographs are 4:5 and at 34rem one was taller than
+a laptop screen. Figure and card decide from the image's shape through
+`lib/image-shape.ts` — and **that helper exists because of a trap**: reading
+`.width` off an imported image makes Astro emit its full-size original, see
+"Build size". A `<Video>` poster now shows the whole frame (`object-contain`),
+and a playing clip is capped at 75% of the viewport height, because the
+rotator cuff clips are 9:16 and at full column width one ran a screen and a
+half tall.
+
+**The companion apps show their own icons** — on `/tools` and in each
+article's app block, from `src/assets/apps/`, taken from each app's repository
+(the frozen shoulder one is extracted from the inline SVG in its `index.html`).
+On a phone, `/tools` puts the app's name and Open button before its QR code:
+nobody can scan the screen they are holding.
+
 ### Build size and Vercel usage
 
 Audited on 2026-09-20 against the live project (`aoe5/rueortho`,
-`prj_FnXhsld44pmKNu5rmVauaALJxJOy`). A production build was **71 MB** and is
-now **63 MB**. What it is made of, largest first:
+`prj_FnXhsld44pmKNu5rmVauaALJxJOy`). A production build was **71 MB** and went
+to **63 MB**; the table below is that audit. **On 2026-09-23 it is 54 MB** for
+22 more clips and 29 more pictures than the audit counted: the author's
+re-encoded rotator cuff clips are a seventh of the size of the ones they
+replaced, and the frozen shoulder re-cuts are about 40% smaller, so
+`dist/media` is 38 MB for 38 clips where it was 36 MB for 16. What it was made
+of on 2026-09-20, largest first:
 
 | part | size | what it is |
 |---|---|---|
@@ -747,15 +812,25 @@ JPEGs are in git history if a source is ever wanted back.
 (1.7 MB, no `<Video>` ever referenced it — it is the one clip with no poster,
 which is how it was found) and `public/images/figures/knee-oa-cartilage-loss.webp`
 (69 KB, orphaned when the placeholder knee figure was removed).
-**`straight-leg-raise.webp` was deliberately kept** although nothing
-references it: it is held pending the author's ruling, and "The exercise
-illustration set" below says why. (`self-care-mechanism.webp` was held with it
-until 2026-09-23, when it went onto `knee-pain`.)
+`self-care-mechanism.webp` and `straight-leg-raise.webp`, once held unplaced,
+are both placed since 2026-09-23 — see the sections on each below.
+
+**Reading a property off an imported image emits its full-size original.**
+Found on 2026-09-23, and it cost 5.7 MB before it was caught. An `import x
+from './a.webp'` is a Proxy in the build, and *any* property read — `x.width`
+included — adds the file to Astro's "referenced" set, so the untouched
+original is copied into `dist/_astro/` whether or not a page requests it.
+Reading `width`/`height` in `<Figure>` and `<ExerciseCard>` to tell portrait
+from landscape put 89 unrequested originals into the build. The proxy's
+`clone` is the one read it does not count, which is what `lib/image-shape.ts`
+uses. **Measure `dist/_astro` against `main` after any change that touches
+imported images**: files no HTML, CSS, JS or XML names are the symptom — 22 of
+them (the condition heroes, below) is the baseline.
 
 **What is left, and why it stays:**
 
-- **The 36 MB of video is 57% of the build and cannot be touched from here.**
-  Re-encoding would roughly halve it, but the no-transcode rule under "App
+- **The video — 38 MB, 70% of the build since 2026-09-23 — cannot be touched
+  from here.** Re-encoding would shrink it further, but the no-transcode rule under "App
   media" is the author's: the apps' own notes warn a generated clip can contain
   a few frames where the joint inverts, so re-encoding without checking every
   frame is not a decision Claude makes. There is no ffmpeg in the toolchain
@@ -1314,7 +1389,15 @@ nothing else.
   for the reason it never did: a clip is a silent demonstration whose cautions
   live in the prose around it.
 
-Verified: 19 cards per locale, 19 posters, 19 play badges, every href anchored
+**Clips on exercise cards are in the gallery too**, since 2026-09-23:
+`lib/videos.ts` reads `<ExerciseCard video=…>` as well as `<Video>`, the row
+takes the card's `videoDescription` as its line (a card's body is its
+instructions, and has no caption), and the icon is the card's own still —
+`lib/video-posters.ts` maps each clip to its poster file or, for a card clip,
+to the still in `src/assets/` the importer wrote under the same name. That
+list was regenerated from disk and is **38 clips per locale**.
+
+Verified (2026-09-20): 19 cards per locale, 19 posters, 19 play badges, every href anchored
 at a section; 54 page loads at 390, 768 and 1280px across both languages with
 0 clipped lines, 0 horizontal overflow and one `h1` each; `/videos` is 54–105
 KiB; the hreflang cluster carries self, alternate and x-default; and no
@@ -1965,20 +2048,18 @@ titles in the condition articles map onto the filenames almost one to one.
   2026-09-20**, because nothing had referenced it since the placeholder knee
   figure went.
 
-**`straight-leg-raise.webp` is deliberately unplaced and must stay that way until
-the author rules on it.** Re-examined on 2026-09-23 when he asked for it to be
-placed: the frame shows lying on the back with one foot flat and the **other
-hip and knee both bent to about a right angle**, lower leg level with the floor.
-That is not a straight-leg raise at any point in the movement, not its starting
-position either, and it matches **no exercise anywhere on the site** — every
-card title was checked. So there is no truthful home for it; what it needs is
-a redrawn picture (which the three cards would then take) or a new exercise
-written by him. All three cards it would have gone on — knee-pain,
-meniscus-tear, meniscus-root-tear — say in their own "watch for" line that the
-knee must stay straight throughout. Placing it would contradict the instruction
-printed beside it, which is a medical change made by picture rather than by
-text, and those are the author's. It is the only file in the folder with no
-referrer.
+**`straight-leg-raise.webp` is placed on all three straight-leg-raise cards**
+(knee-pain, meniscus-tear, meniscus-root-tear, both languages) since
+2026-09-23, **on the author's ruling**. The file is the ACL app's `pre_4.jpg`:
+other knee bent, working leg straight, toes up. It lifts the leg to about the
+height of the other knee where the cards say "about a hand's width"; the
+author was shown that difference and said to place it as it is. The alt text
+describes the height the picture shows rather than the one the card states.
+
+The picture it replaced was held for a different reason and must not come
+back: it showed the working leg with the hip and knee both bent to about a
+right angle — not a straight-leg raise at any point in the movement — beside
+cards whose "watch for" line says the knee must stay straight throughout.
 
 Two more were placed but are flagged for him: `ankle-alphabet.jpg` has the
 letters **"ABC"** drawn into it — the first picture on the site with text in it,

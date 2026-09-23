@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { isPortrait } from '../../lib/image-shape';
 
 interface Props {
   /** An imported image (preferred, gets optimised) or a path under /public. */
@@ -27,12 +28,21 @@ interface Props {
 
 const { src, alt, caption, attribution, license, width, height } = Astro.props;
 
+/*
+ * A portrait picture is capped narrower than the 34rem every figure gets. The
+ * app photographs are 4:5 and 3:4 people standing up; at the full figure width
+ * a 4:5 frame is 42rem tall, more than a laptop screen, and the sentence it
+ * illustrates scrolls away above it. 20rem is the cap exercise-card portraits
+ * already use.
+ */
+const portrait = isPortrait(src, width, height);
+
 if (!alt) {
   throw new Error('<Figure> requires an alt description — it is not optional on this site.');
 }
 ---
 
-<figure>
+<figure class:list={[portrait && 'figure-portrait']}>
   {
     typeof src === 'string' ? (
       <img

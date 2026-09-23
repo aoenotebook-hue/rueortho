@@ -187,6 +187,38 @@ const { numbered = true } = Astro.props;
     max-width: min(34rem, 100%);
   }
 
+  /* A portrait photograph at 34rem is taller than a laptop screen; see
+     Figure.astro. */
+  .prose figure.figure-portrait img {
+    max-width: min(20rem, 100%);
+  }
+
+  /* A set of pictures that belong to one numbered list — the four levels of
+     the frozen shoulder's last stage — sit two to a row from 640px up rather
+     than as four full-width figures, so the list and its pictures stay on
+     one screen. A phone still gets one per row. */
+  .prose .figure-grid {
+    display: grid;
+    gap: 1.25em;
+    margin-top: 1.25em;
+    margin-bottom: 2.5em;
+    max-width: 44rem;
+  }
+
+  @media (min-width: 640px) {
+    .prose .figure-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .prose .figure-grid figure {
+    margin: 0;
+  }
+
+  .prose .figure-grid figure img {
+    max-width: 100%;
+  }
+
   /* `.caption` in global.css carries the size; this only sets the spacing,
      so a figcaption written straight into markdown matches the components. */
   .prose figcaption {

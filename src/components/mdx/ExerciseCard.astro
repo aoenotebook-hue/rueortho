@@ -1,5 +1,6 @@
 ---
 import type { ImageMetadata } from 'astro';
+import { isPortrait } from '../../lib/image-shape';
 import { Image } from 'astro:assets';
 import { t } from '../../i18n/ui';
 import { getLocaleFromUrl } from '../../i18n/utils';
@@ -37,6 +38,18 @@ interface Props {
    */
   imageWidth?: number;
   imageHeight?: number;
+  /**
+   * A demonstration clip under public/, e.g. "/media/frozen-shoulder/pendulum.mp4".
+   *
+   * The card's picture becomes the clip's poster: the reader sees the still,
+   * with a play badge over it, and tapping it swaps in the clip — the same
+   * click-to-load `<Video>` uses, so nothing downloads until it is asked for.
+   * Needs `image` for the poster and `videoDescription` for anyone who cannot
+   * see the clip.
+   */
+  video?: string;
+  /** What happens in the clip, for a screen reader. Required with `video`. */
+  videoDescription?: string;
   /** YouTube video id. Nothing from Google loads until the reader presses play. */
   youtube?: string;
   /** Still image shown in place of the video before it is loaded. */
@@ -53,9 +66,23 @@ const {
   imageAttribution,
   imageWidth,
   imageHeight,
+  video,
+  videoDescription,
   youtube,
   poster,
 } = Astro.props;
+
+if (video && (!image || !videoDescription)) {
+  throw new Error(`<ExerciseCard title="${title}"> has a video but no image to use as its poster, or no videoDescription.`);
+}
+
+/*
+ * Portrait pictures are capped narrower than landscape ones. The app stills
+ * come in both shapes — 3:4 and 4:5 figures standing up, 16:9 scenes of a
+ * whole room — and one cap for both either buries a short card under a tall
+ * portrait or shrinks a room scene to a thumbnail.
+ */
+const portrait = isPortrait(image, imageWidth, imageHeight);
 
 if (image && !imageAlt) {
   throw new Error(`<ExerciseCard title="${title}"> has an image but no imageAlt.`);
@@ -71,6 +98,9 @@ const meta = [sets, reps, hold].filter(Boolean);
  */
 const tr = t(getLocaleFromUrl(Astro.url));
 const playLabel = `${tr('media.play')} — ${title}`;
+const videoClass = portrait
+  ? 'block max-h-[75vh] w-full max-w-[min(20rem,100%)] rounded-[10px] border border-border bg-black'
+  : 'block max-h-[75vh] w-full max-w-[min(30rem,100%)] rounded-[10px] border border-border bg-black';
 ---
 
 <article class="exercise-card my-6 rounded-[10px] border border-border bg-surface p-5">
@@ -88,8 +118,37 @@ const playLabel = `${tr('media.play')} — ${title}`;
 
   {
     image && (
-      <figure class="mt-4 mb-0">
-        {typeof image === 'string' ? (
+      <figure class:list={['mt-4 mb-0', portrait ? 'is-portrait' : 'is-landscape']}>
+        {video ? (
+          <>
+            <button
+              type="button"
+              class="video-facade group relative block overflow-hidden rounded-[10px] text-start"
+              data-video={video}
+              data-title={title}
+              data-video-class={videoClass}
+              data-unavailable={tr('media.unavailable')}
+              aria-label={playLabel}
+              aria-describedby={`${video}-desc`}
+            >
+              {typeof image === 'string' ? (
+                <img src={image} alt="" width={imageWidth} height={imageHeight} loading="lazy" decoding="async" class="block" />
+              ) : (
+                <Image src={image} alt="" widths={[400, 800]} loading="lazy" class="block" />
+              )}
+              <span
+                class="pointer-events-none absolute inset-0 grid place-items-center bg-black/15 transition group-hover:bg-black/25"
+                aria-hidden="true"
+              >
+                <span class="rounded-full bg-accent px-4 py-2.5 text-lg text-accent-contrast shadow-[0_2px_10px_rgba(0,0,0,0.35)] ring-2 ring-white/70">
+                  ▶
+                </span>
+              </span>
+            </button>
+            <span id={`${video}-desc`} class="sr-only">{videoDescription}</span>
+            <p class="m-0 mt-2 text-sm text-muted">{tr('media.videoHint')}</p>
+          </>
+        ) : typeof image === 'string' ? (
           <img
             src={image}
             alt={imageAlt}
@@ -147,9 +206,19 @@ const playLabel = `${tr('media.play')} — ${title}`;
    * turns a short set of instructions into a page of photograph. 20rem keeps
    * the picture beside its own text rather than burying it, and is the same
    * cap the article hero uses for a square illustration.
+   *
+   * A landscape still — the app scenes are 16:9 — gets 30rem instead: at
+   * 20rem a whole room shrinks until the person in it is a few pixels tall.
+   * On a phone both caps are wider than the card, so both fill it.
    */
-  .exercise-card figure img {
+  .exercise-card figure.is-portrait img,
+  .exercise-card figure.is-portrait .video-facade {
     max-width: min(20rem, 100%);
+  }
+
+  .exercise-card figure.is-landscape img,
+  .exercise-card figure.is-landscape .video-facade {
+    max-width: min(30rem, 100%);
   }
 
   .exercise-body ul,
@@ -165,6 +234,10 @@ const playLabel = `${tr('media.play')} — ${title}`;
     list-style: decimal;
   }
 </style>
+
+<script>
+  import '../../scripts/video-facade';
+</script>
 
 <script>
   // Click-to-load: no request reaches Google until the reader asks for the video.

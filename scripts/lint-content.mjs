@@ -145,6 +145,18 @@ for (const article of articles) {
     if (src && !existsSync(join('public', src))) {
       errors.push(`${path}: <ExerciseCard image="${src}"> — no such file under public/.`);
     }
+
+    // A card's clip is only requested when the reader presses play, so a
+    // missing file would pass every page-load check — the rotator cuff bug
+    // above, one component over. It needs a description for the same reason
+    // a <Video> does.
+    const video = tag.match(/\bvideo="([^"]+)"/)?.[1];
+    if (video && !existsSync(join('public', video))) {
+      errors.push(`${path}: <ExerciseCard video="${video}"> — no such file under public/.`);
+    }
+    if (video && !/\bvideoDescription="[^"]+"/.test(tag)) {
+      errors.push(`${path}: <ExerciseCard video="${video}"> has no videoDescription.`);
+    }
   }
 
   /*

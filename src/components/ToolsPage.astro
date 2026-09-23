@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Container from './Container.astro';
 import QrCode from './QrCode.astro';
 import { t, type Locale } from '../i18n/ui';
@@ -38,12 +39,19 @@ const siteUrl = new URL(locale === 'th' ? '/' : '/en/', Astro.site).href;
         {
           liveApps.map((app) => (
             <li class="flex flex-col gap-4 rounded-[10px] border border-border p-5 sm:flex-row">
-              <div class="shrink-0">
+              {/* On a phone the QR code goes last: nobody can scan the screen
+                  they are holding, so the app's name and its Open button come
+                  first. From 640px, where the page is more likely on a
+                  desktop, the code leads again, beside the text. */}
+              <div class="order-last shrink-0 sm:order-none">
                 <QrCode url={app.url} label={tr('tools.qrFor', { name: app.name[locale] })} />
               </div>
 
               <div class="min-w-0 flex-1">
-                <h3 class="mt-0! mb-2 text-[1.05rem]">{app.name[locale]}</h3>
+                <h3 class="mt-0! mb-2 flex items-center gap-3 text-[1.05rem]">
+                  <Image src={app.icon} alt="" width={40} height={40} class="app-icon" />
+                  <span class="min-w-0">{app.name[locale]}</span>
+                </h3>
                 <p class="m-0 text-[0.95em] text-muted">{app.description[locale]}</p>
                 <p class="m-0 mt-2 text-sm text-muted">{tr('tools.scanToOpen')}</p>
                 <a
