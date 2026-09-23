@@ -65,6 +65,10 @@ import safePickup from '../../../assets/conditions/osteoporosis/safe-pickup.webp
 import safetyBathroom from '../../../assets/conditions/osteoporosis/safety-bathroom.webp';
 import safetyStairs from '../../../assets/conditions/osteoporosis/safety-stairs.webp';
 import testChairStand from '../../../assets/conditions/osteoporosis/test-chair-stand.webp';
+import safetyBedroom from '../../../assets/conditions/osteoporosis/safety-bedroom.webp';
+import safetyKitchen from '../../../assets/conditions/osteoporosis/safety-kitchen.webp';
+import safetyOutdoors from '../../../assets/conditions/osteoporosis/safety-outdoors.webp';
+import testTug from '../../../assets/conditions/osteoporosis/test-tug.webp';
 import anatomyImage from '../../../assets/conditions/osteoporosis/osteoporosis-anatomy.jpg';
 import careImage from '../../../assets/conditions/osteoporosis/osteoporosis-care.jpg';
 
@@ -271,6 +275,8 @@ Avoid sit-ups, straight-leg toe touches, forceful twisting and lifting heavy thi
   sets="2 rounds"
   reps="10 times"
   image={sitToStandHold}
+  video="/media/osteoporosis/sit-to-stand-hold.mp4"
+  videoDescription="Close up on a chair with armrests: the person pushes down on both armrests to stand up, then lowers back to sitting with the hands still on them."
   imageAlt="An older adult sits at the front of a chair holding both armrests and leans forward to stand up"
   imageAttribution="Illustration from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -292,6 +298,8 @@ Stand behind the chair holding the back with both hands. Slowly lift one knee th
   reps="10 times each side"
   hold="hold 3 seconds"
   image={weightShifts}
+  video="/media/osteoporosis/weight-shifts.mp4"
+  videoDescription="Seen from behind, the person holds the back of a chair and slowly shifts the weight from one foot to the other."
   imageAlt="An older adult stands holding a chair with feet shoulder-width apart, shifting weight onto one leg"
   imageAttribution="Illustration from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -340,6 +348,8 @@ Face the wall about an arm's length away with palms on the wall at shoulder heig
   title="Hip hinge — bend at the hips, not the back"
   reps="10 times"
   image={hipHinge}
+  video="/media/osteoporosis/hip-hinge.mp4"
+  videoDescription="Seen from the side, the person bends forward from the hips with the back kept straight and the hands sliding towards the knees, then stands tall again."
   imageAlt="An older adult pushes the hips backwards with knees slightly bent, keeping the back straight like a ruler"
   imageAttribution="Illustration from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -352,6 +362,8 @@ Stand with feet hip-width apart and gently tighten your stomach. Push your hips 
   reps="10 times"
   hold="hold 5 seconds"
   image={chinTuck}
+  video="/media/osteoporosis/chin-tuck.mp4"
+  videoDescription="Seen from the side, the person draws the head straight back so the chin tucks in without tipping down, holds, then relaxes."
   imageAlt="An older adult sits tall looking straight ahead and gently draws the chin back towards the neck"
   imageAttribution="Illustration from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -364,6 +376,8 @@ Sit or stand tall looking straight ahead. Gently draw your chin back towards you
   reps="10 times"
   hold="hold 5 seconds"
   image={scapularSqueeze}
+  video="/media/osteoporosis/scapular-squeeze.mp4"
+  videoDescription="Seen from behind, the person draws both shoulder blades together and down, holds, then lets them go."
   imageAlt="An older adult sits tall with arms by the sides, squeezing both shoulder blades together"
   imageAttribution="Illustration from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -374,6 +388,8 @@ Sit or stand tall with arms by your sides. Squeeze your shoulder blades together
   title="How to pick things up safely"
   reps="practise 5 times"
   image={safePickup}
+  video="/media/osteoporosis/safe-pickup.mp4"
+  videoDescription="Beside a chair, the person goes down on one knee with the back straight, picks a cloth up from the floor, and rises to standing holding it."
   imageAlt="An older adult kneels on one knee to pick an object off the floor, back straight and one hand braced on the thigh"
   imageAttribution="Illustration from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -399,6 +415,13 @@ Always have someone with you, put the chair against a wall, and stop at once if 
 
 **Timed Up and Go** — stand up from the chair, walk 3 metres, turn around, walk back and sit down. Time it from standing to sitting. Twelve seconds or more means a higher chance of falling, and is worth telling your doctor.
 
+<Figure
+  src={testTug}
+  alt="An older man walks from a chair towards a cone on the floor while a woman times him on her phone"
+  caption="Someone should be with you, as for the chair-stand test."
+  attribution="Image from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
+/>
+
 ## Prevention and self-care
 
 Stronger bone only helps if you stay on your feet, so preventing falls carries as much weight as treating the bone.
@@ -406,6 +429,13 @@ Stronger bone only helps if you stay on your feet, so preventing falls carries a
 ### A safer home
 
 **Bedroom** — a night light you can reach easily, a clear path from bed to bathroom, a phone within reach of the bed, and a bed at a height where your feet touch the floor when you sit.
+
+<Figure
+  src={safetyBedroom}
+  alt="A bedroom with a lamp on the bedside table, a clear floor from the bed to the door, and slippers beside the bed"
+  caption="A light within reach, and a clear path from the bed."
+  attribution="Image from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
+/>
 
 **Bathroom** — grab rails beside the toilet and in the shower, a non-slip mat, a floor kept dry, and enough light day and night.
 
@@ -427,7 +457,21 @@ Stronger bone only helps if you stay on your feet, so preventing falls carries a
 
 **Kitchen** — everyday items between waist and shoulder height so you never climb or stretch, a non-slip mat at the sink, no cables across walkways, and spills wiped up at once.
 
+<Figure
+  src={safetyKitchen}
+  alt="A kitchen with everyday pots and dishes on open shelves at waist to shoulder height, a table and chairs, and a clear floor"
+  caption="Everyday things kept between waist and shoulder height."
+  attribution="Image from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
+/>
+
 **Outdoors** — no loose doormats or clutter at the entrance, changes in level clearly visible, and lighting around the house at night.
+
+<Figure
+  src={safetyOutdoors}
+  alt="An older woman walks up the front steps of a house holding a handrail, on a clear path with nothing lying at the door"
+  caption="A clear entrance, with the change in level easy to see."
+  attribution="Image from the Osteoporosis Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
+/>
 
 ### Three things people overlook
 

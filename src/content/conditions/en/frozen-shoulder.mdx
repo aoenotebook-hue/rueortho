@@ -58,7 +58,10 @@ import bandInternalRotation from '../../../assets/conditions/frozen-shoulder/ban
 import bandRow from '../../../assets/conditions/frozen-shoulder/band-row.webp';
 import lightForwardRaise from '../../../assets/conditions/frozen-shoulder/light-forward-raise.webp';
 import loadedCarry from '../../../assets/conditions/frozen-shoulder/loaded-carry.webp';
-import showering from '../../../assets/conditions/frozen-shoulder/showering.webp';
+import level1 from '../../../assets/conditions/frozen-shoulder/level-1-self-care.webp';
+import level2 from '../../../assets/conditions/frozen-shoulder/level-2-everyday-reach.webp';
+import level3 from '../../../assets/conditions/frozen-shoulder/level-3-load.webp';
+import level4 from '../../../assets/conditions/frozen-shoulder/level-4-your-life.webp';
 import anatomyImage from '../../../assets/conditions/frozen-shoulder/frozen-shoulder-anatomy.jpg';
 import careImage from '../../../assets/conditions/frozen-shoulder/frozen-shoulder-care.jpg';
 
@@ -229,6 +232,8 @@ Stretch to tension, not to pain. If it is still worse the next morning, you went
   title="Pendulum swing"
   reps="10 each direction"
   image={pendulum}
+  video="/media/frozen-shoulder/pendulum.mp4"
+  videoDescription="Leaning forward with one hand on a table, the person lets the sore arm hang and swing gently in small circles, then stands up."
   imageAlt="A person leans forward with one hand resting on a table, letting the other arm hang loose and swing in small circles"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -250,6 +255,8 @@ Lean forward and let the arm hang completely loose. Small circles, then small fo
   reps="8 reps"
   hold="hold 5 seconds"
   image={assistedExternalRotation}
+  video="/media/frozen-shoulder/assisted-external-rotation.mp4"
+  videoDescription="Lying on the back with the sore elbow tucked at the side on a folded towel, the person holds a stick in both hands and uses the good arm to push the sore forearm slowly outwards, then back."
   imageAlt="A person stands with the elbow tucked against the side and bent to 90 degrees, using a stick to push the forearm outward"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -271,7 +278,7 @@ Elbow tucked at your side and bent to 90°. Use a stick or your other hand to tu
 <Video
   src="/media/frozen-shoulder/wall-slide.mp4"
   title="Wall slide — 8 reps"
-  description="A person stands facing a wall with the forearm flat against it and slides it upward as far as is comfortable, then slides back down."
+  description="A person stands facing a wall with both palms flat against it and slides the hands upward as far as is comfortable, then slides them back down."
   caption="Forearm on the wall, slide it upward as far as is comfortable. Note the highest point you reach — it is the clearest sign of progress."
   attribution="Video from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated clip"
 />
@@ -281,6 +288,8 @@ Elbow tucked at your side and bent to 90°. Use a stick or your other hand to tu
   reps="8 reps"
   hold="hold 10 seconds"
   image={stickAssistedElevation}
+  video="/media/frozen-shoulder/stick-assisted-elevation.mp4"
+  videoDescription="Lying on the back with the knees bent, the person holds a stick in both hands and raises it slowly overhead, the good arm doing the lifting, then lowers it to the chest."
   imageAlt="A person holds a stick with both hands and uses the good arm to push the stiff arm up overhead"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -294,6 +303,8 @@ Hold a stick with both hands and use the good arm to push the stiff arm upward.
   reps="5 reps"
   hold="hold 20 seconds"
   image={externalRotationStretch}
+  video="/media/frozen-shoulder/external-rotation-stretch.mp4"
+  videoDescription="Sitting on a chair with the sore elbow at the side, the person holds a stick in both hands and pushes the sore forearm outwards with the good arm, holds, then returns."
   imageAlt="A person supports the elbow against the side and rotates the forearm outward, holding at the end of the comfortable range"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -315,6 +326,8 @@ Elbow supported at your side, rotate outward and hold at the end of the comforta
   reps="6 reps"
   hold="hold 10 seconds"
   image={towelInternalRotation}
+  video="/media/frozen-shoulder/towel-internal-rotation.mp4"
+  videoDescription="Standing, the person holds a towel over one shoulder with the top hand and its lower end behind the back with the other hand, pulls upwards so the lower hand slides up the back, then lets it down."
   imageAlt="A towel hangs over the good shoulder while the affected hand grips its lower end behind the back and pulls gently upward"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -330,6 +343,8 @@ Towel over the good shoulder. Grip the low end with the stiff arm and gently pul
   sets="2 sets"
   reps="12 reps each"
   image={bandExternalRotation}
+  video="/media/frozen-shoulder/band-external-rotation.mp4"
+  videoDescription="Standing side-on to a band fixed at waist height, with a rolled towel under the sore elbow, the person turns the forearm outwards against the band and slowly back."
   imageAlt="A person stands with the elbow at their side holding a resistance band anchored at waist height, rotating the forearm outward against it"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -343,6 +358,8 @@ Band anchored at waist height, elbow at your side, rotate the forearm outward ag
   sets="2 sets"
   reps="12 reps each"
   image={bandInternalRotation}
+  video="/media/frozen-shoulder/band-internal-rotation.mp4"
+  videoDescription="Standing side-on to a band fixed at waist height, elbow at the side, the person pulls the band in across the front of the body towards the stomach and slowly back."
   imageAlt="A person stands with the elbow at their side holding a resistance band, rotating the forearm inward towards the stomach"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -356,6 +373,8 @@ Same setup, rotating the forearm in toward your stomach.
   sets="2 sets"
   reps="12 reps each"
   image={bandRow}
+  video="/media/frozen-shoulder/band-row.mp4"
+  videoDescription="Facing a band fixed in front at chest height, the person pulls both handles back towards the body, drawing the shoulder blades together, then lets the arms forward slowly."
   imageAlt="A person holds a resistance band in both hands and pulls both elbows back past the ribs, squeezing the shoulder blades together"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -369,6 +388,8 @@ Pull both elbows back past your ribs, squeezing the shoulder blades together.
   sets="2 sets"
   reps="10 reps each"
   image={lightForwardRaise}
+  video="/media/frozen-shoulder/light-forward-raise.mp4"
+  videoDescription="Standing, the person holds a small weight at the side, lifts the straight arm forward to shoulder height, and lowers it slowly."
   imageAlt="A person holds a light weight and raises the straight arm forward to shoulder height"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -382,6 +403,8 @@ Light weight or no weight. Raise the arm forward to shoulder height and lower sl
   reps="3 times"
   hold="30 seconds each"
   image={loadedCarry}
+  video="/media/frozen-shoulder/loaded-carry.mp4"
+  videoDescription="The person walks tall across a room holding a weight at the side in one hand, shoulders level, then stops."
   imageAlt="A person walks upright carrying a weighted bag at their side"
   imageAttribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
 >
@@ -398,6 +421,38 @@ This stage is not measured in repetitions but in what you can do. Work up one le
 2. **Everyday reach** — reach a shelf, put on a seatbelt, reach behind your back.
 3. **Load** — carry a full bag, lift overhead, do resistance work. Three times a week.
 4. **Your life** — back to the gym, the sport, or the specific thing your job asks of your shoulder.
+
+<div class="figure-grid">
+
+<Figure
+  src={level1}
+  alt="A man combs his hair with the affected arm raised, standing in a bathroom"
+  caption="1. Self-care — combing your hair without planning around the shoulder."
+  attribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
+/>
+
+<Figure
+  src={level2}
+  alt="A man reaches up to put a folded towel on a high shelf"
+  caption="2. Everyday reach — a shelf at head height."
+  attribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
+/>
+
+<Figure
+  src={level3}
+  alt="A man carries a full cardboard box in both arms across a kitchen"
+  caption="3. Load — carrying something with real weight in it."
+  attribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
+/>
+
+<Figure
+  src={level4}
+  alt="A man hangs a shirt on a rail at shoulder height in a laundry room"
+  caption="4. Your life — the ordinary jobs the shoulder used to stop."
+  attribution="Illustration from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
+/>
+
+</div>
 
 Once your movement is back to normal and your pain is minimal, keep a short maintenance routine going so the stiffness does not creep back.
 
@@ -432,7 +487,7 @@ Night pain is the hardest part of the painful stage for most people. These posit
 <Video
   src="/media/frozen-shoulder/sleep-night-waking.mp4"
   title="If stiffness wakes you"
-  description="A person sits on the edge of the bed, leans forward slightly and swings the affected arm slowly in small circles."
+  description="A person gets up and stands beside the bed, rests the good hand on the bedside table, leans forward slightly and lets the affected arm swing slowly in small circles."
   caption="Do a few gentle pendulum swings or slow movements rather than lying still and waiting it out."
   attribution="Video from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated clip"
 />
@@ -456,16 +511,17 @@ There is no proven way to stop frozen shoulder happening. What you can do is red
 <Video
   src="/media/frozen-shoulder/getting-dressed.mp4"
   title="Getting dressed"
-  description="A person puts a shirt on by sliding the affected arm into its sleeve first, then the other arm, and takes it off in the reverse order."
+  description="A person sitting on the edge of the bed puts a shirt on by sliding the affected arm into its sleeve first, then the other arm."
   caption="Injured arm first when dressing, injured arm last when undressing. Loose tops, button-up shirts, and slip-on shoes make this easier."
   attribution="Video from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated clip"
 />
 
-<Figure
-  src={showering}
-  alt="A person showers using the good arm to soap and rinse, letting the affected arm hang relaxed, with a long-handled sponge nearby"
+<Video
+  src="/media/frozen-shoulder/showering.mp4"
+  title="Showering"
+  description="Seen from behind in the shower, a person reaches over one shoulder with a long-handled sponge to wash the back, then lowers the arm."
   caption="Wash and rinse with your good arm and let the injured one hang relaxed. A long-handled sponge reaches your back; pat dry rather than rubbing."
-  attribution="Image from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated image"
+  attribution="Video from the Frozen Shoulder Care app by Assoc. Prof. Sorawut Thamyongkit, M.D. · AI-generated clip"
 />
 
 ## Questions to ask your doctor

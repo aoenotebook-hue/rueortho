@@ -310,14 +310,11 @@ rename every one of them was served as `image/webp` and was not one.
 duplicate of `public/images/figures/knee-oa-cartilage-loss.webp`, and was not an
 exercise picture at all.
 
-**`straight-leg-raise.jpg` is deliberately unplaced.** The picture shows the
-raised leg with the knee bent to about a right angle, and every card it would
-have gone on (knee-pain, meniscus-tear, meniscus-root-tear) says in its own
-"watch for" line that the knee must stay straight throughout. An illustration
-that contradicts the instruction beside it teaches the wrong movement, so the
-file stays in the folder until the author decides whether to redraw it or to
-retitle the exercise. It is the one file in the set with no referrer, and
-nothing on the site links to it.
+**`straight-leg-raise.jpg` was deliberately unplaced**, because it showed the
+raised leg with the knee bent to about a right angle beside three cards that
+say the knee must stay straight. On 2026-09-23 the file was replaced with a
+correct-form picture from the ACL app — see "The straight-leg raise" under the
+2026-09-23 refresh — and it is still waiting on one ruling from the author.
 
 Two more are worth his eye, and both were placed:
 
@@ -425,6 +422,171 @@ prose — the articles carry it as a literal string, so a search and replace ove
 | `public/media/rotator-cuff-tear/passive-forward-elevation.mp4` | `Postoperative-care-RC/videos/p1_4.mp4` | Postoperative-care-RC | 2650 KB |
 | `public/media/rotator-cuff-tear/sling-wear.mp4` | `Postoperative-care-RC/videos/sling_wear.mp4` | Postoperative-care-RC | 2424 KB |
 | `public/media/rotator-cuff-tear/activity-precautions.mp4` | `Postoperative-care-RC/videos/activity_precautions.mp4` | Postoperative-care-RC | 1784 KB |
+
+## The 2026-09-23 refresh from the apps
+
+The author asked on 2026-09-23 for everything he had uploaded to his four apps
+to be reused on the site wherever it fits. Since the import above, he had
+re-cut most of it: new stills for every frozen shoulder topic and a clip for
+every frozen shoulder exercise, a complete ACL set (66 pictures, 9 clips),
+re-encoded rotator cuff clips at a seventh of the size, and new osteoporosis
+clips and pictures. The clones in `_sources/` were brought up to date first
+(the ACL repository's history had been rewritten upstream, so that clone was
+reset rather than merged).
+
+**Provenance.** The C2PA check the first import relied on no longer works:
+**the re-cut files carry no content credential at all** — of about 200 media
+files across the four apps, only a handful of the older ones still do. Applying
+the old rule would have excluded everything, including the replacements for
+clips already on the site. What stands instead is the author's own statement:
+these are files he uploaded to his own repositories, and on 2026-09-19 he
+confirmed that every illustration and clip on the site is AI-generated and his
+(see "The AI disclosure" above). The five rotator cuff stills listed above as
+having unknown origin (`p2_2`, `p2_3`, `p3_3`, `p4_3`, `p4_4`) are **still not
+imported** — nothing placed today needed them — and the rule for them is
+unchanged.
+
+**Every file below was looked at before it was placed**: the stills on a
+labelled contact sheet, and each clip as five frames spread across its length,
+which is also the check the apps' own notes ask for (a generated clip can have
+a few frames where a joint inverts — none were seen). Each file sits beside the
+sentence in the article that already describes what it shows; nothing was
+placed where the article is silent. The authoritative list is
+`scripts/import-app-media.mjs`; this table is generated from it.
+
+| On the site | From (`_sources/…`) | Size |
+|---|---|--:|
+| `src/assets/conditions/frozen-shoulder/pendulum.webp` | `Frozen-shoulder-care/media/fs-01-pendulum.jpg` | 17 KB |
+| `src/assets/conditions/frozen-shoulder/assisted-external-rotation.webp` | `Frozen-shoulder-care/media/fs-03-assisted-external-rotation.jpg` | 22 KB |
+| `src/assets/conditions/frozen-shoulder/stick-assisted-elevation.webp` | `Frozen-shoulder-care/media/fs-06-stick-assisted-elevation.jpg` | 22 KB |
+| `src/assets/conditions/frozen-shoulder/external-rotation-stretch.webp` | `Frozen-shoulder-care/media/fs-07-external-rotation-stretch.jpg` | 20 KB |
+| `src/assets/conditions/frozen-shoulder/towel-internal-rotation.webp` | `Frozen-shoulder-care/media/fs-09-towel-internal-rotation.jpg` | 18 KB |
+| `src/assets/conditions/frozen-shoulder/band-external-rotation.webp` | `Frozen-shoulder-care/media/fs-10-band-external-rotation.jpg` | 21 KB |
+| `src/assets/conditions/frozen-shoulder/band-internal-rotation.webp` | `Frozen-shoulder-care/media/fs-11-band-internal-rotation.jpg` | 27 KB |
+| `src/assets/conditions/frozen-shoulder/band-row.webp` | `Frozen-shoulder-care/media/fs-12-band-row.jpg` | 16 KB |
+| `src/assets/conditions/frozen-shoulder/light-forward-raise.webp` | `Frozen-shoulder-care/media/fs-13-light-forward-raise.jpg` | 21 KB |
+| `src/assets/conditions/frozen-shoulder/loaded-carry.webp` | `Frozen-shoulder-care/media/fs-14-loaded-carry.jpg` | 19 KB |
+| `src/assets/conditions/frozen-shoulder/level-1-self-care.webp` | `Frozen-shoulder-care/media/fs-15-level1-self-care.jpg` | 17 KB |
+| `src/assets/conditions/frozen-shoulder/level-2-everyday-reach.webp` | `Frozen-shoulder-care/media/fs-16-level2-everyday-reach.jpg` | 15 KB |
+| `src/assets/conditions/frozen-shoulder/level-3-load.webp` | `Frozen-shoulder-care/media/fs-17-level3-load.jpg` | 17 KB |
+| `src/assets/conditions/frozen-shoulder/level-4-your-life.webp` | `Frozen-shoulder-care/media/fs-18-level4-return-to-life.jpg` | 40 KB |
+| `src/assets/conditions/rotator-cuff-tear/stick-assisted-elevation.webp` | `Postoperative-care-RC/images/p2_1.jpg` | 61 KB |
+| `src/assets/conditions/rotator-cuff-tear/sleep-semi-reclined.webp` | `Postoperative-care-RC/images/sleep_position.jpg` | 49 KB |
+| `src/assets/conditions/rotator-cuff-tear/sleep-side-lying.webp` | `Postoperative-care-RC/images/side_sleeping.jpg` | 48 KB |
+| `src/assets/conditions/acl-injury/heel-prop.webp` | `Postoperative-care-ACLR/images/heel_prop.jpg` | 32 KB |
+| `src/assets/conditions/acl-injury/ice-and-elevation.webp` | `Postoperative-care-ACLR/images/swelling_ice.jpg` | 34 KB |
+| `src/assets/conditions/acl-injury/crutches.webp` | `Postoperative-care-ACLR/images/crutches_weightbearing.jpg` | 27 KB |
+| `src/assets/conditions/acl-injury/showering.webp` | `Postoperative-care-ACLR/images/showering.jpg` | 47 KB |
+| `src/assets/conditions/acl-injury/sleep-heel-on-pillow.webp` | `Postoperative-care-ACLR/images/positioning_sleep.jpg` | 32 KB |
+| `src/assets/conditions/acl-injury/desk-work.webp` | `Postoperative-care-ACLR/images/driving_activity.jpg` | 65 KB |
+| `src/assets/conditions/acl-injury/no-smoking.webp` | `Postoperative-care-ACLR/images/smoking_nicotine.jpg` | 18 KB |
+| `src/assets/conditions/osteoporosis/sit-to-stand-hold.webp` | `Osteoporosis-care/media/exercises/sit_to_stand_hold.jpg` | 36 KB |
+| `src/assets/conditions/osteoporosis/standing-marching.webp` | `Osteoporosis-care/media/exercises/standing_marching.jpg` | 38 KB |
+| `src/assets/conditions/osteoporosis/weight-shifts.webp` | `Osteoporosis-care/media/exercises/weight_shifts.jpg` | 30 KB |
+| `src/assets/conditions/osteoporosis/tandem-stand.webp` | `Osteoporosis-care/media/exercises/tandem_stand.jpg` | 29 KB |
+| `src/assets/conditions/osteoporosis/heel-raises.webp` | `Osteoporosis-care/media/exercises/heel_raises.jpg` | 32 KB |
+| `src/assets/conditions/osteoporosis/wall-pushups.webp` | `Osteoporosis-care/media/exercises/wall_pushups.jpg` | 25 KB |
+| `src/assets/conditions/osteoporosis/hip-hinge.webp` | `Osteoporosis-care/media/exercises/hip_hinge.jpg` | 25 KB |
+| `src/assets/conditions/osteoporosis/chin-tuck.webp` | `Osteoporosis-care/media/exercises/chin_tuck.jpg` | 43 KB |
+| `src/assets/conditions/osteoporosis/scapular-squeeze.webp` | `Osteoporosis-care/media/exercises/scapular_squeeze.jpg` | 42 KB |
+| `src/assets/conditions/osteoporosis/safe-pickup.webp` | `Osteoporosis-care/media/exercises/safe_pickup.jpg` | 37 KB |
+| `src/assets/conditions/osteoporosis/food-calcium.webp` | `Osteoporosis-care/media/selfcare/food_calcium.jpg` | 140 KB |
+| `src/assets/conditions/osteoporosis/food-vitamin-d.webp` | `Osteoporosis-care/media/selfcare/food_vitamin_d.jpg` | 130 KB |
+| `src/assets/conditions/osteoporosis/safety-bedroom.webp` | `Osteoporosis-care/media/selfcare/safety_bedroom.jpg` | 48 KB |
+| `src/assets/conditions/osteoporosis/safety-bathroom.webp` | `Osteoporosis-care/media/selfcare/safety_bathroom.jpg` | 53 KB |
+| `src/assets/conditions/osteoporosis/safety-stairs.webp` | `Osteoporosis-care/media/selfcare/safety_stairs.jpg` | 44 KB |
+| `src/assets/conditions/osteoporosis/safety-kitchen.webp` | `Osteoporosis-care/media/selfcare/safety_kitchen.jpg` | 75 KB |
+| `src/assets/conditions/osteoporosis/safety-outdoors.webp` | `Osteoporosis-care/media/selfcare/safety_outdoors.jpg` | 119 KB |
+| `src/assets/conditions/osteoporosis/test-chair-stand.webp` | `Osteoporosis-care/media/selfcare/test_chair_stand.jpg` | 53 KB |
+| `src/assets/conditions/osteoporosis/test-tug.webp` | `Osteoporosis-care/media/selfcare/test_tug.jpg` | 44 KB |
+| `public/media/frozen-shoulder/pendulum.mp4` | `Frozen-shoulder-care/media/fs-01-pendulum.mp4` | 1295 KB |
+| `public/media/frozen-shoulder/finger-walk.mp4` | `Frozen-shoulder-care/media/fs-02-finger-walk.mp4` | 1197 KB |
+| `public/media/frozen-shoulder/assisted-external-rotation.mp4` | `Frozen-shoulder-care/media/fs-03-assisted-external-rotation.mp4` | 1228 KB |
+| `public/media/frozen-shoulder/scapular-setting.mp4` | `Frozen-shoulder-care/media/fs-04-scapular-setting.mp4` | 985 KB |
+| `public/media/frozen-shoulder/wall-slide.mp4` | `Frozen-shoulder-care/media/fs-05-wall-slide.mp4` | 1865 KB |
+| `public/media/frozen-shoulder/stick-assisted-elevation.mp4` | `Frozen-shoulder-care/media/fs-06-stick-assisted-elevation.mp4` | 1278 KB |
+| `public/media/frozen-shoulder/external-rotation-stretch.mp4` | `Frozen-shoulder-care/media/fs-07-external-rotation-stretch.mp4` | 1176 KB |
+| `public/media/frozen-shoulder/cross-body-stretch.mp4` | `Frozen-shoulder-care/media/fs-08-cross-body-stretch.mp4` | 1225 KB |
+| `public/media/frozen-shoulder/towel-internal-rotation.mp4` | `Frozen-shoulder-care/media/fs-09-towel-internal-rotation.mp4` | 1316 KB |
+| `public/media/frozen-shoulder/band-external-rotation.mp4` | `Frozen-shoulder-care/media/fs-10-band-external-rotation.mp4` | 1270 KB |
+| `public/media/frozen-shoulder/band-internal-rotation.mp4` | `Frozen-shoulder-care/media/fs-11-band-internal-rotation.mp4` | 1322 KB |
+| `public/media/frozen-shoulder/band-row.mp4` | `Frozen-shoulder-care/media/fs-12-band-row.mp4` | 1175 KB |
+| `public/media/frozen-shoulder/light-forward-raise.mp4` | `Frozen-shoulder-care/media/fs-13-light-forward-raise.mp4` | 1193 KB |
+| `public/media/frozen-shoulder/loaded-carry.mp4` | `Frozen-shoulder-care/media/fs-14-loaded-carry.mp4` | 1508 KB |
+| `public/media/frozen-shoulder/sleep-back-supported.mp4` | `Frozen-shoulder-care/media/fs-sleep-01-back-supported.mp4` | 2324 KB |
+| `public/media/frozen-shoulder/sleep-side-lying.mp4` | `Frozen-shoulder-care/media/fs-sleep-02-side-lying-pillow.mp4` | 1959 KB |
+| `public/media/frozen-shoulder/sleep-propped-upright.mp4` | `Frozen-shoulder-care/media/fs-sleep-03-propped-upright.mp4` | 2168 KB |
+| `public/media/frozen-shoulder/sleep-night-waking.mp4` | `Frozen-shoulder-care/media/fs-sleep-04-night-waking-mobility.mp4` | 1610 KB |
+| `public/media/frozen-shoulder/ice-or-heat.mp4` | `Frozen-shoulder-care/media/fs-selfcare-01-ice-or-heat.mp4` | 1367 KB |
+| `public/media/frozen-shoulder/getting-dressed.mp4` | `Frozen-shoulder-care/media/fs-selfcare-03-getting-dressed.mp4` | 1785 KB |
+| `public/media/frozen-shoulder/showering.mp4` | `Frozen-shoulder-care/media/fs-selfcare-04-showering.mp4` | 1352 KB |
+| `public/media/rotator-cuff-tear/pendulum.mp4` | `Postoperative-care-RC/videos/p1_1.mp4` | 365 KB |
+| `public/media/rotator-cuff-tear/wrist-and-elbow.mp4` | `Postoperative-care-RC/videos/p1_2.mp4` | 244 KB |
+| `public/media/rotator-cuff-tear/grip-pump.mp4` | `Postoperative-care-RC/videos/p1_3.mp4` | 223 KB |
+| `public/media/rotator-cuff-tear/sling-wear.mp4` | `Postoperative-care-RC/videos/sling_wear.mp4` | 252 KB |
+| `public/media/rotator-cuff-tear/activity-precautions.mp4` | `Postoperative-care-RC/videos/activity_precautions.mp4` | 325 KB |
+| `public/media/rotator-cuff-tear/ice.mp4` | `Postoperative-care-RC/videos/pain_swelling.mp4` | 128 KB |
+| `public/media/rotator-cuff-tear/getting-dressed.mp4` | `Postoperative-care-RC/videos/pre_3.mp4` | 371 KB |
+| `public/media/rotator-cuff-tear/stick-assisted-elevation.mp4` | `Postoperative-care-RC/videos/p2_1.mp4` | 85 KB |
+| `public/media/rotator-cuff-tear/wall-crawl.mp4` | `Postoperative-care-RC/videos/p2_2.mp4` | 83 KB |
+| `public/media/rotator-cuff-tear/scapular-squeeze.mp4` | `Postoperative-care-RC/videos/p2_4.mp4` | 264 KB |
+| `public/media/osteoporosis/chin-tuck.mp4` | `Osteoporosis-care/media/exercises/chin_tuck.mp4` | 451 KB |
+| `public/media/osteoporosis/hip-hinge.mp4` | `Osteoporosis-care/media/exercises/hip_hinge.mp4` | 222 KB |
+| `public/media/osteoporosis/safe-pickup.mp4` | `Osteoporosis-care/media/exercises/safe_pickup.mp4` | 835 KB |
+| `public/media/osteoporosis/scapular-squeeze.mp4` | `Osteoporosis-care/media/exercises/scapular_squeeze.mp4` | 494 KB |
+| `public/media/osteoporosis/sit-to-stand-hold.mp4` | `Osteoporosis-care/media/exercises/sit_to_stand_hold.mp4` | 270 KB |
+| `public/media/osteoporosis/weight-shifts.mp4` | `Osteoporosis-care/media/exercises/weight_shifts.mp4` | 138 KB |
+| `public/images/exercises/straight-leg-raise.webp` | `Postoperative-care-ACLR/images/pre_4.jpg` | 35 KB |
+
+The earlier table above is the 2026-09-08 import as it was. Where a row appears
+in both, this one is current. `rotator-cuff-tear/passive-forward-elevation.mp4`
+is the one clip still from the first import — see below.
+
+### Looked at and left out, and why
+
+- **`Osteoporosis-care/media/meds/*.jpg` (seven files).** Drug boxes with real
+  brand names and printed doses — FOSAMAX 70 mg, Prolia 60 mg/mL, Actonel 35 mg,
+  Evenity, Forteo, Aclasta, an ibandronate 150 mg box. The site prints no doses
+  and promotes no brand.
+- **`Osteoporosis-care/media/selfcare/med_*.jpg` (five files).** Generic scenes
+  of each route — a tablet with water, an injection, a drip — with no brand.
+  The medicines table reads clearly without them, and the app's own
+  `GENERATED-MEDIA-NOTE.md` asks for a clinician to review injection technique
+  before use. Held for the author.
+- **`Osteoporosis-care/media/exercises/standing_marching.mp4`** — after its
+  first second it is sit-to-stand footage. **`single_leg_stand_chair.mp4`** —
+  no foot leaves the floor in any sampled frame. **`tandem_walk`,
+  `seated_row_band`, `backward_walk`, `hip_abduction`, `step_ups`,
+  `sit_to_stand`, `single_leg_stand_chair` stills** — no card or sentence in
+  the article describes them.
+- **`Postoperative-care-RC/videos/p1_4.mp4`** — filed as passive forward
+  elevation, shows someone icing a shoulder. The site keeps the earlier
+  table-slide clip for that card. **`p2_3.mp4`** is byte-identical to `p2_1.mp4`.
+- **`Postoperative-care-RC/videos/side_sleeping.mp4` and `sleep_position.mp4`**
+  have Thai text burned into the picture, which the English page would show,
+  and the second has a ghosted double-figure frame. The app's stills of the
+  same two positions were used instead.
+- **`Postoperative-care-ACLR/images/blood_clots.jpg`** rests the leg on a
+  cushion under the calf and knee, beside text that says never to put a pillow
+  under the knee. **`brace.jpg`** shows hands on the brace hinge beside "do not
+  change the range settings yourself". **`meniscus_repair.jpg`** is a squat,
+  under a section about holding squats back.
+- **The ACL phase exercises (`p1_*` to `p6_*`) and their nine clips.** The
+  article's phase table names no individual exercise, so there is no sentence
+  for any of them to sit beside. The app is linked from the article.
+- **`Frozen-shoulder-care/media/fs-selfcare-02-gentle-movement.*` and the
+  level-1/level-2 clips.** The stills for the four levels are placed; a clip
+  for each level would repeat them.
+
+### The straight-leg raise
+
+`public/images/exercises/straight-leg-raise.webp` **now holds the ACL app's
+`pre_4.jpg`**, replacing the picture that showed the knee bent. The form is
+right — the other knee bent, the working leg fully straight, toes up. **It is
+still unplaced**: the three cards say to lift the leg "about a hand's width",
+and the picture lifts it to about the height of the other knee. That is a
+difference in an instruction, so it is the author's call — place it as it is,
+or change the card text.
 
 ## Where attribution appears
 

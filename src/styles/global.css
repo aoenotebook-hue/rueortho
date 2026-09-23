@@ -798,6 +798,22 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
   }
 }
 
+/* ==========================================================================
+   Companion-app icons
+
+   The apps' own home-screen icons, shown beside the app's name on /tools and
+   in each article's companion-app block. Rounded like a phone's home screen
+   and given a hairline edge, because two of the four are drawn on white and
+   would otherwise have no boundary on a white card — and none of them change
+   with the theme. `flex: none` for the same reason as `.card-icon`.
+   ========================================================================== */
+
+.app-icon {
+  flex: none;
+  border-radius: 22%;
+  border: 1px solid var(--border);
+}
+
 /*
  * The play badge on a video gallery card.
  *
