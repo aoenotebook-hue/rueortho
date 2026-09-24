@@ -803,9 +803,15 @@ nobody can scan the screen they are holding.
 ### The infographic posters (2026-09-24)
 
 The author uploaded 42 infographic posters, one per article, and asked for
-each to go in its article. **All 42 are placed**, as a `<Figure enlarge>` directly
-under the `<KeyFacts>` box of the **Thai** article only — every poster is
-lettered in Thai. `docs/IMAGE-SOURCES.md` has the full account; the things
+each to go in its article. **All 42 are placed**, as a `<Figure enlarge>` in
+the **Thai** article only — every poster is lettered in Thai. **They sit at the
+end of the article body, under their own `## สรุปเป็นภาพ`**, on the author's
+instruction of 2026-09-24: a recap to review after reading. They went in
+under the `<KeyFacts>` box first and moved the same day. The heading is a
+real `##`, so the poster is the last numbered section and has an entry in the
+contents list; there is no caption, because the heading already says what the
+caption did. The FAQ, references and related blocks the layout renders still
+follow it. `docs/IMAGE-SOURCES.md` has the full account; the things
 that must not be undone:
 
 - **They live in `public/images/infographics/<collection>/<slug>.webp`**, WebP
@@ -820,9 +826,14 @@ that must not be undone:
   its "ฟื้นตัวเร็ว" advantage was found to contradict the article's FAQ. He
   had the article reworded instead, in both languages: the small incision
   heals faster than an open one, but recovery inside the joint depends on the
-  procedure. Keep both halves together in any edit. Two posters carry
-  lettering errors he was told about (rotator cuff "ต้ตนอก", knee rehab
-  "กล้ามเนือ") — replacing the file is the whole fix.
+  procedure. Keep both halves together in any edit.
+- **He replaces a poster by uploading over its `.webp` path**, as he did for
+  all 22 condition posters on 2026-09-24. Diff old against new before
+  trusting the upload: 19 of those 22 differed in under 0.5% of pixels (a
+  re-export), and only rotator cuff, ankle sprain and hip pain were redrawn.
+  A redrawn poster needs its `alt` rewritten to its new text. The rotator
+  cuff misspelling ("ต้ตนอก") is fixed by that upload; **knee rehab's
+  "กล้ามเนือ" is still on the site**, waiting for a corrected file.
 
 ### Clip frames take the clip's shape (2026-09-23)
 
