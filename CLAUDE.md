@@ -977,6 +977,17 @@ redirects to `easybone.org`**, so there is one site under one name:
   scripts and styles and avoid `'unsafe-inline'`. It cannot move to
   `vercel.json`, which holds only the static headers. Any new third-party host
   must be added to `security.csp` or the browser blocks it silently.
+- **A meta-tag policy covers only what comes after it, and Astro writes it at
+  the end of `<head>`.** Until 2026-09-24 the GTM loader sat just under the
+  charset, with the Google Fonts stylesheet and the Cloudflare beacon also
+  above the policy, so all three loaded before any CSP existed — GTM fetched
+  Google's container unchecked. They are now the first things in `<body>` in
+  `BaseLayout.astro`: the GTM loader is still a blocking script that runs
+  before the page is parsed, and a body stylesheet still blocks rendering
+  below it. **Anything that loads from another host goes there, never in
+  `<head>`.** Only the two font preconnects stay above the policy; they fetch
+  nothing. Checked on every built page: no `<script>`, stylesheet, frame or
+  image precedes the CSP meta.
 - `'wasm-unsafe-eval'` in the script directive is required: Pagefind runs its
   index in WebAssembly and search fails without it.
 - **The origin is `origin` in `src/data/site.ts` and nowhere else.**
@@ -1036,7 +1047,9 @@ Google.
   property there covers `www.` and `http://` too. `easybone.org` is a new
   property in Search Console and has to be verified on its own; the file and
   the meta tag above move with the site, so either still works.
-- **The GTM loader lives in `public/gtm.js`, and it has to.** Google's
+- **The GTM loader lives in `public/gtm.js`, and it has to** — and it is
+  loaded from the top of `<body>`, not `<head>`, for the reason under
+  Deployment notes. Google's
   instructions say to paste an inline `<script>`; `security.csp` hashes only
   the scripts Astro itself generates and the policy carries no
   `'unsafe-inline'`, so a pasted inline script is refused by the browser and
