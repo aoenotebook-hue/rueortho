@@ -95,14 +95,6 @@ const wideEnoughForLargeCard = shareImage.attributes.width / shareImage.attribut
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    {/*
-      Google Tag Manager, as high in the head as the charset and viewport
-      declarations allow. It is a <script src> rather than Google's inline
-      snippet because our CSP hashes only what Astro generates — see
-      `public/gtm.js`.
-    */}
-    <GoogleTagManager />
-
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="canonical" href={canonical} />
@@ -160,19 +152,38 @@ const wideEnoughForLargeCard = shareImage.attributes.width / shareImage.attribut
     <meta name="theme-color" content="#f7f8f8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f1518" media="(prefers-color-scheme: dark)" />
 
+    {/* A preconnect only opens a connection and fetches nothing, so it can
+        stay up here, ahead of the policy; the stylesheet itself is in <body>. */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
-    />
-
-    <Analytics />
 
     <slot name="head" />
   </head>
 
   <body>
+    {/*
+      Everything that loads from another host starts here, not in <head>, and
+      that is a security fix. The Content-Security-Policy is a <meta> tag that
+      Astro writes at the very end of <head>, and a policy delivered in a meta
+      tag governs only what the parser meets after it. The GTM loader used to
+      sit just under the charset, so it ran — and fetched Google's container —
+      before the policy existed; the font stylesheet and the Cloudflare beacon
+      came before it too. From here all three are under the policy.
+
+      Nothing is lost by the move. The GTM loader is still a blocking script
+      that runs before any of the page is parsed, which is what Google's "as
+      high as possible" is asking for; a stylesheet at the start of <body> is
+      valid HTML and still blocks rendering of everything below it, so the
+      page does not paint in the wrong face first. Do not move any of them
+      back into <head>, and put anything new that loads from another host
+      below this line.
+    */}
+    <GoogleTagManager />
+    <Analytics />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    />
     {/* Google's instructions put this immediately after the opening tag. It is
         hidden, carries no link and is inert with scripting on, so it does not
         come before the skip link in the tab order. */}
