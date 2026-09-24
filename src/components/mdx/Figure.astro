@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { isPortrait } from '../../lib/image-shape';
+import { t } from '../../i18n/ui';
+import { getLocaleFromUrl } from '../../i18n/utils';
 
 interface Props {
   /** An imported image (preferred, gets optimised) or a path under /public. */
@@ -24,9 +26,23 @@ interface Props {
    */
   width?: number;
   height?: number;
+  /**
+   * Make the picture a link to its own full-size file, with a line under it
+   * saying so. For a picture whose words have to be read — the infographic
+   * posters — rather than looked at: in the column they are a summary, and a
+   * reader who wants the small print opens the file and zooms. A plain link,
+   * so it needs no script and the CSP has nothing to hash. `src="/…"` only.
+   */
+  enlarge?: boolean;
 }
 
-const { src, alt, caption, attribution, license, width, height } = Astro.props;
+const { src, alt, caption, attribution, license, width, height, enlarge } = Astro.props;
+
+if (enlarge && typeof src !== 'string') {
+  throw new Error('<Figure enlarge> needs a src="/…" path under public/, so the link has a file to open.');
+}
+
+const enlargeLabel = t(getLocaleFromUrl(Astro.url))('media.enlarge');
 
 /*
  * A portrait picture is capped narrower than the 34rem every figure gets. The
@@ -42,9 +58,22 @@ if (!alt) {
 }
 ---
 
-<figure class:list={[portrait && 'figure-portrait']}>
+<figure class:list={[portrait && !enlarge && 'figure-portrait', enlarge && 'figure-enlarge']}>
   {
-    typeof src === 'string' ? (
+    enlarge && typeof src === 'string' ? (
+      <a href={src} class="figure-enlarge-link">
+        <img
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading="lazy"
+          decoding="async"
+          class="rounded-[10px] border border-border"
+        />
+        <span class="caption mt-2 block">{enlargeLabel}</span>
+      </a>
+    ) : typeof src === 'string' ? (
       <img
         src={src}
         alt={alt}

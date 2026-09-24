@@ -592,6 +592,77 @@ the leg to about the height of the other knee, where the three cards say
 "about a hand's width"; the author was shown that and ruled on 2026-09-23 to
 place it as it is. It is on all six cards, credited to the ACL app.
 
+## The 2026-09-24 infographic posters
+
+The author uploaded **42 infographic posters** to `infographics/<collection>/`
+on 2026-09-24 — one for each of the 42 articles — and asked
+for each to be placed in its article. They are his: every one is signed
+"Sorawut" and/or `easybone.org`, and like every picture on the site they are
+AI-generated (the editorial policy's disclosure covers them). They carry no
+C2PA credential; provenance rests on his upload, as for the 2026-09-23 refresh.
+
+- **Converted, not copied.** The uploads were genuine PNGs, 1122×1402 (the
+  ultrasound and X-ray posters 1024×1536), 400–660 KB each, 21 MB in all. They
+  are now `public/images/infographics/<collection>/<article slug>.webp` at WebP
+  quality 82 — 8 MB, about 195 KB each. That quality was chosen by looking: the
+  smallest lettering on the posters (the "see a doctor" row) stays crisp at 82
+  and starts to smear below 75. The upload folder and its `README.txt` /
+  `manifest.json` were removed once the WebP copies existed; the PNGs are in
+  git history. One file was renamed on the way: `bone-density-scan-dxa.png` is
+  `examinations/bone-density-scan.webp`, the article's slug.
+- **Thai pages only.** Every poster is lettered in Thai, so it goes on the
+  Thai article and not the English one — an English reader would get a picture
+  of words they cannot read, under an `<html lang="en">` that says otherwise.
+  English versions, if he makes them, drop into the same place.
+- **Placed directly under the `<KeyFacts>` "สรุปสั้น ๆ" box**, before the first
+  `##` (on ultrasound, after the lead picture that already sat there). A poster
+  is the article's outline in one picture — what it is, symptoms, first-line
+  care, when to see a doctor — so it belongs with the summary, before the
+  detail. It also puts his "พบแพทย์เมื่อ" row in the first screen or two.
+- **`<Figure enlarge>`** makes the picture and a "แตะที่ภาพเพื่อดูขนาดเต็ม" line
+  one link to the full-size file, where a phone can pinch-zoom it; the posters
+  show at the full 34rem figure width rather than the 20rem portrait-photo
+  cap, which would shrink the lettering to about 7px.
+- **Alt text transcribes the poster** — its headings and items in order —
+  because a poster made of words is content, not decoration, and a screen
+  reader user should get the same summary a sighted reader does. The caption
+  is short ("สรุปเรื่อง… ในภาพเดียว") so it does not repeat the alt aloud.
+
+**Every poster was read against its article before placing.** Claims with a
+number or a named product were checked in the text: DXA 10–20 minutes, MRI
+20–60 minutes, the ACL's ice 15–20 minutes, the balance programme's "more than
+3 months", the injection poster's "rest the joint 24–48 hours" (the article
+says "a day or two… avoid heavy use"), and the pain-medicine poster's
+paracetamol, ibuprofen and diclofenac (all named in the article; generic
+names, no brands, no doses). All agree.
+
+**`basics/arthroscopic-surgery` was held for a day, then placed on the
+author's ruling, with the article adjusted to match.** Its "ข้อดี" row lists
+"ฟื้นตัวเร็ว" (recovers quickly), and the article used to answer
+"แผลเล็กแปลว่าฟื้นตัวเร็วใช่ไหม" with a flat "ไม่ใช่". Shown the conflict on
+2026-09-24, he said to place the poster as it is and to make the article say
+what he means: **the small incision itself heals faster than an open
+incision, but recovery inside the joint is a separate matter that depends on
+each procedure.** The summary, the KeyFacts line, the FAQ answer and the
+"แผลเล็กไม่ได้แปลว่าเรื่องเล็ก" section now say that, in both languages; the
+list of procedures and their timetables is unchanged. Keep the two halves
+together in any later edit — "keyhole heals faster" without "inside depends on
+the procedure" is the misunderstanding the section exists to prevent.
+
+**Placed, but with a lettering error the author should correct:**
+
+- `conditions/rotator-cuff-tear` — "ปวดไหล่**ต้ตนอก**" should read
+  "ปวดไหล่**ด้านนอก**" (the first symptom).
+- `rehabilitation/knee-rehab` — the subtitle's "กล้าม**เนือ**" is missing its
+  tone mark: "กล้าม**เนื้อ**".
+
+Minor, and his to decide: `conditions/knee-pain` labels the kneecap
+"ลูกสะบ้า" and asks "ปวดเมื่อไร", where the site's settled spellings are
+"กระดูกสะบ้า" and "เมื่อไหร่"; `treatments/surgery` also uses "เมื่อไร". The
+ultrasound poster's last line has a slightly smeared "และการ". Re-uploading a
+corrected PNG and re-running the conversion replaces the file in place — the
+path does not change.
+
 ## Where attribution appears
 
 In the `<Figure>` caption, via the `attribution` and `license` props — not in a
