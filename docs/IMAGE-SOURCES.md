@@ -499,6 +499,11 @@ placed where the article is silent. The authoritative list is
 | `src/assets/conditions/osteoporosis/safety-outdoors.webp` | `Osteoporosis-care/media/selfcare/safety_outdoors.jpg` | 119 KB |
 | `src/assets/conditions/osteoporosis/test-chair-stand.webp` | `Osteoporosis-care/media/selfcare/test_chair_stand.jpg` | 53 KB |
 | `src/assets/conditions/osteoporosis/test-tug.webp` | `Osteoporosis-care/media/selfcare/test_tug.jpg` | 44 KB |
+| `src/assets/conditions/osteoporosis/med-oral-bisphosphonate.webp` | `Osteoporosis-care/media/selfcare/med_oral_bisphosphonate.jpg` | 61 KB |
+| `src/assets/conditions/osteoporosis/med-zoledronate.webp` | `Osteoporosis-care/media/selfcare/med_zoledronate.jpg` | 60 KB |
+| `src/assets/conditions/osteoporosis/med-denosumab.webp` | `Osteoporosis-care/media/selfcare/med_denosumab.jpg` | 54 KB |
+| `src/assets/conditions/osteoporosis/med-teriparatide.webp` | `Osteoporosis-care/media/selfcare/med_teriparatide.jpg` | 57 KB |
+| `src/assets/conditions/osteoporosis/med-romosozumab.webp` | `Osteoporosis-care/media/selfcare/med_romosozumab.jpg` | 43 KB |
 | `public/media/frozen-shoulder/pendulum.mp4` | `Frozen-shoulder-care/media/fs-01-pendulum.mp4` | 1295 KB |
 | `public/media/frozen-shoulder/finger-walk.mp4` | `Frozen-shoulder-care/media/fs-02-finger-walk.mp4` | 1197 KB |
 | `public/media/frozen-shoulder/assisted-external-rotation.mp4` | `Frozen-shoulder-care/media/fs-03-assisted-external-rotation.mp4` | 1228 KB |
@@ -548,11 +553,11 @@ is the one clip still from the first import — see below.
   brand names and printed doses — FOSAMAX 70 mg, Prolia 60 mg/mL, Actonel 35 mg,
   Evenity, Forteo, Aclasta, an ibandronate 150 mg box. The site prints no doses
   and promotes no brand.
-- **`Osteoporosis-care/media/selfcare/med_*.jpg` (five files).** Generic scenes
-  of each route — a tablet with water, an injection, a drip — with no brand.
-  The medicines table reads clearly without them, and the app's own
-  `GENERATED-MEDIA-NOTE.md` asks for a clinician to review injection technique
-  before use. Held for the author.
+- **`Osteoporosis-care/media/selfcare/med_*.jpg` (five files)** were held
+  here on 2026-09-23 — the app's own `GENERATED-MEDIA-NOTE.md` asks for a
+  clinician to review injection technique — and **placed on 2026-09-24 on the
+  author's instruction**, under the osteoporosis medicines table, captioned
+  with each medicine's `route` line from `app-core.js`.
 - **`Osteoporosis-care/media/exercises/standing_marching.mp4`** — after its
   first second it is sit-to-stand footage. **`single_leg_stand_chair.mp4`** —
   no foot leaves the floor in any sampled frame. **`tandem_walk`,

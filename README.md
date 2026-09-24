@@ -4,7 +4,7 @@ Patient education about common orthopaedic problems, written for the general
 public in Thailand by an orthopaedic surgeon. Thai is the primary language and
 is served at `/`; English is mirrored under `/en/`.
 
-**Live site: <https://rueortho.vercel.app>**
+**Live site: <https://easybone.org>**
 
 A static site — 133 pages, no server, no database. 84 articles across five
 libraries (conditions, body basics, tests and imaging, treatments,
@@ -58,7 +58,7 @@ before changing anything non-obvious.
 ## Licensing — three parts, not one
 
 See [`LICENSE`](LICENSE) for the full text, and the site's
-[editorial policy](https://rueortho.vercel.app/en/editorial-policy), which is
+[editorial policy](https://easybone.org/en/editorial-policy), which is
 the authoritative statement.
 
 - **Code** — MIT.
