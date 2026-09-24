@@ -9,9 +9,10 @@
  *
  * **The production origin is `easybone.org`**, the author's own domain, which
  * he attached to the Vercel project on 2026-09-23 (verified there the same
- * day). Until then it was `https://rueortho.vercel.app`, and that address still
- * serves the same site — but every canonical tag now names easybone.org, so
- * search engines consolidate on it. `easyortho.com` was never registered.
+ * day). Until then it was `https://rueortho.vercel.app`, which now
+ * 308-redirects here, as do `www.easybone.org`, `easyortho.org` and
+ * `www.easyortho.org` — see "The domains" in CLAUDE.md. `easyortho.com` was
+ * never registered.
  * Changing domain again means editing this line, redeploying, and adding the
  * new address as a property in Search Console.
  *

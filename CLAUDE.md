@@ -66,10 +66,10 @@ reachable by anything on the network while it runs.
   and the domain printed in the legal pages all come from that line. It is
   **`https://easybone.org`** since 2026-09-24 — the author's own domain,
   attached and verified on the Vercel project on 2026-09-23. It was
-  `https://rueortho.vercel.app` before, and that address still serves the same
-  site; every canonical tag now names easybone.org, so search engines
-  consolidate there. `easyortho.com` was never registered. A branch preview
-  URL must never go in there.
+  `https://rueortho.vercel.app` before; that address now **308-redirects** to
+  easybone.org, as do three others — see "The domains" under Deployment
+  notes. `easyortho.com` was never registered (`easyortho.org` is, and
+  redirects). A branch preview URL must never go in there.
 - **Never upload a hand-made `sitemap.xml` or a `sitemap.ts`.** The build
   generates `/sitemap-index.xml` and `/sitemap-0.xml` from the pages that
   exist (`@astrojs/sitemap`), and `robots.txt` points at the index. On
@@ -899,10 +899,44 @@ reused. What multiplies is the HTML and the hashed assets that change per
 build. The deployment list itself is what the dashboard counts.
 
 Also confirmed while auditing: no password or SSO protection on the project,
-three domains attached (`rueortho.vercel.app` plus the two Vercel aliases —
-and since 2026-09-23 `easybone.org` as well, apex only; `www.easybone.org` is
-not attached), and
+three domains attached at the time (`rueortho.vercel.app` plus the two Vercel
+aliases — the domains now attached are listed under "The domains" below), and
 the build is fully static, so nothing is running a serverless function.
+
+### The domains
+
+As read off the Vercel project on 2026-09-24. **Every address but one
+redirects to `easybone.org`**, so there is one site under one name:
+
+| address | what it does | since |
+|---|---|---|
+| `easybone.org` | serves the site; `origin` names it | 2026-09-23 |
+| `www.easybone.org` | 308 permanent redirect to `easybone.org` | 2026-09-24 |
+| `rueortho.vercel.app` | 308 permanent redirect to `easybone.org` | 2026-09-23 |
+| `easyortho.org` | **307 temporary** redirect to `easybone.org` | 2026-09-24 |
+| `www.easyortho.org` | 308 permanent redirect to `easybone.org` | 2026-09-24 |
+
+- **`easybone.org` was bought through Vercel** on 2026-09-23 and runs on
+  Vercel's DNS (`ns1`/`ns2.vercel-dns.com`), so attaching a subdomain needs no
+  DNS record — Vercel writes it — and a DNS TXT record for Search Console goes
+  in Vercel's own DNS panel, not at an outside registrar. The WordPress.com
+  steps in `docs/DEPLOY.md` did not apply to it.
+- **Its registration runs to 2027-09-23 and auto-renew was OFF** when this was
+  read. If it lapses the site goes dark at its only canonical address and the
+  name can be bought by anyone. Turning renewal on is the author's call (it is
+  a payment), in Vercel → Domains → `easybone.org`.
+- **`easyortho.org` is registered outside this Vercel team** — it is not in
+  the team's domain list — so its renewal is wherever he bought it. Its apex
+  redirect is 307, the only temporary one; a 307 tells search engines the move
+  may be undone, so they need not fold it into `easybone.org`. The author was
+  told and has not asked for it to change. Do not change it unasked.
+- **`www.easybone.org` was added by Claude on 2026-09-24**, at the author's
+  request, through the Vercel MCP `add_project_domain` call. The rest were
+  added by him in the dashboard.
+- **The old address redirects, it does not serve.** Earlier notes here said
+  `rueortho.vercel.app` "still serves the same site"; since the redirect it
+  answers every path with a 308 to the same path on `easybone.org`, so links
+  and QR codes printed with it still arrive at the right page.
 
 ### Deployment notes
 
@@ -965,7 +999,8 @@ Google.
   that a later edit could remove is one proof too few.
 - **The DNS TXT record Search Console also offers could not be done on the
   `vercel.app` address**, because Vercel owns that zone. Now the site's address
-  is `easybone.org` it is possible, at the domain's registrar, and a Domain
+  is `easybone.org` it is possible — in **Vercel's** DNS panel, since the
+  domain was bought through Vercel and uses its nameservers — and a Domain
   property there covers `www.` and `http://` too. `easybone.org` is a new
   property in Search Console and has to be verified on its own; the file and
   the meta tag above move with the site, so either still works.
@@ -2397,7 +2432,8 @@ Two things that are deliberate and should not be "fixed":
 The site code encodes whatever `origin` in `src/data/site.ts` is set to, which
 is **`easybone.org`** since 2026-09-24, so the codes scan to the author's own
 domain. Any code printed before then points at `rueortho.vercel.app`, which
-still serves the site, so it keeps working. **This is the domain to print.**
+redirects to the same page on `easybone.org`, so it keeps working. **This is
+the domain to print.**
 
 `/tools` (เครื่องมือผู้ป่วย) is `live` rather than a stub because the companion
 apps *are* the patient tools. A grid whose `minmax` minimum exceeds the viewport
