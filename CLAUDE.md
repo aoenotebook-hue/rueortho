@@ -59,20 +59,29 @@ port 3000, say — is refused until it is named:
 
 ```sh
 DEV_ALLOWED_HOSTS=my-box.example.dev npm run dev:remote
-DEV_ALLOWED_HOSTS=.preview.example.dev npm run preview:remote   # the name and its subdomains
+DEV_ALLOWED_HOSTS=a.example.dev,b.example.dev npm run preview:remote
 ```
 
 `DEV_ALLOWED_HOSTS` is comma-separated and read only in `astro.config.mjs`,
 through Astro's own `server.allowedHosts` — which covers `astro dev` and
 `astro preview` alike, so there is no `vite.server` block any more. Every
-entry must be a real hostname. `true`, `*`, wildcards, URLs, ports and a
-leading-dot entry with a single label (`.app`) **fail the server at startup**
-with a message naming the bad entry, rather than being dropped quietly. None
-of them could switch the check off — the list reaches Astro as an array of
-names, and Vite matches names literally — but each is what someone reaching
-for "allow everything" would type, and would silently allow nothing while
-looking as if it allowed all. A leading dot does widen the list to every
-subdomain, so name the exact host wherever you can. Verified for all six combinations of dev/preview,
+entry must be one exact hostname. `true`, `*`, wildcards, URLs, ports and
+any leading-dot entry **fail the server at startup** with a message naming
+the bad entry, rather than being dropped quietly.
+
+- `true`, `*` and wildcards could not switch the check off — the list reaches
+  Astro as an array of names, and Vite matches names literally — but each is
+  what someone reaching for "allow everything" would type, and would silently
+  allow nothing while looking as if it allowed all.
+- **A leading dot is the one that would actually open a hole.** Vite reads
+  `.x.y` as "that name and every subdomain", and whether that is safe depends
+  on who can register names under it. The first version accepted any dot
+  entry with two labels, which let `.co.uk` through — a Codex review on PR #63
+  confirmed `Host: foo.co.uk` got a 200 — and `.github.io` or `.pages.dev`
+  would be the same: anyone can register a matching host and point it at your
+  machine, which is exactly the DNS rebinding the check stops. Telling safe
+  suffixes from public ones needs the public suffix list; exact names need
+  nothing. List each host you use. Verified for all six combinations of dev/preview,
 local/remote and with/without an allowlist: bind address from `/proc/net/tcp`,
 and ten Host headers against each.
 

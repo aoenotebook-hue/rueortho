@@ -22,8 +22,9 @@ npm run preview  # serve the built site on localhost:3000 — needed to test sea
 Both servers listen on localhost only. To open them from another device,
 `npm run dev:remote` or `npm run preview:remote` listens on every interface
 and answers IP addresses; a hostname also has to be named, as in
-`DEV_ALLOWED_HOSTS=my-box.example.dev npm run dev:remote`. Wildcards and
-`true` are refused. `CLAUDE.md` ("Dev and preview servers") has the detail.
+`DEV_ALLOWED_HOSTS=my-box.example.dev npm run dev:remote`. Only exact names are
+accepted: wildcards, `.domain` suffixes and `true` are refused. `CLAUDE.md`
+("Dev and preview servers") has the detail.
 
 Four checks gate every change, and all four run in CI:
 

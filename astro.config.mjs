@@ -76,13 +76,20 @@ const withoutTrailingSlash = (url) =>
  * comma-separated DEV_ALLOWED_HOSTS — e.g. the hostname a cloud workspace
  * forwards to port 3000. Empty unless set.
  *
- * Every entry must be a real hostname. The list only ever reaches Astro as
- * an array of names, so nothing written here can turn the Host check off —
+ * Every entry must be one exact hostname. The list only ever reaches Astro
+ * as an array of names, so nothing written here can turn the Host check off —
  * but `true` and `*` are what someone reaching for "allow everything" would
  * type, and Vite matches names literally, so they would quietly allow nothing
  * while looking as if they allowed all. They are refused, as are wildcards,
- * URLs and ports. A leading dot allows that name and its subdomains, as in
- * Vite; it needs two labels after it, so `.app` cannot open up a whole TLD.
+ * URLs and ports.
+ *
+ * **A leading dot is refused too**, although Vite accepts one as "this name
+ * and every subdomain". Whether `.x.y` is safe depends on who can register
+ * names under it: `.co.uk`, `.github.io` or `.pages.dev` would let anyone
+ * register a matching host and point it at this machine, which is the DNS
+ * rebinding the check exists to stop. Telling those apart needs the public
+ * suffix list; listing exact names needs nothing.
+ *
  * A bad entry fails loudly at startup instead of being dropped quietly.
  */
 const devAllowedHosts = (() => {
@@ -93,14 +100,10 @@ const devAllowedHosts = (() => {
     .map((entry) => entry.trim().toLowerCase())
     .filter(Boolean)
     .map((entry) => {
-      const name = entry.startsWith('.') ? entry.slice(1) : entry;
-      const labels = name.split('.').length;
-      const refused =
-        entry === 'true' || entry === 'false' || !hostname.test(name) || (entry.startsWith('.') && labels < 2);
-      if (refused) {
+      if (entry === 'true' || entry === 'false' || !hostname.test(entry)) {
         throw new Error(
-          `DEV_ALLOWED_HOSTS: "${entry}" is not a hostname. List exact names, comma-separated; ` +
-            'wildcards and `true` are not accepted.',
+          `DEV_ALLOWED_HOSTS: "${entry}" is not a single hostname. List exact names, comma-separated; ` +
+            'wildcards, leading-dot suffixes and `true` are not accepted.',
         );
       }
       return entry;
