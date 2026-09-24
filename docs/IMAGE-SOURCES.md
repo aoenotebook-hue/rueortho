@@ -649,7 +649,24 @@ list of procedures and their timetables is unchanged. Keep the two halves
 together in any later edit — "keyhole heals faster" without "inside depends on
 the procedure" is the misunderstanding the section exists to prevent.
 
-**Placed, but with a lettering error the author should correct:**
+**Moved to the end of each article on 2026-09-24**, on the author's
+instruction, under a `## สรุปเป็นภาพ` heading of its own — a recap to review
+after reading rather than a preview before it. The captions went with the
+move; the heading says what they said.
+
+**Replaced on 2026-09-24:** the author uploaded new WebP files over all 22
+condition posters. Compared pixel by pixel with what they replaced, 19
+differ in under 0.5% of their pixels — a re-export, same content. Three were
+redrawn, and each was read again: `rotator-cuff-tear` (the "ต้ตนอก"
+misspelling is gone; it now says some cases may need surgery depending on the
+tear and daily use, and ends "if the pain is severe, the arm cannot be raised
+or it does not improve, see a doctor"), `hip-pain` (its "see a doctor" row now
+has "severe hip pain or pain at night", which the article's `seeDoctorSoon`
+already lists) and `ankle-sprain` (same content, cleaner lettering). The alt
+text of the first two was rewritten to match.
+
+**Placed, but with a lettering error the author was told about** (the first
+is fixed by the replacement above; the second is still live):
 
 - `conditions/rotator-cuff-tear` — "ปวดไหล่**ต้ตนอก**" should read
   "ปวดไหล่**ด้านนอก**" (the first symptom).

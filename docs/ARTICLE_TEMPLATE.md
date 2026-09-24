@@ -151,15 +151,17 @@ import kneeAnatomy from './images/knee-anatomy.png';
 A picture made of words — the infographic posters — takes `enlarge`, which
 turns it and a "แตะที่ภาพเพื่อดูขนาดเต็ม" line into one link to the full-size
 file, and keeps it at the full figure width. It needs a `public/` path, and its
-`alt` should transcribe the poster rather than describe it:
+`alt` should transcribe the poster rather than describe it. The posters go
+last in the Thai article, under their own heading, as a recap:
 
 ```mdx
+## สรุปเป็นภาพ
+
 <Figure
   src="/images/infographics/conditions/osteoporosis.webp"
   alt="อินโฟกราฟิกเรื่องกระดูกพรุน: …"
   width={1122}
   height={1402}
-  caption="สรุปเรื่องกระดูกพรุนในภาพเดียว"
   attribution="ภาพ: รศ. นพ. สรวุฒิ ธรรมยงค์กิจ"
   enlarge
 />
