@@ -636,13 +636,18 @@ says "a day or two… avoid heavy use"), and the pain-medicine poster's
 paracetamol, ibuprofen and diclofenac (all named in the article; generic
 names, no brands, no doses). All agree.
 
-**Held, not placed — `basics/arthroscopic-surgery.webp`.** Its "ข้อดี"
-row lists "ฟื้นตัวเร็ว" (recovers quickly) as an advantage of keyhole
-surgery. The article's own FAQ answers "แผลเล็กแปลว่าฟื้นตัวเร็วใช่ไหม" with
-"ไม่ใช่ และเป็นความเข้าใจผิดที่พบบ่อยที่สุด", and its closing line is that
-"ส่องกล้อง" and "หายเร็ว" are not the same word. The surgery poster says the
-same thing ("แผลเล็ก ไม่ได้แปลว่าจะหายเร็วเสมอไป"). The file is converted and in
-`public/`, so placing it is one `<Figure>` if he decides the poster stands.
+**`basics/arthroscopic-surgery` was held for a day, then placed on the
+author's ruling, with the article adjusted to match.** Its "ข้อดี" row lists
+"ฟื้นตัวเร็ว" (recovers quickly), and the article used to answer
+"แผลเล็กแปลว่าฟื้นตัวเร็วใช่ไหม" with a flat "ไม่ใช่". Shown the conflict on
+2026-09-24, he said to place the poster as it is and to make the article say
+what he means: **the small incision itself heals faster than an open
+incision, but recovery inside the joint is a separate matter that depends on
+each procedure.** The summary, the KeyFacts line, the FAQ answer and the
+"แผลเล็กไม่ได้แปลว่าเรื่องเล็ก" section now say that, in both languages; the
+list of procedures and their timetables is unchanged. Keep the two halves
+together in any later edit — "keyhole heals faster" without "inside depends on
+the procedure" is the misunderstanding the section exists to prevent.
 
 **Placed, but with a lettering error the author should correct:**
 

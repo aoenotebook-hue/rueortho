@@ -803,7 +803,7 @@ nobody can scan the screen they are holding.
 ### The infographic posters (2026-09-24)
 
 The author uploaded 42 infographic posters, one per article, and asked for
-each to go in its article. **41 are placed**, as a `<Figure enlarge>` directly
+each to go in its article. **All 42 are placed**, as a `<Figure enlarge>` directly
 under the `<KeyFacts>` box of the **Thai** article only — every poster is
 lettered in Thai. `docs/IMAGE-SOURCES.md` has the full account; the things
 that must not be undone:
@@ -816,12 +816,13 @@ that must not be undone:
   It keeps the 34rem figure width; the 20rem portrait cap would make the
   lettering unreadable. `src` must be a `public/` path (it throws otherwise).
 - **The alt is a transcription of the poster**, because the poster is words.
-- **`basics/arthroscopic-surgery` is held**: its "ฟื้นตัวเร็ว" advantage
-  contradicts the article's own FAQ, which says a small cut does not mean a
-  quick recovery. The WebP is in place; do not add the `<Figure>` until the
-  author rules. Two placed posters carry lettering errors he was told about
-  (rotator cuff "ต้ตนอก", knee rehab "กล้ามเนือ") — replacing the file is
-  the whole fix.
+- **`basics/arthroscopic-surgery` went up on the author's ruling**, after
+  its "ฟื้นตัวเร็ว" advantage was found to contradict the article's FAQ. He
+  had the article reworded instead, in both languages: the small incision
+  heals faster than an open one, but recovery inside the joint depends on the
+  procedure. Keep both halves together in any edit. Two posters carry
+  lettering errors he was told about (rotator cuff "ต้ตนอก", knee rehab
+  "กล้ามเนือ") — replacing the file is the whole fix.
 
 ### Clip frames take the clip's shape (2026-09-23)
 
