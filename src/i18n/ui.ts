@@ -89,6 +89,7 @@ const ui = {
       'บทความนี้เลยกำหนดทบทวนแล้ว ผู้เขียนกำลังตรวจทานให้เป็นปัจจุบัน',
 
     'media.play': 'เล่นวิดีโอ',
+    'media.enlarge': 'แตะที่ภาพเพื่อดูขนาดเต็ม',
     'media.videoHint': 'คลิปสั้น ไม่มีเสียง จะเริ่มโหลดเมื่อคุณกดเล่น',
     'media.unavailable':
       'เบราว์เซอร์นี้เล่นคลิปดังกล่าวไม่ได้ คำอธิบายด้านล่างบอกไว้ครบแล้วว่าคลิปแสดงอะไร และคำแนะนำในหน้านี้ใช้ได้ตามปกติ',
@@ -292,6 +293,7 @@ const ui = {
       'This article is past its review date. The author is bringing it up to date.',
 
     'media.play': 'Play video',
+    'media.enlarge': 'Tap the image to see it full size',
     'media.videoHint': 'A short clip with no sound. Nothing downloads until you press play.',
     'media.unavailable':
       'This browser cannot play that clip. The description below says what it shows, and the instructions on this page still apply.',
