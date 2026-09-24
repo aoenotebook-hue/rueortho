@@ -35,13 +35,60 @@ consult it when drafting or fact-checking content. Never copy an image out of
   exists. Needs a build first; see "The anchor check" below for why it is a
   script of ours rather than a lychee flag.
 
-`astro.config.mjs` sets `server.host: '0.0.0.0'`, `server.port: 3000` and
-`vite.server.allowedHosts: true`, so `npm run dev` and `npm run preview` listen
-on **port 3000 on every interface**, not Astro's default localhost:4321. That is
-for a cloud dev environment that reaches the server by hostname. It only affects
-the dev and preview servers, never the built site — but `allowedHosts: true`
-does turn off Vite's DNS-rebinding protection, so treat the dev server as
-reachable by anything on the network while it runs.
+### Dev and preview servers
+
+**Both listen on `localhost:3000` only, and answer only the hostnames they
+should.** Until 2026-09-24 `astro.config.mjs` bound them to `0.0.0.0` and set
+`vite.server.allowedHosts: true`, which switched off Vite's Host-header check:
+any machine on the network could reach them, and a page on any website could
+read them through DNS rebinding. Measured before the change, a request with
+`Host: evil.example.com` got a 200; it gets a 403 now. The production site was
+never affected — it is static files on Vercel and runs neither server — and
+the build output is identical under both configs.
+
+| command | listens on | answers |
+|---|---|---|
+| `npm run dev` / `npm run preview` | `127.0.0.1:3000` | `localhost`, `*.localhost`, IP addresses |
+| `npm run dev:remote` / `npm run preview:remote` | every interface, port 3000 | the same, plus each name in `DEV_ALLOWED_HOSTS` |
+
+**Remote access is two deliberate steps, and a hostname needs both.** The
+`:remote` scripts only change the bind address. Vite always answers a bare IP
+address, so a phone on the same network can open `http://<machine-ip>:3000`
+with nothing else set. A *hostname* — the name a cloud workspace forwards to
+port 3000, say — is refused until it is named:
+
+```sh
+DEV_ALLOWED_HOSTS=my-box.example.dev npm run dev:remote
+DEV_ALLOWED_HOSTS=.preview.example.dev npm run preview:remote   # the name and its subdomains
+```
+
+`DEV_ALLOWED_HOSTS` is comma-separated and read only in `astro.config.mjs`,
+through Astro's own `server.allowedHosts` — which covers `astro dev` and
+`astro preview` alike, so there is no `vite.server` block any more. Every
+entry must be a real hostname. `true`, `*`, wildcards, URLs, ports and a
+leading-dot entry with a single label (`.app`) **fail the server at startup**
+with a message naming the bad entry, rather than being dropped quietly. None
+of them could switch the check off — the list reaches Astro as an array of
+names, and Vite matches names literally — but each is what someone reaching
+for "allow everything" would type, and would silently allow nothing while
+looking as if it allowed all. A leading dot does widen the list to every
+subdomain, so name the exact host wherever you can. Verified for all six combinations of dev/preview,
+local/remote and with/without an allowlist: bind address from `/proc/net/tcp`,
+and ten Host headers against each.
+
+**Never pass `--allowed-hosts true` on the command line, and never put
+`allowedHosts: true` back** in either config block. It is the one setting
+that turns the check off.
+
+**Astro 7 runs one dev server per project, and runs it in the background when
+it detects an agent** (it adds `--json` and detaches). A second `npm run dev`
+in the same folder prints "Dev server already running" and exits;
+`astro dev stop` / `status` / `logs` manage the running one. Setting
+`ASTRO_DEV_BACKGROUND=1` or `ASTRO_PREVIEW_BACKGROUND=1` keeps a server in the
+foreground, which is the only way to see a startup error such as a rejected
+`DEV_ALLOWED_HOSTS` entry. A detached server survives killing the command
+that started it — stop it by name, and not with a `pkill -f` pattern that
+also matches your own shell.
 
 ## Stack notes and gotchas
 
@@ -2593,7 +2640,7 @@ files are markdown in git and are just as reviewable.
 
 ## Verifying UI changes
 
-`npm run build && npx astro preview`, then drive it with Playwright
+`npm run build && npm run preview`, then drive it with Playwright
 (`executablePath: '/opt/pw-browsers/chromium'`). Check at 390px and 1280px:
 no horizontal overflow, exactly one `h1`, mobile nav opens, and every internal
 link returns 200. Google Fonts is blocked in the sandbox, so abort

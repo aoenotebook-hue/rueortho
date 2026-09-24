@@ -14,10 +14,16 @@ rehabilitation), a body map, a clip gallery and offline-capable search.
 
 ```sh
 npm ci
-npm run dev      # dev server on port 3000; drafts are visible here
+npm run dev      # dev server on localhost:3000; drafts are visible here
 npm run build    # must pass before any commit
-npm run preview  # serve the built site — needed to test search
+npm run preview  # serve the built site on localhost:3000 — needed to test search
 ```
+
+Both servers listen on localhost only. To open them from another device,
+`npm run dev:remote` or `npm run preview:remote` listens on every interface
+and answers IP addresses; a hostname also has to be named, as in
+`DEV_ALLOWED_HOSTS=my-box.example.dev npm run dev:remote`. Wildcards and
+`true` are refused. `CLAUDE.md` ("Dev and preview servers") has the detail.
 
 Four checks gate every change, and all four run in CI:
 
