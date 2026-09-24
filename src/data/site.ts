@@ -7,21 +7,23 @@
  * come from this one line. Changing the domain means editing it here and
  * nowhere else.
  *
- * **The production origin is the Vercel deployment**, which is where the site
- * actually answers today. `easyortho.com` was never registered; leaving it in
- * place told search engines an address that does not resolve. If a custom
- * domain is mapped later, change `origin` here, redeploy, and update the
- * canonical address in Search Console.
+ * **The production origin is `easybone.org`**, the author's own domain, which
+ * he attached to the Vercel project on 2026-09-23 (verified there the same
+ * day). Until then it was `https://rueortho.vercel.app`, and that address still
+ * serves the same site — but every canonical tag now names easybone.org, so
+ * search engines consolidate on it. `easyortho.com` was never registered.
+ * Changing domain again means editing this line, redeploying, and adding the
+ * new address as a property in Search Console.
  *
  * A branch preview URL (`rueortho-git-<branch>-….vercel.app`) must never go in
  * here: previews come and go, and a canonical pointing at one would send
  * readers and crawlers to a URL that disappears.
  */
-const origin = 'https://rueortho.vercel.app';
+const origin = 'https://easybone.org';
 
 export const site = {
   origin,
-  /** Host only, for the sentence "Easyortho (rueortho.vercel.app)" in the legal pages. */
+  /** Host only, for the sentence "Easyortho (easybone.org)" in the legal pages. */
   domain: new URL(origin).host,
   /**
    * The author's own mailbox, given by him on 2026-09-10 to be published.

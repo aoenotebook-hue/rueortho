@@ -95,6 +95,14 @@ const images = [
   ['Osteoporosis-care/media/selfcare/safety_outdoors.jpg', 'osteoporosis', 'safety-outdoors'],
   ['Osteoporosis-care/media/selfcare/test_chair_stand.jpg', 'osteoporosis', 'test-chair-stand'],
   ['Osteoporosis-care/media/selfcare/test_tug.jpg', 'osteoporosis', 'test-tug'],
+  // osteoporosis — how each medicine in the article's table is given. The
+  // unbranded scenes only: media/meds/ is brand-name boxes with printed doses
+  // and stays out. Placed on the author's instruction of 2026-09-24.
+  ['Osteoporosis-care/media/selfcare/med_oral_bisphosphonate.jpg', 'osteoporosis', 'med-oral-bisphosphonate'],
+  ['Osteoporosis-care/media/selfcare/med_zoledronate.jpg', 'osteoporosis', 'med-zoledronate'],
+  ['Osteoporosis-care/media/selfcare/med_denosumab.jpg', 'osteoporosis', 'med-denosumab'],
+  ['Osteoporosis-care/media/selfcare/med_teriparatide.jpg', 'osteoporosis', 'med-teriparatide'],
+  ['Osteoporosis-care/media/selfcare/med_romosozumab.jpg', 'osteoporosis', 'med-romosozumab'],
 ];
 
 /**

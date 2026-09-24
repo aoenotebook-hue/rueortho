@@ -64,9 +64,22 @@ reachable by anything on the network while it runs.
   Astro loads the config through Vite), so `site`, the canonical URLs, the
   hreflang alternates, the sitemap, both RSS feeds, `robots.txt`, the QR codes
   and the domain printed in the legal pages all come from that line. It is
-  `https://rueortho.vercel.app`, the live Vercel deployment. `easyortho.com`
-  was never registered and is gone from the code. A branch preview URL must
-  never go in there.
+  **`https://easybone.org`** since 2026-09-24 — the author's own domain,
+  attached and verified on the Vercel project on 2026-09-23. It was
+  `https://rueortho.vercel.app` before, and that address still serves the same
+  site; every canonical tag now names easybone.org, so search engines
+  consolidate there. `easyortho.com` was never registered. A branch preview
+  URL must never go in there.
+- **Never upload a hand-made `sitemap.xml` or a `sitemap.ts`.** The build
+  generates `/sitemap-index.xml` and `/sitemap-0.xml` from the pages that
+  exist (`@astrojs/sitemap`), and `robots.txt` points at the index. On
+  2026-09-23 three files were uploaded to `main` — a Next.js `sitemap.ts` at
+  the root and in `public/`, and a one-URL `public/sitemap.xml` — and **CI went
+  red on every push** from then: `astro check` cannot resolve `import … from
+  'next'`, because this is not a Next.js site. Vercel kept deploying, since its
+  build does not run `astro check`, so the failure was silent on the live
+  site. They were removed on 2026-09-24. The sitemap to submit to Search
+  Console is `https://easybone.org/sitemap-index.xml`.
 - The companion-app URLs in `src/data/apps.ts` are unverified GitHub Pages URLs.
   Confirm each one resolves before launch.
 
@@ -220,7 +233,8 @@ reachable by anything on the network while it runs.
   credit, so do not strip it as part of some future tidy-up.
 - **Contact address and domain live in `src/data/site.ts`**, and the legal pages
   read them through an MDX import, so there is one place to change. Both are
-  real now: the domain is `rueortho.vercel.app`, and `contactEmail` is
+  real now: the domain is `easybone.org` (since 2026-09-24; it was
+  `rueortho.vercel.app`), and `contactEmail` is
   `sorawut410@gmail.com`, which the author gave on 2026-09-10 to be published.
   It is his own mailbox rather than an address at the site's domain, so mapping
   a custom domain later does not change it. It is printed on the contact page,
@@ -749,6 +763,13 @@ looked at and left out, with the reason. Four things about it:
   elevation" said a therapist lifts the arm of someone lying down, the clip is
   a seated table slide; "activity precautions" and "if stiffness wakes you"
   were also off. Descriptions describe the frame, so they were corrected.
+- **The medicine pictures went in on 2026-09-24, on the author's instruction**:
+  the five unbranded scenes of how each medicine in the osteoporosis table is
+  given — a tablet, a drip, three injections — in a two-column grid directly
+  under the table, captioned with the app's own `route` line for that medicine
+  ("Tablet, taken at home", "Injection pen, self-injected at home"). No dose,
+  no schedule. **The branded boxes in `media/meds/` stay out** — brand names
+  and printed doses.
 - **The C2PA check no longer applies.** The re-cut files carry no credential;
   provenance rests on the author's own statement (see the register). The five
   rotator cuff stills of unknown origin are still out.
@@ -878,7 +899,9 @@ reused. What multiplies is the HTML and the hashed assets that change per
 build. The deployment list itself is what the dashboard counts.
 
 Also confirmed while auditing: no password or SSO protection on the project,
-three domains attached (`rueortho.vercel.app` plus the two Vercel aliases), and
+three domains attached (`rueortho.vercel.app` plus the two Vercel aliases —
+and since 2026-09-23 `easybone.org` as well, apex only; `www.easybone.org` is
+not attached), and
 the build is fully static, so nothing is running a serverless function.
 
 ### Deployment notes
@@ -940,10 +963,12 @@ Google.
   `<meta name="google-site-verification">` by `BaseLayout` on **every** page,
   not only the home page. Search Console re-checks periodically, and one proof
   that a later edit could remove is one proof too few.
-- **The DNS TXT record Search Console also offers cannot be done.** The site
-  answers on a `vercel.app` subdomain, and Vercel owns that zone — there is no
-  place to put a record. It becomes possible only if a custom domain is mapped,
-  and mapping one means re-verifying the new address in Search Console anyway.
+- **The DNS TXT record Search Console also offers could not be done on the
+  `vercel.app` address**, because Vercel owns that zone. Now the site's address
+  is `easybone.org` it is possible, at the domain's registrar, and a Domain
+  property there covers `www.` and `http://` too. `easybone.org` is a new
+  property in Search Console and has to be verified on its own; the file and
+  the meta tag above move with the site, so either still works.
 - **The GTM loader lives in `public/gtm.js`, and it has to.** Google's
   instructions say to paste an inline `<script>`; `security.csp` hashes only
   the scripts Astro itself generates and the policy carries no
@@ -2370,10 +2395,9 @@ Two things that are deliberate and should not be "fixed":
   scanners fail on a code that sits flush against other content.
 
 The site code encodes whatever `origin` in `src/data/site.ts` is set to, which
-is the live `rueortho.vercel.app` deployment, so the codes scan to a real page.
-If a custom domain is mapped later, every code regenerates from that one line —
-but codes already printed on paper will keep pointing at the Vercel address, so
-wait for the domain before printing anything.
+is **`easybone.org`** since 2026-09-24, so the codes scan to the author's own
+domain. Any code printed before then points at `rueortho.vercel.app`, which
+still serves the site, so it keeps working. **This is the domain to print.**
 
 `/tools` (เครื่องมือผู้ป่วย) is `live` rather than a stub because the companion
 apps *are* the patient tools. A grid whose `minmax` minimum exceeds the viewport
