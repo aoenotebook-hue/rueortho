@@ -17,11 +17,55 @@
  * `tabindex="0"` makes the scrolling area reachable by keyboard, which WCAG 2.2
  * requires of any region that scrolls. It deliberately carries no role: a
  * `role="region"` with no accessible name is worse than none at all.
+ *
+ * A table of three or more columns also gets `table-stack`, and below 640px
+ * Prose shows each row as a card instead (added 2026-09-24). Scrolling alone
+ * kept the page still but not the table readable: the English medicines table
+ * needs 444px, so on a 390px phone its third column — "tell your doctor if",
+ * the warnings — sat almost wholly off to the right, shown as a strip one
+ * letter wide, behind a sideways swipe an older reader has no reason to try.
+ * No CSS setting brings it under 350px ("bisphosphonate" is one long word,
+ * twice), and three columns of sentences 110px wide would not be readable if
+ * it did. Two-column tables fit and stay tables.
+ *
+ * A card has no header row above it, so every cell carries its column's name
+ * in `data-label`, which Prose prints above the value. The explicit roles keep
+ * it a table to a screen reader: Safari drops table semantics from a table
+ * whose parts are `display: block`, and the header row is hidden visually, not
+ * removed, so each cell is still announced with its column header.
  */
+const inner = await Astro.slots.render('default');
+
+const head = inner.match(/<thead\b[\s\S]*?<\/thead>/)?.[0] ?? '';
+// Header text arrives already escaped for HTML text; an attribute also needs `"`.
+const labels = [...head.matchAll(/<th\b[^>]*>([\s\S]*?)<\/th>/g)].map(([, cell]) =>
+  cell.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().replace(/"/g, '&quot;'),
+);
+const stack = labels.length >= 3;
+
+function asCards(html: string): string {
+  return html
+    .replace(/<(thead|tbody)\b/g, '<$1 role="rowgroup"')
+    .replace(/<th\b/g, '<th role="columnheader"')
+    .replace(/<tr\b([^>]*)>([\s\S]*?)<\/tr>/g, (_row, attrs: string, cells: string) => {
+      let column = 0;
+      const labelled = cells.replace(/<td\b/g, () => {
+        const label = labels[column++];
+        return label ? `<td role="cell" data-label="${label}"` : '<td role="cell"';
+      });
+      return `<tr role="row"${attrs}>${labelled}</tr>`;
+    });
+}
 ---
 
-<div class="table-wrapper" tabindex="0">
-  <table>
-    <slot />
-  </table>
-</div>
+{
+  stack ? (
+    <div class="table-wrapper table-stack" tabindex="0">
+      <table role="table" set:html={asCards(inner)} />
+    </div>
+  ) : (
+    <div class="table-wrapper" tabindex="0">
+      <table set:html={inner} />
+    </div>
+  )
+}

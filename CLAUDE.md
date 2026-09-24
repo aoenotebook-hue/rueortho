@@ -401,9 +401,12 @@ of investigation — do not re-file them:
   too, so there is nothing there to fix. Check accessible names with
   `textContent`.
 - The English osteoporosis medicines table reports as "escaping the viewport"
-  at 390px. It is 444px inside a 350px `.table-wrapper` that scrolls, which is
-  the designed behaviour; the page itself does not scroll sideways. A viewport
-  check has to skip elements inside a horizontal scroll container.
+  at 390px. Since 2026-09-24 that table is a stack of cards on a phone (see
+  "Tables of three or more columns are cards on a phone" below), and what a
+  crawler still finds past the right edge is its header row's `<th>`s, which
+  are hidden visually but kept for screen readers: clipped, not overflowing,
+  and the page does not scroll sideways at 320–639px. A viewport check has to
+  skip elements inside a clipped or horizontally scrolling container.
 
 **Three things could not be checked from this environment**, and are the only
 open items the pass leaves:
@@ -852,6 +855,38 @@ text below moves 0px at 390, 820 and 1440. A card whose still is square but
 whose clip is 9:16 (chin tuck, shoulder-blade squeeze) now plays at the tall
 size instead of 30rem wide and 75vh tall between bars. The 28 wide clips are
 unaffected.
+
+### Tables of three or more columns are cards on a phone (2026-09-24)
+
+Below 640px, `Table.astro` + Prose turn a markdown table of three or more
+columns into one card per row: the first cell is the card's title on a
+`--ground` band, and every other cell prints its column's name above the value
+from a `data-label` the component writes at build time. Two-column tables fit
+and stay tables; from 640px up every table is a table, pixel for pixel as
+before.
+
+Why: the scrolling `.table-wrapper` kept the page still but not the table
+readable. The English medicines table needs 444px; on a 390px phone its third
+column — "tell your doctor if", the warnings — showed as a strip one letter
+wide at the right edge, behind a sideways swipe inside the table that an older
+reader has no reason to try. No CSS gets it under 350px (padding and a smaller
+size stop at 381px; "bisphosphonate" is one long word, in two columns, and
+`hyphens: auto` has no dictionary on some Chromium builds), and three columns of
+sentences 110px wide would not be readable if it did.
+
+The eight tables it applies to: osteoporosis (medicines), bone and cartilage,
+ACL injury and rotator cuff tear (rehab phases), each in Thai and English.
+Checked at 320, 390, 639, 640, 820 and 1440 in light and dark mode: no page or
+table overflow, labels 5.55:1 (light) and 6.33:1 (dark) against the card, no
+CSP violation. The explicit `role`s keep it a table in the accessibility tree
+(Safari drops table semantics from `display: block` parts), the header row is
+hidden visually rather than removed, and the label's `/ ""` alt text stops a
+screen reader hearing the column name twice.
+
+**Keep the header text plain.** The label is the header cell's text with tags
+stripped; a header that is only an image or an icon would give an empty label,
+which the CSS then simply omits (as for the bone and cartilage table's blank
+corner cell).
 
 ### Build size and Vercel usage
 
