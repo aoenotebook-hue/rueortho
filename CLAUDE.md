@@ -67,9 +67,9 @@ reachable by anything on the network while it runs.
   **`https://easybone.org`** since 2026-09-24 — the author's own domain,
   attached and verified on the Vercel project on 2026-09-23. It was
   `https://rueortho.vercel.app` before; that address now **308-redirects** to
-  easybone.org, as do three others — see "The domains" under Deployment
-  notes. `easyortho.com` was never registered (`easyortho.org` is, and
-  redirects). A branch preview URL must never go in there.
+  easybone.org, as does `www.easybone.org` — see "The domains" under
+  Deployment notes. `easyortho.com` was never registered, and `easyortho.org`
+  is no longer used. A branch preview URL must never go in there.
 - **Never upload a hand-made `sitemap.xml` or a `sitemap.ts`.** The build
   generates `/sitemap-index.xml` and `/sitemap-0.xml` from the pages that
   exist (`@astrojs/sitemap`), and `robots.txt` points at the index. On
@@ -913,8 +913,6 @@ redirects to `easybone.org`**, so there is one site under one name:
 | `easybone.org` | serves the site; `origin` names it | 2026-09-23 |
 | `www.easybone.org` | 308 permanent redirect to `easybone.org` | 2026-09-24 |
 | `rueortho.vercel.app` | 308 permanent redirect to `easybone.org` | 2026-09-23 |
-| `easyortho.org` | **307 temporary** redirect to `easybone.org` | 2026-09-24 |
-| `www.easyortho.org` | 308 permanent redirect to `easybone.org` | 2026-09-24 |
 
 - **`easybone.org` was bought through Vercel** on 2026-09-23 and runs on
   Vercel's DNS (`ns1`/`ns2.vercel-dns.com`), so attaching a subdomain needs no
@@ -925,11 +923,10 @@ redirects to `easybone.org`**, so there is one site under one name:
   read. If it lapses the site goes dark at its only canonical address and the
   name can be bought by anyone. Turning renewal on is the author's call (it is
   a payment), in Vercel → Domains → `easybone.org`.
-- **`easyortho.org` is registered outside this Vercel team** — it is not in
-  the team's domain list — so its renewal is wherever he bought it. Its apex
-  redirect is 307, the only temporary one; a 307 tells search engines the move
-  may be undone, so they need not fold it into `easybone.org`. The author was
-  told and has not asked for it to change. Do not change it unasked.
+- **`easyortho.org` and `www.easyortho.org` are gone.** They were attached
+  for a few hours on 2026-09-24, redirecting to `easybone.org`; the author
+  removed both from the project the same day and said he no longer uses that
+  domain. Do not re-add them or mention them on the site.
 - **`www.easybone.org` was added by Claude on 2026-09-24**, at the author's
   request, through the Vercel MCP `add_project_domain` call. The rest were
   added by him in the dashboard.

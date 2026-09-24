@@ -119,13 +119,12 @@ DNS changes. You do **not** need a WordPress site plan.
 
    **Done for `easybone.org` on 2026-09-23**: the domain was attached and
    verified in Vercel, and `origin` now names it. `www.easybone.org` followed
-   on 2026-09-24 as a 308 redirect to the apex, and `rueortho.vercel.app`,
-   `easyortho.org` and `www.easyortho.org` redirect there too.
+   on 2026-09-24 as a 308 redirect to the apex, and `rueortho.vercel.app`
+   redirects there too.
 
    **Turn on auto-renew.** `easybone.org` is registered until 2027-09-23 and
    auto-renew was off on 2026-09-24. Vercel → **Domains** (the team page, not
-   the project) → `easybone.org` → **Auto Renew**. `easyortho.org` is
-   registered elsewhere; check renewal there.
+   the project) → `easybone.org` → **Auto Renew**.
 
    Never put a branch preview URL (`rueortho-git-…vercel.app`) in `origin`:
    previews are deleted, and a canonical pointing at one sends readers to a URL
