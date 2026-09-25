@@ -42,7 +42,7 @@ export const apps: CompanionApp[] = [
       th: 'ช่วยประเมินความเสี่ยงกระดูกหักและการล้ม คำนวณแคลเซียมและวิตามินดีที่ได้รับในแต่ละวัน และแนะนำท่าฝึกการทรงตัวพร้อมคลิปสาธิต',
       en: 'Helps you check your fracture and fall risk, work out how much calcium and vitamin D you get each day, and follow balance exercises with video demonstrations.',
     },
-    url: 'https://aoenotebook-hue.github.io/Osteoporosis-care/',
+    url: 'https://osteoporosis-care.vercel.app/',
     conditions: ['osteoporosis'],
     status: 'live',
   },
