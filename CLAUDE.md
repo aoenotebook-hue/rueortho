@@ -1081,6 +1081,12 @@ redirects to `easybone.org`**, so there is one site under one name:
   image precedes the CSP meta.
 - `'wasm-unsafe-eval'` in the script directive is required: Pagefind runs its
   index in WebAssembly and search fails without it.
+- **Syntax highlighting is off** (`markdown.syntaxHighlight: false`, which MDX
+  inherits). Shiki, the default, colours code with `style=""` attributes the
+  CSP refuses, and Astro printed a warning about it on every build — the only
+  warning the build had, on a site with no code blocks at all. Turned off on
+  2026-09-25; the built output is identical apart from the warning going. A
+  code block now renders as plain `<pre><code>`, styled by Prose.astro.
 - **The origin is `origin` in `src/data/site.ts` and nowhere else.**
   `astro.config.mjs` imports it, `domain` is derived from it with `new URL()`,
   and everything else reads `Astro.site`. Changing domain is a one-line edit.
