@@ -18,9 +18,8 @@ const liveApps = apps.filter((app) => app.status === 'live');
 
 /**
  * Built from Astro.site, so the code follows the configured origin in
- * `src/data/site.ts` rather than a value copied by hand. It now encodes the
- * live Vercel address; if a custom domain is mapped later, changing that one
- * line regenerates every code here.
+ * `src/data/site.ts` rather than a value copied by hand — easybone.org since
+ * 2026-09-24. Changing that one line regenerates every code here.
  */
 const siteUrl = new URL(locale === 'th' ? '/' : '/en/', Astro.site).href;
 ---

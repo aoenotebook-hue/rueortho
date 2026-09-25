@@ -2,7 +2,11 @@
 import QRCode from 'qrcode';
 
 interface Props {
-  /** The URL the code encodes. Shown beneath it so it can be typed by hand too. */
+  /**
+   * The URL the code encodes. It is not printed under the code: the author
+   * asked for it off on 2026-09-25. Every code sits beside an Open button or
+   * the site's own name, so nobody needs to type it.
+   */
   url: string;
   /** Accessible name, e.g. the app this code opens. */
   label: string;
@@ -33,7 +37,7 @@ const scalable = svg.replace(/<svg([^>]*?)width="[^"]*"\s*height="[^"]*"/, '<svg
   Deliberately NOT theme-aware. A QR code needs dark modules on a light ground
   to scan reliably, so the panel stays white in dark mode rather than inverting.
 */}
-<figure class="m-0 flex w-[9.5rem] flex-col items-center gap-2">
+<div class="w-[9.5rem]">
   <div
     class="rounded-[10px] border border-border bg-white p-2"
     role="img"
@@ -41,10 +45,7 @@ const scalable = svg.replace(/<svg([^>]*?)width="[^"]*"\s*height="[^"]*"/, '<svg
     set:html={scalable}
     data-qr
   />
-  <figcaption class="w-full break-all text-center text-xs leading-snug text-muted">
-    {url.replace(/^https?:\/\//, '')}
-  </figcaption>
-</figure>
+</div>
 
 <style>
   [data-qr] {
