@@ -114,6 +114,19 @@ export default defineConfig({
   site: SITE,
   output: 'static',
   trailingSlash: 'ignore',
+
+  /**
+   * No syntax highlighting. No article has a code block, and Shiki — the
+   * default — colours one with `style=""` attributes, which the CSP below
+   * refuses, so the first code block anyone wrote would render as if the
+   * highlighter were broken. Astro also warned about that conflict on every
+   * build, and a warning that is always there teaches everyone to skip the
+   * build's warnings. A plain `<pre><code>` needs no inline style and is
+   * already styled in Prose.astro. MDX inherits this setting.
+   */
+  markdown: {
+    syntaxHighlight: false,
+  },
   /**
    * Dev and preview servers only — the production site is static files on
    * Vercel and never runs either of them.
