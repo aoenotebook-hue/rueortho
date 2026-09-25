@@ -2564,6 +2564,17 @@ URL, so a code cannot drift out of date the way an exported PNG would — change
 regenerates. `/tools` carries one per companion app plus one for the site
 itself.
 
+**No address is printed under a code**, since 2026-09-25 at the author's
+request. It used to be a `figcaption` with the URL; every code sits beside an
+Open button or the site's own name, so nobody has to type it, and the
+accessible name (`aria-label`) still says which app or page it opens.
+Verified the same day by decoding all 40 codes (5 per page, both languages,
+390 and 1280px, light and dark) from screenshots with `jsqr`: each decodes to
+exactly the URL in `src/data/apps.ts` or `origin`. The four app repositories
+exist under those exact names, public, each with an `index.html` at the root
+of `main` — but whether GitHub Pages is switched on for each still cannot be
+checked from here (see the QA pass).
+
 Two things that are deliberate and should not be "fixed":
 
 - **The code panel stays white in dark mode.** A QR needs dark modules on a
