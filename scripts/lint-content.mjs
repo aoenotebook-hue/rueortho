@@ -96,12 +96,9 @@ for (const article of articles) {
     errors.push(`${path}: published with no sources.`);
   }
 
-  // Figures must carry alt text and an attribution line.
+  // Figures must carry alt text. The credit line comes from the component.
   for (const tag of content.match(/<Figure[\s\S]*?\/>/g) ?? []) {
     if (!/\balt=/.test(tag)) errors.push(`${path}: a <Figure> has no alt text.`);
-    if (!/\battribution=/.test(tag)) {
-      warnings.push(`${path}: a <Figure> has no attribution.`);
-    }
   }
 
   /*

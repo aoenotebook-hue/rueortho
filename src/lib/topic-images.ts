@@ -51,6 +51,7 @@ import surgery from '/public/images/treatments/surgery/surgery-mechanism.webp';
 
 import backRehab from '/public/images/rehabilitation/back-rehab/back-rehab-technique.webp';
 import balanceAndFallPrevention from '/public/images/rehabilitation/balance-and-fall-prevention/balance-and-fall-prevention-overview.webp';
+import kneeOaSelfCare from '/public/images/exercises/quadriceps-setting.webp';
 import kneeRehab from '/public/images/rehabilitation/knee-rehab/knee-rehab-technique.webp';
 import rehabPrinciples from '/public/images/rehabilitation/rehab-principles/rehab-principles-technique.webp';
 import shoulderRehab from '/public/images/rehabilitation/shoulder-rehab/shoulder-rehab-technique.webp';
@@ -100,6 +101,8 @@ const chosen: Record<ResourceCollection, Record<string, ImageMetadata>> = {
   rehabilitation: {
     'back-rehab': backRehab,
     'balance-and-fall-prevention': balanceAndFallPrevention,
+    // A diagram-like single figure; the article's own pictures are all exercise cards.
+    'knee-oa-self-care': kneeOaSelfCare,
     'knee-rehab': kneeRehab,
     'rehab-principles': rehabPrinciples,
     'shoulder-rehab': shoulderRehab,

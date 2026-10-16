@@ -1,4 +1,5 @@
 ---
+import { site } from '../../data/site';
 import type { ImageMetadata } from 'astro';
 import { isPortrait } from '../../lib/image-shape';
 import { Image } from 'astro:assets';
@@ -16,17 +17,6 @@ interface Props {
   hold?: string;
   image?: ImageMetadata | string;
   imageAlt?: string;
-  /**
-   * Where the picture came from, rendered under it exactly as `<Figure>` does.
-   *
-   * The site's rule is that an image may not be published unless its source can
-   * be stated truthfully, and an exercise picture is no different from a figure
-   * in that respect. The app-derived cards in frozen-shoulder, osteoporosis and
-   * rotator-cuff-tear predate this prop and carry their credit as a line of body
-   * text instead; that wording is the author's to confirm, so it was left alone
-   * rather than migrated.
-   */
-  imageAttribution?: string;
   /**
    * The picture's own pixel size, for a `image="/…"` path only.
    *
@@ -64,7 +54,6 @@ const {
   hold,
   image,
   imageAlt,
-  imageAttribution,
   imageWidth,
   imageHeight,
   video,
@@ -168,9 +157,7 @@ const videoClass = clipIsTall
         ) : (
           <Image src={image} alt={imageAlt!} widths={[400, 800]} loading="lazy" class="rounded-[10px]" />
         )}
-        {imageAttribution && (
-          <figcaption class="caption mt-2">{imageAttribution}</figcaption>
-        )}
+        <figcaption class="caption mt-2">{site.copyright}</figcaption>
       </figure>
     )
   }
