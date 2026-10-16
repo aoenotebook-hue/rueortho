@@ -124,7 +124,7 @@ top of the article instead. Safety content is never silently dropped because of
 an editing slip. The consequence is that placing it *twice* would show it twice,
 so place it once.
 
-### `<Figure>` — an image with attribution
+### `<Figure>` — an image with a caption
 
 `alt` is required and the build fails without it. Describe what the figure
 shows, not that it is a figure.
@@ -134,7 +134,6 @@ shows, not that it is a figure.
   src="/images/figures/knee-anatomy.svg"
   alt="แผนภาพข้อเข่า แสดงปลายกระดูกต้นขาและกระดูกหน้าแข้งที่มีกระดูกอ่อนผิวข้อคั่นอยู่"
   caption="กระดูกอ่อนผิวข้อคั่นอยู่ระหว่างปลายกระดูกทั้งสอง"
-  attribution="Servier Medical Art"
   license="CC BY 4.0"
 />
 ```
@@ -145,7 +144,7 @@ gets optimised and responsive `widths`:
 ```mdx
 import kneeAnatomy from './images/knee-anatomy.png';
 
-<Figure src={kneeAnatomy} alt="…" attribution="…" />
+<Figure src={kneeAnatomy} alt="…" />
 ```
 
 A picture made of words — the infographic posters — takes `enlarge`, which
@@ -162,7 +161,6 @@ last in the Thai article, under their own heading, as a recap:
   alt="อินโฟกราฟิกเรื่องกระดูกพรุน: …"
   width={1122}
   height={1402}
-  attribution="ภาพ: รศ. นพ. สรวุฒิ ธรรมยงค์กิจ"
   enlarge
 />
 ```
@@ -178,7 +176,6 @@ load fast.
   src="/media/frozen-shoulder/wall-slide.mp4"
   title="ไถมือขึ้นผนัง"
   description="ผู้ป่วยยืนหันหน้าเข้าผนัง วางมือบนผนังแล้วค่อย ๆ ไถมือไต่ขึ้นไปจนสุดที่ไหว แล้วไถกลับลงมา"
-  attribution="วิดีโอจากแอปดูแลข้อไหล่ติด โดย นพ.สรวุฒิ ธรรมยงค์กิจ · คลิปสร้างด้วยปัญญาประดิษฐ์"
 />
 ```
 
@@ -240,7 +237,6 @@ from screen readers; the list itself carries the meaning.
   imageAlt="ผู้ป่วยนั่งบนเก้าอี้และเหยียดเข่าข้างหนึ่งให้ตรง"
   imageWidth={765}
   imageHeight={1024}
-  imageAttribution="ภาพ: รศ. นพ. สรวุฒิ ธรรมยงค์กิจ"
 >
 นั่งหลังตรงบนเก้าอี้ เหยียดเข่าข้างหนึ่งขึ้นจนตรง ค้างไว้ แล้วค่อย ๆ ลดลง หากปวดมากขึ้นให้หยุด
 </ExerciseCard>
@@ -249,7 +245,7 @@ from screen readers; the list itself carries the meaning.
 `imageAlt` is required whenever `image` is set — the component throws without
 it. Describe what is in the frame and nothing else: if the picture shows the
 starting position rather than the movement, say so, and if it shows a different
-movement from the one the card teaches, do not use it at all. `imageAttribution`
+movement from the one the card teaches, do not use it at all. the copyright line
 renders under the picture the way a `<Figure>` caption does, and carries the
 same line: `ภาพ: รศ. นพ. สรวุฒิ ธรรมยงค์กิจ` /
 `Illustration: Assoc. Prof. Sorawut Thamyongkit, M.D.`

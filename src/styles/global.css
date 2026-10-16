@@ -763,6 +763,76 @@ a.body-map-hotspot.has-leader:focus-visible .body-map-label::before {
 }
 
 /*
+   The contents disclosure.
+
+   A phone gets a 48px bar that says what it is, how many sections it holds
+   and which way it opens; opened, it is a panel that scrolls inside itself,
+   so a twenty-section article cannot push the text it belongs to a screen and
+   a half down the page. Rows are 44px, the site's own touch-target goal. From
+   md up the list is open and in flow, and from 1400px a rail — the rules
+   below the media query only add to those, they do not change them.
+*/
+.contents-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+.contents-summary::-webkit-details-marker {
+  display: none;
+}
+.contents-count {
+  margin-inline-start: auto;
+  color: var(--muted);
+}
+.contents-chevron {
+  flex: 0 0 auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-inline-end: 2px solid currentColor;
+  border-block-end: 2px solid currentColor;
+  transform: translateY(-0.1rem) rotate(45deg);
+  color: var(--accent);
+}
+.article-contents[open] .contents-chevron {
+  transform: translateY(0.1rem) rotate(-135deg);
+}
+.contents-nav {
+  padding: 0 1rem 0.75rem;
+  border-top: 1px solid var(--border);
+}
+.contents-link {
+  align-items: center;
+  min-height: 2.75rem;
+  padding-block: 0.25rem;
+}
+@media (max-width: 767px) {
+  .contents-nav {
+    max-height: min(60vh, 28rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .article-contents-list li + li {
+    border-top: 1px solid var(--border);
+  }
+}
+@media (min-width: 768px) {
+  .contents-chevron,
+  .contents-count {
+    display: none;
+  }
+}
+@media (min-width: 1400px) {
+  .contents-link {
+    min-height: 0;
+    padding-block: 0.375rem;
+  }
+}
+
+/*
    Which section the reader is in.
 
    The marker is a rule down the side as well as a colour and a weight, because

@@ -26,6 +26,8 @@ export const site = {
   origin,
   /** Host only, for the sentence "Easyortho (easybone.org)" in the legal pages. */
   domain: new URL(origin).host,
+  /** The one-line credit under every picture and clip; the full terms are on the editorial policy page. */
+  copyright: `© ${new URL(origin).host}`,
   /**
    * The author's own mailbox, given by him on 2026-09-10 to be published.
    *

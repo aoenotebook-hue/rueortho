@@ -407,6 +407,28 @@ fixed, and the three things it could not check from here. Share images are done
 — see "The share picture". `/treatments` and the body map are done — see their
 sections.
 
+### Picture credits are one short line (2026-10-16)
+
+On the author's instruction every per-picture credit — "ภาพ: รศ. นพ. …",
+"Illustration: …", "Image from the … app … · AI-generated image" — was taken
+out of the article MDX (all `attribution` and `imageAttribution` props, 86
+files). The AI disclosure and the copyright terms live once, on the editorial
+policy page. `<Figure>`, `<Video>` and `<ExerciseCard>` now print the caption
+and then `site.copyright` (`© easybone.org`, from `src/data/site.ts`) under
+every picture and clip; the components no longer take an attribution prop,
+and `lint:content` no longer warns on a figure without one. **Do not add
+per-picture credits back**, and do not add the author's name under pictures:
+the byline and the About page are where it belongs. This supersedes the older
+notes below that describe attribution lines.
+
+### The contents list on a phone (2026-10-16)
+
+Below 768px "หัวข้อในหน้านี้" is a 48px bar with the section count and a
+chevron; opened, it is a panel capped at `min(60vh, 28rem)` that scrolls
+inside itself, with 44px rows divided by hairlines, and tapping an entry closes
+it so the reader lands on the section rather than in the menu. From 768px it
+is the open in-flow list as before, and from 1400px the left rail.
+
 ### The pre-launch QA pass
 
 Ran 2026-09-19 over all 126 pages the site had then at 390, 768, 1280 and 1440px in both

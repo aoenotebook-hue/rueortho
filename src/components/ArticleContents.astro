@@ -67,7 +67,7 @@ const worthShowing = items.length >= 3;
 {
   worthShowing && (
     <details
-      class="article-contents mt-8 rounded-[10px] border border-border bg-surface px-4 py-3"
+      class="article-contents mt-8 rounded-[10px] border border-border bg-surface"
       data-article-contents
       data-pagefind-ignore
     >
@@ -89,9 +89,13 @@ const worthShowing = items.length >= 3;
         refuses, and forcing a closed <details> open from a stylesheet is not
         reliable across browsers anyway.
       */}
-      <summary class="cursor-pointer font-medium text-ink">{tr('article.onThisPage')}</summary>
+      <summary class="contents-summary">
+        <span class="font-medium text-ink">{tr('article.onThisPage')}</span>
+        <span class="contents-count caption">{tr('article.sectionCount', { n: sections.length })}</span>
+        <span class="contents-chevron" aria-hidden="true"></span>
+      </summary>
 
-      <nav aria-label={tr('article.onThisPage')} class="mt-3">
+      <nav aria-label={tr('article.onThisPage')} class="contents-nav">
         {/* Two columns from md up: a long outline should not push the article
             it belongs to off the screen. */}
         <ol class="article-contents-list m-0 list-none p-0 text-[0.95em] md:columns-2 md:gap-8">
@@ -101,7 +105,7 @@ const worthShowing = items.length >= 3;
                 href={`#${heading.slug}`}
                 data-toc-link={heading.slug}
                 class:list={[
-                  'flex gap-2 py-1.5 no-underline hover:underline',
+                  'contents-link flex gap-2 no-underline hover:underline',
                   heading.depth === 3 ? 'text-muted' : 'text-ink',
                 ]}
               >
@@ -136,6 +140,14 @@ const worthShowing = items.length >= 3;
 
     sync();
     wide.addEventListener('change', sync);
+
+    // On a phone a tapped link closes the list, so the section it names is
+    // what the reader sees rather than the middle of a menu. From md up the
+    // list is part of the page and stays as it is.
+    contents.addEventListener('click', (event) => {
+      if (wide.matches) return;
+      if ((event.target as Element).closest('[data-toc-link]')) contents.open = false;
+    });
 
     /**
      * Scroll-spy: mark the section the reader is currently in.

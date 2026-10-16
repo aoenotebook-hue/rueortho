@@ -1,4 +1,5 @@
 ---
+import { site } from '../../data/site';
 import { existsSync } from 'node:fs';
 import { clipFrameClass, getClipSize } from '../../lib/clip-size';
 import { t } from '../../i18n/ui';
@@ -16,7 +17,6 @@ interface Props {
    */
   description: string;
   caption?: string;
-  attribution?: string;
   /**
    * Still shown before the clip loads.
    *
@@ -27,7 +27,7 @@ interface Props {
   poster?: string;
 }
 
-const { src, title, description, caption, attribution, poster } = Astro.props;
+const { src, title, description, caption, poster } = Astro.props;
 
 if (!description) {
   throw new Error(`<Video title="${title}"> needs a description — it is what a blind reader gets instead of the picture.`);
@@ -105,7 +105,7 @@ const frame = clipFrameClass(getClipSize(src));
   <figcaption class="caption mt-2">
     <span class="block font-semibold text-ink">{title}</span>
     <span class="mt-1 block">{caption ?? description}</span>
-    {attribution && <span class="mt-1 block">{attribution}</span>}
+    <span class="mt-1 block">{site.copyright}</span>
   </figcaption>
 </figure>
 
