@@ -429,6 +429,21 @@ inside itself, with 44px rows divided by hairlines, and tapping an entry closes
 it so the reader lands on the section rather than in the menu. From 768px it
 is the open in-flow list as before, and from 1400px the left rail.
 
+### The knee OA self-care article (2026-10-16)
+
+`rehabilitation/{th,en}/knee-oa-self-care` was drafted by Claude, read by the
+author and published on his instruction the same day. Its 14 pictures are his
+uploads, converted to WebP in `public/images/rehabilitation/knee-oa-self-care/`
+(the `new/` upload folder was removed, and five of its files were byte-identical
+re-uploads of pictures already placed). The 11 exercises sit under three `###`
+groups — lying down, standing, stretches — so its cards pass
+`headingLevel={4}` to `<ExerciseCard>`; every other card on the site keeps the
+default `h3`. His file called "hamstring stretch" is the seated picture first
+placed as "seated knee straightening"; that card is now the hamstring stretch,
+as he named it. The straight-leg-raise picture lifts the leg higher than the
+card's "heel level with the other knee": the alt describes the picture, the
+text keeps the instruction.
+
 ### The pre-launch QA pass
 
 Ran 2026-09-19 over all 126 pages the site had then at 390, 768, 1280 and 1440px in both

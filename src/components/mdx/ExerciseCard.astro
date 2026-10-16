@@ -9,6 +9,12 @@ import { clipFrameClass, getClipSize } from '../../lib/clip-size';
 
 interface Props {
   title: string;
+  /**
+   * 3 by default. Pass 4 when the cards sit under an `###` group heading of
+   * their own, so the outline does not flatten the group and its cards into
+   * siblings.
+   */
+  headingLevel?: 3 | 4;
   /** e.g. "10 ครั้ง" / "10 repetitions" */
   reps?: string;
   /** e.g. "2 เซ็ต" / "2 sets" */
@@ -49,6 +55,7 @@ interface Props {
 
 const {
   title,
+  headingLevel = 3,
   reps,
   sets,
   hold,
@@ -61,6 +68,8 @@ const {
   youtube,
   poster,
 } = Astro.props;
+
+const Heading = headingLevel === 4 ? 'h4' : 'h3';
 
 if (video && (!image || !videoDescription)) {
   throw new Error(`<ExerciseCard title="${title}"> has a video but no image to use as its poster, or no videoDescription.`);
@@ -100,7 +109,7 @@ const videoClass = clipIsTall
 ---
 
 <article class="exercise-card my-6 rounded-[10px] border border-border bg-surface p-5">
-  <h3 class="mt-0! mb-2 text-[1.125rem]">{title}</h3>
+  <Heading class="mt-0! mb-2 text-[1.125rem]">{title}</Heading>
 
   {
     meta.length > 0 && (
